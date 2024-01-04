@@ -6,20 +6,43 @@
   <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 ">
   <meta name="description" content="【C#入门语法知识】| 1.概述 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="4.第一个应用程序 4.1 知识点知识点内容  4.2 知识点代码&#x2F;&#x2F; 知识点代码块   4.3 练习题练习题内容  4.4 练习题代码&#x2F;&#x2F; 练习题代码块">
+<meta name="description" content="4.第一个应用程序 4.1 知识点VS窗口基本介绍 侧面解决方案资源管理器在这里，你可以管理项目的解决方案和具体情况，显示各个项目的详细信息。 上方工具栏保存：Ctrl + S 撤销和重做撤销：Ctrl + Z重做：Ctrl + Y 项目运行运行项目：F5 项目切换在不同项目间切换 注释和取消注释注释：Ctrl + K, Ctrl + C取消注释：Ctrl + K, Ctrl + U 中央代码文件">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【C#入门语法知识】| 4.第一个应用程序">
 <meta property="og:url" content="https://linwentao785293209.github.io/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="4.第一个应用程序 4.1 知识点知识点内容  4.2 知识点代码&#x2F;&#x2F; 知识点代码块   4.3 练习题练习题内容  4.4 练习题代码&#x2F;&#x2F; 练习题代码块">
+<meta property="og:description" content="4.第一个应用程序 4.1 知识点VS窗口基本介绍 侧面解决方案资源管理器在这里，你可以管理项目的解决方案和具体情况，显示各个项目的详细信息。 上方工具栏保存：Ctrl + S 撤销和重做撤销：Ctrl + Z重做：Ctrl + Y 项目运行运行项目：F5 项目切换在不同项目间切换 注释和取消注释注释：Ctrl + K, Ctrl + C取消注释：Ctrl + K, Ctrl + U 中央代码文件">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/6.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/7.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/8.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/9.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/10.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/11.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/12.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/13.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/14.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/15.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/16.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/17.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/18.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/19.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/20.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/21.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/22.png">
 <meta property="article:published_time" content="2024-01-04T11:40:52.000Z">
-<meta property="article:modified_time" content="2024-01-04T16:12:08.638Z">
+<meta property="article:modified_time" content="2024-01-04T16:53:08.670Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="CSharp">
 <meta property="article:tag" content="CSharp入门">
 <meta property="article:tag" content="语法知识">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
