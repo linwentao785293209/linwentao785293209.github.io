@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>【C#入门语法知识】| 7.变量的命名规则 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 ">
+  <meta name="description" content="【C#入门语法知识】| 7.变量的命名规则 | 人间自有韬哥在的游戏开发博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="6.变量的本质 6.1 知识点变量类型回顾有符号类型 sbyte   (-128~127)   int     (-21亿多~21亿多)   short   (-3万多~3万多)  long    (-9百万兆多~9百万兆多)  无符号类型 byte    (0~255)   uint    (0~42亿多)   ushort  (0~6万多)  ulong   (0~18百万兆多)  浮点数 f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【C#入门语法知识】| 6.变量的本质">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/index.html">
+<meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
+<meta property="og:description" content="6.变量的本质 6.1 知识点变量类型回顾有符号类型 sbyte   (-128~127)   int     (-21亿多~21亿多)   short   (-3万多~3万多)  long    (-9百万兆多~9百万兆多)  无符号类型 byte    (0~255)   uint    (0~42亿多)   ushort  (0~6万多)  ulong   (0~18百万兆多)  浮点数 f">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/6.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/7.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/8.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/9.png">
+<meta property="article:published_time" content="2024-01-05T11:39:42.000Z">
+<meta property="article:modified_time" content="2024-01-05T11:50:44.808Z">
+<meta property="article:author" content="人间自有韬哥在">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="CSharp入门">
+<meta property="article:tag" content="语法知识">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/1.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>人间自有韬哥在</span>
+</div>
+
+<div class="icon">
+    
+        
+    
+        
+            <a title="github"
+               href="https://github.com/linwentao785293209"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:785293209@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=785293209&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(7)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="CSharp">
+            <i class="fold iconfont icon-right"></i>
+            CSharp
+            <small>(7)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CSharp&lt;---&gt;CSharp入门语法知识">
+            
+            CSharp入门语法知识
+            <small>(7)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="7">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>语法知识</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp入门</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 6.变量的本质">【C#入门语法知识】| 6.变量的本质</span>
+            <span class="post-date" title="2024-01-05 19:39:42">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%8F%98%E9%87%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 5.变量">【C#入门语法知识】| 5.变量</span>
+            <span class="post-date" title="2024-01-05 12:52:35">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 4.第一个应用程序">【C#入门语法知识】| 4.第一个应用程序</span>
+            <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 7.变量的命名规则">【C#入门语法知识】| 7.变量的命名规则</span>
+            <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/03/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 3.开发环境的搭建">【C#入门语法知识】| 3.开发环境的搭建</span>
+            <span class="post-date" title="2024-01-03 23:35:11">2024/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/02/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 2.程序语言是什么">【C#入门语法知识】| 2.程序语言是什么</span>
+            <span class="post-date" title="2024-01-02 21:20:00">2024/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/01/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 1.概述">【C#入门语法知识】| 1.概述</span>
+            <span class="post-date" title="2024-01-01 12:41:48">2024/01/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-CSharp/01.CSharp入门语法知识/7.变量的命名规则" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">【C#入门语法知识】| 7.变量的命名规则</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="CSharp">CSharp</a> > 
+            
+            <a  data-rel="CSharp&lt;---&gt;CSharp入门语法知识">CSharp入门语法知识</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">CSharp</a>
+            
+            <a class="color4">CSharp入门</a>
+            
+            <a class="color5">语法知识</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-01-05 20:14:50'>2024-01-04 19:40</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99"><span class="toc-text">7.变量的命名规则</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">7.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E5%BF%85%E9%A1%BB%E9%81%B5%E5%AE%88%E7%9A%84%E8%A7%84%E5%88%99"><span class="toc-text">变量的命名必须遵守的规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E6%A6%82%E8%BF%B0"><span class="toc-text">命名规则概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%E5%BB%BA%E8%AE%AE"><span class="toc-text">命名规则建议</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%B8%B8%E7%94%A8%E5%91%BD%E5%90%8D%E8%A7%84%E8%8C%83"><span class="toc-text">变量常用命名规范</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E6%B3%95"><span class="toc-text">驼峰命名法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%95%E6%96%AF%E5%8D%A1%E5%91%BD%E5%90%8D%E6%B3%95"><span class="toc-text">帕斯卡命名法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%BD%9C%E5%9C%A8%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">潜在知识点</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%9A%E8%BF%87%E9%81%B5%E5%BE%AA%E8%BF%99%E4%BA%9B%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99%EF%BC%8C%E5%8F%AF%E4%BB%A5%E4%BD%BF%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81%E6%9B%B4%E5%85%B7%E5%8F%AF%E8%AF%BB%E6%80%A7%E5%92%8C%E7%BB%B4%E6%8A%A4%E6%80%A7%E3%80%82"><span class="toc-text">通过遵循这些命名规则，可以使你的代码更具可读性和维护性。</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">7.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">7.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E9%9D%A2%E7%9A%84%E5%8F%98%E9%87%8F%E5%90%8D%E5%93%AA%E4%BA%9B%E6%98%AF%E9%94%99%E8%AF%AF%E7%9A%84%EF%BC%9F"><span class="toc-text">下面的变量名哪些是错误的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%89%E7%85%A7%E9%A9%BC%E5%B3%B0%E5%91%BD%E5%90%8D%E6%B3%95%E5%91%BD%E5%90%8D%E4%BB%A5%E4%B8%8B%E5%8F%98%E9%87%8F%EF%BC%88%E4%BD%BF%E7%94%A8%E8%8B%B1%E6%96%87%EF%BC%89%EF%BC%9A%E6%88%91%E7%9A%84%E5%B9%B4%E9%BE%84%E3%80%81%E6%88%91%E7%9A%84%E6%80%A7%E5%88%AB%E3%80%81%E6%88%91%E7%9A%84%E6%94%BB%E5%87%BB%E5%8A%9B%E3%80%81%E6%88%91%E7%9A%84%E9%98%B2%E5%BE%A1%E5%8A%9B%E3%80%81%E4%BD%A0%E7%9A%84%E8%BA%AB%E9%AB%98%E3%80%81%E4%BD%A0%E7%9A%84%E4%BD%93%E9%87%8D"><span class="toc-text">按照驼峰命名法命名以下变量（使用英文）：我的年龄、我的性别、我的攻击力、我的防御力、你的身高、你的体重</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">7.4 练习题代码</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="7-变量的命名规则"><a href="#7-变量的命名规则" class="headerlink" title="7.变量的命名规则"></a>7.变量的命名规则</h1><hr>
+<h2 id="7-1-知识点"><a href="#7-1-知识点" class="headerlink" title="7.1 知识点"></a>7.1 知识点</h2><h3 id="变量的命名必须遵守的规则"><a href="#变量的命名必须遵守的规则" class="headerlink" title="变量的命名必须遵守的规则"></a>变量的命名必须遵守的规则</h3><h4 id="命名规则概述"><a href="#命名规则概述" class="headerlink" title="命名规则概述"></a>命名规则概述</h4><p>在编程中，对于变量的命名需要遵守一些规则，以保证代码的规范性和可读性。以下是一些必须遵守的规则：</p>
+<ul>
+<li>不能重名</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 不能重名</span><br><span class="hljs-comment">// int i= 1;</span><br><span class="hljs-comment">// int i = 2;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>不能以数字开头</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 不能以数字开头</span><br><span class="hljs-comment">// int 2i = 1;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>不能使用程序关键字命名</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 不能使用程序关键字命名</span><br><span class="hljs-comment">// string float = &quot;123&quot;;</span><br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>不能有特殊符号（下划线除外）</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 不能有特殊符号（下划线除外）</span><br><span class="hljs-comment">// int ? = 1;</span><br><span class="hljs-comment">// int a_b = 2;</span><br><span class="hljs-comment">// int _c = 3;</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="命名规则建议"><a href="#命名规则建议" class="headerlink" title="命名规则建议"></a>命名规则建议</h4><p>建议的命名规则包括：</p>
+<ul>
+<li>变量名应有含义，用英文（拼音）表示变量的作用</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 建议的命名规则：变量名要有含义——&gt;用英文（拼音）表示变量的作用</span><br><span class="hljs-built_in">string</span> myName = <span class="hljs-string">&quot;林文韬&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>非常不建议的命名规则：用汉字命名</li>
+</ul>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 非常不建议的命名规则：用汉字命名</span><br><span class="hljs-built_in">string</span> 我的名字 = <span class="hljs-string">&quot;林文韬&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="变量常用命名规范"><a href="#变量常用命名规范" class="headerlink" title="变量常用命名规范"></a>变量常用命名规范</h3><h4 id="驼峰命名法"><a href="#驼峰命名法" class="headerlink" title="驼峰命名法"></a>驼峰命名法</h4><p>在驼峰命名法中，变量名的规则是首字母小写，之后每个单词的首字母大写。例如：</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">string</span> myName = <span class="hljs-string">&quot;韬老狮&quot;</span>;<br><span class="hljs-built_in">string</span> yourName = <span class="hljs-string">&quot;你的名字&quot;</span>;<br><span class="hljs-built_in">string</span> yourMotherName = <span class="hljs-string">&quot;&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="帕斯卡命名法"><a href="#帕斯卡命名法" class="headerlink" title="帕斯卡命名法"></a>帕斯卡命名法</h4><p>帕斯卡命名法要求所有单词的首字母都大写，通常用于函数和类的命名。例如：</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">string</span> MyName = <span class="hljs-string">&quot;dskafj&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="潜在知识点"><a href="#潜在知识点" class="headerlink" title="潜在知识点"></a>潜在知识点</h4><p>在C#中，大小写是敏感的，需要严格区分。这意味着<code>myName</code>和<code>MyName</code>在C#中会被认为是两个不同的变量。</p>
+<h2 id="通过遵循这些命名规则，可以使你的代码更具可读性和维护性。"><a href="#通过遵循这些命名规则，可以使你的代码更具可读性和维护性。" class="headerlink" title="通过遵循这些命名规则，可以使你的代码更具可读性和维护性。"></a>通过遵循这些命名规则，可以使你的代码更具可读性和维护性。</h2><h2 id="7-2-知识点代码"><a href="#7-2-知识点代码" class="headerlink" title="7.2 知识点代码"></a>7.2 知识点代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">Lesson04_</span>变量的命名规则<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;变量的命名规则&quot;</span>);<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点一：必须遵守的规则</span><br><br>            <span class="hljs-comment">//1.不能重名</span><br>            <span class="hljs-comment">//int i = 1;</span><br>            <span class="hljs-comment">//int i = 2;</span><br><br>            <span class="hljs-comment">//2.不能以数字开头</span><br>            <span class="hljs-comment">//int 2i = 1;</span><br><br>            <span class="hljs-comment">//3.不能使用程序关键字命名</span><br>            <span class="hljs-comment">//string float = &quot;123&quot;;</span><br><br>            <span class="hljs-comment">//4.不能有特殊符号（下划线除外）</span><br>            <span class="hljs-comment">//int ? = 1;</span><br>            <span class="hljs-comment">//int a_b= 2;</span><br>            <span class="hljs-comment">//int _c= 3;</span><br><br><br>            <span class="hljs-comment">//建议的命名规则：变量名要有含义——&gt;用英文（拼音）表示变量的作用</span><br>            <span class="hljs-built_in">string</span> my_Name = <span class="hljs-string">&quot;林文韬&quot;</span>;<br><br>            <span class="hljs-comment">//非常不建议的命名规则：用汉字命名</span><br>            <span class="hljs-built_in">string</span> 我的名字 = <span class="hljs-string">&quot;林文韬&quot;</span>;<br><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点二：常用命名规则</span><br><br>            <span class="hljs-comment">//驼峰命名法——首字母小写，之后单词首字母大写（变量）</span><br>            <span class="hljs-built_in">string</span> myName = <span class="hljs-string">&quot;韬老狮&quot;</span>;<br>            <span class="hljs-built_in">string</span> yourName = <span class="hljs-string">&quot;你的名字&quot;</span>;<br>            <span class="hljs-built_in">string</span> yourMotherName = <span class="hljs-string">&quot;&quot;</span>;<br><br>            <span class="hljs-comment">//帕斯卡命名法——所有单词首字母都大写（函数、类）</span><br>            <span class="hljs-built_in">string</span> MyName = <span class="hljs-string">&quot;dskafj&quot;</span>;<br><br>            <span class="hljs-comment">//潜在知识点——C#中对大小写是敏感的 是区分的</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="7-3-练习题"><a href="#7-3-练习题" class="headerlink" title="7.3 练习题"></a>7.3 练习题</h2><h3 id="下面的变量名哪些是错误的？"><a href="#下面的变量名哪些是错误的？" class="headerlink" title="下面的变量名哪些是错误的？"></a>下面的变量名哪些是错误的？</h3><pre><code>U3d       No.1      3day
+$money    discount_ 1    Shang Hai
+class     int        _a_b_c_
+Main      _ 2C       print
+</code></pre>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> U3d = <span class="hljs-number">1</span>;<span class="hljs-comment">//正确 建议驼峰命名</span><br><span class="hljs-comment">//int No.1 = 1;//不能有特殊符号</span><br><span class="hljs-comment">//int 3day = 1;//不能数字开头</span><br><span class="hljs-comment">//int $money = 1;//不能有特殊符号</span><br><span class="hljs-comment">//int discount_ 1 = 1;//不能有空格 空格也算特殊符号</span><br><span class="hljs-comment">//int Shang Hai = 1;//不能有空格 空格也算特殊符号</span><br><span class="hljs-comment">//int class = 1;//不能有关键字</span><br><span class="hljs-comment">//int int = 1;//不能有关键字</span><br><span class="hljs-built_in">int</span> _a_b_c_t = <span class="hljs-number">1</span>;<span class="hljs-comment">//正确</span><br><span class="hljs-built_in">int</span> Main = <span class="hljs-number">1</span>;<span class="hljs-comment">//正确 主函数的Main只是函数名 建议驼峰命名</span><br><span class="hljs-comment">//int _ 2C  = 1;//不能有空格 空格也算特殊符号</span><br><span class="hljs-built_in">int</span> print = <span class="hljs-number">1</span>;<span class="hljs-comment">//正确</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="按照驼峰命名法命名以下变量（使用英文）：我的年龄、我的性别、我的攻击力、我的防御力、你的身高、你的体重"><a href="#按照驼峰命名法命名以下变量（使用英文）：我的年龄、我的性别、我的攻击力、我的防御力、你的身高、你的体重" class="headerlink" title="按照驼峰命名法命名以下变量（使用英文）：我的年龄、我的性别、我的攻击力、我的防御力、你的身高、你的体重"></a>按照驼峰命名法命名以下变量（使用英文）：我的年龄、我的性别、我的攻击力、我的防御力、你的身高、你的体重</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> myAge = <span class="hljs-number">18</span>;<br><br><span class="hljs-comment">//bool mySex = false;</span><br><span class="hljs-comment">//string mySex = &quot;男&quot;;</span><br><span class="hljs-built_in">int</span> mySex = <span class="hljs-number">1</span>;<br><br><span class="hljs-built_in">int</span> myAtk = <span class="hljs-number">9999</span>;<br><span class="hljs-built_in">int</span> myDef = <span class="hljs-number">10000</span>;<br><br><span class="hljs-built_in">float</span> yourHeight = <span class="hljs-number">180</span>;<br><span class="hljs-built_in">float</span> yourWeight = <span class="hljs-number">50.5f</span>;<br></code></pre></td></tr></table></figure>
+
+<p>请注意：在布尔类型变量命名时，建议使用表示肯定性的词语，如 is、has 等，以增加代码可读性。</p>
+<hr>
+<h2 id="7-4-练习题代码"><a href="#7-4-练习题代码" class="headerlink" title="7.4 练习题代码"></a>7.4 练习题代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">Lesson04_</span>练习题<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;变量命名规范练习题&quot;</span>);<br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题一</span><br>            <span class="hljs-comment">//下面的变量名哪些是错误的？</span><br>            <span class="hljs-comment">//U3d       No.1      3day</span><br>            <span class="hljs-comment">//$money    discount_ 1    Shang Hai</span><br>            <span class="hljs-comment">//class     int        _a_b_c_</span><br>            <span class="hljs-comment">//Main      _ 2C       print</span><br><br>            <span class="hljs-built_in">int</span> U3d = <span class="hljs-number">1</span>;<span class="hljs-comment">//正确 建议驼峰命名</span><br>            <span class="hljs-comment">//int No.1 = 1;//不能有特殊符号</span><br>            <span class="hljs-comment">//int 3day = 1;//不能数字开头</span><br>            <span class="hljs-comment">//int $money = 1;//不能有特殊符号</span><br>            <span class="hljs-comment">//int discount_ 1 = 1;//不能有空格 空格也算特殊符号</span><br>            <span class="hljs-comment">//int Shang Hai = 1;//不能有空格 空格也算特殊符号</span><br>            <span class="hljs-comment">//int class = 1;//不能有关键字</span><br>            <span class="hljs-comment">//int int = 1;//不能有关键字</span><br>            <span class="hljs-built_in">int</span> _a_b_c_t = <span class="hljs-number">1</span>;<span class="hljs-comment">//正确</span><br>            <span class="hljs-built_in">int</span> Main = <span class="hljs-number">1</span>;<span class="hljs-comment">//正确 主函数的Main只是函数名 建议驼峰命名</span><br>            <span class="hljs-comment">//int _ 2C  = 1;//不能有空格 空格也算特殊符号</span><br>            <span class="hljs-built_in">int</span> print = <span class="hljs-number">1</span>;<span class="hljs-comment">//正确</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题二</span><br>            <span class="hljs-comment">//按照驼峰命名法命名以下变量（使用英文）</span><br>            <span class="hljs-comment">//我的年龄、我的性别、我的攻击力、我的防御力、你的身高、你的体重</span><br><br>            <span class="hljs-built_in">int</span> myAge = <span class="hljs-number">18</span>;<br><br>            <span class="hljs-comment">//bool mySex = false;</span><br>            <span class="hljs-comment">//string mySex = &quot;男&quot;;</span><br>            <span class="hljs-built_in">int</span> mySex = <span class="hljs-number">1</span>;<br><br>            <span class="hljs-built_in">int</span> myAtk = <span class="hljs-number">9999</span>;<br>            <span class="hljs-built_in">int</span> myDef = <span class="hljs-number">10000</span>;<br><br>            <span class="hljs-built_in">float</span> yourHeight = <span class="hljs-number">180</span>;<br>            <span class="hljs-built_in">float</span> yourWeight = <span class="hljs-number">50.5f</span>;<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 785293209@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2024 Tao
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 622px;
+    }
+    .nav.fullscreen {
+        margin-left: -622px;
+    }
+    .nav-left {
+        width: 200px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 572px;
+        }
+        .nav.fullscreen {
+            margin-left: -572px;
+        }
+        .nav-left {
+            width: 180px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 572px;
+            margin-left: -572px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>

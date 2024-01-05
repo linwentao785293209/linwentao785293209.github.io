@@ -156,7 +156,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(6)</small>
+                <small>(7)</small>
             
         </div>
     </li>
@@ -168,7 +168,7 @@
         <div data-rel="CSharp">
             <i class="fold iconfont icon-right"></i>
             CSharp
-            <small>(6)</small>
+            <small>(7)</small>
         </div>
         
             <ul class="sub hide">
@@ -178,7 +178,7 @@
         <div data-rel="CSharp&lt;---&gt;CSharp入门语法知识">
             
             CSharp入门语法知识
-            <small>(6)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -210,7 +210,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="6">
+<input type="hidden" id="yelog_site_posts_number" value="7">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -299,6 +299,15 @@
            data-tag="CSharp,CSharp入门,语法知识"
            data-author="" >
             <span class="post-title" title="【C#入门语法知识】| 4.第一个应用程序">【C#入门语法知识】| 4.第一个应用程序</span>
+            <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 7.变量的命名规则">【C#入门语法知识】| 7.变量的命名规则</span>
             <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
         </a>
         
@@ -451,22 +460,22 @@
 <h4 id="有符号类型-1"><a href="#有符号类型-1" class="headerlink" title="有符号类型"></a>有符号类型</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> sbyteSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">sbyte</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;sbyte 所占的字节数为：&quot;</span> + sbyteSize); <br><br><span class="hljs-built_in">int</span> intSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">int</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;int 所占的字节数为：&quot;</span> + intSize); <br><br><span class="hljs-built_in">int</span> shortSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">short</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;short 所占的字节数为：&quot;</span> + shortSize); <br><br><span class="hljs-built_in">int</span> longSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">long</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;long 所占的字节数为：&quot;</span> + longSize); <br></code></pre></td></tr></table></figure>
 
 <p>输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sbyte 所占的字节数为：1 <br>int 所占的字节数为：4 <br>short 所占的字节数为：2 <br>long 所占的字节数为：8 <br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">sbyte</span> 所占的字节数为：<span class="hljs-number">1</span> <br><span class="hljs-attribute">int</span> 所占的字节数为：<span class="hljs-number">4</span> <br><span class="hljs-attribute">short</span> 所占的字节数为：<span class="hljs-number">2</span> <br><span class="hljs-attribute">long</span> 所占的字节数为：<span class="hljs-number">8</span> <br></code></pre></td></tr></table></figure>
 
 <h4 id="无符号类型-1"><a href="#无符号类型-1" class="headerlink" title="无符号类型"></a>无符号类型</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> byteSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">byte</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;byte 所占的字节数为：&quot;</span> + byteSize); <br><br><span class="hljs-built_in">int</span> uintSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">uint</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;uint 所占的字节数为：&quot;</span> + uintSize); <br><br><span class="hljs-built_in">int</span> ushortSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">ushort</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;ushort 所占的字节数为：&quot;</span> + ushortSize); <br><br><span class="hljs-built_in">int</span> ulongSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">ulong</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;ulong 所占的字节数为：&quot;</span> + ulongSize); <br></code></pre></td></tr></table></figure>
 
 <p>输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">byte 所占的字节数为：1 <br>uint 所占的字节数为：4 <br>ushort 所占的字节数为：2 <br>ulong 所占的字节数为：8 <br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">byte</span> 所占的字节数为：<span class="hljs-number">1</span> <br><span class="hljs-attribute">uint</span> 所占的字节数为：<span class="hljs-number">4</span> <br><span class="hljs-attribute">ushort</span> 所占的字节数为：<span class="hljs-number">2</span> <br><span class="hljs-attribute">ulong</span> 所占的字节数为：<span class="hljs-number">8</span> <br></code></pre></td></tr></table></figure>
 
 <h4 id="浮点数-1"><a href="#浮点数-1" class="headerlink" title="浮点数"></a>浮点数</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> floatSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">float</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;float 所占的字节数为：&quot;</span> + floatSize); <br><br><span class="hljs-built_in">int</span> doubleSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">double</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;double 所占的字节数为：&quot;</span> + doubleSize); <br><br><span class="hljs-built_in">int</span> decimalSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">decimal</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;decimal 所占的字节数为：&quot;</span> + decimalSize); <br></code></pre></td></tr></table></figure>
 
 <p>输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">float 所占的字节数为：4 <br>double 所占的字节数为：8 <br>decimal 所占的字节数为：16 <br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">float</span> 所占的字节数为：<span class="hljs-number">4</span> <br><span class="hljs-attribute">double</span> 所占的字节数为：<span class="hljs-number">8</span> <br><span class="hljs-attribute">decimal</span> 所占的字节数为：<span class="hljs-number">16</span> <br></code></pre></td></tr></table></figure>
 
 <h4 id="特殊类型-1"><a href="#特殊类型-1" class="headerlink" title="特殊类型"></a>特殊类型</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> boolSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">bool</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;bool 所占的字节数为：&quot;</span> + boolSize); <br><br><span class="hljs-built_in">int</span> charSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">char</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;char 所占的字节数为：&quot;</span> + charSize); <br></code></pre></td></tr></table></figure>
 
 <p>输出结果：</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">bool 所占的字节数为：1 <br>char 所占的字节数为：2 <br></code></pre></td></tr></table></figure>
+<figure class="highlight apache"><table><tr><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">bool</span> 所占的字节数为：<span class="hljs-number">1</span> <br><span class="hljs-attribute">char</span> 所占的字节数为：<span class="hljs-number">2</span> <br></code></pre></td></tr></table></figure>
 
 <p><strong>注意：</strong> <code>sizeof</code>无法获取<code>string</code>类型所占的内存大小，因为字符串长度是可变的，不定。</p>
 <h3 id="变量的本质是2进制"><a href="#变量的本质是2进制" class="headerlink" title="变量的本质是2进制"></a>变量的本质是2进制</h3><p>变量的本质是2进制——&gt; 计算机中所有数据的本质都是二进制，是一堆0和1。</p>
