@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>【C#入门语法知识】| 6.变量的本质 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 ">
+  <meta name="description" content="【C#入门语法知识】| 6.变量的本质 | 人间自有韬哥在的游戏开发博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="6.变量的本质 6.1 知识点变量类型回顾有符号类型 sbyte   (-128~127)   int     (-21亿多~21亿多)   short   (-3万多~3万多)  long    (-9百万兆多~9百万兆多)  无符号类型 byte    (0~255)   uint    (0~42亿多)   ushort  (0~6万多)  ulong   (0~18百万兆多)  浮点数 f">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【C#入门语法知识】| 6.变量的本质">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/index.html">
+<meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
+<meta property="og:description" content="6.变量的本质 6.1 知识点变量类型回顾有符号类型 sbyte   (-128~127)   int     (-21亿多~21亿多)   short   (-3万多~3万多)  long    (-9百万兆多~9百万兆多)  无符号类型 byte    (0~255)   uint    (0~42亿多)   ushort  (0~6万多)  ulong   (0~18百万兆多)  浮点数 f">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/6.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/7.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/8.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/9.png">
+<meta property="article:published_time" content="2024-01-05T11:39:42.000Z">
+<meta property="article:modified_time" content="2024-01-05T11:50:44.808Z">
+<meta property="article:author" content="人间自有韬哥在">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="CSharp入门">
+<meta property="article:tag" content="语法知识">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/1.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>人间自有韬哥在</span>
+</div>
+
+<div class="icon">
+    
+        
+    
+        
+            <a title="github"
+               href="https://github.com/linwentao785293209"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:785293209@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=785293209&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(6)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="CSharp">
+            <i class="fold iconfont icon-right"></i>
+            CSharp
+            <small>(6)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CSharp&lt;---&gt;CSharp入门语法知识">
+            
+            CSharp入门语法知识
+            <small>(6)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="6">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>语法知识</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp入门</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 6.变量的本质">【C#入门语法知识】| 6.变量的本质</span>
+            <span class="post-date" title="2024-01-05 19:39:42">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%8F%98%E9%87%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 5.变量">【C#入门语法知识】| 5.变量</span>
+            <span class="post-date" title="2024-01-05 12:52:35">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 4.第一个应用程序">【C#入门语法知识】| 4.第一个应用程序</span>
+            <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/03/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 3.开发环境的搭建">【C#入门语法知识】| 3.开发环境的搭建</span>
+            <span class="post-date" title="2024-01-03 23:35:11">2024/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/02/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 2.程序语言是什么">【C#入门语法知识】| 2.程序语言是什么</span>
+            <span class="post-date" title="2024-01-02 21:20:00">2024/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/01/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 1.概述">【C#入门语法知识】| 1.概述</span>
+            <span class="post-date" title="2024-01-01 12:41:48">2024/01/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-CSharp/01.CSharp入门语法知识/6.变量的本质" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">【C#入门语法知识】| 6.变量的本质</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="CSharp">CSharp</a> > 
+            
+            <a  data-rel="CSharp&lt;---&gt;CSharp入门语法知识">CSharp入门语法知识</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">CSharp</a>
+            
+            <a class="color4">CSharp入门</a>
+            
+            <a class="color5">语法知识</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-01-05 19:50:44'>2024-01-05 19:39</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-text">6.变量的本质</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">6.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E5%9B%9E%E9%A1%BE"><span class="toc-text">变量类型回顾</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E7%AC%A6%E5%8F%B7%E7%B1%BB%E5%9E%8B"><span class="toc-text">有符号类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E7%B1%BB%E5%9E%8B"><span class="toc-text">无符号类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-text">浮点数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%B1%BB%E5%9E%8B"><span class="toc-text">特殊类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E5%AD%98%E5%82%A8%E7%A9%BA%E9%97%B4"><span class="toc-text">变量的存储空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%E6%89%80%E5%8D%A0%E7%9A%84%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4"><span class="toc-text">获取变量类型所占的内存空间</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%89%E7%AC%A6%E5%8F%B7%E7%B1%BB%E5%9E%8B-1"><span class="toc-text">有符号类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E7%AC%A6%E5%8F%B7%E7%B1%BB%E5%9E%8B-1"><span class="toc-text">无符号类型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%AE%E7%82%B9%E6%95%B0-1"><span class="toc-text">浮点数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%B1%BB%E5%9E%8B-1"><span class="toc-text">特殊类型</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8%E6%98%AF2%E8%BF%9B%E5%88%B6"><span class="toc-text">变量的本质是2进制</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%92%8C%E5%8D%81%E8%BF%9B%E5%88%B6%E7%9A%84%E5%AF%B9%E6%AF%94%E5%92%8C%E8%BD%AC%E6%8D%A2"><span class="toc-text">二进制和十进制的对比和转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E5%92%8C%E4%BA%8C%E8%BF%9B%E5%88%B6%E7%9A%84%E5%AF%B9%E6%AF%94"><span class="toc-text">十进制和二进制的对比</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%81%E8%BF%9B%E5%88%B6%E8%BD%AC%E4%BA%8C%E8%BF%9B%E5%88%B6"><span class="toc-text">十进制转二进制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8C%E8%BF%9B%E5%88%B6%E8%BD%AC%E5%8D%81%E8%BF%9B%E5%88%B6"><span class="toc-text">二进制转十进制</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">6.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">6.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E9%BB%98%E5%86%99%E5%87%BA%E5%B8%B8%E7%94%A8%E7%9A%8414%E4%B8%AA%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B%EF%BC%8C%E4%BB%A5%E5%8F%8A%E4%BB%96%E4%BB%AC%E6%89%80%E5%8D%A0%E7%94%A8%E7%9A%84%E5%86%85%E5%AD%98%E7%A9%BA%E9%97%B4%E3%80%82"><span class="toc-text">请默写出常用的14个变量类型，以及他们所占用的内存空间。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E5%B0%862%E8%BF%9B%E5%88%B611000111%E3%80%81001101%E3%80%8101010101%E8%BD%AC%E4%B8%BA10%E8%BF%9B%E5%88%B6%EF%BC%8C%E5%86%99%E5%87%BA%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="toc-text">请将2进制11000111、001101、01010101转为10进制，写出计算过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E5%B0%8610%E8%BF%9B%E5%88%B699%E3%80%811024%E3%80%8178937%E8%BD%AC%E4%B8%BA2%E8%BF%9B%E5%88%B6%EF%BC%8C%E5%86%99%E5%87%BA%E8%AE%A1%E7%AE%97%E8%BF%87%E7%A8%8B"><span class="toc-text">请将10进制99、1024、78937转为2进制，写出计算过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%9D%E8%AF%95win-r%E8%BE%93%E5%85%A5calc%E6%89%93%E5%BC%80%E8%AE%A1%E7%AE%97%E5%99%A8%E8%BF%9B%E8%A1%8C%E9%AA%8C%E7%AE%97-%E7%82%B9%E5%87%BBBIn-%E4%BA%8C%E8%BF%9B%E5%88%B6-%E8%BE%93%E5%85%A5%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E8%BF%9B%E8%A1%8C%E8%BD%AC%E6%8D%A2%E9%AA%8C%E7%AE%97"><span class="toc-text">尝试win+r输入calc打开计算器进行验算 点击BIn(二进制) 输入二进制数进行转换验算</span></a></li></ol></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="6-变量的本质"><a href="#6-变量的本质" class="headerlink" title="6.变量的本质"></a>6.变量的本质</h1><hr>
+<h2 id="6-1-知识点"><a href="#6-1-知识点" class="headerlink" title="6.1 知识点"></a>6.1 知识点</h2><h3 id="变量类型回顾"><a href="#变量类型回顾" class="headerlink" title="变量类型回顾"></a>变量类型回顾</h3><h4 id="有符号类型"><a href="#有符号类型" class="headerlink" title="有符号类型"></a>有符号类型</h4><ul>
+<li><code>sbyte</code>   (-128~127)  </li>
+<li><code>int</code>     (-21亿多~21亿多)  </li>
+<li><code>short</code>   (-3万多~3万多) </li>
+<li><code>long</code>    (-9百万兆多~9百万兆多)</li>
+</ul>
+<h4 id="无符号类型"><a href="#无符号类型" class="headerlink" title="无符号类型"></a>无符号类型</h4><ul>
+<li><code>byte</code>    (0~255)  </li>
+<li><code>uint</code>    (0~42亿多)  </li>
+<li><code>ushort</code>  (0~6万多) </li>
+<li><code>ulong</code>   (0~18百万兆多)</li>
+</ul>
+<h4 id="浮点数"><a href="#浮点数" class="headerlink" title="浮点数"></a>浮点数</h4><ul>
+<li><code>float</code>   (7~8位有效数字)  </li>
+<li><code>double</code>  (15~17位有效数字) </li>
+<li><code>decimal</code> (27~28位有效数字)</li>
+</ul>
+<h4 id="特殊类型"><a href="#特殊类型" class="headerlink" title="特殊类型"></a>特殊类型</h4><ul>
+<li><code>bool</code>    (true和false)  </li>
+<li><code>char</code>    (一个字符) </li>
+<li><code>string</code>  (一串字符)</li>
+</ul>
+<h3 id="变量的存储空间"><a href="#变量的存储空间" class="headerlink" title="变量的存储空间"></a>变量的存储空间</h3><ul>
+<li>1byte &#x3D; 8bit  </li>
+<li>1MB &#x3D; 1024byte </li>
+<li>1GB &#x3D; 1024MB </li>
+<li>1TB &#x3D; 1024GB</li>
+</ul>
+<h3 id="获取变量类型所占的内存空间"><a href="#获取变量类型所占的内存空间" class="headerlink" title="获取变量类型所占的内存空间"></a>获取变量类型所占的内存空间</h3><p>通过<code>sizeof</code>方法可以获取变量类型所占的内存空间（单位：字节）</p>
+<h4 id="有符号类型-1"><a href="#有符号类型-1" class="headerlink" title="有符号类型"></a>有符号类型</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> sbyteSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">sbyte</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;sbyte 所占的字节数为：&quot;</span> + sbyteSize); <br><br><span class="hljs-built_in">int</span> intSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">int</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;int 所占的字节数为：&quot;</span> + intSize); <br><br><span class="hljs-built_in">int</span> shortSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">short</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;short 所占的字节数为：&quot;</span> + shortSize); <br><br><span class="hljs-built_in">int</span> longSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">long</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;long 所占的字节数为：&quot;</span> + longSize); <br></code></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">sbyte 所占的字节数为：1 <br>int 所占的字节数为：4 <br>short 所占的字节数为：2 <br>long 所占的字节数为：8 <br></code></pre></td></tr></table></figure>
+
+<h4 id="无符号类型-1"><a href="#无符号类型-1" class="headerlink" title="无符号类型"></a>无符号类型</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> byteSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">byte</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;byte 所占的字节数为：&quot;</span> + byteSize); <br><br><span class="hljs-built_in">int</span> uintSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">uint</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;uint 所占的字节数为：&quot;</span> + uintSize); <br><br><span class="hljs-built_in">int</span> ushortSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">ushort</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;ushort 所占的字节数为：&quot;</span> + ushortSize); <br><br><span class="hljs-built_in">int</span> ulongSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">ulong</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;ulong 所占的字节数为：&quot;</span> + ulongSize); <br></code></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">byte 所占的字节数为：1 <br>uint 所占的字节数为：4 <br>ushort 所占的字节数为：2 <br>ulong 所占的字节数为：8 <br></code></pre></td></tr></table></figure>
+
+<h4 id="浮点数-1"><a href="#浮点数-1" class="headerlink" title="浮点数"></a>浮点数</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> floatSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">float</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;float 所占的字节数为：&quot;</span> + floatSize); <br><br><span class="hljs-built_in">int</span> doubleSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">double</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;double 所占的字节数为：&quot;</span> + doubleSize); <br><br><span class="hljs-built_in">int</span> decimalSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">decimal</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;decimal 所占的字节数为：&quot;</span> + decimalSize); <br></code></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">float 所占的字节数为：4 <br>double 所占的字节数为：8 <br>decimal 所占的字节数为：16 <br></code></pre></td></tr></table></figure>
+
+<h4 id="特殊类型-1"><a href="#特殊类型-1" class="headerlink" title="特殊类型"></a>特殊类型</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> boolSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">bool</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;bool 所占的字节数为：&quot;</span> + boolSize); <br><br><span class="hljs-built_in">int</span> charSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">char</span>); <br>Console.WriteLine(<span class="hljs-string">&quot;char 所占的字节数为：&quot;</span> + charSize); <br></code></pre></td></tr></table></figure>
+
+<p>输出结果：</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">bool 所占的字节数为：1 <br>char 所占的字节数为：2 <br></code></pre></td></tr></table></figure>
+
+<p><strong>注意：</strong> <code>sizeof</code>无法获取<code>string</code>类型所占的内存大小，因为字符串长度是可变的，不定。</p>
+<h3 id="变量的本质是2进制"><a href="#变量的本质是2进制" class="headerlink" title="变量的本质是2进制"></a>变量的本质是2进制</h3><p>变量的本质是2进制——&gt; 计算机中所有数据的本质都是二进制，是一堆0和1。</p>
+<p>为什么是2进制？</p>
+<p>数据传递只能通过电信号，只有开和关两种状态。所以就用0和1来表示这两种状态。</p>
+<p>计算机中的存储单位最小为bit（位），它只能表示0和1两个数字。</p>
+<p>1bit 就是1个数，要不是0要不是1。</p>
+<p>为了方便数据表示，出现一个叫byte（字节）的单位，它是由8个bit组成的存储单位。所以我们一般说一个字节为8位。</p>
+<p>一个字节的状态举例：</p>
+<ul>
+<li>1byte &#x3D; 0000 0000 </li>
+<li>1byte &#x3D; 1111 1111</li>
+</ul>
+<p>1字节可以表示2的8次方种状态，即0-255。</p>
+<p>有符号数第一个比特充当符号位。当该符号位为0时，表示的是正数，为1时表示负数。</p>
+<h3 id="二进制和十进制的对比和转换"><a href="#二进制和十进制的对比和转换" class="headerlink" title="二进制和十进制的对比和转换"></a>二进制和十进制的对比和转换</h3><h4 id="十进制和二进制的对比"><a href="#十进制和二进制的对比" class="headerlink" title="十进制和二进制的对比"></a>十进制和二进制的对比</h4><p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/1.png"><br>可以做到一一对应。</p>
+<h4 id="十进制转二进制"><a href="#十进制转二进制" class="headerlink" title="十进制转二进制"></a>十进制转二进制</h4><p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/2.png"><br>除二取余法。</p>
+<h4 id="二进制转十进制"><a href="#二进制转十进制" class="headerlink" title="二进制转十进制"></a>二进制转十进制</h4><p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/3.png"><br>逐个位累加2的n-1次方。</p>
+<hr>
+<h2 id="6-2-知识点代码"><a href="#6-2-知识点代码" class="headerlink" title="6.2 知识点代码"></a>6.2 知识点代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">Lesson03_</span>变量的本质<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;变量的本质&quot;</span>);<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 变量类型回顾</span><br>            <span class="hljs-comment">// 有符号 </span><br>            <span class="hljs-comment">//sbyte   (-128~127) </span><br>            <span class="hljs-comment">//int     (-21亿多~21亿多) </span><br>            <span class="hljs-comment">//short   (-3万多~3万多)</span><br>            <span class="hljs-comment">//long    (-9百万兆多~9百万兆多)</span><br><br>            <span class="hljs-comment">// 无符号 </span><br>            <span class="hljs-comment">//byte    (0~255) </span><br>            <span class="hljs-comment">//uint    (0~42亿多) </span><br>            <span class="hljs-comment">//ushort  (0~6万多)</span><br>            <span class="hljs-comment">//ulong   (0~18百万兆多)</span><br><br>            <span class="hljs-comment">// 浮点数 </span><br>            <span class="hljs-comment">//float   (7~8位有效数字) </span><br>            <span class="hljs-comment">//double  (15~17位有效数字)</span><br>            <span class="hljs-comment">//decimal (27~28位有效数字)</span><br><br>            <span class="hljs-comment">// 特殊 </span><br>            <span class="hljs-comment">//bool    (true和false) </span><br>            <span class="hljs-comment">//char    (一个字符)</span><br>            <span class="hljs-comment">//string  (一串字符)</span><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点一 变量的存储空间（内存中）</span><br>            <span class="hljs-comment">// 1byte = 8bit </span><br>            <span class="hljs-comment">// 1MB = 1024byte</span><br>            <span class="hljs-comment">// 1GB = 1024MB</span><br>            <span class="hljs-comment">// 1TB = 1024GB</span><br><br>            <span class="hljs-comment">// 通过sizeof方法 可以获取变量类型所占的内存空间（单位：字节）</span><br><br><br>            <span class="hljs-comment">//有符号</span><br>            <span class="hljs-built_in">int</span> sbyteSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">sbyte</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;sbyte 所占的字节数为：&quot;</span> + sbyteSize);<br>            <span class="hljs-built_in">int</span> intSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">int</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;int 所占的字节数为：&quot;</span> + intSize);<br>            <span class="hljs-built_in">int</span> shortSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">short</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;short 所占的字节数为：&quot;</span> + shortSize);<br>            <span class="hljs-built_in">int</span> longSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">long</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;long 所占的字节数为：&quot;</span> + longSize);<br><br>            <span class="hljs-comment">//sbyte 所占的字节数为：1</span><br>            <span class="hljs-comment">//int 所占的字节数为：4</span><br>            <span class="hljs-comment">//short 所占的字节数为：2</span><br>            <span class="hljs-comment">//long 所占的字节数为：8</span><br><br>            Console.WriteLine(<span class="hljs-string">&quot;******************************************&quot;</span>);<br><br><br>            <span class="hljs-comment">//无符号</span><br>            <span class="hljs-built_in">int</span> byteSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">byte</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;byte 所占的字节数为：&quot;</span> + byteSize);<br>            <span class="hljs-built_in">int</span> uintSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">uint</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;uint 所占的字节数为：&quot;</span> + uintSize);<br>            <span class="hljs-built_in">int</span> ushortSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">ushort</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;ushort 所占的字节数为：&quot;</span> + ushortSize);<br>            <span class="hljs-built_in">int</span> ulongSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">ulong</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;ulong 所占的字节数为：&quot;</span> + ulongSize);<br><br>            <span class="hljs-comment">//byte 所占的字节数为：1</span><br>            <span class="hljs-comment">//uint 所占的字节数为：4</span><br>            <span class="hljs-comment">//ushort 所占的字节数为：2</span><br>            <span class="hljs-comment">//ulong 所占的字节数为：8</span><br>            Console.WriteLine(<span class="hljs-string">&quot;******************************************&quot;</span>);<br><br><br><br>            <span class="hljs-comment">//浮点数</span><br>            <span class="hljs-built_in">int</span> floatSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">float</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;float 所占的字节数为：&quot;</span> + floatSize);<br>            <span class="hljs-built_in">int</span> doubleSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">double</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;double 所占的字节数为：&quot;</span> + doubleSize);<br>            <span class="hljs-built_in">int</span> decimalSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">decimal</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;decimal 所占的字节数为：&quot;</span> + decimalSize);<br><br><br>            <span class="hljs-comment">//float 所占的字节数为：4</span><br>            <span class="hljs-comment">//double 所占的字节数为：8</span><br>            <span class="hljs-comment">//decimal 所占的字节数为：16</span><br><br>            Console.WriteLine(<span class="hljs-string">&quot;******************************************&quot;</span>);<br><br><br><br>            <span class="hljs-comment">//特殊类型</span><br>            <span class="hljs-built_in">int</span> boolSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">bool</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;bool 所占的字节数为：&quot;</span> + boolSize);<br>            <span class="hljs-built_in">int</span> charSize = <span class="hljs-keyword">sizeof</span>(<span class="hljs-built_in">char</span>);<br>            Console.WriteLine(<span class="hljs-string">&quot;char 所占的字节数为：&quot;</span> + charSize);<br><br>            <span class="hljs-comment">//bool 所占的字节数为：1</span><br>            <span class="hljs-comment">//char 所占的字节数为：2</span><br><br>            <span class="hljs-comment">//sizeof是不能够得到string类型所占的内存大小的</span><br>            <span class="hljs-comment">//因为字符串长度是可变的 不定 </span><br>            <span class="hljs-comment">//int stringSize = sizeof(string);</span><br>            <span class="hljs-comment">//这样写会报错</span><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点二 变量的本质</span><br>            <span class="hljs-comment">//变量的本质是2进制——&gt;计算机中所有数据的本质都是二进制 是一堆0和1 </span><br>            <span class="hljs-comment">//为什么是2进制？</span><br>            <span class="hljs-comment">//数据传递只能通过电信号，只有开和关两种状态。所以就用0和1来表示这两种状态</span><br>            <span class="hljs-comment">//计算机中的存储单位最小为bit（位），他只能表示0和1两个数字</span><br>            <span class="hljs-comment">// 1bit 就是1个数 要不是0要不是1</span><br>            <span class="hljs-comment">// 为了方便数据表示</span><br>            <span class="hljs-comment">// 出现一个叫byte（字节）的单位，它是由8个bit组成的存储单位。</span><br>            <span class="hljs-comment">// 所以我们一般说一个字节为8位</span><br><br>            <span class="hljs-comment">// 一个字节的状态举例</span><br>            <span class="hljs-comment">// 1byte = 0000 0000</span><br>            <span class="hljs-comment">// 1byte = 1111 1111</span><br>            <span class="hljs-comment">//1字节可以表示2的8次方种状态</span><br><br>            <span class="hljs-comment">//有符号数第一个比特充当符号位符号位</span><br>            <span class="hljs-comment">//当该符号位为0时,表示的是正数,为1时表示负数</span><br><br>            <span class="hljs-comment">// 2进制和10进制的对比</span><br>            <span class="hljs-comment">// 2进制和10进制之间的相互转换</span><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="6-3-练习题"><a href="#6-3-练习题" class="headerlink" title="6.3 练习题"></a>6.3 练习题</h2><h3 id="请默写出常用的14个变量类型，以及他们所占用的内存空间。"><a href="#请默写出常用的14个变量类型，以及他们所占用的内存空间。" class="headerlink" title="请默写出常用的14个变量类型，以及他们所占用的内存空间。"></a>请默写出常用的14个变量类型，以及他们所占用的内存空间。</h3><p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/4.png"></p>
+<h3 id="请将2进制11000111、001101、01010101转为10进制，写出计算过程"><a href="#请将2进制11000111、001101、01010101转为10进制，写出计算过程" class="headerlink" title="请将2进制11000111、001101、01010101转为10进制，写出计算过程"></a>请将2进制11000111、001101、01010101转为10进制，写出计算过程</h3><p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/5.png"></p>
+<h3 id="请将10进制99、1024、78937转为2进制，写出计算过程"><a href="#请将10进制99、1024、78937转为2进制，写出计算过程" class="headerlink" title="请将10进制99、1024、78937转为2进制，写出计算过程"></a>请将10进制99、1024、78937转为2进制，写出计算过程</h3><p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/6.png"></p>
+<h3 id="尝试win-r输入calc打开计算器进行验算-点击BIn-二进制-输入二进制数进行转换验算"><a href="#尝试win-r输入calc打开计算器进行验算-点击BIn-二进制-输入二进制数进行转换验算" class="headerlink" title="尝试win+r输入calc打开计算器进行验算 点击BIn(二进制) 输入二进制数进行转换验算"></a>尝试win+r输入calc打开计算器进行验算 点击BIn(二进制) 输入二进制数进行转换验算</h3><p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/7.png"><br><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/8.png"><br><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/9.png"></p>
+<hr>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 785293209@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2024 Tao
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 622px;
+    }
+    .nav.fullscreen {
+        margin-left: -622px;
+    }
+    .nav-left {
+        width: 200px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 572px;
+        }
+        .nav.fullscreen {
+            margin-left: -572px;
+        }
+        .nav-left {
+            width: 180px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 572px;
+            margin-left: -572px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
