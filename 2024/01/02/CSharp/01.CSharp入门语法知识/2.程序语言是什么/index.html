@@ -6,50 +6,27 @@
   <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 ">
   <meta name="description" content="【C#入门语法知识】| 2.程序语言是什么 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="4.第一个应用程序 4.1 知识点VS窗口基本介绍 侧面解决方案资源管理器在这里，你可以管理项目的解决方案和具体情况，显示各个项目的详细信息。 上方工具栏保存：Ctrl + S 撤销和重做撤销：Ctrl + Z重做：Ctrl + Y 项目运行运行项目：F5 项目切换在不同项目间切换 注释和取消注释注释：Ctrl + K, Ctrl + C取消注释：Ctrl + K, Ctrl + U 中央代码文件">
+<meta name="description" content="5.变量 5.1 知识点折叠代码示例#region 我的分组int i &#x3D; 1;#endregion  主要作用 使让我们编程时逻辑更加清晰 它是有 #region 和 #endregion 配对出现的 它的具体作用是可以将中间包裹的代码折叠起来，避免代码太凌乱 本质是编辑器提供给我们的预处理指令 它只会在编辑时有用，发布了代码或执行代码时，它会被自动删除  如何声明变量 &#x2F;&#x2F;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【C#入门语法知识】| 4.第一个应用程序">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/index.html">
+<meta property="og:title" content="【C#入门语法知识】| 5.变量">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%8F%98%E9%87%8F/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="4.第一个应用程序 4.1 知识点VS窗口基本介绍 侧面解决方案资源管理器在这里，你可以管理项目的解决方案和具体情况，显示各个项目的详细信息。 上方工具栏保存：Ctrl + S 撤销和重做撤销：Ctrl + Z重做：Ctrl + Y 项目运行运行项目：F5 项目切换在不同项目间切换 注释和取消注释注释：Ctrl + K, Ctrl + C取消注释：Ctrl + K, Ctrl + U 中央代码文件">
+<meta property="og:description" content="5.变量 5.1 知识点折叠代码示例#region 我的分组int i &#x3D; 1;#endregion  主要作用 使让我们编程时逻辑更加清晰 它是有 #region 和 #endregion 配对出现的 它的具体作用是可以将中间包裹的代码折叠起来，避免代码太凌乱 本质是编辑器提供给我们的预处理指令 它只会在编辑时有用，发布了代码或执行代码时，它会被自动删除  如何声明变量 &#x2F;&#x2F;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/6.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/7.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/8.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/9.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/10.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/11.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/12.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/13.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/14.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/15.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/16.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/17.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/18.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/19.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/20.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/21.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/22.png">
-<meta property="article:published_time" content="2024-01-04T11:40:52.000Z">
-<meta property="article:modified_time" content="2024-01-04T16:53:08.670Z">
+<meta property="article:published_time" content="2024-01-05T04:52:35.000Z">
+<meta property="article:modified_time" content="2024-01-05T05:03:31.868Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="CSharp">
 <meta property="article:tag" content="CSharp入门">
 <meta property="article:tag" content="语法知识">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
 
 <link href="/css/style.css?v=1.1.0" rel="stylesheet">
 
-<link href="/css/hl_theme/atom-dark.css?v=1.1.0" rel="stylesheet">
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
 
 <link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
 
@@ -169,7 +146,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(4)</small>
+                <small>(5)</small>
             
         </div>
     </li>
@@ -181,7 +158,7 @@
         <div data-rel="CSharp">
             <i class="fold iconfont icon-right"></i>
             CSharp
-            <small>(4)</small>
+            <small>(5)</small>
         </div>
         
             <ul class="sub hide">
@@ -191,7 +168,7 @@
         <div data-rel="CSharp&lt;---&gt;CSharp入门语法知识">
             
             CSharp入门语法知识
-            <small>(4)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -223,7 +200,7 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="4">
+<input type="hidden" id="yelog_site_posts_number" value="5">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -290,6 +267,15 @@
         
         
         <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%8F%98%E9%87%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 5.变量">【C#入门语法知识】| 5.变量</span>
+            <span class="post-date" title="2024-01-05 12:52:35">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
            href="/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"
            data-tag="CSharp,CSharp入门,语法知识"
            data-author="" >
@@ -308,20 +294,20 @@
         
         
         <a  class="全部文章 CSharp CSharp入门语法知识 "
-           href="/2024/01/03/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/"
+           href="/2024/01/02/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/"
            data-tag="CSharp,CSharp入门,语法知识"
            data-author="" >
             <span class="post-title" title="【C#入门语法知识】| 2.程序语言是什么">【C#入门语法知识】| 2.程序语言是什么</span>
-            <span class="post-date" title="2024-01-03 21:20:00">2024/01/03</span>
+            <span class="post-date" title="2024-01-02 21:20:00">2024/01/02</span>
         </a>
         
         
         <a  class="全部文章 CSharp CSharp入门语法知识 "
-           href="/2024/01/03/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
+           href="/2024/01/01/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
            data-tag="CSharp,CSharp入门,语法知识"
            data-author="" >
             <span class="post-title" title="【C#入门语法知识】| 1.概述">【C#入门语法知识】| 1.概述</span>
-            <span class="post-date" title="2024-01-03 12:41:48">2024/01/03</span>
+            <span class="post-date" title="2024-01-01 12:41:48">2024/01/01</span>
         </a>
         
         <div id="no-item-tips">
@@ -375,7 +361,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-04 12:59:57'>2024-01-03 21:20</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-05 12:52:42'>2024-01-02 21:20</time>
         
     </div>
     <div class="article-meta">

@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>【C#入门语法知识】| 5.变量 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 ">
+  <meta name="description" content="【C#入门语法知识】| 5.变量 | 人间自有韬哥在的游戏开发博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="5.变量 5.1 知识点折叠代码示例#region 我的分组int i &#x3D; 1;#endregion  主要作用 使让我们编程时逻辑更加清晰 它是有 #region 和 #endregion 配对出现的 它的具体作用是可以将中间包裹的代码折叠起来，避免代码太凌乱 本质是编辑器提供给我们的预处理指令 它只会在编辑时有用，发布了代码或执行代码时，它会被自动删除  如何声明变量 &#x2F;&#x2F;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【C#入门语法知识】| 5.变量">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%8F%98%E9%87%8F/index.html">
+<meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
+<meta property="og:description" content="5.变量 5.1 知识点折叠代码示例#region 我的分组int i &#x3D; 1;#endregion  主要作用 使让我们编程时逻辑更加清晰 它是有 #region 和 #endregion 配对出现的 它的具体作用是可以将中间包裹的代码折叠起来，避免代码太凌乱 本质是编辑器提供给我们的预处理指令 它只会在编辑时有用，发布了代码或执行代码时，它会被自动删除  如何声明变量 &#x2F;&#x2F;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-01-05T04:52:35.000Z">
+<meta property="article:modified_time" content="2024-01-05T05:03:31.868Z">
+<meta property="article:author" content="人间自有韬哥在">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="CSharp入门">
+<meta property="article:tag" content="语法知识">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>人间自有韬哥在</span>
+</div>
+
+<div class="icon">
+    
+        
+    
+        
+            <a title="github"
+               href="https://github.com/linwentao785293209"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:785293209@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=785293209&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(5)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="CSharp">
+            <i class="fold iconfont icon-right"></i>
+            CSharp
+            <small>(5)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CSharp&lt;---&gt;CSharp入门语法知识">
+            
+            CSharp入门语法知识
+            <small>(5)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="5">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>语法知识</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp入门</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%8F%98%E9%87%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 5.变量">【C#入门语法知识】| 5.变量</span>
+            <span class="post-date" title="2024-01-05 12:52:35">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 4.第一个应用程序">【C#入门语法知识】| 4.第一个应用程序</span>
+            <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/03/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 3.开发环境的搭建">【C#入门语法知识】| 3.开发环境的搭建</span>
+            <span class="post-date" title="2024-01-03 23:35:11">2024/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/02/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 2.程序语言是什么">【C#入门语法知识】| 2.程序语言是什么</span>
+            <span class="post-date" title="2024-01-02 21:20:00">2024/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/01/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 1.概述">【C#入门语法知识】| 1.概述</span>
+            <span class="post-date" title="2024-01-01 12:41:48">2024/01/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-CSharp/01.CSharp入门语法知识/5.变量" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">【C#入门语法知识】| 5.变量</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="CSharp">CSharp</a> > 
+            
+            <a  data-rel="CSharp&lt;---&gt;CSharp入门语法知识">CSharp入门语法知识</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">CSharp</a>
+            
+            <a class="color4">CSharp入门</a>
+            
+            <a class="color5">语法知识</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-01-05 13:03:31'>2024-01-05 12:52</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#5-%E5%8F%98%E9%87%8F"><span class="toc-text">5.变量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">5.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8A%98%E5%8F%A0%E4%BB%A3%E7%A0%81"><span class="toc-text">折叠代码</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E4%BD%9C%E7%94%A8"><span class="toc-text">主要作用</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%A3%B0%E6%98%8E%E5%8F%98%E9%87%8F"><span class="toc-text">如何声明变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#a-%E5%8F%98%E9%87%8F%E5%A3%B0%E6%98%8E%E5%9B%BA%E5%AE%9A%E5%86%99%E6%B3%95"><span class="toc-text">a. 变量声明固定写法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#b-C-%E4%B8%AD14%E7%A7%8D%E4%B8%8D%E5%90%8C%E7%9A%84%E5%8F%98%E9%87%8F%E7%B1%BB%E5%9E%8B"><span class="toc-text">b. C#中14种不同的变量类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#i-%E6%9C%89%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%95%B4%E5%BD%A2%E5%8F%98%E9%87%8F"><span class="toc-text">i. 有符号的整形变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ii-%E6%97%A0%E7%AC%A6%E5%8F%B7%E7%9A%84%E6%95%B4%E5%BD%A2%E5%8F%98%E9%87%8F"><span class="toc-text">ii. 无符号的整形变量</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#iii-%E6%B5%AE%E7%82%B9%E6%95%B0-%E5%B0%8F%E6%95%B0"><span class="toc-text">iii. 浮点数(小数)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#iv-%E7%89%B9%E6%AE%8A%E7%B1%BB%E5%9E%8B"><span class="toc-text">iv. 特殊类型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#c-%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%BF%E7%94%A8%E5%92%8C%E4%BF%AE%E6%94%B9"><span class="toc-text">c. 变量的使用和修改</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E6%9C%89%E9%82%A3%E4%B9%88%E5%A4%9A%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%98%E9%87%8F"><span class="toc-text">为什么有那么多不同类型的变量</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%9A%E4%B8%AA%E7%9B%B8%E5%90%8C%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8F%98%E9%87%8F%E5%90%8C%E6%97%B6%E5%A3%B0%E6%98%8E"><span class="toc-text">多个相同类型的变量同时声明</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E5%88%9D%E5%A7%8B%E5%8C%96%E7%9B%B8%E5%85%B3"><span class="toc-text">变量初始化相关</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">5.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">5.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8B%E9%9D%A2%E4%BB%A3%E7%A0%81%E7%9A%84%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C%E6%98%AF%EF%BC%9F"><span class="toc-text">下面代码的输出结果是？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A3%B0%E6%98%8Efloat%E7%B1%BB%E5%9E%8B%E5%8F%98%E9%87%8F%E6%97%B6%EF%BC%8C%E4%B8%BA%E4%BD%95%E8%A6%81%E5%9C%A8%E6%95%B0%E5%AD%97%E5%90%8E%E9%9D%A2%E5%8A%A0f%EF%BC%9F"><span class="toc-text">声明float类型变量时，为何要在数字后面加f？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E5%AE%9A%E4%B9%89%E4%B8%80%E7%B3%BB%E5%88%97%E5%8F%98%E9%87%8F%E6%9D%A5%E5%AD%98%E5%82%A8%E4%BD%A0%E7%9A%84%E5%90%8D%E5%AD%97%E3%80%81%E5%B9%B4%E9%BE%84%E3%80%81%E6%80%A7%E5%88%AB%E3%80%81%E8%BA%AB%E9%AB%98%E3%80%81%E4%BD%93%E9%87%8D%E3%80%81%E5%AE%B6%E5%BA%AD%E4%BD%8F%E5%9D%80%E7%AD%89%EF%BC%8C%E5%B9%B6%E6%89%93%E5%8D%B0%E5%87%BA%E6%9D%A5%E3%80%82"><span class="toc-text">请定义一系列变量来存储你的名字、年龄、性别、身高、体重、家庭住址等，并打印出来。</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%8F%E6%98%8E%E7%9A%84%E6%95%B0%E5%AD%A6%E8%80%83%E8%AF%95%E6%88%90%E7%BB%A9%E6%98%AF80%EF%BC%8C%E8%AF%AD%E6%96%87%E7%9A%84%E8%80%83%E8%AF%95%E6%88%90%E7%BB%A9%E6%98%AF78%EF%BC%8C%E8%8B%B1%E8%AF%AD%E7%9A%84%E8%80%83%E8%AF%95%E6%88%90%E7%BB%A9%E6%98%AF98%EF%BC%8C%E8%AF%B7%E7%94%A8%E5%8F%98%E9%87%8F%E6%8F%8F%E8%BF%B0%E5%B9%B6%E6%89%93%E5%8D%B0"><span class="toc-text">小明的数学考试成绩是80，语文的考试成绩是78，英语的考试成绩是98，请用变量描述并打印</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">5.4 练习题代码</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="5-变量"><a href="#5-变量" class="headerlink" title="5.变量"></a>5.变量</h1><hr>
+<h2 id="5-1-知识点"><a href="#5-1-知识点" class="headerlink" title="5.1 知识点"></a>5.1 知识点</h2><h3 id="折叠代码"><a href="#折叠代码" class="headerlink" title="折叠代码"></a>折叠代码</h3><h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-meta">#<span class="hljs-keyword">region</span> 我的分组</span><br><span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>;<br><span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br></code></pre></td></tr></table></figure>
+
+<h4 id="主要作用"><a href="#主要作用" class="headerlink" title="主要作用"></a>主要作用</h4><ul>
+<li>使让我们编程时逻辑更加清晰</li>
+<li>它是有 <code>#region</code> 和 <code>#endregion</code> 配对出现的</li>
+<li>它的具体作用是可以将中间包裹的代码折叠起来，避免代码太凌乱</li>
+<li>本质是编辑器提供给我们的预处理指令</li>
+<li>它只会在编辑时有用，发布了代码或执行代码时，它会被自动删除</li>
+</ul>
+<h3 id="如何声明变量"><a href="#如何声明变量" class="headerlink" title="如何声明变量"></a>如何声明变量</h3><ul>
+<li>&#x2F;&#x2F;变量是可以变化的容器</li>
+<li>&#x2F;&#x2F;变量就是用来存储各种不同类型数值的一个容器</li>
+<li>&#x2F;&#x2F;不同的变量类型可以存储不同类型的值</li>
+</ul>
+<h4 id="a-变量声明固定写法"><a href="#a-变量声明固定写法" class="headerlink" title="a. 变量声明固定写法"></a>a. 变量声明固定写法</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 变量类型 变量名 = 初始值;</span><br><span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>;<br><span class="hljs-comment">// 变量类型有14种变化</span><br><span class="hljs-comment">// 变量名我们自定义，要按照一定规则</span><br><span class="hljs-comment">// 初始值一定要和变量类型统一</span><br><span class="hljs-comment">// = 和 ; 是固定的不变的</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="b-C-中14种不同的变量类型"><a href="#b-C-中14种不同的变量类型" class="headerlink" title="b. C#中14种不同的变量类型"></a>b. C#中14种不同的变量类型</h4><h5 id="i-有符号的整形变量"><a href="#i-有符号的整形变量" class="headerlink" title="i. 有符号的整形变量"></a>i. 有符号的整形变量</h5><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// sbyte -128~127</span><br><span class="hljs-built_in">sbyte</span> sb = <span class="hljs-number">1</span>;<br>Console.WriteLine(<span class="hljs-string">&quot;sbyte变量sb中存储的值是：&quot;</span> + sb);<br><br><span class="hljs-comment">// int -21亿~21亿多</span><br><span class="hljs-built_in">int</span> i = <span class="hljs-number">2</span>;<br><br><span class="hljs-comment">// short -32768~32767之间的数</span><br><span class="hljs-built_in">short</span> s = <span class="hljs-number">3</span>;<br><br><span class="hljs-comment">// long -9百万兆~9百万兆之间的数</span><br><span class="hljs-built_in">long</span> l = <span class="hljs-number">4</span>;<br></code></pre></td></tr></table></figure>
+
+<h5 id="ii-无符号的整形变量"><a href="#ii-无符号的整形变量" class="headerlink" title="ii. 无符号的整形变量"></a>ii. 无符号的整形变量</h5><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// byte 0~255</span><br><span class="hljs-built_in">byte</span> b = <span class="hljs-number">1</span>;<br><br><span class="hljs-comment">// uint 0~42亿多的一个范围</span><br><span class="hljs-built_in">uint</span> ui = <span class="hljs-number">2</span>;<br><br><span class="hljs-comment">// ushort 0~65535之间的一个数</span><br><span class="hljs-built_in">ushort</span> us = <span class="hljs-number">3</span>;<br><br><span class="hljs-comment">// ulong 0~18百万兆之间的数</span><br><span class="hljs-built_in">ulong</span> ul = <span class="hljs-number">4</span>;<br></code></pre></td></tr></table></figure>
+
+<h5 id="iii-浮点数-小数"><a href="#iii-浮点数-小数" class="headerlink" title="iii. 浮点数(小数)"></a>iii. 浮点数(小数)</h5><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// float 存储7/8位有效数字，根据编译器不同，有效数字也可能不一样（四舍五入）</span><br><span class="hljs-built_in">float</span> f1 = <span class="hljs-number">0.123456789F</span>;<br>Console.WriteLine(<span class="hljs-string">&quot;f1:&quot;</span> + f1); <span class="hljs-comment">// 0.12345679</span><br><br><span class="hljs-built_in">float</span> f2 = <span class="hljs-number">1.01234567890f</span>;<br>Console.WriteLine(<span class="hljs-string">&quot;f2:&quot;</span> + f2); <span class="hljs-comment">// 1.0123457</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// double 存储15~17位有效数字，根据编译器不同，有效数字也可能不一样</span><br><span class="hljs-comment">// c#中声明的小数默认是double的类型，末尾不需要添加字母</span><br><span class="hljs-comment">// 抛弃的数字会四舍五入</span><br><span class="hljs-built_in">double</span> d = <span class="hljs-number">0.12345678901234567890123456789</span>;<br>Console.WriteLine(d);<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// decimal 存储27~28位的有效数字，根据编译器不同，有效数字也可能不一样</span><br><span class="hljs-comment">// 在后面加M或m告诉系统它是decimal类型</span><br><span class="hljs-comment">// 不建议使用</span><br><span class="hljs-built_in">decimal</span> de = <span class="hljs-number">0.123456789012345678901234567890</span>m;<br>Console.WriteLine(de);<br></code></pre></td></tr></table></figure>
+
+<h5 id="iv-特殊类型"><a href="#iv-特殊类型" class="headerlink" title="iv. 特殊类型"></a>iv. 特殊类型</h5><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// bool true false 表示真假的数据类型 真假类型</span><br><span class="hljs-built_in">bool</span> bo = <span class="hljs-literal">true</span>;<br><span class="hljs-built_in">bool</span> bo2 = <span class="hljs-literal">false</span>;<br>Console.WriteLine(bo + <span class="hljs-string">&quot;_&quot;</span> + bo2); <span class="hljs-comment">// True_False</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// char 是用来存储单个字符的变量类型 字符类型</span><br><span class="hljs-built_in">char</span> c = <span class="hljs-string">&#x27;韬&#x27;</span>;<br>Console.WriteLine(c); <span class="hljs-comment">// 韬</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// string 是字符串类型，用来存储多个字符的，没有上限</span><br><span class="hljs-built_in">string</span> str = <span class="hljs-string">&quot;的骄傲了肯定就发生123123sdafjkasdkfjaskldjfAKKSAJD&quot;</span>;<br>Console.WriteLine(str);<br><span class="hljs-comment">// 的骄傲了肯定就发生123123sdafjkasdkfjaskldjfAKKSAJD</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="c-变量的使用和修改"><a href="#c-变量的使用和修改" class="headerlink" title="c. 变量的使用和修改"></a>c. 变量的使用和修改</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 可以声明的时候同时赋值，也可以先声明再赋值</span><br><span class="hljs-built_in">int</span> x = <span class="hljs-number">1000</span>;<br>Console.WriteLine(x); <span class="hljs-comment">// 1000</span><br><br><span class="hljs-built_in">int</span> w;<br>w = <span class="hljs-number">300</span>;<br>Console.WriteLine(w); <span class="hljs-comment">// 300</span><br></code></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 不能不声明就使用，必须要先声明才能用，否则报错</span><br>x = <span class="hljs-number">900</span>;<br>Console.WriteLine(x); <span class="hljs-comment">// 9000</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="为什么有那么多不同类型的变量"><a href="#为什么有那么多不同类型的变量" class="headerlink" title="为什么有那么多不同类型的变量"></a>为什么有那么多不同类型的变量</h3><ul>
+<li>不同的变量存储的范围和类型不一样，本质是占用的内存空间不同</li>
+<li>选择不同的数据（变量）类型装载不同的数据</li>
+</ul>
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 姓名</span><br><span class="hljs-comment">// char string</span><br><span class="hljs-built_in">string</span> myName = <span class="hljs-string">&quot;韬老狮&quot;</span>;<br><br><span class="hljs-comment">// 年龄</span><br><span class="hljs-built_in">byte</span> age = <span class="hljs-number">18</span>;<br><br><span class="hljs-comment">// 身高cm</span><br><span class="hljs-built_in">float</span> height = <span class="hljs-number">177.5f</span>;<br><br><span class="hljs-comment">// 体重kg</span><br><span class="hljs-built_in">float</span> weight = <span class="hljs-number">68.5f</span>;<br><br><span class="hljs-comment">// 性别 true女 false男</span><br><span class="hljs-built_in">bool</span> sex = <span class="hljs-literal">false</span>;<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li>简单口诀：数字用int，小数用float，字符串用string，真假用bool</li>
+</ul>
+<h3 id="多个相同类型的变量同时声明"><a href="#多个相同类型的变量同时声明" class="headerlink" title="多个相同类型的变量同时声明"></a>多个相同类型的变量同时声明</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 一个一个声明变量</span><br><span class="hljs-built_in">char</span> qw;<br><span class="hljs-built_in">int</span> i2 = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">float</span> f3 = <span class="hljs-number">3.2f</span>;<br><span class="hljs-built_in">string</span> str2 = <span class="hljs-string">&quot;123&quot;</span>;<br><span class="hljs-built_in">bool</span> bo3 = <span class="hljs-literal">true</span>;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 多个同类型变量声明不赋值</span><br><span class="hljs-comment">// 固定写法</span><br><span class="hljs-comment">// 变量类型 变量名1, 变量名2, ...，变量名n;</span><br><span class="hljs-built_in">short</span> sh1, sh2, sh999;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 多个同类型变量声明同时赋值</span><br><span class="hljs-comment">// 固定写法</span><br><span class="hljs-comment">// 变量类型 变量名 = 初始值, 变量名 = 初始值, ...; </span><br><span class="hljs-built_in">int</span> a1 = <span class="hljs-number">1</span>, b1 = <span class="hljs-number">2</span>,<br><br> c1 = <span class="hljs-number">3</span>, d1 = <span class="hljs-number">4</span>;<br>Console.WriteLine(b1);<br><span class="hljs-built_in">string</span> s1 = <span class="hljs-string">&quot;123&quot;</span>, s2 = <span class="hljs-string">&quot;234&quot;</span>;<br>Console.WriteLine(s1 + s2);<br></code></pre></td></tr></table></figure>
+
+<h3 id="变量初始化相关"><a href="#变量初始化相关" class="headerlink" title="变量初始化相关"></a>变量初始化相关</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//变量声明时 可以不设置初始值 但是不建议这样写 这样不安全</span><br><span class="hljs-built_in">int</span> a2;<br><span class="hljs-comment">//Console.WriteLine(a2);</span><br><span class="hljs-comment">//变量只声明没赋值 会报错</span><br>a2 = <span class="hljs-number">1</span>;<br>Console.WriteLine(a2);<br><span class="hljs-comment">//变量赋值了 不报错</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="5-2-知识点代码"><a href="#5-2-知识点代码" class="headerlink" title="5.2 知识点代码"></a>5.2 知识点代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//引用命名空间</span><br><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-comment">//命名空间</span><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">Lesson02_</span>变量<br>&#123;<br>    <span class="hljs-comment">//类</span><br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-comment">//主函数 程序主入口</span><br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            <span class="hljs-comment">//函数语句块 目前学习的内容 都写在这里</span><br>            Console.WriteLine(<span class="hljs-string">&quot;变量&quot;</span>);<br><br>            <span class="hljs-meta"># <span class="hljs-keyword">region</span> 知识点一 折叠代码</span><br><br>            <span class="hljs-comment">//主要作用 是让我们编程时 逻辑更加清晰</span><br>            <span class="hljs-comment">//它是有 #region #endregion配对出现的</span><br>            <span class="hljs-comment">//它的具体作用 是可以将中间包裹的代码折叠起来 避免代码太凌乱</span><br>            <span class="hljs-comment">//本质是 编辑器提供给我们的 预处理指令 </span><br>            <span class="hljs-comment">//它只会在编辑时有用 发布了代码 或执行代码 它会被自动删除</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点二 如何声明变量</span><br><br><br>            <span class="hljs-comment">//变量  可以变化的容器</span><br>            <span class="hljs-comment">//变量 就是用来存储各种不同类型数值的 一个容器</span><br>            <span class="hljs-comment">//不同的 变量类型 可以存储不同类型的值</span><br><br><br>            <span class="hljs-comment">//变量声明固定写法</span><br>            <span class="hljs-comment">// 变量类型 变量名 = 初始值;</span><br>            <span class="hljs-comment">//int i = 1;</span><br>            <span class="hljs-comment">// 变量类型 有14种变化</span><br>            <span class="hljs-comment">// 变量名  我们自定义 要按照一定规则</span><br>            <span class="hljs-comment">// 初始值  一定要和变量类型是统一 </span><br>            <span class="hljs-comment">// = 和 ; 是固定的 不变的</span><br><br><br>            <span class="hljs-comment">// C#中14种不同的变量类型</span><br>            <span class="hljs-comment">// 一定要死记硬背 各种变量类型的关键字 </span><br>            <span class="hljs-comment">// 一定要记忆 各种不同变量类型 所能存储的范围</span><br>            <span class="hljs-comment">// 一定要记住 各种不同变量类型 所能存储的类型</span><br><br><br>            <span class="hljs-comment">//1.有符号的整形变量 是能存储 一定范围 正负数包括0的变量类型</span><br>            <span class="hljs-comment">// sbyte -128~127</span><br>            <span class="hljs-built_in">sbyte</span> sb = <span class="hljs-number">1</span>;<br>            <span class="hljs-comment">//潜在知识点 通过+来进行拼接打印</span><br>            Console.WriteLine(<span class="hljs-string">&quot;sbyte变量sb中存储的值是：&quot;</span> + sb);<br>            <span class="hljs-comment">// int  -21亿~21亿多</span><br>            <span class="hljs-built_in">int</span> i = <span class="hljs-number">2</span>;<br>            <span class="hljs-comment">// short -32768~32767之间的数</span><br>            <span class="hljs-built_in">short</span> s = <span class="hljs-number">3</span>;<br>            <span class="hljs-comment">// long -9百万兆~9百万兆之间的数</span><br>            <span class="hljs-built_in">long</span> l = <span class="hljs-number">4</span>;<br><br><br>            <span class="hljs-comment">//2.无符号的整形变量 是能存储 一定范围 0和正数的变量类型</span><br>            <span class="hljs-comment">// byte 0~255</span><br>            <span class="hljs-built_in">byte</span> b = <span class="hljs-number">1</span>;<br>            <span class="hljs-comment">// uint 0~42亿多的一个范围</span><br>            <span class="hljs-built_in">uint</span> ui = <span class="hljs-number">2</span>;<br>            <span class="hljs-comment">// ushort 0~65535之间的一个数</span><br>            <span class="hljs-built_in">ushort</span> us = <span class="hljs-number">3</span>;<br>            <span class="hljs-comment">// ulong 0~18百万兆之间的数</span><br>            <span class="hljs-built_in">ulong</span> ul = <span class="hljs-number">4</span>;<br><br><br>            <span class="hljs-comment">//3.浮点数(小数)</span><br><br>            <span class="hljs-comment">//float 存储7/8位有效数字 根据编译器不同 有效数字也可能不一样 四舍五入</span><br>            <span class="hljs-comment">//有效数字 是从左到右从非0数开始算有效数字的</span><br>            <span class="hljs-comment">//之所以要在数字末尾加F或f 是因为c#中 声明的小数 默认是double的类型 加F或f 是告诉系统 它是float类型</span><br>            <span class="hljs-built_in">float</span> f1 = <span class="hljs-number">0.123456789F</span>;<br>            Console.WriteLine(<span class="hljs-string">&quot;f1:&quot;</span>+ f1);<span class="hljs-comment">//0.12345679</span><br>            <span class="hljs-built_in">float</span> f2 = <span class="hljs-number">1.01234567890f</span>;<br>            Console.WriteLine(<span class="hljs-string">&quot;f2:&quot;</span> + f2);<span class="hljs-comment">//1.0123457</span><br><br>            <span class="hljs-comment">//double 存储15~17位有效数字 根据编译器不同 有效数字也可能不一样</span><br>            <span class="hljs-comment">//c#中 声明的小数 默认是double的类型 末尾不需要添加字母</span><br>            <span class="hljs-comment">//抛弃的数字 会四舍五入</span><br>            <span class="hljs-built_in">double</span> d = <span class="hljs-number">0.12345678901234567890123456789</span>;<br>            Console.WriteLine(d);<br><br>            <span class="hljs-comment">//decimal 存储27~28位的有效数字 根据编译器不同 有效数字也可能不一样</span><br>            <span class="hljs-comment">//之所以要在后面加M或m 是因为c#中 声明的小数 默认是double的类型 加M或m 是告诉系统 它是decimal类型</span><br>            <span class="hljs-comment">//不建议使用</span><br>            <span class="hljs-built_in">decimal</span> de = <span class="hljs-number">0.123456789012345678901234567890</span>m;<br>            Console.WriteLine(de);<br><br><br>            <span class="hljs-comment">//4.特殊类型</span><br>            <span class="hljs-comment">//bool true false 表示真假的数据类型  真假类型</span><br>            <span class="hljs-built_in">bool</span> bo = <span class="hljs-literal">true</span>;<br>            <span class="hljs-built_in">bool</span> bo2 = <span class="hljs-literal">false</span>;<br>            Console.WriteLine(bo + <span class="hljs-string">&quot;_&quot;</span> + bo2);<span class="hljs-comment">//True_False</span><br><br>            <span class="hljs-comment">//char 是用来存储单个字符的变量类型 字符类型</span><br>            <span class="hljs-built_in">char</span> c = <span class="hljs-string">&#x27;韬&#x27;</span>;<br>            Console.WriteLine(c);<span class="hljs-comment">//韬</span><br><br>            <span class="hljs-comment">//string 是字符串类型 用来存储多个字符的 没有上限</span><br>            <span class="hljs-built_in">string</span> str = <span class="hljs-string">&quot;的骄傲了肯定就发生123123sdafjkasdkfjaskldjfAKKSAJD&quot;</span>;<br>            Console.WriteLine(str);<span class="hljs-comment">//的骄傲了肯定就发生123123sdafjkasdkfjaskldjfAKKSAJD</span><br><br><br><br>            <span class="hljs-comment">//变量的使用和修改 </span><br><br>            <span class="hljs-comment">//可以声明的时候同时赋值 也可以先声明再赋值</span><br>            <span class="hljs-built_in">int</span> x = <span class="hljs-number">1000</span>;<br>            Console.WriteLine(x);<span class="hljs-comment">//1000</span><br>            <span class="hljs-built_in">int</span> w;<br>            w = <span class="hljs-number">300</span>;<br>            Console.WriteLine(<span class="hljs-number">2</span>);<span class="hljs-comment">//300</span><br><br>            <span class="hljs-comment">//不能不中生有 必须要先声明才能用 否则报错</span><br>            x = <span class="hljs-number">900</span>;<br>            Console.WriteLine(x);<span class="hljs-comment">//9000</span><br><br><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点三 为什么有那么多不同的变量类型</span><br>            <span class="hljs-comment">// 不同的变量 存储的范围和类型不一样 本质是占用的内存空间不同</span><br>            <span class="hljs-comment">// 选择不同的数据（变量）类型装在不同的数据</span><br><br>            <span class="hljs-comment">//姓名</span><br>            <span class="hljs-comment">//char string </span><br>            <span class="hljs-built_in">string</span> myName = <span class="hljs-string">&quot;韬老狮&quot;</span>;<br>            <span class="hljs-comment">//年龄</span><br>            <span class="hljs-built_in">byte</span> age = <span class="hljs-number">18</span>;<br>            <span class="hljs-comment">//身高cm</span><br>            <span class="hljs-built_in">float</span> height = <span class="hljs-number">177.5f</span>;<br>            <span class="hljs-comment">//体重kg</span><br>            <span class="hljs-built_in">float</span> weight = <span class="hljs-number">68.5f</span>;<br>            <span class="hljs-comment">//性别 true女 false男</span><br>            <span class="hljs-built_in">bool</span> sex = <span class="hljs-literal">false</span>;<br><br>            <span class="hljs-comment">//简单口诀 数字用int  小数用float  字符串用string  真假用bool</span><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点四 多个相同类型变量 同时声明</span><br><br>            <span class="hljs-comment">//一个一个声明变量</span><br>            <span class="hljs-built_in">char</span> qw;<br>            <span class="hljs-built_in">int</span> i2 = <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">float</span> f3 = <span class="hljs-number">3.2f</span>;<br>            <span class="hljs-built_in">string</span> str2 = <span class="hljs-string">&quot;123&quot;</span>;<br>            <span class="hljs-built_in">bool</span> bo3 = <span class="hljs-literal">true</span>;<br><br>            <span class="hljs-comment">//多个同类型变量声明 不赋值</span><br>            <span class="hljs-comment">//固定写法</span><br>            <span class="hljs-comment">// 变量类型 变量名1,变量名2...，变量名n; </span><br>            <span class="hljs-built_in">short</span> sh1, sh2,sh999;<br><br>            <span class="hljs-comment">//多个同类型变量声明 同时赋值</span><br>            <span class="hljs-comment">//固定写法</span><br>            <span class="hljs-comment">// 变量类型 变量名 = 初始值,变量名 = 初始值,变量名 = 初始值...; </span><br>            <span class="hljs-built_in">int</span> a1 = <span class="hljs-number">1</span>, b1 = <span class="hljs-number">2</span>, c1 = <span class="hljs-number">3</span>, d1 = <span class="hljs-number">4</span>;<br><br>            Console.WriteLine(b1);<br>            <span class="hljs-built_in">string</span> s1 = <span class="hljs-string">&quot;123&quot;</span>, s2 = <span class="hljs-string">&quot;234&quot;</span>;<br>            Console.WriteLine(s1 + s2);<br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点五 变量初始化相关</span><br>            <span class="hljs-comment">//变量声明时 可以不设置初始值 但是不建议这样写 这样不安全</span><br>            <span class="hljs-built_in">int</span> a2;<br>            <span class="hljs-comment">//Console.WriteLine(a2);</span><br>            <span class="hljs-comment">//变量只声明没赋值 会报错</span><br>            a2 = <span class="hljs-number">1</span>;<br>            Console.WriteLine(a2);<br>            <span class="hljs-comment">//变量赋值了 不报错</span><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="5-3-练习题"><a href="#5-3-练习题" class="headerlink" title="5.3 练习题"></a>5.3 练习题</h2><h3 id="下面代码的输出结果是？"><a href="#下面代码的输出结果是？" class="headerlink" title="下面代码的输出结果是？"></a>下面代码的输出结果是？</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">double</span> num = <span class="hljs-number">36.6</span>;<br><br>Console.WriteLine(<span class="hljs-string">&quot;num&quot;</span>);<br><br><span class="hljs-comment">// 这是打印一个字符串，因为有双引号</span><br>Console.WriteLine(<span class="hljs-string">&quot;num&quot;</span>);<span class="hljs-comment">//num</span><br><br><span class="hljs-comment">// 这是直接打印变量容器中存储的内容</span><br>Console.WriteLine(num);<span class="hljs-comment">//36.6</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="声明float类型变量时，为何要在数字后面加f？"><a href="#声明float类型变量时，为何要在数字后面加f？" class="headerlink" title="声明float类型变量时，为何要在数字后面加f？"></a>声明float类型变量时，为何要在数字后面加f？</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// C#中，声明的小数默认是double的类型</span><br><span class="hljs-built_in">double</span> d = <span class="hljs-number">1.234</span>; <span class="hljs-comment">// double类型的话末尾不需要添加字母</span><br><span class="hljs-built_in">float</span> f = <span class="hljs-number">1.234F</span>; <span class="hljs-comment">// 加F或f是告诉系统它是float类型</span><br><span class="hljs-built_in">decimal</span> dec = <span class="hljs-number">1.2344545</span>M;<span class="hljs-comment">// 加M或m是告诉系统它是decimal类型</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="请定义一系列变量来存储你的名字、年龄、性别、身高、体重、家庭住址等，并打印出来。"><a href="#请定义一系列变量来存储你的名字、年龄、性别、身高、体重、家庭住址等，并打印出来。" class="headerlink" title="请定义一系列变量来存储你的名字、年龄、性别、身高、体重、家庭住址等，并打印出来。"></a>请定义一系列变量来存储你的名字、年龄、性别、身高、体重、家庭住址等，并打印出来。</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">string</span> name = <span class="hljs-string">&quot;韬老狮&quot;</span>;<br><br>Console.WriteLine(<span class="hljs-string">&quot;我的名字是&quot;</span> + name);<br><br><span class="hljs-built_in">byte</span> age = <span class="hljs-number">18</span>;<br><br>Console.WriteLine(<span class="hljs-string">&quot;我的年龄是&quot;</span> + age);<br><br><span class="hljs-built_in">float</span> height = <span class="hljs-number">177.5f</span>;<br><br>Console.WriteLine(<span class="hljs-string">&quot;我的身高是&quot;</span> + height);<br><br><span class="hljs-built_in">float</span> weight = <span class="hljs-number">68.5f</span>;<br><br>Console.WriteLine(<span class="hljs-string">&quot;我的体重是&quot;</span> + weight);<br><br><span class="hljs-built_in">string</span> address = <span class="hljs-string">&quot;地球深处&quot;</span>;<br><br>Console.WriteLine(<span class="hljs-string">&quot;我的家庭住址是&quot;</span> + address);<br><br><span class="hljs-built_in">byte</span> shuXue = <span class="hljs-number">80</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="小明的数学考试成绩是80，语文的考试成绩是78，英语的考试成绩是98，请用变量描述并打印"><a href="#小明的数学考试成绩是80，语文的考试成绩是78，英语的考试成绩是98，请用变量描述并打印" class="headerlink" title="小明的数学考试成绩是80，语文的考试成绩是78，英语的考试成绩是98，请用变量描述并打印"></a>小明的数学考试成绩是80，语文的考试成绩是78，英语的考试成绩是98，请用变量描述并打印</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">byte</span> yuWen = <span class="hljs-number">78</span>;<br><span class="hljs-built_in">byte</span> yingYu = <span class="hljs-number">98</span>;<br><br>Console.WriteLine(<span class="hljs-string">&quot;我的数学成绩是：&quot;</span> + shuXue);<br>Console.WriteLine(<span class="hljs-string">&quot;我的语文成绩是：&quot;</span> + yuWen);<br>Console.WriteLine(<span class="hljs-string">&quot;我的英语成绩是：&quot;</span> + yingYu);<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="5-4-练习题代码"><a href="#5-4-练习题代码" class="headerlink" title="5.4 练习题代码"></a>5.4 练习题代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">Lesson02_</span>练习题<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;变量相关练习题&quot;</span>);<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题1 </span><br>            <span class="hljs-comment">//下面代码的输出结果是？</span><br>            <span class="hljs-built_in">double</span> num = <span class="hljs-number">36.6</span>;<br><br>            <span class="hljs-comment">//这是打印一个字符串 因为有双引号</span><br>            Console.WriteLine(<span class="hljs-string">&quot;num&quot;</span>);<span class="hljs-comment">//num</span><br>            <span class="hljs-comment">//这是直接打印变量容器中存储的内容</span><br>            Console.WriteLine(num);<span class="hljs-comment">//36.6</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题2</span><br>            <span class="hljs-comment">//声明float类型变量时，为何要在数字后面加f？</span><br><br>            <span class="hljs-comment">//c#中 声明的小数 默认是double的类型</span><br>            <span class="hljs-built_in">double</span> d = <span class="hljs-number">1.234</span>; <span class="hljs-comment">//double类型的话末尾不需要添加字母</span><br>            <span class="hljs-built_in">float</span> f = <span class="hljs-number">1.234F</span>; <span class="hljs-comment">//加F或f 是告诉系统 它是float类型</span><br>            <span class="hljs-built_in">decimal</span> d = <span class="hljs-number">1.2344545</span>M;<span class="hljs-comment">//加M或m 是告诉系统 它是decimal类型</span><br><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题3 </span><br>            <span class="hljs-comment">//请定义一系列变量来存储你的名字、年龄、性别、身高、体重、家庭住址等，并打印出来。</span><br>            <span class="hljs-built_in">string</span> name = <span class="hljs-string">&quot;韬老狮&quot;</span>;<br>            Console.WriteLine(<span class="hljs-string">&quot;我的名字是&quot;</span> + name);<br>            <span class="hljs-built_in">byte</span> age = <span class="hljs-number">18</span>;<br>            Console.WriteLine(<span class="hljs-string">&quot;我的年龄是&quot;</span> + age);<br>            <span class="hljs-built_in">float</span> height = <span class="hljs-number">177.5f</span>;<br>            Console.WriteLine(<span class="hljs-string">&quot;我的身高是&quot;</span> + height);<br>            <span class="hljs-built_in">float</span> weight = <span class="hljs-number">68.5f</span>;<br>            Console.WriteLine(<span class="hljs-string">&quot;我的体重是&quot;</span> + weight);<br>            <span class="hljs-built_in">string</span> address = <span class="hljs-string">&quot;地球深处&quot;</span>;<br>            Console.WriteLine(<span class="hljs-string">&quot;我的家庭住址是&quot;</span> + address);<br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题4</span><br>            <span class="hljs-comment">//小明的数学考试成绩是80，语文的考试成绩是78，英语的考试成绩是98，请用变量描述并打印</span><br>            <span class="hljs-built_in">byte</span> shuXue = <span class="hljs-number">80</span>;<br>            <span class="hljs-built_in">byte</span> yuWen = <span class="hljs-number">78</span>;<br>            <span class="hljs-built_in">byte</span> yingYu = <span class="hljs-number">98</span>;<br>            Console.WriteLine(<span class="hljs-string">&quot;我的数学成绩是：&quot;</span> + shuXue);<br>            Console.WriteLine(<span class="hljs-string">&quot;我的语文成绩是：&quot;</span> + yuWen);<br>            Console.WriteLine(<span class="hljs-string">&quot;我的英语成绩是：&quot;</span> + yingYu);<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 785293209@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2024 Tao
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 622px;
+    }
+    .nav.fullscreen {
+        margin-left: -622px;
+    }
+    .nav-left {
+        width: 200px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 572px;
+        }
+        .nav.fullscreen {
+            margin-left: -572px;
+        }
+        .nav-left {
+            width: 180px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 572px;
+            margin-left: -572px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
