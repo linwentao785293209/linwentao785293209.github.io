@@ -6,30 +6,20 @@
   <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 ">
   <meta name="description" content="【C#入门语法知识】| 3.开发环境的搭建 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="6.变量的本质 6.1 知识点变量类型回顾有符号类型 sbyte   (-128~127)   int     (-21亿多~21亿多)   short   (-3万多~3万多)  long    (-9百万兆多~9百万兆多)  无符号类型 byte    (0~255)   uint    (0~42亿多)   ushort  (0~6万多)  ulong   (0~18百万兆多)  浮点数 f">
+<meta name="description" content="7.变量的命名规则 7.1 知识点变量的命名必须遵守的规则命名规则概述在编程中，对于变量的命名需要遵守一些规则，以保证代码的规范性和可读性。以下是一些必须遵守的规则：  不能重名  &#x2F;&#x2F; 不能重名&#x2F;&#x2F; int i&#x3D; 1;&#x2F;&#x2F; int i &#x3D; 2;   不能以数字开头  &#x2F;&#x2F; 不能以数字开头&#x2F;&#x2F; int 2i &#x3D; 1;   不能使用程序关键字命名  &#x2F;&#x2F; 不能使用程序关键字命名&#x2F;&#x2F; string f">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【C#入门语法知识】| 6.变量的本质">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/index.html">
+<meta property="og:title" content="【C#入门语法知识】| 7.变量的命名规则">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="6.变量的本质 6.1 知识点变量类型回顾有符号类型 sbyte   (-128~127)   int     (-21亿多~21亿多)   short   (-3万多~3万多)  long    (-9百万兆多~9百万兆多)  无符号类型 byte    (0~255)   uint    (0~42亿多)   ushort  (0~6万多)  ulong   (0~18百万兆多)  浮点数 f">
+<meta property="og:description" content="7.变量的命名规则 7.1 知识点变量的命名必须遵守的规则命名规则概述在编程中，对于变量的命名需要遵守一些规则，以保证代码的规范性和可读性。以下是一些必须遵守的规则：  不能重名  &#x2F;&#x2F; 不能重名&#x2F;&#x2F; int i&#x3D; 1;&#x2F;&#x2F; int i &#x3D; 2;   不能以数字开头  &#x2F;&#x2F; 不能以数字开头&#x2F;&#x2F; int 2i &#x3D; 1;   不能使用程序关键字命名  &#x2F;&#x2F; 不能使用程序关键字命名&#x2F;&#x2F; string f">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/6.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/7.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/8.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/9.png">
-<meta property="article:published_time" content="2024-01-05T11:39:42.000Z">
-<meta property="article:modified_time" content="2024-01-05T11:50:44.808Z">
+<meta property="article:published_time" content="2024-01-05T12:19:52.000Z">
+<meta property="article:modified_time" content="2024-01-05T12:19:54.810Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="CSharp">
 <meta property="article:tag" content="CSharp入门">
 <meta property="article:tag" content="语法知识">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -277,6 +267,15 @@
         
         
         <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 7.变量的命名规则">【C#入门语法知识】| 7.变量的命名规则</span>
+            <span class="post-date" title="2024-01-05 20:19:52">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
            href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/"
            data-tag="CSharp,CSharp入门,语法知识"
            data-author="" >
@@ -299,15 +298,6 @@
            data-tag="CSharp,CSharp入门,语法知识"
            data-author="" >
             <span class="post-title" title="【C#入门语法知识】| 4.第一个应用程序">【C#入门语法知识】| 4.第一个应用程序</span>
-            <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
-        </a>
-        
-        
-        <a  class="全部文章 CSharp CSharp入门语法知识 "
-           href="/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/"
-           data-tag="CSharp,CSharp入门,语法知识"
-           data-author="" >
-            <span class="post-title" title="【C#入门语法知识】| 7.变量的命名规则">【C#入门语法知识】| 7.变量的命名规则</span>
             <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
         </a>
         
