@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>【C#入门语法知识】| 8.常量 | 人间自有韬哥在的游戏开发博客</title>
-  <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 ">
-  <meta name="description" content="【C#入门语法知识】| 8.常量 | 人间自有韬哥在的游戏开发博客">
+  <title>【C#入门实践项目】| 2.必备知识点-随机数 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , CSharp入门 , 实践项目 , 必备知识点 ">
+  <meta name="description" content="【C#入门实践项目】| 2.必备知识点-随机数 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="6.实践项目-多个场景 6.1 知识点定义场景编号变量&#x2F;&#x2F; 设置当前所在场景的编号&#x2F;&#x2F; 1 是开始界面, 2 是游戏界面, 3 是结束界面int nowSceneID &#x3D; 1;  设置游戏主逻辑死循环&#x2F;&#x2F; 游戏主逻辑死循环while (true)&#123;    &#x2F;&#x2F; 不同的场景ID进行不同的逻辑处理    switch (nowSceneID)    &#123;        &#x2F;&#x2F; 开始场景">
 <meta property="og:type" content="article">
@@ -596,9 +596,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-CSharp/01.CSharp入门语法知识/8.常量" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-CSharp/02.CSharp入门实践项目/2.必备知识点-随机数" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">【C#入门语法知识】| 8.常量</h1>
+        <h1 class="article-title">【C#入门实践项目】| 2.必备知识点-随机数</h1>
     
     <div class="article-meta">
         
@@ -610,7 +610,7 @@
             
             <a  data-rel="CSharp">CSharp</a> > 
             
-            <a  data-rel="CSharp&lt;---&gt;CSharp入门语法知识">CSharp入门语法知识</a>
+            <a  data-rel="CSharp&lt;---&gt;CSharp入门实践项目">CSharp入门实践项目</a>
             
         </span>
         
@@ -622,14 +622,16 @@
             
             <a class="color4">CSharp入门</a>
             
-            <a class="color5">语法知识</a>
+            <a class="color5">实践项目</a>
+            
+            <a class="color1">必备知识点</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-06 10:03:40'>2024-01-06 10:00</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-07 01:50:31'>2024-01-07 01:11</time>
         
     </div>
     <div class="article-meta">
@@ -651,7 +653,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E5%B8%B8%E9%87%8F"><span class="toc-text">8.常量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">8.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="toc-text">基础语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97-const"><span class="toc-text">关键字 const</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">常量的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">常量的作用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">8.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">8.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E6%9C%89%E4%BB%80%E4%B9%88%E7%89%B9%E7%82%B9%EF%BC%9F"><span class="toc-text">常量有什么特点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E7%AE%80%E8%BF%B0%E5%9C%A8%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E4%B8%AD%E5%B8%B8%E9%87%8F%E4%BC%9A%E7%94%A8%E6%9D%A5%E5%B9%B2%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">请简述在游戏开发中常量会用来干什么？</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-text">2.必备知识点-随机数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">2.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%AF%B9%E8%B1%A1"><span class="toc-text">创建随机数对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%9F%E6%88%90%E9%9A%8F%E6%9C%BA%E6%95%B0"><span class="toc-text">生成随机数</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">2.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">2.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9F%AC%E8%80%81%E7%8B%AE%E6%89%93%E5%B0%8F%E6%80%AA%E5%85%BD"><span class="toc-text">韬老狮打小怪兽</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A3%B0%E6%98%8E%E5%90%84%E4%B8%AA%E5%AF%B9%E8%B1%A1%E7%9A%84%E7%9B%B8%E5%85%B3%E5%B1%9E%E6%80%A7"><span class="toc-text">声明各个对象的相关属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%AF%B9%E8%B1%A1-1"><span class="toc-text">创建随机数对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%AD%BB%E5%BE%AA%E7%8E%AF%EF%BC%8C%E8%BF%9B%E8%A1%8C%E6%94%BB%E5%87%BB"><span class="toc-text">创建死循环，进行攻击</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E5%86%85%EF%BC%8C%E9%9A%8F%E6%9C%BA%E7%94%9F%E6%88%90%E9%9F%AC%E8%80%81%E7%8B%AE%E7%9A%84%E6%94%BB%E5%87%BB%E5%8A%9B"><span class="toc-text">循环内，随机生成韬老狮的攻击力</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E5%86%85%EF%BC%8C%E5%88%A4%E6%96%AD%E6%98%AF%E5%90%A6%E8%83%BD%E5%AF%B9%E5%B0%8F%E6%80%AA%E5%85%BD%E8%BF%9B%E8%A1%8C%E6%8E%89%E8%A1%80"><span class="toc-text">循环内，判断是否能对小怪兽进行掉血</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BE%AA%E7%8E%AF%E5%86%85%EF%BC%8C%E8%AE%A9%E7%8E%A9%E5%AE%B6%E6%8C%89%E4%BB%BB%E6%84%8F%E9%94%AE%E7%BB%A7%E7%BB%AD%E6%94%BB%E5%87%BB%EF%BC%8C%E6%B8%85%E7%A9%BA%E8%BE%93%E5%87%BA%E7%9A%84%E4%BF%A1%E6%81%AF%EF%BC%8C%E5%BC%80%E5%A7%8B%E6%96%B0%E7%9A%84%E5%BE%AA%E7%8E%AF"><span class="toc-text">循环内，让玩家按任意键继续攻击，清空输出的信息，开始新的循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%AA%E7%89%A9%E6%B2%A1%E8%A1%80%E4%BA%86%E8%B7%B3%E5%87%BA%E6%AD%BB%E5%BE%AA%E7%8E%AF%E5%90%8E%EF%BC%8C%E8%BE%93%E5%87%BA%E6%80%AA%E7%89%A9%E5%B7%B2%E6%AD%BB%E4%BA%A1"><span class="toc-text">怪物没血了跳出死循环后，输出怪物已死亡</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">2.4 练习题代码</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -667,63 +669,45 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="8-常量"><a href="#8-常量" class="headerlink" title="8.常量"></a>8.常量</h1><hr>
-<h2 id="8-1-知识点"><a href="#8-1-知识点" class="headerlink" title="8.1 知识点"></a>8.1 知识点</h2><h3 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h3><h4 id="关键字-const"><a href="#关键字-const" class="headerlink" title="关键字 const"></a>关键字 <code>const</code></h4><p>在C#中，关键字 <code>const</code> 用于声明常量。</p>
-<p>固定写法：</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//const 变量类型 变量名 = 初始值;</span><br></code></pre></td></tr></table></figure>
+        <h1 id="2-必备知识点-随机数"><a href="#2-必备知识点-随机数" class="headerlink" title="2.必备知识点-随机数"></a>2.必备知识点-随机数</h1><hr>
+<h2 id="2-1-知识点"><a href="#2-1-知识点" class="headerlink" title="2.1 知识点"></a>2.1 知识点</h2><h3 id="创建随机数对象"><a href="#创建随机数对象" class="headerlink" title="创建随机数对象"></a>创建随机数对象</h3><p>固定写法：</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp">Random 随机数变量名 = <span class="hljs-keyword">new</span> Random();<br></code></pre></td></tr></table></figure>
 
-<p>对比变量和常量的声明：</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 变量的声明</span><br><span class="hljs-built_in">int</span> i = <span class="hljs-number">10</span>;<br><br><span class="hljs-comment">// 常量的声明</span><br><span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> i2 = <span class="hljs-number">20</span>;<br></code></pre></td></tr></table></figure>
+<p>示例：</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp">Random r = <span class="hljs-keyword">new</span> Random();<br></code></pre></td></tr></table></figure>
 
-<h4 id="常量的特点"><a href="#常量的特点" class="headerlink" title="常量的特点"></a>常量的特点</h4><p>  <strong>必须初始化</strong></p>
-<p>   变量声明可以不初始化，之后可以修改：</p>
-   <figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 变量声明可以不初始化</span><br><span class="hljs-built_in">string</span> name;<br><br><span class="hljs-comment">// 之后可以来修改</span><br>name = <span class="hljs-string">&quot;123&quot;</span>;<br>name = <span class="hljs-string">&quot;345&quot;</span>;<br></code></pre></td></tr></table></figure>
+<h4 id="生成随机数"><a href="#生成随机数" class="headerlink" title="生成随机数"></a>生成随机数</h4><p>生成一个非负数的随机数：</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> i = r.Next();<br>Console.WriteLine(i); <span class="hljs-comment">// 随机出可能是 402743845</span><br></code></pre></td></tr></table></figure>
 
-<p>   但常量声明必须初始化，否则报错：</p>
-   <figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// const string yourName;// 报错</span><br><span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> myName = <span class="hljs-string">&quot;韬老狮&quot;</span>;<br></code></pre></td></tr></table></figure>
+<p>生成一个 0~99 的随机数，左边始终是 0（左包含），右边是 100（右不包含）：</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp">i = r.Next(<span class="hljs-number">100</span>);<br>Console.WriteLine(i); <span class="hljs-comment">// 随机出可能是 84</span><br></code></pre></td></tr></table></figure>
 
-<p>  <strong>不能被修改</strong></p>
-   <figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> sb = <span class="hljs-string">&quot;韬老狮&quot;</span>;<br><span class="hljs-comment">// sb = &quot;林文韬&quot;;// 修改报错</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="常量的作用"><a href="#常量的作用" class="headerlink" title="常量的作用"></a>常量的作用</h4><p>常量的作用在于声明一些常用不变的变量，例如：</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// PI 3.1415926</span><br><span class="hljs-keyword">const</span> <span class="hljs-built_in">float</span> PI = <span class="hljs-number">3.1415926f</span>;<br><br>Console.WriteLine(PI);<span class="hljs-comment">// 输出：3.1415926f</span><br></code></pre></td></tr></table></figure>
-
-<p>常量可以用来定义一些不变的值，提高代码的可读性和维护性。</p>
-<hr>
-<h2 id="8-2-知识点代码"><a href="#8-2-知识点代码" class="headerlink" title="8.2 知识点代码"></a>8.2 知识点代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">Lesson05_</span>常量<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;常量&quot;</span>);<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点一 常量的声明</span><br><br>            <span class="hljs-comment">//关键字 const</span><br>            <span class="hljs-comment">//固定写法：</span><br>            <span class="hljs-comment">//const 变量类型 变量名 = 初始值;</span><br><br>            <span class="hljs-comment">//变量的声明和常量的声明的对比</span><br>            <span class="hljs-comment">//变量的声明</span><br>            <span class="hljs-built_in">int</span> i = <span class="hljs-number">10</span>;<br>            <span class="hljs-comment">//常量的声明</span><br>            <span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> i2 = <span class="hljs-number">20</span>;<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点二 常量的特点</span><br><br><br>            <span class="hljs-comment">//1.必须初始化</span><br><br>            <span class="hljs-comment">//变量声明可以不初始化</span><br>            <span class="hljs-built_in">string</span> name;<br>            <span class="hljs-comment">//之后可以来修改</span><br>            name = <span class="hljs-string">&quot;123&quot;</span>;<br>            name = <span class="hljs-string">&quot;345&quot;</span>;<br><br>            <span class="hljs-comment">//常量声明必须初始化 否则报错</span><br>            <span class="hljs-comment">//const string yourName;//报错</span><br>            <span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> myName = <span class="hljs-string">&quot;韬老狮&quot;</span>;<br><br><br><br>            <span class="hljs-comment">//2.不能被修改</span><br><br>            <span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> sb = <span class="hljs-string">&quot;韬老狮&quot;</span>;<br>            <span class="hljs-comment">//sb = &quot;林文韬&quot;;//修改报错</span><br><br><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点三 常量的作用</span><br><br>            <span class="hljs-comment">//作用：声明一些常用不变的变量</span><br><br>            <span class="hljs-comment">//PI 3.1415926</span><br>            <span class="hljs-keyword">const</span> <span class="hljs-built_in">float</span> PI = <span class="hljs-number">3.1415926f</span>;<br><br>            Console.WriteLine(PI);<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<p>生成一个 5 到 99 的随机数，左包含右不包含：</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp">i = r.Next(<span class="hljs-number">5</span>, <span class="hljs-number">100</span>);<br>Console.WriteLine(i); <span class="hljs-comment">// 随机出可能是 56</span><br></code></pre></td></tr></table></figure>
 
 <hr>
-<h2 id="8-3-练习题"><a href="#8-3-练习题" class="headerlink" title="8.3 练习题"></a>8.3 练习题</h2><h3 id="常量有什么特点？"><a href="#常量有什么特点？" class="headerlink" title="常量有什么特点？"></a>常量有什么特点？</h3><p>常量在C#中具有以下特点：</p>
-<ol>
-<li><p><strong>必须初始化</strong></p>
-<p>常量必须在声明的同时进行初始化。</p>
-</li>
-<li><p><strong>不能被修改</strong></p>
-<p>一旦常量被赋值，就无法再修改其值。</p>
-</li>
-<li><p><strong>声明方式</strong></p>
-<p>常量的声明方式是在声明变量时，在变量类型前加上 <code>const</code> 关键字，如下所示：</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> i = <span class="hljs-number">10</span>;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>与静态关键字的关系</strong></p>
-<p>常量的特点与静态关键字相关，将在后续讲解静态关键字时进行详细解释。</p>
-</li>
-</ol>
-<h3 id="请简述在游戏开发中常量会用来干什么？"><a href="#请简述在游戏开发中常量会用来干什么？" class="headerlink" title="请简述在游戏开发中常量会用来干什么？"></a>请简述在游戏开发中常量会用来干什么？</h3><p>在游戏开发中，常量通常用来声明一些在游戏运行过程中不会变化的变量，例如：</p>
-<ul>
-<li><p><strong>数学常量</strong></p>
-<p>常量可以用来表示数学常数，如圆周率PI、角度转弧度的常量、弧度转角度的常量等。</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">const</span> <span class="hljs-built_in">float</span> PI = <span class="hljs-number">3.1415926f</span>;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>物理常量</strong></p>
-<p>在涉及物理计算的游戏中，常量可以表示一些物理定律中的常数，比如重力加速度。</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">const</span> <span class="hljs-built_in">float</span> GravityAcceleration = <span class="hljs-number">9.8f</span>;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>游戏属性</strong></p>
-<p>游戏中一些固定的属性，例如玩家的最大血量，可以使用常量来声明，因为这些值在游戏中不会变化。</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> MaxPlayerHealth = <span class="hljs-number">100</span>;<br></code></pre></td></tr></table></figure></li>
-</ul>
-<p>通过使用常量，可以提高代码的可读性和维护性，同时确保这些固定数值在整个游戏中保持一致。</p>
+<h2 id="2-2-知识点代码"><a href="#2-2-知识点代码" class="headerlink" title="2.2 知识点代码"></a>2.2 知识点代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> 必备知识点_随机数<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;随机数&quot;</span>);<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点一 产生随机数对象</span><br>            <span class="hljs-comment">//固定写法</span><br>            <span class="hljs-comment">// Random 随机数变量名 = new Random();</span><br>            Random r = <span class="hljs-keyword">new</span> Random();<br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点二 生成随机数</span><br><br>            <span class="hljs-comment">//生成一个非负数的随机数</span><br>            <span class="hljs-built_in">int</span> i = r.Next(); <br>            Console.WriteLine(i);<span class="hljs-comment">//随机出可能是402743845</span><br><br>            <span class="hljs-comment">// 生成一个 0~99的随机数 左边始终是0 左包含  右边是100 右不包含</span><br>            i = r.Next(<span class="hljs-number">100</span>); <br>            Console.WriteLine(i); <span class="hljs-comment">//随机出可能是84</span><br><br>            <span class="hljs-comment">// 生成一个 5到99的随机数 左包含 右不包含</span><br>            i = r.Next(<span class="hljs-number">5</span>, <span class="hljs-number">100</span>); <br>            Console.WriteLine(i); <span class="hljs-comment">//随机出可能是56</span><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="2-3-练习题"><a href="#2-3-练习题" class="headerlink" title="2.3 练习题"></a>2.3 练习题</h2><h3 id="韬老狮打小怪兽"><a href="#韬老狮打小怪兽" class="headerlink" title="韬老狮打小怪兽"></a>韬老狮打小怪兽</h3><p>在控制台中模拟韬老狮打小怪兽的过程，描述小怪兽的掉血情况。<br>韬老狮攻击力为8~12之间的一个值<br>小怪兽防御为10，血量为20<br>在控制台中通过打印信息表现韬老狮打小怪兽的过程<br>描述小怪兽的掉血情况<br>伤害计算公式：攻击力小于防御力时，减血为0，否则减血攻击力和防御力的差值</p>
+<h4 id="声明各个对象的相关属性"><a href="#声明各个对象的相关属性" class="headerlink" title="声明各个对象的相关属性"></a>声明各个对象的相关属性</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> teacherTangAtk = <span class="hljs-number">0</span>;  <span class="hljs-comment">// 韬老狮的攻击力，默认为0</span><br><span class="hljs-built_in">int</span> monsterDef = <span class="hljs-number">10</span>;     <span class="hljs-comment">// 小怪兽防御为10</span><br><span class="hljs-built_in">int</span> monsterHp = <span class="hljs-number">20</span>;      <span class="hljs-comment">// 小怪兽血量为20</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="创建随机数对象-1"><a href="#创建随机数对象-1" class="headerlink" title="创建随机数对象"></a>创建随机数对象</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp">Random r = <span class="hljs-keyword">new</span> Random();<br></code></pre></td></tr></table></figure>
+
+<h4 id="创建死循环，进行攻击"><a href="#创建死循环，进行攻击" class="headerlink" title="创建死循环，进行攻击"></a>创建死循环，进行攻击</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)<br>&#123;<br>    <span class="hljs-comment">// 循环体</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="循环内，随机生成韬老狮的攻击力"><a href="#循环内，随机生成韬老狮的攻击力" class="headerlink" title="循环内，随机生成韬老狮的攻击力"></a>循环内，随机生成韬老狮的攻击力</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp">teacherTangAtk = r.Next(<span class="hljs-number">8</span>, <span class="hljs-number">13</span>);<br></code></pre></td></tr></table></figure>
+
+<h4 id="循环内，判断是否能对小怪兽进行掉血"><a href="#循环内，判断是否能对小怪兽进行掉血" class="headerlink" title="循环内，判断是否能对小怪兽进行掉血"></a>循环内，判断是否能对小怪兽进行掉血</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">if</span> (teacherTangAtk &gt; monsterDef)<br>&#123;<br>    <span class="hljs-comment">// 减血攻击力和防御力的差值</span><br>    monsterHp -= teacherTangAtk - monsterDef;<br><br>    Console.WriteLine(<span class="hljs-string">&quot;韬老狮本次攻击力为&#123;0&#125;，造成&#123;1&#125;伤害，怪物剩&#123;2&#125;血&quot;</span>,<br>                      teacherTangAtk, teacherTangAtk - monsterDef, monsterHp);<br><br>    <span class="hljs-comment">// 怪物没血了跳出死循环</span><br>    <span class="hljs-keyword">if</span> (monsterHp &lt;= <span class="hljs-number">0</span>)<br>    &#123;<br>        <span class="hljs-keyword">break</span>;<br>    &#125;<br>&#125;<br><span class="hljs-keyword">else</span><br>&#123;<br>    Console.WriteLine(<span class="hljs-string">&quot;韬老狮本次攻击力为&#123;0&#125;，不足以造成伤害&quot;</span>, teacherTangAtk);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="循环内，让玩家按任意键继续攻击，清空输出的信息，开始新的循环"><a href="#循环内，让玩家按任意键继续攻击，清空输出的信息，开始新的循环" class="headerlink" title="循环内，让玩家按任意键继续攻击，清空输出的信息，开始新的循环"></a>循环内，让玩家按任意键继续攻击，清空输出的信息，开始新的循环</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp">Console.WriteLine(<span class="hljs-string">&quot;请按任意键继续攻击&quot;</span>);<br>Console.ReadKey(<span class="hljs-literal">true</span>);<br>Console.Clear();<br></code></pre></td></tr></table></figure>
+
+<h4 id="怪物没血了跳出死循环后，输出怪物已死亡"><a href="#怪物没血了跳出死循环后，输出怪物已死亡" class="headerlink" title="怪物没血了跳出死循环后，输出怪物已死亡"></a>怪物没血了跳出死循环后，输出怪物已死亡</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp">Console.WriteLine(<span class="hljs-string">&quot;怪物已死亡&quot;</span>);<br></code></pre></td></tr></table></figure>
+
+<p>这样，整个控制台中韬老狮打小怪兽的过程就通过循环模拟并展现出来。</p>
+<hr>
+<h2 id="2-4-练习题代码"><a href="#2-4-练习题代码" class="headerlink" title="2.4 练习题代码"></a>2.4 练习题代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> 必备知识点_随机数练习题<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;随机数练习题&quot;</span>);<br>            <span class="hljs-comment">//韬老狮打小怪兽</span><br>            <span class="hljs-comment">//韬老狮攻击力为8~12之间的一个值</span><br>            <span class="hljs-comment">//小怪兽防御为10，血量为20</span><br>            <span class="hljs-comment">//在控制台中通过打印信息表现韬老狮打小怪兽的过程</span><br>            <span class="hljs-comment">//描述小怪兽的掉血情况</span><br>            <span class="hljs-comment">//伤害计算公式：攻击力小于防御力时，减血为0，否则减血攻击力和防御力的差值</span><br><br>            <span class="hljs-comment">//知识点：循环、随机数等等</span><br><br>            <span class="hljs-comment">//声明各个对象的相关属性</span><br>            <span class="hljs-built_in">int</span> teacherTangAtk = <span class="hljs-number">0</span>;<span class="hljs-comment">//韬老狮的攻击力 默认为0</span><br>            <span class="hljs-built_in">int</span> monsterDef = <span class="hljs-number">10</span>;<span class="hljs-comment">//小怪兽防御为10</span><br>            <span class="hljs-built_in">int</span> monsterHp = <span class="hljs-number">20</span>;<span class="hljs-comment">//小怪兽血量为20</span><br><br>            <span class="hljs-comment">//创建随机数对象</span><br>            Random r = <span class="hljs-keyword">new</span> Random();<br><br>            <span class="hljs-comment">//创建死循环 可以不停的进行攻击</span><br>            <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)<br>            &#123;<br>                <span class="hljs-comment">//死循环内 随机出韬老狮的攻击力的值</span><br>                teacherTangAtk = r.Next(<span class="hljs-number">8</span>, <span class="hljs-number">13</span>);<br><br>                <span class="hljs-comment">//死循环内 判断当前攻击力能不能对小怪兽进行掉血 并进行对应情况的信息打印</span><br>                <span class="hljs-keyword">if</span>( teacherTangAtk &gt; monsterDef )<br>                &#123;<br>                    <span class="hljs-comment">//减血攻击力和防御力的差值</span><br>                    <span class="hljs-comment">//monsterHp = monsterHp - (teacherTangAtk - monsterDef);</span><br>                    monsterHp -= teacherTangAtk - monsterDef;<br><br>                    Console.WriteLine(<span class="hljs-string">&quot;韬老狮本次攻击力为&#123;0&#125;,造成&#123;1&#125;伤害,怪物剩&#123;2&#125;血&quot;</span>, <br>                        teacherTangAtk, teacherTangAtk - monsterDef, monsterHp);<br><br>                    <span class="hljs-comment">//怪物没血了跳出死循环</span><br>                    <span class="hljs-keyword">if</span>( monsterHp &lt;= <span class="hljs-number">0</span> )<br>                    &#123;<br>                        <span class="hljs-keyword">break</span>;<br>                    &#125;<br>                &#125;<br>                <span class="hljs-keyword">else</span><br>                &#123;<br>                    Console.WriteLine(<span class="hljs-string">&quot;韬老狮本次攻击力为&#123;0&#125;,不足以造成伤害&quot;</span>, teacherTangAtk);<br>                &#125;<br><br>                <span class="hljs-comment">//死循环内 让玩家按任意键继续攻击 清空输出的信息 开始新的循环</span><br>                Console.WriteLine(<span class="hljs-string">&quot;请按任意键继续攻击&quot;</span>);<br>                Console.ReadKey(<span class="hljs-literal">true</span>);<br>                Console.Clear();<br>            &#125;<br><br>            <span class="hljs-comment">//怪物没血了跳出死循环后 输出怪物已死亡</span><br>            Console.WriteLine(<span class="hljs-string">&quot;怪物已死亡&quot;</span>);<br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
 <hr>
 
       

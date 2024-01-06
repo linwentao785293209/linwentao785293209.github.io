@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>【C#入门语法知识】| 8.常量 | 人间自有韬哥在的游戏开发博客</title>
-  <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 ">
-  <meta name="description" content="【C#入门语法知识】| 8.常量 | 人间自有韬哥在的游戏开发博客">
+  <title>【C#入门实践项目】| 6.实践项目-多个场景 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , CSharp入门 , 实践项目 ">
+  <meta name="description" content="【C#入门实践项目】| 6.实践项目-多个场景 | 人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="6.实践项目-多个场景 6.1 知识点定义场景编号变量&#x2F;&#x2F; 设置当前所在场景的编号&#x2F;&#x2F; 1 是开始界面, 2 是游戏界面, 3 是结束界面int nowSceneID &#x3D; 1;  设置游戏主逻辑死循环&#x2F;&#x2F; 游戏主逻辑死循环while (true)&#123;    &#x2F;&#x2F; 不同的场景ID进行不同的逻辑处理    switch (nowSceneID)    &#123;        &#x2F;&#x2F; 开始场景">
 <meta property="og:type" content="article">
@@ -596,9 +596,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-CSharp/01.CSharp入门语法知识/8.常量" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-CSharp/02.CSharp入门实践项目/6.实践项目-多个场景" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">【C#入门语法知识】| 8.常量</h1>
+        <h1 class="article-title">【C#入门实践项目】| 6.实践项目-多个场景</h1>
     
     <div class="article-meta">
         
@@ -610,7 +610,7 @@
             
             <a  data-rel="CSharp">CSharp</a> > 
             
-            <a  data-rel="CSharp&lt;---&gt;CSharp入门语法知识">CSharp入门语法知识</a>
+            <a  data-rel="CSharp&lt;---&gt;CSharp入门实践项目">CSharp入门实践项目</a>
             
         </span>
         
@@ -622,14 +622,14 @@
             
             <a class="color4">CSharp入门</a>
             
-            <a class="color5">语法知识</a>
+            <a class="color5">实践项目</a>
             
         </span>
         
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-01-06 10:03:40'>2024-01-06 10:00</time>
+            发布时间 : <time class="date" title='最后更新: 2024-01-07 01:51:07'>2024-01-07 01:29</time>
         
     </div>
     <div class="article-meta">
@@ -651,7 +651,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#8-%E5%B8%B8%E9%87%8F"><span class="toc-text">8.常量</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">8.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95"><span class="toc-text">基础语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E5%AD%97-const"><span class="toc-text">关键字 const</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E7%9A%84%E7%89%B9%E7%82%B9"><span class="toc-text">常量的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">常量的作用</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">8.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">8.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E9%87%8F%E6%9C%89%E4%BB%80%E4%B9%88%E7%89%B9%E7%82%B9%EF%BC%9F"><span class="toc-text">常量有什么特点？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E7%AE%80%E8%BF%B0%E5%9C%A8%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E4%B8%AD%E5%B8%B8%E9%87%8F%E4%BC%9A%E7%94%A8%E6%9D%A5%E5%B9%B2%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">请简述在游戏开发中常量会用来干什么？</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#6-%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE-%E5%A4%9A%E4%B8%AA%E5%9C%BA%E6%99%AF"><span class="toc-text">6.实践项目-多个场景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">6.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E5%9C%BA%E6%99%AF%E7%BC%96%E5%8F%B7%E5%8F%98%E9%87%8F"><span class="toc-text">定义场景编号变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%B8%B8%E6%88%8F%E4%B8%BB%E9%80%BB%E8%BE%91%E6%AD%BB%E5%BE%AA%E7%8E%AF"><span class="toc-text">设置游戏主逻辑死循环</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">6.2 知识点代码</span></a></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -667,63 +667,15 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="8-常量"><a href="#8-常量" class="headerlink" title="8.常量"></a>8.常量</h1><hr>
-<h2 id="8-1-知识点"><a href="#8-1-知识点" class="headerlink" title="8.1 知识点"></a>8.1 知识点</h2><h3 id="基础语法"><a href="#基础语法" class="headerlink" title="基础语法"></a>基础语法</h3><h4 id="关键字-const"><a href="#关键字-const" class="headerlink" title="关键字 const"></a>关键字 <code>const</code></h4><p>在C#中，关键字 <code>const</code> 用于声明常量。</p>
-<p>固定写法：</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//const 变量类型 变量名 = 初始值;</span><br></code></pre></td></tr></table></figure>
+        <h1 id="6-实践项目-多个场景"><a href="#6-实践项目-多个场景" class="headerlink" title="6.实践项目-多个场景"></a>6.实践项目-多个场景</h1><hr>
+<h2 id="6-1-知识点"><a href="#6-1-知识点" class="headerlink" title="6.1 知识点"></a>6.1 知识点</h2><h3 id="定义场景编号变量"><a href="#定义场景编号变量" class="headerlink" title="定义场景编号变量"></a>定义场景编号变量</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 设置当前所在场景的编号</span><br><span class="hljs-comment">// 1 是开始界面, 2 是游戏界面, 3 是结束界面</span><br><span class="hljs-built_in">int</span> nowSceneID = <span class="hljs-number">1</span>;<br></code></pre></td></tr></table></figure>
 
-<p>对比变量和常量的声明：</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 变量的声明</span><br><span class="hljs-built_in">int</span> i = <span class="hljs-number">10</span>;<br><br><span class="hljs-comment">// 常量的声明</span><br><span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> i2 = <span class="hljs-number">20</span>;<br></code></pre></td></tr></table></figure>
+<h3 id="设置游戏主逻辑死循环"><a href="#设置游戏主逻辑死循环" class="headerlink" title="设置游戏主逻辑死循环"></a>设置游戏主逻辑死循环</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 游戏主逻辑死循环</span><br><span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)<br>&#123;<br>    <span class="hljs-comment">// 不同的场景ID进行不同的逻辑处理</span><br>    <span class="hljs-keyword">switch</span> (nowSceneID)<br>    &#123;<br>        <span class="hljs-comment">// 开始场景</span><br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>            Console.Clear();<br>            Console.WriteLine(<span class="hljs-string">&quot;开始场景&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br><br>        <span class="hljs-comment">// 游戏场景</span><br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>            Console.Clear();<br>            Console.WriteLine(<span class="hljs-string">&quot;游戏场景&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br><br>        <span class="hljs-comment">// 结束场景</span><br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:<br>            Console.Clear();<br>            Console.WriteLine(<span class="hljs-string">&quot;结束场景&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="常量的特点"><a href="#常量的特点" class="headerlink" title="常量的特点"></a>常量的特点</h4><p>  <strong>必须初始化</strong></p>
-<p>   变量声明可以不初始化，之后可以修改：</p>
-   <figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 变量声明可以不初始化</span><br><span class="hljs-built_in">string</span> name;<br><br><span class="hljs-comment">// 之后可以来修改</span><br>name = <span class="hljs-string">&quot;123&quot;</span>;<br>name = <span class="hljs-string">&quot;345&quot;</span>;<br></code></pre></td></tr></table></figure>
-
-<p>   但常量声明必须初始化，否则报错：</p>
-   <figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// const string yourName;// 报错</span><br><span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> myName = <span class="hljs-string">&quot;韬老狮&quot;</span>;<br></code></pre></td></tr></table></figure>
-
-<p>  <strong>不能被修改</strong></p>
-   <figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> sb = <span class="hljs-string">&quot;韬老狮&quot;</span>;<br><span class="hljs-comment">// sb = &quot;林文韬&quot;;// 修改报错</span><br></code></pre></td></tr></table></figure>
-
-<h4 id="常量的作用"><a href="#常量的作用" class="headerlink" title="常量的作用"></a>常量的作用</h4><p>常量的作用在于声明一些常用不变的变量，例如：</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// PI 3.1415926</span><br><span class="hljs-keyword">const</span> <span class="hljs-built_in">float</span> PI = <span class="hljs-number">3.1415926f</span>;<br><br>Console.WriteLine(PI);<span class="hljs-comment">// 输出：3.1415926f</span><br></code></pre></td></tr></table></figure>
-
-<p>常量可以用来定义一些不变的值，提高代码的可读性和维护性。</p>
+<p>在这个示例中，通过 <code>nowSceneID</code> 的值来判断当前所在的场景，并在主循环中根据场景执行不同的逻辑。当场景切换时，修改 <code>nowSceneID</code> 的值即可。这样可以实现简单的场景管理。</p>
 <hr>
-<h2 id="8-2-知识点代码"><a href="#8-2-知识点代码" class="headerlink" title="8.2 知识点代码"></a>8.2 知识点代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">Lesson05_</span>常量<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;常量&quot;</span>);<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点一 常量的声明</span><br><br>            <span class="hljs-comment">//关键字 const</span><br>            <span class="hljs-comment">//固定写法：</span><br>            <span class="hljs-comment">//const 变量类型 变量名 = 初始值;</span><br><br>            <span class="hljs-comment">//变量的声明和常量的声明的对比</span><br>            <span class="hljs-comment">//变量的声明</span><br>            <span class="hljs-built_in">int</span> i = <span class="hljs-number">10</span>;<br>            <span class="hljs-comment">//常量的声明</span><br>            <span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> i2 = <span class="hljs-number">20</span>;<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点二 常量的特点</span><br><br><br>            <span class="hljs-comment">//1.必须初始化</span><br><br>            <span class="hljs-comment">//变量声明可以不初始化</span><br>            <span class="hljs-built_in">string</span> name;<br>            <span class="hljs-comment">//之后可以来修改</span><br>            name = <span class="hljs-string">&quot;123&quot;</span>;<br>            name = <span class="hljs-string">&quot;345&quot;</span>;<br><br>            <span class="hljs-comment">//常量声明必须初始化 否则报错</span><br>            <span class="hljs-comment">//const string yourName;//报错</span><br>            <span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> myName = <span class="hljs-string">&quot;韬老狮&quot;</span>;<br><br><br><br>            <span class="hljs-comment">//2.不能被修改</span><br><br>            <span class="hljs-keyword">const</span> <span class="hljs-built_in">string</span> sb = <span class="hljs-string">&quot;韬老狮&quot;</span>;<br>            <span class="hljs-comment">//sb = &quot;林文韬&quot;;//修改报错</span><br><br><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点三 常量的作用</span><br><br>            <span class="hljs-comment">//作用：声明一些常用不变的变量</span><br><br>            <span class="hljs-comment">//PI 3.1415926</span><br>            <span class="hljs-keyword">const</span> <span class="hljs-built_in">float</span> PI = <span class="hljs-number">3.1415926f</span>;<br><br>            Console.WriteLine(PI);<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+<h2 id="6-2-知识点代码"><a href="#6-2-知识点代码" class="headerlink" title="6.2 知识点代码"></a>6.2 知识点代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 定义场景编号变量</span><br><span class="hljs-comment">// 设置当前所在场景的编号</span><br><span class="hljs-comment">// 1 是开始界面，2 是游戏界面，3 是结束界面</span><br><span class="hljs-built_in">int</span> nowSceneID = <span class="hljs-number">1</span>;<br><br><span class="hljs-comment">// 设置游戏主逻辑死循环</span><br><span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)<br>&#123;<br>    <span class="hljs-comment">// 游戏主逻辑死循环内，根据场景ID设置条件分支</span><br>    <span class="hljs-comment">// 不同的场景ID 进行不同的逻辑处理</span><br>    <span class="hljs-keyword">switch</span> (nowSceneID)<br>    &#123;<br>        <span class="hljs-comment">// 开始场景</span><br>        <span class="hljs-keyword">case</span> <span class="hljs-number">1</span>:<br>            Console.Clear();<br>            Console.WriteLine(<span class="hljs-string">&quot;开始场景&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-comment">// 游戏场景</span><br>        <span class="hljs-keyword">case</span> <span class="hljs-number">2</span>:<br>            Console.Clear();<br>            Console.WriteLine(<span class="hljs-string">&quot;游戏场景&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>        <span class="hljs-comment">// 结束场景</span><br>        <span class="hljs-keyword">case</span> <span class="hljs-number">3</span>:<br>            Console.Clear();<br>            Console.WriteLine(<span class="hljs-string">&quot;结束场景&quot;</span>);<br>            <span class="hljs-keyword">break</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<hr>
-<h2 id="8-3-练习题"><a href="#8-3-练习题" class="headerlink" title="8.3 练习题"></a>8.3 练习题</h2><h3 id="常量有什么特点？"><a href="#常量有什么特点？" class="headerlink" title="常量有什么特点？"></a>常量有什么特点？</h3><p>常量在C#中具有以下特点：</p>
-<ol>
-<li><p><strong>必须初始化</strong></p>
-<p>常量必须在声明的同时进行初始化。</p>
-</li>
-<li><p><strong>不能被修改</strong></p>
-<p>一旦常量被赋值，就无法再修改其值。</p>
-</li>
-<li><p><strong>声明方式</strong></p>
-<p>常量的声明方式是在声明变量时，在变量类型前加上 <code>const</code> 关键字，如下所示：</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> i = <span class="hljs-number">10</span>;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>与静态关键字的关系</strong></p>
-<p>常量的特点与静态关键字相关，将在后续讲解静态关键字时进行详细解释。</p>
-</li>
-</ol>
-<h3 id="请简述在游戏开发中常量会用来干什么？"><a href="#请简述在游戏开发中常量会用来干什么？" class="headerlink" title="请简述在游戏开发中常量会用来干什么？"></a>请简述在游戏开发中常量会用来干什么？</h3><p>在游戏开发中，常量通常用来声明一些在游戏运行过程中不会变化的变量，例如：</p>
-<ul>
-<li><p><strong>数学常量</strong></p>
-<p>常量可以用来表示数学常数，如圆周率PI、角度转弧度的常量、弧度转角度的常量等。</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">const</span> <span class="hljs-built_in">float</span> PI = <span class="hljs-number">3.1415926f</span>;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>物理常量</strong></p>
-<p>在涉及物理计算的游戏中，常量可以表示一些物理定律中的常数，比如重力加速度。</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">const</span> <span class="hljs-built_in">float</span> GravityAcceleration = <span class="hljs-number">9.8f</span>;<br></code></pre></td></tr></table></figure>
-</li>
-<li><p><strong>游戏属性</strong></p>
-<p>游戏中一些固定的属性，例如玩家的最大血量，可以使用常量来声明，因为这些值在游戏中不会变化。</p>
-<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">const</span> <span class="hljs-built_in">int</span> MaxPlayerHealth = <span class="hljs-number">100</span>;<br></code></pre></td></tr></table></figure></li>
-</ul>
-<p>通过使用常量，可以提高代码的可读性和维护性，同时确保这些固定数值在整个游戏中保持一致。</p>
 <hr>
 
       
