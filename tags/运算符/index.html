@@ -6,20 +6,20 @@
   <meta name="keywords" content="">
   <meta name="description" content="人间自有韬哥在的游戏开发博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="18.运算符-三目运算符 18.1 知识点基本语法&#x2F;&#x2F;套路： 3个空位 2个符号！！！ &#x2F;&#x2F;固定语法：空位     ? 空位                : 空位; &#x2F;&#x2F;关键信息：bool类型 ? bool类型为真返回内容 : bool类型为假返回内容; &#x2F;&#x2F;三目运算符 会有返回值，这个返回值类型必须一致，并且必须使用！   具体使用&#x2F;&#x2F;具体使用 string str &#x3D; false ? &amp;qu">
+<meta name="description" content="21.循环语句-while 21.1 知识点作用while循环是一种用于让代码可以被重复执行的循环语句。通过设置一个条件，当条件满足时，循环中的代码会被执行，之后再回到循环开始，继续进行条件判断。while循环通常用于处理需要多次迭代的情况。 while循环的执行顺序图┌─────────────┐│  条件判断  │└─────────────┘      │      ▼┌──────────">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【C#入门语法知识】| 18.运算符-三目运算符">
-<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/18.%E8%BF%90%E7%AE%97%E7%AC%A6-%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6/index.html">
+<meta property="og:title" content="【C#入门语法知识】| 21.循环语句-while">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-while/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
-<meta property="og:description" content="18.运算符-三目运算符 18.1 知识点基本语法&#x2F;&#x2F;套路： 3个空位 2个符号！！！ &#x2F;&#x2F;固定语法：空位     ? 空位                : 空位; &#x2F;&#x2F;关键信息：bool类型 ? bool类型为真返回内容 : bool类型为假返回内容; &#x2F;&#x2F;三目运算符 会有返回值，这个返回值类型必须一致，并且必须使用！   具体使用&#x2F;&#x2F;具体使用 string str &#x3D; false ? &amp;qu">
+<meta property="og:description" content="21.循环语句-while 21.1 知识点作用while循环是一种用于让代码可以被重复执行的循环语句。通过设置一个条件，当条件满足时，循环中的代码会被执行，之后再回到循环开始，继续进行条件判断。while循环通常用于处理需要多次迭代的情况。 while循环的执行顺序图┌─────────────┐│  条件判断  │└─────────────┘      │      ▼┌──────────">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-06T11:54:11.000Z">
-<meta property="article:modified_time" content="2024-01-06T11:54:14.581Z">
+<meta property="article:published_time" content="2024-01-06T12:26:05.000Z">
+<meta property="article:modified_time" content="2024-01-06T12:41:57.288Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="CSharp">
 <meta property="article:tag" content="CSharp入门">
 <meta property="article:tag" content="语法知识">
-<meta property="article:tag" content="运算符">
+<meta property="article:tag" content="循环语句">
 <meta name="twitter:card" content="summary">
 
 
@@ -147,7 +147,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(18)</small>
+                <small>(21)</small>
             
         </div>
     </li>
@@ -159,7 +159,7 @@
         <div data-rel="CSharp">
             <i class="fold iconfont icon-right"></i>
             CSharp
-            <small>(18)</small>
+            <small>(21)</small>
         </div>
         
             <ul class="sub hide">
@@ -169,7 +169,7 @@
         <div data-rel="CSharp&lt;---&gt;CSharp入门语法知识">
             
             CSharp入门语法知识
-            <small>(18)</small>
+            <small>(21)</small>
         </div>
         
     </li>
@@ -196,17 +196,12 @@
     </div>
     <div>
         
-            <a class="about  hasFriend  site_url"
-               
-               href="/about">关于</a>
-        
-        <a style="width: 50%"
-                
+        <a 
                                            class="friends">友链</a>
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="18">
+<input type="hidden" id="yelog_site_posts_number" value="21">
 
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
@@ -261,6 +256,14 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>条件分支语句</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>循环语句</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>语法知识</a>
             </li>
         
@@ -282,6 +285,24 @@
 
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-while/"
+           data-tag="CSharp,CSharp入门,语法知识,循环语句"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 21.循环语句-while">【C#入门语法知识】| 21.循环语句-while</span>
+            <span class="post-date" title="2024-01-06 20:26:05">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5-if/"
+           data-tag="CSharp,CSharp入门,语法知识,条件分支语句"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 19.条件分支语句-if">【C#入门语法知识】| 19.条件分支语句-if</span>
+            <span class="post-date" title="2024-01-06 20:14:55">2024/01/06</span>
+        </a>
         
         
         <a  class="全部文章 CSharp CSharp入门语法知识 "
@@ -407,6 +428,15 @@
            data-author="" >
             <span class="post-title" title="【C#入门语法知识】| 5.变量">【C#入门语法知识】| 5.变量</span>
             <span class="post-date" title="2024-01-05 12:52:35">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/20.%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5-switch/"
+           data-tag="CSharp,CSharp入门,语法知识,条件分支语句"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 20.条件分支语句-switch">【C#入门语法知识】| 20.条件分支语句-switch</span>
+            <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
         </a>
         
         
