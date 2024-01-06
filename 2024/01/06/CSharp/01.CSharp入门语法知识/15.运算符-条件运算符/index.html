@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>【C#入门语法知识】| 15.运算符-条件运算符 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 , 运算符 ">
+  <meta name="description" content="【C#入门语法知识】| 15.运算符-条件运算符 | 人间自有韬哥在的游戏开发博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="15.运算符-条件运算符 15.1 知识点条件运算符的基本应用比较运算符条件运算符用于比较两个变量或常量，主要包括以下比较运算符：  大于（&gt;） 小于（&lt;） 等于（&#x3D;&#x3D;） 不等于（!&#x3D;） 大于等于（&gt;&#x3D;） 小于等于（&lt;&#x3D;）  示例： int a &#x3D; 5;int b &#x3D; 10;bool result;result &#x3D; a &lt; b; &#x2F;&#x2F; trueresult &#x3D; a &amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【C#入门语法知识】| 15.运算符-条件运算符">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E8%BF%90%E7%AE%97%E7%AC%A6-%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6/index.html">
+<meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
+<meta property="og:description" content="15.运算符-条件运算符 15.1 知识点条件运算符的基本应用比较运算符条件运算符用于比较两个变量或常量，主要包括以下比较运算符：  大于（&gt;） 小于（&lt;） 等于（&#x3D;&#x3D;） 不等于（!&#x3D;） 大于等于（&gt;&#x3D;） 小于等于（&lt;&#x3D;）  示例： int a &#x3D; 5;int b &#x3D; 10;bool result;result &#x3D; a &lt; b; &#x2F;&#x2F; trueresult &#x3D; a &amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-01-06T05:01:21.000Z">
+<meta property="article:modified_time" content="2024-01-06T05:10:10.668Z">
+<meta property="article:author" content="人间自有韬哥在">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="CSharp入门">
+<meta property="article:tag" content="语法知识">
+<meta property="article:tag" content="运算符">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>人间自有韬哥在</span>
+</div>
+
+<div class="icon">
+    
+        
+    
+        
+            <a title="github"
+               href="https://github.com/linwentao785293209"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:785293209@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=785293209&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(15)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="CSharp">
+            <i class="fold iconfont icon-right"></i>
+            CSharp
+            <small>(15)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CSharp&lt;---&gt;CSharp入门语法知识">
+            
+            CSharp入门语法知识
+            <small>(15)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="15">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>开发环境</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>类型转换</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>语法知识</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>运算符</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp入门</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E8%BF%90%E7%AE%97%E7%AC%A6-%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识,运算符"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 15.运算符-条件运算符">【C#入门语法知识】| 15.运算符-条件运算符</span>
+            <span class="post-date" title="2024-01-06 13:01:21">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/14.%E8%BF%90%E7%AE%97%E7%AC%A6-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/"
+           data-tag="CSharp,CSharp入门,语法知识,运算符"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 14.运算符-字符串拼接">【C#入门语法知识】| 14.运算符-字符串拼接</span>
+            <span class="post-date" title="2024-01-06 12:01:14">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E8%BF%90%E7%AE%97%E7%AC%A6-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识,运算符"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 13.运算符-算术运算符">【C#入门语法知识】| 13.运算符-算术运算符</span>
+            <span class="post-date" title="2024-01-06 11:16:43">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 12.异常捕获">【C#入门语法知识】| 12.异常捕获</span>
+            <span class="post-date" title="2024-01-06 10:51:02">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E6%98%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
+           data-tag="CSharp,CSharp入门,语法知识,类型转换"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 11.类型转换-显式转换">【C#入门语法知识】| 11.类型转换-显式转换</span>
+            <span class="post-date" title="2024-01-06 10:36:38">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
+           data-tag="CSharp,CSharp入门,语法知识,类型转换"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 10.类型转换-隐式转换">【C#入门语法知识】| 10.类型转换-隐式转换</span>
+            <span class="post-date" title="2024-01-06 10:26:31">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 9.转义字符">【C#入门语法知识】| 9.转义字符</span>
+            <span class="post-date" title="2024-01-06 10:05:44">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E5%B8%B8%E9%87%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 8.常量">【C#入门语法知识】| 8.常量</span>
+            <span class="post-date" title="2024-01-06 10:00:10">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 7.变量的命名规则">【C#入门语法知识】| 7.变量的命名规则</span>
+            <span class="post-date" title="2024-01-05 20:19:52">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 6.变量的本质">【C#入门语法知识】| 6.变量的本质</span>
+            <span class="post-date" title="2024-01-05 19:39:42">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%8F%98%E9%87%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 5.变量">【C#入门语法知识】| 5.变量</span>
+            <span class="post-date" title="2024-01-05 12:52:35">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 4.第一个应用程序">【C#入门语法知识】| 4.第一个应用程序</span>
+            <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/03/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA/"
+           data-tag="CSharp,CSharp入门,语法知识,开发环境"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 3.开发环境的搭建">【C#入门语法知识】| 3.开发环境的搭建</span>
+            <span class="post-date" title="2024-01-03 23:35:11">2024/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/02/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 2.程序语言是什么">【C#入门语法知识】| 2.程序语言是什么</span>
+            <span class="post-date" title="2024-01-02 21:20:00">2024/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/01/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 1.概述">【C#入门语法知识】| 1.概述</span>
+            <span class="post-date" title="2024-01-01 12:41:48">2024/01/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-CSharp/01.CSharp入门语法知识/15.运算符-条件运算符" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">【C#入门语法知识】| 15.运算符-条件运算符</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="CSharp">CSharp</a> > 
+            
+            <a  data-rel="CSharp&lt;---&gt;CSharp入门语法知识">CSharp入门语法知识</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">CSharp</a>
+            
+            <a class="color4">CSharp入门</a>
+            
+            <a class="color5">语法知识</a>
+            
+            <a class="color4">运算符</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-01-06 13:10:10'>2024-01-06 13:01</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#15-%E8%BF%90%E7%AE%97%E7%AC%A6-%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">15.运算符-条件运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#15-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">15.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%BA%94%E7%94%A8"><span class="toc-text">条件运算符的基本应用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AF%94%E8%BE%83%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">比较运算符</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%84%E7%A7%8D%E5%BA%94%E7%94%A8%E5%86%99%E6%B3%95"><span class="toc-text">各种应用写法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8C%83%E5%9B%B4%E6%AF%94%E8%BE%83"><span class="toc-text">范围比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E6%AF%94%E8%BE%83"><span class="toc-text">不同类型之间的比较</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">15.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">15.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E5%8F%A3%E7%AD%94%E4%B8%8B%E5%88%97%E8%A1%A8%E8%BE%BE%E5%BC%8F%E7%9A%84%E7%BB%93%E6%9E%9C"><span class="toc-text">请口答下列表达式的结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%8D%B0%E7%BB%93%E6%9E%9C%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">打印结果是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E9%97%AE%E6%89%93%E5%8D%B0%E7%BB%93%E6%9E%9C%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-text">请问打印结果是什么？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#15-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">15.4 练习题代码</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="15-运算符-条件运算符"><a href="#15-运算符-条件运算符" class="headerlink" title="15.运算符-条件运算符"></a>15.运算符-条件运算符</h1><hr>
+<h2 id="15-1-知识点"><a href="#15-1-知识点" class="headerlink" title="15.1 知识点"></a>15.1 知识点</h2><h3 id="条件运算符的基本应用"><a href="#条件运算符的基本应用" class="headerlink" title="条件运算符的基本应用"></a>条件运算符的基本应用</h3><h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p>条件运算符用于比较两个变量或常量，主要包括以下比较运算符：</p>
+<ul>
+<li>大于（<code>&gt;</code>）</li>
+<li>小于（<code>&lt;</code>）</li>
+<li>等于（<code>==</code>）</li>
+<li>不等于（<code>!=</code>）</li>
+<li>大于等于（<code>&gt;=</code>）</li>
+<li>小于等于（<code>&lt;=</code>）</li>
+</ul>
+<p><strong>示例：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> a = <span class="hljs-number">5</span>;<br><span class="hljs-built_in">int</span> b = <span class="hljs-number">10</span>;<br><br><span class="hljs-built_in">bool</span> result;<br>result = a &lt; b; <span class="hljs-comment">// true</span><br>result = a &gt;= b; <span class="hljs-comment">// false</span><br>result = a &lt;= b; <span class="hljs-comment">// true</span><br>result = a == b; <span class="hljs-comment">// false</span><br>result = a != b; <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="各种应用写法"><a href="#各种应用写法" class="headerlink" title="各种应用写法"></a>各种应用写法</h3><p>条件运算符可以应用在不同的情况，包括变量和变量比较、变量和数值比较、数值和数值比较以及计算结果的比较。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> a = <span class="hljs-number">5</span>;<br><span class="hljs-built_in">int</span> b = <span class="hljs-number">10</span>;<br><span class="hljs-built_in">bool</span> result;<br><br><span class="hljs-comment">// 变量和变量比较</span><br>result = a &lt; b; <span class="hljs-comment">// true</span><br><br><span class="hljs-comment">// 变量和数值(常量)比较</span><br>result = a &lt; <span class="hljs-number">10</span>; <span class="hljs-comment">// true</span><br>result = b &gt; <span class="hljs-number">5</span>; <span class="hljs-comment">// true</span><br><br><span class="hljs-comment">// 数值和数值比较</span><br>result = <span class="hljs-number">5</span> &gt; <span class="hljs-number">3</span>; <span class="hljs-comment">// true</span><br>result = <span class="hljs-number">5</span> == <span class="hljs-number">3</span>; <span class="hljs-comment">// false</span><br>result = <span class="hljs-number">5</span> != <span class="hljs-number">3</span>; <span class="hljs-comment">// true</span><br><br><span class="hljs-comment">// 计算结果比较</span><br>result = a + <span class="hljs-number">3</span> &gt; a - <span class="hljs-number">2</span> + <span class="hljs-number">3</span>; <span class="hljs-comment">// true</span><br>result = <span class="hljs-number">3</span> + <span class="hljs-number">3</span> &lt; <span class="hljs-number">5</span> - <span class="hljs-number">1</span>; <span class="hljs-comment">// false</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="范围比较"><a href="#范围比较" class="headerlink" title="范围比较"></a>范围比较</h4><p>在C#中，不能直接使用条件运算符进行范围比较，需要结合逻辑运算符来实现。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> a = <span class="hljs-number">5</span>;<br><br><span class="hljs-comment">// 错误的写法，不能直接进行范围比较</span><br><span class="hljs-comment">// result = 1 &lt; a &lt; 6;</span><br><br><span class="hljs-comment">// 正确的写法，结合逻辑运算符</span><br>result = <span class="hljs-number">1</span> &lt; a &amp;&amp; a &lt; <span class="hljs-number">6</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="不同类型之间的比较"><a href="#不同类型之间的比较" class="headerlink" title="不同类型之间的比较"></a>不同类型之间的比较</h4><p>不同数值类型之间可以随意进行条件运算符比较，但特殊类型（<code>char</code>、<code>string</code>、<code>bool</code>）只能同类型进行<code>==</code>和<code>!=</code>比较。</p>
+<p><strong>示例：</strong></p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> intV = <span class="hljs-number">5</span>;<br><span class="hljs-built_in">float</span> floatV = <span class="hljs-number">1.2f</span>;<br><span class="hljs-built_in">double</span> doubleV = <span class="hljs-number">12.4</span>;<br><span class="hljs-built_in">short</span> shortV = <span class="hljs-number">2</span>;<br><span class="hljs-built_in">byte</span> byteV = <span class="hljs-number">20</span>;<br><span class="hljs-built_in">uint</span> uintV = <span class="hljs-number">222</span>;<br><br>result = intV &gt; floatV;<br>result = floatV &lt; doubleV;<br>result = intV &gt; byteV;<br>result = floatV &gt; uintV;<br>result = uintV &gt; doubleV;<br><br><span class="hljs-built_in">string</span> stringV = <span class="hljs-string">&quot;123&quot;</span>;<br><span class="hljs-built_in">char</span> charV = <span class="hljs-string">&#x27;A&#x27;</span>;<br><span class="hljs-built_in">bool</span> boolV = <span class="hljs-literal">true</span>;<br><br>result = stringV == <span class="hljs-string">&quot;234&quot;</span>; <span class="hljs-comment">// false</span><br>result = stringV == <span class="hljs-string">&quot;123&quot;</span>; <span class="hljs-comment">// true</span><br>result = stringV != <span class="hljs-string">&quot;123&quot;</span>; <span class="hljs-comment">// false</span><br><br>result = charV == <span class="hljs-string">&#x27;B&#x27;</span>; <span class="hljs-comment">// false</span><br>result = charV &gt; <span class="hljs-number">123</span>; <span class="hljs-comment">// false</span><br>result = charV &gt; <span class="hljs-string">&#x27;B&#x27;</span>; <span class="hljs-comment">// false</span><br><br>result = boolV == <span class="hljs-literal">true</span>; <span class="hljs-comment">// true</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="15-2-知识点代码"><a href="#15-2-知识点代码" class="headerlink" title="15.2 知识点代码"></a>15.2 知识点代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">Lesson12_</span>条件运算符<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;条件运算符&quot;</span>);<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点一 条件运算符</span><br>            <span class="hljs-comment">// 用于比较两个变量或常量</span><br>            <span class="hljs-comment">// 是否大于 &gt;</span><br>            <span class="hljs-comment">// 是否小于 &lt;</span><br>            <span class="hljs-comment">// 是否等于 == </span><br>            <span class="hljs-comment">// 是否不等于 !=</span><br>            <span class="hljs-comment">// 是否大于等于 &gt;=</span><br>            <span class="hljs-comment">// 是否小于等于 &lt;=</span><br><br>            <span class="hljs-comment">// 条件运算符 一定存在左右两边的内容</span><br>            <span class="hljs-comment">// 左边内容 条件运算符 右边内容</span><br>            <span class="hljs-built_in">int</span> a = <span class="hljs-number">5</span>;<br>            <span class="hljs-built_in">int</span> b = <span class="hljs-number">10</span>;<br>            <span class="hljs-comment">//a &gt; b;//这就是一个条件运算符 但是直接这样写会报错且没有意义</span><br>            <span class="hljs-comment">//条件运算符 不能直接这样使用</span><br>            <span class="hljs-comment">//纯比较不用结果 那么对于我们来说 没有任何的意义</span><br>            <span class="hljs-built_in">bool</span> result = a &gt; b;<br>            <span class="hljs-comment">// 比较的结果 返回的是 一个 bool 类型的值</span><br>            <span class="hljs-comment">// 可以把比较的结果用一个bool变量存起来</span><br>            <span class="hljs-comment">// true和false 如果比较的条件满足 那就返回true 不满足 就返回false</span><br>            <span class="hljs-comment">// 先算右边 再赋值给左边</span><br>            Console.WriteLine(result);<span class="hljs-comment">// false</span><br><br>            result = a &lt; b;<br>            Console.WriteLine(result);<span class="hljs-comment">// true</span><br><br>            result = a &gt;= b;<br>            Console.WriteLine(result);<span class="hljs-comment">// false</span><br><br>            result = a &lt;= b;<br>            Console.WriteLine(result);<span class="hljs-comment">// true</span><br><br>            result = a == b;<br>            Console.WriteLine(result);<span class="hljs-comment">// false</span><br><br>            result = a != b;<br>            Console.WriteLine(result);<span class="hljs-comment">// true</span><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点二 各种应用写法</span><br>            <span class="hljs-comment">//变量和变量比较</span><br>            a = <span class="hljs-number">5</span>;<br>            b = <span class="hljs-number">10</span>;<br>            result = a &lt; b;<span class="hljs-comment">// true</span><br>            <span class="hljs-comment">//变量和数值(常量)比较</span><br>            result = a &lt; <span class="hljs-number">10</span>;<span class="hljs-comment">// true</span><br>            result = b &gt; <span class="hljs-number">5</span>;<span class="hljs-comment">// true</span><br>            <span class="hljs-comment">//数值和数值比较</span><br>            result = <span class="hljs-number">5</span> &gt; <span class="hljs-number">3</span>;<span class="hljs-comment">//true</span><br>            result = <span class="hljs-number">5</span> == <span class="hljs-number">3</span>; <span class="hljs-comment">// false</span><br>            result = <span class="hljs-number">5</span> != <span class="hljs-number">3</span>; <span class="hljs-comment">// true;</span><br>            <span class="hljs-comment">//计算结果比较</span><br>            <span class="hljs-comment">//条件运算符的 优先级 低于算术运算符</span><br>            <span class="hljs-comment">// 8 &gt; 6</span><br>            <span class="hljs-comment">// 先计算 再比较</span><br>            result = a + <span class="hljs-number">3</span> &gt; a - <span class="hljs-number">2</span> + <span class="hljs-number">3</span>;<span class="hljs-comment">// true</span><br>            result = <span class="hljs-number">3</span> + <span class="hljs-number">3</span> &lt; <span class="hljs-number">5</span> - <span class="hljs-number">1</span>;<span class="hljs-comment">//false</span><br><br>            <span class="hljs-comment">//条件运算符的比较语法</span><br>            <span class="hljs-comment">//左边 条件运算符 右边</span><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点三 不能进行范围比较</span><br>            a = <span class="hljs-number">5</span>;<br>            <span class="hljs-comment">//判断是否在某两个值之间</span><br>            <span class="hljs-comment">// 1 &lt; a &lt; 6</span><br>            <span class="hljs-comment">//在C#都不能这样写 这样写会报错</span><br>            <span class="hljs-comment">//result = 1 &lt; a &lt; 6;</span><br>            <span class="hljs-comment">//要判断 一个变量是否在两个数之间 要结合 逻辑运算符的知识点</span><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点四 不同类型之间的比较</span><br><br>            <span class="hljs-comment">//数值类型 不同数值类型之间 可以随意进行条件运算符比较</span><br>            <span class="hljs-built_in">int</span> intV = <span class="hljs-number">5</span>;<br>            <span class="hljs-built_in">float</span> floatV = <span class="hljs-number">1.2f</span>;<br>            <span class="hljs-built_in">double</span> doubleV = <span class="hljs-number">12.4</span>;<br>            <span class="hljs-built_in">short</span> shortV = <span class="hljs-number">2</span>;<br>            <span class="hljs-built_in">byte</span> byteV = <span class="hljs-number">20</span>;<br>            <span class="hljs-built_in">uint</span> uintV = <span class="hljs-number">222</span>;<br><br>            <span class="hljs-comment">//只要是数值 就能够进行条件运算符比较  比较大于小于等于等等</span><br>            result = intV &gt; floatV;<br>            result = floatV &lt; doubleV;<br>            result = intV &gt; byteV;<br>            result = floatV &gt; uintV;<br>            result = uintV &gt; doubleV;<br><br>            <span class="hljs-comment">//特殊类型 char string bool 只能同类型进行 == 和 != 比较</span><br>            <span class="hljs-built_in">string</span> stringV = <span class="hljs-string">&quot;123&quot;</span>;<br>            <span class="hljs-built_in">char</span> charV = <span class="hljs-string">&#x27;A&#x27;</span>;<br>            <span class="hljs-built_in">bool</span> boolV = <span class="hljs-literal">true</span>;<br><br>            result = stringV == <span class="hljs-string">&quot;234&quot;</span>;<span class="hljs-comment">//false</span><br>            result = stringV == <span class="hljs-string">&quot;123&quot;</span>;<span class="hljs-comment">//true</span><br>            result = stringV != <span class="hljs-string">&quot;123&quot;</span>;<span class="hljs-comment">//false</span><br><br><br><br>            <span class="hljs-comment">//char类型变量不仅可以和自己类型进行 == != 还可以和数值类型进行比较</span><br>            <span class="hljs-comment">//还可以和 字符类型进行大小比较</span><br>            <span class="hljs-comment">//因为char变量可隐式转换成int类型 就比如&#x27;A&#x27;对应的ASCII码65再进行比较</span><br>            result = charV == <span class="hljs-string">&#x27;B&#x27;</span>;<span class="hljs-comment">//false</span><br>            result = charV &gt; <span class="hljs-number">123</span>;<span class="hljs-comment">//false</span><br>            result = charV &gt; <span class="hljs-string">&#x27;B&#x27;</span>;<span class="hljs-comment">//false</span><br><br>            result = boolV == <span class="hljs-literal">true</span>;<span class="hljs-comment">//true;</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="15-3-练习题"><a href="#15-3-练习题" class="headerlink" title="15.3 练习题"></a>15.3 练习题</h2><h3 id="请口答下列表达式的结果"><a href="#请口答下列表达式的结果" class="headerlink" title="请口答下列表达式的结果"></a>请口答下列表达式的结果</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 我的年龄（18） &gt; 你们的年龄（22）   // false </span><br><span class="hljs-comment">// 兔子的速度（3m/s） &lt; 乌龟的速度(0.3m/s)  // false </span><br><span class="hljs-comment">// 狗的重量(50kg) &lt; 兔子的重量(5kg)  // false </span><br><span class="hljs-comment">// 我身上的Money(10元) == 你身上也有Money(10元)  // true </span><br><br>Console.WriteLine(<span class="hljs-number">18</span> &gt; <span class="hljs-number">22</span>); <span class="hljs-comment">// false </span><br>Console.WriteLine(<span class="hljs-number">3.0</span> &lt; <span class="hljs-number">0.3</span>); <span class="hljs-comment">// false </span><br>Console.WriteLine(<span class="hljs-number">50</span> &lt; <span class="hljs-number">5</span>); <span class="hljs-comment">// false </span><br>Console.WriteLine(<span class="hljs-number">10</span> == <span class="hljs-number">10</span>); <span class="hljs-comment">// true </span><br></code></pre></td></tr></table></figure>
+
+<h3 id="打印结果是什么？"><a href="#打印结果是什么？" class="headerlink" title="打印结果是什么？"></a>打印结果是什么？</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">bool</span> b = <span class="hljs-literal">true</span>; <br>Console.WriteLine(b != <span class="hljs-literal">true</span>); <span class="hljs-comment">// false </span><br>Console.WriteLine(<span class="hljs-number">10</span> == <span class="hljs-number">10</span>); <span class="hljs-comment">// true </span><br>Console.WriteLine(<span class="hljs-number">10</span> &gt; <span class="hljs-number">20</span>); <span class="hljs-comment">// false </span><br>Console.WriteLine(<span class="hljs-number">10</span> &lt;= <span class="hljs-number">20</span>); <span class="hljs-comment">// true </span><br>Console.WriteLine(<span class="hljs-number">10</span> &lt;= <span class="hljs-number">10</span>); <span class="hljs-comment">// true </span><br></code></pre></td></tr></table></figure>
+
+<h3 id="请问打印结果是什么？"><a href="#请问打印结果是什么？" class="headerlink" title="请问打印结果是什么？"></a>请问打印结果是什么？</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">bool</span> gameOver, startGame; <span class="hljs-comment">// 是可以不初始化 </span><br><span class="hljs-built_in">int</span> a = <span class="hljs-number">10</span>, b = <span class="hljs-number">15</span>; <br>gameOver = a &gt; (b - <span class="hljs-number">5</span>); <span class="hljs-comment">// false </span><br>startGame = gameOver == (b &gt; (a + <span class="hljs-number">5</span>)); <span class="hljs-comment">// true </span><br>Console.WriteLine(<span class="hljs-string">&quot;startGame = &quot;</span> + startGame); <span class="hljs-comment">// startGame = True </span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="15-4-练习题代码"><a href="#15-4-练习题代码" class="headerlink" title="15.4 练习题代码"></a>15.4 练习题代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">Lesson12_</span>练习题<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;条件运算符练习题&quot;</span>);<br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题一</span><br>            <span class="hljs-comment">//请口答下列表达式的结果</span><br>            <span class="hljs-comment">//我的年龄（18） &gt; 你们的年龄（22）   // false</span><br>            <span class="hljs-comment">//兔子的速度（3m / s） &lt; 乌龟的速度(0.3m / s)  //false</span><br>            <span class="hljs-comment">//狗的重量(50kg) &lt; 兔子的重量(5kg)  //false</span><br>            <span class="hljs-comment">//我身上的Money(10元) == 你身上也有Money(10元)  //true</span><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题二</span><br>            <span class="hljs-comment">//求打印结果是什么？</span><br>            <span class="hljs-comment">//bool b = true;</span><br>            <span class="hljs-comment">//Console.WriteLine(b != true); //false</span><br><br>            <span class="hljs-comment">//Console.WriteLine(10 == 10); // true</span><br>            <span class="hljs-comment">//Console.WriteLine(10 &gt; 20); // false</span><br>            <span class="hljs-comment">//Console.WriteLine(10 &lt;= 20); // true</span><br>            <span class="hljs-comment">//Console.WriteLine(10 &lt;= 10); // true</span><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题三</span><br>            <span class="hljs-comment">//请问打印结果是什么？</span><br>            <span class="hljs-built_in">bool</span> gameOver, startGame; <span class="hljs-comment">//是可以不初始化</span><br>            <span class="hljs-built_in">int</span> a = <span class="hljs-number">10</span>, b = <span class="hljs-number">15</span>;<br>            <span class="hljs-comment">// 10 &gt; 10 false</span><br>            gameOver = a &gt; (b - <span class="hljs-number">5</span>); <span class="hljs-comment">//false</span><br>            <span class="hljs-comment">//15 &gt; 10 + 5 false</span><br>            <span class="hljs-comment">// false == false</span><br>            startGame = gameOver == (b &gt; (a + <span class="hljs-number">5</span>));<span class="hljs-comment">// true</span><br>            Console.WriteLine(<span class="hljs-string">&quot;startGame = &quot;</span> + startGame);<span class="hljs-comment">//startGame = True</span><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 785293209@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2024 Tao
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 622px;
+    }
+    .nav.fullscreen {
+        margin-left: -622px;
+    }
+    .nav-left {
+        width: 200px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 572px;
+        }
+        .nav.fullscreen {
+            margin-left: -572px;
+        }
+        .nav-left {
+            width: 180px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 572px;
+            margin-left: -572px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
