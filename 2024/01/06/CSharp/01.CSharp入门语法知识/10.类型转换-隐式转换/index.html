@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>【C#入门语法知识】| 10.类型转换-隐式转换 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 ">
+  <meta name="description" content="【C#入门语法知识】| 10.类型转换-隐式转换 | 人间自有韬哥在的游戏开发博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="12.异常捕获 12.1 知识点异常捕获的作用通过异常捕获的学习，可以避免当代码报错时造成程序卡死的情况。在某些情况下，用户的输入或其他外部因素可能导致代码出现异常，为了确保程序的稳定性和可靠性，我们可以使用异常捕获机制。 示例&#x2F;&#x2F; 将玩家输入的内容存储在string类型的变量(容器)中string str &#x3D; Console.ReadLine();try&#123;    &#x2F;&#x2F; Parse转字符">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【C#入门语法知识】| 12.异常捕获">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/index.html">
+<meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
+<meta property="og:description" content="12.异常捕获 12.1 知识点异常捕获的作用通过异常捕获的学习，可以避免当代码报错时造成程序卡死的情况。在某些情况下，用户的输入或其他外部因素可能导致代码出现异常，为了确保程序的稳定性和可靠性，我们可以使用异常捕获机制。 示例&#x2F;&#x2F; 将玩家输入的内容存储在string类型的变量(容器)中string str &#x3D; Console.ReadLine();try&#123;    &#x2F;&#x2F; Parse转字符">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-01-06T02:51:02.000Z">
+<meta property="article:modified_time" content="2024-01-06T02:59:31.596Z">
+<meta property="article:author" content="人间自有韬哥在">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="CSharp入门">
+<meta property="article:tag" content="语法知识">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>人间自有韬哥在</span>
+</div>
+
+<div class="icon">
+    
+        
+    
+        
+            <a title="github"
+               href="https://github.com/linwentao785293209"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:785293209@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=785293209&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(12)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="CSharp">
+            <i class="fold iconfont icon-right"></i>
+            CSharp
+            <small>(12)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CSharp&lt;---&gt;CSharp入门语法知识">
+            
+            CSharp入门语法知识
+            <small>(12)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="12">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>语法知识</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp入门</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 12.异常捕获">【C#入门语法知识】| 12.异常捕获</span>
+            <span class="post-date" title="2024-01-06 10:51:02">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E6%98%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 11.类型转换-显式转换">【C#入门语法知识】| 11.类型转换-显式转换</span>
+            <span class="post-date" title="2024-01-06 10:36:38">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 10.类型转换-隐式转换">【C#入门语法知识】| 10.类型转换-隐式转换</span>
+            <span class="post-date" title="2024-01-06 10:26:31">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 9.转义字符">【C#入门语法知识】| 9.转义字符</span>
+            <span class="post-date" title="2024-01-06 10:05:44">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E5%B8%B8%E9%87%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 8.常量">【C#入门语法知识】| 8.常量</span>
+            <span class="post-date" title="2024-01-06 10:00:10">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 7.变量的命名规则">【C#入门语法知识】| 7.变量的命名规则</span>
+            <span class="post-date" title="2024-01-05 20:19:52">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 6.变量的本质">【C#入门语法知识】| 6.变量的本质</span>
+            <span class="post-date" title="2024-01-05 19:39:42">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%8F%98%E9%87%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 5.变量">【C#入门语法知识】| 5.变量</span>
+            <span class="post-date" title="2024-01-05 12:52:35">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 4.第一个应用程序">【C#入门语法知识】| 4.第一个应用程序</span>
+            <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/03/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 3.开发环境的搭建">【C#入门语法知识】| 3.开发环境的搭建</span>
+            <span class="post-date" title="2024-01-03 23:35:11">2024/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/02/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 2.程序语言是什么">【C#入门语法知识】| 2.程序语言是什么</span>
+            <span class="post-date" title="2024-01-02 21:20:00">2024/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/01/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 1.概述">【C#入门语法知识】| 1.概述</span>
+            <span class="post-date" title="2024-01-01 12:41:48">2024/01/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-CSharp/01.CSharp入门语法知识/10.类型转换-隐式转换" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">【C#入门语法知识】| 10.类型转换-隐式转换</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="CSharp">CSharp</a> > 
+            
+            <a  data-rel="CSharp&lt;---&gt;CSharp入门语法知识">CSharp入门语法知识</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">CSharp</a>
+            
+            <a class="color4">CSharp入门</a>
+            
+            <a class="color5">语法知识</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-01-06 10:36:47'>2024-01-06 10:26</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#10-%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2"><span class="toc-text">10.类型转换-隐式转换</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#10-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">10.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2"><span class="toc-text">什么是类型转换</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%B8%E5%90%8C%E5%A4%A7%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-text">相同大类型之间的转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E5%A4%A7%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-text">不同大类型之间的转换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%85%B6%E4%BB%96%E7%B1%BB%E5%9E%8B%E4%B9%8B%E9%97%B4%E7%9A%84%E8%BD%AC%E6%8D%A2"><span class="toc-text">特殊类型和其他类型之间的转换</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">10.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">10.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B%E7%9A%84%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2%E4%BE%8B%E5%AD%90"><span class="toc-text">数据类型的隐式转换例子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E8%BD%AC%E6%8D%A2%E6%88%90%E6%95%B0%E5%AD%97%E5%B9%B6%E6%89%93%E5%8D%B0"><span class="toc-text">字符转换成数字并打印</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">10.4 练习题代码</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="10-类型转换-隐式转换"><a href="#10-类型转换-隐式转换" class="headerlink" title="10.类型转换-隐式转换"></a>10.类型转换-隐式转换</h1><hr>
+<h2 id="10-1-知识点"><a href="#10-1-知识点" class="headerlink" title="10.1 知识点"></a>10.1 知识点</h2><h3 id="什么是类型转换"><a href="#什么是类型转换" class="headerlink" title="什么是类型转换"></a>什么是类型转换</h3><p>类型转换是指不同变量类型之间的相互转换。隐式转换是指不同类型之间自动转换，通常是从大范围向小范围转换。</p>
+<h4 id="相同大类型之间的转换"><a href="#相同大类型之间的转换" class="headerlink" title="相同大类型之间的转换"></a>相同大类型之间的转换</h4><p>有符号：<code>long</code> → <code>int</code> → <code>short</code> → <code>sbyte</code></p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">long</span> longValue = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">int</span> intValue = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">short</span> shortValue = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">sbyte</span> sbyteValue = <span class="hljs-number">1</span>;<br><br>longValue = intValue; <br>longValue = shortValue; <br>longValue = sbyteValue; <br>intValue = shortValue; <br>intValue = sbyteValue; <br>shortValue = sbyteValue; <br></code></pre></td></tr></table></figure>
+
+<p>无符号：<code>ulong</code> → <code>uint</code> → <code>ushort</code> → <code>byte</code></p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">ulong</span> ulongValue = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">uint</span> uintValue = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">ushort</span> ushortValue = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">byte</span> byteValue = <span class="hljs-number">1</span>;<br><br>ulongValue = uintValue; <br>ulongValue = ushortValue; <br>ulongValue = byteValue; <br>uintValue = ushortValue; <br>uintValue = byteValue; <br>ushortValue = byteValue; <br></code></pre></td></tr></table></figure>
+
+<p>浮点数：<code>decimal</code> → <code>double</code> → <code>float</code></p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">decimal</span> decimalValue = <span class="hljs-number">1.1</span>m;<br><span class="hljs-built_in">double</span> doubleValue = <span class="hljs-number">1.1</span>;<br><span class="hljs-built_in">float</span> floatValue = <span class="hljs-number">1.1f</span>;<br><br>doubleValue = floatValue; <br></code></pre></td></tr></table></figure>
+
+<p>特殊类型：<code>bool</code>、<code>char</code>、<code>string</code></p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">bool</span> boolValue = <span class="hljs-literal">true</span>;<br><span class="hljs-built_in">char</span> charValue = <span class="hljs-string">&#x27;A&#x27;</span>;<br><span class="hljs-built_in">string</span> stringValue = <span class="hljs-string">&quot;123123&quot;</span>;<br></code></pre></td></tr></table></figure>
+
+<h4 id="不同大类型之间的转换"><a href="#不同大类型之间的转换" class="headerlink" title="不同大类型之间的转换"></a>不同大类型之间的转换</h4><p>无符号和有符号之间：</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">byte</span> byteValue2 = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">ushort</span> ushortValue2 = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">uint</span> uintValue2 = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">ulong</span> ulongValue2 = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">sbyte</span> sbyteValue2 = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">short</span> shortValue2 = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">int</span> intValue2 = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">long</span> longValue2 = <span class="hljs-number">1</span>;<br><br>intValue2 = byteValue2;<br>intValue2 = ushortValue2;<br>intValue2 = uintValue2;<br>intValue2 = ulongValue2;<br><br>longValue2 = byteValue2;<br>longValue2 = ushortValue2;<br>longValue2 = uintValue2;<br></code></pre></td></tr></table></figure>
+
+<p>浮点数和整数（有、无符号）之间：</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">float</span> floatValue2 = <span class="hljs-number">1.1f</span>;<br><span class="hljs-built_in">double</span> doubleValue2 = <span class="hljs-number">1.1</span>;<br><span class="hljs-built_in">decimal</span> decimalValue2 = <span class="hljs-number">1.1</span>m;<br><br>floatValue2 = longValue2;<br>floatValue2 = intValue2;<br>floatValue2 = shortValue2;<br>floatValue2 = sbyteValue2;<br>floatValue2 = ulongValue2;<br>floatValue2 = uintValue2;<br>floatValue2 = ushortValue2;<br>floatValue2 = byteValue2;<br></code></pre></td></tr></table></figure>
+
+<h4 id="特殊类型和其他类型之间的转换"><a href="#特殊类型和其他类型之间的转换" class="headerlink" title="特殊类型和其他类型之间的转换"></a>特殊类型和其他类型之间的转换</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">bool</span> boolValue2 = <span class="hljs-literal">true</span>;<br><span class="hljs-built_in">char</span> charValue2 = <span class="hljs-string">&#x27;A&#x27;</span>;<br><span class="hljs-built_in">string</span> stringValue2 = <span class="hljs-string">&quot;1231&quot;</span>;<br><br>intValue2 = charValue2;<br>floatValue2 = charValue2;<br>uintValue2 = charValue2;<br>decimalValue2 = charValue2;<br><br><span class="hljs-comment">// 以下代码会报错</span><br><span class="hljs-comment">// boolValue2 = intValue2;</span><br><span class="hljs-comment">// charValue2 = intValue2;</span><br><span class="hljs-comment">// stringValue2 = boolValue2;</span><br><span class="hljs-comment">// stringValue2 = charValue2;</span><br></code></pre></td></tr></table></figure>
+
+<p>总结：</p>
+<ul>
+<li>高精度（大范围）装低精度（小范围）。</li>
+<li><code>double</code> → <code>float</code> → 整数（无符号、有符号） → <code>char</code>。</li>
+<li><code>decimal</code> → 整数（无符号、有符号） → <code>char</code>。</li>
+<li><code>string</code> 和 <code>bool</code> 不参与隐式转换规则。</li>
+</ul>
+<hr>
+<h2 id="10-2-知识点代码"><a href="#10-2-知识点代码" class="headerlink" title="10.2 知识点代码"></a>10.2 知识点代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">Lesson07_</span>类型转换_隐式转换_<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;类型转换——隐式转换&quot;</span>);<br>            <span class="hljs-comment">// 什么是类型转换</span><br><br>            <span class="hljs-comment">// 类型转换 就是不同变量类型之间的相互转换</span><br><br>            <span class="hljs-comment">// 隐式转换的基本规则——&gt;不同类型之间自动转换</span><br>            <span class="hljs-comment">// 大范围装小范围</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点一 相同大类型之间的转换</span><br><br>            <span class="hljs-comment">//有符号  long——&gt;int——&gt;short——&gt;sbyte</span><br>            <span class="hljs-built_in">long</span> longValue = <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">int</span> intValue = <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">short</span> shortValue = <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">sbyte</span> sbyteValue = <span class="hljs-number">1</span>;<br><br>            <span class="hljs-comment">//可以用大范围 装小范围的 类型 （隐式转换）</span><br><br>            <span class="hljs-comment">//隐式转换 int隐式转换成了long 因为long的范围比int大</span><br>            longValue = intValue;<br><br>            <span class="hljs-comment">//不能够用小范围的类型去装在大范围的类型 会报错</span><br>            <span class="hljs-comment">//intValue = longValue;</span><br><br><br>            longValue = intValue;<br>            longValue = shortValue;<br>            longValue = sbyteValue;<br><br>            intValue = shortValue;<br>            intValue = sbyteValue;<br><br>            shortValue = sbyteValue;<br><br><br>            <span class="hljs-comment">//无符号 ulong——&gt;uint——&gt;ushort——&gt;byte</span><br>            <span class="hljs-built_in">ulong</span> ulongValue = <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">uint</span> uintValue = <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">ushort</span> ushortValue = <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">byte</span> byteValue = <span class="hljs-number">1</span>;<br><br>            ulongValue = uintValue;<br>            ulongValue = ushortValue;<br>            ulongValue = byteValue;<br><br>            uintValue = ushortValue;<br>            uintValue = byteValue;<br><br>            ushortValue = byteValue;<br><br><br>            <span class="hljs-comment">//浮点数  decimal    double——&gt;float</span><br>            <span class="hljs-built_in">decimal</span> decimalValue = <span class="hljs-number">1.1</span>m;<br>            <span class="hljs-built_in">double</span> doubleValue = <span class="hljs-number">1.1</span>;<br>            <span class="hljs-built_in">float</span> floatValue = <span class="hljs-number">1.1f</span>;<br><br>            <span class="hljs-comment">//decimal这个类型 没有办法用隐式转换的形式 去存储 double和float</span><br>            <span class="hljs-comment">//decimalValue = doubleValue;</span><br>            <span class="hljs-comment">//decimalValue = floatValue;</span><br><br>            <span class="hljs-comment">//float 是可以隐式转换成 double</span><br>            doubleValue = floatValue;<br><br>            <span class="hljs-comment">//特殊类型  bool char string</span><br>            <span class="hljs-comment">// 他们之间 不存在隐式转换</span><br>            <span class="hljs-built_in">bool</span> boolValue = <span class="hljs-literal">true</span>;<br>            <span class="hljs-built_in">char</span> charValue = <span class="hljs-string">&#x27;A&#x27;</span>;<br>            <span class="hljs-built_in">string</span> stringValue = <span class="hljs-string">&quot;123123&quot;</span>;<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点二 不同大类型之间的转换</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 无符号和有符号之间</span><br>            <span class="hljs-comment">//无符号 不能装负数的</span><br>            <span class="hljs-built_in">byte</span> byteValue2 = <span class="hljs-number">1</span>; <span class="hljs-comment">//0~255</span><br>            <span class="hljs-built_in">ushort</span> ushortValue2 = <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">uint</span> uintValue2 = <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">ulong</span> ulongValue2 = <span class="hljs-number">1</span>;<br>            <span class="hljs-comment">//有符号</span><br>            <span class="hljs-built_in">sbyte</span> sbyteValue2 = <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">short</span> shortValue2 = <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">int</span> intValue2 = <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">long</span> longValue2 = <span class="hljs-number">1</span>;<br><br>            <span class="hljs-comment">//无符号装有符号 </span><br>            <span class="hljs-comment">// 有符号的变量 是不能够 隐式转换成 无符号的</span><br>            <span class="hljs-comment">//都会报错</span><br>            <span class="hljs-comment">//byteValue2 = sbyteValue2;</span><br>            <span class="hljs-comment">//ushortValue2 = sbyteValue2;</span><br>            <span class="hljs-comment">//ulongValue2 = sbyteValue2;</span><br><br>            <span class="hljs-comment">//有符号装无符号 </span><br>            <span class="hljs-comment">// 有符号变量 是可以 装 无符号变量的 前提是 范围一定要是涵盖的 存在隐式转换</span><br>            <span class="hljs-comment">//intValue2 = uintValue2;//因为 无符号的变量 可能会超过 这个有符号变量的范围</span><br>            intValue2 = byteValue2;<span class="hljs-comment">// 因为 无符号的变量 不管是多少 都在 有符号变量的范围内</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 浮点数和整数（有、无符号）之间</span><br>            <span class="hljs-comment">//浮点数装整数 整形转为浮点数 是存在隐式转换的</span><br>            <span class="hljs-built_in">float</span> floatValue2 = <span class="hljs-number">1.1f</span>;<br>            <span class="hljs-built_in">double</span> doubleValue2 = <span class="hljs-number">1.1</span>;<br>            <span class="hljs-built_in">decimal</span> decimalValue2 = <span class="hljs-number">1.1</span>m;<br><br>            <span class="hljs-comment">//浮点数 是可以装载任何类型的 整数的</span><br><br>            <span class="hljs-comment">//float</span><br>            floatValue2 = longValue2;<br>            floatValue2 = intValue2;<br>            floatValue2 = shortValue2;<br>            floatValue2 = sbyteValue2;<br><br>            floatValue2 = ulongValue2;<br>            floatValue2 = uintValue2;<br>            floatValue2 = ushortValue2;<br>            floatValue2 = byteValue2;<br><br>            floatValue2 = <span class="hljs-number">10000000000000000000</span>;<br>            Console.WriteLine(floatValue2);<span class="hljs-comment">//1E+19</span><br><br>            <span class="hljs-comment">//double</span><br>            doubleValue2 = longValue2;<br>            doubleValue2 = intValue2;<br>            doubleValue2 = shortValue2;<br>            doubleValue2 = sbyteValue2;<br><br>            doubleValue2 = ulongValue2;<br>            doubleValue2 = uintValue2;<br>            doubleValue2 = ushortValue2;<br>            doubleValue2 = byteValue2;<br><br>            doubleValue2 = <span class="hljs-number">10000000000000000000</span>;<br>            Console.WriteLine(doubleValue2);<span class="hljs-comment">//1E+19</span><br><br><br>            <span class="hljs-comment">//decimal 不能隐式存储 float和double</span><br>            <span class="hljs-comment">//但是它可以隐式的存储整形</span><br>            decimalValue = longValue2;<br>            decimalValue = ulongValue2;<br><br>            <span class="hljs-comment">// double ——&gt; float ——&gt; 所有整形（无符号、有符号）</span><br>            <span class="hljs-comment">// decimal ——&gt; 所有整形（无符号、有符号）</span><br><br>            <span class="hljs-comment">//整数装浮点数</span><br>            <span class="hljs-comment">//整数是不能隐式存储 浮点数  因为 整数 不能存小数</span><br><br>            <span class="hljs-comment">//报错</span><br>            <span class="hljs-comment">//intValue2 = floatValue2;</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 特殊类型和其它类型之间</span><br><br><br>            <span class="hljs-built_in">bool</span> boolValue2 = <span class="hljs-literal">true</span>;<br>            <span class="hljs-built_in">char</span> charValue2 = <span class="hljs-string">&#x27;A&#x27;</span>;<br>            <span class="hljs-built_in">string</span> stringValue2 = <span class="hljs-string">&quot;1231&quot;</span>;<br><br>            <span class="hljs-comment">//bool bool没有办法和其它类型 相互隐式转换</span><br><br>            <span class="hljs-comment">//boolValue2 = intValue2;</span><br>            <span class="hljs-comment">//boolValue2 = uintValue2;</span><br>            <span class="hljs-comment">//boolValue2 = floatValue2;</span><br><br>            <span class="hljs-comment">//intValue2 = boolValue2;</span><br>            <span class="hljs-comment">//uintValue2 = boolValue2;</span><br>            <span class="hljs-comment">//floatValue2 = boolValue2;</span><br><br>            <span class="hljs-comment">//boolValue2 = charValue2;</span><br>            <span class="hljs-comment">//charValue2 = boolValue2;</span><br>            <span class="hljs-comment">//boolValue2 = stringValue2;</span><br>            <span class="hljs-comment">//stringValue2 = boolValue2;</span><br><br><br>            <span class="hljs-comment">//char char 没有办法隐式的存储 其它类型的变量</span><br><br>            <span class="hljs-comment">//charValue2 = intValue2;</span><br>            <span class="hljs-comment">//charValue2 = floatValue2;</span><br>            <span class="hljs-comment">//charValue2 = uintValue2;</span><br>            <span class="hljs-comment">//charValue2 = stringValue2;</span><br><br>            <span class="hljs-comment">//char类型 可以隐式的转换成 整形和浮点型</span><br>            <span class="hljs-comment">//其实是转为int类型</span><br>            <span class="hljs-comment">//然后int类型又隐式转换为其他可以转换的类型</span><br>            <span class="hljs-comment">//所以对于short和byte等这种存储范围小于int的类型</span><br>            <span class="hljs-comment">//无法表现为隐式转换</span><br>            <span class="hljs-comment">//char隐式转换成 数值类型是 </span><br>            <span class="hljs-comment">//对应的数字 其实是一个 ASCII码 </span><br>            <span class="hljs-comment">// 计算机里面存储 2进制</span><br>            <span class="hljs-comment">// 字符 中文 英文 标点符号 在计算机中都是一个数字</span><br>            <span class="hljs-comment">// 一个字符 对应一个数字 ASCII码就是一种对应关系</span><br>            intValue2 = charValue2;<br>            Console.WriteLine(intValue2);<span class="hljs-comment">// 65 因为charValue2赋值为A A的ASCII码是65</span><br>            floatValue2 = charValue2;<br>            Console.WriteLine(floatValue2);<span class="hljs-comment">// 65 因为charValue2赋值为A A的ASCII码是65</span><br>            uintValue2 = charValue2;<br>            Console.WriteLine(uintValue2);<span class="hljs-comment">// 65 因为charValue2赋值为A A的ASCII码是65</span><br>            decimalValue2 = charValue2;<br>            Console.WriteLine(uintValue2);<span class="hljs-comment">// 65 因为charValue2赋值为A A的ASCII码是65</span><br><br>            <span class="hljs-comment">//string 类型 无法和其它类型进行隐式转换</span><br><br>            <span class="hljs-comment">//stringValue2 = charValue2;</span><br><br>            <span class="hljs-comment">//intValue2 = stringValue2;</span><br>            <span class="hljs-comment">//uintValue2 = stringValue2;</span><br>            <span class="hljs-comment">//floatValue2 = stringValue2;</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br><br>            <span class="hljs-comment">// 总结</span><br>            <span class="hljs-comment">// 隐式转换 规则</span><br>            <span class="hljs-comment">// 高精度（大范围）装低精度（小范围）</span><br>            <span class="hljs-comment">// double ——&gt; float ——&gt; 整数（无符号、有符号）——&gt;char</span><br>            <span class="hljs-comment">// decimal ——&gt; 整数（无符号、有符号）——&gt;char</span><br>            <span class="hljs-comment">// string 和 bool 不参与隐式转换规则的</span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="10-3-练习题"><a href="#10-3-练习题" class="headerlink" title="10.3 练习题"></a>10.3 练习题</h2><h3 id="数据类型的隐式转换例子"><a href="#数据类型的隐式转换例子" class="headerlink" title="数据类型的隐式转换例子"></a>数据类型的隐式转换例子</h3><p>数据类型的隐式转换发生在大范围存储到小范围的情况下，例如：</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 大范围存小范围</span><br><span class="hljs-comment">// double——&gt;float ——&gt; 整形（无符号、有符号）——&gt; char</span><br><span class="hljs-comment">// decimal ——&gt; 整形（无符号、有符号）——&gt; char</span><br><span class="hljs-comment">// long ——&gt;int ——&gt; short ——&gt; sbyte</span><br><span class="hljs-comment">// ulong ——&gt; uint ——&gt; ushort ——&gt; byte</span><br><span class="hljs-comment">// 无符号 没法 隐式存储 有符号的</span><br><span class="hljs-comment">// 有符号的 可以 隐式存储 无符号（范围大小）</span><br><br><span class="hljs-comment">//例如</span><br><span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>;<br><span class="hljs-built_in">short</span> s = <span class="hljs-number">1</span>;<br>i = s;<br></code></pre></td></tr></table></figure>
+
+<p>在这个例子中，<code>short</code> 类型的变量 <code>s</code> 被隐式转换为 <code>int</code> 类型的变量 <code>i</code>。因为 <code>int</code> 类型的范围大于 <code>short</code> 类型，所以这是一个合法的隐式转换。</p>
+<h3 id="字符转换成数字并打印"><a href="#字符转换成数字并打印" class="headerlink" title="字符转换成数字并打印"></a>字符转换成数字并打印</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> tao = <span class="hljs-string">&#x27;韬&#x27;</span>;<br>Console.WriteLine(tao); <span class="hljs-comment">// 38892</span><br><br><span class="hljs-built_in">int</span> lao = <span class="hljs-string">&#x27;老&#x27;</span>;<br>Console.WriteLine(lao); <span class="hljs-comment">// 32769</span><br><br><span class="hljs-built_in">int</span> shi = <span class="hljs-string">&#x27;狮&#x27;</span>;<br>Console.WriteLine(shi); <span class="hljs-comment">// 29422</span><br><br>Console.WriteLine(tao + lao + shi); <span class="hljs-comment">// 101283</span><br><br><span class="hljs-comment">// 加了不能运算的字符串才会拼接，自动调用ToString()方法</span><br>Console.WriteLine(<span class="hljs-string">&quot;韬老狮对应的数字编号：&quot;</span> + tao + lao + shi);<br><span class="hljs-comment">// 韬老狮对应的数字编号：388923276929422</span><br></code></pre></td></tr></table></figure>
+
+<p>在这个例子中，将字符 ‘韬’、’老’、’狮’ 转换成数字，并将它们相加。注意，这里的数字是字符的 ASCII 码值。</p>
+<hr>
+<h2 id="10-4-练习题代码"><a href="#10-4-练习题代码" class="headerlink" title="10.4 练习题代码"></a>10.4 练习题代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">Lesson07_</span>练习题<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;隐式转换练习题&quot;</span>);<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题一</span><br>            <span class="hljs-comment">//什么情况下会出现数据类型的隐式转换，请举例说明</span><br>            <span class="hljs-comment">// 大范围存小范围</span><br>            <span class="hljs-comment">// double——&gt;float ——&gt; 整形（无符号、有符号）——&gt; char</span><br>            <span class="hljs-comment">// decimal ——&gt; 整形（无符号、有符号）——&gt; char</span><br>            <span class="hljs-comment">// long ——&gt;int ——&gt; short ——&gt; sbyte</span><br>            <span class="hljs-comment">// ulong ——&gt; uint ——&gt; ushort ——&gt; byte</span><br>            <span class="hljs-comment">// 无符号 没法 隐式存储 有符号的</span><br>            <span class="hljs-comment">// 有符号的 可以 隐式存储 无符号（范围大小）</span><br><br>            <span class="hljs-comment">//例如</span><br>            <span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>;<br>            <span class="hljs-built_in">short</span> s = <span class="hljs-number">1</span>;<br>            i = s;<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题二</span><br>            <span class="hljs-comment">//请将自己名字的每一个字符转换成数字并打印出来</span><br>            <span class="hljs-comment">//char t = &#x27;韬&#x27;;</span><br>            <span class="hljs-comment">//ASCII 码</span><br>            <span class="hljs-built_in">int</span> tao = <span class="hljs-string">&#x27;韬&#x27;</span>;<br>            Console.WriteLine(tao);<span class="hljs-comment">//38892</span><br>            <span class="hljs-built_in">int</span> lao = <span class="hljs-string">&#x27;老&#x27;</span>;<br>            Console.WriteLine(lao);<span class="hljs-comment">//32769</span><br>            <span class="hljs-built_in">int</span> shi = <span class="hljs-string">&#x27;狮&#x27;</span>;<br>            Console.WriteLine(shi);<span class="hljs-comment">//29422</span><br>            Console.WriteLine(tao + lao + shi);<span class="hljs-comment">//会进行数字运算</span><br><br><br>            <span class="hljs-comment">//加了不能运算的字符串才会拼接自动调用ToString()的方法</span><br>            Console.WriteLine(<span class="hljs-string">&quot;韬老狮对应的数字编号：&quot;</span> + tao + lao + shi);<br>            <span class="hljs-comment">//韬老狮对应的数字编号：388923276929422</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 785293209@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2024 Tao
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 622px;
+    }
+    .nav.fullscreen {
+        margin-left: -622px;
+    }
+    .nav-left {
+        width: 200px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 572px;
+        }
+        .nav.fullscreen {
+            margin-left: -572px;
+        }
+        .nav-left {
+            width: 180px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 572px;
+            margin-left: -572px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
