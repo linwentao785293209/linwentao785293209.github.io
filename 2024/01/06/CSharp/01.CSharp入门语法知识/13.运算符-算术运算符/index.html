@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>【C#入门语法知识】| 13.运算符-算术运算符 | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 ">
+  <meta name="description" content="【C#入门语法知识】| 13.运算符-算术运算符 | 人间自有韬哥在的游戏开发博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="13.运算符-算术运算符 13.1 知识点赋值符号 (&#x3D;)先看右侧，再看左侧，将右侧的值赋值给左侧的变量。 string myName &#x3D; &quot;林文韬&quot;;int myAge &#x3D; 18;float myHeight &#x3D; 177.5f;  算术运算符加法 (+)用自己计算，先算右侧结果，再赋值给左侧变量。 int i &#x3D; 1;i &#x3D; i + 2;Console.WriteL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【C#入门语法知识】| 13.运算符-算术运算符">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E8%BF%90%E7%AE%97%E7%AC%A6-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6/index.html">
+<meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
+<meta property="og:description" content="13.运算符-算术运算符 13.1 知识点赋值符号 (&#x3D;)先看右侧，再看左侧，将右侧的值赋值给左侧的变量。 string myName &#x3D; &quot;林文韬&quot;;int myAge &#x3D; 18;float myHeight &#x3D; 177.5f;  算术运算符加法 (+)用自己计算，先算右侧结果，再赋值给左侧变量。 int i &#x3D; 1;i &#x3D; i + 2;Console.WriteL">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-01-06T03:16:43.000Z">
+<meta property="article:modified_time" content="2024-01-06T03:25:06.452Z">
+<meta property="article:author" content="人间自有韬哥在">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="CSharp入门">
+<meta property="article:tag" content="语法知识">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>人间自有韬哥在</span>
+</div>
+
+<div class="icon">
+    
+        
+    
+        
+            <a title="github"
+               href="https://github.com/linwentao785293209"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:785293209@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=785293209&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(13)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="CSharp">
+            <i class="fold iconfont icon-right"></i>
+            CSharp
+            <small>(13)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CSharp&lt;---&gt;CSharp入门语法知识">
+            
+            CSharp入门语法知识
+            <small>(13)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="13">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>开发环境</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>语法知识</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp入门</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E8%BF%90%E7%AE%97%E7%AC%A6-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 13.运算符-算术运算符">【C#入门语法知识】| 13.运算符-算术运算符</span>
+            <span class="post-date" title="2024-01-06 11:16:43">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 12.异常捕获">【C#入门语法知识】| 12.异常捕获</span>
+            <span class="post-date" title="2024-01-06 10:51:02">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E6%98%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 11.类型转换-显式转换">【C#入门语法知识】| 11.类型转换-显式转换</span>
+            <span class="post-date" title="2024-01-06 10:36:38">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 10.类型转换-隐式转换">【C#入门语法知识】| 10.类型转换-隐式转换</span>
+            <span class="post-date" title="2024-01-06 10:26:31">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 9.转义字符">【C#入门语法知识】| 9.转义字符</span>
+            <span class="post-date" title="2024-01-06 10:05:44">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E5%B8%B8%E9%87%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 8.常量">【C#入门语法知识】| 8.常量</span>
+            <span class="post-date" title="2024-01-06 10:00:10">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 7.变量的命名规则">【C#入门语法知识】| 7.变量的命名规则</span>
+            <span class="post-date" title="2024-01-05 20:19:52">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 6.变量的本质">【C#入门语法知识】| 6.变量的本质</span>
+            <span class="post-date" title="2024-01-05 19:39:42">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%8F%98%E9%87%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 5.变量">【C#入门语法知识】| 5.变量</span>
+            <span class="post-date" title="2024-01-05 12:52:35">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 4.第一个应用程序">【C#入门语法知识】| 4.第一个应用程序</span>
+            <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/03/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA/"
+           data-tag="CSharp,CSharp入门,语法知识,开发环境"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 3.开发环境的搭建">【C#入门语法知识】| 3.开发环境的搭建</span>
+            <span class="post-date" title="2024-01-03 23:35:11">2024/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/02/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 2.程序语言是什么">【C#入门语法知识】| 2.程序语言是什么</span>
+            <span class="post-date" title="2024-01-02 21:20:00">2024/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/01/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 1.概述">【C#入门语法知识】| 1.概述</span>
+            <span class="post-date" title="2024-01-01 12:41:48">2024/01/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-CSharp/01.CSharp入门语法知识/13.运算符-算术运算符" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">【C#入门语法知识】| 13.运算符-算术运算符</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="CSharp">CSharp</a> > 
+            
+            <a  data-rel="CSharp&lt;---&gt;CSharp入门语法知识">CSharp入门语法知识</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">CSharp</a>
+            
+            <a class="color4">CSharp入门</a>
+            
+            <a class="color5">语法知识</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-01-06 11:25:06'>2024-01-06 11:16</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#13-%E8%BF%90%E7%AE%97%E7%AC%A6-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">13.运算符-算术运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#13-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">13.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%8B%E5%80%BC%E7%AC%A6%E5%8F%B7"><span class="toc-text">赋值符号 (&#x3D;)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">算术运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E6%B3%95"><span class="toc-text">加法 (+)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%8F%E6%B3%95"><span class="toc-text">减法 (-)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B9%98%E6%B3%95"><span class="toc-text">乘法 (*)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%99%A4%E6%B3%95"><span class="toc-text">除法 (&#x2F;)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%96%E4%BD%99"><span class="toc-text">取余 (%)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6%E7%9A%84%E4%BC%98%E5%85%88%E7%BA%A7"><span class="toc-text">算术运算符的优先级</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%90%88%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">复合运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%A2%9E%E5%87%8F%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-text">自增减运算符</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">13.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">13.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E4%B9%89%E4%B8%80%E4%B8%AA%E5%8F%98%E9%87%8F%E5%AD%98%E5%82%A8%E4%BD%A0%E7%9A%84%E5%B9%B4%E9%BE%84%EF%BC%8C%E5%8D%81%E5%B9%B4%E5%90%8E%E4%BD%A0%E7%9A%84%E5%B9%B4%E9%BE%84%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%9F%E8%AF%B7%E8%BE%93%E5%87%BA%E5%88%B0%E6%8E%A7%E5%88%B6%E5%8F%B0"><span class="toc-text">定义一个变量存储你的年龄，十年后你的年龄是多少？请输出到控制台</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E4%B8%80%E4%B8%AA%E5%8D%8A%E5%BE%84%E4%B8%BA5%E7%9A%84%E5%9C%86%E7%9A%84%E9%9D%A2%E7%A7%AF%E5%92%8C%E5%91%A8%E9%95%BF"><span class="toc-text">计算一个半径为5的圆的面积和周长</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E4%BB%BB%E6%84%8F%E4%B8%89%E9%97%A8%E6%88%90%E7%BB%A9%E7%9A%84%E6%80%BB%E5%88%86%E3%80%81%E5%B9%B3%E5%9D%87%E5%88%86%E6%89%93%E5%8D%B0%E5%88%B0%E6%8E%A7%E5%88%B6%E5%8F%B0%E3%80%82%E4%B8%89%E9%97%A8%E6%88%90%E7%BB%A9%E5%9D%87%E4%B8%BA%E6%95%B4%E6%95%B0%E7%B1%BB%E5%9E%8B%EF%BC%88C-Unity-Math%EF%BC%89"><span class="toc-text">计算任意三门成绩的总分、平均分打印到控制台。三门成绩均为整数类型（C#  Unity  Math）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%95%86%E5%BA%97T%E6%81%A4%E7%9A%84%E4%BB%B7%E6%A0%BC%E4%B8%BA285%E5%85%83-%E4%BB%B6%EF%BC%8C%E8%A3%A4%E5%AD%90%E7%9A%84%E4%BB%B7%E6%A0%BC%E4%B8%BA720%E5%85%83-%E6%9D%A1%EF%BC%8C%E5%B0%8F%E6%9D%8E%E5%9C%A8%E8%AF%A5%E5%BA%97%E5%8D%96%E4%BA%862%E4%BB%B6T%E6%81%A4%E5%92%8C3%E6%9D%A1%E8%A3%A4%E5%AD%90%EF%BC%8C%E8%AF%B7%E8%AE%A1%E7%AE%97%E5%B0%8F%E6%9D%8E%E8%AF%A5%E4%BB%98%E5%A4%9A%E5%B0%91%E9%92%B1%EF%BC%9F%E6%89%933-8%E6%8A%98%E5%90%8E%E5%91%A2%EF%BC%9F"><span class="toc-text">商店T恤的价格为285元&#x2F;件，裤子的价格为720元&#x2F;条，小李在该店卖了2件T恤和3条裤子，请计算小李该付多少钱？打3.8折后呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E8%AF%B4%E6%98%8Enumber1%E5%92%8Cnumber2%E5%92%8Cnumber3%E7%9A%84%E7%BB%93%E6%9E%9C"><span class="toc-text">请说明number1和number2和number3的结果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%89%E4%B8%A4%E4%B8%AA%E6%95%B0a-99%EF%BC%8Cb-87%EF%BC%8C%E8%AF%B7%E5%86%99%E5%87%BA%E4%B8%A4%E7%A7%8D%E6%96%B9%E6%B3%95%E4%BA%A4%E6%8D%A2%E4%BB%96%E4%BB%AC%E7%9A%84%E5%80%BC%EF%BC%8C%E8%AE%A9a-87%EF%BC%8Cb-99"><span class="toc-text">有两个数a&#x3D;99，b&#x3D;87，请写出两种方法交换他们的值，让a &#x3D; 87，b&#x3D;99</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E6%8A%8A987652%E7%A7%92%E9%80%9A%E8%BF%87%E4%BB%A3%E7%A0%81%E8%BD%AC%E4%B8%BAn%E5%A4%A9n%E5%B0%8F%E6%97%B6n%E5%88%86%E9%92%9Fn%E7%A7%92%E6%98%BE%E7%A4%BA%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B8%AD"><span class="toc-text">请把987652秒通过代码转为n天n小时n分钟n秒显示在控制台中</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#13-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">13.4 练习题代码</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="13-运算符-算术运算符"><a href="#13-运算符-算术运算符" class="headerlink" title="13.运算符-算术运算符"></a>13.运算符-算术运算符</h1><hr>
+<h2 id="13-1-知识点"><a href="#13-1-知识点" class="headerlink" title="13.1 知识点"></a>13.1 知识点</h2><h3 id="赋值符号"><a href="#赋值符号" class="headerlink" title="赋值符号 (&#x3D;)"></a>赋值符号 (&#x3D;)</h3><p>先看右侧，再看左侧，将右侧的值赋值给左侧的变量。</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">string</span> myName = <span class="hljs-string">&quot;林文韬&quot;</span>;<br><span class="hljs-built_in">int</span> myAge = <span class="hljs-number">18</span>;<br><span class="hljs-built_in">float</span> myHeight = <span class="hljs-number">177.5f</span>;<br></code></pre></td></tr></table></figure>
+
+<h3 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h3><h4 id="加法"><a href="#加法" class="headerlink" title="加法 (+)"></a>加法 (+)</h4><p>用自己计算，先算右侧结果，再赋值给左侧变量。</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>;<br>i = i + <span class="hljs-number">2</span>;<br>Console.WriteLine(i); <span class="hljs-comment">// 3</span><br><br>i = <span class="hljs-number">1</span> + <span class="hljs-number">3</span> + <span class="hljs-number">89</span> + i + i;<br>Console.WriteLine(i); <span class="hljs-comment">// 99</span><br><br>i = <span class="hljs-number">1</span> + <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;<br>Console.WriteLine(i); <span class="hljs-comment">// 4</span><br><br><span class="hljs-built_in">int</span> i2 = <span class="hljs-number">1</span> + <span class="hljs-number">2</span> + <span class="hljs-number">4</span> + i;<br>Console.WriteLine(i2); <span class="hljs-comment">// 11</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="减法"><a href="#减法" class="headerlink" title="减法 (-)"></a>减法 (-)</h4><p>用自己计算，先算右侧结果，再赋值给左侧变量。</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> j = <span class="hljs-number">1</span>;<br>j = j - <span class="hljs-number">1</span>;<br>Console.WriteLine(j); <span class="hljs-comment">// 0</span><br><br>j = <span class="hljs-number">1</span> - <span class="hljs-number">2</span> - <span class="hljs-number">3</span>;<br>Console.WriteLine(j);<br>j = <span class="hljs-number">1</span> - j;<br>Console.WriteLine(j); <span class="hljs-comment">// 5</span><br><br><span class="hljs-built_in">int</span> j2 = <span class="hljs-number">1</span> - j - <span class="hljs-number">0</span>;<br>Console.WriteLine(j2); <span class="hljs-comment">// -4</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="乘法"><a href="#乘法" class="headerlink" title="乘法 (*)"></a>乘法 (*)</h4><p>用自己计算，先算右侧结果，再赋值给左侧变量。</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> c = <span class="hljs-number">1</span>;<br>c = c * <span class="hljs-number">10</span>;<br>Console.WriteLine(c); <span class="hljs-comment">// 10</span><br><br>c = <span class="hljs-number">1</span> * <span class="hljs-number">2</span> * <span class="hljs-number">3</span>;<br>Console.WriteLine(c); <span class="hljs-comment">// 6</span><br>c = <span class="hljs-number">2</span> * c * <span class="hljs-number">2</span>;<br>Console.WriteLine(c); <span class="hljs-comment">// 24</span><br><br><span class="hljs-built_in">int</span> c2 = c * <span class="hljs-number">2</span>;<br>Console.WriteLine(c2); <span class="hljs-comment">// 48</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="除法"><a href="#除法" class="headerlink" title="除法 (&#x2F;)"></a>除法 (&#x2F;)</h4><p>用自己计算，先算右侧结果，再赋值给左侧变量。</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> chu = <span class="hljs-number">1</span>;<br>chu = <span class="hljs-number">10</span> / chu;<br>Console.WriteLine(chu); <span class="hljs-comment">// 10</span><br><br>chu = <span class="hljs-number">1</span> / <span class="hljs-number">2</span>;<br>Console.WriteLine(chu); <span class="hljs-comment">// 0</span><br><br><span class="hljs-built_in">float</span> f = <span class="hljs-number">1</span> / <span class="hljs-number">2f</span>;<br>Console.WriteLine(f); <span class="hljs-comment">// 0.5</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="取余"><a href="#取余" class="headerlink" title="取余 (%)"></a>取余 (%)</h4><p>用自己计算，先算右侧结果，再赋值给左侧变量。</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> y = <span class="hljs-number">4</span>;<br><br>y = y % <span class="hljs-number">3</span>;<br>Console.WriteLine(y); <span class="hljs-comment">// 1</span><br><br>y = <span class="hljs-number">4</span> % <span class="hljs-number">3</span> % <span class="hljs-number">2</span>;<br>Console.WriteLine(y); <span class="hljs-comment">// 1</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="算术运算符的优先级"><a href="#算术运算符的优先级" class="headerlink" title="算术运算符的优先级"></a>算术运算符的优先级</h4><p>优先级是指在混合运算时的运算顺序，乘除取余优先级高于加减。</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> a = <span class="hljs-number">1</span> + <span class="hljs-number">2</span> * <span class="hljs-number">3</span> / <span class="hljs-number">2</span> + <span class="hljs-number">1</span> + <span class="hljs-number">2</span> * <span class="hljs-number">3</span>;<br>Console.WriteLine(a); <span class="hljs-comment">// 11</span><br><br>a = <span class="hljs-number">1</span> + <span class="hljs-number">4</span> % <span class="hljs-number">2</span> * <span class="hljs-number">3</span> / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;<br>Console.WriteLine(a); <span class="hljs-comment">// 2</span><br><br>a = <span class="hljs-number">1</span> + <span class="hljs-number">4</span> % (<span class="hljs-number">2</span> * <span class="hljs-number">3</span> / <span class="hljs-number">2</span>) + <span class="hljs-number">1</span>;<br>Console.WriteLine(a); <span class="hljs-comment">// 3</span><br><br>a = <span class="hljs-number">1</span> + (<span class="hljs-number">4</span> % (<span class="hljs-number">2</span> * (<span class="hljs-number">3</span> / <span class="hljs-number">2</span>))) + <span class="hljs-number">1</span>;<br>Console.WriteLine(a); <span class="hljs-comment">// 2</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="复合运算符"><a href="#复合运算符" class="headerlink" title="复合运算符"></a>复合运算符</h4><p>固定写法：运算符&#x3D;</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> i3 = <span class="hljs-number">1</span>;<br><br>i3 += <span class="hljs-number">2</span>;<br>Console.WriteLine(i3); <span class="hljs-comment">// 3</span><br><br>i3 = <span class="hljs-number">2</span>;<br>i3 += <span class="hljs-number">2</span>;<br>i3 -= <span class="hljs-number">2</span>;<br>i3 /= <span class="hljs-number">2</span>;<br>i3 *= <span class="hljs-number">2</span>;<br>i3 %= <span class="hljs-number">2</span>;<br>Console.WriteLine(i3); <span class="hljs-comment">// 0</span><br><br><span class="hljs-built_in">int</span> i4 = <span class="hljs-number">10</span>;<br>i4 += <span class="hljs-number">20</span> * <span class="hljs-number">2</span> / <span class="hljs-number">10</span>;<br>Console.WriteLine(i4); <span class="hljs-comment">// 14</span><br></code></pre></td></tr></table></figure>
+
+<p>注意：复合运算符只能进行一种运算，不能混合运算。</p>
+<h4 id="自增减运算符"><a href="#自增减运算符" class="headerlink" title="自增减运算符"></a>自增减运算符</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> a2 = <span class="hljs-number">1</span>;<br><br>a2++;<br>Console.WriteLine(a2); <span class="hljs-comment">// 2</span><br><br>++a2;<br>Console.WriteLine(a2); <span class="hljs-comment">// 3</span><br><br>Console.WriteLine(a2++); <span class="hljs-comment">// 1</span><br>Console.WriteLine(++a2); <span class="hljs-comment">// 3</span><br><br>a2--;<br>--a2;<br><br>Console.WriteLine(a2--); <span class="hljs-comment">// 1</span><br>Console.WriteLine(--a2); <span class="hljs-comment">// -1</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="13-2-知识点代码"><a href="#13-2-知识点代码" class="headerlink" title="13.2 知识点代码"></a>13.2 知识点代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><span class="hljs-keyword">using</span> System.ComponentModel.DataAnnotations;<br><span class="hljs-keyword">using</span> System.Reflection;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">Lesson10_</span>算术运算符<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;算术运算符&quot;</span>);<br><br>            <span class="hljs-comment">//算术运算符 是用于 数值类型变量计算的运算符</span><br>            <span class="hljs-comment">//它的返回结果是数值</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点一 赋值符号</span><br>            <span class="hljs-comment">// =</span><br>            <span class="hljs-comment">// 关键知识点 : </span><br>            <span class="hljs-comment">// 先看右侧 再看左侧 把右侧的值赋值给左侧的变量</span><br><br>            <span class="hljs-built_in">string</span> myName = <span class="hljs-string">&quot;林文韬&quot;</span>;<br>            <span class="hljs-built_in">int</span> myAge = <span class="hljs-number">18</span>;<br>            <span class="hljs-built_in">float</span> myHeight = <span class="hljs-number">177.5f</span>;<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点二 算术运算符</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 加 +</span><br><br>            <span class="hljs-comment">// 用自己计算 先算右侧结果 再赋值给左侧变量</span><br>            <span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>;<br>            i = i + <span class="hljs-number">2</span>;            <br>            Console.WriteLine(i);<span class="hljs-comment">// 3</span><br><br>            <span class="hljs-comment">// 连续运算 先算右侧结果 再赋值给左侧变量</span><br>            i = <span class="hljs-number">1</span> + <span class="hljs-number">3</span> + <span class="hljs-number">89</span> + i + i;<br>            Console.WriteLine(i);<span class="hljs-comment">// 99</span><br>            <br>            i = <span class="hljs-number">1</span> + <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;<br>            Console.WriteLine(i);<span class="hljs-comment">//4</span><br><br>            <span class="hljs-comment">// 初始化时就运算 即声明的时候就赋值 先算右侧结果 再赋值给左侧变量</span><br>            <span class="hljs-built_in">int</span> i2 = <span class="hljs-number">1</span> + <span class="hljs-number">2</span> + <span class="hljs-number">4</span> + i;<br>            Console.WriteLine(i2);<span class="hljs-comment">//11</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 减 -</span><br><br>            <span class="hljs-comment">// 用自己计算 先算右侧结果 再赋值给左侧变量</span><br>            <span class="hljs-built_in">int</span> j = <span class="hljs-number">1</span>;<br>            j = j - <span class="hljs-number">1</span>;<br>            Console.WriteLine(j);<span class="hljs-comment">//0</span><br><br>            <span class="hljs-comment">// 连续运算 先算右侧结果 再赋值给左侧变量</span><br>            j = <span class="hljs-number">1</span> - <span class="hljs-number">2</span> - <span class="hljs-number">3</span>;<br>            Console.WriteLine(j);<br>            j = <span class="hljs-number">1</span> - j;<span class="hljs-comment">//-4</span><br>            Console.WriteLine(j);<span class="hljs-comment">//5</span><br><br>            <span class="hljs-comment">// 初始化时就运算  先算右侧结果 再赋值给左侧变量</span><br>            <span class="hljs-built_in">int</span> j2 = <span class="hljs-number">1</span> - j - <span class="hljs-number">0</span>;<br>            Console.WriteLine(j2);<span class="hljs-comment">//-4</span><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 乘 *</span><br><br>            <span class="hljs-comment">// 用自己计算 先算右侧结果 再赋值给左侧变量</span><br>            <span class="hljs-built_in">int</span> c = <span class="hljs-number">1</span>;<br>            c = c * <span class="hljs-number">10</span>;<br>            Console.WriteLine(c);<span class="hljs-comment">//10</span><br><br>            <span class="hljs-comment">// 连续运算 先算右侧结果 再赋值给左侧变量</span><br>            c = <span class="hljs-number">1</span> * <span class="hljs-number">2</span> * <span class="hljs-number">3</span>;<br>            Console.WriteLine(c);<span class="hljs-comment">//6</span><br>            c = <span class="hljs-number">2</span> * c * <span class="hljs-number">2</span>;<br>            Console.WriteLine(c);<span class="hljs-comment">//24</span><br><br>            <span class="hljs-comment">// 初始化时就运算  先算右侧结果 再赋值给左侧变量</span><br>            <span class="hljs-built_in">int</span> c2 = c * <span class="hljs-number">2</span>;<br>            Console.WriteLine(c2);<span class="hljs-comment">//48</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 除 / </span><br><br>            <span class="hljs-comment">// 用自己计算 先算右侧结果 再赋值给左侧变量</span><br>            <span class="hljs-built_in">int</span> chu = <span class="hljs-number">1</span>;<br>            chu = <span class="hljs-number">10</span> / chu;<br>            Console.WriteLine(chu);<span class="hljs-comment">//10</span><br><br>            <span class="hljs-comment">// 连续运算 先算右侧结果 再赋值给左侧变量</span><br><br><br>            <span class="hljs-comment">// 初始化时就运算  先算右侧结果 再赋值给左侧变量</span><br><br><br>            <span class="hljs-comment">//默认的整数 是int 如果用来做除法运算 要注意 会丢失小数点后的小数</span><br>            chu = <span class="hljs-number">1</span>;<br>            chu = <span class="hljs-number">1</span> / <span class="hljs-number">2</span>;<br>            Console.WriteLine(chu);<span class="hljs-comment">//0</span><br><br>            <span class="hljs-comment">//如果你想用浮点数来存储 一定是 在运算时要有浮点数的特征</span><br>            <span class="hljs-built_in">float</span> f = <span class="hljs-number">1</span> / <span class="hljs-number">2f</span>;<br>            Console.WriteLine(f);<span class="hljs-comment">//0.5</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 取余 %</span><br><br>            <span class="hljs-comment">// 用自己计算 先算右侧结果 再赋值给左侧变量</span><br>            <span class="hljs-built_in">int</span> y = <span class="hljs-number">4</span>;<br><br>            <span class="hljs-comment">// 4 / 3 得到余数 1</span><br>            y = y % <span class="hljs-number">3</span>;<br>            Console.WriteLine(y);<span class="hljs-comment">//1</span><br><br>            <span class="hljs-comment">// 连续运算 先算右侧结果 再赋值给左侧变量</span><br>            y = <span class="hljs-number">4</span> % <span class="hljs-number">3</span> % <span class="hljs-number">2</span>;<br>            Console.WriteLine(y);<span class="hljs-comment">//1</span><br><br>            <span class="hljs-comment">// 初始化时就运算  先算右侧结果 再赋值给左侧变量</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点三 算术运算符的 优先级</span><br><br>            <span class="hljs-comment">//优先级 是指 在混合运算时的运算顺序</span><br><br>            <span class="hljs-comment">//乘除取余 优先级高于 加减 先算乘除取余 后算加减</span><br>            <span class="hljs-comment">// 1 + 3 + 1 + 6</span><br>            <span class="hljs-built_in">int</span> a = <span class="hljs-number">1</span> + <span class="hljs-number">2</span> * <span class="hljs-number">3</span> / <span class="hljs-number">2</span> + <span class="hljs-number">1</span> + <span class="hljs-number">2</span> * <span class="hljs-number">3</span>;<br>            Console.WriteLine(a);<span class="hljs-comment">//11</span><br><br>            a = <span class="hljs-number">1</span> + <span class="hljs-number">4</span> % <span class="hljs-number">2</span> * <span class="hljs-number">3</span> / <span class="hljs-number">2</span> + <span class="hljs-number">1</span>;<br>            Console.WriteLine(a);<span class="hljs-comment">//2</span><br><br>            <span class="hljs-comment">//括号可以改变优先级 优先计算括号内内容</span><br>            a = <span class="hljs-number">1</span> + <span class="hljs-number">4</span> % (<span class="hljs-number">2</span> * <span class="hljs-number">3</span> / <span class="hljs-number">2</span>) + <span class="hljs-number">1</span>;<br>            Console.WriteLine(a);<span class="hljs-comment">//3</span><br><br>            <span class="hljs-comment">//多组括号 先算最里层括号 依次往外算</span><br>            a = <span class="hljs-number">1</span> + (<span class="hljs-number">4</span> % (<span class="hljs-number">2</span> * (<span class="hljs-number">3</span> / <span class="hljs-number">2</span>))) + <span class="hljs-number">1</span>;<br>            Console.WriteLine(a);<span class="hljs-comment">//2</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点四 算术运算符的 复合运算符</span><br><br>            <span class="hljs-comment">// 固定写法 运算符=</span><br>            <span class="hljs-comment">// += -= *= /= %=</span><br>            <span class="hljs-comment">//复合运算符 是用于 自己=自己进行运算</span><br><br><br>            <span class="hljs-built_in">int</span> i3 = <span class="hljs-number">1</span>;<br>            i3 = i3 + <span class="hljs-number">2</span>;<br>            Console.WriteLine(i3);<span class="hljs-comment">//3</span><br><br>            i3 = <span class="hljs-number">1</span>;<br>            i3 += <span class="hljs-number">2</span>;<span class="hljs-comment">//i3 = i3 + 2;</span><br>            Console.WriteLine(i3);<span class="hljs-comment">//3</span><br><br><br>            i3 = <span class="hljs-number">2</span>;<br>            i3 += <span class="hljs-number">2</span>;<span class="hljs-comment">//4</span><br>            i3 -= <span class="hljs-number">2</span>;<span class="hljs-comment">//2</span><br>            i3 /= <span class="hljs-number">2</span>;<span class="hljs-comment">//1</span><br>            i3 *= <span class="hljs-number">2</span>;<span class="hljs-comment">//2</span><br>            i3 %= <span class="hljs-number">2</span>;<span class="hljs-comment">//0</span><br>            Console.WriteLine(i3);<span class="hljs-comment">//0</span><br><br>            <span class="hljs-built_in">int</span> i4 = <span class="hljs-number">10</span>;<br>            <span class="hljs-comment">// i4 += 4</span><br>            i4 += <span class="hljs-number">20</span> * <span class="hljs-number">2</span> / <span class="hljs-number">10</span>;<br>            Console.WriteLine(i4);<span class="hljs-comment">//14</span><br><br>            <span class="hljs-comment">//注意：复合运算符 只能进行一种运算 不能混合运算</span><br>            <span class="hljs-comment">//i4 */-= 2;</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点五 算术运算符的 自增减</span><br><br>            <span class="hljs-built_in">int</span> a2 = <span class="hljs-number">1</span>;<br>            a2 = a2 + <span class="hljs-number">1</span>;<br>            <br>            a2 = <span class="hljs-number">1</span>;<br>            a2 += <span class="hljs-number">1</span>;<br><br>            <span class="hljs-comment">//自增运算符  让自己+1 </span><br>            a2 = <span class="hljs-number">1</span>;<br>            a2++;<span class="hljs-comment">//先用再加</span><br>            Console.WriteLine(a2);<span class="hljs-comment">//2</span><br>            ++a2;<span class="hljs-comment">//先加再用</span><br>            Console.WriteLine(a2);<span class="hljs-comment">//3</span><br><br>            a2 = <span class="hljs-number">1</span>;<br>            Console.WriteLine(a2++ );<span class="hljs-comment">//先用再加 //1</span><br>            <span class="hljs-comment">//2</span><br>            Console.WriteLine(++a2);<span class="hljs-comment">//先加再用 //3</span><br><br>            <span class="hljs-comment">//自减运算符 让自己-1</span><br>            a2 = <span class="hljs-number">1</span>;<br>            a2--;<span class="hljs-comment">//先用再减</span><br>            --a2;<span class="hljs-comment">//先减再用</span><br><br>            a2 = <span class="hljs-number">1</span>;<br>            Console.WriteLine(a2--);<span class="hljs-comment">//先用再减 //1</span><br>            <span class="hljs-comment">//0</span><br>            Console.WriteLine(--a2);<span class="hljs-comment">//先减再用 //-1</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="13-3-练习题"><a href="#13-3-练习题" class="headerlink" title="13.3 练习题"></a>13.3 练习题</h2><h3 id="定义一个变量存储你的年龄，十年后你的年龄是多少？请输出到控制台"><a href="#定义一个变量存储你的年龄，十年后你的年龄是多少？请输出到控制台" class="headerlink" title="定义一个变量存储你的年龄，十年后你的年龄是多少？请输出到控制台"></a>定义一个变量存储你的年龄，十年后你的年龄是多少？请输出到控制台</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> myAge = <span class="hljs-number">18</span>;<br>myAge = myAge + <span class="hljs-number">10</span>;<br>Console.WriteLine(<span class="hljs-string">&quot;十年后我的年龄是&quot;</span> + myAge); <span class="hljs-comment">// 十年后我的年龄是28</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="计算一个半径为5的圆的面积和周长"><a href="#计算一个半径为5的圆的面积和周长" class="headerlink" title="计算一个半径为5的圆的面积和周长"></a>计算一个半径为5的圆的面积和周长</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">float</span> r = <span class="hljs-number">5</span>;<br><span class="hljs-built_in">float</span> PI = <span class="hljs-number">3.1415926f</span>;<br><br><span class="hljs-built_in">float</span> mianJi = PI * r * r;<br>Console.WriteLine(<span class="hljs-string">&quot;圆的面积是&quot;</span> + mianJi); <span class="hljs-comment">// 圆的面积是78.5</span><br><br><span class="hljs-built_in">float</span> zhouChang = <span class="hljs-number">2</span> * PI * r;<br>Console.WriteLine(<span class="hljs-string">&quot;圆的周长是&quot;</span> + zhouChang); <span class="hljs-comment">// 圆的周长是31.400002</span><br><br>Console.WriteLine(<span class="hljs-string">&quot;圆的面积是&quot;</span> + <span class="hljs-number">3.14f</span> * <span class="hljs-number">5</span> * <span class="hljs-number">5</span>); <span class="hljs-comment">// 圆的面积是78.5</span><br>Console.WriteLine(<span class="hljs-string">&quot;圆的周长是&quot;</span> + <span class="hljs-number">2</span> * <span class="hljs-number">3.14f</span> * <span class="hljs-number">5</span>); <span class="hljs-comment">// 圆的周长是31.400002</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="计算任意三门成绩的总分、平均分打印到控制台。三门成绩均为整数类型（C-Unity-Math）"><a href="#计算任意三门成绩的总分、平均分打印到控制台。三门成绩均为整数类型（C-Unity-Math）" class="headerlink" title="计算任意三门成绩的总分、平均分打印到控制台。三门成绩均为整数类型（C#  Unity  Math）"></a>计算任意三门成绩的总分、平均分打印到控制台。三门成绩均为整数类型（C#  Unity  Math）</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> cSharp = <span class="hljs-number">81</span>;<br><span class="hljs-built_in">int</span> unity = <span class="hljs-number">70</span>;<br><span class="hljs-built_in">int</span> math = <span class="hljs-number">90</span>;<br><br><span class="hljs-built_in">int</span> sum = cSharp + unity + math;<br><span class="hljs-built_in">float</span> avg = sum / <span class="hljs-number">3f</span>;<br><br>Console.WriteLine(<span class="hljs-string">&quot;总分为&quot;</span> + sum); <span class="hljs-comment">// 总分为241</span><br>Console.WriteLine(<span class="hljs-string">&quot;平均分&quot;</span> + avg); <span class="hljs-comment">// 平均分80.333336</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="商店T恤的价格为285元-件，裤子的价格为720元-条，小李在该店卖了2件T恤和3条裤子，请计算小李该付多少钱？打3-8折后呢？"><a href="#商店T恤的价格为285元-件，裤子的价格为720元-条，小李在该店卖了2件T恤和3条裤子，请计算小李该付多少钱？打3-8折后呢？" class="headerlink" title="商店T恤的价格为285元&#x2F;件，裤子的价格为720元&#x2F;条，小李在该店卖了2件T恤和3条裤子，请计算小李该付多少钱？打3.8折后呢？"></a>商店T恤的价格为285元&#x2F;件，裤子的价格为720元&#x2F;条，小李在该店卖了2件T恤和3条裤子，请计算小李该付多少钱？打3.8折后呢？</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> trousersPrice = <span class="hljs-number">720</span>;<br><span class="hljs-built_in">int</span> tShirtPrice = <span class="hljs-number">285</span>;<br><br><span class="hljs-built_in">int</span> sum2 = tShirtPrice * <span class="hljs-number">2</span> + trousersPrice * <span class="hljs-number">3</span>;<br>Console.WriteLine(<span class="hljs-string">&quot;总价：&quot;</span> + sum2); <span class="hljs-comment">// 总价：2730</span><br><br><span class="hljs-built_in">float</span> sum3 = sum2 * <span class="hljs-number">0.38f</span>;<br>Console.WriteLine(<span class="hljs-string">&quot;打3.8折后：&quot;</span> + sum3); <span class="hljs-comment">// 打3.8折后：1037.4</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="请说明number1和number2和number3的结果"><a href="#请说明number1和number2和number3的结果" class="headerlink" title="请说明number1和number2和number3的结果"></a>请说明number1和number2和number3的结果</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> a = <span class="hljs-number">10</span>, b = <span class="hljs-number">20</span>;<br><br><span class="hljs-built_in">int</span> number1 = ++a + b;<br>Console.WriteLine(number1); <span class="hljs-comment">// 31</span><br><br>a = <span class="hljs-number">10</span>;<br>b = <span class="hljs-number">20</span>;<br><span class="hljs-built_in">int</span> number2 = a + b++;<br>Console.WriteLine(number2); <span class="hljs-comment">// 30</span><br><br>a = <span class="hljs-number">10</span>;<br>b = <span class="hljs-number">20</span>;<br><span class="hljs-built_in">int</span> number3 = a++ + ++b + a++;<br>Console.WriteLine(number3); <span class="hljs-comment">// 42</span><br>Console.WriteLine(a); <span class="hljs-comment">// 12</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="有两个数a-99，b-87，请写出两种方法交换他们的值，让a-87，b-99"><a href="#有两个数a-99，b-87，请写出两种方法交换他们的值，让a-87，b-99" class="headerlink" title="有两个数a&#x3D;99，b&#x3D;87，请写出两种方法交换他们的值，让a &#x3D; 87，b&#x3D;99"></a>有两个数a&#x3D;99，b&#x3D;87，请写出两种方法交换他们的值，让a &#x3D; 87，b&#x3D;99</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> a2 = <span class="hljs-number">99</span>;<br><span class="hljs-built_in">int</span> b2 = <span class="hljs-number">87</span>;<br><br><span class="hljs-built_in">int</span> temp = a2;<br>a2 = b2;<br>b2 = temp;<br><br><span class="hljs-comment">// 或者</span><br><span class="hljs-comment">// int temp = a2;</span><br><span class="hljs-comment">// a2 = b2;</span><br><span class="hljs-comment">// b2 = temp;</span><br>Console.WriteLine(<span class="hljs-string">&quot;a=&quot;</span> + a2 + <span class="hljs-string">&quot;, b=&quot;</span> + b2);<br></code></pre></td></tr></table></figure>
+
+<h3 id="请把987652秒通过代码转为n天n小时n分钟n秒显示在控制台中"><a href="#请把987652秒通过代码转为n天n小时n分钟n秒显示在控制台中" class="headerlink" title="请把987652秒通过代码转为n天n小时n分钟n秒显示在控制台中"></a>请把987652秒通过代码转为n天n小时n分钟n秒显示在控制台中</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> seconds = <span class="hljs-number">987652</span>;<br><span class="hljs-built_in">int</span> oneDayS = <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">24</span>;<br><span class="hljs-built_in">int</span> oneHourS = <span class="hljs-number">60</span> * <span class="hljs-number">60</span>;<br><span class="hljs-built_in">int</span> oneMinS = <span class="hljs-number">60</span>;<br><br><span class="hljs-built_in">int</span> day = seconds / oneDayS;<br><span class="hljs-built_in">int</span> hour = seconds % oneDayS / oneHourS;<br><span class="hljs-built_in">int</span> min = seconds % oneHourS / oneMinS;<br><span class="hljs-built_in">int</span> s = seconds % oneMinS;<br><br>Console.WriteLine(<span class="hljs-string">&quot;987652秒对应的时间是：&quot;</span> + day + <span class="hljs-string">&quot;天&quot;</span> + hour + <span class="hljs-string">&quot;小时&quot;</span> + min + <span class="hljs-string">&quot;分钟&quot;</span> + s + <span class="hljs-string">&quot;秒&quot;</span>);<br><span class="hljs-comment">// 987652秒对应的时间是：11天10小时20分钟52秒</span><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="13-4-练习题代码"><a href="#13-4-练习题代码" class="headerlink" title="13.4 练习题代码"></a>13.4 练习题代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">Lesson10_</span>练习题<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;算术运算符练习题&quot;</span>);<br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题一</span><br><br>            <span class="hljs-comment">//定义一个变量存储你的年龄，十年后你的年龄是多少？请输出到控制台</span><br>            <span class="hljs-built_in">int</span> myAge = <span class="hljs-number">18</span>;<br>            myAge = myAge + <span class="hljs-number">10</span>;<br>            <span class="hljs-comment">//myAge += 10;</span><br>            Console.WriteLine(<span class="hljs-string">&quot;十年后我的年龄是&quot;</span> + myAge);<span class="hljs-comment">//十年后我的年龄是28</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            Console.WriteLine(<span class="hljs-string">&quot;**************&quot;</span>);<br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题二</span><br><br>            <span class="hljs-comment">//计算一个半径为5的圆的面积和周长</span><br>            <span class="hljs-comment">//面积公式：πr²</span><br>            <span class="hljs-comment">//周长公式：2πr</span><br><br>            <span class="hljs-built_in">float</span> r = <span class="hljs-number">5</span>;<br>            <span class="hljs-built_in">float</span> PI = <span class="hljs-number">3.1415926f</span>;<br><br>            <span class="hljs-built_in">float</span> mianJi = PI * r * r;<br>            Console.WriteLine(<span class="hljs-string">&quot;圆的面积是&quot;</span> + mianJi);<span class="hljs-comment">//圆的面积是78.5</span><br>            <span class="hljs-built_in">float</span> zhouChang = <span class="hljs-number">2</span> * PI * r;<br>            Console.WriteLine(<span class="hljs-string">&quot;圆的周长是&quot;</span> + zhouChang);<span class="hljs-comment">//圆的周长是31.400002</span><br><br>            Console.WriteLine(<span class="hljs-string">&quot;圆的面积是&quot;</span> + <span class="hljs-number">3.14f</span> * <span class="hljs-number">5</span> * <span class="hljs-number">5</span>); <span class="hljs-comment">//圆的面积是78.5</span><br>            Console.WriteLine(<span class="hljs-string">&quot;圆的周长是&quot;</span> + <span class="hljs-number">2</span> * <span class="hljs-number">3.14f</span> * <span class="hljs-number">5</span>);<span class="hljs-comment">//圆的周长是31.400002</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>            Console.WriteLine(<span class="hljs-string">&quot;**************&quot;</span>);<br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题三</span><br>            <span class="hljs-comment">//计算任意三门成绩的总分、平均分打印到控制台。</span><br>            <span class="hljs-comment">//三门成绩均为整数类型（C#  Unity  Math）</span><br><br>            <span class="hljs-built_in">int</span> cSharp = <span class="hljs-number">81</span>;<br>            <span class="hljs-built_in">int</span> unity = <span class="hljs-number">70</span>;<br>            <span class="hljs-built_in">int</span> math = <span class="hljs-number">90</span>;<br>            <span class="hljs-comment">//总分</span><br>            <span class="hljs-built_in">int</span> sum = cSharp + unity + math;<br>            <span class="hljs-comment">//平均分</span><br>            <span class="hljs-built_in">float</span> avg = sum / <span class="hljs-number">3f</span>;<br>            Console.WriteLine(<span class="hljs-string">&quot;总分为&quot;</span> + sum);<span class="hljs-comment">//总分为241</span><br>            Console.WriteLine(<span class="hljs-string">&quot;平均分&quot;</span> + avg);<span class="hljs-comment">//平均分80.333336</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            Console.WriteLine(<span class="hljs-string">&quot;**************&quot;</span>);<br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题四</span><br>            <span class="hljs-comment">//商店T恤的价格为285元 / 件，裤子的价格为720元 / 条，</span><br>            <span class="hljs-comment">//小李在该店卖了2件T恤和3条裤子，请计算小李该付多少钱？打3.8折后呢？</span><br><br>            <span class="hljs-built_in">int</span> trousersPrice = <span class="hljs-number">720</span>;<br>            <span class="hljs-built_in">int</span> tShirtPrice = <span class="hljs-number">285</span>;<br><br>            <span class="hljs-built_in">int</span> sum2 = tShirtPrice * <span class="hljs-number">2</span> + trousersPrice * <span class="hljs-number">3</span>;<br>            Console.WriteLine(<span class="hljs-string">&quot;总价：&quot;</span> + sum2);<span class="hljs-comment">//总价：2730</span><br>            Console.WriteLine(<span class="hljs-string">&quot;总价：&quot;</span> + (<span class="hljs-number">285</span> * <span class="hljs-number">2</span> + <span class="hljs-number">720</span> * <span class="hljs-number">3</span>));<span class="hljs-comment">//总价：2730</span><br>            <span class="hljs-built_in">float</span> sum3 = sum2 * <span class="hljs-number">0.38f</span>;<br>            Console.WriteLine(<span class="hljs-string">&quot;打3.8折后：&quot;</span> + sum3);<span class="hljs-comment">//打3.8折后：1037.4</span><br>            Console.WriteLine(<span class="hljs-string">&quot;总价：&quot;</span> + (<span class="hljs-number">285</span> * <span class="hljs-number">2</span> + <span class="hljs-number">720</span> * <span class="hljs-number">3</span>) * <span class="hljs-number">0.38f</span>);<span class="hljs-comment">//总价：1037.4</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            Console.WriteLine(<span class="hljs-string">&quot;**************&quot;</span>);<br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题五</span><br>            <span class="hljs-comment">//int a = 10, b = 20;</span><br>            <span class="hljs-comment">//int number1 = ++a + b;</span><br>            <span class="hljs-comment">//a = 10;</span><br>            <span class="hljs-comment">//b = 20;</span><br>            <span class="hljs-comment">//int number2 = a + b++;</span><br>            <span class="hljs-comment">//a = 10;</span><br>            <span class="hljs-comment">//b = 20;</span><br>            <span class="hljs-comment">//int number3 = a++ + ++b + a++;</span><br><br>            <span class="hljs-comment">//请说明 number1和number2和number3的结果</span><br><br>            <span class="hljs-built_in">int</span> a = <span class="hljs-number">10</span>, b = <span class="hljs-number">20</span>;<br>            <span class="hljs-comment">// 11 + 20</span><br>            <span class="hljs-built_in">int</span> number1 = ++a + b;<br>            Console.WriteLine(number1);<span class="hljs-comment">//31</span><br><br>            a = <span class="hljs-number">10</span>;<br>            b = <span class="hljs-number">20</span>;<br>            <span class="hljs-comment">//10 + 20</span><br>            <span class="hljs-built_in">int</span> number2 = a + b++;<br>            Console.WriteLine(number2);<span class="hljs-comment">//30</span><br><br>            a = <span class="hljs-number">10</span>;<br>            b = <span class="hljs-number">20</span>;<br>            <span class="hljs-comment">//10 + 21 + 11</span><br>            <span class="hljs-built_in">int</span> number3 = a++ + ++b + a++;<br>            Console.WriteLine(number3);<span class="hljs-comment">//42</span><br>            Console.WriteLine(a);<span class="hljs-comment">//12</span><br><br><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题六</span><br>            <span class="hljs-comment">//有两个数a = 99，b = 87，请写出两种方法交换他们的值，让a = 87，b = 99</span><br><br>            <span class="hljs-built_in">int</span> a2 = <span class="hljs-number">99</span>;<br>            <span class="hljs-built_in">int</span> b2 = <span class="hljs-number">87</span>;<br>            <span class="hljs-comment">//中间商 不赚差价</span><br>            <span class="hljs-comment">//a2 = b2;</span><br>            <span class="hljs-comment">//b2 = a2;</span><br><br>            <span class="hljs-built_in">int</span> temp = a2; <span class="hljs-comment">//temp = 99;</span><br>            a2 = b2; <span class="hljs-comment">// a2 = 87;</span><br>            b2 = temp;<span class="hljs-comment">//b2 = 99;</span><br><br>            <span class="hljs-comment">//算术运算符 加减法</span><br>            a2 = <span class="hljs-number">99</span>;<br>            b2 = <span class="hljs-number">87</span>;<br>            a2 = a2 + b2;<span class="hljs-comment">// a2 = 99 + 87;</span><br>            b2 = a2 - b2;<span class="hljs-comment">// b2 = 99 + 87 - 87;  b2 = 99;</span><br>            a2 = a2 - b2;<span class="hljs-comment">// a2 = 99 + 87 - 99;  a2 = 87;</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题七</span><br>            <span class="hljs-comment">//请把987652秒通过代码转为n天n小时n分钟n秒显示在控制台中</span><br><br>            <span class="hljs-comment">//一天对应秒数 = 60 * 60 * 24</span><br>            <span class="hljs-built_in">int</span> oneDayS = <span class="hljs-number">60</span> * <span class="hljs-number">60</span> * <span class="hljs-number">24</span>;<br>            <span class="hljs-comment">//一小时对应秒数 = 60 * 60</span><br>            <span class="hljs-built_in">int</span> oneHourS = <span class="hljs-number">60</span> * <span class="hljs-number">60</span>;<br>            <span class="hljs-comment">//一分钟对应的秒数 = 60</span><br>            <span class="hljs-built_in">int</span> oneMinS = <span class="hljs-number">60</span>;<br><br>            <span class="hljs-comment">// 算一天 用总的秒数 / 一天有多少秒 </span><br>            <span class="hljs-built_in">int</span> day = <span class="hljs-number">987652</span> / oneDayS;<br>            <span class="hljs-comment">// 算小时 用不足一天的秒 / 一小时对应的秒数</span><br>            <span class="hljs-comment">// 987652 % oneDays 余数结果 就是剩下的不足一天的秒数</span><br>            <span class="hljs-built_in">int</span> hour = <span class="hljs-number">987652</span> % oneDayS / oneHourS;<br>            <span class="hljs-comment">// 算分钟 用不足一小时的秒 / 一分钟对应的秒数</span><br>            <span class="hljs-comment">// 987652 % oneHourS 余数结果 就是剩下的不足一小时的秒数</span><br>            <span class="hljs-built_in">int</span> min = <span class="hljs-number">987652</span> % oneHourS / oneMinS;<br>            <span class="hljs-comment">// 得到 秒数</span><br>            <span class="hljs-built_in">int</span> s = <span class="hljs-number">987652</span> % oneMinS;<br><br>            Console.WriteLine(<span class="hljs-string">&quot;987652秒对应的时间是：&quot;</span> + day + <span class="hljs-string">&quot;天&quot;</span> + hour + <span class="hljs-string">&quot;小时&quot;</span> + min + <span class="hljs-string">&quot;分钟&quot;</span> + s + <span class="hljs-string">&quot;秒&quot;</span>);<br>            <span class="hljs-comment">//987652秒对应的时间是：11天10小时20分钟52秒</span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 785293209@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2024 Tao
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 622px;
+    }
+    .nav.fullscreen {
+        margin-left: -622px;
+    }
+    .nav-left {
+        width: 200px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 572px;
+        }
+        .nav.fullscreen {
+            margin-left: -572px;
+        }
+        .nav-left {
+            width: 180px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 572px;
+            margin-left: -572px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
