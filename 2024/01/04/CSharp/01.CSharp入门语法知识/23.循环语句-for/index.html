@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>【C#入门语法知识】| 23.循环语句-for | 人间自有韬哥在的游戏开发博客</title>
+  <meta name="keywords" content=" CSharp , CSharp入门 , 语法知识 , 循环语句 ">
+  <meta name="description" content="【C#入门语法知识】| 23.循环语句-for | 人间自有韬哥在的游戏开发博客">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="description" content="24.总结 24.1 知识点 学习的主要内容 总结讲什么 为什么要讲练结合 如何培养良好的学习习惯 如何快速的提升编程能力">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【C#入门语法知识】| 24.总结">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:site_name" content="人间自有韬哥在的游戏开发博客">
+<meta property="og:description" content="24.总结 24.1 知识点 学习的主要内容 总结讲什么 为什么要讲练结合 如何培养良好的学习习惯 如何快速的提升编程能力">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E6%80%BB%E7%BB%93/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E6%80%BB%E7%BB%93/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E6%80%BB%E7%BB%93/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E6%80%BB%E7%BB%93/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E6%80%BB%E7%BB%93/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E6%80%BB%E7%BB%93/6.png">
+<meta property="article:published_time" content="2024-01-06T14:24:11.000Z">
+<meta property="article:modified_time" content="2024-01-06T14:25:13.437Z">
+<meta property="article:author" content="人间自有韬哥在">
+<meta property="article:tag" content="CSharp">
+<meta property="article:tag" content="CSharp入门">
+<meta property="article:tag" content="语法知识">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E6%80%BB%E7%BB%93/1.png">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 7.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>人间自有韬哥在</span>
+</div>
+
+<div class="icon">
+    
+        
+    
+        
+            <a title="github"
+               href="https://github.com/linwentao785293209"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:785293209@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=785293209&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+</div>
+
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="全部文章">全部文章
+            
+                <small>(24)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                
+    <li>
+        <div data-rel="CSharp">
+            <i class="fold iconfont icon-right"></i>
+            CSharp
+            <small>(24)</small>
+        </div>
+        
+            <ul class="sub hide">
+                
+                    
+    <li>
+        <div data-rel="CSharp&lt;---&gt;CSharp入门语法知识">
+            
+            CSharp入门语法知识
+            <small>(24)</small>
+        </div>
+        
+    </li>
+
+                
+            </ul>
+        
+    </li>
+
+            
+        
+    
+        
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+        <a 
+                                           class="friends">友链</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="24">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        友情链接
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">全部文章</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>开发环境</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>类型转换</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>条件分支语句</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>循环语句</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>语法知识</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>运算符</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>CSharp入门</a>
+            </li>
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E6%80%BB%E7%BB%93/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 24.总结">【C#入门语法知识】| 24.总结</span>
+            <span class="post-date" title="2024-01-06 22:24:11">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-dowhile/"
+           data-tag="CSharp,CSharp入门,语法知识,循环语句"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 22.循环语句-dowhile">【C#入门语法知识】| 22.循环语句-dowhile</span>
+            <span class="post-date" title="2024-01-06 22:03:57">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-while/"
+           data-tag="CSharp,CSharp入门,语法知识,循环语句"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 21.循环语句-while">【C#入门语法知识】| 21.循环语句-while</span>
+            <span class="post-date" title="2024-01-06 20:26:05">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5-if/"
+           data-tag="CSharp,CSharp入门,语法知识,条件分支语句"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 19.条件分支语句-if">【C#入门语法知识】| 19.条件分支语句-if</span>
+            <span class="post-date" title="2024-01-06 20:14:55">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/18.%E8%BF%90%E7%AE%97%E7%AC%A6-%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识,运算符"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 18.运算符-三目运算符">【C#入门语法知识】| 18.运算符-三目运算符</span>
+            <span class="post-date" title="2024-01-06 19:54:11">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E8%BF%90%E7%AE%97%E7%AC%A6-%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识,运算符"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 17.运算符-位运算符">【C#入门语法知识】| 17.运算符-位运算符</span>
+            <span class="post-date" title="2024-01-06 19:41:40">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/16.%E8%BF%90%E7%AE%97%E7%AC%A6-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识,运算符"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 16.运算符-逻辑运算符">【C#入门语法知识】| 16.运算符-逻辑运算符</span>
+            <span class="post-date" title="2024-01-06 19:35:01">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E8%BF%90%E7%AE%97%E7%AC%A6-%E6%9D%A1%E4%BB%B6%E8%BF%90%E7%AE%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识,运算符"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 15.运算符-条件运算符">【C#入门语法知识】| 15.运算符-条件运算符</span>
+            <span class="post-date" title="2024-01-06 13:01:21">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/14.%E8%BF%90%E7%AE%97%E7%AC%A6-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/"
+           data-tag="CSharp,CSharp入门,语法知识,运算符"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 14.运算符-字符串拼接">【C#入门语法知识】| 14.运算符-字符串拼接</span>
+            <span class="post-date" title="2024-01-06 12:01:14">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E8%BF%90%E7%AE%97%E7%AC%A6-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识,运算符"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 13.运算符-算术运算符">【C#入门语法知识】| 13.运算符-算术运算符</span>
+            <span class="post-date" title="2024-01-06 11:16:43">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 12.异常捕获">【C#入门语法知识】| 12.异常捕获</span>
+            <span class="post-date" title="2024-01-06 10:51:02">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E6%98%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
+           data-tag="CSharp,CSharp入门,语法知识,类型转换"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 11.类型转换-显式转换">【C#入门语法知识】| 11.类型转换-显式转换</span>
+            <span class="post-date" title="2024-01-06 10:36:38">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
+           data-tag="CSharp,CSharp入门,语法知识,类型转换"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 10.类型转换-隐式转换">【C#入门语法知识】| 10.类型转换-隐式转换</span>
+            <span class="post-date" title="2024-01-06 10:26:31">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 9.转义字符">【C#入门语法知识】| 9.转义字符</span>
+            <span class="post-date" title="2024-01-06 10:05:44">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/06/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E5%B8%B8%E9%87%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 8.常量">【C#入门语法知识】| 8.常量</span>
+            <span class="post-date" title="2024-01-06 10:00:10">2024/01/06</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%8F%98%E9%87%8F%E7%9A%84%E5%91%BD%E5%90%8D%E8%A7%84%E5%88%99/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 7.变量的命名规则">【C#入门语法知识】| 7.变量的命名规则</span>
+            <span class="post-date" title="2024-01-05 20:19:52">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%8F%98%E9%87%8F%E7%9A%84%E6%9C%AC%E8%B4%A8/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 6.变量的本质">【C#入门语法知识】| 6.变量的本质</span>
+            <span class="post-date" title="2024-01-05 19:39:42">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/05/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%8F%98%E9%87%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 5.变量">【C#入门语法知识】| 5.变量</span>
+            <span class="post-date" title="2024-01-05 12:52:35">2024/01/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/20.%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5-switch/"
+           data-tag="CSharp,CSharp入门,语法知识,条件分支语句"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 20.条件分支语句-switch">【C#入门语法知识】| 20.条件分支语句-switch</span>
+            <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/23.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-for/"
+           data-tag="CSharp,CSharp入门,语法知识,循环语句"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 23.循环语句-for">【C#入门语法知识】| 23.循环语句-for</span>
+            <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/04/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 4.第一个应用程序">【C#入门语法知识】| 4.第一个应用程序</span>
+            <span class="post-date" title="2024-01-04 19:40:52">2024/01/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/03/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA/"
+           data-tag="CSharp,CSharp入门,语法知识,开发环境"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 3.开发环境的搭建">【C#入门语法知识】| 3.开发环境的搭建</span>
+            <span class="post-date" title="2024-01-03 23:35:11">2024/01/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/02/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E7%A8%8B%E5%BA%8F%E8%AF%AD%E8%A8%80%E6%98%AF%E4%BB%80%E4%B9%88/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 2.程序语言是什么">【C#入门语法知识】| 2.程序语言是什么</span>
+            <span class="post-date" title="2024-01-02 21:20:00">2024/01/02</span>
+        </a>
+        
+        
+        <a  class="全部文章 CSharp CSharp入门语法知识 "
+           href="/2024/01/01/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
+           data-tag="CSharp,CSharp入门,语法知识"
+           data-author="" >
+            <span class="post-title" title="【C#入门语法知识】| 1.概述">【C#入门语法知识】| 1.概述</span>
+            <span class="post-date" title="2024-01-01 12:41:48">2024/01/01</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-CSharp/01.CSharp入门语法知识/23.循环语句-for" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">【C#入门语法知识】| 23.循环语句-for</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="CSharp">CSharp</a> > 
+            
+            <a  data-rel="CSharp&lt;---&gt;CSharp入门语法知识">CSharp入门语法知识</a>
+            
+        </span>
+        
+        
+        <span class="tag">
+            <i class="iconfont icon-tag"></i>
+            
+            <a class="color2">CSharp</a>
+            
+            <a class="color4">CSharp入门</a>
+            
+            <a class="color5">语法知识</a>
+            
+            <a class="color5">循环语句</a>
+            
+        </span>
+        
+    </div>
+    <div class="article-meta">
+        
+            发布时间 : <time class="date" title='最后更新: 2024-01-06 22:19:21'>2024-01-04 19:40</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            阅读 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#23-%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-for"><span class="toc-text">23.循环语句-for</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#23-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">23.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#for%E5%BE%AA%E7%8E%AF%E8%AF%AD%E6%B3%95"><span class="toc-text">for循环语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84"><span class="toc-text">语法结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%B8%80"><span class="toc-text">示例一</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%BA%8C"><span class="toc-text">示例二</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B%E4%B8%89"><span class="toc-text">示例三</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B5%8C%E5%A5%97%E4%BD%BF%E7%94%A8"><span class="toc-text">嵌套使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%89%B9%E6%AE%8A%E5%86%99%E6%B3%95"><span class="toc-text">特殊写法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%AD%BB%E5%BE%AA%E7%8E%AF"><span class="toc-text">死循环</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E6%9B%BF%E7%AC%AC%E4%B8%80%E5%92%8C%E7%AC%AC%E4%B8%89%E4%B8%AA%E7%A9%BA%E7%9A%84%E5%86%99%E6%B3%95"><span class="toc-text">代替第一和第三个空的写法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%A3%E6%9B%BF%E7%AC%AC%E4%BA%8C%E4%B8%AA%E7%A9%BA%E7%9A%84%E5%86%99%E6%B3%95"><span class="toc-text">代替第二个空的写法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94while%E5%BE%AA%E7%8E%AF"><span class="toc-text">对比while循环</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">23.2 知识点代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23-3-%E7%BB%83%E4%B9%A0%E9%A2%98"><span class="toc-text">23.3 练习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BE%93%E5%87%BA1%E5%88%B0100%E4%B9%8B%E9%97%B4%E7%9A%84%E6%95%B4%E6%95%B0%EF%BC%88%E5%8C%85%E5%90%AB%E6%9C%AC%E8%BA%AB%EF%BC%89"><span class="toc-text">输出1到100之间的整数（包含本身）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B1%821-100%E4%B9%8B%E9%97%B4%E6%89%80%E6%9C%89%E5%81%B6%E6%95%B0%E7%9A%84%E5%92%8C"><span class="toc-text">求1~100之间所有偶数的和</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%B8%80"><span class="toc-text">方法一</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E6%B3%95%E4%BA%8C"><span class="toc-text">方法二</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%BE%E5%87%BA100-999%E4%B9%8B%E9%97%B4%E7%9A%84%E6%B0%B4%E4%BB%99%E8%8A%B1%E6%95%B0"><span class="toc-text">找出100~999之间的水仙花数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B8%8A%E8%BE%93%E5%87%BA%E4%B9%9D%E4%B9%9D%E4%B9%98%E6%B3%95%E8%A1%A8"><span class="toc-text">在控制台上输出九九乘法表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B8%8A%E8%BE%93%E5%87%BA%E5%A6%82%E4%B8%8B10-10%E7%9A%84%E7%A9%BA%E5%BF%83%E6%98%9F%E5%9E%8B%E6%96%B9%E9%98%B5"><span class="toc-text">在控制台上输出如下10*10的空心星型方阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B8%8A%E8%BE%93%E5%87%BA%E5%A6%82%E4%B8%8B10-10%E7%9A%84%E4%B8%89%E8%A7%92%E5%BD%A2%E6%96%B9%E9%98%B5"><span class="toc-text">在控制台上输出如下10*10的三角形方阵</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B8%8A%E8%BE%93%E5%87%BA%E5%A6%82%E4%B8%8B10%E8%A1%8C%E7%9A%84%E4%B8%89%E8%A7%92%E5%BD%A2%E6%96%B9%E9%98%B5"><span class="toc-text">在控制台上输出如下10行的三角形方阵</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#23-4-%E7%BB%83%E4%B9%A0%E9%A2%98%E4%BB%A3%E7%A0%81"><span class="toc-text">23.4 练习题代码</span></a></li></ol></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="23-循环语句-for"><a href="#23-循环语句-for" class="headerlink" title="23.循环语句-for"></a>23.循环语句-for</h1><hr>
+<h2 id="23-1-知识点"><a href="#23-1-知识点" class="headerlink" title="23.1 知识点"></a>23.1 知识点</h2><h3 id="for循环语法"><a href="#for循环语法" class="headerlink" title="for循环语法"></a>for循环语法</h3><p><code>for</code>循环是一种常见的循环结构，通过初始表达式、条件表达式和增量表达式来控制循环的执行次数。</p>
+<h4 id="语法结构"><a href="#语法结构" class="headerlink" title="语法结构"></a>语法结构</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">for</span>( <span class="hljs-comment">/*初始表达式*/</span>; <span class="hljs-comment">/*条件表达式*/</span>; <span class="hljs-comment">/*增量表达式*/</span> )<br>&#123;<br>    <span class="hljs-comment">//循环代码逻辑;</span><br>&#125;<br><span class="hljs-comment">// 第一个空（初始表达式）： 一般声明一个临时变量，用来计数用 </span><br><span class="hljs-comment">// 第二个空（条件表达式）： 表明进入循环的条件，一个bool类型的结果（bool变量、条件运算符、逻辑运算符、算术运算符） </span><br><span class="hljs-comment">// 第三个空（增量表达式）： 用第一个空中的变量进行自增减运算</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><h5 id="示例一"><a href="#示例一" class="headerlink" title="示例一"></a>示例一</h5><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// 第一次进入循环时才会调用第一个空中的代码</span><br><span class="hljs-comment">// 每次进入循环之前都会判断第二个空中的条件，满足才会进入循环逻辑</span><br><span class="hljs-keyword">for</span>( <span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++ )<br>&#123;<br>    Console.WriteLine(i);<span class="hljs-comment">//0 1 2 3 4</span><br>    <span class="hljs-comment">//执行完循环语句块中的逻辑后</span><br>    <span class="hljs-comment">//最后执行第三个空中的代码</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="示例二"><a href="#示例二" class="headerlink" title="示例二"></a>示例二</h5><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">for</span>( <span class="hljs-built_in">int</span> i = <span class="hljs-number">5</span>; i &gt;= <span class="hljs-number">0</span>; i-- )<br>&#123;<br>    Console.WriteLine(i);<span class="hljs-comment">//5 4 3 2 1 0</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h5 id="示例三"><a href="#示例三" class="headerlink" title="示例三"></a>示例三</h5><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//每个空位可以按照规则进行书写</span><br><span class="hljs-comment">//第一个空位就是声明变量，所以可以连续声明</span><br><span class="hljs-comment">//第二个空位就是进入条件，只要是bool结果的表达式都可以</span><br><span class="hljs-comment">//第三个空位就是执行一次循环逻辑过后要做的事情，做啥都行</span><br><span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span> &amp;&amp; j &lt; <span class="hljs-number">0</span>; ++i, j = j + <span class="hljs-number">1</span>)<br>&#123;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="嵌套使用"><a href="#嵌套使用" class="headerlink" title="嵌套使用"></a>嵌套使用</h3><p><code>for</code>循环可以与其他控制流结构（如<code>if</code>、<code>switch</code>、<code>while</code>、<code>do-while</code>）相互嵌套使用，根据实际需求进行选择。</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++)<br>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; j++)<br>    &#123;<br>        Console.WriteLine(i + <span class="hljs-string">&quot;_&quot;</span> + j);<br>    &#125;<br>    <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)<br>    &#123;<br>    &#125;<br>    <span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>)<br>    &#123;<br>    &#125;<br>    <span class="hljs-keyword">do</span><br>    &#123;<br>    &#125; <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="特殊写法"><a href="#特殊写法" class="headerlink" title="特殊写法"></a>特殊写法</h3><p><code>for</code>循环的三个表达式中，任何一个都可以省略，具有一些特殊写法。</p>
+<h4 id="死循环"><a href="#死循环" class="headerlink" title="死循环"></a>死循环</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// for循环可以写死循环</span><br><span class="hljs-keyword">for</span> (; ; )<br>&#123;<br>    Console.WriteLine(<span class="hljs-string">&quot;for循环的死循环&quot;</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="代替第一和第三个空的写法"><a href="#代替第一和第三个空的写法" class="headerlink" title="代替第一和第三个空的写法"></a>代替第一和第三个空的写法</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> k = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span> (; k &lt; <span class="hljs-number">10</span>;)<br>&#123;<br>    ++k;<span class="hljs-comment">//k++, k += 1;</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h4 id="代替第二个空的写法"><a href="#代替第二个空的写法" class="headerlink" title="代替第二个空的写法"></a>代替第二个空的写法</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">for</span> (k = <span class="hljs-number">0</span>; ; ++k)<br>&#123;<br>    <span class="hljs-keyword">if</span> (k &gt;= <span class="hljs-number">10</span>)<br>    &#123;<br>        <span class="hljs-keyword">break</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="对比while循环"><a href="#对比while循环" class="headerlink" title="对比while循环"></a>对比while循环</h3><p><code>for</code>循环和<code>while</code>循环可以相互转换，但<code>for</code>循环在可以准确得到一个范围内的所有数时更为清晰。</p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">// for循环能实现的while循环一定也能实现，反之亦然</span><br><span class="hljs-comment">// for循环一般用来可以准确得到一个范围中的所有数</span><br><span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; ++i)<br>&#123;<br>&#125;<br><br><span class="hljs-comment">// while循环也能实现，但不如for循环清晰</span><br><span class="hljs-built_in">int</span> o = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">while</span> (o &lt; <span class="hljs-number">10</span>)<br>&#123;<br>    <span class="hljs-comment">//......................</span><br>    ++o;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="23-2-知识点代码"><a href="#23-2-知识点代码" class="headerlink" title="23.2 知识点代码"></a>23.2 知识点代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">Lesson20_</span>循环语句_<span class="hljs-title">for</span><br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;for循环&quot;</span>);<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点一 基本语法</span><br>            <span class="hljs-comment">//for( /*初始表达式*/; /*条件表达式*/; /*增量表达式*/ )</span><br>            <span class="hljs-comment">//&#123;</span><br>            <span class="hljs-comment">//    //循环代码逻辑;</span><br>            <span class="hljs-comment">//&#125;</span><br>            <span class="hljs-comment">// 第一个空（初始表达式）： 一般声明一个临时变量，用来计数用</span><br>            <span class="hljs-comment">// 第二个空（条件表达式）： 表明进入循环的条件 一个bool类型的结果（bool变量 条件运算符 逻辑运算符 算术运算符）</span><br>            <span class="hljs-comment">// 第三个空（增量表达式）： 用第一个空中的变量 进行 自增减运算</span><br>            <br>            <span class="hljs-comment">// 第一次进入循环时 才会调用 第一个空中的代码</span><br>            <span class="hljs-comment">// 每次进入循环之前 都会判断第二个空中的条件 满足才会进入循环逻辑</span><br>            <span class="hljs-keyword">for</span>( <span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">5</span>; i++ )<br>            &#123;<br>                Console.WriteLine(i);<span class="hljs-comment">//0 1 2 3 4 </span><br>                <span class="hljs-comment">//执行完循环语句块中的逻辑后</span><br>                <span class="hljs-comment">//最后执行第三个空中的代码</span><br>            &#125;<br><br>            <span class="hljs-keyword">for</span>( <span class="hljs-built_in">int</span> i = <span class="hljs-number">5</span>; i &gt;= <span class="hljs-number">0</span>; i-- )<br>            &#123;<br>                Console.WriteLine(i);<span class="hljs-comment">//5 4 3 2 1 0</span><br>            &#125;<br><br>            <span class="hljs-comment">//每个空位 可以按照规则进行书写</span><br>            <span class="hljs-comment">//第一个空位 就是声明变量  所以可以连续声明</span><br>            <span class="hljs-comment">//第二个空位 就是进入条件 只要是bool结果的表达式 都可以</span><br>            <span class="hljs-comment">//第三个空位 就是执行一次循环逻辑过后要做的事情 做啥都行</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span> &amp;&amp; j &lt; <span class="hljs-number">0</span>; ++i, j = j + <span class="hljs-number">1</span>)<br>            &#123;<br><br>            &#125;<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点二 支持嵌套</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++)<br>            &#123;<br>                <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; j++)<br>                &#123;<br>                    Console.WriteLine(i + <span class="hljs-string">&quot;_&quot;</span> + j);<br>                &#125;<br>                <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>)<br>                &#123;<br><br>                &#125;<br>                <span class="hljs-keyword">if</span> (<span class="hljs-literal">true</span>)<br>                &#123;<br><br>                &#125;<br>                <span class="hljs-keyword">do</span><br>                &#123;<br><br>                &#125; <span class="hljs-keyword">while</span> (<span class="hljs-literal">true</span>);<br>            &#125;<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点三 特殊写法</span><br>            <span class="hljs-comment">//for循环 这三个空位 可以都空着 可以根据需求去填写</span><br><br>            <span class="hljs-comment">// for循环可以写死循环</span><br>            <span class="hljs-keyword">for</span> (; ; )<br>            &#123;<br>                Console.WriteLine(<span class="hljs-string">&quot;for循环的死循环&quot;</span>);<br>            &#125;<br><br>            <span class="hljs-comment">//代替第一第三个空的写法</span><br>            <span class="hljs-built_in">int</span> k = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span> (; k &lt; <span class="hljs-number">10</span>;)<br>            &#123;<br><br><br>                ++k;<span class="hljs-comment">//k++, k += 1;</span><br>            &#125;<br><br>            <span class="hljs-comment">//代替第二个空的写法</span><br>            <span class="hljs-keyword">for</span> (k = <span class="hljs-number">0</span>; ; ++k)<br>            &#123;<br>                <span class="hljs-keyword">if</span> (k &gt;= <span class="hljs-number">10</span>)<br>                &#123;<br>                    <span class="hljs-keyword">break</span>;<br>                &#125;<br>            &#125;<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 知识点四 对比while循环</span><br>            <span class="hljs-comment">//for循环能实现的while循环一定也能实现，反之亦然</span><br><br>            <span class="hljs-comment">//for循环 一般用来可以准确得到 一个范围中的所有数</span><br>            <span class="hljs-keyword">for</span> ( <span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; ++i )<br>            &#123;<br><br>            &#125;<br><br>            <span class="hljs-comment">//while循环也能实现 但不如for循环清晰</span><br>            <span class="hljs-built_in">int</span> o = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">while</span>(o &lt; <span class="hljs-number">10</span>)<br>            &#123;<br>                <span class="hljs-comment">//......................</span><br>                ++o;<br>            &#125;<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="23-3-练习题"><a href="#23-3-练习题" class="headerlink" title="23.3 练习题"></a>23.3 练习题</h2><h3 id="输出1到100之间的整数（包含本身）"><a href="#输出1到100之间的整数（包含本身）" class="headerlink" title="输出1到100之间的整数（包含本身）"></a>输出1到100之间的整数（包含本身）</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">100</span>; ++i)<br>&#123;<br>    Console.WriteLine(i);<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="求1-100之间所有偶数的和"><a href="#求1-100之间所有偶数的和" class="headerlink" title="求1~100之间所有偶数的和"></a>求1~100之间所有偶数的和</h3><h4 id="方法一"><a href="#方法一" class="headerlink" title="方法一"></a>方法一</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> sum = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">100</span>; i++)<br>&#123;<br>    <span class="hljs-comment">// 判断是否是偶数，是否能整除2</span><br>    <span class="hljs-keyword">if</span> (i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>)<br>    &#123;<br>        sum += i;<br>    &#125;<br>&#125;<br>Console.WriteLine(sum); <span class="hljs-comment">// 2550</span><br></code></pre></td></tr></table></figure>
+
+<h4 id="方法二"><a href="#方法二" class="headerlink" title="方法二"></a>方法二</h4><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> sum2 = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">2</span>; i &lt;= <span class="hljs-number">100</span>; i += <span class="hljs-number">2</span>)<br>&#123;<br>    sum2 += i;<br>&#125;<br>Console.WriteLine(sum2); <span class="hljs-comment">// 2550</span><br></code></pre></td></tr></table></figure>
+
+<h3 id="找出100-999之间的水仙花数"><a href="#找出100-999之间的水仙花数" class="headerlink" title="找出100~999之间的水仙花数"></a>找出100~999之间的水仙花数</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-built_in">int</span> bai, shi, ge;<br><span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">100</span>; i &lt;= <span class="hljs-number">999</span>; i++)<br>&#123;<br>    <span class="hljs-comment">// 得到每一位百位、十位、个位</span><br>    bai = i / <span class="hljs-number">100</span>;<br>    shi = i % <span class="hljs-number">100</span> / <span class="hljs-number">10</span>;<br>    ge = i % <span class="hljs-number">10</span>;<br><br>    <span class="hljs-comment">// 是否满足水仙花数条件</span><br>    <span class="hljs-keyword">if</span> (bai * bai * bai + shi * shi * shi + ge * ge * ge == i)<br>    &#123;<br>        Console.WriteLine(i); <span class="hljs-comment">// 153, 370, 371, 407</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="在控制台上输出九九乘法表"><a href="#在控制台上输出九九乘法表" class="headerlink" title="在控制台上输出九九乘法表"></a>在控制台上输出九九乘法表</h3><p><img src="/../../../images/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/23.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-for/1.png"></p>
+<figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">9</span>; i++)<br>&#123;<br>    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">1</span>; j &lt;= i; j++)<br>    &#123;<br>        Console.Write(<span class="hljs-string">&quot;&#123;0&#125;X&#123;1&#125;=&#123;2&#125;   &quot;</span>, j, i, i * j);<br>    &#125;<br>    Console.WriteLine();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="在控制台上输出如下10-10的空心星型方阵"><a href="#在控制台上输出如下10-10的空心星型方阵" class="headerlink" title="在控制台上输出如下10*10的空心星型方阵"></a>在控制台上输出如下10*10的空心星型方阵</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//**********</span><br><span class="hljs-comment">//*        *</span><br><span class="hljs-comment">//*        *</span><br><span class="hljs-comment">//*        *</span><br><span class="hljs-comment">//*        *</span><br><span class="hljs-comment">//*        *</span><br><span class="hljs-comment">//*        *</span><br><span class="hljs-comment">//*        *</span><br><span class="hljs-comment">//*        *</span><br><span class="hljs-comment">//**********</span><br><br><span class="hljs-comment">//行</span><br><span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; j++)<br>&#123;<br>    <span class="hljs-comment">//列</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++)<br>    &#123;<br><br>        <span class="hljs-comment">//列 如果是 第1行和最后1行 那么 内层列循环 都打印星号</span><br>        <span class="hljs-comment">// 按照 **********的规则打印</span><br>        <span class="hljs-keyword">if</span> (j == <span class="hljs-number">0</span> || j == <span class="hljs-number">9</span>)<br>        &#123;<br>            Console.Write(<span class="hljs-string">&quot;*&quot;</span>);<br>        &#125;<br><br>        <span class="hljs-comment">//否则 就是 按照*         *的规则打印</span><br>        <span class="hljs-keyword">else</span><br>        &#123;<br>            <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span> || i == <span class="hljs-number">9</span>)<br>            &#123;<br>                Console.Write(<span class="hljs-string">&quot;*&quot;</span>);<br>            &#125;<br>            <span class="hljs-keyword">else</span><br>            &#123;<br>                Console.Write(<span class="hljs-string">&quot; &quot;</span>);<br>            &#125;<br>        &#125;<br>    &#125;<br>    Console.WriteLine();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="在控制台上输出如下10-10的三角形方阵"><a href="#在控制台上输出如下10-10的三角形方阵" class="headerlink" title="在控制台上输出如下10*10的三角形方阵"></a>在控制台上输出如下10*10的三角形方阵</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//*       1   1</span><br><span class="hljs-comment">//**      2   2</span><br><span class="hljs-comment">//***     3   3</span><br><span class="hljs-comment">//****    4   4</span><br><span class="hljs-comment">//*****</span><br><span class="hljs-comment">//******</span><br><span class="hljs-comment">//*******</span><br><span class="hljs-comment">//********</span><br><span class="hljs-comment">//*********</span><br><span class="hljs-comment">//**********</span><br><br><span class="hljs-comment">//行</span><br><span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">10</span>; i++)<br>&#123;<br>    <span class="hljs-comment">//列</span><br>    <span class="hljs-comment">//**********</span><br>    <span class="hljs-comment">//多少行就有多少列</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">1</span>; j &lt;= i; j++)<br>    &#123;<br>        Console.Write(<span class="hljs-string">&quot;*&quot;</span>);<br>    &#125;<br>    Console.WriteLine();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="在控制台上输出如下10行的三角形方阵"><a href="#在控制台上输出如下10行的三角形方阵" class="headerlink" title="在控制台上输出如下10行的三角形方阵"></a>在控制台上输出如下10行的三角形方阵</h3><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-comment">//         *            1    1   -&gt; 2i - 1    9    10 - i</span><br><span class="hljs-comment">//        ***           2    3   -&gt; 2i - 1    8    10 - i</span><br><span class="hljs-comment">//       *****          3    5                7    10 - i</span><br><span class="hljs-comment">//      *******         4    7                6    10 - i</span><br><span class="hljs-comment">//     *********        5    9                5</span><br><span class="hljs-comment">//    ***********       6    11               4</span><br><span class="hljs-comment">//   *************      7    13               3</span><br><span class="hljs-comment">//  ***************     8    15               2</span><br><span class="hljs-comment">// *****************    9    17               1</span><br><span class="hljs-comment">//*******************   10   19               0    10 - i</span><br><br><span class="hljs-comment">//行</span><br><span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">10</span>; i++)<br>&#123;<br>    <span class="hljs-comment">//打印空格的列</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> k = <span class="hljs-number">1</span>; k &lt;= <span class="hljs-number">10</span> - i; k++)<br>    &#123;<br>        Console.Write(<span class="hljs-string">&quot; &quot;</span>);<br>    &#125;<br><br>    <span class="hljs-comment">//打印星号的列</span><br>    <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">1</span>; j &lt;= <span class="hljs-number">2</span>*i<span class="hljs-number">-1</span>; j++)<br>    &#123;<br>        Console.Write(<span class="hljs-string">&quot;*&quot;</span>);<br>    &#125;<br>    Console.WriteLine();<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="23-4-练习题代码"><a href="#23-4-练习题代码" class="headerlink" title="23.4 练习题代码"></a>23.4 练习题代码</h2><figure class="highlight csharp"><table><tr><td class="code"><pre><code class="hljs csharp"><span class="hljs-keyword">using</span> System;<br><br><span class="hljs-keyword">namespace</span> <span class="hljs-title">Lesson20_</span>练习题<br>&#123;<br>    <span class="hljs-keyword">class</span> <span class="hljs-title">Program</span><br>    &#123;<br>        <span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">Main</span>(<span class="hljs-params"><span class="hljs-built_in">string</span>[] args</span>)</span><br>        &#123;<br>            Console.WriteLine(<span class="hljs-string">&quot;for循环练习题&quot;</span>);<br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题一</span><br>            <span class="hljs-comment">//输出1到100之间的整数（包含本身）</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">100</span>; ++i)<br>            &#123;<br>                Console.WriteLine(i);<br>            &#125;<br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题二</span><br>            <span class="hljs-comment">//求1~100之间所有偶数的和</span><br>            <span class="hljs-built_in">int</span> sum = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">100</span>; i++)<br>            &#123;<br>                <span class="hljs-comment">//判断是否是偶数 是否能整除2</span><br>                <span class="hljs-keyword">if</span> (i % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>)<br>                &#123;<br>                    sum += i;<br>                &#125;<br>            &#125;<br>            Console.WriteLine(sum);<span class="hljs-comment">//2550</span><br><br><br>            <span class="hljs-built_in">int</span> sum2 = <span class="hljs-number">0</span>;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">2</span>; i &lt;= <span class="hljs-number">100</span>; i += <span class="hljs-number">2</span>)<br>            &#123;<br>                sum2 += i;<br>            &#125;<br>            Console.WriteLine(sum2);<span class="hljs-comment">//2550</span><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题三</span><br>            <span class="hljs-comment">//找出100~999之间的水仙花数</span><br>            <span class="hljs-comment">//例如：153 = 1 * 1 * 1 + 5 * 5 * 5 + 3 * 3 * 3 这个数就是水仙花数</span><br>            <span class="hljs-built_in">int</span> bai, shi, ge;<br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">100</span>; i &lt;= <span class="hljs-number">999</span>; i++)<br>            &#123;<br>                <span class="hljs-comment">//判断 每一位 的立方加起来 是不是等于自己</span><br>                <span class="hljs-comment">//得到每一位  百位  十位 个位</span><br>                bai = i / <span class="hljs-number">100</span>;<br>                shi = i % <span class="hljs-number">100</span> / <span class="hljs-number">10</span>;<br>                ge = i % <span class="hljs-number">10</span>;<br><br>                <span class="hljs-comment">//是否满足水仙花数条件</span><br>                <span class="hljs-keyword">if</span> (bai * bai * bai + shi * shi * shi + ge * ge * ge == i)<br>                &#123;<br>                    Console.WriteLine(i);<span class="hljs-comment">// 153 370 371 407</span><br>                &#125;<br>            &#125;<br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题四</span><br>            <span class="hljs-comment">//在控制台上输出九九乘法表</span><br><br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">9</span>; i++)<br>            &#123;<br>                <span class="hljs-comment">//1 1 X 1 = 1 空行</span><br>                <span class="hljs-comment">//2 1 X 2 = 2 2 X 2 = 4 空行</span><br>                <span class="hljs-comment">//3 1 X 3 = 3 2 X 3 = 6 3 X 3 = 9 空行</span><br>                <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">1</span>; j &lt;= i; j++)<br>                &#123;<br>                    Console.Write(<span class="hljs-string">&quot;&#123;0&#125;X&#123;1&#125;=&#123;2&#125;   &quot;</span>, j, i, i * j);<br>                &#125;<br>                Console.WriteLine();<br>            &#125;<br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题五</span><br>            <span class="hljs-comment">//在控制台上输出如下10 * 10的空心星型方阵</span><br>            <span class="hljs-comment">//**********</span><br>            <span class="hljs-comment">//*        *</span><br>            <span class="hljs-comment">//*        *</span><br>            <span class="hljs-comment">//*        *</span><br>            <span class="hljs-comment">//*        *</span><br>            <span class="hljs-comment">//*        *</span><br>            <span class="hljs-comment">//*        *</span><br>            <span class="hljs-comment">//*        *</span><br>            <span class="hljs-comment">//*        *</span><br>            <span class="hljs-comment">//**********</span><br><br>            <span class="hljs-comment">//行</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">0</span>; j &lt; <span class="hljs-number">10</span>; j++)<br>            &#123;<br>                <span class="hljs-comment">//列</span><br>                <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">10</span>; i++)<br>                &#123;<br><br>                    <span class="hljs-comment">//列 如果是 第1行和最后1行 那么 内层列循环 都打印星号</span><br>                    <span class="hljs-comment">// 按照 **********的规则打印</span><br>                    <span class="hljs-keyword">if</span> (j == <span class="hljs-number">0</span> || j == <span class="hljs-number">9</span>)<br>                    &#123;<br>                        Console.Write(<span class="hljs-string">&quot;*&quot;</span>);<br>                    &#125;<br><br>                    <span class="hljs-comment">//否则 就是 按照*         *的规则打印</span><br>                    <span class="hljs-keyword">else</span><br>                    &#123;<br>                        <span class="hljs-keyword">if</span> (i == <span class="hljs-number">0</span> || i == <span class="hljs-number">9</span>)<br>                        &#123;<br>                            Console.Write(<span class="hljs-string">&quot;*&quot;</span>);<br>                        &#125;<br>                        <span class="hljs-keyword">else</span><br>                        &#123;<br>                            Console.Write(<span class="hljs-string">&quot; &quot;</span>);<br>                        &#125;<br>                    &#125;<br>                &#125;<br>                Console.WriteLine();<br>            &#125;<br><br><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题六</span><br>            <span class="hljs-comment">//在控制台上输出如下10 * 10的三角形方阵</span><br>            <span class="hljs-comment">//*       1   1</span><br>            <span class="hljs-comment">//**      2   2</span><br>            <span class="hljs-comment">//***     3   3</span><br>            <span class="hljs-comment">//****    4   4</span><br>            <span class="hljs-comment">//*****</span><br>            <span class="hljs-comment">//******</span><br>            <span class="hljs-comment">//*******</span><br>            <span class="hljs-comment">//********</span><br>            <span class="hljs-comment">//*********</span><br>            <span class="hljs-comment">//**********</span><br><br>            <span class="hljs-comment">//行</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">10</span>; i++)<br>            &#123;<br>                <span class="hljs-comment">//列</span><br>                <span class="hljs-comment">//**********</span><br>                <span class="hljs-comment">//多少行就有多少列</span><br>                <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">1</span>; j &lt;= i; j++)<br>                &#123;<br>                    Console.Write(<span class="hljs-string">&quot;*&quot;</span>);<br>                &#125;<br>                Console.WriteLine();<br>            &#125;<br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>            <span class="hljs-meta">#<span class="hljs-keyword">region</span> 练习题七</span><br>            <span class="hljs-comment">//在控制台上输出如下10行的三角形方阵</span><br>            <span class="hljs-comment">//         *            1    1   -&gt; 2i - 1    9    10 - i</span><br>            <span class="hljs-comment">//        ***           2    3   -&gt; 2i - 1    8    10 - i</span><br>            <span class="hljs-comment">//       *****          3    5                7    10 - i</span><br>            <span class="hljs-comment">//      *******         4    7                6    10 - i</span><br>            <span class="hljs-comment">//     *********        5    9                5</span><br>            <span class="hljs-comment">//    ***********       6    11               4</span><br>            <span class="hljs-comment">//   *************      7    13               3</span><br>            <span class="hljs-comment">//  ***************     8    15               2</span><br>            <span class="hljs-comment">// *****************    9    17               1</span><br>            <span class="hljs-comment">//*******************   10   19               0    10 - i</span><br><br>            <span class="hljs-comment">//行</span><br>            <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> i = <span class="hljs-number">1</span>; i &lt;= <span class="hljs-number">10</span>; i++)<br>            &#123;<br>                <span class="hljs-comment">//打印空格的列</span><br>                <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> k = <span class="hljs-number">1</span>; k &lt;= <span class="hljs-number">10</span> - i; k++)<br>                &#123;<br>                    Console.Write(<span class="hljs-string">&quot; &quot;</span>);<br>                &#125;<br><br>                <span class="hljs-comment">//打印星号的列</span><br>                <span class="hljs-keyword">for</span> (<span class="hljs-built_in">int</span> j = <span class="hljs-number">1</span>; j &lt;= <span class="hljs-number">2</span>*i<span class="hljs-number">-1</span>; j++)<br>                &#123;<br>                    Console.Write(<span class="hljs-string">&quot;*&quot;</span>);<br>                &#125;<br>                Console.WriteLine();<br>            &#125;<br><br>            <span class="hljs-meta">#<span class="hljs-keyword">endregion</span></span><br><br>        &#125;<br>    &#125;<br>&#125;<br><br></code></pre></td></tr></table></figure>
+
+<hr>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 785293209@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">赏</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2024 Tao
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>喜欢就点赞,疼爱就打赏</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">支付宝</label></span><span><label><input type="radio" name="pay" value="weixin">微信</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 622px;
+    }
+    .nav.fullscreen {
+        margin-left: -622px;
+    }
+    .nav-left {
+        width: 200px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 572px;
+        }
+        .nav.fullscreen {
+            margin-left: -572px;
+        }
+        .nav-left {
+            width: 180px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 572px;
+            margin-left: -572px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
