@@ -6,30 +6,23 @@
   <meta name="keywords" content=" CSharp , 语法知识 , CSharp进阶 , 委托和事件 ">
   <meta name="description" content="16.lambda表达式和闭包 | 人间自有韬哥在的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1.概述 1.1 知识点 主要讲解内容 游戏框架是什么 游戏框架是基于什么进行设计的 本套课程的学习目标 总结">
+<meta name="description" content="1.概述 1.1 知识点什么是Behavior Designer？Behavior Designer是Unity中的一个插件，用于创建和管理行为树（Behavior Trees）。行为树是一种AI逻辑结构，常用于游戏开发中来描述角色行为和决策。Behavior Designer提供了一种直观的方式来构建复杂的AI行为，通过可视化编辑器，开发者可以轻松地设计、调试和管理行为树。 官网：Behavio">
 <meta property="og:type" content="website">
 <meta property="og:title" content="1.概述">
-<meta property="og:url" content="https://linwentao785293209.github.io/temp/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0.html">
+<meta property="og:url" content="https://linwentao785293209.github.io/temp/12.Unity%E8%BF%9B%E9%98%B6BehaviorDesigner/1.%E6%A6%82%E8%BF%B0.html">
 <meta property="og:site_name" content="人间自有韬哥在的博客">
-<meta property="og:description" content="1.概述 1.1 知识点 主要讲解内容 游戏框架是什么 游戏框架是基于什么进行设计的 本套课程的学习目标 总结">
+<meta property="og:description" content="1.概述 1.1 知识点什么是Behavior Designer？Behavior Designer是Unity中的一个插件，用于创建和管理行为树（Behavior Trees）。行为树是一种AI逻辑结构，常用于游戏开发中来描述角色行为和决策。Behavior Designer提供了一种直观的方式来构建复杂的AI行为，通过可视化编辑器，开发者可以轻松地设计、调试和管理行为树。 官网：Behavio">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/6.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/7.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/8.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/9.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/10.png">
-<meta property="article:published_time" content="2024-06-15T12:10:23.000Z">
-<meta property="article:modified_time" content="2024-06-15T12:10:30.660Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/12.Unity%E8%BF%9B%E9%98%B6BehaviorDesigner/1.%E6%A6%82%E8%BF%B0/1.png">
+<meta property="article:published_time" content="2024-08-04T04:01:10.000Z">
+<meta property="article:modified_time" content="2024-08-04T04:31:15.314Z">
 <meta property="article:author" content="人间自有韬哥在">
-<meta property="article:tag" content="框架">
-<meta property="article:tag" content="进阶框架">
+<meta property="article:tag" content="Unity">
+<meta property="article:tag" content="Unity进阶">
+<meta property="article:tag" content="基础知识">
+<meta property="article:tag" content="BehaviorDesigner">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/12.Unity%E8%BF%9B%E9%98%B6BehaviorDesigner/1.%E6%A6%82%E8%BF%B0/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -160,7 +153,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(1656)</small>
+                <small>(1660)</small>
             
         </div>
     </li>
@@ -1935,7 +1928,7 @@
         <div data-rel="渲染">
             <i class="fold iconfont icon-right"></i>
             渲染
-            <small>(79)</small>
+            <small>(83)</small>
         </div>
         
             <ul class="sub hide">
@@ -1945,7 +1938,7 @@
         <div data-rel="渲染&lt;---&gt;Shader">
             <i class="fold iconfont icon-right"></i>
             Shader
-            <small>(79)</small>
+            <small>(83)</small>
         </div>
         
             <ul class="sub hide">
@@ -1988,7 +1981,7 @@
         <div data-rel="渲染&lt;---&gt;Shader&lt;---&gt;Shader开发入门">
             
             Shader开发入门
-            <small>(22)</small>
+            <small>(26)</small>
         </div>
         
     </li>
@@ -2237,8 +2230,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="1656">
-<input type="hidden" id="yelog_site_word_count" value="2171.3k">
+<input type="hidden" id="yelog_site_posts_number" value="1660">
+<input type="hidden" id="yelog_site_word_count" value="2178.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -2391,6 +2384,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>单调栈</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>单张纹理</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -2779,6 +2776,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>文件传输FTP</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>纹理</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -3275,6 +3276,42 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 渲染 Shader Shader开发入门 "
+           href="/2024/10/11/%E6%B8%B2%E6%9F%93/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/26.%E7%BA%B9%E7%90%86-%E5%8D%95%E5%BC%A0%E7%BA%B9%E7%90%86-%E7%BA%B9%E7%90%86%E7%BB%93%E5%90%88%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B/"
+           data-tag="渲染,Shader,Shader开发入门,纹理,单张纹理"
+           data-author="" >
+            <span class="post-title" title="26.单张纹理结合BlinnPhong光照模型">26.单张纹理结合BlinnPhong光照模型</span>
+            <span class="post-date" title="2024-10-11 23:18:21">2024/10/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 渲染 Shader Shader开发入门 "
+           href="/2024/10/11/%E6%B8%B2%E6%9F%93/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/25.%E7%BA%B9%E7%90%86-%E5%8D%95%E5%BC%A0%E7%BA%B9%E7%90%86-%E7%BA%B9%E7%90%86%E9%A2%9C%E8%89%B2%E9%87%87%E6%A0%B7/"
+           data-tag="渲染,Shader,Shader开发入门,纹理,单张纹理"
+           data-author="" >
+            <span class="post-title" title="25.单张纹理颜色采样">25.单张纹理颜色采样</span>
+            <span class="post-date" title="2024-10-11 23:15:34">2024/10/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 渲染 Shader Shader开发入门 "
+           href="/2024/10/11/%E6%B8%B2%E6%9F%93/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/24.%E7%BA%B9%E7%90%86-%E7%BA%B9%E7%90%86%E8%AE%BE%E7%BD%AE/"
+           data-tag="渲染,Shader,Shader开发入门,纹理"
+           data-author="" >
+            <span class="post-title" title="24.纹理设置">24.纹理设置</span>
+            <span class="post-date" title="2024-10-11 12:45:44">2024/10/11</span>
+        </a>
+        
+        
+        <a  class="全部文章 渲染 Shader Shader开发入门 "
+           href="/2024/10/11/%E6%B8%B2%E6%9F%93/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/23.%E7%BA%B9%E7%90%86-%E7%BA%B9%E7%90%86%E6%A6%82%E5%BF%B5/"
+           data-tag="渲染,Shader,Shader开发入门,纹理"
+           data-author="" >
+            <span class="post-title" title="23.纹理概念">23.纹理概念</span>
+            <span class="post-date" title="2024-10-11 12:41:37">2024/10/11</span>
+        </a>
         
         
         <a  class="全部文章 渲染 Shader Shader开发入门 "
@@ -10101,7 +10138,7 @@
         
         <a  class="全部文章 UI系统 UGUI UGUI基础知识 "
            href="/2024/03/11/UI%E7%B3%BB%E7%BB%9F/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-RectTransform%E7%9F%A9%E5%BD%A2%E5%8F%98%E6%8D%A2%E7%BB%84%E4%BB%B6/"
-           data-tag="UI系统,基础知识,基础组件,UGUI"
+           data-tag="UI系统,基础知识,UGUI,基础组件"
            data-author="" >
             <span class="post-title" title="7.RectTransform矩形变换组件">7.RectTransform矩形变换组件</span>
             <span class="post-date" title="2024-03-11 09:11:02">2024/03/11</span>
@@ -10110,7 +10147,7 @@
         
         <a  class="全部文章 UI系统 UGUI UGUI基础知识 "
            href="/2024/03/11/UI%E7%B3%BB%E7%BB%9F/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-EventSystem%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%BB%84%E4%BB%B6%E5%92%8CStandaloneInputModule%E7%8B%AC%E7%AB%8B%E8%BE%93%E5%85%A5%E6%A8%A1%E5%9D%97%E7%BB%84%E4%BB%B6/"
-           data-tag="UI系统,基础知识,基础组件,UGUI"
+           data-tag="UI系统,基础知识,UGUI,基础组件"
            data-author="" >
             <span class="post-title" title="6.EventSystem事件系统组件和StandaloneInputModule独立输入模块组件">6.EventSystem事件系统组件和StandaloneInputModule独立输入模块组件</span>
             <span class="post-date" title="2024-03-11 09:02:36">2024/03/11</span>
@@ -10119,7 +10156,7 @@
         
         <a  class="全部文章 UI系统 UGUI UGUI基础知识 "
            href="/2024/03/11/UI%E7%B3%BB%E7%BB%9F/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-GraphicRaycaster%E5%9B%BE%E5%BD%A2%E5%B0%84%E7%BA%BF%E6%8A%95%E5%B0%84%E5%99%A8%E7%BB%84%E4%BB%B6/"
-           data-tag="UI系统,基础知识,基础组件,UGUI"
+           data-tag="UI系统,基础知识,UGUI,基础组件"
            data-author="" >
             <span class="post-title" title="5.GraphicRaycaster图形射线投射器组件">5.GraphicRaycaster图形射线投射器组件</span>
             <span class="post-date" title="2024-03-11 08:53:22">2024/03/11</span>
@@ -10128,7 +10165,7 @@
         
         <a  class="全部文章 UI系统 UGUI UGUI基础知识 "
            href="/2024/03/10/UI%E7%B3%BB%E7%BB%9F/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-CanvasScaler%E7%94%BB%E5%B8%83%E7%BC%A9%E6%94%BE%E5%99%A8%E7%BB%84%E4%BB%B6/"
-           data-tag="UI系统,基础知识,基础组件,UGUI"
+           data-tag="UI系统,基础知识,UGUI,基础组件"
            data-author="" >
             <span class="post-title" title="4.CanvasScaler画布缩放器组件">4.CanvasScaler画布缩放器组件</span>
             <span class="post-date" title="2024-03-10 22:36:20">2024/03/10</span>
@@ -10137,7 +10174,7 @@
         
         <a  class="全部文章 UI系统 UGUI UGUI基础知识 "
            href="/2024/03/10/UI%E7%B3%BB%E7%BB%9F/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Canvas%E7%94%BB%E5%B8%83%E7%BB%84%E4%BB%B6/"
-           data-tag="UI系统,基础知识,基础组件,UGUI"
+           data-tag="UI系统,基础知识,UGUI,基础组件"
            data-author="" >
             <span class="post-title" title="3.Canvas画布组件">3.Canvas画布组件</span>
             <span class="post-date" title="2024-03-10 22:29:59">2024/03/10</span>
@@ -10146,7 +10183,7 @@
         
         <a  class="全部文章 UI系统 UGUI UGUI基础知识 "
            href="/2024/03/10/UI%E7%B3%BB%E7%BB%9F/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-%E6%A6%82%E8%BF%B0/"
-           data-tag="UI系统,基础知识,基础组件,UGUI"
+           data-tag="UI系统,基础知识,UGUI,基础组件"
            data-author="" >
             <span class="post-title" title="2.基础组件概述">2.基础组件概述</span>
             <span class="post-date" title="2024-03-10 21:38:52">2024/03/10</span>
@@ -10488,7 +10525,7 @@
         
         <a  class="全部文章 Unity Unity核心 Unity核心基础知识 "
            href="/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/47.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-Spine-%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/"
-           data-tag="反射和特性,基础知识,Unity,Unity核心,2D动画,2D骨骼动画,Spine"
+           data-tag="基础知识,反射和特性,Unity,Unity核心,2D动画,2D骨骼动画,Spine"
            data-author="" >
             <span class="post-title" title="47.2D动画Spine骨骼动画代码控制">47.2D动画Spine骨骼动画代码控制</span>
             <span class="post-date" title="2024-03-10 09:54:50">2024/03/10</span>
@@ -11712,7 +11749,7 @@
         
         <a  class="全部文章 Unity Unity基础 Unity基础基础知识 "
            href="/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/"
-           data-tag="基础知识,Unity,坐标,Unity基础,3D数学"
+           data-tag="基础知识,坐标,Unity,Unity基础,3D数学"
            data-author="" >
             <span class="post-title" title="4.坐标系">4.坐标系</span>
             <span class="post-date" title="2024-02-28 12:39:16">2024/02/28</span>
@@ -12144,7 +12181,7 @@
         
         <a  class="全部文章 UI系统 GUI GUI实践项目 "
            href="/2024/02/27/UI%E7%B3%BB%E7%BB%9F/02.GUI%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F%E4%B8%8B%E8%AE%A9%E6%8C%87%E5%AE%9A%E4%BB%A3%E7%A0%81%E8%BF%90%E8%A1%8C/"
-           data-tag="实践项目,必备知识点,反射和特性,UI系统,GUI"
+           data-tag="实践项目,必备知识点,UI系统,GUI,反射和特性"
            data-author="" >
             <span class="post-title" title="1.编辑模式下让指定代码运行">1.编辑模式下让指定代码运行</span>
             <span class="post-date" title="2024-02-27 11:18:43">2024/02/27</span>
@@ -12558,7 +12595,7 @@
         
         <a  class="全部文章 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Transform%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/"
-           data-tag="基础知识,Unity,Unity入门,Unity重要组件和API,坐标"
+           data-tag="基础知识,坐标,Unity,Unity入门,Unity重要组件和API"
            data-author="" >
             <span class="post-title" title="20.Transform变换组件坐标转换">20.Transform变换组件坐标转换</span>
             <span class="post-date" title="2024-02-24 16:33:35">2024/02/24</span>
@@ -12639,7 +12676,7 @@
         
         <a  class="全部文章 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-Inspector%E7%AA%97%E5%8F%A3%E5%8F%AF%E7%BC%96%E8%BE%91%E7%9A%84%E5%8F%98%E9%87%8F/"
-           data-tag="反射和特性,基础知识,Unity,Unity入门,Unity脚本基础"
+           data-tag="基础知识,反射和特性,Unity,Unity入门,Unity脚本基础"
            data-author="" >
             <span class="post-title" title="11.Inspector窗口可编辑的变量">11.Inspector窗口可编辑的变量</span>
             <span class="post-date" title="2024-02-24 12:38:36">2024/02/24</span>
@@ -12675,7 +12712,7 @@
         
         <a  class="全部文章 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E5%92%8C%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF/"
-           data-tag="反射和特性,基础知识,Unity,Unity入门,Unity工作原理"
+           data-tag="基础知识,反射和特性,Unity,Unity入门,Unity工作原理"
            data-author="" >
             <span class="post-title" title="7.反射机制和游戏场景">7.反射机制和游戏场景</span>
             <span class="post-date" title="2024-02-24 10:09:09">2024/02/24</span>
@@ -17175,7 +17212,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/11/LeetCode/1827.%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E4%BD%BF%E6%95%B0%E7%BB%84%E9%80%92%E5%A2%9E/"
-           data-tag="LeetCode,数组,贪心"
+           data-tag="LeetCode,贪心,数组"
            data-author="" >
             <span class="post-title" title="1827.最少操作使数组递增">1827.最少操作使数组递增</span>
             <span class="post-date" title="2000-01-11 08:02:07">2000/01/11</span>
@@ -17229,7 +17266,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/11/LeetCode/1047.%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/"
-           data-tag="LeetCode,数组,贪心,排序"
+           data-tag="LeetCode,贪心,数组,排序"
            data-author="" >
             <span class="post-title" title="1047.删除字符串中的所有相邻重复项">1047.删除字符串中的所有相邻重复项</span>
             <span class="post-date" title="2000-01-11 00:04:07">2000/01/11</span>
@@ -17238,7 +17275,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/976.%E4%B8%89%E8%A7%92%E5%BD%A2%E7%9A%84%E6%9C%80%E5%A4%A7%E5%91%A8%E9%95%BF/"
-           data-tag="LeetCode,数组,贪心,排序"
+           data-tag="LeetCode,贪心,数组,排序"
            data-author="" >
             <span class="post-title" title="976.三角形的最大周长">976.三角形的最大周长</span>
             <span class="post-date" title="2000-01-01 09:07:06">2000/01/01</span>
@@ -17247,7 +17284,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/905.%E6%8C%89%E5%A5%87%E5%81%B6%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/"
-           data-tag="LeetCode,数组,双指针,排序"
+           data-tag="LeetCode,数组,排序,双指针"
            data-author="" >
             <span class="post-title" title="905.按奇偶排序数组">905.按奇偶排序数组</span>
             <span class="post-date" title="2000-01-01 09:00:05">2000/01/01</span>
@@ -17256,7 +17293,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/892.%E4%B8%89%E7%BB%B4%E5%BD%A2%E4%BD%93%E7%9A%84%E8%A1%A8%E9%9D%A2%E7%A7%AF/"
-           data-tag="LeetCode,数组,贪心"
+           data-tag="LeetCode,贪心,数组"
            data-author="" >
             <span class="post-title" title="892.三维形体的表面积">892.三维形体的表面积</span>
             <span class="post-date" title="2000-01-01 08:09:02">2000/01/01</span>
@@ -17265,7 +17302,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/860.%E6%9F%A0%E6%AA%AC%E6%B0%B4%E6%89%BE%E9%9B%B6/"
-           data-tag="LeetCode,数组,贪心"
+           data-tag="LeetCode,贪心,数组"
            data-author="" >
             <span class="post-title" title="860.柠檬水找零">860.柠檬水找零</span>
             <span class="post-date" title="2000-01-01 08:06:00">2000/01/01</span>
@@ -17346,7 +17383,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/605.%E7%A7%8D%E8%8A%B1%E9%97%AE%E9%A2%98/"
-           data-tag="LeetCode,数组,贪心"
+           data-tag="LeetCode,贪心,数组"
            data-author="" >
             <span class="post-title" title="605.种花问题">605.种花问题</span>
             <span class="post-date" title="2000-01-01 06:00:05">2000/01/01</span>
@@ -17355,7 +17392,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/561.%E6%95%B0%E7%BB%84%E6%8B%86%E5%88%86/"
-           data-tag="LeetCode,数组,贪心,排序,计数排序"
+           data-tag="LeetCode,贪心,数组,排序,计数排序"
            data-author="" >
             <span class="post-title" title="561.数组拆分">561.数组拆分</span>
             <span class="post-date" title="2000-01-01 05:06:01">2000/01/01</span>
@@ -17418,7 +17455,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/455.%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2/"
-           data-tag="LeetCode,数组,贪心,双指针,排序"
+           data-tag="LeetCode,贪心,数组,排序,双指针"
            data-author="" >
             <span class="post-title" title="455.分发饼干">455.分发饼干</span>
             <span class="post-date" title="2000-01-01 04:05:05">2000/01/01</span>
@@ -17445,7 +17482,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/409.%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2/"
-           data-tag="LeetCode,哈希表,贪心,字符串"
+           data-tag="LeetCode,贪心,哈希表,字符串"
            data-author="" >
             <span class="post-title" title="409.最长回文串">409.最长回文串</span>
             <span class="post-date" title="2000-01-01 04:00:09">2000/01/01</span>
@@ -17463,7 +17500,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/389.%E6%89%BE%E4%B8%8D%E5%90%8C/"
-           data-tag="LeetCode,哈希表,排序,字符串,位运算"
+           data-tag="LeetCode,排序,哈希表,字符串,位运算"
            data-author="" >
             <span class="post-title" title="389.找不同">389.找不同</span>
             <span class="post-date" title="2000-01-01 03:08:09">2000/01/01</span>
@@ -17481,7 +17518,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/350.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86II/"
-           data-tag="LeetCode,数组,哈希表,双指针,排序,二分查找"
+           data-tag="LeetCode,数组,排序,双指针,哈希表,二分查找"
            data-author="" >
             <span class="post-title" title="350.两个数组的交集II">350.两个数组的交集II</span>
             <span class="post-date" title="2000-01-01 03:05:00">2000/01/01</span>
@@ -17490,7 +17527,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/"
-           data-tag="LeetCode,数组,哈希表,双指针,排序,二分查找"
+           data-tag="LeetCode,数组,排序,双指针,哈希表,二分查找"
            data-author="" >
             <span class="post-title" title="349.两个数组的交集">349.两个数组的交集</span>
             <span class="post-date" title="2000-01-01 03:04:09">2000/01/01</span>
@@ -17553,7 +17590,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/268.%E4%B8%A2%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/"
-           data-tag="LeetCode,数组,哈希表,排序,数学,位运算,二分查找"
+           data-tag="LeetCode,数组,排序,哈希表,数学,位运算,二分查找"
            data-author="" >
             <span class="post-title" title="268.丢失的数字">268.丢失的数字</span>
             <span class="post-date" title="2000-01-01 02:06:08">2000/01/01</span>
@@ -17625,7 +17662,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/217.%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,数组,哈希表,排序"
+           data-tag="LeetCode,数组,排序,哈希表"
            data-author="" >
             <span class="post-title" title="217.存在重复元素">217.存在重复元素</span>
             <span class="post-date" title="2000-01-01 02:01:07">2000/01/01</span>
@@ -17679,7 +17716,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/169.%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,数组,哈希表,排序,分治,计数"
+           data-tag="LeetCode,数组,排序,分治,哈希表,计数"
            data-author="" >
             <span class="post-title" title="169.多数元素">169.多数元素</span>
             <span class="post-date" title="2000-01-01 01:06:08">2000/01/01</span>
@@ -17706,7 +17743,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/160.%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/"
-           data-tag="LeetCode,哈希表,双指针,链表"
+           data-tag="LeetCode,双指针,哈希表,链表"
            data-author="" >
             <span class="post-title" title="160.相交链表">160.相交链表</span>
             <span class="post-date" title="2000-01-01 01:06:00">2000/01/01</span>
@@ -17724,7 +17761,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/"
-           data-tag="LeetCode,哈希表,双指针,链表"
+           data-tag="LeetCode,双指针,哈希表,链表"
            data-author="" >
             <span class="post-title" title="141.环形链表">141.环形链表</span>
             <span class="post-date" title="2000-01-01 01:04:01">2000/01/01</span>
@@ -17742,7 +17779,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/135.%E5%88%86%E5%8F%91%E7%B3%96%E6%9E%9C/"
-           data-tag="LeetCode,数组,贪心"
+           data-tag="LeetCode,贪心,数组"
            data-author="" >
             <span class="post-title" title="135.分发糖果">135.分发糖果</span>
             <span class="post-date" title="2000-01-01 01:03:05">2000/01/01</span>
@@ -17769,7 +17806,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/122.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII/"
-           data-tag="LeetCode,数组,贪心,动态规划"
+           data-tag="LeetCode,贪心,数组,动态规划"
            data-author="" >
             <span class="post-title" title="122.买卖股票的最佳时机II">122.买卖股票的最佳时机II</span>
             <span class="post-date" title="2000-01-01 01:02:02">2000/01/01</span>
@@ -17850,7 +17887,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/88.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/"
-           data-tag="LeetCode,数组,双指针,排序"
+           data-tag="LeetCode,数组,排序,双指针"
            data-author="" >
             <span class="post-title" title="88.合并两个有序数组">88.合并两个有序数组</span>
             <span class="post-date" title="2000-01-01 00:08:08">2000/01/01</span>
@@ -17868,7 +17905,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/75.%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB/"
-           data-tag="LeetCode,数组,双指针,排序"
+           data-tag="LeetCode,数组,排序,双指针"
            data-author="" >
             <span class="post-title" title="75.颜色分类">75.颜色分类</span>
             <span class="post-date" title="2000-01-01 00:07:05">2000/01/01</span>
@@ -17940,7 +17977,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/55.%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/"
-           data-tag="LeetCode,数组,贪心,动态规划"
+           data-tag="LeetCode,贪心,数组,动态规划"
            data-author="" >
             <span class="post-title" title="55.跳跃游戏">55.跳跃游戏</span>
             <span class="post-date" title="2000-01-01 00:05:05">2000/01/01</span>
@@ -17976,7 +18013,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/45.%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8FII/"
-           data-tag="LeetCode,数组,贪心,动态规划"
+           data-tag="LeetCode,贪心,数组,动态规划"
            data-author="" >
             <span class="post-title" title="45.跳跃游戏II">45.跳跃游戏II</span>
             <span class="post-date" title="2000-01-01 00:04:05">2000/01/01</span>
@@ -18048,7 +18085,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/16.%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"
-           data-tag="LeetCode,数组,双指针,排序"
+           data-tag="LeetCode,数组,排序,双指针"
            data-author="" >
             <span class="post-title" title="16.最接近的三数之和">16.最接近的三数之和</span>
             <span class="post-date" title="2000-01-01 00:01:06">2000/01/01</span>
@@ -18057,7 +18094,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/15.%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"
-           data-tag="LeetCode,数组,双指针,排序"
+           data-tag="LeetCode,数组,排序,双指针"
            data-author="" >
             <span class="post-title" title="15.三数之和">15.三数之和</span>
             <span class="post-date" title="2000-01-01 00:01:05">2000/01/01</span>
@@ -18093,7 +18130,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/01/LeetCode/11.%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/"
-           data-tag="LeetCode,数组,贪心,双指针"
+           data-tag="LeetCode,贪心,数组,双指针"
            data-author="" >
             <span class="post-title" title="11.盛最多水的容器">11.盛最多水的容器</span>
             <span class="post-date" title="2000-01-01 00:01:01">2000/01/01</span>
