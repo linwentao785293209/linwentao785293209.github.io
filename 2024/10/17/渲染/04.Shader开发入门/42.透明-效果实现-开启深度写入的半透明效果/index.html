@@ -6,23 +6,30 @@
   <meta name="keywords" content=" 渲染 , Shader , Shader开发入门 , 透明 , 效果实现 ">
   <meta name="description" content="42.开启深度写入的半透明效果 | 人间自有韬哥在的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1.概述 1.1 知识点什么是Behavior Designer？Behavior Designer是Unity中的一个插件，用于创建和管理行为树（Behavior Trees）。行为树是一种AI逻辑结构，常用于游戏开发中来描述角色行为和决策。Behavior Designer提供了一种直观的方式来构建复杂的AI行为，通过可视化编辑器，开发者可以轻松地设计、调试和管理行为树。 官网：Behavio">
+<meta name="description" content="1.概述 1.1 知识点 主要讲解内容 游戏框架是什么 游戏框架是基于什么进行设计的 本套课程的学习目标 总结">
 <meta property="og:type" content="website">
 <meta property="og:title" content="1.概述">
-<meta property="og:url" content="https://linwentao785293209.github.io/temp/12.Unity%E8%BF%9B%E9%98%B6BehaviorDesigner/1.%E6%A6%82%E8%BF%B0.html">
+<meta property="og:url" content="https://linwentao785293209.github.io/temp/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0.html">
 <meta property="og:site_name" content="人间自有韬哥在的博客">
-<meta property="og:description" content="1.概述 1.1 知识点什么是Behavior Designer？Behavior Designer是Unity中的一个插件，用于创建和管理行为树（Behavior Trees）。行为树是一种AI逻辑结构，常用于游戏开发中来描述角色行为和决策。Behavior Designer提供了一种直观的方式来构建复杂的AI行为，通过可视化编辑器，开发者可以轻松地设计、调试和管理行为树。 官网：Behavio">
+<meta property="og:description" content="1.概述 1.1 知识点 主要讲解内容 游戏框架是什么 游戏框架是基于什么进行设计的 本套课程的学习目标 总结">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/12.Unity%E8%BF%9B%E9%98%B6BehaviorDesigner/1.%E6%A6%82%E8%BF%B0/1.png">
-<meta property="article:published_time" content="2024-08-04T04:01:10.000Z">
-<meta property="article:modified_time" content="2024-08-04T04:31:15.314Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/6.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/7.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/8.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/9.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/10.png">
+<meta property="article:published_time" content="2024-06-15T12:10:23.000Z">
+<meta property="article:modified_time" content="2024-06-15T12:10:30.660Z">
 <meta property="article:author" content="人间自有韬哥在">
-<meta property="article:tag" content="Unity">
-<meta property="article:tag" content="Unity进阶">
-<meta property="article:tag" content="基础知识">
-<meta property="article:tag" content="BehaviorDesigner">
+<meta property="article:tag" content="框架">
+<meta property="article:tag" content="进阶框架">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/12.Unity%E8%BF%9B%E9%98%B6BehaviorDesigner/1.%E6%A6%82%E8%BF%B0/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -153,7 +160,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(1677)</small>
+                <small>(1676)</small>
             
         </div>
     </li>
@@ -1515,10 +1522,6 @@
     
         
             
-        
-    
-        
-            
                 
     <li>
         <div data-rel="设计模式">
@@ -2030,7 +2033,7 @@
         <div data-rel="面试">
             <i class="fold iconfont icon-right"></i>
             面试
-            <small>(333)</small>
+            <small>(332)</small>
         </div>
         
             <ul class="sub hide">
@@ -2107,17 +2110,6 @@
             
             网络
             <small>(9)</small>
-        </div>
-        
-    </li>
-
-                
-                    
-    <li>
-        <div data-rel="面试&lt;---&gt;七大原则">
-            
-            七大原则
-            <small>(1)</small>
         </div>
         
     </li>
@@ -2230,8 +2222,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="1677">
-<input type="hidden" id="yelog_site_word_count" value="2216.2k">
+<input type="hidden" id="yelog_site_posts_number" value="1676">
+<input type="hidden" id="yelog_site_word_count" value="2215.9k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -2253,6 +2245,16 @@
             
             <li><a target="_blank" href="http://xuxuxuJS.cn/">旭旭旭</a></li>
             
+            <li><a target="_blank" href="https://github.com/EllanJiang">EllanJiang</a></li>
+            
+            <li><a target="_blank" href="https://github.com/egametang">egametang</a></li>
+            
+            <li><a target="_blank" href="https://qianmo.blog.csdn.net/?type=blog">浅墨_毛星云</a></li>
+            
+            <li><a target="_blank" href="https://www.drflower.top/">花桑</a></li>
+            
+            <li><a target="_blank" href="https://github.com/candycat1992">冯乐乐</a></li>
+            
             <li><a target="_blank" href="https://blog.codingnow.com/">云风</a></li>
             
             <li><a target="_blank" href="https://www.lfzxb.top/page/2/">烟雨迷离半世殇</a></li>
@@ -2270,6 +2272,18 @@
             <li><a target="_blank" href="https://space.bilibili.com/17235810/?spm_id_from=333.999.0.0">叔叔的中年生活</a></li>
             
             <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+            <li><a target="_blank" href="http://www.luzexi.com/">陆泽西</a></li>
+            
+            <li><a target="_blank" href="https://blog.csdn.net/qq_36303853">向宇it</a></li>
+            
+            <li><a target="_blank" href="https://space.bilibili.com/302482063?spm_id_from=333.337.0.0">打工人小棋</a></li>
+            
+            <li><a target="_blank" href="https://itmonon.blog.csdn.net/?type=blog">恬静的小魔龙</a></li>
+            
+            <li><a target="_blank" href="https://passion.blog.csdn.net/?type=blog">TxNet</a></li>
+            
+            <li><a target="_blank" href="https://mp.weixin.qq.com/s?__biz=Mzk0MjcwNTY4MA==&mid=2247483660&idx=1&sn=b07a987492198cc90550d123d32e8651&chksm=c33e5c73f449d565ca084761c70619b7a7e5ad385cb7251eda2cfaf5c5c2f9f5a009ceef1fe6&cur_album_id=3473282892753567748&scene=190#rd">写代码的诗人</a></li>
             
         </ul>
     </div>
@@ -3570,7 +3584,7 @@
         
         <a  class="全部文章 渲染 Shader Shader开发入门 "
            href="/2024/10/10/%E6%B8%B2%E6%9F%93/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/13.%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E9%AB%98%E5%85%89%E5%8F%8D%E5%B0%84%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-BlinnPhong%E5%BC%8F%E9%AB%98%E5%85%89%E5%8F%8D%E5%B0%84%E6%A8%A1%E5%9E%8B-%E9%80%90%E9%A1%B6%E7%82%B9%E5%85%89%E7%85%A7/"
-           data-tag="渲染,Shader,Shader开发入门,光照模型,高光反射光照模型,BlinnPhong式高光反射模型,逐顶点光照"
+           data-tag="渲染,Shader,Shader开发入门,光照模型,高光反射光照模型,逐顶点光照,BlinnPhong式高光反射模型"
            data-author="" >
             <span class="post-title" title="13.BlinnPhong式高光反射逐顶点光照">13.BlinnPhong式高光反射逐顶点光照</span>
             <span class="post-date" title="2024-10-10 13:04:33">2024/10/10</span>
@@ -10698,7 +10712,7 @@
         
         <a  class="全部文章 Unity Unity核心 Unity核心基础知识 "
            href="/2024/03/10/Unity/05.Unity%E6%A0%B8%E5%BF%83%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/47.2D%E5%8A%A8%E7%94%BB-2D%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB-Spine-%E9%AA%A8%E9%AA%BC%E5%8A%A8%E7%94%BB%E4%BB%A3%E7%A0%81%E7%9B%B8%E5%85%B3/"
-           data-tag="基础知识,反射和特性,Unity,Unity核心,2D动画,2D骨骼动画,Spine"
+           data-tag="反射和特性,基础知识,Unity,Unity核心,2D动画,2D骨骼动画,Spine"
            data-author="" >
             <span class="post-title" title="47.2D动画Spine骨骼动画代码控制">47.2D动画Spine骨骼动画代码控制</span>
             <span class="post-date" title="2024-03-10 09:54:50">2024/03/10</span>
@@ -12354,7 +12368,7 @@
         
         <a  class="全部文章 UI系统 GUI GUI实践项目 "
            href="/2024/02/27/UI%E7%B3%BB%E7%BB%9F/02.GUI%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.%E5%BF%85%E5%A4%87%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%BC%96%E8%BE%91%E6%A8%A1%E5%BC%8F%E4%B8%8B%E8%AE%A9%E6%8C%87%E5%AE%9A%E4%BB%A3%E7%A0%81%E8%BF%90%E8%A1%8C/"
-           data-tag="实践项目,必备知识点,UI系统,GUI,反射和特性"
+           data-tag="实践项目,必备知识点,反射和特性,UI系统,GUI"
            data-author="" >
             <span class="post-title" title="1.编辑模式下让指定代码运行">1.编辑模式下让指定代码运行</span>
             <span class="post-date" title="2024-02-27 11:18:43">2024/02/27</span>
@@ -12849,7 +12863,7 @@
         
         <a  class="全部文章 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-Inspector%E7%AA%97%E5%8F%A3%E5%8F%AF%E7%BC%96%E8%BE%91%E7%9A%84%E5%8F%98%E9%87%8F/"
-           data-tag="基础知识,反射和特性,Unity,Unity入门,Unity脚本基础"
+           data-tag="反射和特性,基础知识,Unity,Unity入门,Unity脚本基础"
            data-author="" >
             <span class="post-title" title="11.Inspector窗口可编辑的变量">11.Inspector窗口可编辑的变量</span>
             <span class="post-date" title="2024-02-24 12:38:36">2024/02/24</span>
@@ -12885,7 +12899,7 @@
         
         <a  class="全部文章 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.Unity%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86-%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6%E5%92%8C%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF/"
-           data-tag="基础知识,反射和特性,Unity,Unity入门,Unity工作原理"
+           data-tag="反射和特性,基础知识,Unity,Unity入门,Unity工作原理"
            data-author="" >
             <span class="post-title" title="7.反射机制和游戏场景">7.反射机制和游戏场景</span>
             <span class="post-date" title="2024-02-24 10:09:09">2024/02/24</span>
@@ -14383,15 +14397,6 @@
            data-author="" >
             <span class="post-title" title="1.概述">1.概述</span>
             <span class="post-date" title="2024-01-01 12:41:48">2024/01/01</span>
-        </a>
-        
-        
-        <a  class="全部文章 面试 七大原则 "
-           href="/2013/01/01/%E9%9D%A2%E8%AF%95/13.%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/1.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E7%9A%84%E4%B8%83%E5%A4%A7%E5%8E%9F%E5%88%99/"
-           data-tag="七大原则,面试"
-           data-author="" >
-            <span class="post-title" title="1. 面向对象的七大原则">1. 面向对象的七大原则</span>
-            <span class="post-date" title="2013-01-01 00:00:01">2013/01/01</span>
         </a>
         
         
@@ -17889,7 +17894,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/169.%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,数组,哈希表,分治,排序,计数"
+           data-tag="LeetCode,数组,哈希表,排序,分治,计数"
            data-author="" >
             <span class="post-title" title="169.多数元素">169.多数元素</span>
             <span class="post-date" title="2000-01-10 01:06:08">2000/01/10</span>
@@ -18447,12 +18452,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2024-10-18 00:38:02'>2024-10-17 21:35</time>
+            发布时间 : <time class="date" title='最后更新: 2024-10-21 09:39:36'>2024-10-17 21:35</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:3.6k</span>
+        <span>字数:3.9k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -18482,7 +18487,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#42-%E9%80%8F%E6%98%8E-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-%E5%BC%80%E5%90%AF%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5%E7%9A%84%E5%8D%8A%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C"><span class="toc-text">42.透明-效果实现-开启深度写入的半透明效果</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#42-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">42.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C%EF%BC%9A%E5%AF%BC%E5%85%A5%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90"><span class="toc-text">准备工作：导入测试资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AF%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5%E7%9A%84%E5%8D%8A%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C%E7%9A%84%E9%9C%80%E6%B1%82"><span class="toc-text">开启深度写入的半透明效果的需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AF%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5%E7%9A%84%E5%8D%8A%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text">开启深度写入的半透明效果的基本原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text">基本原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E4%B8%8D%E8%BE%93%E5%87%BA%E9%A2%9C%E8%89%B2"><span class="toc-text">如何做到不输出颜色</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%BC%80%E5%90%AF%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5%E7%9A%84%E5%8D%8A%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C"><span class="toc-text">实现开启深度写入的半透明效果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E6%AD%A5%E9%AA%A4"><span class="toc-text">关键步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6-Lesson41-%E9%80%8F%E6%98%8E-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-%E9%80%8F%E6%98%8E%E5%BA%A6%E6%B7%B7%E5%90%88-%E4%B8%AD%E9%80%8F%E6%98%8E%E5%BA%A6%E6%B7%B7%E5%90%88%E7%9A%84Shader%E4%BB%A3%E7%A0%81"><span class="toc-text">复制 Lesson41_透明_效果实现_透明度混合 中透明度混合的Shader代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8SubShader%E4%B8%AD%E6%B7%BB%E5%8A%A0Pass%E6%B8%B2%E6%9F%93%E9%80%9A%E9%81%93"><span class="toc-text">在SubShader中添加Pass渲染通道</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%9D%90%E8%B4%A8%E8%B5%8B%E5%80%BC%E5%B9%B6%E6%B5%8B%E8%AF%95"><span class="toc-text">创建材质赋值并测试</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#42-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">42.2 知识点代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lesson42-%E9%80%8F%E6%98%8E-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-%E5%BC%80%E5%90%AF%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5%E7%9A%84%E5%8D%8A%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C"><span class="toc-text">Lesson42_透明_效果实现_开启深度写入的半透明效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lesson42-Transparent-Open-Depth-Writing-Translucent"><span class="toc-text">Lesson42_Transparent_Open_Depth_Writing_Translucent</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#42-%E9%80%8F%E6%98%8E-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-%E5%BC%80%E5%90%AF%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5%E7%9A%84%E5%8D%8A%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C"><span class="toc-text">42.透明-效果实现-开启深度写入的半透明效果</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#42-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">42.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%87%86%E5%A4%87%E5%B7%A5%E4%BD%9C%EF%BC%9A%E5%AF%BC%E5%85%A5%E6%B5%8B%E8%AF%95%E8%B5%84%E6%BA%90"><span class="toc-text">准备工作：导入测试资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AF%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5%E7%9A%84%E5%8D%8A%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C%E7%9A%84%E9%9C%80%E6%B1%82"><span class="toc-text">开启深度写入的半透明效果的需求</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AF%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5%E7%9A%84%E5%8D%8A%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text">开启深度写入的半透明效果的基本原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text">基本原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%81%9A%E5%88%B0%E4%B8%8D%E8%BE%93%E5%87%BA%E9%A2%9C%E8%89%B2"><span class="toc-text">如何做到不输出颜色</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E5%BC%80%E5%90%AF%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5%E7%9A%84%E5%8D%8A%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C"><span class="toc-text">实现开启深度写入的半透明效果</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E6%AD%A5%E9%AA%A4"><span class="toc-text">关键步骤</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%8D%E5%88%B6-Lesson41-%E9%80%8F%E6%98%8E-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-%E9%80%8F%E6%98%8E%E5%BA%A6%E6%B7%B7%E5%90%88-%E4%B8%AD%E9%80%8F%E6%98%8E%E5%BA%A6%E6%B7%B7%E5%90%88%E7%9A%84Shader%E4%BB%A3%E7%A0%81"><span class="toc-text">复制 Lesson41_透明_效果实现_透明度混合 中透明度混合的Shader代码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8SubShader%E4%B8%AD%E6%B7%BB%E5%8A%A0Pass%E6%B8%B2%E6%9F%93%E9%80%9A%E9%81%93"><span class="toc-text">在SubShader中添加Pass渲染通道</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%9D%90%E8%B4%A8%E8%B5%8B%E5%80%BC%E5%B9%B6%E6%B5%8B%E8%AF%95"><span class="toc-text">创建材质赋值并测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E4%BA%8EShader%E5%9C%A8%E5%90%8C%E4%B8%80%E4%B8%AA%E7%89%A9%E4%BD%93%E4%B8%AD%EF%BC%8C%E5%A4%9A%E4%B8%AAPass%E7%9A%84%E6%89%A7%E8%A1%8C%E8%A7%84%E5%88%99"><span class="toc-text">关于Shader在同一个物体中，多个Pass的执行规则</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%97%AE%E9%A2%98"><span class="toc-text">问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%94%E6%A1%88"><span class="toc-text">答案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#42-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">42.2 知识点代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lesson42-%E9%80%8F%E6%98%8E-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-%E5%BC%80%E5%90%AF%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5%E7%9A%84%E5%8D%8A%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C"><span class="toc-text">Lesson42_透明_效果实现_开启深度写入的半透明效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Lesson42-Transparent-Open-Depth-Writing-Translucent"><span class="toc-text">Lesson42_Transparent_Open_Depth_Writing_Translucent</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -18681,6 +18686,12 @@ Pass
 &#125;
 </code></pre>
 <h4 id="创建材质赋值并测试"><a href="#创建材质赋值并测试" class="headerlink" title="创建材质赋值并测试"></a>创建材质赋值并测试</h4><p>将材质赋值给模型，测试可以看到前后关系可以正常显示，并且放到其他模型前面时也有半透明效果。<br><img src="/../../../images/%E6%B8%B2%E6%9F%93/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/42.%E9%80%8F%E6%98%8E-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-%E5%BC%80%E5%90%AF%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5%E7%9A%84%E5%8D%8A%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C/3.png"><br><img src="/../../../images/%E6%B8%B2%E6%9F%93/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/42.%E9%80%8F%E6%98%8E-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-%E5%BC%80%E5%90%AF%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5%E7%9A%84%E5%8D%8A%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C/4.png"></p>
+<h3 id="关于Shader在同一个物体中，多个Pass的执行规则"><a href="#关于Shader在同一个物体中，多个Pass的执行规则" class="headerlink" title="关于Shader在同一个物体中，多个Pass的执行规则"></a>关于Shader在同一个物体中，多个Pass的执行规则</h3><h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><p>对于开启深度写入的半透明效果，只有靠前的面是半透明的，透过它看不到自己靠后的面。</p>
+<p>这种结果是所有像素中只进行了一次颜色混合，即最靠前的片元的颜色和天空盒的颜色进行透明度混合。</p>
+<p>而能不能合理推测，在重叠部分，应该有部分像素是进行了两次颜色混合，因为有可能先渲染靠后的片元。结果应该是可以看见靠后的半透明的面（至少重叠部分的边缘应该有一些不完整的靠后的面的边缘，如下图，因为混合了靠后片元的颜色）。</p>
+<p><img src="/../../../images/%E6%B8%B2%E6%9F%93/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/42.%E9%80%8F%E6%98%8E-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-%E5%BC%80%E5%90%AF%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5%E7%9A%84%E5%8D%8A%E9%80%8F%E6%98%8E%E6%95%88%E6%9E%9C/5.png"></p>
+<h4 id="答案"><a href="#答案" class="headerlink" title="答案"></a>答案</h4><p>对于同一个物体，Unity 的渲染管线会先对该物体中的所有片元执行第一个 Pass，然后再对该物体的所有片元执行第二个 Pass，以此类推。</p>
+<p>在 Lesson42 的 Shader 中，同一个对象的所有片元都会先执行第一个 Pass，主要用于深度写入，将最靠近摄像机的深度写入深度缓冲区。随后，所有片元执行第二个 Pass，进行颜色渲染。因此，不会出现你描述的那种情况。</p>
 <hr>
 <h2 id="42-2-知识点代码"><a href="#42-2-知识点代码" class="headerlink" title="42.2 知识点代码"></a>42.2 知识点代码</h2><h3 id="Lesson42-透明-效果实现-开启深度写入的半透明效果"><a href="#Lesson42-透明-效果实现-开启深度写入的半透明效果" class="headerlink" title="Lesson42_透明_效果实现_开启深度写入的半透明效果"></a>Lesson42_透明_效果实现_开启深度写入的半透明效果</h3><pre><code class="csharp">using System.Collections;
 using System.Collections.Generic;
