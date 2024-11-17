@@ -6,23 +6,30 @@
   <meta name="keywords" content=" 实践项目 , 反射和特性 , 数据持久化 , PlayerPrefs ">
   <meta name="description" content="10.反射读取Dictionary成员数据 | 人间自有韬哥在的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1.概述 1.1 知识点什么是Behavior Designer？Behavior Designer是Unity中的一个插件，用于创建和管理行为树（Behavior Trees）。行为树是一种AI逻辑结构，常用于游戏开发中来描述角色行为和决策。Behavior Designer提供了一种直观的方式来构建复杂的AI行为，通过可视化编辑器，开发者可以轻松地设计、调试和管理行为树。 官网：Behavio">
+<meta name="description" content="1.概述 1.1 知识点 主要讲解内容 游戏框架是什么 游戏框架是基于什么进行设计的 本套课程的学习目标 总结">
 <meta property="og:type" content="website">
 <meta property="og:title" content="1.概述">
-<meta property="og:url" content="https://linwentao785293209.github.io/temp/12.Unity%E8%BF%9B%E9%98%B6BehaviorDesigner/1.%E6%A6%82%E8%BF%B0.html">
+<meta property="og:url" content="https://linwentao785293209.github.io/temp/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0.html">
 <meta property="og:site_name" content="人间自有韬哥在的博客">
-<meta property="og:description" content="1.概述 1.1 知识点什么是Behavior Designer？Behavior Designer是Unity中的一个插件，用于创建和管理行为树（Behavior Trees）。行为树是一种AI逻辑结构，常用于游戏开发中来描述角色行为和决策。Behavior Designer提供了一种直观的方式来构建复杂的AI行为，通过可视化编辑器，开发者可以轻松地设计、调试和管理行为树。 官网：Behavio">
+<meta property="og:description" content="1.概述 1.1 知识点 主要讲解内容 游戏框架是什么 游戏框架是基于什么进行设计的 本套课程的学习目标 总结">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/Unity/12.Unity%E8%BF%9B%E9%98%B6BehaviorDesigner/1.%E6%A6%82%E8%BF%B0/1.png">
-<meta property="article:published_time" content="2024-08-04T04:01:10.000Z">
-<meta property="article:modified_time" content="2024-08-04T04:31:15.314Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/6.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/7.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/8.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/9.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/10.png">
+<meta property="article:published_time" content="2024-06-15T12:10:23.000Z">
+<meta property="article:modified_time" content="2024-06-15T12:10:30.660Z">
 <meta property="article:author" content="人间自有韬哥在">
-<meta property="article:tag" content="Unity">
-<meta property="article:tag" content="Unity进阶">
-<meta property="article:tag" content="基础知识">
-<meta property="article:tag" content="BehaviorDesigner">
+<meta property="article:tag" content="框架">
+<meta property="article:tag" content="进阶框架">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/Unity/12.Unity%E8%BF%9B%E9%98%B6BehaviorDesigner/1.%E6%A6%82%E8%BF%B0/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -2216,7 +2223,7 @@
     </div>
 </div>
 <input type="hidden" id="yelog_site_posts_number" value="1676">
-<input type="hidden" id="yelog_site_word_count" value="2215.9k">
+<input type="hidden" id="yelog_site_word_count" value="2215.7k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -4317,7 +4324,7 @@
            href="/2024/05/16/%E7%BC%96%E8%BE%91%E5%99%A8/02.%E7%BC%96%E8%BE%91%E5%99%A8%E6%8B%93%E5%B1%95%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/2.%E5%9F%BA%E6%9C%AC%E5%B7%A5%E5%85%B7%E6%B5%81%E7%A8%8B%E5%AE%9E%E7%8E%B0/"
            data-tag="编辑器,编辑器拓展,编辑器拓展实践项目"
            data-author="" >
-            <span class="post-title" title="2.基本工具流程实现">2.基本工具流程实现</span>
+            <span class="post-title" title="2.右键菜单项和生成脚本窗口">2.右键菜单项和生成脚本窗口</span>
             <span class="post-date" title="2024-05-16 23:54:55">2024/05/16</span>
         </a>
         
@@ -11929,7 +11936,7 @@
         
         <a  class="全部文章 Unity Unity基础 Unity基础基础知识 "
            href="/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/"
-           data-tag="基础知识,Unity,坐标,Unity基础,3D数学"
+           data-tag="基础知识,坐标,Unity,Unity基础,3D数学"
            data-author="" >
             <span class="post-title" title="4.坐标系">4.坐标系</span>
             <span class="post-date" title="2024-02-28 12:39:16">2024/02/28</span>
@@ -12775,7 +12782,7 @@
         
         <a  class="全部文章 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Transform%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/"
-           data-tag="基础知识,Unity,Unity入门,Unity重要组件和API,坐标"
+           data-tag="基础知识,坐标,Unity,Unity入门,Unity重要组件和API"
            data-author="" >
             <span class="post-title" title="20.Transform变换组件坐标转换">20.Transform变换组件坐标转换</span>
             <span class="post-date" title="2024-02-24 16:33:35">2024/02/24</span>
@@ -14681,15 +14688,6 @@
         </a>
         
         
-        <a  class="全部文章 面试 网络 "
-           href="/2008/01/01/%E9%9D%A2%E8%AF%95/07.%E7%BD%91%E7%BB%9C/8.%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E4%B8%AD%E9%81%BF%E5%85%8D%E5%A4%96%E6%8C%82%E7%9A%84%E4%BA%A7%E7%94%9F/"
-           data-tag="网络,面试"
-           data-author="" >
-            <span class="post-title" title="8.网络游戏中避免外挂的产生">8.网络游戏中避免外挂的产生</span>
-            <span class="post-date" title="2008-01-01 00:00:08">2008/01/01</span>
-        </a>
-        
-        
         <a  class="全部文章 面试 渲染 "
            href="/2008/01/01/%E9%9D%A2%E8%AF%95/08.%E6%B8%B2%E6%9F%93/8.%E6%B8%B2%E6%9F%93%E7%AE%A1%E7%BA%BF%E4%B8%AD%E7%9A%84%E5%87%A0%E4%BD%95%E9%98%B6%E6%AE%B5/"
            data-tag="渲染,面试"
@@ -14700,11 +14698,11 @@
         
         
         <a  class="全部文章 面试 网络 "
-           href="/2008/01/01/%E9%9D%A2%E8%AF%95/07.%E7%BD%91%E7%BB%9C/7.%E5%A6%82%E4%BD%95%E8%AE%A9UDP%E9%80%9A%E8%AE%AF%E5%85%B7%E5%A4%87TCP%E7%9A%84%E4%BC%98%E7%82%B9/"
+           href="/2008/01/01/%E9%9D%A2%E8%AF%95/07.%E7%BD%91%E7%BB%9C/8.%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E4%B8%AD%E9%81%BF%E5%85%8D%E5%A4%96%E6%8C%82%E7%9A%84%E4%BA%A7%E7%94%9F/"
            data-tag="网络,面试"
            data-author="" >
-            <span class="post-title" title="7.如何让UDP通讯具备TCP的优点">7.如何让UDP通讯具备TCP的优点</span>
-            <span class="post-date" title="2008-01-01 00:00:07">2008/01/01</span>
+            <span class="post-title" title="8.网络游戏中避免外挂的产生">8.网络游戏中避免外挂的产生</span>
+            <span class="post-date" title="2008-01-01 00:00:08">2008/01/01</span>
         </a>
         
         
@@ -14718,11 +14716,11 @@
         
         
         <a  class="全部文章 面试 网络 "
-           href="/2008/01/01/%E9%9D%A2%E8%AF%95/07.%E7%BD%91%E7%BB%9C/6.%E7%BD%91%E7%BB%9C%E9%80%9A%E8%AE%AF%E4%B8%AD%E7%9A%84%E5%88%86%E5%8C%85%E5%92%8C%E9%BB%8F%E5%8C%85%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"
+           href="/2008/01/01/%E9%9D%A2%E8%AF%95/07.%E7%BD%91%E7%BB%9C/7.%E5%A6%82%E4%BD%95%E8%AE%A9UDP%E9%80%9A%E8%AE%AF%E5%85%B7%E5%A4%87TCP%E7%9A%84%E4%BC%98%E7%82%B9/"
            data-tag="网络,面试"
            data-author="" >
-            <span class="post-title" title="6.网络通讯中的分包和黏包问题及解决方案">6.网络通讯中的分包和黏包问题及解决方案</span>
-            <span class="post-date" title="2008-01-01 00:00:06">2008/01/01</span>
+            <span class="post-title" title="7.如何让UDP通讯具备TCP的优点">7.如何让UDP通讯具备TCP的优点</span>
+            <span class="post-date" title="2008-01-01 00:00:07">2008/01/01</span>
         </a>
         
         
@@ -14731,6 +14729,15 @@
            data-tag="渲染,面试"
            data-author="" >
             <span class="post-title" title="6.在Unity中理解Shader及编写基本Shader">6.在Unity中理解Shader及编写基本Shader</span>
+            <span class="post-date" title="2008-01-01 00:00:06">2008/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试 网络 "
+           href="/2008/01/01/%E9%9D%A2%E8%AF%95/07.%E7%BD%91%E7%BB%9C/6.%E7%BD%91%E7%BB%9C%E9%80%9A%E8%AE%AF%E4%B8%AD%E7%9A%84%E5%88%86%E5%8C%85%E5%92%8C%E9%BB%8F%E5%8C%85%E9%97%AE%E9%A2%98%E5%8F%8A%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"
+           data-tag="网络,面试"
+           data-author="" >
+            <span class="post-title" title="6.网络通讯中的分包和黏包问题及解决方案">6.网络通讯中的分包和黏包问题及解决方案</span>
             <span class="post-date" title="2008-01-01 00:00:06">2008/01/01</span>
         </a>
         
@@ -17662,7 +17669,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/392.%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/"
-           data-tag="LeetCode,动态规划,双指针,字符串"
+           data-tag="LeetCode,双指针,字符串,动态规划"
            data-author="" >
             <span class="post-title" title="392.判断子序列">392.判断子序列</span>
             <span class="post-date" title="2000-01-10 03:09:02">2000/01/10</span>
@@ -17788,7 +17795,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/234.%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/"
-           data-tag="LeetCode,双指针,栈,链表,递归"
+           data-tag="LeetCode,双指针,链表,栈,递归"
            data-author="" >
             <span class="post-title" title="234.回文链表">234.回文链表</span>
             <span class="post-date" title="2000-01-10 02:03:04">2000/01/10</span>
@@ -18328,7 +18335,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/5.%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/"
-           data-tag="LeetCode,动态规划,双指针,字符串"
+           data-tag="LeetCode,双指针,字符串,动态规划"
            data-author="" >
             <span class="post-title" title="5.最长回文子串">5.最长回文子串</span>
             <span class="post-date" title="2000-01-10 00:00:05">2000/01/10</span>
