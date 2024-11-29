@@ -6,30 +6,23 @@
   <meta name="keywords" content="">
   <meta name="description" content="人间自有韬哥在的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1.概述 1.1 知识点 主要讲解内容 游戏框架是什么 游戏框架是基于什么进行设计的 本套课程的学习目标 总结">
-<meta property="og:type" content="website">
-<meta property="og:title" content="1.概述">
-<meta property="og:url" content="https://linwentao785293209.github.io/temp_posts/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0.html">
+<meta name="description" content="73.深度和法线纹理-查看法线纹理 73.1 知识点知识回顾：法线纹理的使用在 C# 中设置摄像机的深度纹理模式 生成深度 + 法线纹理：Camera.main.depthTextureMode &#x3D; DepthTextureMode.DepthNormals;    在 Shader 中声明法线纹理采样器属性 声明法线纹理采样器：sampler2D _CameraDepthNormalsTextu">
+<meta property="og:type" content="article">
+<meta property="og:title" content="73.查看法线纹理">
+<meta property="og:url" content="https://linwentao785293209.github.io/2024/11/29/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/73.%E6%B7%B1%E5%BA%A6%E5%92%8C%E6%B3%95%E7%BA%BF%E7%BA%B9%E7%90%86-%E6%9F%A5%E7%9C%8B%E6%B3%95%E7%BA%BF%E7%BA%B9%E7%90%86/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的博客">
-<meta property="og:description" content="1.概述 1.1 知识点 主要讲解内容 游戏框架是什么 游戏框架是基于什么进行设计的 本套课程的学习目标 总结">
+<meta property="og:description" content="73.深度和法线纹理-查看法线纹理 73.1 知识点知识回顾：法线纹理的使用在 C# 中设置摄像机的深度纹理模式 生成深度 + 法线纹理：Camera.main.depthTextureMode &#x3D; DepthTextureMode.DepthNormals;    在 Shader 中声明法线纹理采样器属性 声明法线纹理采样器：sampler2D _CameraDepthNormalsTextu">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/6.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/7.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/8.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/9.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/10.png">
-<meta property="article:published_time" content="2024-06-15T12:10:23.000Z">
-<meta property="article:modified_time" content="2024-06-15T12:10:30.660Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/73.%E6%B7%B1%E5%BA%A6%E5%92%8C%E6%B3%95%E7%BA%BF%E7%BA%B9%E7%90%86-%E6%9F%A5%E7%9C%8B%E6%B3%95%E7%BA%BF%E7%BA%B9%E7%90%86/1.png">
+<meta property="article:published_time" content="2024-11-29T12:23:43.000Z">
+<meta property="article:modified_time" content="2024-11-29T12:37:05.792Z">
 <meta property="article:author" content="人间自有韬哥在">
-<meta property="article:tag" content="框架">
-<meta property="article:tag" content="进阶框架">
+<meta property="article:tag" content="渲染">
+<meta property="article:tag" content="Shader">
+<meta property="article:tag" content="Shader开发基础">
+<meta property="article:tag" content="深度和法线纹理">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/03.%E8%BF%9B%E9%98%B6%E6%A1%86%E6%9E%B6/1.%E6%A6%82%E8%BF%B0/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/73.%E6%B7%B1%E5%BA%A6%E5%92%8C%E6%B3%95%E7%BA%BF%E7%BA%B9%E7%90%86-%E6%9F%A5%E7%9C%8B%E6%B3%95%E7%BA%BF%E7%BA%B9%E7%90%86/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -160,7 +153,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(1741)</small>
+                <small>(1749)</small>
             
         </div>
     </li>
@@ -1931,7 +1924,7 @@
         <div data-rel="渲染">
             <i class="fold iconfont icon-right"></i>
             渲染
-            <small>(165)</small>
+            <small>(173)</small>
         </div>
         
             <ul class="sub hide">
@@ -1941,7 +1934,7 @@
         <div data-rel="渲染&lt;---&gt;Shader">
             <i class="fold iconfont icon-right"></i>
             Shader
-            <small>(165)</small>
+            <small>(173)</small>
         </div>
         
             <ul class="sub hide">
@@ -1995,7 +1988,7 @@
         <div data-rel="渲染&lt;---&gt;Shader&lt;---&gt;Shader开发基础">
             
             Shader开发基础
-            <small>(65)</small>
+            <small>(73)</small>
         </div>
         
     </li>
@@ -2237,8 +2230,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="1741">
-<input type="hidden" id="yelog_site_word_count" value="2368.4k">
+<input type="hidden" id="yelog_site_posts_number" value="1749">
+<input type="hidden" id="yelog_site_word_count" value="2382.6k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -2780,6 +2773,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>深度和法线纹理</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>深度优先搜索</a>
             </li>
         
@@ -2984,6 +2981,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>运动模糊</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>运算符</a>
             </li>
         
@@ -3113,6 +3114,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>BlinnPhong式高光反射模型</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Bloom效果</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -3432,6 +3437,78 @@
         
         
         <a  class="全部文章 渲染 Shader Shader开发基础 "
+           href="/2024/11/29/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/73.%E6%B7%B1%E5%BA%A6%E5%92%8C%E6%B3%95%E7%BA%BF%E7%BA%B9%E7%90%86-%E6%9F%A5%E7%9C%8B%E6%B3%95%E7%BA%BF%E7%BA%B9%E7%90%86/"
+           data-tag="渲染,Shader,Shader开发基础,深度和法线纹理"
+           data-author="" >
+            <span class="post-title" title="73.查看法线纹理">73.查看法线纹理</span>
+            <span class="post-date" title="2024-11-29 20:23:43">2024/11/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 渲染 Shader Shader开发基础 "
+           href="/2024/11/29/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/72.%E6%B7%B1%E5%BA%A6%E5%92%8C%E6%B3%95%E7%BA%BF%E7%BA%B9%E7%90%86-%E6%9F%A5%E7%9C%8B%E6%B7%B1%E5%BA%A6%E7%BA%B9%E7%90%86/"
+           data-tag="渲染,Shader,Shader开发基础,深度和法线纹理"
+           data-author="" >
+            <span class="post-title" title="72.查看深度纹理">72.查看深度纹理</span>
+            <span class="post-date" title="2024-11-29 13:44:29">2024/11/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 渲染 Shader Shader开发基础 "
+           href="/2024/11/28/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/71.%E6%B7%B1%E5%BA%A6%E5%92%8C%E6%B3%95%E7%BA%BF%E7%BA%B9%E7%90%86-%E8%83%8C%E5%90%8E%E7%9A%84%E5%8E%9F%E7%90%86/"
+           data-tag="渲染,Shader,Shader开发基础,深度和法线纹理"
+           data-author="" >
+            <span class="post-title" title="71.深度和法线纹理背后的原理">71.深度和法线纹理背后的原理</span>
+            <span class="post-date" title="2024-11-28 23:39:28">2024/11/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 渲染 Shader Shader开发基础 "
+           href="/2024/11/28/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/70.%E6%B7%B1%E5%BA%A6%E5%92%8C%E6%B3%95%E7%BA%BF%E7%BA%B9%E7%90%86-%E4%BD%9C%E7%94%A8%E5%92%8C%E4%BD%BF%E7%94%A8/"
+           data-tag="渲染,Shader,Shader开发基础,深度和法线纹理"
+           data-author="" >
+            <span class="post-title" title="70.深度和法线纹理作用和使用">70.深度和法线纹理作用和使用</span>
+            <span class="post-date" title="2024-11-28 23:36:20">2024/11/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 渲染 Shader Shader开发基础 "
+           href="/2024/11/28/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/69.%E5%B1%8F%E5%B9%95%E5%90%8E%E6%9C%9F%E5%A4%84%E7%90%86%E6%95%88%E6%9E%9C-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-%E8%BF%90%E5%8A%A8%E6%A8%A1%E7%B3%8A-%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0/"
+           data-tag="渲染,Shader,Shader开发基础,屏幕后期处理效果,运动模糊"
+           data-author="" >
+            <span class="post-title" title="69.运动模糊具体实现">69.运动模糊具体实现</span>
+            <span class="post-date" title="2024-11-28 23:17:58">2024/11/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 渲染 Shader Shader开发基础 "
+           href="/2024/11/28/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/68.%E5%B1%8F%E5%B9%95%E5%90%8E%E6%9C%9F%E5%A4%84%E7%90%86%E6%95%88%E6%9E%9C-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-%E8%BF%90%E5%8A%A8%E6%A8%A1%E7%B3%8A-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
+           data-tag="渲染,Shader,Shader开发基础,屏幕后期处理效果,运动模糊"
+           data-author="" >
+            <span class="post-title" title="68.运动模糊基本原理">68.运动模糊基本原理</span>
+            <span class="post-date" title="2024-11-28 23:13:46">2024/11/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 渲染 Shader Shader开发基础 "
+           href="/2024/11/28/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/67.%E5%B1%8F%E5%B9%95%E5%90%8E%E6%9C%9F%E5%A4%84%E7%90%86%E6%95%88%E6%9E%9C-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-Bloom%E6%95%88%E6%9E%9C-%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0/"
+           data-tag="渲染,Shader,Shader开发基础,屏幕后期处理效果,Bloom效果"
+           data-author="" >
+            <span class="post-title" title="67.Bloom效果具体实现">67.Bloom效果具体实现</span>
+            <span class="post-date" title="2024-11-28 22:54:10">2024/11/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 渲染 Shader Shader开发基础 "
+           href="/2024/11/28/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/66.%E5%B1%8F%E5%B9%95%E5%90%8E%E6%9C%9F%E5%A4%84%E7%90%86%E6%95%88%E6%9E%9C-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-Bloom%E6%95%88%E6%9E%9C-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
+           data-tag="渲染,Shader,Shader开发基础,屏幕后期处理效果,Bloom效果"
+           data-author="" >
+            <span class="post-title" title="66.Bloom效果基本原理">66.Bloom效果基本原理</span>
+            <span class="post-date" title="2024-11-28 22:49:27">2024/11/28</span>
+        </a>
+        
+        
+        <a  class="全部文章 渲染 Shader Shader开发基础 "
            href="/2024/11/28/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/65.%E5%B1%8F%E5%B9%95%E5%90%8E%E6%9C%9F%E5%A4%84%E7%90%86%E6%95%88%E6%9E%9C-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-%E9%AB%98%E6%96%AF%E6%A8%A1%E7%B3%8A-%E5%AE%8C%E6%95%B4%E5%AE%9E%E7%8E%B0/"
            data-tag="渲染,Shader,Shader开发基础,屏幕后期处理效果,高斯模糊"
            data-author="" >
@@ -3684,19 +3761,19 @@
         
         
         <a  class="全部文章 渲染 Shader Shader开发基础 "
-           href="/2024/11/26/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/36.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E9%95%9C%E9%9D%A2%E6%95%88%E6%9E%9C-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"
-           data-tag="渲染,Shader,Shader开发基础,高级纹理,渲染纹理,镜面效果"
+           href="/2024/11/26/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/37.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
+           data-tag="渲染,Shader,Shader开发基础,高级纹理,渲染纹理,玻璃效果"
            data-author="" >
-            <span class="post-title" title="36.镜面效果实现">36.镜面效果实现</span>
+            <span class="post-title" title="37.玻璃效果基本原理">37.玻璃效果基本原理</span>
             <span class="post-date" title="2024-11-26 12:45:12">2024/11/26</span>
         </a>
         
         
         <a  class="全部文章 渲染 Shader Shader开发基础 "
-           href="/2024/11/26/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/37.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
-           data-tag="渲染,Shader,Shader开发基础,高级纹理,渲染纹理,玻璃效果"
+           href="/2024/11/26/%E6%B8%B2%E6%9F%93/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/36.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E9%95%9C%E9%9D%A2%E6%95%88%E6%9E%9C-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"
+           data-tag="渲染,Shader,Shader开发基础,高级纹理,渲染纹理,镜面效果"
            data-author="" >
-            <span class="post-title" title="37.玻璃效果基本原理">37.玻璃效果基本原理</span>
+            <span class="post-title" title="36.镜面效果实现">36.镜面效果实现</span>
             <span class="post-date" title="2024-11-26 12:45:12">2024/11/26</span>
         </a>
         
@@ -10903,7 +10980,7 @@
         
         <a  class="全部文章 UI系统 UGUI UGUI基础知识 "
            href="/2024/03/12/UI%E7%B3%BB%E7%BB%9F/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.UGUI%E8%BF%9B%E9%98%B6-%E5%B1%8F%E5%B9%95%E5%9D%90%E6%A0%87%E8%BD%ACUI%E7%9B%B8%E5%AF%B9%E5%9D%90%E6%A0%87/"
-           data-tag="UI系统,基础知识,坐标,UGUI"
+           data-tag="UI系统,基础知识,UGUI,坐标"
            data-author="" >
             <span class="post-title" title="21.屏幕坐标转UI局部坐标">21.屏幕坐标转UI局部坐标</span>
             <span class="post-date" title="2024-03-12 13:07:16">2024/03/12</span>
@@ -12640,7 +12717,7 @@
         
         <a  class="全部文章 Unity Unity基础 Unity基础基础知识 "
            href="/2024/02/28/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.3D%E6%95%B0%E5%AD%A6-%E5%9D%90%E6%A0%87%E7%B3%BB/"
-           data-tag="基础知识,Unity,坐标,Unity基础,3D数学"
+           data-tag="基础知识,坐标,Unity,Unity基础,3D数学"
            data-author="" >
             <span class="post-title" title="4.坐标系">4.坐标系</span>
             <span class="post-date" title="2024-02-28 12:39:16">2024/02/28</span>
@@ -13486,7 +13563,7 @@
         
         <a  class="全部文章 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/24/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Unity%E9%87%8D%E8%A6%81%E7%BB%84%E4%BB%B6%E5%92%8CAPI-Transform%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2/"
-           data-tag="基础知识,Unity,Unity入门,Unity重要组件和API,坐标"
+           data-tag="基础知识,坐标,Unity,Unity入门,Unity重要组件和API"
            data-author="" >
             <span class="post-title" title="20.Transform变换组件坐标转换">20.Transform变换组件坐标转换</span>
             <span class="post-date" title="2024-02-24 16:33:35">2024/02/24</span>
@@ -14611,7 +14688,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/16.%E6%8E%92%E5%BA%8F-%E9%80%89%E6%8B%A9%E6%8E%92%E5%BA%8F/"
-           data-tag="CSharp,语法知识,CSharp基础,排序算法"
+           data-tag="CSharp,语法知识,排序算法,CSharp基础"
            data-author="" >
             <span class="post-title" title="16.选择排序">16.选择排序</span>
             <span class="post-date" title="2024-01-10 20:26:46">2024/01/10</span>
@@ -14620,7 +14697,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E6%8E%92%E5%BA%8F-%E5%86%92%E6%B3%A1%E6%8E%92%E5%BA%8F/"
-           data-tag="CSharp,语法知识,CSharp基础,排序算法"
+           data-tag="CSharp,语法知识,排序算法,CSharp基础"
            data-author="" >
             <span class="post-title" title="15.冒泡排序">15.冒泡排序</span>
             <span class="post-date" title="2024-01-10 20:24:55">2024/01/10</span>
@@ -14683,7 +14760,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B-%E7%89%B9%E6%AE%8A%E7%9A%84%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8Bstring/"
-           data-tag="CSharp,语法知识,CSharp基础,值类型和引用类型"
+           data-tag="CSharp,语法知识,值类型和引用类型,CSharp基础"
            data-author="" >
             <span class="post-title" title="8.string">8.string</span>
             <span class="post-date" title="2024-01-10 07:10:27">2024/01/10</span>
@@ -14692,7 +14769,7 @@
         
         <a  class="全部文章 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B-%E4%BD%BF%E7%94%A8%E5%92%8C%E5%AD%98%E5%82%A8%E4%B8%8A%E7%9A%84%E5%8C%BA%E5%88%AB/"
-           data-tag="CSharp,语法知识,CSharp基础,值类型和引用类型"
+           data-tag="CSharp,语法知识,值类型和引用类型,CSharp基础"
            data-author="" >
             <span class="post-title" title="7.值和引用的区别">7.值和引用的区别</span>
             <span class="post-date" title="2024-01-10 06:57:44">2024/01/10</span>
@@ -18166,7 +18243,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/905.%E6%8C%89%E5%A5%87%E5%81%B6%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/"
-           data-tag="LeetCode,数组,排序,双指针"
+           data-tag="LeetCode,数组,双指针,排序"
            data-author="" >
             <span class="post-title" title="905.按奇偶排序数组">905.按奇偶排序数组</span>
             <span class="post-date" title="2000-01-10 09:00:05">2000/01/10</span>
@@ -18337,7 +18414,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/455.%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2/"
-           data-tag="LeetCode,贪心,数组,排序,双指针"
+           data-tag="LeetCode,贪心,数组,双指针,排序"
            data-author="" >
             <span class="post-title" title="455.分发饼干">455.分发饼干</span>
             <span class="post-date" title="2000-01-10 04:05:05">2000/01/10</span>
@@ -18400,7 +18477,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/350.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86II/"
-           data-tag="LeetCode,数组,排序,哈希表,双指针,二分查找"
+           data-tag="LeetCode,数组,双指针,排序,哈希表,二分查找"
            data-author="" >
             <span class="post-title" title="350.两个数组的交集II">350.两个数组的交集II</span>
             <span class="post-date" title="2000-01-10 03:05:00">2000/01/10</span>
@@ -18409,7 +18486,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/"
-           data-tag="LeetCode,数组,排序,哈希表,双指针,二分查找"
+           data-tag="LeetCode,数组,双指针,排序,哈希表,二分查找"
            data-author="" >
             <span class="post-title" title="349.两个数组的交集">349.两个数组的交集</span>
             <span class="post-date" title="2000-01-10 03:04:09">2000/01/10</span>
@@ -18598,7 +18675,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/169.%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,数组,排序,哈希表,分治,计数"
+           data-tag="LeetCode,数组,排序,哈希表,计数,分治"
            data-author="" >
             <span class="post-title" title="169.多数元素">169.多数元素</span>
             <span class="post-date" title="2000-01-10 01:06:08">2000/01/10</span>
@@ -18625,7 +18702,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/160.%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/"
-           data-tag="LeetCode,哈希表,双指针,链表"
+           data-tag="LeetCode,双指针,哈希表,链表"
            data-author="" >
             <span class="post-title" title="160.相交链表">160.相交链表</span>
             <span class="post-date" title="2000-01-10 01:06:00">2000/01/10</span>
@@ -18643,7 +18720,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/"
-           data-tag="LeetCode,哈希表,双指针,链表"
+           data-tag="LeetCode,双指针,哈希表,链表"
            data-author="" >
             <span class="post-title" title="141.环形链表">141.环形链表</span>
             <span class="post-date" title="2000-01-10 01:04:01">2000/01/10</span>
@@ -18769,7 +18846,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/88.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/"
-           data-tag="LeetCode,数组,排序,双指针"
+           data-tag="LeetCode,数组,双指针,排序"
            data-author="" >
             <span class="post-title" title="88.合并两个有序数组">88.合并两个有序数组</span>
             <span class="post-date" title="2000-01-10 00:08:08">2000/01/10</span>
@@ -18787,7 +18864,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/75.%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB/"
-           data-tag="LeetCode,数组,排序,双指针"
+           data-tag="LeetCode,数组,双指针,排序"
            data-author="" >
             <span class="post-title" title="75.颜色分类">75.颜色分类</span>
             <span class="post-date" title="2000-01-10 00:07:05">2000/01/10</span>
@@ -18868,7 +18945,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/54.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/"
-           data-tag="LeetCode,数组,分治,动态规划"
+           data-tag="LeetCode,数组,动态规划,分治"
            data-author="" >
             <span class="post-title" title="54.螺旋矩阵">54.螺旋矩阵</span>
             <span class="post-date" title="2000-01-10 00:05:04">2000/01/10</span>
@@ -18877,7 +18954,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/53.%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/"
-           data-tag="LeetCode,数组,分治,动态规划"
+           data-tag="LeetCode,数组,动态规划,分治"
            data-author="" >
             <span class="post-title" title="53.最大子数组和">53.最大子数组和</span>
             <span class="post-date" title="2000-01-10 00:05:03">2000/01/10</span>
@@ -18967,7 +19044,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/16.%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"
-           data-tag="LeetCode,数组,排序,双指针"
+           data-tag="LeetCode,数组,双指针,排序"
            data-author="" >
             <span class="post-title" title="16.最接近的三数之和">16.最接近的三数之和</span>
             <span class="post-date" title="2000-01-10 00:01:06">2000/01/10</span>
@@ -18976,7 +19053,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/15.%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"
-           data-tag="LeetCode,数组,排序,双指针"
+           data-tag="LeetCode,数组,双指针,排序"
            data-author="" >
             <span class="post-title" title="15.三数之和">15.三数之和</span>
             <span class="post-date" title="2000-01-10 00:01:05">2000/01/10</span>
@@ -19120,7 +19197,7 @@
         <article class="index">
             <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E6%98%AF%E8%B0%81"><span class="toc-text">我是谁</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%99%E5%8D%9A%E5%AE%A2"><span class="toc-text">为什么写博客</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8E%9F%E5%88%9B"><span class="toc-text">我的博客是否是原创</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%AD%97%E9%83%BD%E6%98%AF%E6%88%91%E8%87%AA%E5%B7%B1%E6%89%93%E7%9A%84%E5%90%97"><span class="toc-text">每一个字都是我自己打的吗</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E6%97%A5%E6%9C%9F%E6%98%AF%E5%90%A6%E6%98%AF%E7%9C%9F%E5%AE%9E%E6%97%A5%E6%9C%9F"><span class="toc-text">文章日期是否是真实日期</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E6%98%AF%E6%80%8E%E4%B9%88%E7%94%9F%E6%88%90%E7%9A%84"><span class="toc-text">博客是怎么生成的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E7%9B%AE%E5%89%8D%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-text">博客目前的数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%8D%9A%E5%AE%A2"><span class="toc-text">如何使用博客</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E8%AE%A1%E5%88%92"><span class="toc-text">学习计划</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E5%85%A5%E6%97%B6%E9%97%B4%E7%BA%BF%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%86%85%E5%AE%B9"><span class="toc-text">列入时间线的学习内容</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%AA%E5%88%97%E5%85%A5%E6%97%B6%E9%97%B4%E7%BA%BF%E7%9A%84%E5%AD%A6%E4%B9%A0%E5%86%85%E5%AE%B9"><span class="toc-text">未列入时间线的学习内容</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E5%88%92%E5%BC%80%E5%8F%91%E7%9A%84%E9%A1%B9%E7%9B%AE"><span class="toc-text">计划开发的项目</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%AE%A1%E5%88%92%E7%9C%8B%E7%9A%84%E4%B9%A6"><span class="toc-text">计划看的书</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E6%98%AF%E8%B0%81"><span class="toc-text">我是谁</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%86%99%E5%8D%9A%E5%AE%A2"><span class="toc-text">为什么写博客</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%88%91%E7%9A%84%E5%8D%9A%E5%AE%A2%E6%98%AF%E5%90%A6%E6%98%AF%E5%8E%9F%E5%88%9B"><span class="toc-text">我的博客是否是原创</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%AF%8F%E4%B8%80%E4%B8%AA%E5%AD%97%E9%83%BD%E6%98%AF%E6%88%91%E8%87%AA%E5%B7%B1%E6%89%93%E7%9A%84%E5%90%97"><span class="toc-text">每一个字都是我自己打的吗</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%96%87%E7%AB%A0%E6%97%A5%E6%9C%9F%E6%98%AF%E5%90%A6%E6%98%AF%E7%9C%9F%E5%AE%9E%E6%97%A5%E6%9C%9F"><span class="toc-text">文章日期是否是真实日期</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E6%98%AF%E6%80%8E%E4%B9%88%E7%94%9F%E6%88%90%E7%9A%84"><span class="toc-text">博客是怎么生成的</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%8D%9A%E5%AE%A2%E7%9B%AE%E5%89%8D%E7%9A%84%E6%95%B0%E6%8D%AE"><span class="toc-text">博客目前的数据</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E4%BD%BF%E7%94%A8%E5%8D%9A%E5%AE%A2"><span class="toc-text">如何使用博客</span></a></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -19159,116 +19236,6 @@
 <li>搜索支持文章标题、标签(#标签)、作者(@作者)，文章内部关键字搜索（in:）</li>
 <li>左侧分栏切换不同分类，下拉框下拉子分类</li>
 <li>页面全局快捷键 <a target="_blank" rel="noopener" href='http://yelog.org/2017/03/24/3-hexo-shortcuts/'>3-hexo快捷键说明</a></li>
-</ul>
-<h1 id="学习计划"><a href="#学习计划" class="headerlink" title="学习计划"></a>学习计划</h1><p>由于本人因为一些原因被分到了服务端组，会计划学习一些服务端的知识</p>
-<h2 id="列入时间线的学习内容"><a href="#列入时间线的学习内容" class="headerlink" title="列入时间线的学习内容"></a>列入时间线的学习内容</h2><ul>
-<li><p>2024年11月-12月</p>
-<ul>
-<li>Shader开发基础(学习+博客)</li>
-<li>TextMeshPro(学习+博客)</li>
-<li>进阶框架（已学习，计划对ProFramework框架重新编写+博客，保证内容易用）</li>
-<li>怪物AI（已学习，还未写博客，状态机+行为树）</li>
-<li>GameFramework(学习+博客)</li>
-</ul>
-</li>
-<li><p>2025年1月-6月</p>
-<ul>
-<li><p>服务端</p>
-<ul>
-<li>Fantastic框架（初见老师路线，持续学习）</li>
-<li>ET框架（字母哥）</li>
-<li>MongoDB</li>
-</ul>
-</li>
-<li><p>客户端</p>
-<ul>
-<li>C++（Unreal路线持续学习）</li>
-<li>Unreal（Unreal路线持续学习）</li>
-<li>Luban（看文档+实践）</li>
-<li>Hybrid（看文档+实践）</li>
-<li>Yooasset（看文档+实践）</li>
-<li>UniTask（看文档+实践）</li>
-<li>Odin（看博客+实践）</li>
-<li>TE框架</li>
-<li>Cinemachine摄像机插件</li>
-<li>Wwise音频插件</li>
-<li>Playerable动画新功能（Animacer等，可以参考烟雨的博客看动画系统结局方案）</li>
-<li>IOS平台</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="未列入时间线的学习内容"><a href="#未列入时间线的学习内容" class="headerlink" title="未列入时间线的学习内容"></a>未列入时间线的学习内容</h2><ul>
-<li><p>性能优化（大衍神君）</p>
-</li>
-<li><p>渲染</p>
-<ul>
-<li>Shader开发实践</li>
-<li>Shader开发进阶</li>
-<li>Games101</li>
-</ul>
-</li>
-<li><p>算法</p>
-<ul>
-<li>寻路算法（A星等）</li>
-</ul>
-</li>
-<li><p>Unity进阶</p>
-<ul>
-<li>Dotween渐变插件</li>
-<li>TimeLine时间轴编辑器插件</li>
-<li>BehaviorDesigner行为树插件</li>
-<li>行为树高性能版本</li>
-<li>Localization多语言本地化插件 </li>
-<li>LOD</li>
-</ul>
-</li>
-<li><p>UI系统</p>
-<ul>
-<li>UIToolKit</li>
-<li>YiUI</li>
-</ul>
-</li>
-<li><p>编辑器</p>
-<ul>
-<li>Odin编辑器</li>
-<li>UIToolKit</li>
-</ul>
-</li>
-<li><p>移动平台</p>
-<ul>
-<li>IOS</li>
-</ul>
-</li>
-<li><p>Python</p>
-</li>
-<li><p>GAS</p>
-</li>
-</ul>
-<h1 id="计划开发的项目"><a href="#计划开发的项目" class="headerlink" title="计划开发的项目"></a>计划开发的项目</h1><!-- - 基于GameFramework框架的ARPG 黑神话悟空 -->
-<ul>
-<li>基于Moba网络游戏《英雄联盟》<!-- - 开发框架 - Fantasy/ET
-- 数据库 - MongoDB
-- 输入系统 - InputSystem
-- 技能系统 - 自定义 Ability Component
-- AI系统 - 行为树
-- 资源管理 - YooAsset
-- 热更新 - Hybrid
-- 配置表管理 - Luban
-- UI框架 - FGUI
-- 动画系统 - Playable
-- 相机系统 - Cinemachine
-- 编辑器增强 - Odin
-- 入场剧情制作 - Timeline
-- GM命令 - monkey commander
-- 声音系统 - Wwise
-- 多语言 - unity官方多语言插件 --></li>
-</ul>
-<h1 id="计划看的书"><a href="#计划看的书" class="headerlink" title="计划看的书"></a>计划看的书</h1><ul>
-<li>Shader乐书</li>
-<li>游戏编程模式</li>
-<li>主程手记</li>
 </ul>
 
         </article>
