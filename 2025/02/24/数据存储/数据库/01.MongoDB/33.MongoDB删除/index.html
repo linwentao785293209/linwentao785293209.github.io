@@ -2,33 +2,28 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>6.MongoDB连接 | 人间自有韬哥在的博客</title>
+  <title>33.MongoDB删除 | 人间自有韬哥在的博客</title>
   <meta name="keywords" content=" 数据存储 , 数据库 , MongoDB ">
-  <meta name="description" content="6.MongoDB连接 | 人间自有韬哥在的博客">
+  <meta name="description" content="33.MongoDB删除 | 人间自有韬哥在的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1.模仿3D马里奥 1.1 概述 模仿3D马里奥，多种道具关卡的游戏  状态机实现：通过有限状态机（FSM）实现人物和怪物的动作切换，使用Input System操作玩家。怪物多点巡逻。使用CharacterController对角色进行控制。使用物理系统计算出人物向量速度。  动画触发：注重逻辑解耦，避免连线过多形成蜘蛛网以及过多的动画参数。设置任何动画AnyState都可过渡，每个状态定义In">
+<meta name="description" content="2.无限循环赛车 2.1 概述地形生成：使用柏林噪声算法，自动生成地形，实现无限不重复的地图。内存优化：采用双圆柱地形轮换和小型内存池，有效节省内存空间。物理组件：熟练使用Collider和Rigidbody进行物理模拟。UI和动画：使用UGUI制作界面，熟练使用和制作Animation，并结合声音和粒子特效增强游戏效果。 2.2 截图 2.3 柏林噪声什么是柏林噪声（Perlin Noise）柏">
 <meta property="og:type" content="website">
-<meta property="og:title" content="1.模仿3D马里奥">
-<meta property="og:url" content="https://linwentao785293209.github.io/temp_posts/%E9%A1%B9%E7%9B%AE/1.%E6%A8%A1%E4%BB%BF3D%E9%A9%AC%E9%87%8C%E5%A5%A5.html">
+<meta property="og:title" content="2.无限循环赛车">
+<meta property="og:url" content="https://linwentao785293209.github.io/temp_posts/%E9%A1%B9%E7%9B%AE/2.%E6%97%A0%E5%B0%BD%E8%B5%9B%E8%BD%A6.html">
 <meta property="og:site_name" content="人间自有韬哥在的博客">
-<meta property="og:description" content="1.模仿3D马里奥 1.1 概述 模仿3D马里奥，多种道具关卡的游戏  状态机实现：通过有限状态机（FSM）实现人物和怪物的动作切换，使用Input System操作玩家。怪物多点巡逻。使用CharacterController对角色进行控制。使用物理系统计算出人物向量速度。  动画触发：注重逻辑解耦，避免连线过多形成蜘蛛网以及过多的动画参数。设置任何动画AnyState都可过渡，每个状态定义In">
+<meta property="og:description" content="2.无限循环赛车 2.1 概述地形生成：使用柏林噪声算法，自动生成地形，实现无限不重复的地图。内存优化：采用双圆柱地形轮换和小型内存池，有效节省内存空间。物理组件：熟练使用Collider和Rigidbody进行物理模拟。UI和动画：使用UGUI制作界面，熟练使用和制作Animation，并结合声音和粒子特效增强游戏效果。 2.2 截图 2.3 柏林噪声什么是柏林噪声（Perlin Noise）柏">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/1.%E6%A8%A1%E4%BB%BF3D%E9%A9%AC%E9%87%8C%E5%A5%A5/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/1.%E6%A8%A1%E4%BB%BF3D%E9%A9%AC%E9%87%8C%E5%A5%A5/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/1.%E6%A8%A1%E4%BB%BF3D%E9%A9%AC%E9%87%8C%E5%A5%A5/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/1.%E6%A8%A1%E4%BB%BF3D%E9%A9%AC%E9%87%8C%E5%A5%A5/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/1.%E6%A8%A1%E4%BB%BF3D%E9%A9%AC%E9%87%8C%E5%A5%A5/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/1.%E6%A8%A1%E4%BB%BF3D%E9%A9%AC%E9%87%8C%E5%A5%A5/6.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/1.%E6%A8%A1%E4%BB%BF3D%E9%A9%AC%E9%87%8C%E5%A5%A5/7.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/1.%E6%A8%A1%E4%BB%BF3D%E9%A9%AC%E9%87%8C%E5%A5%A5/8.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/1.%E6%A8%A1%E4%BB%BF3D%E9%A9%AC%E9%87%8C%E5%A5%A5/9.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/1.%E6%A8%A1%E4%BB%BF3D%E9%A9%AC%E9%87%8C%E5%A5%A5/10.png">
-<meta property="article:published_time" content="1799-12-31T15:55:01.000Z">
-<meta property="article:modified_time" content="2024-06-15T08:09:54.103Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/2.%E6%97%A0%E9%99%90%E5%BE%AA%E7%8E%AF%E8%B5%9B%E8%BD%A6/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/2.%E6%97%A0%E9%99%90%E5%BE%AA%E7%8E%AF%E8%B5%9B%E8%BD%A6/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/2.%E6%97%A0%E9%99%90%E5%BE%AA%E7%8E%AF%E8%B5%9B%E8%BD%A6/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/2.%E6%97%A0%E9%99%90%E5%BE%AA%E7%8E%AF%E8%B5%9B%E8%BD%A6/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/2.%E6%97%A0%E9%99%90%E5%BE%AA%E7%8E%AF%E8%B5%9B%E8%BD%A6/2.png">
+<meta property="article:published_time" content="1799-12-31T15:55:02.000Z">
+<meta property="article:modified_time" content="2024-06-15T08:58:29.811Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="项目">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/1.%E6%A8%A1%E4%BB%BF3D%E9%A9%AC%E9%87%8C%E5%A5%A5/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E9%A1%B9%E7%9B%AE/2.%E6%97%A0%E9%99%90%E5%BE%AA%E7%8E%AF%E8%B5%9B%E8%BD%A6/3.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -159,7 +154,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(1579)</small>
+                <small>(1582)</small>
             
         </div>
     </li>
@@ -888,7 +883,7 @@
         <div data-rel="数据存储">
             <i class="fold iconfont icon-right"></i>
             数据存储
-            <small>(96)</small>
+            <small>(99)</small>
         </div>
         
             <ul class="sub hide">
@@ -1076,7 +1071,7 @@
         <div data-rel="数据存储&lt;---&gt;数据库">
             <i class="fold iconfont icon-right"></i>
             数据库
-            <small>(32)</small>
+            <small>(35)</small>
         </div>
         
             <ul class="sub hide">
@@ -1086,7 +1081,7 @@
         <div data-rel="数据存储&lt;---&gt;数据库&lt;---&gt;MongoDB">
             
             MongoDB
-            <small>(32)</small>
+            <small>(35)</small>
         </div>
         
     </li>
@@ -2466,8 +2461,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="1579">
-<input type="hidden" id="yelog_site_word_count" value="2544.2k">
+<input type="hidden" id="yelog_site_posts_number" value="1582">
+<input type="hidden" id="yelog_site_word_count" value="2550.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -3973,6 +3968,33 @@
         
         
         <a  class="全部文章 数据存储 数据库 MongoDB "
+           href="/2025/02/24/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/%E6%95%B0%E6%8D%AE%E5%BA%93/01.MongoDB/35.CSharp%E4%BD%BF%E7%94%A8Bson%E6%93%8D%E4%BD%9CMongoDB/"
+           data-tag="数据存储,数据库,MongoDB"
+           data-author="" >
+            <span class="post-title" title="35.C#使用Bson操作MongoDB">35.C#使用Bson操作MongoDB</span>
+            <span class="post-date" title="2025-02-24 00:53:25">2025/02/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据存储 数据库 MongoDB "
+           href="/2025/02/24/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/%E6%95%B0%E6%8D%AE%E5%BA%93/01.MongoDB/34.CSharp%E6%93%8D%E4%BD%9CMongoDB/"
+           data-tag="数据存储,数据库,MongoDB"
+           data-author="" >
+            <span class="post-title" title="34.C#操作MongoDB">34.C#操作MongoDB</span>
+            <span class="post-date" title="2025-02-24 00:44:32">2025/02/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据存储 数据库 MongoDB "
+           href="/2025/02/24/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/%E6%95%B0%E6%8D%AE%E5%BA%93/01.MongoDB/33.MongoDB%E5%88%A0%E9%99%A4/"
+           data-tag="数据存储,数据库,MongoDB"
+           data-author="" >
+            <span class="post-title" title="33.MongoDB删除">33.MongoDB删除</span>
+            <span class="post-date" title="2025-02-24 00:40:05">2025/02/24</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据存储 数据库 MongoDB "
            href="/2025/02/22/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/%E6%95%B0%E6%8D%AE%E5%BA%93/01.MongoDB/32.MongoDB%E6%9B%BF%E6%8D%A2%E6%9B%B4%E6%96%B0/"
            data-tag="数据存储,数据库,MongoDB"
            data-author="" >
@@ -4207,10 +4229,10 @@
         
         
         <a  class="全部文章 数据存储 数据库 MongoDB "
-           href="/2025/02/20/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/%E6%95%B0%E6%8D%AE%E5%BA%93/01.MongoDB/6.MongoDB%E8%BF%9E%E6%8E%A5/"
+           href="/2025/02/20/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/%E6%95%B0%E6%8D%AE%E5%BA%93/01.MongoDB/6.MongoDB%E8%BF%9E%E6%8E%A5%E5%92%8C%E5%90%AF%E7%94%A8%E8%AE%A4%E8%AF%81/"
            data-tag="数据存储,数据库,MongoDB"
            data-author="" >
-            <span class="post-title" title="6.MongoDB连接">6.MongoDB连接</span>
+            <span class="post-title" title="6.MongoDB连接和启用认证">6.MongoDB连接和启用认证</span>
             <span class="post-date" title="2025-02-20 12:55:32">2025/02/20</span>
         </a>
         
@@ -4847,7 +4869,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E5%87%BD%E6%95%B0-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP基础,函数,CPP基础语法知识"
+           data-tag="编程语言,CPP,函数,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="8.内联函数">8.内联函数</span>
             <span class="post-date" title="2025-01-20 13:07:31">2025/01/20</span>
@@ -4856,7 +4878,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%87%BD%E6%95%B0-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP基础,函数,CPP基础语法知识"
+           data-tag="编程语言,CPP,函数,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="7.递归函数">7.递归函数</span>
             <span class="post-date" title="2025-01-20 13:02:30">2025/01/20</span>
@@ -4865,7 +4887,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD/"
-           data-tag="编程语言,CPP,CPP基础,函数,CPP基础语法知识"
+           data-tag="编程语言,CPP,函数,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="6.函数重载">6.函数重载</span>
             <span class="post-date" title="2025-01-20 12:59:03">2025/01/20</span>
@@ -4874,7 +4896,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%87%BD%E6%95%B0-%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/"
-           data-tag="编程语言,CPP,CPP基础,函数,CPP基础语法知识"
+           data-tag="编程语言,CPP,函数,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="5.函数的变量的作用域">5.函数的变量的作用域</span>
             <span class="post-date" title="2025-01-20 12:55:41">2025/01/20</span>
@@ -4883,7 +4905,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E5%87%BD%E6%95%B0-%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC/"
-           data-tag="编程语言,CPP,CPP基础,函数,CPP基础语法知识"
+           data-tag="编程语言,CPP,函数,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="4.函数的参数默认值">4.函数的参数默认值</span>
             <span class="post-date" title="2025-01-20 12:52:02">2025/01/20</span>
@@ -4892,7 +4914,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%87%BD%E6%95%B0-%E5%BD%A2%E5%8F%82%E5%92%8C%E5%AE%9E%E5%8F%82/"
-           data-tag="编程语言,CPP,CPP基础,函数,CPP基础语法知识"
+           data-tag="编程语言,CPP,函数,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="3.函数的形参和实参">3.函数的形参和实参</span>
             <span class="post-date" title="2025-01-20 12:47:55">2025/01/20</span>
@@ -4901,7 +4923,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E5%9F%BA%E7%A1%80/"
-           data-tag="编程语言,CPP,CPP基础,函数,CPP基础语法知识"
+           data-tag="编程语言,CPP,函数,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="2.函数基础">2.函数基础</span>
             <span class="post-date" title="2025-01-19 22:01:59">2025/01/19</span>
@@ -4973,7 +4995,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/10/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/26.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-goto/"
-           data-tag="编程语言,CPP,CPP入门,循环语句,CPP入门语法知识"
+           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,循环语句"
            data-author="" >
             <span class="post-title" title="26.goto">26.goto</span>
             <span class="post-date" title="2025-01-10 00:49:09">2025/01/10</span>
@@ -4982,7 +5004,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-dowhile/"
-           data-tag="编程语言,CPP,CPP入门,循环语句,CPP入门语法知识"
+           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,循环语句"
            data-author="" >
             <span class="post-title" title="24.dowhile">24.dowhile</span>
             <span class="post-date" title="2025-01-09 23:47:30">2025/01/09</span>
@@ -4991,7 +5013,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/25.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-for/"
-           data-tag="编程语言,CPP,CPP入门,循环语句,CPP入门语法知识"
+           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,循环语句"
            data-author="" >
             <span class="post-title" title="25.for">25.for</span>
             <span class="post-date" title="2025-01-09 23:47:30">2025/01/09</span>
@@ -5000,7 +5022,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/23.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-while/"
-           data-tag="编程语言,CPP,CPP入门,循环语句,CPP入门语法知识"
+           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,循环语句"
            data-author="" >
             <span class="post-title" title="23.while">23.while</span>
             <span class="post-date" title="2025-01-09 23:38:55">2025/01/09</span>
@@ -5009,7 +5031,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5-switch/"
-           data-tag="编程语言,CPP,CPP入门,条件分支语句,CPP入门语法知识"
+           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,条件分支语句"
            data-author="" >
             <span class="post-title" title="22.switch">22.switch</span>
             <span class="post-date" title="2025-01-09 23:32:04">2025/01/09</span>
@@ -5018,7 +5040,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5-if/"
-           data-tag="编程语言,CPP,CPP入门,条件分支语句,CPP入门语法知识"
+           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,条件分支语句"
            data-author="" >
             <span class="post-title" title="21.if">21.if</span>
             <span class="post-date" title="2025-01-09 23:26:43">2025/01/09</span>
@@ -5036,7 +5058,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E6%98%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
-           data-tag="编程语言,CPP,CPP入门,类型转换,CPP入门语法知识"
+           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,类型转换"
            data-author="" >
             <span class="post-title" title="19.显式转换">19.显式转换</span>
             <span class="post-date" title="2025-01-09 13:10:17">2025/01/09</span>
@@ -5045,7 +5067,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/18.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
-           data-tag="编程语言,CPP,CPP入门,类型转换,CPP入门语法知识"
+           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,类型转换"
            data-author="" >
             <span class="post-title" title="18.隐式转换">18.隐式转换</span>
             <span class="post-date" title="2025-01-09 13:02:06">2025/01/09</span>
@@ -5054,7 +5076,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E8%BF%90%E7%AE%97%E7%AC%A6-%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,CPP,CPP入门,运算符,CPP入门语法知识"
+           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,运算符"
            data-author="" >
             <span class="post-title" title="17.三目运算符">17.三目运算符</span>
             <span class="post-date" title="2025-01-09 12:56:53">2025/01/09</span>
@@ -5063,7 +5085,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/16.%E8%BF%90%E7%AE%97%E7%AC%A6-%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,CPP,CPP入门,运算符,CPP入门语法知识"
+           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,运算符"
            data-author="" >
             <span class="post-title" title="16.位运算符">16.位运算符</span>
             <span class="post-date" title="2025-01-09 12:52:05">2025/01/09</span>
@@ -5072,7 +5094,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E8%BF%90%E7%AE%97%E7%AC%A6-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,CPP,CPP入门,运算符,CPP入门语法知识"
+           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,运算符"
            data-author="" >
             <span class="post-title" title="15.逻辑运算符">15.逻辑运算符</span>
             <span class="post-date" title="2025-01-09 12:50:09">2025/01/09</span>
@@ -5081,7 +5103,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/14.%E8%BF%90%E7%AE%97%E7%AC%A6-%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,CPP,CPP入门,运算符,CPP入门语法知识"
+           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,运算符"
            data-author="" >
             <span class="post-title" title="14.关系运算符">14.关系运算符</span>
             <span class="post-date" title="2025-01-09 12:40:13">2025/01/09</span>
@@ -5090,7 +5112,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E8%BF%90%E7%AE%97%E7%AC%A6-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/"
-           data-tag="编程语言,CPP,CPP入门,运算符,CPP入门语法知识"
+           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,运算符"
            data-author="" >
             <span class="post-title" title="13.字符串拼接">13.字符串拼接</span>
             <span class="post-date" title="2025-01-08 13:08:47">2025/01/08</span>
@@ -5099,7 +5121,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E8%BF%90%E7%AE%97%E7%AC%A6-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,CPP,CPP入门,运算符,CPP入门语法知识"
+           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,运算符"
            data-author="" >
             <span class="post-title" title="12.算术运算符">12.算术运算符</span>
             <span class="post-date" title="2025-01-08 12:57:15">2025/01/08</span>
@@ -5809,19 +5831,19 @@
         
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发基础 "
-           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/37.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
-           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,玻璃效果"
+           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/36.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E9%95%9C%E9%9D%A2%E6%95%88%E6%9E%9C-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"
+           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,镜面效果"
            data-author="" >
-            <span class="post-title" title="37.玻璃效果基本原理">37.玻璃效果基本原理</span>
+            <span class="post-title" title="36.镜面效果实现">36.镜面效果实现</span>
             <span class="post-date" title="2024-11-26 12:45:12">2024/11/26</span>
         </a>
         
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发基础 "
-           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/36.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E9%95%9C%E9%9D%A2%E6%95%88%E6%9E%9C-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"
-           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,镜面效果"
+           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/37.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
+           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,玻璃效果"
            data-author="" >
-            <span class="post-title" title="36.镜面效果实现">36.镜面效果实现</span>
+            <span class="post-title" title="37.玻璃效果基本原理">37.玻璃效果基本原理</span>
             <span class="post-date" title="2024-11-26 12:45:12">2024/11/26</span>
         </a>
         
@@ -6350,7 +6372,7 @@
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发入门 "
            href="/2024/10/10/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/20.%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E7%BB%BC%E5%90%88%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-BlinnPhong%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E9%80%90%E7%89%87%E5%85%83%E5%85%89%E7%85%A7/"
-           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,综合光照模型,逐片元光照,BlinnPhong光照模型"
+           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,逐片元光照,综合光照模型,BlinnPhong光照模型"
            data-author="" >
             <span class="post-title" title="20.BlinnPhong光照模型逐片元光照">20.BlinnPhong光照模型逐片元光照</span>
             <span class="post-date" title="2024-10-10 22:50:54">2024/10/10</span>
@@ -6377,7 +6399,7 @@
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发入门 "
            href="/2024/10/10/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/17.%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E7%BB%BC%E5%90%88%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-Phong%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E9%80%90%E7%89%87%E5%85%83%E5%85%89%E7%85%A7/"
-           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,综合光照模型,Phong光照模型,逐片元光照"
+           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,逐片元光照,综合光照模型,Phong光照模型"
            data-author="" >
             <span class="post-title" title="17.Phong光照模型逐片元光照">17.Phong光照模型逐片元光照</span>
             <span class="post-date" title="2024-10-10 21:30:47">2024/10/10</span>
@@ -10292,7 +10314,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/18.Lua%E8%B0%83%E7%94%A8CSharp-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="18.Lua调用Unity的协同程序">18.Lua调用Unity的协同程序</span>
             <span class="post-date" title="2024-04-05 12:10:00">2024/04/05</span>
@@ -10301,7 +10323,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/17.Lua%E8%B0%83%E7%94%A8CSharp-%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="17.Lua调用C#的委托和事件">17.Lua调用C#的委托和事件</span>
             <span class="post-date" title="2024-04-05 12:05:21">2024/04/05</span>
@@ -10310,7 +10332,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.Lua%E8%B0%83%E7%94%A8CSharp-%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="16.Lua调用C#的重载函数">16.Lua调用C#的重载函数</span>
             <span class="post-date" title="2024-04-05 12:01:54">2024/04/05</span>
@@ -10319,7 +10341,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.Lua%E8%B0%83%E7%94%A8CSharp-ref%E5%92%8Cout%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="15.Lua调用C#的ref和out函数">15.Lua调用C#的ref和out函数</span>
             <span class="post-date" title="2024-04-05 11:56:12">2024/04/05</span>
@@ -10328,7 +10350,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Lua%E8%B0%83%E7%94%A8CSharp-%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="14.Lua调用C#的拓展方法">14.Lua调用C#的拓展方法</span>
             <span class="post-date" title="2024-04-05 11:53:26">2024/04/05</span>
@@ -10337,7 +10359,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/13.Lua%E8%B0%83%E7%94%A8CSharp-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="13.Lua调用C#的数据集合">13.Lua调用C#的数据集合</span>
             <span class="post-date" title="2024-04-05 11:45:43">2024/04/05</span>
@@ -10346,7 +10368,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Lua%E8%B0%83%E7%94%A8CSharp-%E6%9E%9A%E4%B8%BE/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="12.Lua调用C#的枚举">12.Lua调用C#的枚举</span>
             <span class="post-date" title="2024-04-05 11:41:03">2024/04/05</span>
@@ -10355,7 +10377,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B1%BB/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="11.Lua调用C#的类">11.Lua调用C#的类</span>
             <span class="post-date" title="2024-04-05 11:33:29">2024/04/05</span>
@@ -10364,7 +10386,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.CSharp%E8%B0%83%E7%94%A8Lua-toLua%E6%8F%90%E4%BE%9B%E7%9A%84%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="10.C#调用toLua提供的协同程序">10.C#调用toLua提供的协同程序</span>
             <span class="post-date" title="2024-04-05 11:27:10">2024/04/05</span>
@@ -10373,7 +10395,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E6%95%B0%E7%BB%84%E5%92%8CDictionary/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="9.C#把Lua表映射到数组和Dictionary">9.C#把Lua表映射到数组和Dictionary</span>
             <span class="post-date" title="2024-04-05 11:21:10">2024/04/05</span>
@@ -10382,7 +10404,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0LuaTable/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="8.C#把Lua表映射到LuaTable">8.C#把Lua表映射到LuaTable</span>
             <span class="post-date" title="2024-04-05 11:16:16">2024/04/05</span>
@@ -10391,7 +10413,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.CSharp%E8%B0%83%E7%94%A8Lua-%E5%87%BD%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B0%83%E7%94%A8/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="7.C#调用Lua函数">7.C#调用Lua函数</span>
             <span class="post-date" title="2024-04-05 10:58:58">2024/04/05</span>
@@ -10400,7 +10422,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.CSharp%E8%B0%83%E7%94%A8Lua-%E5%8F%98%E9%87%8F%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B5%8B%E5%80%BC/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="6.C#调用Lua变量">6.C#调用Lua变量</span>
             <span class="post-date" title="2024-04-05 10:48:57">2024/04/05</span>
@@ -10409,7 +10431,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E7%AE%A1%E7%90%86%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="5.Lua管理器">5.Lua管理器</span>
             <span class="post-date" title="2024-04-05 10:42:38">2024/04/05</span>
@@ -10418,7 +10440,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%87%8D%E5%AE%9A%E5%90%91/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="4.加载自定义路径下的Lua脚本">4.加载自定义路径下的Lua脚本</span>
             <span class="post-date" title="2024-04-05 10:01:35">2024/04/05</span>
@@ -10427,7 +10449,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/06.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E8%A7%A3%E6%9E%90%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="3.Lua解析器执行Lua脚本">3.Lua解析器执行Lua脚本</span>
             <span class="post-date" title="2024-04-05 09:54:20">2024/04/05</span>
@@ -10598,7 +10620,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/23.Lua%E8%B0%83%E7%94%A8CSharp-%E6%B3%9B%E5%9E%8B/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="23.Lua调用C#的泛型">23.Lua调用C#的泛型</span>
             <span class="post-date" title="2024-04-04 13:27:51">2024/04/04</span>
@@ -10607,7 +10629,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.Lua%E8%B0%83%E7%94%A8CSharp-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="22.Lua调用Unity的协同程序">22.Lua调用Unity的协同程序</span>
             <span class="post-date" title="2024-04-04 13:15:59">2024/04/04</span>
@@ -10616,7 +10638,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E4%BA%A4%E4%BA%92/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="21.Lua和C#对系统代码交互处理">21.Lua和C#对系统代码交互处理</span>
             <span class="post-date" title="2024-04-04 13:06:38">2024/04/04</span>
@@ -10625,7 +10647,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Lua%E8%B0%83%E7%94%A8CSharp-%E5%88%A4%E7%A9%BA/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="20.Lua和C#的判空相关">20.Lua和C#的判空相关</span>
             <span class="post-date" title="2024-04-04 13:04:39">2024/04/04</span>
@@ -10634,7 +10656,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/19.Lua%E8%B0%83%E7%94%A8CSharp-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="19.Lua调用C#的二维数组">19.Lua调用C#的二维数组</span>
             <span class="post-date" title="2024-04-04 12:54:09">2024/04/04</span>
@@ -10643,7 +10665,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/18.Lua%E8%B0%83%E7%94%A8CSharp-%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="18.Lua调用C#的委托和事件">18.Lua调用C#的委托和事件</span>
             <span class="post-date" title="2024-04-04 11:57:07">2024/04/04</span>
@@ -10652,7 +10674,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/17.Lua%E8%B0%83%E7%94%A8CSharp-%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="17.Lua调用C#的重载函数">17.Lua调用C#的重载函数</span>
             <span class="post-date" title="2024-04-04 11:51:29">2024/04/04</span>
@@ -10661,7 +10683,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.Lua%E8%B0%83%E7%94%A8CSharp-ref%E5%92%8Cout%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="16.Lua调用C#的ref和out函数">16.Lua调用C#的ref和out函数</span>
             <span class="post-date" title="2024-04-04 11:50:39">2024/04/04</span>
@@ -10670,7 +10692,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.Lua%E8%B0%83%E7%94%A8CSharp-%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="15.Lua调用C#的拓展方法">15.Lua调用C#的拓展方法</span>
             <span class="post-date" title="2024-04-04 11:35:07">2024/04/04</span>
@@ -10679,7 +10701,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Lua%E8%B0%83%E7%94%A8CSharp-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="14.Lua调用C#的数据集合">14.Lua调用C#的数据集合</span>
             <span class="post-date" title="2024-04-04 11:11:12">2024/04/04</span>
@@ -10688,7 +10710,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/13.Lua%E8%B0%83%E7%94%A8CSharp-%E6%9E%9A%E4%B8%BE/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="13.Lua调用C#的枚举">13.Lua调用C#的枚举</span>
             <span class="post-date" title="2024-04-04 11:09:44">2024/04/04</span>
@@ -10697,7 +10719,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B1%BB/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="12.Lua调用C#的类">12.Lua调用C#的类</span>
             <span class="post-date" title="2024-04-04 11:04:10">2024/04/04</span>
@@ -10706,7 +10728,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0LuaTable/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="11.C#把Lua表映射到LuaTable">11.C#把Lua表映射到LuaTable</span>
             <span class="post-date" title="2024-04-04 10:51:03">2024/04/04</span>
@@ -10715,7 +10737,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E6%8E%A5%E5%8F%A3/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="10.C#把Lua表映射到接口">10.C#把Lua表映射到接口</span>
             <span class="post-date" title="2024-04-04 10:45:54">2024/04/04</span>
@@ -10724,7 +10746,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E7%B1%BB/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="9.C#把Lua表映射到类">9.C#把Lua表映射到类</span>
             <span class="post-date" title="2024-04-04 10:32:53">2024/04/04</span>
@@ -10733,7 +10755,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0List%E5%92%8CDictionary/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="8.C#把Lua表映射到List和Dictionary">8.C#把Lua表映射到List和Dictionary</span>
             <span class="post-date" title="2024-04-04 10:28:33">2024/04/04</span>
@@ -10742,7 +10764,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.CSharp%E8%B0%83%E7%94%A8Lua-%E5%87%BD%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B0%83%E7%94%A8/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="7.C#调用Lua函数">7.C#调用Lua函数</span>
             <span class="post-date" title="2024-04-04 09:58:44">2024/04/04</span>
@@ -10751,7 +10773,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.CSharp%E8%B0%83%E7%94%A8Lua-%E5%8F%98%E9%87%8F%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B5%8B%E5%80%BC/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="6.C#调用Lua变量">6.C#调用Lua变量</span>
             <span class="post-date" title="2024-04-04 09:57:16">2024/04/04</span>
@@ -10760,7 +10782,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E7%AE%A1%E7%90%86%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="5.Lua管理器和加载AB包中的Lua脚本">5.Lua管理器和加载AB包中的Lua脚本</span>
             <span class="post-date" title="2024-04-04 09:08:02">2024/04/04</span>
@@ -10769,7 +10791,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%87%8D%E5%AE%9A%E5%90%91/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="4.加载自定义路径下的Lua脚本">4.加载自定义路径下的Lua脚本</span>
             <span class="post-date" title="2024-04-03 21:30:58">2024/04/03</span>
@@ -10778,7 +10800,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E8%A7%A3%E6%9E%90%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="3.Lua解析器执行Lua脚本">3.Lua解析器执行Lua脚本</span>
             <span class="post-date" title="2024-04-03 21:16:35">2024/04/03</span>
@@ -16870,19 +16892,19 @@
         
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门实践项目 "
-           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
            data-tag="编程语言,CSharp,CSharp入门,CSharp入门实践项目"
            data-author="" >
-            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
+            <span class="post-title" title="12.公主相关">12.公主相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门实践项目 "
-           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
            data-tag="编程语言,CSharp,CSharp入门,CSharp入门实践项目"
            data-author="" >
-            <span class="post-title" title="12.公主相关">12.公主相关</span>
+            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
@@ -16988,7 +17010,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/23.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-for/"
-           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,循环语句"
+           data-tag="编程语言,循环语句,CSharp,CSharp入门,CSharp入门语法知识"
            data-author="" >
             <span class="post-title" title="23.for">23.for</span>
             <span class="post-date" title="2024-01-06 22:04:57">2024/01/06</span>
@@ -16997,7 +17019,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-dowhile/"
-           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,循环语句"
+           data-tag="编程语言,循环语句,CSharp,CSharp入门,CSharp入门语法知识"
            data-author="" >
             <span class="post-title" title="22.dowhile">22.dowhile</span>
             <span class="post-date" title="2024-01-06 22:03:57">2024/01/06</span>
@@ -17006,7 +17028,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-while/"
-           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,循环语句"
+           data-tag="编程语言,循环语句,CSharp,CSharp入门,CSharp入门语法知识"
            data-author="" >
             <span class="post-title" title="21.while">21.while</span>
             <span class="post-date" title="2024-01-06 20:26:05">2024/01/06</span>
@@ -17015,7 +17037,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/20.%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5-switch/"
-           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,条件分支语句"
+           data-tag="编程语言,条件分支语句,CSharp,CSharp入门,CSharp入门语法知识"
            data-author="" >
             <span class="post-title" title="20.switch">20.switch</span>
             <span class="post-date" title="2024-01-06 20:25:05">2024/01/06</span>
@@ -17024,7 +17046,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5-if/"
-           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,条件分支语句"
+           data-tag="编程语言,条件分支语句,CSharp,CSharp入门,CSharp入门语法知识"
            data-author="" >
             <span class="post-title" title="19.if">19.if</span>
             <span class="post-date" title="2024-01-06 20:14:55">2024/01/06</span>
@@ -17033,7 +17055,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/18.%E8%BF%90%E7%AE%97%E7%AC%A6-%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,运算符"
+           data-tag="编程语言,运算符,CSharp,CSharp入门,CSharp入门语法知识"
            data-author="" >
             <span class="post-title" title="18.三目运算符">18.三目运算符</span>
             <span class="post-date" title="2024-01-06 19:54:11">2024/01/06</span>
@@ -17042,7 +17064,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E8%BF%90%E7%AE%97%E7%AC%A6-%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,运算符"
+           data-tag="编程语言,运算符,CSharp,CSharp入门,CSharp入门语法知识"
            data-author="" >
             <span class="post-title" title="17.位运算符">17.位运算符</span>
             <span class="post-date" title="2024-01-06 19:41:40">2024/01/06</span>
@@ -17051,7 +17073,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/16.%E8%BF%90%E7%AE%97%E7%AC%A6-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,运算符"
+           data-tag="编程语言,运算符,CSharp,CSharp入门,CSharp入门语法知识"
            data-author="" >
             <span class="post-title" title="16.逻辑运算符">16.逻辑运算符</span>
             <span class="post-date" title="2024-01-06 19:35:01">2024/01/06</span>
@@ -17060,7 +17082,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E8%BF%90%E7%AE%97%E7%AC%A6-%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,运算符"
+           data-tag="编程语言,运算符,CSharp,CSharp入门,CSharp入门语法知识"
            data-author="" >
             <span class="post-title" title="15.关系运算符">15.关系运算符</span>
             <span class="post-date" title="2024-01-06 13:01:21">2024/01/06</span>
@@ -17069,7 +17091,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/14.%E8%BF%90%E7%AE%97%E7%AC%A6-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/"
-           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,运算符"
+           data-tag="编程语言,运算符,CSharp,CSharp入门,CSharp入门语法知识"
            data-author="" >
             <span class="post-title" title="14.字符串拼接">14.字符串拼接</span>
             <span class="post-date" title="2024-01-06 12:01:14">2024/01/06</span>
@@ -17078,7 +17100,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E8%BF%90%E7%AE%97%E7%AC%A6-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,运算符"
+           data-tag="编程语言,运算符,CSharp,CSharp入门,CSharp入门语法知识"
            data-author="" >
             <span class="post-title" title="13.算术运算符">13.算术运算符</span>
             <span class="post-date" title="2024-01-06 11:16:43">2024/01/06</span>
@@ -17096,7 +17118,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E6%98%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
-           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,类型转换"
+           data-tag="编程语言,类型转换,CSharp,CSharp入门,CSharp入门语法知识"
            data-author="" >
             <span class="post-title" title="11.显式转换">11.显式转换</span>
             <span class="post-date" title="2024-01-06 10:36:38">2024/01/06</span>
@@ -17105,7 +17127,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
-           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,类型转换"
+           data-tag="编程语言,类型转换,CSharp,CSharp入门,CSharp入门语法知识"
            data-author="" >
             <span class="post-title" title="10.隐式转换">10.隐式转换</span>
             <span class="post-date" title="2024-01-06 10:26:31">2024/01/06</span>
@@ -17474,7 +17496,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/392.%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/"
-           data-tag="LeetCode,双指针,动态规划,字符串"
+           data-tag="LeetCode,双指针,字符串,动态规划"
            data-author="" >
             <span class="post-title" title="392.判断子序列">392.判断子序列</span>
             <span class="post-date" title="2000-01-10 03:09:02">2000/01/10</span>
@@ -17600,7 +17622,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/234.%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/"
-           data-tag="LeetCode,双指针,链表,栈,递归"
+           data-tag="LeetCode,双指针,栈,链表,递归"
            data-author="" >
             <span class="post-title" title="234.回文链表">234.回文链表</span>
             <span class="post-date" title="2000-01-10 02:03:04">2000/01/10</span>
@@ -18140,7 +18162,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/5.%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/"
-           data-tag="LeetCode,双指针,动态规划,字符串"
+           data-tag="LeetCode,双指针,字符串,动态规划"
            data-author="" >
             <span class="post-title" title="5.最长回文子串">5.最长回文子串</span>
             <span class="post-date" title="2000-01-10 00:00:05">2000/01/10</span>
@@ -18200,9 +18222,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-数据存储/数据库/01.MongoDB/6.MongoDB连接" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-数据存储/数据库/01.MongoDB/33.MongoDB删除" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">6.MongoDB连接</h1>
+        <h1 class="article-title">33.MongoDB删除</h1>
     
     <div class="article-meta">
         
@@ -18235,12 +18257,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-02-21 09:45:03'>2025-02-20 12:55</time>
+            发布时间 : <time class="date" title='最后更新: 2025-02-24 00:42:44'>2025-02-24 00:40</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:749</span>
+        <span>字数:927</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -18270,7 +18292,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#6-MongoDB%E8%BF%9E%E6%8E%A5"><span class="toc-text">6.MongoDB连接</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#6-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">6.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoDB-%E8%BF%9E%E6%8E%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%A0%BC%E5%BC%8F"><span class="toc-text">MongoDB 连接字符串格式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81"><span class="toc-text">用户名和密码</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E6%9C%BA%E5%92%8C%E7%AB%AF%E5%8F%A3"><span class="toc-text">主机和端口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E9%A1%B9%EF%BC%88options%EF%BC%89"><span class="toc-text">选项（options）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%A4%BA%E4%BE%8B"><span class="toc-text">连接字符串示例</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%B8%A6%E4%BB%BB%E4%BD%95%E9%AA%8C%E8%AF%81"><span class="toc-text">不带任何验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%A6%E7%94%A8%E6%88%B7%E5%90%8D%E5%92%8C%E5%AF%86%E7%A0%81%E9%AA%8C%E8%AF%81"><span class="toc-text">带用户名和密码验证</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9E%E6%8E%A5%E5%88%B0%E6%8C%87%E5%AE%9A%E7%9A%84%E6%95%B0%E6%8D%AE%E5%BA%93"><span class="toc-text">连接到指定的数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%A6%E9%80%89%E9%A1%B9%E5%8F%82%E6%95%B0"><span class="toc-text">带选项参数</span></a></li></ol></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#33-MongoDB%E5%88%A0%E9%99%A4"><span class="toc-text">33.MongoDB删除</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#33-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">33.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#MongoDB%E5%88%A0%E9%99%A4%E6%A6%82%E8%BF%B0"><span class="toc-text">MongoDB删除概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deleteOne"><span class="toc-text">deleteOne</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%87%E6%A1%A3%E7%A4%BA%E4%BE%8B%EF%BC%9A"><span class="toc-text">文档示例：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#deleteMany"><span class="toc-text">deleteMany</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-1"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-1"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-1"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-1"><span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#findOneAndDelete"><span class="toc-text">findOneAndDelete</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-2"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-2"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-2"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-2"><span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#drop"><span class="toc-text">drop</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%AD%E6%B3%95-3"><span class="toc-text">语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF-3"><span class="toc-text">应用场景</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9-3"><span class="toc-text">注意事项</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B-3"><span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#db-collection-remove-%EF%BC%88%E5%B7%B2%E8%BF%87%E6%97%B6%EF%BC%89"><span class="toc-text">db.collection.remove （已过时）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -18286,66 +18308,153 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="6-MongoDB连接"><a href="#6-MongoDB连接" class="headerlink" title="6.MongoDB连接"></a>6.MongoDB连接</h1><hr>
-<h2 id="6-1-知识点"><a href="#6-1-知识点" class="headerlink" title="6.1 知识点"></a>6.1 知识点</h2><h3 id="MongoDB-连接字符串格式"><a href="#MongoDB-连接字符串格式" class="headerlink" title="MongoDB 连接字符串格式"></a>MongoDB 连接字符串格式</h3><p>MongoDB 的连接字符串格式为 <code>mongodb://&lt;用户名&gt;:&lt;密码&gt;@&lt;主机&gt;:&lt;端口&gt;/&lt;数据库&gt;?options</code>。</p>
-<p>这个格式非常灵活，允许你提供多种选项来配置连接。</p>
-<h4 id="用户名和密码"><a href="#用户名和密码" class="headerlink" title="用户名和密码"></a>用户名和密码</h4><ul>
-<li>**&lt;用户名&gt;**：连接到 MongoDB 数据库所需的用户名。</li>
-<li>**&lt;密码&gt;**：该用户的密码。为了安全考虑，密码中的特殊字符（如 <code>@</code>、<code>/</code> 等）需要进行 URL 编码。</li>
-</ul>
-<p>假设您的用户名是 <code>user@example.com</code>，密码是 <code>pa/ss:word?</code>，那么在连接字符串中，您需要这样处理：</p>
+        <h1 id="33-MongoDB删除"><a href="#33-MongoDB删除" class="headerlink" title="33.MongoDB删除"></a>33.MongoDB删除</h1><hr>
+<h2 id="33-1-知识点"><a href="#33-1-知识点" class="headerlink" title="33.1 知识点"></a>33.1 知识点</h2><h3 id="MongoDB删除概述"><a href="#MongoDB删除概述" class="headerlink" title="MongoDB删除概述"></a>MongoDB删除概述</h3><p>MongoDB 提供了多种方式来删除文档或集合中的数据，主要包括以下操作：</p>
+<ol>
+<li><strong><code>deleteOne</code></strong> - 删除单个符合条件的文档。</li>
+<li><strong><code>deleteMany</code></strong> - 删除所有符合条件的文档。</li>
+<li><strong><code>findOneAndDelete</code></strong> - 查找并删除单个文档，返回被删除的文档。</li>
+<li><strong><code>drop</code></strong> - 删除整个集合。</li>
+<li><strong><code>db.collection.remove</code></strong> - 老版本的删除方法（已过时，不建议使用）。</li>
+</ol>
+<h3 id="deleteOne"><a href="#deleteOne" class="headerlink" title="deleteOne"></a>deleteOne</h3><h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><pre><code class="javascript">db.collection.deleteOne(filter, options)
+</code></pre>
 <ul>
-<li>用户名 <code>user@example.com</code> 中的 <code>@</code> 需要编码为 <code>%40</code></li>
-<li>密码 <code>pa/ss:word?</code> 中的 <code>/</code> 需要编码为 <code>%2F</code>，<code>:</code> 需要编码为 <code>%3A</code>，<code>?</code> 需要编码为 <code>%3F</code></li>
+<li><strong><code>filter</code></strong>: 查询条件，指定要删除文档的条件。</li>
+<li><strong><code>options</code></strong>: 可选参数，目前仅支持 <code>collation</code>（指定排序规则）。</li>
 </ul>
-<p>因此，编码后的用户名和密码分别为：</p>
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><ul>
+<li>当你只需要删除符合条件的第一个文档时使用。</li>
+</ul>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h4><ul>
+<li>如果有多个文档符合条件，只有第一个被删除。</li>
+<li>删除操作无法撤销，操作前需确保条件准确。</li>
+</ul>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><pre><code class="javascript">// 删除 name 为 &quot;Alice&quot; 的第一个文档
+db.users.deleteOne(&#123; name: &quot;Alice&quot; &#125;);
+</code></pre>
+<h4 id="文档示例："><a href="#文档示例：" class="headerlink" title="文档示例："></a>文档示例：</h4><pre><code class="javascript">&#123; _id: 1, name: &quot;Alice&quot;, age: 25 &#125;
+&#123; _id: 2, name: &quot;Alice&quot;, age: 30 &#125;
+&#123; _id: 3, name: &quot;Bob&quot;, age: 20 &#125;
+</code></pre>
+<p>结果：</p>
+<pre><code class="javascript">&#123; _id: 1, name: &quot;Alice&quot;, age: 25 &#125; // 被删除
+</code></pre>
+<h3 id="deleteMany"><a href="#deleteMany" class="headerlink" title="deleteMany"></a>deleteMany</h3><h4 id="语法-1"><a href="#语法-1" class="headerlink" title="语法"></a>语法</h4><pre><code class="javascript">db.collection.deleteMany(filter, options)
+</code></pre>
 <ul>
-<li>编码后的用户名：<code>user%40example.com</code></li>
-<li>编码后的密码：<code>pa%2Fss%3Aword%3F</code></li>
+<li><strong><code>filter</code></strong>: 查询条件，指定要删除的文档条件。</li>
+<li><strong><code>options</code></strong>: 可选参数，目前仅支持 <code>collation</code>。</li>
 </ul>
-<h4 id="主机和端口"><a href="#主机和端口" class="headerlink" title="主机和端口"></a>主机和端口</h4><ul>
-<li>**&lt;主机&gt;**：MongoDB 服务器的主机名或 IP 地址。可以是多个主机，用逗号分隔，用于复制集的连接。</li>
-<li>**&lt;端口&gt;**：MongoDB 服务的端口，默认是 <code>27017</code>。如果使用默认端口，可以省略这个部分。</li>
+<h4 id="应用场景-1"><a href="#应用场景-1" class="headerlink" title="应用场景"></a><strong>应用场景</strong></h4><ul>
+<li>当需要批量删除符合条件的多个文档时使用。</li>
 </ul>
-<h4 id="数据库"><a href="#数据库" class="headerlink" title="数据库"></a>数据库</h4><ul>
-<li>**&lt;数据库&gt;**：要连接的数据库名称。如果数据库不存在，MongoDB 会在首次插入数据时自动创建它。</li>
+<h4 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h4><ul>
+<li>如果条件为空 <code>&#123;&#125;</code>，将删除集合中的所有文档。</li>
+<li>在批量删除前需谨慎检查条件。</li>
 </ul>
-<h4 id="选项（options）"><a href="#选项（options）" class="headerlink" title="选项（options）"></a>选项（options）</h4><p>选项是连接字符串中的可选参数，允许你修改连接的行为。以下是一些常用的选项及其解释：</p>
+<h4 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a><strong>示例</strong></h4><pre><code class="javascript">// 删除所有 name 为 &quot;Alice&quot; 的文档
+db.users.deleteMany(&#123; name: &quot;Alice&quot; &#125;);
+</code></pre>
+<p>文档示例：</p>
+<pre><code class="javascript">&#123; _id: 1, name: &quot;Alice&quot;, age: 25 &#125;
+&#123; _id: 2, name: &quot;Alice&quot;, age: 30 &#125;
+&#123; _id: 3, name: &quot;Bob&quot;, age: 20 &#125;
+</code></pre>
+<p>结果：</p>
+<pre><code class="javascript">&#123; _id: 1, name: &quot;Alice&quot;, age: 25 &#125; // 被删除
+&#123; _id: 2, name: &quot;Alice&quot;, age: 30 &#125; // 被删除
+</code></pre>
+<h3 id="findOneAndDelete"><a href="#findOneAndDelete" class="headerlink" title="findOneAndDelete"></a>findOneAndDelete</h3><h4 id="语法-2"><a href="#语法-2" class="headerlink" title="语法"></a>语法</h4><pre><code class="javascript">db.collection.findOneAndDelete(filter, options)
+</code></pre>
 <ul>
-<li><p><strong>authSource</strong>：指定身份验证数据库。如果用户在其他数据库中创建，但连接到一个不同的数据库时，需要使用此参数。</p>
-<p>  例如，<code>authSource=admin</code> 表示在 <code>admin</code> 数据库中进行身份验证。</p>
-</li>
-<li><p><strong>retryWrites</strong>：指定是否启用重试写入。设置为 <code>true</code> 时，如果写入操作失败，驱动程序将自动重试，默认值为 <code>false</code>。</p>
-</li>
-<li><p><strong>w</strong>：指定写入操作的确认级别。可以设置为 <code>1</code>（确认写入到主节点），<code>majority</code>（确认写入到大多数节点），或者 <code>0</code>（不需要确认）。</p>
-</li>
-<li><p><strong>r</strong>：在执行写入操作时，指定读取的副本节点，可以与 <code>w</code> 一起使用。</p>
-</li>
-<li><p><strong>ssl</strong>：指定是否使用 SSL&#x2F;TLS 加密与 MongoDB 服务器之间的连接。设置为 <code>true</code> 时启用 SSL。</p>
-</li>
-<li><p><strong>connectTimeoutMS</strong>：设置连接超时时间，单位为毫秒。默认是 30000 毫秒（30 秒）。</p>
-</li>
-<li><p><strong>socketTimeoutMS</strong>：设置套接字超时时间，单位为毫秒。默认也是 30000 毫秒。</p>
-</li>
-<li><p><strong>maxPoolSize</strong>：设置连接池的最大数量，默认是 100。</p>
-</li>
-<li><p><strong>minPoolSize</strong>：设置连接池的最小数量，默认是 0。</p>
+<li><strong><code>filter</code></strong>: 查询条件，指定要删除的文档。</li>
+<li><strong><code>options</code></strong>: 可选参数，例如：<ul>
+<li><code>sort</code>: 指定排序规则。</li>
+<li><code>projection</code>: 指定返回的字段。</li>
+</ul>
 </li>
 </ul>
-<h3 id="连接字符串示例"><a href="#连接字符串示例" class="headerlink" title="连接字符串示例"></a>连接字符串示例</h3><h4 id="不带任何验证"><a href="#不带任何验证" class="headerlink" title="不带任何验证"></a>不带任何验证</h4><pre><code class="javascript">// 连接本地数据库
-mongodb://localhost:27017/
-
-// 连接指定IP的数据库
-mongodb://127.0.0.1:27017/
+<h4 id="应用场景-2"><a href="#应用场景-2" class="headerlink" title="应用场景"></a><strong>应用场景</strong></h4><ul>
+<li>当需要删除某个文档并返回被删除的文档内容时使用。</li>
+</ul>
+<h4 id="注意事项-2"><a href="#注意事项-2" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h4><ul>
+<li>此操作返回被删除的文档，便于后续操作。</li>
+<li>如果有多个文档符合条件，可通过 <code>sort</code> 指定优先级。</li>
+</ul>
+<h4 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a><strong>示例</strong></h4><pre><code class="javascript">// 删除 age 最小的文档并返回
+db.users.findOneAndDelete(&#123;&#125;, &#123; sort: &#123; age: 1 &#125; &#125;);
 </code></pre>
-<p><img src="/../../../../images/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/%E6%95%B0%E6%8D%AE%E5%BA%93/01.MongoDB/6.MongoDB%E8%BF%9E%E6%8E%A5/1.png"></p>
-<h4 id="带用户名和密码验证"><a href="#带用户名和密码验证" class="headerlink" title="带用户名和密码验证"></a>带用户名和密码验证</h4><pre><code class="javascript">mongodb://username:password@localhost:27017/
+<p>文档示例：</p>
+<pre><code class="javascript">&#123; _id: 1, name: &quot;Alice&quot;, age: 25 &#125;
+&#123; _id: 2, name: &quot;Alice&quot;, age: 30 &#125;
+&#123; _id: 3, name: &quot;Bob&quot;, age: 20 &#125;
 </code></pre>
-<h4 id="连接到指定的数据库"><a href="#连接到指定的数据库" class="headerlink" title="连接到指定的数据库"></a>连接到指定的数据库</h4><pre><code class="javascript">mongodb://username:password@localhost:27017/mydb
+<p><strong>结果：</strong><br>返回被删除的文档：</p>
+<pre><code class="javascript">&#123; _id: 3, name: &quot;Bob&quot;, age: 20 &#125; // 被删除并返回
 </code></pre>
-<p><img src="/../../../../images/%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8/%E6%95%B0%E6%8D%AE%E5%BA%93/01.MongoDB/6.MongoDB%E8%BF%9E%E6%8E%A5/2.png"></p>
-<h4 id="带选项参数"><a href="#带选项参数" class="headerlink" title="带选项参数"></a>带选项参数</h4><pre><code class="javascript">mongodb://username:password@localhost:27017/mydb?authSource=admin&amp;retryWrites=true&amp;w=majority
+<h3 id="drop"><a href="#drop" class="headerlink" title="drop"></a>drop</h3><h4 id="语法-3"><a href="#语法-3" class="headerlink" title="语法"></a>语法</h4><pre><code class="javascript">db.collection.drop()
 </code></pre>
+<h4 id="应用场景-3"><a href="#应用场景-3" class="headerlink" title="应用场景"></a><strong>应用场景</strong></h4><ul>
+<li>当需要删除整个集合时使用。</li>
+</ul>
+<h4 id="注意事项-3"><a href="#注意事项-3" class="headerlink" title="注意事项"></a><strong>注意事项</strong></h4><ul>
+<li>此操作会直接删除整个集合，且无法恢复。</li>
+<li>删除集合后，索引也会随之删除。</li>
+</ul>
+<h4 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h4><pre><code class="javascript">// 删除 users 集合
+db.users.drop();
+</code></pre>
+<p><strong>结果：</strong><br>集合 <code>users</code> 被完全删除。</p>
+<h3 id="db-collection-remove-（已过时）"><a href="#db-collection-remove-（已过时）" class="headerlink" title="db.collection.remove （已过时）"></a><strong><code>db.collection.remove</code></strong> （已过时）</h3><p>老版本的删除方法，MongoDB 4.0+ 已不推荐使用。</p>
+<hr>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><table>
+<thead>
+<tr>
+<th>操作</th>
+<th>用途</th>
+<th>是否批量删除</th>
+<th>是否返回删除的文档</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>deleteOne</code></td>
+<td>删除单个符合条件的文档</td>
+<td>否</td>
+<td>否</td>
+</tr>
+<tr>
+<td><code>deleteMany</code></td>
+<td>删除所有符合条件的文档</td>
+<td>是</td>
+<td>否</td>
+</tr>
+<tr>
+<td><code>findOneAndDelete</code></td>
+<td>查找并删除单个符合条件的文档</td>
+<td>否</td>
+<td>是</td>
+</tr>
+<tr>
+<td><code>drop</code></td>
+<td>删除整个集合</td>
+<td>是（全部）</td>
+<td>否</td>
+</tr>
+<tr>
+<td><code>remove</code></td>
+<td>老版本操作，不建议使用</td>
+<td>可选</td>
+<td>否</td>
+</tr>
+</tbody></table>
+<p><strong>注意事项总结</strong></p>
+<ol>
+<li>删除操作无法撤销，请确保条件准确。</li>
+<li>批量删除（<code>deleteMany</code> 或空条件）需非常谨慎，避免误删数据。</li>
+<li>使用 <code>findOneAndDelete</code> 可以更安全地获取被删除的数据。</li>
+<li>删除整个集合（<code>drop</code>）前，确认集合中没有需要保留的数据。</li>
+</ol>
 <hr>
 
       
