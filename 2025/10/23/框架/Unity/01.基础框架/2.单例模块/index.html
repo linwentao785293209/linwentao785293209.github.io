@@ -2,31 +2,33 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>4.对象池模块 | 人间自有韬哥在的博客</title>
+  <title>2.单例模块 | 人间自有韬哥在的博客</title>
   <meta name="keywords" content=" 框架 , Unity框架 , 基础框架 ">
-  <meta name="description" content="4.对象池模块 | 人间自有韬哥在的博客">
+  <meta name="description" content="2.单例模块 | 人间自有韬哥在的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="4.对象池模块 4.1 知识点对象池模块的作用在游戏开发中，我们经常需要频繁地创建和销毁对象，比如子弹、特效、敌人等。频繁的创建和销毁会导致以下问题：  内存分配开销：每次创建对象都需要分配内存 垃圾回收压力：频繁销毁对象会产生大量垃圾，增加GC压力 性能影响：特别是在移动设备上，频繁的内存分配和回收会严重影响性能  对象池模块的主要作用是通过重复利用已经创建的对象，避免频繁的创建和销毁，从而减少">
+<meta name="description" content="6.资源管理模块 6.1 知识点资源管理模块的主要作用在Unity开发中，资源管理是不可或缺的核心环节。不同类型的资源需要不同的加载策略，而原生的Unity资源加载方式往往存在各种问题。 核心问题：  Resources同步加载会卡顿：每次加载都会阻塞主线程 频繁调用异步加载浪费性能：每次都会开启新的协程 资源管理混乱：无法判断资源是否被使用，难以释放 平台差异：不同平台资源加载方式不同 代码冗余">
 <meta property="og:type" content="article">
-<meta property="og:title" content="4.对象池模块">
-<meta property="og:url" content="https://linwentao785293209.github.io/2025/10/24/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/index.html">
+<meta property="og:title" content="6.资源管理模块">
+<meta property="og:url" content="https://linwentao785293209.github.io/2025/10/26/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/6.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的博客">
-<meta property="og:description" content="4.对象池模块 4.1 知识点对象池模块的作用在游戏开发中，我们经常需要频繁地创建和销毁对象，比如子弹、特效、敌人等。频繁的创建和销毁会导致以下问题：  内存分配开销：每次创建对象都需要分配内存 垃圾回收压力：频繁销毁对象会产生大量垃圾，增加GC压力 性能影响：特别是在移动设备上，频繁的内存分配和回收会严重影响性能  对象池模块的主要作用是通过重复利用已经创建的对象，避免频繁的创建和销毁，从而减少">
+<meta property="og:description" content="6.资源管理模块 6.1 知识点资源管理模块的主要作用在Unity开发中，资源管理是不可或缺的核心环节。不同类型的资源需要不同的加载策略，而原生的Unity资源加载方式往往存在各种问题。 核心问题：  Resources同步加载会卡顿：每次加载都会阻塞主线程 频繁调用异步加载浪费性能：每次都会开启新的协程 资源管理混乱：无法判断资源是否被使用，难以释放 平台差异：不同平台资源加载方式不同 代码冗余">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/6.png">
-<meta property="article:published_time" content="2025-10-23T17:12:03.000Z">
-<meta property="article:modified_time" content="2025-10-24T05:35:42.343Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/6.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/6.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97/2.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/6.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97/3.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/6.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97/4.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/6.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97/5.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/6.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97/6.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/6.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97/7.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/6.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97/9.png">
+<meta property="article:published_time" content="2025-10-26T09:52:02.000Z">
+<meta property="article:modified_time" content="2025-10-26T11:38:19.116Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="框架">
 <meta property="article:tag" content="Unity框架">
 <meta property="article:tag" content="基础框架">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/6.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -157,7 +159,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(1993)</small>
+                <small>(1995)</small>
             
         </div>
     </li>
@@ -1633,7 +1635,7 @@
         <div data-rel="框架">
             <i class="fold iconfont icon-right"></i>
             框架
-            <small>(32)</small>
+            <small>(34)</small>
         </div>
         
             <ul class="sub hide">
@@ -1643,7 +1645,7 @@
         <div data-rel="框架&lt;---&gt;Unity框架">
             <i class="fold iconfont icon-right"></i>
             Unity框架
-            <small>(32)</small>
+            <small>(34)</small>
         </div>
         
             <ul class="sub hide">
@@ -1653,7 +1655,7 @@
         <div data-rel="框架&lt;---&gt;Unity框架&lt;---&gt;基础框架">
             
             基础框架
-            <small>(4)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -2998,8 +3000,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="1993">
-<input type="hidden" id="yelog_site_word_count" value="3147.9k">
+<input type="hidden" id="yelog_site_posts_number" value="1995">
+<input type="hidden" id="yelog_site_word_count" value="3169.3k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -4655,29 +4657,47 @@
         
         
         <a  class="全部文章 框架 Unity框架 基础框架 "
-           href="/2025/10/24/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/"
+           href="/2025/10/26/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/6.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E6%A8%A1%E5%9D%97/"
+           data-tag="框架,Unity框架,基础框架"
+           data-author="" >
+            <span class="post-title" title="6.资源管理模块">6.资源管理模块</span>
+            <span class="post-date" title="2025-10-26 17:52:02">2025/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架 Unity框架 基础框架 "
+           href="/2025/10/26/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/5.%E4%BA%8B%E4%BB%B6%E4%B8%AD%E5%BF%83%E6%A8%A1%E5%9D%97/"
+           data-tag="框架,Unity框架,基础框架"
+           data-author="" >
+            <span class="post-title" title="5.事件中心模块">5.事件中心模块</span>
+            <span class="post-date" title="2025-10-26 13:31:29">2025/10/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架 Unity框架 基础框架 "
+           href="/2025/10/25/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/"
            data-tag="框架,Unity框架,基础框架"
            data-author="" >
             <span class="post-title" title="4.对象池模块">4.对象池模块</span>
-            <span class="post-date" title="2025-10-24 01:12:03">2025/10/24</span>
+            <span class="post-date" title="2025-10-25 01:12:03">2025/10/25</span>
         </a>
         
         
         <a  class="全部文章 框架 Unity框架 基础框架 "
-           href="/2025/10/22/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/3.%E5%85%AC%E5%85%B1Mono%E6%A8%A1%E5%9D%97/"
+           href="/2025/10/24/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/3.%E5%85%AC%E5%85%B1Mono%E6%A8%A1%E5%9D%97/"
            data-tag="框架,Unity框架,基础框架"
            data-author="" >
             <span class="post-title" title="3.公共Mono模块">3.公共Mono模块</span>
-            <span class="post-date" title="2025-10-22 07:51:38">2025/10/22</span>
+            <span class="post-date" title="2025-10-24 07:51:38">2025/10/24</span>
         </a>
         
         
         <a  class="全部文章 框架 Unity框架 基础框架 "
-           href="/2025/10/22/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/2.%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%9D%97/"
+           href="/2025/10/23/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/2.%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%9D%97/"
            data-tag="框架,Unity框架,基础框架"
            data-author="" >
             <span class="post-title" title="2.单例模块">2.单例模块</span>
-            <span class="post-date" title="2025-10-22 07:51:34">2025/10/22</span>
+            <span class="post-date" title="2025-10-23 07:51:34">2025/10/23</span>
         </a>
         
         
@@ -6617,19 +6637,19 @@
         
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
-           href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-dowhile/"
+           href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/25.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-for/"
            data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,循环语句"
            data-author="" >
-            <span class="post-title" title="24.dowhile">24.dowhile</span>
+            <span class="post-title" title="25.for">25.for</span>
             <span class="post-date" title="2025-01-09 23:47:30">2025/01/09</span>
         </a>
         
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
-           href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/25.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-for/"
+           href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-dowhile/"
            data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,循环语句"
            data-author="" >
-            <span class="post-title" title="25.for">25.for</span>
+            <span class="post-title" title="24.dowhile">24.dowhile</span>
             <span class="post-date" title="2025-01-09 23:47:30">2025/01/09</span>
         </a>
         
@@ -7445,19 +7465,19 @@
         
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发基础 "
-           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/37.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
-           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,玻璃效果"
+           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/36.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E9%95%9C%E9%9D%A2%E6%95%88%E6%9E%9C-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"
+           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,镜面效果"
            data-author="" >
-            <span class="post-title" title="37.玻璃效果基本原理">37.玻璃效果基本原理</span>
+            <span class="post-title" title="36.镜面效果实现">36.镜面效果实现</span>
             <span class="post-date" title="2024-11-26 12:45:12">2024/11/26</span>
         </a>
         
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发基础 "
-           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/36.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E9%95%9C%E9%9D%A2%E6%95%88%E6%9E%9C-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"
-           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,镜面效果"
+           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/37.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
+           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,玻璃效果"
            data-author="" >
-            <span class="post-title" title="36.镜面效果实现">36.镜面效果实现</span>
+            <span class="post-title" title="37.玻璃效果基本原理">37.玻璃效果基本原理</span>
             <span class="post-date" title="2024-11-26 12:45:12">2024/11/26</span>
         </a>
         
@@ -7995,7 +8015,7 @@
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发入门 "
            href="/2024/10/10/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/20.%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E7%BB%BC%E5%90%88%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-BlinnPhong%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E9%80%90%E7%89%87%E5%85%83%E5%85%89%E7%85%A7/"
-           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,逐片元光照,综合光照模型,BlinnPhong光照模型"
+           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,综合光照模型,逐片元光照,BlinnPhong光照模型"
            data-author="" >
             <span class="post-title" title="20.BlinnPhong光照模型逐片元光照">20.BlinnPhong光照模型逐片元光照</span>
             <span class="post-date" title="2024-10-10 22:50:54">2024/10/10</span>
@@ -8022,7 +8042,7 @@
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发入门 "
            href="/2024/10/10/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/17.%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E7%BB%BC%E5%90%88%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-Phong%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E9%80%90%E7%89%87%E5%85%83%E5%85%89%E7%85%A7/"
-           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,逐片元光照,综合光照模型,Phong光照模型"
+           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,综合光照模型,Phong光照模型,逐片元光照"
            data-author="" >
             <span class="post-title" title="17.Phong光照模型逐片元光照">17.Phong光照模型逐片元光照</span>
             <span class="post-date" title="2024-10-10 21:30:47">2024/10/10</span>
@@ -11955,7 +11975,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/18.Lua%E8%B0%83%E7%94%A8CSharp-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="18.Lua调用Unity的协同程序">18.Lua调用Unity的协同程序</span>
             <span class="post-date" title="2024-04-05 12:10:00">2024/04/05</span>
@@ -11964,7 +11984,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/17.Lua%E8%B0%83%E7%94%A8CSharp-%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="17.Lua调用C#的委托和事件">17.Lua调用C#的委托和事件</span>
             <span class="post-date" title="2024-04-05 12:05:21">2024/04/05</span>
@@ -11973,7 +11993,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.Lua%E8%B0%83%E7%94%A8CSharp-%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="16.Lua调用C#的重载函数">16.Lua调用C#的重载函数</span>
             <span class="post-date" title="2024-04-05 12:01:54">2024/04/05</span>
@@ -11982,7 +12002,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.Lua%E8%B0%83%E7%94%A8CSharp-ref%E5%92%8Cout%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="15.Lua调用C#的ref和out函数">15.Lua调用C#的ref和out函数</span>
             <span class="post-date" title="2024-04-05 11:56:12">2024/04/05</span>
@@ -11991,7 +12011,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Lua%E8%B0%83%E7%94%A8CSharp-%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="14.Lua调用C#的拓展方法">14.Lua调用C#的拓展方法</span>
             <span class="post-date" title="2024-04-05 11:53:26">2024/04/05</span>
@@ -12000,7 +12020,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/13.Lua%E8%B0%83%E7%94%A8CSharp-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="13.Lua调用C#的数据集合">13.Lua调用C#的数据集合</span>
             <span class="post-date" title="2024-04-05 11:45:43">2024/04/05</span>
@@ -12009,7 +12029,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Lua%E8%B0%83%E7%94%A8CSharp-%E6%9E%9A%E4%B8%BE/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="12.Lua调用C#的枚举">12.Lua调用C#的枚举</span>
             <span class="post-date" title="2024-04-05 11:41:03">2024/04/05</span>
@@ -12018,7 +12038,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B1%BB/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="11.Lua调用C#的类">11.Lua调用C#的类</span>
             <span class="post-date" title="2024-04-05 11:33:29">2024/04/05</span>
@@ -12027,7 +12047,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.CSharp%E8%B0%83%E7%94%A8Lua-toLua%E6%8F%90%E4%BE%9B%E7%9A%84%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="10.C#调用toLua提供的协同程序">10.C#调用toLua提供的协同程序</span>
             <span class="post-date" title="2024-04-05 11:27:10">2024/04/05</span>
@@ -12036,7 +12056,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E6%95%B0%E7%BB%84%E5%92%8CDictionary/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="9.C#把Lua表映射到数组和Dictionary">9.C#把Lua表映射到数组和Dictionary</span>
             <span class="post-date" title="2024-04-05 11:21:10">2024/04/05</span>
@@ -12045,7 +12065,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0LuaTable/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="8.C#把Lua表映射到LuaTable">8.C#把Lua表映射到LuaTable</span>
             <span class="post-date" title="2024-04-05 11:16:16">2024/04/05</span>
@@ -12054,7 +12074,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.CSharp%E8%B0%83%E7%94%A8Lua-%E5%87%BD%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B0%83%E7%94%A8/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="7.C#调用Lua函数">7.C#调用Lua函数</span>
             <span class="post-date" title="2024-04-05 10:58:58">2024/04/05</span>
@@ -12063,7 +12083,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.CSharp%E8%B0%83%E7%94%A8Lua-%E5%8F%98%E9%87%8F%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B5%8B%E5%80%BC/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="6.C#调用Lua变量">6.C#调用Lua变量</span>
             <span class="post-date" title="2024-04-05 10:48:57">2024/04/05</span>
@@ -12072,7 +12092,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E7%AE%A1%E7%90%86%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="5.Lua管理器">5.Lua管理器</span>
             <span class="post-date" title="2024-04-05 10:42:38">2024/04/05</span>
@@ -12081,7 +12101,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%87%8D%E5%AE%9A%E5%90%91/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="4.加载自定义路径下的Lua脚本">4.加载自定义路径下的Lua脚本</span>
             <span class="post-date" title="2024-04-05 10:01:35">2024/04/05</span>
@@ -12090,7 +12110,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E8%A7%A3%E6%9E%90%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="3.Lua解析器执行Lua脚本">3.Lua解析器执行Lua脚本</span>
             <span class="post-date" title="2024-04-05 09:54:20">2024/04/05</span>
@@ -12099,7 +12119,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="2.环境准备">2.环境准备</span>
             <span class="post-date" title="2024-04-04 23:27:40">2024/04/04</span>
@@ -12108,7 +12128,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="1.toLua基础知识概述">1.toLua基础知识概述</span>
             <span class="post-date" title="2024-04-04 23:23:02">2024/04/04</span>
@@ -12117,7 +12137,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/10.%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2Lua%E8%84%9A%E6%9C%AC%E5%90%8E%E7%BC%80%E5%B7%A5%E5%85%B7/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="10.批量转换Lua脚本后缀工具">10.批量转换Lua脚本后缀工具</span>
             <span class="post-date" title="2024-04-04 21:11:38">2024/04/04</span>
@@ -12126,7 +12146,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/9.%E8%83%8C%E5%8C%85%E9%9D%A2%E6%9D%BF%E9%80%BB%E8%BE%91/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="9.背包面板逻辑">9.背包面板逻辑</span>
             <span class="post-date" title="2024-04-04 20:58:13">2024/04/04</span>
@@ -12135,7 +12155,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/8.%E9%81%93%E5%85%B7%E9%80%BB%E8%BE%91/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="8.道具逻辑">8.道具逻辑</span>
             <span class="post-date" title="2024-04-04 20:31:15">2024/04/04</span>
@@ -12144,7 +12164,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E4%B8%BB%E9%9D%A2%E6%9D%BF%E9%80%BB%E8%BE%91/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="7.主面板逻辑">7.主面板逻辑</span>
             <span class="post-date" title="2024-04-04 20:23:11">2024/04/04</span>
@@ -12153,7 +12173,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/6.%E9%9D%A2%E6%9D%BF%E5%9F%BA%E7%B1%BB/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="6.面板基类">6.面板基类</span>
             <span class="post-date" title="2024-04-04 19:53:23">2024/04/04</span>
@@ -12162,7 +12182,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/5.%E6%95%B0%E6%8D%AE%E7%9B%B8%E5%85%B3/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="5.数据相关">5.数据相关</span>
             <span class="post-date" title="2024-04-04 19:15:52">2024/04/04</span>
@@ -12171,7 +12191,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%88%AB%E5%90%8D/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="4.常用类别名">4.常用类别名</span>
             <span class="post-date" title="2024-04-04 18:53:53">2024/04/04</span>
@@ -12180,7 +12200,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/3.%E6%8B%BC%E9%9D%A2%E6%9D%BF/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="3.拼面板">3.拼面板</span>
             <span class="post-date" title="2024-04-04 18:52:53">2024/04/04</span>
@@ -12189,7 +12209,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/2.%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="2.环境准备">2.环境准备</span>
             <span class="post-date" title="2024-04-04 18:29:51">2024/04/04</span>
@@ -12198,7 +12218,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.%E6%A6%82%E8%BF%B0/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="1.xLua实践项目概述">1.xLua实践项目概述</span>
             <span class="post-date" title="2024-04-04 18:26:13">2024/04/04</span>
@@ -12207,7 +12227,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/29.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E6%B3%9B%E5%9E%8B%E7%B1%BB%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="29.热补丁替换泛型类">29.热补丁替换泛型类</span>
             <span class="post-date" title="2024-04-04 17:38:31">2024/04/04</span>
@@ -12216,7 +12236,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/28.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E4%BA%8B%E4%BB%B6%E5%8A%A0%E5%87%8F%E6%93%8D%E4%BD%9C%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="28.热补丁替换委托事件加减操作">28.热补丁替换委托事件加减操作</span>
             <span class="post-date" title="2024-04-04 15:07:42">2024/04/04</span>
@@ -12225,7 +12245,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/27.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%B1%9E%E6%80%A7%E5%92%8C%E7%B4%A2%E5%BC%95%E5%99%A8%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="27.热补丁替换属性和索引器">27.热补丁替换属性和索引器</span>
             <span class="post-date" title="2024-04-04 15:02:13">2024/04/04</span>
@@ -12234,7 +12254,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%8D%8F%E7%A8%8B%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="26.热补丁替换协程函数">26.热补丁替换协程函数</span>
             <span class="post-date" title="2024-04-04 14:53:40">2024/04/04</span>
@@ -12243,7 +12263,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/25.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%A4%9A%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="25.热补丁替换多函数">25.热补丁替换多函数</span>
             <span class="post-date" title="2024-04-04 14:45:31">2024/04/04</span>
@@ -12252,7 +12272,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/24.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%8D%95%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="24.热补丁替换单函数">24.热补丁替换单函数</span>
             <span class="post-date" title="2024-04-04 14:24:55">2024/04/04</span>
@@ -12261,7 +12281,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/23.Lua%E8%B0%83%E7%94%A8CSharp-%E6%B3%9B%E5%9E%8B/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="23.Lua调用C#的泛型">23.Lua调用C#的泛型</span>
             <span class="post-date" title="2024-04-04 13:27:51">2024/04/04</span>
@@ -12270,7 +12290,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.Lua%E8%B0%83%E7%94%A8CSharp-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="22.Lua调用Unity的协同程序">22.Lua调用Unity的协同程序</span>
             <span class="post-date" title="2024-04-04 13:15:59">2024/04/04</span>
@@ -12279,7 +12299,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E4%BA%A4%E4%BA%92/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="21.Lua和C#对系统代码交互处理">21.Lua和C#对系统代码交互处理</span>
             <span class="post-date" title="2024-04-04 13:06:38">2024/04/04</span>
@@ -12288,7 +12308,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Lua%E8%B0%83%E7%94%A8CSharp-%E5%88%A4%E7%A9%BA/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="20.Lua和C#的判空相关">20.Lua和C#的判空相关</span>
             <span class="post-date" title="2024-04-04 13:04:39">2024/04/04</span>
@@ -12297,7 +12317,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/19.Lua%E8%B0%83%E7%94%A8CSharp-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="19.Lua调用C#的二维数组">19.Lua调用C#的二维数组</span>
             <span class="post-date" title="2024-04-04 12:54:09">2024/04/04</span>
@@ -12306,7 +12326,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/18.Lua%E8%B0%83%E7%94%A8CSharp-%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="18.Lua调用C#的委托和事件">18.Lua调用C#的委托和事件</span>
             <span class="post-date" title="2024-04-04 11:57:07">2024/04/04</span>
@@ -12315,7 +12335,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/17.Lua%E8%B0%83%E7%94%A8CSharp-%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="17.Lua调用C#的重载函数">17.Lua调用C#的重载函数</span>
             <span class="post-date" title="2024-04-04 11:51:29">2024/04/04</span>
@@ -12324,7 +12344,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.Lua%E8%B0%83%E7%94%A8CSharp-ref%E5%92%8Cout%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="16.Lua调用C#的ref和out函数">16.Lua调用C#的ref和out函数</span>
             <span class="post-date" title="2024-04-04 11:50:39">2024/04/04</span>
@@ -12333,7 +12353,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.Lua%E8%B0%83%E7%94%A8CSharp-%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="15.Lua调用C#的拓展方法">15.Lua调用C#的拓展方法</span>
             <span class="post-date" title="2024-04-04 11:35:07">2024/04/04</span>
@@ -12342,7 +12362,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Lua%E8%B0%83%E7%94%A8CSharp-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="14.Lua调用C#的数据集合">14.Lua调用C#的数据集合</span>
             <span class="post-date" title="2024-04-04 11:11:12">2024/04/04</span>
@@ -12351,7 +12371,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/13.Lua%E8%B0%83%E7%94%A8CSharp-%E6%9E%9A%E4%B8%BE/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="13.Lua调用C#的枚举">13.Lua调用C#的枚举</span>
             <span class="post-date" title="2024-04-04 11:09:44">2024/04/04</span>
@@ -12360,7 +12380,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B1%BB/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="12.Lua调用C#的类">12.Lua调用C#的类</span>
             <span class="post-date" title="2024-04-04 11:04:10">2024/04/04</span>
@@ -12369,7 +12389,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0LuaTable/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="11.C#把Lua表映射到LuaTable">11.C#把Lua表映射到LuaTable</span>
             <span class="post-date" title="2024-04-04 10:51:03">2024/04/04</span>
@@ -12378,7 +12398,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E6%8E%A5%E5%8F%A3/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="10.C#把Lua表映射到接口">10.C#把Lua表映射到接口</span>
             <span class="post-date" title="2024-04-04 10:45:54">2024/04/04</span>
@@ -12387,7 +12407,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E7%B1%BB/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="9.C#把Lua表映射到类">9.C#把Lua表映射到类</span>
             <span class="post-date" title="2024-04-04 10:32:53">2024/04/04</span>
@@ -12396,7 +12416,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0List%E5%92%8CDictionary/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="8.C#把Lua表映射到List和Dictionary">8.C#把Lua表映射到List和Dictionary</span>
             <span class="post-date" title="2024-04-04 10:28:33">2024/04/04</span>
@@ -12405,7 +12425,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.CSharp%E8%B0%83%E7%94%A8Lua-%E5%87%BD%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B0%83%E7%94%A8/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="7.C#调用Lua函数">7.C#调用Lua函数</span>
             <span class="post-date" title="2024-04-04 09:58:44">2024/04/04</span>
@@ -12414,7 +12434,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.CSharp%E8%B0%83%E7%94%A8Lua-%E5%8F%98%E9%87%8F%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B5%8B%E5%80%BC/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="6.C#调用Lua变量">6.C#调用Lua变量</span>
             <span class="post-date" title="2024-04-04 09:57:16">2024/04/04</span>
@@ -12423,7 +12443,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E7%AE%A1%E7%90%86%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="5.Lua管理器和加载AB包中的Lua脚本">5.Lua管理器和加载AB包中的Lua脚本</span>
             <span class="post-date" title="2024-04-04 09:08:02">2024/04/04</span>
@@ -12432,7 +12452,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%87%8D%E5%AE%9A%E5%90%91/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="4.加载自定义路径下的Lua脚本">4.加载自定义路径下的Lua脚本</span>
             <span class="post-date" title="2024-04-03 21:30:58">2024/04/03</span>
@@ -12441,7 +12461,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E8%A7%A3%E6%9E%90%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="3.Lua解析器执行Lua脚本">3.Lua解析器执行Lua脚本</span>
             <span class="post-date" title="2024-04-03 21:16:35">2024/04/03</span>
@@ -12450,7 +12470,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="2.环境准备">2.环境准备</span>
             <span class="post-date" title="2024-04-03 21:10:07">2024/04/03</span>
@@ -12459,7 +12479,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="1.xLua基础知识概述">1.xLua基础知识概述</span>
             <span class="post-date" title="2024-04-03 21:08:56">2024/04/03</span>
@@ -17517,7 +17537,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp进阶 CSharp进阶语法知识 "
            href="/2024/02/21/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/07.Csharp%E8%BF%9B%E9%98%B6%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/25.%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B%E8%A1%A5%E5%85%85/"
-           data-tag="编程语言,CSharp,CSharp进阶,CSharp进阶语法知识,值类型和引用类型"
+           data-tag="编程语言,CSharp,值类型和引用类型,CSharp进阶,CSharp进阶语法知识"
            data-author="" >
             <span class="post-title" title="25.值类型和引用类型补充">25.值类型和引用类型补充</span>
             <span class="post-date" title="2024-02-21 20:07:49">2024/02/21</span>
@@ -18345,7 +18365,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B-%E7%89%B9%E6%AE%8A%E7%9A%84%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8Bstring/"
-           data-tag="编程语言,CSharp,CSharp基础,值类型和引用类型,CSharp基础语法知识"
+           data-tag="编程语言,CSharp,CSharp基础,CSharp基础语法知识,值类型和引用类型"
            data-author="" >
             <span class="post-title" title="8.特殊的引用类型string">8.特殊的引用类型string</span>
             <span class="post-date" title="2024-01-10 07:10:27">2024/01/10</span>
@@ -18354,7 +18374,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%80%BC%E7%B1%BB%E5%9E%8B%E5%92%8C%E5%BC%95%E7%94%A8%E7%B1%BB%E5%9E%8B-%E4%BD%BF%E7%94%A8%E5%92%8C%E5%AD%98%E5%82%A8%E4%B8%8A%E7%9A%84%E5%8C%BA%E5%88%AB/"
-           data-tag="编程语言,CSharp,CSharp基础,值类型和引用类型,CSharp基础语法知识"
+           data-tag="编程语言,CSharp,CSharp基础,CSharp基础语法知识,值类型和引用类型"
            data-author="" >
             <span class="post-title" title="7.值和引用的区别">7.值和引用的区别</span>
             <span class="post-date" title="2024-01-10 06:57:44">2024/01/10</span>
@@ -18768,7 +18788,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/11/LeetCode/1827.%E6%9C%80%E5%B0%91%E6%93%8D%E4%BD%9C%E4%BD%BF%E6%95%B0%E7%BB%84%E9%80%92%E5%A2%9E/"
-           data-tag="LeetCode,数组,贪心"
+           data-tag="LeetCode,贪心,数组"
            data-author="" >
             <span class="post-title" title="1827.最少操作使数组递增">1827.最少操作使数组递增</span>
             <span class="post-date" title="2000-01-11 08:02:07">2000/01/11</span>
@@ -18822,7 +18842,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/11/LeetCode/1047.%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/"
-           data-tag="LeetCode,数组,贪心,排序"
+           data-tag="LeetCode,贪心,数组,排序"
            data-author="" >
             <span class="post-title" title="1047.删除字符串中的所有相邻重复项">1047.删除字符串中的所有相邻重复项</span>
             <span class="post-date" title="2000-01-11 00:04:07">2000/01/11</span>
@@ -18831,7 +18851,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/976.%E4%B8%89%E8%A7%92%E5%BD%A2%E7%9A%84%E6%9C%80%E5%A4%A7%E5%91%A8%E9%95%BF/"
-           data-tag="LeetCode,数组,贪心,排序"
+           data-tag="LeetCode,贪心,数组,排序"
            data-author="" >
             <span class="post-title" title="976.三角形的最大周长">976.三角形的最大周长</span>
             <span class="post-date" title="2000-01-10 09:07:06">2000/01/10</span>
@@ -18849,7 +18869,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/892.%E4%B8%89%E7%BB%B4%E5%BD%A2%E4%BD%93%E7%9A%84%E8%A1%A8%E9%9D%A2%E7%A7%AF/"
-           data-tag="LeetCode,数组,贪心"
+           data-tag="LeetCode,贪心,数组"
            data-author="" >
             <span class="post-title" title="892.三维形体的表面积">892.三维形体的表面积</span>
             <span class="post-date" title="2000-01-10 08:09:02">2000/01/10</span>
@@ -18858,7 +18878,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/860.%E6%9F%A0%E6%AA%AC%E6%B0%B4%E6%89%BE%E9%9B%B6/"
-           data-tag="LeetCode,数组,贪心"
+           data-tag="LeetCode,贪心,数组"
            data-author="" >
             <span class="post-title" title="860.柠檬水找零">860.柠檬水找零</span>
             <span class="post-date" title="2000-01-10 08:06:00">2000/01/10</span>
@@ -18939,7 +18959,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/605.%E7%A7%8D%E8%8A%B1%E9%97%AE%E9%A2%98/"
-           data-tag="LeetCode,数组,贪心"
+           data-tag="LeetCode,贪心,数组"
            data-author="" >
             <span class="post-title" title="605.种花问题">605.种花问题</span>
             <span class="post-date" title="2000-01-10 06:00:05">2000/01/10</span>
@@ -18948,7 +18968,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/561.%E6%95%B0%E7%BB%84%E6%8B%86%E5%88%86/"
-           data-tag="LeetCode,数组,贪心,排序,计数排序"
+           data-tag="LeetCode,贪心,数组,排序,计数排序"
            data-author="" >
             <span class="post-title" title="561.数组拆分">561.数组拆分</span>
             <span class="post-date" title="2000-01-10 05:06:01">2000/01/10</span>
@@ -19011,7 +19031,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/455.%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2/"
-           data-tag="LeetCode,数组,贪心,排序,双指针"
+           data-tag="LeetCode,贪心,数组,排序,双指针"
            data-author="" >
             <span class="post-title" title="455.分发饼干">455.分发饼干</span>
             <span class="post-date" title="2000-01-10 04:05:05">2000/01/10</span>
@@ -19038,7 +19058,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/409.%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E4%B8%B2/"
-           data-tag="LeetCode,哈希表,贪心,字符串"
+           data-tag="LeetCode,贪心,哈希表,字符串"
            data-author="" >
             <span class="post-title" title="409.最长回文串">409.最长回文串</span>
             <span class="post-date" title="2000-01-10 04:00:09">2000/01/10</span>
@@ -19047,7 +19067,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/392.%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/"
-           data-tag="LeetCode,动态规划,双指针,字符串"
+           data-tag="LeetCode,双指针,字符串,动态规划"
            data-author="" >
             <span class="post-title" title="392.判断子序列">392.判断子序列</span>
             <span class="post-date" title="2000-01-10 03:09:02">2000/01/10</span>
@@ -19056,7 +19076,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/389.%E6%89%BE%E4%B8%8D%E5%90%8C/"
-           data-tag="LeetCode,哈希表,排序,字符串,位运算"
+           data-tag="LeetCode,排序,哈希表,字符串,位运算"
            data-author="" >
             <span class="post-title" title="389.找不同">389.找不同</span>
             <span class="post-date" title="2000-01-10 03:08:09">2000/01/10</span>
@@ -19074,7 +19094,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/350.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86II/"
-           data-tag="LeetCode,数组,哈希表,排序,双指针,二分查找"
+           data-tag="LeetCode,数组,排序,哈希表,双指针,二分查找"
            data-author="" >
             <span class="post-title" title="350.两个数组的交集II">350.两个数组的交集II</span>
             <span class="post-date" title="2000-01-10 03:05:00">2000/01/10</span>
@@ -19083,7 +19103,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/"
-           data-tag="LeetCode,数组,哈希表,排序,双指针,二分查找"
+           data-tag="LeetCode,数组,排序,哈希表,双指针,二分查找"
            data-author="" >
             <span class="post-title" title="349.两个数组的交集">349.两个数组的交集</span>
             <span class="post-date" title="2000-01-10 03:04:09">2000/01/10</span>
@@ -19146,7 +19166,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/268.%E4%B8%A2%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/"
-           data-tag="LeetCode,数组,哈希表,排序,数学,位运算,二分查找"
+           data-tag="LeetCode,数组,排序,哈希表,数学,位运算,二分查找"
            data-author="" >
             <span class="post-title" title="268.丢失的数字">268.丢失的数字</span>
             <span class="post-date" title="2000-01-10 02:06:08">2000/01/10</span>
@@ -19218,7 +19238,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/217.%E5%AD%98%E5%9C%A8%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,数组,哈希表,排序"
+           data-tag="LeetCode,数组,排序,哈希表"
            data-author="" >
             <span class="post-title" title="217.存在重复元素">217.存在重复元素</span>
             <span class="post-date" title="2000-01-10 02:01:07">2000/01/10</span>
@@ -19272,7 +19292,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/169.%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,数组,哈希表,排序,计数,分治"
+           data-tag="LeetCode,数组,排序,哈希表,分治,计数"
            data-author="" >
             <span class="post-title" title="169.多数元素">169.多数元素</span>
             <span class="post-date" title="2000-01-10 01:06:08">2000/01/10</span>
@@ -19335,7 +19355,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/135.%E5%88%86%E5%8F%91%E7%B3%96%E6%9E%9C/"
-           data-tag="LeetCode,数组,贪心"
+           data-tag="LeetCode,贪心,数组"
            data-author="" >
             <span class="post-title" title="135.分发糖果">135.分发糖果</span>
             <span class="post-date" title="2000-01-10 01:03:05">2000/01/10</span>
@@ -19362,7 +19382,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/122.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII/"
-           data-tag="LeetCode,数组,贪心,动态规划"
+           data-tag="LeetCode,贪心,数组,动态规划"
            data-author="" >
             <span class="post-title" title="122.买卖股票的最佳时机II">122.买卖股票的最佳时机II</span>
             <span class="post-date" title="2000-01-10 01:02:02">2000/01/10</span>
@@ -19533,7 +19553,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/55.%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/"
-           data-tag="LeetCode,数组,贪心,动态规划"
+           data-tag="LeetCode,贪心,数组,动态规划"
            data-author="" >
             <span class="post-title" title="55.跳跃游戏">55.跳跃游戏</span>
             <span class="post-date" title="2000-01-10 00:05:05">2000/01/10</span>
@@ -19542,7 +19562,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/54.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/"
-           data-tag="LeetCode,数组,动态规划,分治"
+           data-tag="LeetCode,数组,分治,动态规划"
            data-author="" >
             <span class="post-title" title="54.螺旋矩阵">54.螺旋矩阵</span>
             <span class="post-date" title="2000-01-10 00:05:04">2000/01/10</span>
@@ -19551,7 +19571,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/53.%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/"
-           data-tag="LeetCode,数组,动态规划,分治"
+           data-tag="LeetCode,数组,分治,动态规划"
            data-author="" >
             <span class="post-title" title="53.最大子数组和">53.最大子数组和</span>
             <span class="post-date" title="2000-01-10 00:05:03">2000/01/10</span>
@@ -19569,7 +19589,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/45.%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8FII/"
-           data-tag="LeetCode,数组,贪心,动态规划"
+           data-tag="LeetCode,贪心,数组,动态规划"
            data-author="" >
             <span class="post-title" title="45.跳跃游戏II">45.跳跃游戏II</span>
             <span class="post-date" title="2000-01-10 00:04:05">2000/01/10</span>
@@ -19686,7 +19706,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/11.%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/"
-           data-tag="LeetCode,数组,贪心,双指针"
+           data-tag="LeetCode,贪心,数组,双指针"
            data-author="" >
             <span class="post-title" title="11.盛最多水的容器">11.盛最多水的容器</span>
             <span class="post-date" title="2000-01-10 00:01:01">2000/01/10</span>
@@ -19713,7 +19733,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/5.%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/"
-           data-tag="LeetCode,动态规划,双指针,字符串"
+           data-tag="LeetCode,双指针,字符串,动态规划"
            data-author="" >
             <span class="post-title" title="5.最长回文子串">5.最长回文子串</span>
             <span class="post-date" title="2000-01-10 00:00:05">2000/01/10</span>
@@ -22608,9 +22628,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-框架/Unity/01.基础框架/4.对象池模块" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-框架/Unity/01.基础框架/2.单例模块" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">4.对象池模块</h1>
+        <h1 class="article-title">2.单例模块</h1>
     
     <div class="article-meta">
         
@@ -22643,12 +22663,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-10-24 13:35:42'>2025-10-24 01:12</time>
+            发布时间 : <time class="date" title='最后更新: 2025-10-26 13:47:12'>2025-10-23 07:51</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:12.1k</span>
+        <span>字数:4.9k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -22678,7 +22698,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97"><span class="toc-text">4.对象池模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">4.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="toc-text">对象池模块的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text">对象池的基本原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%9A%84%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-text">对象池的注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GameObject%E5%AF%B9%E8%B1%A1%E6%B1%A0%E5%9F%BA%E7%A1%80%E5%AE%9E%E7%8E%B0"><span class="toc-text">GameObject对象池基础实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#GameObject%E5%AF%B9%E8%B1%A1%E6%B1%A0%E5%AE%9E%E7%8E%B0"><span class="toc-text">GameObject对象池实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GameObject%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%AE%A1%E7%90%86%E5%99%A8%E5%AE%9E%E7%8E%B0"><span class="toc-text">GameObject对象池管理器实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%AE%A1%E7%90%86%E5%99%A8%E5%AE%9E%E7%8E%B0"><span class="toc-text">总对象池管理器实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E6%AD%A5%E6%B5%8B%E8%AF%95"><span class="toc-text">初步测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E6%84%8F"><span class="toc-text">注意</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GameObject%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%AA%97%E5%8F%A3%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96"><span class="toc-text">GameObject对象池窗口布局优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B9%8B%E5%89%8D%E5%AD%98%E5%9C%A8%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-text">之前存在什么问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E7%AA%97%E5%8F%A3%E5%B8%83%E5%B1%80%E9%97%AE%E9%A2%98"><span class="toc-text">如何解决窗口布局问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GameObjPoolMgr%E6%94%AF%E6%8C%81%E5%B8%83%E5%B1%80%E7%AE%A1%E7%90%86"><span class="toc-text">GameObjPoolMgr支持布局管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GameObjPool%E6%94%AF%E6%8C%81%E5%B8%83%E5%B1%80%E7%AE%A1%E7%90%86"><span class="toc-text">GameObjPool支持布局管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AA%97%E5%8F%A3%E5%B8%83%E5%B1%80%E4%BC%98%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="toc-text">窗口布局优化测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GameObject%E5%AF%B9%E8%B1%A1%E6%B1%A0%E5%AF%B9%E8%B1%A1%E4%B8%8A%E9%99%90%E4%BC%98%E5%8C%96"><span class="toc-text">GameObject对象池对象上限优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B9%8B%E5%89%8D%E5%AD%98%E5%9C%A8%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98-1"><span class="toc-text">之前存在什么问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E5%AF%B9%E8%B1%A1%E4%B8%8A%E9%99%90%E9%97%AE%E9%A2%98"><span class="toc-text">如何解决对象上限问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E4%B8%8A%E9%99%90%E4%BC%98%E5%8C%96%E6%B5%8B%E8%AF%95"><span class="toc-text">对象上限优化测试</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GameObject%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%80%89%E6%8B%A9"><span class="toc-text">GameObject对象池数据结构选择</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E7%89%B9%E6%AE%8A%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">为什么需要特殊的数据结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8E%A8%E8%8D%90%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%BB%84%E5%90%88"><span class="toc-text">推荐的数据结构组合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E9%80%89%E6%8B%A9%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-text">数据结构选择的原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%A2%E5%8D%A0%E7%AD%96%E7%95%A5"><span class="toc-text">抢占策略</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Object%E5%AF%B9%E8%B1%A1%E6%B1%A0%E5%9F%BA%E7%A1%80%E5%AE%9E%E7%8E%B0"><span class="toc-text">Object对象池基础实现</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E5%AF%B9%E8%B1%A1%E6%B1%A0%E5%AE%9E%E7%8E%B0"><span class="toc-text">基础对象池实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E7%B1%BB%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%AE%A1%E7%90%86%E5%99%A8%E5%AE%9E%E7%8E%B0"><span class="toc-text">普通类对象池管理器实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E6%96%B0%E6%80%BB%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%AE%A1%E7%90%86%E5%99%A8"><span class="toc-text">更新总对象池管理器</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E6%AD%A5%E6%B5%8B%E8%AF%95%E4%BB%A3%E7%A0%81"><span class="toc-text">初步测试代码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Object%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%95%B0%E6%8D%AE%E9%87%8D%E7%BD%AE%E4%BC%98%E5%8C%96"><span class="toc-text">Object对象池数据重置优化</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B9%8B%E5%89%8D%E5%AD%98%E5%9C%A8%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98-2"><span class="toc-text">之前存在什么问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E6%95%B0%E6%8D%AE%E9%87%8D%E7%BD%AE%E9%97%AE%E9%A2%98"><span class="toc-text">如何解决数据重置问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%AF%B9%E8%B1%A1%E6%B1%A0%E5%AE%9E%E7%8E%B0"><span class="toc-text">自定义对象池实现</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%AE%A1%E7%90%86%E5%99%A8%E4%BC%98%E5%8C%96"><span class="toc-text">对象池管理器优化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E7%A4%BA%E4%BE%8B"><span class="toc-text">使用示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8B%93%E5%B1%95"><span class="toc-text">拓展</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">4.2 知识点代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#PoolMgr-cs%EF%BC%88%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%89"><span class="toc-text">PoolMgr.cs（对象池管理器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GameObjPool-cs%EF%BC%88GameObject%E5%AF%B9%E8%B1%A1%E6%B1%A0%E5%9F%BA%E7%B1%BB%EF%BC%89"><span class="toc-text">GameObjPool.cs（GameObject对象池基类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ObjPool-cs%EF%BC%88%E6%99%AE%E9%80%9A%E7%B1%BB%E5%AF%B9%E8%B1%A1%E6%B1%A0%E5%9F%BA%E7%B1%BB%EF%BC%89"><span class="toc-text">ObjPool.cs（普通类对象池基类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GameObjPoolMgr-cs%EF%BC%88GameObject%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%89"><span class="toc-text">GameObjPoolMgr.cs（GameObject对象池管理器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ObjPoolMgr-cs%EF%BC%88%E6%99%AE%E9%80%9A%E7%B1%BB%E5%AF%B9%E8%B1%A1%E6%B1%A0%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%89"><span class="toc-text">ObjPoolMgr.cs（普通类对象池管理器）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DefaultGameObjPool-cs%EF%BC%88%E9%BB%98%E8%AE%A4GameObject%E5%AF%B9%E8%B1%A1%E6%B1%A0%E5%AE%9E%E7%8E%B0%EF%BC%89"><span class="toc-text">DefaultGameObjPool.cs（默认GameObject对象池实现）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DefaultObjPool-cs%EF%BC%88%E9%BB%98%E8%AE%A4%E6%99%AE%E9%80%9A%E7%B1%BB%E5%AF%B9%E8%B1%A1%E6%B1%A0%E5%AE%9E%E7%8E%B0%EF%BC%89"><span class="toc-text">DefaultObjPool.cs（默认普通类对象池实现）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TestData-cs%EF%BC%88%E6%B5%8B%E8%AF%95%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%B1%BB%EF%BC%89"><span class="toc-text">TestData.cs（测试数据结构类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TestDataPool-cs%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89TestData%E5%AF%B9%E8%B1%A1%E6%B1%A0%EF%BC%89"><span class="toc-text">TestDataPool.cs（自定义TestData对象池）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DelayRemove-cs%EF%BC%88%E5%BB%B6%E8%BF%9F%E9%94%80%E6%AF%81%E8%84%9A%E6%9C%AC%EF%BC%89"><span class="toc-text">DelayRemove.cs（延迟销毁脚本）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#GameObjectPoolUsageTest-cs%EF%BC%88GameObject%E5%AF%B9%E8%B1%A1%E6%B1%A0%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%EF%BC%89"><span class="toc-text">GameObjectPoolUsageTest.cs（GameObject对象池使用测试）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ObjectPoolUsageTest-cs%EF%BC%88%E6%99%AE%E9%80%9A%E7%B1%BB%E5%AF%B9%E8%B1%A1%E6%B1%A0%E4%BD%BF%E7%94%A8%E6%B5%8B%E8%AF%95%EF%BC%89"><span class="toc-text">ObjectPoolUsageTest.cs（普通类对象池使用测试）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ComprehensivePoolTest-cs%EF%BC%88%E7%BB%BC%E5%90%88%E5%8A%9F%E8%83%BD%E6%B5%8B%E8%AF%95%EF%BC%89"><span class="toc-text">ComprehensivePoolTest.cs（综合功能测试）</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#2-%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%9D%97"><span class="toc-text">2.单例模块</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#2-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">2.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E5%86%99%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%9F%BA%E7%B1%BB"><span class="toc-text">为什么要写单例模式基类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8D%95%E4%BE%8B%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A6%81%E7%B4%A0"><span class="toc-text">单例的基本要素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%AE%9E%E4%BE%8B"><span class="toc-text">静态实例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A7%81%E6%9C%89%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">私有构造函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%AC%E5%85%B1%E8%AE%BF%E9%97%AE%E5%B1%9E%E6%80%A7"><span class="toc-text">公共访问属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%8D%E7%BB%A7%E6%89%BFMonoBehaviour%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%9F%BA%E7%B1%BB"><span class="toc-text">不继承MonoBehaviour的单例模式基类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E6%AD%A5%E5%AE%9E%E7%8E%B0%EF%BC%88%E5%AD%98%E5%9C%A8%E9%97%AE%E9%A2%98%EF%BC%89"><span class="toc-text">初步实现（存在问题）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%A7%E6%89%BFMonoBehaviour%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%9F%BA%E7%B1%BB"><span class="toc-text">继承MonoBehaviour的单例模式基类</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E6%8C%82%E8%BD%BD%E5%BC%8F%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%9F%BA%E7%B1%BB%EF%BC%88%E5%88%9D%E6%AD%A5%E5%AE%9E%E7%8E%B0%EF%BC%89"><span class="toc-text">实现挂载式的单例模式基类（初步实现）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E7%8E%B0%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%BC%8F%E7%9A%84%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F%E5%9F%BA%E7%B1%BB%EF%BC%88%E5%88%9D%E6%AD%A5%E5%AE%9E%E7%8E%B0%EF%BC%89"><span class="toc-text">实现自动挂载式的单例模式基类（初步实现）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%94%AF%E4%B8%80%E6%80%A7%E9%97%AE%E9%A2%98%E2%80%94%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0"><span class="toc-text">唯一性问题—构造函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B9%8B%E5%89%8D%E5%AD%98%E5%9C%A8%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="toc-text">之前存在什么问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E9%97%AE%E9%A2%98"><span class="toc-text">如何解决构造函数问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%94%AF%E4%B8%80%E6%80%A7%E9%97%AE%E9%A2%98%E2%80%94%E9%87%8D%E5%A4%8D%E6%8C%82%E8%BD%BD"><span class="toc-text">唯一性问题—重复挂载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B9%8B%E5%89%8D%E5%AD%98%E5%9C%A8%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98-1"><span class="toc-text">之前存在什么问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E9%87%8D%E5%A4%8D%E6%8C%82%E8%BD%BD%E9%97%AE%E9%A2%98"><span class="toc-text">如何解决重复挂载问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-text">线程安全问题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B9%8B%E5%89%8D%E5%AD%98%E5%9C%A8%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98-2"><span class="toc-text">之前存在什么问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E9%97%AE%E9%A2%98"><span class="toc-text">如何解决线程安全问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9C%80%E7%BB%88%E5%AE%9E%E7%8E%B0%EF%BC%9A%E5%B8%A6%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%E7%9A%84Singleton"><span class="toc-text">最终实现：带线程安全的Singleton</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">2.2 知识点代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Singleton-cs%EF%BC%88%E4%B8%8D%E7%BB%A7%E6%89%BFMono%E7%9A%84%E5%8D%95%E4%BE%8B%E5%9F%BA%E7%B1%BB%EF%BC%89"><span class="toc-text">Singleton.cs（不继承Mono的单例基类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SingletonAutoMono-cs%EF%BC%88%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%BC%8F%E5%8D%95%E4%BE%8B%E5%9F%BA%E7%B1%BB%EF%BC%89"><span class="toc-text">SingletonAutoMono.cs（自动挂载式单例基类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SingletonMono-cs%EF%BC%88%E6%89%8B%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%BC%8F%E5%8D%95%E4%BE%8B%E5%9F%BA%E7%B1%BB%EF%BC%89"><span class="toc-text">SingletonMono.cs（手动挂载式单例基类）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#TestMgr-cs%EF%BC%88%E4%B8%8D%E7%BB%A7%E6%89%BFMono%E7%9A%84%E5%8D%95%E4%BE%8B%E6%B5%8B%E8%AF%95%EF%BC%89"><span class="toc-text">TestMgr.cs（不继承Mono的单例测试）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Test2Mgr-cs%EF%BC%88%E6%89%8B%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%BC%8F%E5%8D%95%E4%BE%8B%E6%B5%8B%E8%AF%95%EF%BC%89"><span class="toc-text">Test2Mgr.cs（手动挂载式单例测试）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Test2Mgr2-cs%EF%BC%88%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E5%BC%8F%E5%8D%95%E4%BE%8B%E6%B5%8B%E8%AF%95%EF%BC%89"><span class="toc-text">Test2Mgr2.cs（自动挂载式单例测试）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SingletonUsageTest-cs%EF%BC%88%E4%BD%BF%E7%94%A8%E4%B8%8D%E7%BB%A7%E6%89%BFMono%E7%9A%84%E5%8D%95%E4%BE%8B%EF%BC%89"><span class="toc-text">SingletonUsageTest.cs（使用不继承Mono的单例）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#MonoSingletonUsageTest-cs%EF%BC%88%E4%BD%BF%E7%94%A8%E7%BB%A7%E6%89%BFMono%E7%9A%84%E5%8D%95%E4%BE%8B%EF%BC%89"><span class="toc-text">MonoSingletonUsageTest.cs（使用继承Mono的单例）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ConstructorUniquenessTest-cs%EF%BC%88%E9%AA%8C%E8%AF%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%94%AF%E4%B8%80%E6%80%A7%EF%BC%89"><span class="toc-text">ConstructorUniquenessTest.cs（验证构造函数唯一性）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RepeatMountUniquenessTest-cs%EF%BC%88%E9%AA%8C%E8%AF%81%E9%87%8D%E5%A4%8D%E6%8C%82%E8%BD%BD%E9%97%AE%E9%A2%98%EF%BC%89"><span class="toc-text">RepeatMountUniquenessTest.cs（验证重复挂载问题）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ThreadSafetyVerificationTest-cs%EF%BC%88%E9%AA%8C%E8%AF%81%E7%BA%BF%E7%A8%8B%E5%AE%89%E5%85%A8%EF%BC%89"><span class="toc-text">ThreadSafetyVerificationTest.cs（验证线程安全）</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -22694,2406 +22714,747 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="4-对象池模块"><a href="#4-对象池模块" class="headerlink" title="4.对象池模块"></a>4.对象池模块</h1><hr>
-<h2 id="4-1-知识点"><a href="#4-1-知识点" class="headerlink" title="4.1 知识点"></a>4.1 知识点</h2><h3 id="对象池模块的作用"><a href="#对象池模块的作用" class="headerlink" title="对象池模块的作用"></a>对象池模块的作用</h3><p>在游戏开发中，我们经常需要频繁地创建和销毁对象，比如子弹、特效、敌人等。频繁的创建和销毁会导致以下问题：</p>
-<ol>
-<li><strong>内存分配开销</strong>：每次创建对象都需要分配内存</li>
-<li><strong>垃圾回收压力</strong>：频繁销毁对象会产生大量垃圾，增加GC压力</li>
-<li><strong>性能影响</strong>：特别是在移动设备上，频繁的内存分配和回收会严重影响性能</li>
-</ol>
-<p>对象池模块的主要作用是<strong>通过重复利用已经创建的对象，避免频繁的创建和销毁，从而减少系统的内存分配和垃圾回收带来的开销</strong>。</p>
-<p><img src="/../../../../images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/1.png"><br><img src="/../../../../images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/2.png"></p>
-<h3 id="对象池的基本原理"><a href="#对象池的基本原理" class="headerlink" title="对象池的基本原理"></a>对象池的基本原理</h3><p>对象池的基本原理可以用一个形象的比喻来理解：</p>
-<ul>
-<li><strong>柜子</strong>：管理所有对象池的容器（Dictionary）</li>
-<li><strong>抽屉</strong>：存储特定类型对象的容器（List、Stack、Queue等）</li>
-<li><strong>东西</strong>：需要复用的对象</li>
-</ul>
-<p><strong>工作流程：</strong></p>
-<ol>
-<li><strong>用时去拿</strong>：需要对象时，先从抽屉中取（没有就创造，存在就获取）</li>
-<li><strong>不用就还</strong>：使用完毕后，将对象分门别类地放入对应的抽屉中</li>
-<li><strong>统一管理</strong>：通过柜子统一管理所有抽屉</li>
-</ol>
-<p><img src="/../../../../images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/3.png"><br><img src="/../../../../images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/4.png"><br><img src="/../../../../images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/5.png"></p>
-<h3 id="对象池的注意事项"><a href="#对象池的注意事项" class="headerlink" title="对象池的注意事项"></a>对象池的注意事项</h3><ol>
-<li>对于Unity来说，对象池可以分成GameObject对象池和普通C#Object对象池。也可以自行分类，比如特效对象池，模型对象池等，看业务需求定。</li>
-<li>对象池入池一般要有清洗方法，出池可以有初始化方法。</li>
-<li>每个对象池的key可以是Type，也可能是Prefab路径，看情况定。</li>
-<li>对象池注册可以手动注册，也可以走配置表或者反射扫描程序集。</li>
-</ol>
-<h3 id="GameObject对象池基础实现"><a href="#GameObject对象池基础实现" class="headerlink" title="GameObject对象池基础实现"></a>GameObject对象池基础实现</h3><p>对于GameObject对象池，我们需要实现基本的获取和归还功能。但是，在实际使用中，我们需要一个管理器来统一管理多个对象池。</p>
-<h4 id="GameObject对象池实现"><a href="#GameObject对象池实现" class="headerlink" title="GameObject对象池实现"></a>GameObject对象池实现</h4><pre><code class="csharp">using System.Collections.Generic;
+        <h1 id="2-单例模块"><a href="#2-单例模块" class="headerlink" title="2.单例模块"></a>2.单例模块</h1><hr>
+<h2 id="2-1-知识点"><a href="#2-1-知识点" class="headerlink" title="2.1 知识点"></a>2.1 知识点</h2><h3 id="为什么要写单例模式基类"><a href="#为什么要写单例模式基类" class="headerlink" title="为什么要写单例模式基类"></a>为什么要写单例模式基类</h3><p>在游戏开发中，我们需要创建各种管理器类，如资源管理器、音效管理器、UI管理器等。这些管理器通常需要在整个游戏生命周期中保持唯一性，避免重复创建造成资源浪费或状态混乱。如果每次都重复编写单例模式的代码，会造成大量冗余。通过面向对象的思想，我们可以创建一个泛型基类，让所有需要单例功能的管理器类都继承这个基类，从而避免重复代码。</p>
+<p>单例模式基类的主要作用是<strong>减少单例模式重复代码的书写</strong>，通过面向对象的思想避免代码冗余，让开发者能够快速创建各种管理器类。</p>
+<h3 id="单例的基本要素"><a href="#单例的基本要素" class="headerlink" title="单例的基本要素"></a>单例的基本要素</h3><h4 id="静态实例"><a href="#静态实例" class="headerlink" title="静态实例"></a>静态实例</h4><p>存储单例对象的静态字段，确保全局唯一性</p>
+<h4 id="私有构造函数"><a href="#私有构造函数" class="headerlink" title="私有构造函数"></a>私有构造函数</h4><p>防止外部直接创建实例，保证单例的唯一性</p>
+<h4 id="公共访问属性"><a href="#公共访问属性" class="headerlink" title="公共访问属性"></a>公共访问属性</h4><p>提供全局访问点，通常命名为 <code>Instance</code></p>
+<h3 id="不继承MonoBehaviour的单例模式基类"><a href="#不继承MonoBehaviour的单例模式基类" class="headerlink" title="不继承MonoBehaviour的单例模式基类"></a>不继承MonoBehaviour的单例模式基类</h3><h4 id="初步实现（存在问题）"><a href="#初步实现（存在问题）" class="headerlink" title="初步实现（存在问题）"></a>初步实现（存在问题）</h4><p>对于纯C#类（不继承MonoBehaviour），我们可以尝试一个最简单的泛型单例实现。此时，为了方便外部创建，我们可能会使用 <code>public</code> 构造函数。</p>
+<p><strong>初步源码实现：<code>Singleton.cs</code> (初步版本)</strong></p>
+<pre><code class="csharp">using System;
 using UnityEngine;
 
 /// &lt;summary&gt;
-/// GameObject对象池（初步版本 - 基础功能实现）
+/// 单例模式基类（初步版本 - 存在构造函数唯一性问题）
 /// &lt;/summary&gt;
-public class GameObjPool
+public class Singleton&lt;T&gt; where T : class, new()
 &#123;
-    #region 字段
+    private static T instance;
 
-    /// &lt;summary&gt;
-    /// 存储未使用的对象栈
-    /// &lt;/summary&gt;
-    protected Stack&lt;GameObject&gt; _unuseStack = new Stack&lt;GameObject&gt;();
-
-    /// &lt;summary&gt;
-    /// 对象池名称
-    /// &lt;/summary&gt;
-    protected string _poolName;
-
-    #endregion
-
-    #region 构造函数
-
-    /// &lt;summary&gt;
-    /// 初始化构造函数
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;poolName&quot;&gt;对象池名称&lt;/param&gt;
-    protected GameObjPool(string poolName)
+    public static T Instance
     &#123;
-        _poolName = poolName;
-    &#125;
-
-    #endregion
-
-    #region 抽象方法
-
-    /// &lt;summary&gt;
-    /// 加载GameObject预制体
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;加载的GameObject预制体&lt;/returns&gt;
-    protected abstract GameObject LoadPrefab();
-
-    #endregion
-
-    #region 对象管理方法
-
-    /// &lt;summary&gt;
-    /// 从对象池中取出对象
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;取出的GameObject对象&lt;/returns&gt;
-    public GameObject GetObj()
-    &#123;
-        GameObject obj;
-
-        if (_unuseStack.Count &gt; 0)
+        get
         &#123;
-            // 从未使用的栈中取出对象
-            obj = _unuseStack.Pop();
-        &#125;
-        else
-        &#123;
-            // 创建新对象
-            obj = CreateNewObject();
-        &#125;
-
-        // 激活对象
-        obj.SetActive(true);
-        return obj;
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将对象归还到对象池中
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnObj(GameObject obj)
-    &#123;
-        // 失活对象
-        obj.SetActive(false);
-        // 压入未使用栈
-        _unuseStack.Push(obj);
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 创建新对象
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;创建的GameObject对象&lt;/returns&gt;
-    public GameObject CreateNewObject()
-    &#123;
-        GameObject prefab = LoadPrefab();
-        GameObject obj = Object.Instantiate(prefab);
-        obj.name = _poolName;
-        return obj;
-    &#125;
-
-    #endregion
-&#125;
-</code></pre>
-<h4 id="GameObject对象池管理器实现"><a href="#GameObject对象池管理器实现" class="headerlink" title="GameObject对象池管理器实现"></a>GameObject对象池管理器实现</h4><pre><code class="csharp">using System.Collections.Generic;
-using UnityEngine;
-
-/// &lt;summary&gt;
-/// GameObject对象池管理器（初步版本）
-/// 使用字典管理多个GameObjPool实例
-/// &lt;/summary&gt;
-public class GameObjPoolMgr
-&#123;
-    #region 字段
-
-    /// &lt;summary&gt;
-    /// GameObject对象池字典
-    /// 键为对象名称，值为对应的GameObjPool
-    /// &lt;/summary&gt;
-    private Dictionary&lt;string, GameObjPool&gt; _gameObjPoolDict = new Dictionary&lt;string, GameObjPool&gt;();
-
-    #endregion
-
-    #region GameObject对象池管理
-
-    /// &lt;summary&gt;
-    /// 从对象池中获取GameObject对象
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;name&quot;&gt;对象名称&lt;/param&gt;
-    /// &lt;returns&gt;从缓存池中取出的对象&lt;/returns&gt;
-    public GameObject GetObj(string name)
-    &#123;
-        // 如果没有对应的对象池，创建默认对象池
-        if (!_gameObjPoolDict.ContainsKey(name))
-        &#123;
-            _gameObjPoolDict[name] = new DefaultGameObjPool(name);
-        &#125;
-
-        return _gameObjPoolDict[name].GetObj();
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将GameObject对象归还到缓存池中
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnObj(GameObject obj)
-    &#123;
-        // 往对象池中归还对象
-        _gameObjPoolDict[obj.name].ReturnObj(obj);
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 清除整个对象池中的数据
-    /// &lt;/summary&gt;
-    public void ClearPool()
-    &#123;
-        _gameObjPoolDict.Clear();
-    &#125;
-
-    #endregion
-&#125;
-</code></pre>
-<h4 id="总对象池管理器实现"><a href="#总对象池管理器实现" class="headerlink" title="总对象池管理器实现"></a>总对象池管理器实现</h4><pre><code class="csharp">using UnityEngine;
-
-/// &lt;summary&gt;
-/// 对象池管理器（初步版本）
-/// 统一管理GameObject对象池
-/// &lt;/summary&gt;
-public class PoolMgr : Singleton&lt;PoolMgr&gt;
-&#123;
-    #region 字段
-
-    /// &lt;summary&gt;
-    /// GameObject对象池管理器
-    /// &lt;/summary&gt;
-    private GameObjPoolMgr gameObjPoolMgr;
-
-    #endregion
-
-    #region 构造函数
-
-    private PoolMgr()
-    &#123;
-        gameObjPoolMgr = new GameObjPoolMgr();
-    &#125;
-
-    #endregion
-
-    #region GameObject对象池管理
-
-    /// &lt;summary&gt;
-    /// 从对象池中获取GameObject对象
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;name&quot;&gt;对象名称&lt;/param&gt;
-    /// &lt;returns&gt;从缓存池中取出的对象&lt;/returns&gt;
-    public GameObject GetGameObj(string name)
-    &#123;
-        return gameObjPoolMgr.GetObj(name);
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将GameObject对象归还到缓存池中
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnGameObj(GameObject obj)
-    &#123;
-        gameObjPoolMgr.ReturnObj(obj);
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 清除整个对象池中的数据
-    /// &lt;/summary&gt;
-    public void ClearPool()
-    &#123;
-        gameObjPoolMgr.ClearPool();
-    &#125;
-
-    #endregion
-&#125;
-</code></pre>
-<h4 id="初步测试"><a href="#初步测试" class="headerlink" title="初步测试"></a>初步测试</h4><pre><code class="csharp">// DefaultGameObjPool.cs
-using UnityEngine;
-
-public class DefaultGameObjPool : GameObjPool
-&#123;
-    public DefaultGameObjPool(string poolName) : base(poolName)
-    &#123;
-    &#125;
-
-    protected override GameObject LoadPrefab()
-    &#123;
-        return Resources.Load&lt;GameObject&gt;(_poolName);
-    &#125;
-&#125;
-
-// GameObjectPoolTest.cs
-using UnityEngine;
-
-public class GameObjectPoolTest : MonoBehaviour
-&#123;
-    void Start()
-    &#123;
-        Debug.Log(&quot;GameObject对象池测试：开始&quot;);
-        
-        // 通过PoolMgr获取对象
-        GameObject obj1 = PoolMgr.Instance.GetGameObj(&quot;Cube&quot;);
-        Debug.Log(&quot;获取对象：&quot; + obj1.name);
-        // 输出：获取对象：Cube
-
-        // 归还对象
-        PoolMgr.Instance.ReturnGameObj(obj1);
-        Debug.Log(&quot;归还对象：&quot; + obj1.name);
-        // 输出：归还对象：Cube
-
-        // 再次获取（应该复用之前的对象）
-        GameObject obj2 = PoolMgr.Instance.GetGameObj(&quot;Cube&quot;);
-        Debug.Log(&quot;再次获取对象：&quot; + obj2.name);
-        // 输出：再次获取对象：Cube
-        Debug.Log(&quot;是否为同一对象：&quot; + (obj1 == obj2));
-        // 输出：是否为同一对象：True
-    &#125;
-&#125;
-</code></pre>
-<h4 id="注意"><a href="#注意" class="headerlink" title="注意"></a>注意</h4><p>LoadPrefab这个是继承GameObjPool可重写的。现在DefaultGameObjPool是使用Resource。实际上可以实现其他资源加载的GameObjPool，比如AB包，Addresable，YooAsset。同时也可以基于不同对象使用不同加载然后做成一张配置表，key可以就是一个字符串名字。</p>
-<h3 id="GameObject对象池窗口布局优化"><a href="#GameObject对象池窗口布局优化" class="headerlink" title="GameObject对象池窗口布局优化"></a>GameObject对象池窗口布局优化</h3><h4 id="之前存在什么问题"><a href="#之前存在什么问题" class="headerlink" title="之前存在什么问题"></a>之前存在什么问题</h4><p>当项目变大，抽屉多了，对象多了，游戏中成百上千个对象在开发测试时不方便从Hierarchy窗口中查看对象获取信息。因此我们希望能优化一下Hierarchy窗口中的布局，将对象和抽屉的关系可视化。</p>
-<p><strong>问题分析：</strong></p>
-<ol>
-<li><strong>对象混乱</strong>：大量失活的对象在Hierarchy中难以管理</li>
-<li><strong>关系不清</strong>：无法直观看到对象属于哪个对象池</li>
-<li><strong>调试困难</strong>：开发时难以快速定位和调试对象池问题</li>
-</ol>
-<h4 id="如何解决窗口布局问题"><a href="#如何解决窗口布局问题" class="headerlink" title="如何解决窗口布局问题"></a>如何解决窗口布局问题</h4><p><strong>解决方案：</strong></p>
-<ol>
-<li><strong>柜子管理自己的柜子根物体</strong>：创建统一的根对象管理所有对象池</li>
-<li><strong>抽屉管理自己的抽屉根物体</strong>：每个对象池有自己的根对象</li>
-<li><strong>失活时建立父子关系，激活时断开父子关系</strong>：通过父子关系实现可视化布局</li>
-</ol>
-<p><strong>注意：</strong> isOpenLayout可以在Unity编辑器环境才开启，这样打包出去后避免布局影响性能！</p>
-<h4 id="GameObjPoolMgr支持布局管理"><a href="#GameObjPoolMgr支持布局管理" class="headerlink" title="GameObjPoolMgr支持布局管理"></a>GameObjPoolMgr支持布局管理</h4><pre><code class="csharp">using System.Collections.Generic;
-using UnityEngine;
-
-/// &lt;summary&gt;
-/// GameObject对象池管理器（支持布局管理）
-/// 使用字典管理多个GameObjPool实例
-/// &lt;/summary&gt;
-public class GameObjPoolMgr
-&#123;
-    #region 字段
-
-    /// &lt;summary&gt;
-    /// GameObject对象池字典
-    /// 键为对象名称，值为对应的GameObjPool
-    /// &lt;/summary&gt;
-    private Dictionary&lt;string, GameObjPool&gt; _gameObjPoolDict = new Dictionary&lt;string, GameObjPool&gt;();
-
-    /// &lt;summary&gt;
-    /// 对象池根对象
-    /// &lt;/summary&gt;
-    private GameObject _mgrRoot;
-
-    /// &lt;summary&gt;
-    /// 是否开启布局功能
-    /// &lt;/summary&gt;
-    public static bool isOpenLayout = true;
-
-    #endregion
-
-    #region 构造函数
-
-    /// &lt;summary&gt;
-    /// 初始化构造函数
-    /// &lt;/summary&gt;
-    public GameObjPoolMgr()
-    &#123;
-        if (!isOpenLayout)
-        &#123;
-            return;
-        &#125;
-
-        _mgrRoot = new GameObject(&quot;GameObjPoolRoot&quot;);
-        Object.DontDestroyOnLoad(_mgrRoot);
-    &#125;
-
-    #endregion
-
-    #region GameObject对象池管理
-
-    /// &lt;summary&gt;
-    /// 从对象池中获取GameObject对象
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;name&quot;&gt;对象名称&lt;/param&gt;
-    /// &lt;returns&gt;从缓存池中取出的对象&lt;/returns&gt;
-    public GameObject GetObj(string name)
-    &#123;
-        // 如果没有对应的对象池，创建默认对象池
-        if (!_gameObjPoolDict.ContainsKey(name))
-        &#123;
-            _gameObjPoolDict[name] = new DefaultGameObjPool(name, _mgrRoot);
-        &#125;
-
-        return _gameObjPoolDict[name].GetObj();
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将GameObject对象归还到缓存池中
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnObj(GameObject obj)
-    &#123;
-        // 往对象池中归还对象
-        _gameObjPoolDict[obj.name].ReturnObj(obj);
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 清除整个对象池中的数据
-    /// &lt;/summary&gt;
-    public void ClearPool()
-    &#123;
-        _gameObjPoolDict.Clear();
-        if (_mgrRoot != null)
-        &#123;
-            Object.Destroy(_mgrRoot);
-            _mgrRoot = null;
-        &#125;
-    &#125;
-
-    #endregion
-&#125;
-</code></pre>
-<h4 id="GameObjPool支持布局管理"><a href="#GameObjPool支持布局管理" class="headerlink" title="GameObjPool支持布局管理"></a>GameObjPool支持布局管理</h4><pre><code class="csharp">using System.Collections.Generic;
-using UnityEngine;
-
-/// &lt;summary&gt;
-/// GameObject对象池（支持布局管理）
-/// &lt;/summary&gt;
-public abstract class GameObjPool
-&#123;
-    #region 字段
-
-    /// &lt;summary&gt;
-    /// 存储未使用的对象栈
-    /// &lt;/summary&gt;
-    protected Stack&lt;GameObject&gt; _unuseStack = new Stack&lt;GameObject&gt;();
-
-    /// &lt;summary&gt;
-    /// 抽屉根对象，用于进行布局管理的对象
-    /// &lt;/summary&gt;
-    protected GameObject _rootObj;
-
-    /// &lt;summary&gt;
-    /// 对象池名称
-    /// &lt;/summary&gt;
-    protected string _poolName;
-
-    #endregion
-
-    #region 构造函数
-
-    /// &lt;summary&gt;
-    /// 初始化构造函数
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;poolName&quot;&gt;对象池名称&lt;/param&gt;
-    /// &lt;param name=&quot;root&quot;&gt;缓存池父对象&lt;/param&gt;
-    protected GameObjPool(string poolName, GameObject root)
-    &#123;
-        _poolName = poolName;
-        _rootObj = root;
-    &#125;
-
-    #endregion
-
-    #region 抽象方法
-
-    /// &lt;summary&gt;
-    /// 加载GameObject预制体
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;加载的GameObject预制体&lt;/returns&gt;
-    protected abstract GameObject LoadPrefab();
-
-    #endregion
-
-    #region 对象管理方法
-
-    /// &lt;summary&gt;
-    /// 从对象池中取出对象
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;取出的GameObject对象&lt;/returns&gt;
-    public GameObject GetObj()
-    &#123;
-        GameObject obj;
-
-        if (_unuseStack.Count &gt; 0)
-        &#123;
-            // 从未使用的栈中取出对象
-            obj = _unuseStack.Pop();
-        &#125;
-        else
-        &#123;
-            // 创建新对象
-            obj = CreateNewObject();
-        &#125;
-
-        // 激活对象
-        obj.SetActive(true);
-        // 断开父子关系
-        if (GameObjPoolMgr.isOpenLayout)
-        &#123;
-            obj.transform.SetParent(null);
-        &#125;
-
-        return obj;
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将对象归还到对象池中
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnObj(GameObject obj)
-    &#123;
-        // 失活对象
-        obj.SetActive(false);
-        // 放入对应抽屉的根物体中，建立父子关系
-        if (GameObjPoolMgr.isOpenLayout)
-        &#123;
-            obj.transform.SetParent(_rootObj.transform);
-        &#125;
-
-        // 压入未使用栈
-        _unuseStack.Push(obj);
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 创建新对象
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;创建的GameObject对象&lt;/returns&gt;
-    public GameObject CreateNewObject()
-    &#123;
-        GameObject prefab = LoadPrefab();
-        GameObject obj = Object.Instantiate(prefab);
-        obj.name = _poolName;
-        return obj;
-    &#125;
-
-    #endregion
-&#125;
-</code></pre>
-<h4 id="窗口布局优化测试"><a href="#窗口布局优化测试" class="headerlink" title="窗口布局优化测试"></a>窗口布局优化测试</h4><pre><code class="csharp">using UnityEngine;
-
-public class LayoutOptimizationTest : MonoBehaviour
-&#123;
-    void Start()
-    &#123;
-        Debug.Log(&quot;窗口布局优化测试：开始&quot;);
-        
-        // 通过PoolMgr获取对象
-        GameObject obj1 = PoolMgr.Instance.GetGameObj(&quot;Cube&quot;);
-        Debug.Log(&quot;获取对象：&quot; + obj1.name);
-        // 输出：获取对象：Cube
-        Debug.Log(&quot;对象父对象：&quot; + (obj1.transform.parent == null ? &quot;无&quot; : obj1.transform.parent.name));
-        // 输出：对象父对象：无
-
-        // 归还对象
-        PoolMgr.Instance.ReturnGameObj(obj1);
-        Debug.Log(&quot;归还对象：&quot; + obj1.name);
-        // 输出：归还对象：Cube
-        Debug.Log(&quot;对象父对象：&quot; + (obj1.transform.parent == null ? &quot;无&quot; : obj1.transform.parent.name));
-        // 输出：对象父对象：CubePoolRoot
-    &#125;
-&#125;
-</code></pre>
-<p><img src="/../../../../images/%E6%A1%86%E6%9E%B6/Unity/01.%E5%9F%BA%E7%A1%80%E6%A1%86%E6%9E%B6/4.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E6%A8%A1%E5%9D%97/6.png" alt="开启后类似这样的布局"></p>
-<h3 id="GameObject对象池对象上限优化"><a href="#GameObject对象池对象上限优化" class="headerlink" title="GameObject对象池对象上限优化"></a>GameObject对象池对象上限优化</h3><h4 id="之前存在什么问题-1"><a href="#之前存在什么问题-1" class="headerlink" title="之前存在什么问题"></a>之前存在什么问题</h4><p>目前我们制作的对象池模块，理论上来说，当动态创建的对象长时间不放回抽屉，每次从对象池中动态获取对象时，会不停的新建对象，那么也就是对象的数量是没有上限的，场景上的某种对象可以存在n个。</p>
-<p><strong>问题分析：</strong></p>
-<ol>
-<li><strong>无上限创建</strong>：对象数量没有限制，可能导致内存溢出</li>
-<li><strong>资源浪费</strong>：不重要的资源没必要让其无限加量</li>
-<li><strong>性能影响</strong>：大量对象会影响渲染性能和内存使用</li>
-</ol>
-<h4 id="如何解决对象上限问题"><a href="#如何解决对象上限问题" class="headerlink" title="如何解决对象上限问题"></a>如何解决对象上限问题</h4><p><strong>解决方案：</strong></p>
-<ol>
-<li><strong>控制对象数量上限</strong>：设置对象池的最大容量</li>
-<li><strong>LRU淘汰策略</strong>：当池满时，抢占”使用最久”的资源</li>
-<li><strong>记录使用状态</strong>：维护正在使用中的对象列表</li>
-</ol>
-<pre><code class="csharp">using System.Collections.Generic;
-using UnityEngine;
-
-/// &lt;summary&gt;
-/// GameObject对象池（解决上限问题）
-/// &lt;/summary&gt;
-public class GameObjPool
-&#123;
-    #region 字段
-
-    /// &lt;summary&gt;
-    /// 存储未使用的对象栈
-    /// &lt;/summary&gt;
-    protected Stack&lt;GameObject&gt; _unuseStack = new Stack&lt;GameObject&gt;();
-
-    /// &lt;summary&gt;
-    /// 记录正在使用中的对象列表（用于LRU淘汰）
-    /// &lt;/summary&gt;
-    protected LinkedList&lt;GameObject&gt; _usedList = new LinkedList&lt;GameObject&gt;();
-
-    /// &lt;summary&gt;
-    /// 对象到链表节点的映射（用于O(1)删除）
-    /// &lt;/summary&gt;
-    protected Dictionary&lt;GameObject, LinkedListNode&lt;GameObject&gt;&gt; _gameObj2NodeDict = new Dictionary&lt;GameObject, LinkedListNode&lt;GameObject&gt;&gt;();
-
-    /// &lt;summary&gt;
-    /// 对象池上限，场景上同时存在的对象的最大个数
-    /// &lt;/summary&gt;
-    protected readonly int MaxNum;
-
-    /// &lt;summary&gt;
-    /// 抽屉根对象，用于进行布局管理的对象
-    /// &lt;/summary&gt;
-    protected GameObject _rootObj;
-
-    /// &lt;summary&gt;
-    /// 对象池名称
-    /// &lt;/summary&gt;
-    protected string _poolName;
-
-    #endregion
-
-    #region 属性
-
-    /// &lt;summary&gt;
-    /// 获取容器中未使用对象的数量
-    /// &lt;/summary&gt;
-    public int UnuseCount =&gt; _unuseStack.Count;
-
-    /// &lt;summary&gt;
-    /// 获取正在使用中的对象数量
-    /// &lt;/summary&gt;
-    public int UsedCount =&gt; _usedList.Count;
-
-    /// &lt;summary&gt;
-    /// 判断是否需要创建新对象
-    /// &lt;/summary&gt;
-    public bool NeedCreate =&gt; UnuseCount == 0 &amp;&amp; _usedList.Count &lt; MaxNum;
-
-    #endregion
-
-    #region 构造函数
-
-    /// &lt;summary&gt;
-    /// 初始化构造函数
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;poolName&quot;&gt;对象池名称&lt;/param&gt;
-    /// &lt;param name=&quot;root&quot;&gt;缓存池父对象&lt;/param&gt;
-    /// &lt;param name=&quot;maxNum&quot;&gt;最大对象数量，默认100&lt;/param&gt;
-    protected GameObjPool(string poolName, GameObject root, int maxNum = 100)
-    &#123;
-        _poolName = poolName;
-        _rootObj = root;
-        MaxNum = maxNum;
-    &#125;
-
-    #endregion
-
-    #region 对象管理方法
-
-    /// &lt;summary&gt;
-    /// 从对象池中取出对象
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;取出的GameObject对象&lt;/returns&gt;
-    public GameObject GetObj()
-    &#123;
-        GameObject obj;
-
-        if (UnuseCount &gt; 0)
-        &#123;
-            // 从未使用的栈中取出对象（LIFO）
-            obj = _unuseStack.Pop();
-        &#125;
-        else if (_usedList.Count &lt; MaxNum)
-        &#123;
-            // 创建新对象
-            obj = CreateNewObject();
-        &#125;
-        else
-        &#123;
-            // 池满，抢占最早使用的对象（FIFO）
-            obj = _usedList.First.Value;
-            _usedList.RemoveFirst();
-            _gameObj2NodeDict.Remove(obj);
-        &#125;
-
-        // 添加到使用列表的尾部（最近使用）
-        LinkedListNode&lt;GameObject&gt; node = _usedList.AddLast(obj);
-        _gameObj2NodeDict[obj] = node;
-
-        // 激活对象
-        obj.SetActive(true);
-        // 断开父子关系
-        if (GameObjPoolMgr.isOpenLayout)
-        &#123;
-            obj.transform.SetParent(null);
-        &#125;
-
-        return obj;
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将对象归还到对象池中
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnObj(GameObject obj)
-    &#123;
-        // 失活对象
-        obj.SetActive(false);
-        // 放入对应抽屉的根物体中，建立父子关系
-        if (GameObjPoolMgr.isOpenLayout)
-        &#123;
-            obj.transform.SetParent(_rootObj.transform);
-        &#125;
-
-        // 从使用列表中移除
-        if (_gameObj2NodeDict.TryGetValue(obj, out LinkedListNode&lt;GameObject&gt; node))
-        &#123;
-            _usedList.Remove(node);
-            _gameObj2NodeDict.Remove(obj);
-        &#125;
-
-        // 压入未使用栈（LIFO）
-        _unuseStack.Push(obj);
-    &#125;
-
-    #endregion
-&#125;
-</code></pre>
-<h4 id="对象上限优化测试"><a href="#对象上限优化测试" class="headerlink" title="对象上限优化测试"></a>对象上限优化测试</h4><pre><code class="csharp">using UnityEngine;
-
-public class ObjectLimitTest : MonoBehaviour
-&#123;
-    void Start()
-    &#123;
-        Debug.Log(&quot;对象上限优化测试：开始&quot;);
-        
-        // 通过PoolMgr获取对象（注意：这里演示的是基础功能，实际的上限控制需要在GameObjPoolMgr中实现）
-        GameObject obj1 = PoolMgr.Instance.GetGameObj(&quot;Cube&quot;);
-        GameObject obj2 = PoolMgr.Instance.GetGameObj(&quot;Cube&quot;);
-        GameObject obj3 = PoolMgr.Instance.GetGameObj(&quot;Cube&quot;);
-        
-        Debug.Log($&quot;创建3个对象：&#123;obj1.name&#125;，&#123;obj2.name&#125;，&#123;obj3.name&#125;&quot;);
-        // 输出：创建3个对象：Cube，Cube，Cube
-
-        // 归还对象
-        PoolMgr.Instance.ReturnGameObj(obj1);
-        PoolMgr.Instance.ReturnGameObj(obj2);
-        PoolMgr.Instance.ReturnGameObj(obj3);
-        
-        Debug.Log(&quot;归还所有对象&quot;);
-        // 输出：归还所有对象
-
-        // 再次获取（应该复用之前的对象）
-        GameObject obj4 = PoolMgr.Instance.GetGameObj(&quot;Cube&quot;);
-        Debug.Log($&quot;再次获取对象：&#123;obj4.name&#125;&quot;);
-        // 输出：再次获取对象：Cube
-        Debug.Log($&quot;是否为同一对象：&#123;obj4 == obj1&#125;&quot;);
-        // 输出：是否为同一对象：True
-    &#125;
-&#125;
-</code></pre>
-<h3 id="GameObject对象池数据结构选择"><a href="#GameObject对象池数据结构选择" class="headerlink" title="GameObject对象池数据结构选择"></a>GameObject对象池数据结构选择</h3><h4 id="为什么需要特殊的数据结构"><a href="#为什么需要特殊的数据结构" class="headerlink" title="为什么需要特殊的数据结构"></a>为什么需要特殊的数据结构</h4><p>当对象池达到上限时，我们需要实现”超限就抢占最早被借出的活跃对象”的功能。这要求我们能够：</p>
-<ol>
-<li><strong>快速找到最早借出的对象</strong>：需要维护借出顺序</li>
-<li><strong>快速删除任意活跃对象</strong>：归还时可能不是最早借出的</li>
-<li><strong>高效管理空闲对象</strong>：频繁的获取和归还操作</li>
-</ol>
-<h4 id="推荐的数据结构组合"><a href="#推荐的数据结构组合" class="headerlink" title="推荐的数据结构组合"></a>推荐的数据结构组合</h4><p><strong>核心设计：三个容器协同工作</strong></p>
-<ol>
-<li><p><strong>空闲池</strong>：<code>Stack&lt;GameObject&gt;</code>（LIFO）</p>
-<ul>
-<li>最后归还的对象最先被复用</li>
-<li>符合Unity内置ObjectPool的设计理念</li>
-<li>操作复杂度：O(1)</li>
-</ul>
-</li>
-<li><p><strong>活跃表</strong>：<code>LinkedList&lt;GameObject&gt;</code>（按借出顺序排队）</p>
-<ul>
-<li>队头 &#x3D; 最早借出的对象（最先被抢占）</li>
-<li>队尾 &#x3D; 最新借出的对象</li>
-<li>支持O(1)的插入和删除操作</li>
-</ul>
-</li>
-<li><p><strong>索引表</strong>：<code>Dictionary&lt;GameObject, LinkedListNode&lt;GameObject&gt;&gt;</code></p>
-<ul>
-<li>将GameObject映射到其在链表中的节点</li>
-<li>实现O(1)的节点定位和删除</li>
-<li>这是实现LRU&#x2F;FIFO淘汰的经典组合</li>
-</ul>
-</li>
-</ol>
-<h4 id="数据结构选择的原因"><a href="#数据结构选择的原因" class="headerlink" title="数据结构选择的原因"></a>数据结构选择的原因</h4><p><strong>为什么不推荐用 Queue 做“空闲池</strong></p>
-<ul>
-<li><p><strong>结论</strong><br><strong>空闲对象用 <code>Stack</code>（LIFO）更合适</strong>；<code>Queue</code>（FIFO）不是不行，但在 Unity 的 GameObject 池里通常没有优势，反而会带来“冷对象优先复用”的开销。</p>
-</li>
-<li><p><strong>语义</strong></p>
-<ul>
-<li><code>Stack</code>：<strong>LIFO</strong>，总是优先复用“刚放回”的对象（更“热”）。</li>
-<li><code>Queue</code>：<strong>FIFO</strong>，优先复用“最早放回”的对象（更“冷”）。</li>
-</ul>
-</li>
-<li><p><strong>实现与生态</strong></p>
-<ul>
-<li>Unity 官方 <code>ObjectPool&lt;T&gt;</code> 就是<strong>基于栈</strong>的实现，说明官方默认的“空闲区”语义是 LIFO。</li>
-<li>业界通用的 Apache Commons Pool 也<strong>默认 LIFO</strong>（可改为 FIFO），空闲时借用会返回“最后归还”的实例。</li>
-</ul>
-</li>
-<li><p><strong>局部性与开销</strong></p>
-<ul>
-<li>LIFO 往往复用刚刚用过、数据&#x2F;分配路径更“热”的实例；社区经验也倾向于 <strong>Stack 更有局部性</strong>、更快。</li>
-</ul>
-</li>
-</ul>
-<p><strong>为什么选择LinkedList + Dictionary？</strong></p>
-<ul>
-<li>LinkedList支持O(1)的节点插入和删除</li>
-<li>Dictionary提供O(1)的节点定位</li>
-<li>这是实现”抢占最早&#x2F;最久未用”的标准数据结构组合</li>
-</ul>
-<h4 id="抢占策略"><a href="#抢占策略" class="headerlink" title="抢占策略"></a>抢占策略</h4><p><strong>FIFO抢占（按借出顺序）</strong>：</p>
-<ul>
-<li>只在借出时将对象添加到链表尾部</li>
-<li>超限时从链表头部抢占最早借出的对象</li>
-<li>适合大多数游戏场景</li>
-</ul>
-<p><strong>LRU抢占（按最近使用）</strong>：</p>
-<ul>
-<li>对象被使用时将其节点移动到链表尾部</li>
-<li>超限时抢占链表头部的对象（最久未用）</li>
-<li>适合需要”热度”管理的场景</li>
-</ul>
-<h3 id="Object对象池基础实现"><a href="#Object对象池基础实现" class="headerlink" title="Object对象池基础实现"></a>Object对象池基础实现</h3><p>对于不继承MonoBehaviour的普通类对象池，我们需要实现泛型对象池。同样，我们也需要管理器来统一管理多个对象池。</p>
-<h4 id="基础对象池实现"><a href="#基础对象池实现" class="headerlink" title="基础对象池实现"></a>基础对象池实现</h4><pre><code class="csharp">using System.Collections.Generic;
-
-/// &lt;summary&gt;
-/// 普通类对象池（初步版本 - 基础功能实现）
-/// &lt;/summary&gt;
-/// &lt;typeparam name=&quot;T&quot;&gt;要存储的对象类型&lt;/typeparam&gt;
-public class ObjPool&lt;T&gt; where T : class, new()
-&#123;
-    #region 字段
-
-    /// &lt;summary&gt;
-    /// 对象池队列
-    /// &lt;/summary&gt;
-    protected Queue&lt;T&gt; _objQueue = new Queue&lt;T&gt;();
-
-    #endregion
-
-    #region 属性
-
-    /// &lt;summary&gt;
-    /// 获取池中可用对象的数量
-    /// &lt;/summary&gt;
-    public int Count =&gt; _objQueue.Count;
-
-    #endregion
-
-    #region 对象管理方法
-
-    /// &lt;summary&gt;
-    /// 从对象池中获取对象
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;从对象池中取出的对象&lt;/returns&gt;
-    public T GetObj()
-    &#123;
-        // 池子当中是否有可以复用的内容
-        // 从队列中取出对象进行复用 否则创建新对象
-        T obj = _objQueue.Count &gt; 0 ? _objQueue.Dequeue() : new T();
-        return obj;
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将对象归还到池子中
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnObj(T obj)
-    &#123;
-        // 如果想要归还null对象，是不被允许的
-        if (obj == null)
-        &#123;
-            return;
-        &#125;
-
-        // 放入池子中
-        _objQueue.Enqueue(obj);
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 清除整个对象池中的数据
-    /// &lt;/summary&gt;
-    public void ClearPool()
-    &#123;
-        _objQueue.Clear();
-    &#125;
-
-    #endregion
-&#125;
-</code></pre>
-<h4 id="普通类对象池管理器实现"><a href="#普通类对象池管理器实现" class="headerlink" title="普通类对象池管理器实现"></a>普通类对象池管理器实现</h4><pre><code class="csharp">using System;
-using System.Collections.Generic;
-using UnityEngine;
-
-/// &lt;summary&gt;
-/// 普通类对象池管理器（初步版本）
-/// 使用字典管理多个ObjPool实例
-/// &lt;/summary&gt;
-public class ObjPoolMgr
-&#123;
-    #region 字段
-
-    /// &lt;summary&gt;
-    /// 数据结构类对象池字典
-    /// 用于存储不继承MonoBehaviour的对象
-    /// &lt;/summary&gt;
-    private Dictionary&lt;Type, object&gt; _objPoolDict = new Dictionary&lt;Type, object&gt;();
-
-    #endregion
-
-    #region 普通类对象池管理
-
-    /// &lt;summary&gt;
-    /// 获取自定义的数据结构类和逻辑类对象
-    /// &lt;/summary&gt;
-    /// &lt;typeparam name=&quot;T&quot;&gt;数据类型&lt;/typeparam&gt;
-    /// &lt;returns&gt;从对象池中取出的对象&lt;/returns&gt;
-    public T GetObj&lt;T&gt;() where T : class, new()
-    &#123;
-        Type type = typeof(T);
-
-        // 有池子
-        if (_objPoolDict.TryGetValue(type, out var value))
-        &#123;
-            if (value is ObjPool&lt;T&gt; pool)
+            if (instance == null)
             &#123;
-                return pool.GetObj();
+                instance = new T(); // 直接通过new创建，此时T必须有public无参构造函数
             &#125;
-
-            Debug.LogError($&quot;&#123;typeof(T)&#125; 存在对象池但是转换失败！&quot;);
-            return null;
-        &#125;
-        else
-        &#123;
-            // 没有池子，创建新池子
-            DefaultObjPool&lt;T&gt; pool = new DefaultObjPool&lt;T&gt;();
-            _objPoolDict.Add(type, pool);
-            return pool.GetObj();
+            return instance;
         &#125;
     &#125;
 
-    /// &lt;summary&gt;
-    /// 将自定义数据结构类和逻辑类对象归还到池子中
-    /// &lt;/summary&gt;
-    /// &lt;typeparam name=&quot;T&quot;&gt;对应类型&lt;/typeparam&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnObj&lt;T&gt;(T obj) where T : class, new()
-    &#123;
-        // 如果想要归还null对象，是不被允许的
-        if (obj == null)
-        &#123;
-            return;
-        &#125;
-
-        Type type = typeof(T);
-
-        // 有池子
-        if (_objPoolDict.TryGetValue(type, out var value))
-        &#123;
-            if (value is ObjPool&lt;T&gt; pool)
-            &#123;
-                pool.ReturnObj(obj);
-            &#125;
-            else
-            &#123;
-                Debug.LogError($&quot;&#123;typeof(T)&#125; 存在对象池但是转换失败！&quot;);
-            &#125;
-        &#125;
-        else
-        &#123;
-            // 没有池子，创建新池子
-            DefaultObjPool&lt;T&gt; pool = new DefaultObjPool&lt;T&gt;();
-            _objPoolDict.Add(type, pool);
-            pool.ReturnObj(obj);
-        &#125;
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 清除整个对象池中的数据
-    /// &lt;/summary&gt;
-    public void ClearPool()
-    &#123;
-        _objPoolDict.Clear();
-    &#125;
-
-    #endregion
+    // 此时构造函数可以是public，或者不写（默认为public）
+    public Singleton() &#123; &#125;
 &#125;
 </code></pre>
-<h4 id="更新总对象池管理器"><a href="#更新总对象池管理器" class="headerlink" title="更新总对象池管理器"></a>更新总对象池管理器</h4><pre><code class="csharp">using UnityEngine;
-
-/// &lt;summary&gt;
-/// 对象池管理器（支持普通类对象池）
-/// 统一管理GameObject对象池和普通类对象池
-/// &lt;/summary&gt;
-public class PoolMgr : Singleton&lt;PoolMgr&gt;
+<p><strong>初步测试代码：<code>TestMgr.cs</code> 和 <code>SingletonTest.cs</code></strong></p>
+<pre><code class="csharp">// TestMgr.cs
+// 继承初步的Singleton类，此时TestMgr需要一个public无参构造函数
+public class TestMgr : Singleton&lt;TestMgr&gt;
 &#123;
-    #region 字段
-
-    /// &lt;summary&gt;
-    /// GameObject对象池管理器
-    /// &lt;/summary&gt;
-    private GameObjPoolMgr gameObjPoolMgr;
-
-    /// &lt;summary&gt;
-    /// 普通类对象池管理器
-    /// &lt;/summary&gt;
-    private ObjPoolMgr objPoolMgr;
-
-    #endregion
-
-    #region 构造函数
-
-    private PoolMgr()
+    public TestMgr()
     &#123;
-        gameObjPoolMgr = new GameObjPoolMgr();
-        objPoolMgr = new ObjPoolMgr();
+        UnityEngine.Debug.Log(&quot;TestMgr 构造函数被调用&quot;);
     &#125;
 
-    #endregion
-
-    #region GameObject对象池管理
-
-    /// &lt;summary&gt;
-    /// 从对象池中获取GameObject对象
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;name&quot;&gt;对象名称&lt;/param&gt;
-    /// &lt;returns&gt;从缓存池中取出的对象&lt;/returns&gt;
-    public GameObject GetGameObj(string name)
+    public void Speak()
     &#123;
-        return gameObjPoolMgr.GetObj(name);
+        UnityEngine.Debug.Log(&quot;TestMgr Speak&quot;);
     &#125;
-
-    /// &lt;summary&gt;
-    /// 将GameObject对象归还到缓存池中
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnGameObj(GameObject obj)
-    &#123;
-        gameObjPoolMgr.ReturnObj(obj);
-    &#125;
-
-    #endregion
-
-    #region 普通类对象池管理
-
-    /// &lt;summary&gt;
-    /// 获取自定义的数据结构类和逻辑类对象
-    /// &lt;/summary&gt;
-    /// &lt;typeparam name=&quot;T&quot;&gt;数据类型&lt;/typeparam&gt;
-    /// &lt;returns&gt;从对象池中取出的对象&lt;/returns&gt;
-    public T GetObj&lt;T&gt;() where T : class, new()
-    &#123;
-        return objPoolMgr.GetObj&lt;T&gt;();
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将自定义数据结构类和逻辑类对象归还到池子中
-    /// &lt;/summary&gt;
-    /// &lt;typeparam name=&quot;T&quot;&gt;对应类型&lt;/typeparam&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnObj&lt;T&gt;(T obj) where T : class, new()
-    &#123;
-        objPoolMgr.ReturnObj&lt;T&gt;(obj);
-    &#125;
-
-    #endregion
-
-    #region 统一管理
-
-    /// &lt;summary&gt;
-    /// 清除整个对象池中的数据
-    /// &lt;/summary&gt;
-    public void ClearPool()
-    &#123;
-        gameObjPoolMgr.ClearPool();
-        objPoolMgr.ClearPool();
-    &#125;
-
-    #endregion
 &#125;
-</code></pre>
-<h4 id="初步测试代码"><a href="#初步测试代码" class="headerlink" title="初步测试代码"></a>初步测试代码</h4><pre><code class="csharp">// TestData.cs
+
+// SingletonTest.cs
 using UnityEngine;
 
-public class TestData
-&#123;
-    public int i = 0;
-    public string str = &quot;&quot;;
-    public object o = null;
-
-    public TestData()
-    &#123;
-        Debug.Log(&quot;TestData构造函数被调用&quot;);
-    &#125;
-&#125;
-
-// DefaultObjPool.cs
-public class DefaultObjPool&lt;T&gt; : ObjPool&lt;T&gt; where T : class, new()
-&#123;
-    public DefaultObjPool() : base()
-    &#123;
-    &#125;
-&#125;
-
-// ObjectPoolTest.cs
-using UnityEngine;
-
-public class ObjectPoolTest : MonoBehaviour
+public class SingletonTest : MonoBehaviour
 &#123;
     void Start()
     &#123;
-        Debug.Log(&quot;普通类对象池测试：开始&quot;);
-        
-        // 通过PoolMgr获取对象
-        TestData data1 = PoolMgr.Instance.GetObj&lt;TestData&gt;();
-        data1.i = 100;
-        data1.str = &quot;测试数据&quot;;
-        Debug.Log($&quot;获取对象，i=&#123;data1.i&#125;，str=&#123;data1.str&#125;&quot;);
-        // 输出：TestData构造函数被调用
-        // 输出：获取对象，i=100，str=测试数据
+        // 正常获取单例
+        TestMgr.Instance.Speak();
+        // 输出：TestMgr 构造函数被调用
+        // 输出：TestMgr Speak
 
-        // 归还对象
-        PoolMgr.Instance.ReturnObj(data1);
-        Debug.Log(&quot;归还对象&quot;);
-
-        // 再次获取（应该复用之前的对象）
-        TestData data2 = PoolMgr.Instance.GetObj&lt;TestData&gt;();
-        Debug.Log($&quot;再次获取对象，i=&#123;data2.i&#125;，str=&#123;data2.str&#125;&quot;);
-        // 输出：再次获取对象，i=100，str=测试数据（数据没有被重置）
-        Debug.Log($&quot;是否为同一对象：&#123;data1 == data2&#125;&quot;);
-        // 输出：是否为同一对象：True
+        // 此时外部可以通过new创建新的实例，破坏了单例的唯一性
+        TestMgr newMgr = new TestMgr(); 
+        // 输出：TestMgr 构造函数被调用 (第二次调用构造函数)
+        newMgr.Speak(); 
+        // 输出：TestMgr Speak
+        // 问题：会发现构造函数被调用了两次，且newMgr和TestMgr.Instance是不同的对象
     &#125;
 &#125;
 </code></pre>
-<h3 id="Object对象池数据重置优化"><a href="#Object对象池数据重置优化" class="headerlink" title="Object对象池数据重置优化"></a>Object对象池数据重置优化</h3><h4 id="之前存在什么问题-2"><a href="#之前存在什么问题-2" class="headerlink" title="之前存在什么问题"></a>之前存在什么问题</h4><p>在基础实现中，我们发现普通类对象池存在一个问题：当对象被归还到池中后，再次获取时，对象的数据没有被重置，仍然保留着之前使用时的数据。</p>
-<p><strong>问题分析：</strong></p>
-<ol>
-<li><strong>数据残留</strong>：对象归还后数据没有被清理</li>
-<li><strong>状态混乱</strong>：再次使用时可能产生意外的行为</li>
-<li><strong>安全隐患</strong>：敏感数据可能被泄露</li>
-</ol>
-<h4 id="如何解决数据重置问题"><a href="#如何解决数据重置问题" class="headerlink" title="如何解决数据重置问题"></a>如何解决数据重置问题</h4><p><strong>解决方案：</strong></p>
-<ol>
-<li><strong>添加重置机制</strong>：在归还对象时重置数据</li>
-<li><strong>提供虚方法</strong>：允许子类自定义重置逻辑</li>
-<li><strong>实现默认重置</strong>：为常见数据类型提供默认重置</li>
-</ol>
-<pre><code class="csharp">using System.Collections.Generic;
-
-/// &lt;summary&gt;
-/// 普通类对象池（支持数据重置）
-/// &lt;/summary&gt;
-/// &lt;typeparam name=&quot;T&quot;&gt;要存储的对象类型&lt;/typeparam&gt;
-public abstract class ObjPool&lt;T&gt; where T : class, new()
-&#123;
-    #region 字段
-
-    /// &lt;summary&gt;
-    /// 对象池队列
-    /// &lt;/summary&gt;
-    protected Queue&lt;T&gt; _objQueue = new Queue&lt;T&gt;();
-
-    #endregion
-
-    #region 属性
-
-    /// &lt;summary&gt;
-    /// 获取池中可用对象的数量
-    /// &lt;/summary&gt;
-    public int Count =&gt; _objQueue.Count;
-
-    #endregion
-
-    #region 虚方法
-
-    /// &lt;summary&gt;
-    /// 从对象池中取出对象时的初始化
-    /// 子类可以重写此方法来执行自定义初始化
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;取出的对象&lt;/param&gt;
-    protected virtual void OnGetObject(T obj)
-    &#123;
-        // 默认实现为空，子类可以重写
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将对象放回对象池时的清理
-    /// 子类可以重写此方法来执行自定义清理
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;放回的对象&lt;/param&gt;
-    protected virtual void OnReturnObject(T obj)
-    &#123;
-        // 默认实现为空，子类可以重写
-        // 如果需要重置对象，请在子类中重写此方法
-    &#125;
-
-    #endregion
-
-    #region 对象管理方法
-
-    /// &lt;summary&gt;
-    /// 从对象池中获取对象
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;从对象池中取出的对象&lt;/returns&gt;
-    public T GetObj()
-    &#123;
-        // 池子当中是否有可以复用的内容
-        // 从队列中取出对象进行复用 否则创建新对象
-        T obj = _objQueue.Count &gt; 0 ? _objQueue.Dequeue() : new T();
-
-        // 执行初始化
-        OnGetObject(obj);
-
-        return obj;
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将对象归还到池子中
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnObj(T obj)
-    &#123;
-        // 如果想要归还null对象，是不被允许的
-        if (obj == null)
-        &#123;
-            return;
-        &#125;
-
-        // 执行清理
-        OnReturnObject(obj);
-
-        // 放入池子中
-        _objQueue.Enqueue(obj);
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 清除整个对象池中的数据
-    /// &lt;/summary&gt;
-    public void ClearPool()
-    &#123;
-        _objQueue.Clear();
-    &#125;
-
-    #endregion
-&#125;
-</code></pre>
-<h4 id="自定义对象池实现"><a href="#自定义对象池实现" class="headerlink" title="自定义对象池实现"></a>自定义对象池实现</h4><pre><code class="csharp">using UnityEngine;
-
-/// &lt;summary&gt;
-/// 玩家数据结构类
-/// 用于演示自定义对象池的使用
-/// &lt;/summary&gt;
-public class PlayerData
-&#123;
-    public int playerId = 0;
-    public string playerName = &quot;&quot;;
-    public int level = 1;
-    public int experience = 0;
-
-    public PlayerData()
-    &#123;
-        Debug.Log(&quot;PlayerData构造函数被调用&quot;);
-    &#125;
-&#125;
-</code></pre>
+<h3 id="继承MonoBehaviour的单例模式基类"><a href="#继承MonoBehaviour的单例模式基类" class="headerlink" title="继承MonoBehaviour的单例模式基类"></a>继承MonoBehaviour的单例模式基类</h3><h4 id="实现挂载式的单例模式基类（初步实现）"><a href="#实现挂载式的单例模式基类（初步实现）" class="headerlink" title="实现挂载式的单例模式基类（初步实现）"></a>实现挂载式的单例模式基类（初步实现）</h4><p>对于需要利用Unity生命周期（如 <code>Update</code>, <code>Awake</code> 等）的管理器，我们需要让单例类继承 <code>MonoBehaviour</code>。挂载式的单例意味着我们需要手动将脚本挂载到场景中的GameObject上。</p>
+<p><strong>初步源码实现：<code>SingletonMono.cs</code> (初步版本)</strong></p>
 <pre><code class="csharp">using UnityEngine;
 
 /// &lt;summary&gt;
-/// TestData对象池
-/// 自定义TestData的重置逻辑
+/// 继承MonoBehaviour的单例模式基类（挂载式 - 初步版本，存在重复挂载问题）
 /// &lt;/summary&gt;
-public class TestDataPool : ObjPool&lt;TestData&gt;
+public class SingletonMono&lt;T&gt; : MonoBehaviour where T : SingletonMono&lt;T&gt;
 &#123;
-    /// &lt;summary&gt;
-    /// 将对象放回对象池时的清理
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;放回的TestData对象&lt;/param&gt;
-    protected override void OnReturnObject(TestData obj)
-    &#123;
-        // 重置TestData的数据
-        obj.i = 0;
-        obj.str = &quot;&quot;;
-        obj.o = null;
-    &#125;
-&#125;
+    private static T instance;
 
-/// &lt;summary&gt;
-/// PlayerData对象池
-/// 自定义PlayerData的重置逻辑
-/// &lt;/summary&gt;
-public class PlayerDataPool : ObjPool&lt;PlayerData&gt;
-&#123;
-    protected override void OnReturnObject(PlayerData obj)
+    public static T Instance
     &#123;
-        // 重置PlayerData的数据
-        obj.playerId = 0;
-        obj.playerName = &quot;&quot;;
-        obj.level = 1;
-        obj.experience = 0;
+        get
+        &#123;
+            if (instance == null)
+            &#123;
+                // 尝试从场景中查找现有实例
+                instance = FindObjectOfType&lt;T&gt;();
+                if (instance == null)
+                &#123;
+                    // 如果没有，则创建一个新的GameObject并挂载脚本
+                    GameObject obj = new GameObject(typeof(T).Name);
+                    instance = obj.AddComponent&lt;T&gt;();
+                &#125;
+            &#125;
+            return instance;
+        &#125;
+    &#125;
+
+    protected virtual void Awake()
+    &#123;
+        // 此时没有重复挂载检查
+        // instance = this as T; // 简单的赋值
     &#125;
 &#125;
 </code></pre>
-<h4 id="对象池管理器优化"><a href="#对象池管理器优化" class="headerlink" title="对象池管理器优化"></a>对象池管理器优化</h4><pre><code class="csharp">using System;
-using System.Collections.Generic;
+<p><strong>初步测试代码：<code>Test2Mgr.cs</code> 和 <code>MonoSingletonTest.cs</code></strong></p>
+<pre><code class="csharp">// Test2Mgr.cs
+public class Test2Mgr : SingletonMono&lt;Test2Mgr&gt;
+&#123;
+    public void Speak()
+    &#123;
+        UnityEngine.Debug.Log(&quot;Test2Mgr Speak&quot;);
+    &#125;
+&#125;
+
+// MonoSingletonTest.cs
 using UnityEngine;
 
-/// &lt;summary&gt;
-/// 普通类对象池管理器（支持自定义对象池）
-/// 使用字典管理多个ObjPool实例
-/// &lt;/summary&gt;
-public class ObjPoolMgr
-&#123;
-    #region 字段
-
-    /// &lt;summary&gt;
-    /// 数据结构类对象池字典
-    /// 用于存储不继承MonoBehaviour的对象
-    /// &lt;/summary&gt;
-    private Dictionary&lt;Type, object&gt; _objPoolDict = new Dictionary&lt;Type, object&gt;();
-
-    #endregion
-
-    #region 构造函数
-
-    /// &lt;summary&gt;
-    /// 初始化构造函数
-    /// &lt;/summary&gt;
-    public ObjPoolMgr()
-    &#123;
-    &#125;
-
-    #endregion
-
-    #region 对象池注册
-
-    /// &lt;summary&gt;
-    /// 注册自定义对象池
-    /// &lt;/summary&gt;
-    /// &lt;typeparam name=&quot;T&quot;&gt;对象类型&lt;/typeparam&gt;
-    /// &lt;param name=&quot;pool&quot;&gt;自定义对象池实例&lt;/param&gt;
-    public void RegisterPool&lt;T&gt;(ObjPool&lt;T&gt; pool) where T : class, new()
-    &#123;
-        Type type = typeof(T);
-        _objPoolDict[type] = pool;
-    &#125;
-
-    #endregion
-
-    #region 普通类对象池管理
-
-    /// &lt;summary&gt;
-    /// 获取自定义的数据结构类和逻辑类对象
-    /// &lt;/summary&gt;
-    /// &lt;typeparam name=&quot;T&quot;&gt;数据类型&lt;/typeparam&gt;
-    /// &lt;returns&gt;从对象池中取出的对象&lt;/returns&gt;
-    public T GetObj&lt;T&gt;() where T : class, new()
-    &#123;
-        Type type = typeof(T);
-
-        // 有池子
-        if (_objPoolDict.TryGetValue(type, out var value))
-        &#123;
-            if (value is ObjPool&lt;T&gt; pool)
-            &#123;
-                return pool.GetObj();
-            &#125;
-
-            Debug.LogError($&quot;&#123;typeof(T)&#125; 存在对象池但是转换失败！&quot;);
-            return null;
-        &#125;
-        else
-        &#123;
-            // 没有池子，创建默认对象池
-            DefaultObjPool&lt;T&gt; pool = new DefaultObjPool&lt;T&gt;();
-            _objPoolDict.Add(type, pool);
-            return pool.GetObj();
-        &#125;
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将自定义数据结构类和逻辑类对象归还到池子中
-    /// &lt;/summary&gt;
-    /// &lt;typeparam name=&quot;T&quot;&gt;对应类型&lt;/typeparam&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnObj&lt;T&gt;(T obj) where T : class, new()
-    &#123;
-        if (obj == null)
-        &#123;
-            return;
-        &#125;
-
-        Type type = typeof(T);
-
-        if (_objPoolDict.TryGetValue(type, out var value))
-        &#123;
-            if (value is ObjPool&lt;T&gt; pool)
-            &#123;
-                pool.ReturnObj(obj);
-            &#125;
-            else
-            &#123;
-                Debug.LogError($&quot;&#123;typeof(T)&#125; 存在对象池但是转换失败！&quot;);
-            &#125;
-        &#125;
-        else
-        &#123;
-            // 没有池子，创建默认对象池
-            DefaultObjPool&lt;T&gt; pool = new DefaultObjPool&lt;T&gt;();
-            _objPoolDict.Add(type, pool);
-            pool.ReturnObj(obj);
-        &#125;
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 清除整个对象池中的数据
-    /// &lt;/summary&gt;
-    public void ClearPool()
-    &#123;
-        _objPoolDict.Clear();
-    &#125;
-
-    #endregion
-&#125;
-</code></pre>
-<h4 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h4><pre><code class="csharp">using UnityEngine;
-
-public class DataResetTest : MonoBehaviour
+public class MonoSingletonTest : MonoBehaviour
 &#123;
     void Start()
     &#123;
-        Debug.Log(&quot;数据重置测试：开始&quot;);
-        
-        // 手动注册自定义对象池
-        PoolMgr.Instance.RegisterObjPool(new TestDataPool());
-        PoolMgr.Instance.RegisterObjPool(new PlayerDataPool());
-        
-        // 测试TestData对象池
-        TestData data1 = PoolMgr.Instance.GetObj&lt;TestData&gt;();
-        data1.i = 100;
-        data1.str = &quot;测试数据&quot;;
-        Debug.Log($&quot;获取TestData，i=&#123;data1.i&#125;，str=&#123;data1.str&#125;&quot;);
-        // 输出：获取TestData，i=100，str=测试数据
-
-        PoolMgr.Instance.ReturnObj(data1);
-        Debug.Log(&quot;归还TestData&quot;);
-
-        TestData data2 = PoolMgr.Instance.GetObj&lt;TestData&gt;();
-        Debug.Log($&quot;再次获取TestData，i=&#123;data2.i&#125;，str=&#123;data2.str&#125;&quot;);
-        // 输出：再次获取TestData，i=0，str=（数据被重置）
-        Debug.Log($&quot;是否为同一对象：&#123;data1 == data2&#125;&quot;);
-        // 输出：是否为同一对象：True
-
-        // 测试PlayerData对象池
-        PlayerData player1 = PoolMgr.Instance.GetObj&lt;PlayerData&gt;();
-        player1.playerId = 12345;
-        player1.playerName = &quot;测试玩家&quot;;
-        Debug.Log($&quot;获取PlayerData，ID=&#123;player1.playerId&#125;，Name=&#123;player1.playerName&#125;&quot;);
-        // 输出：获取PlayerData，ID=12345，Name=测试玩家
-
-        PoolMgr.Instance.ReturnObj(player1);
-        Debug.Log(&quot;归还PlayerData&quot;);
-
-        PlayerData player2 = PoolMgr.Instance.GetObj&lt;PlayerData&gt;();
-        Debug.Log($&quot;再次获取PlayerData，ID=&#123;player2.playerId&#125;，Name=&#123;player2.playerName&#125;&quot;);
-        // 输出：再次获取PlayerData，ID=0，Name=（数据被重置）
+        // 确保场景中有一个挂载了Test2Mgr脚本的GameObject
+        Test2Mgr.Instance.Speak();
+        // 输出：Test2Mgr Speak
     &#125;
 &#125;
 </code></pre>
-<h4 id="拓展"><a href="#拓展" class="headerlink" title="拓展"></a>拓展</h4><p>如果有需要，可以传入程序集扫描继承了对象池基类的自定义对象池然后自定义注册，避免每次新做一个对象池手动传入。GetObj，OnGetObject方法可以搞个可选参数，方便传入不同参数进行不同的初始化。</p>
+<h4 id="实现自动挂载式的单例模式基类（初步实现）"><a href="#实现自动挂载式的单例模式基类（初步实现）" class="headerlink" title="实现自动挂载式的单例模式基类（初步实现）"></a>实现自动挂载式的单例模式基类（初步实现）</h4><p>为了进一步简化使用，我们可以实现一个”自动挂载式”的单例。如果场景中不存在该单例，它会自动创建一个GameObject并挂载自身。</p>
+<p><strong>初步源码实现：<code>SingletonAutoMono.cs</code> (初步版本)</strong></p>
+<pre><code class="csharp">using UnityEngine;
+
+/// &lt;summary&gt;
+/// 继承MonoBehaviour的单例模式基类（自动挂载式 - 初步版本，存在重复挂载问题）
+/// &lt;/summary&gt;
+public class SingletonAutoMono&lt;T&gt; : MonoBehaviour where T : SingletonAutoMono&lt;T&gt;
+&#123;
+    private static T instance;
+
+    public static T Instance
+    &#123;
+        get
+        &#123;
+            if (instance == null)
+            &#123;
+                // 尝试从场景中查找现有实例
+                instance = FindObjectOfType&lt;T&gt;();
+                if (instance == null)
+                &#123;
+                    // 如果没有，则创建一个新的GameObject并挂载脚本
+                    GameObject obj = new GameObject(typeof(T).Name);
+                    instance = obj.AddComponent&lt;T&gt;();
+                &#125;
+            &#125;
+            return instance;
+        &#125;
+    &#125;
+
+    protected virtual void Awake()
+    &#123;
+        // 此时没有重复挂载检查
+        // instance = this as T; // 简单的赋值
+    &#125;
+&#125;
+</code></pre>
+<p><strong>初步测试代码：<code>Test2Mgr2.cs</code></strong></p>
+<pre><code class="csharp">// Test2Mgr2.cs
+public class Test2Mgr2 : SingletonAutoMono&lt;Test2Mgr2&gt;
+&#123;
+    public void Speak()
+    &#123;
+        UnityEngine.Debug.Log(&quot;Test2Mgr2 Speak&quot;);
+    &#125;
+&#125;
+
+// AutoMonoSingletonTest.cs (继续使用，但现在Test2Mgr2会自动创建)
+using UnityEngine;
+
+public class AutoMonoSingletonTest : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        // 如果场景中没有Test2Mgr2，它会自动创建一个GameObject并挂载
+        Test2Mgr2.Instance.Speak();
+        // 输出：Test2Mgr2 Speak
+    &#125;
+&#125;
+</code></pre>
+<h3 id="唯一性问题—构造函数"><a href="#唯一性问题—构造函数" class="headerlink" title="唯一性问题—构造函数"></a>唯一性问题—构造函数</h3><h4 id="之前存在什么问题"><a href="#之前存在什么问题" class="headerlink" title="之前存在什么问题"></a>之前存在什么问题</h4><p>通过上面的测试代码，我们发现了一个严重的问题：<strong>外部可以通过 <code>new</code> 关键字创建新的实例，破坏了单例的唯一性</strong>。</p>
+<p><strong>问题分析：</strong></p>
+<ol>
+<li><strong>对于不继承MonoBehaviour的单例模式基类</strong>：我们要避免在外部 <code>new</code> 单例模式类对象，因为这会创建新的实例，破坏单例的唯一性。</li>
+<li><strong>对于继承MonoBehaviour的单例模式基类</strong>：由于继承MonoBehaviour的脚本不能通过 <code>new</code> 创建，因此不用过多考虑。</li>
+</ol>
+<h4 id="如何解决构造函数问题"><a href="#如何解决构造函数问题" class="headerlink" title="如何解决构造函数问题"></a>如何解决构造函数问题</h4><p>为了强制单例的唯一性，我们需要阻止外部通过 <code>new</code> 关键字创建实例。这可以通过将构造函数设为 <code>private</code> 或 <code>protected</code> 来实现。然而，如果构造函数是私有的，基类又如何创建实例呢？答案是使用<strong>反射</strong>。</p>
+<p><strong>解决方案：</strong></p>
+<ol>
+<li><strong>父类变为抽象类</strong>：将单例基类设为抽象类，可以强制子类实现某些行为，并阻止基类被直接实例化。</li>
+<li><strong>规定继承单例模式基类的类必须显示实现私有无参构造函数</strong>：这是为了配合反射机制，让基类能够找到并调用子类的私有构造函数。</li>
+<li><strong>在基类中通过反射来调用私有构造函数实例化对象</strong>：<br>主要知识点：<br>利用 <code>Type</code> 中的 <code>GetConstructor(约束条件, 绑定对象, 参数类型, 参数修饰符)</code> 方法来获取私有无参构造函数。<pre><code class="csharp">ConstructorInfo constructor = typeof(T).GetConstructor(
+    BindingFlags.Instance | BindingFlags.NonPublic, // 表示成员私有方法
+    null,                                         // 表示没有绑定对象
+    Type.EmptyTypes,                              // 表示没有参数
+    null);                                        // 表示没有参数修饰符
+</code></pre>
+</li>
+</ol>
+<p><strong>解决后的源码实现：<code>Singleton.cs</code> (解决构造函数问题)</strong></p>
+<pre><code class="csharp">using System;
+using System.Reflection;
+using UnityEngine;
+
+/// &lt;summary&gt;
+/// 单例模式基类（解决构造函数唯一性问题，未考虑线程安全）
+/// &lt;/summary&gt;
+public abstract class Singleton&lt;T&gt; where T : class
+&#123;
+    private static T instance;
+
+    public static T Instance
+    &#123;
+        get
+        &#123;
+            if (instance == null)
+            &#123;
+                // 通过反射获取私有无参构造函数
+                ConstructorInfo constructor = typeof(T).GetConstructor(
+                    BindingFlags.Instance | BindingFlags.NonPublic,
+                    null,
+                    Type.EmptyTypes,
+                    null);
+
+                if (constructor == null)
+                &#123;
+                    throw new Exception($&quot;Class &#123;typeof(T).Name&#125; must have a private parameterless constructor.&quot;);
+                &#125;
+                instance = constructor.Invoke(null) as T;
+            &#125;
+            return instance;
+        &#125;
+    &#125;
+
+    // 规定继承单例模式基类的类必须显示实现私有无参构造函数
+    protected Singleton() &#123; &#125;
+&#125;
+</code></pre>
+<p><strong>测试代码：<code>TestMgr.cs</code> (更新) 和 <code>ConstructorTest.cs</code></strong></p>
+<pre><code class="csharp">// TestMgr.cs (更新后，需要私有构造函数)
+public class TestMgr : Singleton&lt;TestMgr&gt;
+&#123;
+    // 必须实现私有无参构造函数
+    private TestMgr()
+    &#123;
+        UnityEngine.Debug.Log(&quot;TestMgr 构造函数被调用&quot;);
+    &#125;
+
+    public void Speak()
+    &#123;
+        UnityEngine.Debug.Log(&quot;TestMgr Speak&quot;);
+    &#125;
+&#125;
+
+// ConstructorTest.cs
+using UnityEngine;
+
+public class ConstructorTest : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        // 正常获取单例
+        TestMgr.Instance.Speak();
+        // 输出：TestMgr 构造函数被调用
+        // 输出：TestMgr Speak
+
+        // 此时尝试通过new创建会报错，因为构造函数是私有的
+        // TestMgr newMgr = new TestMgr(); // 编译错误或运行时反射失败
+        // 问题解决：外部无法再创建新的实例，保证了单例的唯一性
+    &#125;
+&#125;
+</code></pre>
+<h3 id="唯一性问题—重复挂载"><a href="#唯一性问题—重复挂载" class="headerlink" title="唯一性问题—重复挂载"></a>唯一性问题—重复挂载</h3><h4 id="之前存在什么问题-1"><a href="#之前存在什么问题-1" class="headerlink" title="之前存在什么问题"></a>之前存在什么问题</h4><p>对于继承 <code>MonoBehaviour</code> 的单例模式，存在以下重复挂载问题：</p>
+<ol>
+<li><strong>同个对象的重复挂载</strong>：在同一个GameObject上不小心多次添加了同一个单例脚本。</li>
+<li><strong>不同对象的重复挂载</strong>：在场景中存在多个GameObject，每个都挂载了同一个单例脚本。</li>
+</ol>
+<h4 id="如何解决重复挂载问题"><a href="#如何解决重复挂载问题" class="headerlink" title="如何解决重复挂载问题"></a>如何解决重复挂载问题</h4><p>为了确保 <code>MonoBehaviour</code> 单例的唯一性，我们需要在代码层面进行检查和限制。</p>
+<p><strong>解决方案：</strong></p>
+<ol>
+<li><strong>同个对象的重复挂载</strong>：为脚本添加特性<code>[DisallowMultipleComponent]</code></li>
+<li><strong>修改代码逻辑</strong>：判断如果存在对象，移除脚本</li>
+<li><strong>对于自动挂载式的单例模式脚本</strong>：制定使用规则，不允许手动挂载或代码添加</li>
+</ol>
+<p><strong>解决后的源码实现：<code>SingletonMono.cs</code> 和 <code>SingletonAutoMono.cs</code></strong></p>
+<pre><code class="csharp">using UnityEngine;
+
+/// &lt;summary&gt;
+/// 继承MonoBehaviour的单例模式基类（挂载式 - 解决重复挂载问题）
+/// &lt;/summary&gt;
+[DisallowMultipleComponent] // 防止同一个GameObject上挂载多个相同脚本
+public class SingletonMono&lt;T&gt; : MonoBehaviour where T : SingletonMono&lt;T&gt;
+&#123;
+    private static T instance;
+
+    public static T Instance
+    &#123;
+        get
+        &#123;
+            if (instance == null)
+            &#123;
+                // 尝试从场景中查找现有实例
+                instance = FindObjectOfType&lt;T&gt;();
+                if (instance == null)
+                &#123;
+                    // 如果没有，则创建一个新的GameObject并挂载脚本
+                    GameObject obj = new GameObject(typeof(T).Name);
+                    instance = obj.AddComponent&lt;T&gt;();
+                &#125;
+            &#125;
+            return instance;
+        &#125;
+    &#125;
+
+    protected virtual void Awake()
+    &#123;
+        if (instance == null)
+        &#123;
+            instance = this as T;
+            DontDestroyOnLoad(gameObject); // 确保在场景切换时不被销毁
+        &#125;
+        else if (instance != this)
+        &#123;
+            // 如果已经存在一个实例，并且当前实例不是这个，则销毁当前实例
+            Destroy(gameObject);
+        &#125;
+    &#125;
+&#125;
+
+// SingletonAutoMono.cs (与SingletonMono.cs的Awake逻辑相同，确保唯一性)
+using UnityEngine;
+
+/// &lt;summary&gt;
+/// 继承MonoBehaviour的单例模式基类（自动挂载式 - 解决重复挂载问题）
+/// &lt;/summary&gt;
+[DisallowMultipleComponent] // 防止同一个GameObject上挂载多个相同脚本
+public class SingletonAutoMono&lt;T&gt; : MonoBehaviour where T : SingletonAutoMono&lt;T&gt;
+&#123;
+    private static T instance;
+
+    public static T Instance
+    &#123;
+        get
+        &#123;
+            if (instance == null)
+            &#123;
+                // 尝试从场景中查找现有实例
+                instance = FindObjectOfType&lt;T&gt;();
+                if (instance == null)
+                &#123;
+                    // 如果没有，则创建一个新的GameObject并挂载脚本
+                    GameObject obj = new GameObject(typeof(T).Name);
+                    instance = obj.AddComponent&lt;T&gt;();
+                &#125;
+            &#125;
+            return instance;
+        &#125;
+    &#125;
+
+    protected virtual void Awake()
+    &#123;
+        if (instance == null)
+        &#123;
+            instance = this as T;
+            DontDestroyOnLoad(gameObject); // 确保在场景切换时不被销毁
+        &#125;
+        else if (instance != this)
+        &#123;
+            // 如果已经存在一个实例，并且当前实例不是这个，则销毁当前实例
+            Destroy(gameObject);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<p><strong>测试代码：<code>RepeatMountTest.cs</code></strong></p>
+<pre><code class="csharp">using UnityEngine;
+
+public class RepeatMountTest : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        // 确保场景中只有一个Test2Mgr实例
+        Test2Mgr.Instance.Speak();
+        // 输出：Test2Mgr Speak
+
+        // 尝试在运行时创建另一个Test2Mgr的GameObject并挂载脚本
+        // 由于[DisallowMultipleComponent]和Awake中的检查，新的实例会被销毁
+        GameObject anotherObj = new GameObject(&quot;AnotherTest2Mgr&quot;);
+        anotherObj.AddComponent&lt;Test2Mgr&gt;();
+        // 结果：新创建的实例会被自动销毁，保证唯一性
+    &#125;
+&#125;
+</code></pre>
+<h3 id="线程安全问题"><a href="#线程安全问题" class="headerlink" title="线程安全问题"></a>线程安全问题</h3><h4 id="之前存在什么问题-2"><a href="#之前存在什么问题-2" class="headerlink" title="之前存在什么问题"></a>之前存在什么问题</h4><p>如果程序当中存在多线程，我们需要考虑当多个线程同时访问同一个内存空间时出现的问题。如果不加以控制，可能会导致数据出错。我们一般称这种问题为多线程并发问题，指多线程对共享数据的并发访问和操作。</p>
+<p>而一般解决该问题的方式，就是通过C#中的 <code>lock</code> 关键字进行加锁。我们需要考虑我们的单例模式对象们是否需要加锁(<code>lock</code>)。</p>
+<p><code>lock</code> 的原理保证了在任何时刻只有一个线程能够执行被锁保护的代码块，从而防止多个线程同时访问或修改共享资源，确保线程安全。</p>
+<h4 id="如何解决线程安全问题"><a href="#如何解决线程安全问题" class="headerlink" title="如何解决线程安全问题"></a>如何解决线程安全问题</h4><p><strong>解决方案：针对不同单例模式的加锁策略</strong></p>
+<ol>
+<li><strong>不继承MonoBehaviour的单例模式</strong>：建议加锁，避免以后使用多线程时出现并发问题。比如在处理网络通讯模块、复杂算法模块时，经常会进行多线程并发处理。</li>
+<li><strong>继承MonoBehaviour的单例模式</strong>：可加可不加，但是建议不加。因为Unity中的机制是，Unity主线程中处理的一些对象（如GameObject、Transform等等）是不允许被其他多线程修改访问的，会直接报错。因此我们一般不会通过多线程去访问继承MonoBehaviour的相关对象，既然如此，就不会发生多线程并发问题。</li>
+</ol>
+<p><strong>解决线程安全问题总结</strong><br>对于不继承MonoBehaviour的单例模式对象，建议加锁。<br>对于继承MonoBehaviour的单例模式对象，可以不加。</p>
+<p>但是具体是否加锁，都根据需求来定。如果你的项目中压根就不会使用多线程，那么完全可以不用考虑加锁问题。</p>
+<h4 id="最终实现：带线程安全的Singleton"><a href="#最终实现：带线程安全的Singleton" class="headerlink" title="最终实现：带线程安全的Singleton"></a>最终实现：带线程安全的Singleton</h4><p>根据上述讨论，我们为不继承 <code>MonoBehaviour</code> 的单例基类 <code>Singleton&lt;T&gt;</code> 添加线程安全机制。</p>
+<p><strong>最终源码实现：<code>Singleton.cs</code> (最终版本)</strong></p>
+<pre><code class="csharp">using System;
+using System.Reflection;
+using UnityEngine;
+
+/// &lt;summary&gt;
+/// 单例模式基类（最终版本 - 解决构造函数唯一性问题和线程安全问题）
+/// &lt;/summary&gt;
+public abstract class Singleton&lt;T&gt; where T : class
+&#123;
+    private static T instance;
+    private static readonly object LockObject = new object(); // 用于线程同步的锁对象
+
+    public static T Instance
+    &#123;
+        get
+        &#123;
+            // 双重检查锁定，确保线程安全
+            if (instance == null)
+            &#123;
+                lock (LockObject) // 加锁
+                &#123;
+                    if (instance == null)
+                    &#123;
+                        // 通过反射获取私有无参构造函数
+                        ConstructorInfo constructor = typeof(T).GetConstructor(
+                            BindingFlags.Instance | BindingFlags.NonPublic,
+                            null,
+                            Type.EmptyTypes,
+                            null);
+
+                        if (constructor == null)
+                        &#123;
+                            throw new Exception($&quot;Class &#123;typeof(T).Name&#125; must have a private parameterless constructor.&quot;);
+                        &#125;
+                        instance = constructor.Invoke(null) as T;
+                    &#125;
+                &#125;
+            &#125;
+            return instance;
+        &#125;
+    &#125;
+
+    // 规定继承单例模式基类的类必须显示实现私有无参构造函数
+    protected Singleton() &#123; &#125;
+&#125;
+</code></pre>
+<p><strong>测试代码：<code>ThreadSafetyTest.cs</code></strong></p>
+<pre><code class="csharp">using UnityEngine;
+using System.Threading;
+
+public class ThreadSafetyTest : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        // 模拟多线程访问TestMgr单例
+        for (int i = 0; i &lt; 5; i++)
+        &#123;
+            new Thread(() =&gt;
+            &#123;
+                TestMgr.Instance.Speak();
+                // 输出：TestMgr 构造函数被调用 (只调用一次)
+                // 输出：TestMgr Speak (可能输出多次，但构造函数只调用一次)
+            &#125;).Start();
+        &#125;
+        // 结果：即使多线程并发访问，单例实例也只创建一次，保证了线程安全
+    &#125;
+&#125;
+</code></pre>
 <hr>
-<h2 id="4-2-知识点代码"><a href="#4-2-知识点代码" class="headerlink" title="4.2 知识点代码"></a>4.2 知识点代码</h2><h3 id="PoolMgr-cs（对象池管理器）"><a href="#PoolMgr-cs（对象池管理器）" class="headerlink" title="PoolMgr.cs（对象池管理器）"></a>PoolMgr.cs（对象池管理器）</h3><pre><code class="csharp">using UnityEngine;
-
-/// &lt;summary&gt;
-/// 对象池管理器
-/// 统一管理GameObject对象池和普通类对象池
-/// 提供与原有API兼容的接口
-/// &lt;/summary&gt;
-public class PoolMgr : Singleton&lt;PoolMgr&gt;
-&#123;
-    #region 字段
-
-    /// &lt;summary&gt;
-    /// GameObject对象池管理器
-    /// &lt;/summary&gt;
-    private GameObjPoolMgr gameObjPoolMgr;
-
-    /// &lt;summary&gt;
-    /// 普通类对象池管理器
-    /// &lt;/summary&gt;
-    private ObjPoolMgr objPoolMgr;
-
-    /// &lt;summary&gt;
-    /// 是否开启布局功能
-    /// &lt;/summary&gt;
-    public static bool isOpenLayout = true;
-
-    #endregion
-
-    #region 构造函数
-
-    private PoolMgr()
-    &#123;
-        gameObjPoolMgr = new GameObjPoolMgr();
-        objPoolMgr = new ObjPoolMgr();
-    &#125;
-
-    #endregion
-
-    #region GameObject对象池管理
-
-    /// &lt;summary&gt;
-    /// 从对象池中获取GameObject对象
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;name&quot;&gt;对象名称&lt;/param&gt;
-    /// &lt;returns&gt;从缓存池中取出的对象&lt;/returns&gt;
-    public GameObject GetGameObj(string name)
-    &#123;
-        return gameObjPoolMgr.GetObj(name);
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将GameObject对象归还到缓存池中
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnGameObj(GameObject obj)
-    &#123;
-        gameObjPoolMgr.ReturnObj(obj);
-    &#125;
-
-    #endregion
-
-    #region 普通类对象池管理
-
-    /// &lt;summary&gt;
-    /// 获取自定义的数据结构类和逻辑类对象
-    /// 不继承MonoBehaviour的对象池实现
-    /// &lt;/summary&gt;
-    /// &lt;typeparam name=&quot;T&quot;&gt;数据类型&lt;/typeparam&gt;
-    /// &lt;returns&gt;从对象池中取出的对象&lt;/returns&gt;
-    public T GetObj&lt;T&gt;() where T : class, new()
-    &#123;
-        return objPoolMgr.GetObj&lt;T&gt;();
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将自定义数据结构类和逻辑类对象归还到池子中
-    /// &lt;/summary&gt;
-    /// &lt;typeparam name=&quot;T&quot;&gt;对应类型&lt;/typeparam&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnObj&lt;T&gt;(T obj) where T : class, new()
-    &#123;
-        objPoolMgr.ReturnObj&lt;T&gt;(obj);
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 注册自定义对象池
-    /// &lt;/summary&gt;
-    /// &lt;typeparam name=&quot;T&quot;&gt;对象类型&lt;/typeparam&gt;
-    /// &lt;param name=&quot;pool&quot;&gt;自定义对象池实例&lt;/param&gt;
-    public void RegisterObjPool&lt;T&gt;(ObjPool&lt;T&gt; pool) where T : class, new()
-    &#123;
-        objPoolMgr.RegisterPool&lt;T&gt;(pool);
-    &#125;
-
-    #endregion
-
-    #region 统一管理
-
-    /// &lt;summary&gt;
-    /// 清除整个对象池中的数据
-    /// 主要用于场景切换时清理资源
-    /// &lt;/summary&gt;
-    public void ClearPool()
-    &#123;
-        gameObjPoolMgr.ClearPool();
-        objPoolMgr.ClearPool();
-    &#125;
-
-    #endregion
-&#125;
-</code></pre>
-<h3 id="GameObjPool-cs（GameObject对象池基类）"><a href="#GameObjPool-cs（GameObject对象池基类）" class="headerlink" title="GameObjPool.cs（GameObject对象池基类）"></a>GameObjPool.cs（GameObject对象池基类）</h3><pre><code class="csharp">using System.Collections.Generic;
+<h2 id="2-2-知识点代码"><a href="#2-2-知识点代码" class="headerlink" title="2.2 知识点代码"></a>2.2 知识点代码</h2><h3 id="Singleton-cs（不继承Mono的单例基类）"><a href="#Singleton-cs（不继承Mono的单例基类）" class="headerlink" title="Singleton.cs（不继承Mono的单例基类）"></a>Singleton.cs（不继承Mono的单例基类）</h3><pre><code class="csharp">using System;
+using System.Reflection;
 using UnityEngine;
 
 /// &lt;summary&gt;
-/// GameObject对象池抽象基类
-/// 提供可继承的对象池实现，支持自定义加载方式和数量上限
-/// 使用栈（LIFO）管理对象，符合Unity官方ObjectPool设计
+/// 单例模式基类（最终版本 - 解决构造函数唯一性问题和线程安全问题）
 /// &lt;/summary&gt;
-public abstract class GameObjPool
+public abstract class Singleton&lt;T&gt; where T : class
 &#123;
-    #region 字段
+    private static T instance;
+    private static readonly object LockObject = new object(); // 用于线程同步的锁对象
 
-    /// &lt;summary&gt;
-    /// 存储未使用的对象栈
-    /// &lt;/summary&gt;
-    protected Stack&lt;GameObject&gt; _unuseStack = new Stack&lt;GameObject&gt;();
-
-    /// &lt;summary&gt;
-    /// 记录正在使用中的对象列表（用于LRU淘汰）
-    /// &lt;/summary&gt;
-    protected LinkedList&lt;GameObject&gt; _usedList = new LinkedList&lt;GameObject&gt;();
-
-    /// &lt;summary&gt;
-    /// 对象到链表节点的映射（用于O(1)删除）
-    /// &lt;/summary&gt;
-    protected Dictionary&lt;GameObject, LinkedListNode&lt;GameObject&gt;&gt; _gameObj2NodeDict = new Dictionary&lt;GameObject, LinkedListNode&lt;GameObject&gt;&gt;();
-
-    /// &lt;summary&gt;
-    /// 对象池上限，场景上同时存在的对象的最大个数
-    /// &lt;/summary&gt;
-    protected readonly int MaxNum;
-
-    /// &lt;summary&gt;
-    /// 抽屉根对象，用于进行布局管理的对象
-    /// &lt;/summary&gt;
-    protected GameObject _rootObj;
-
-    /// &lt;summary&gt;
-    /// 对象池名称
-    /// &lt;/summary&gt;
-    protected string _poolName;
-
-    #endregion
-
-    #region 属性
-
-    /// &lt;summary&gt;
-    /// 获取容器中未使用对象的数量
-    /// &lt;/summary&gt;
-    public int UnuseCount =&gt; _unuseStack.Count;
-
-    /// &lt;summary&gt;
-    /// 获取正在使用中的对象数量
-    /// &lt;/summary&gt;
-    public int UsedCount =&gt; _usedList.Count;
-
-    /// &lt;summary&gt;
-    /// 判断是否需要创建新对象
-    /// 当使用中的对象数量小于最大容量时返回true
-    /// &lt;/summary&gt;
-    public bool NeedCreate =&gt; UnuseCount == 0 &amp;&amp; _usedList.Count &lt; MaxNum;
-
-    #endregion
-
-    #region 构造函数
-
-    /// &lt;summary&gt;
-    /// 初始化构造函数
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;poolName&quot;&gt;对象池名称&lt;/param&gt;
-    /// &lt;param name=&quot;root&quot;&gt;缓存池父对象&lt;/param&gt;
-    /// &lt;param name=&quot;maxNum&quot;&gt;最大对象数量，默认100&lt;/param&gt;
-    /// &lt;param name=&quot;warmCount&quot;&gt;预热数量，默认0&lt;/param&gt;
-    protected GameObjPool(string poolName, GameObject root, int maxNum = 100, int warmCount = 0)
+    public static T Instance
     &#123;
-        _poolName = poolName;
-        _rootObj = root;
-        MaxNum = maxNum;
-
-        // 预热对象
-        for (int i = 0; i &lt; Mathf.Min(warmCount, MaxNum); i++)
+        get
         &#123;
-            GameObject obj = CreateNewObject();
-            obj.SetActive(false);
-            if (GameObjPoolMgr.isOpenLayout)
+            // 双重检查锁定，确保线程安全
+            if (instance == null)
             &#123;
-                obj.transform.SetParent(_rootObj.transform);
+                lock (LockObject) // 加锁
+                &#123;
+                    if (instance == null)
+                    &#123;
+                        // 通过反射获取私有无参构造函数
+                        ConstructorInfo constructor = typeof(T).GetConstructor(
+                            BindingFlags.Instance | BindingFlags.NonPublic,
+                            null,
+                            Type.EmptyTypes,
+                            null);
+
+                        if (constructor == null)
+                        &#123;
+                            throw new Exception($&quot;Class &#123;typeof(T).Name&#125; must have a private parameterless constructor.&quot;);
+                        &#125;
+                        instance = constructor.Invoke(null) as T;
+                    &#125;
+                &#125;
             &#125;
-            _unuseStack.Push(obj);
+            return instance;
         &#125;
     &#125;
 
-    #endregion
-
-    #region 抽象方法
-
-    /// &lt;summary&gt;
-    /// 加载GameObject预制体
-    /// 子类可以重写此方法来自定义加载方式
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;加载的GameObject预制体&lt;/returns&gt;
-    protected abstract GameObject LoadPrefab();
-
-    #endregion
-
-    #region 虚方法
-
-    /// &lt;summary&gt;
-    /// 从对象池中取出对象时的初始化
-    /// 子类可以重写此方法来执行自定义初始化
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;取出的GameObject对象&lt;/param&gt;
-    protected virtual void OnGetObject(GameObject obj)
-    &#123;
-        // 默认实现为空，子类可以重写
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将对象放回对象池时的清理
-    /// 子类可以重写此方法来执行自定义清理
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;放回的GameObject对象&lt;/param&gt;
-    protected virtual void OnReturnObject(GameObject obj)
-    &#123;
-        // 默认实现为空，子类可以重写
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 对象被抢占时的回调
-    /// 当池满时，会抢占最早使用的对象
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;被抢占的对象&lt;/param&gt;
-    protected virtual void OnPreemptObject(GameObject obj)
-    &#123;
-        // 默认实现为空，子类可以重写
-    &#125;
-
-    #endregion
-
-    #region 对象管理方法
-
-    /// &lt;summary&gt;
-    /// 从对象池中取出对象
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;取出的GameObject对象&lt;/returns&gt;
-    public GameObject GetObj()
-    &#123;
-        GameObject obj;
-
-        if (UnuseCount &gt; 0)
-        &#123;
-            // 从未使用的栈中取出对象（LIFO）
-            obj = _unuseStack.Pop();
-        &#125;
-        else if (_usedList.Count &lt; MaxNum)
-        &#123;
-            // 创建新对象
-            obj = CreateNewObject();
-        &#125;
-        else
-        &#123;
-            // 池满，抢占最早使用的对象（FIFO）
-            obj = _usedList.First.Value;
-            _usedList.RemoveFirst();
-            _gameObj2NodeDict.Remove(obj);
-            OnPreemptObject(obj);
-        &#125;
-
-        // 添加到使用列表的尾部（最近使用）
-        LinkedListNode&lt;GameObject&gt; node = _usedList.AddLast(obj);
-        _gameObj2NodeDict[obj] = node;
-
-        // 激活对象
-        obj.SetActive(true);
-        // 断开父子关系
-        if (GameObjPoolMgr.isOpenLayout)
-        &#123;
-            obj.transform.SetParent(null);
-        &#125;
-
-        // 执行初始化
-        OnGetObject(obj);
-
-        return obj;
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将对象归还到对象池中
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnObj(GameObject obj)
-    &#123;
-        // 执行清理
-        OnReturnObject(obj);
-
-        // 失活对象
-        obj.SetActive(false);
-        // 放入对应抽屉的根物体中，建立父子关系
-        if (GameObjPoolMgr.isOpenLayout)
-        &#123;
-            obj.transform.SetParent(_rootObj.transform);
-        &#125;
-
-        // 从使用列表中移除
-        if (_gameObj2NodeDict.TryGetValue(obj, out LinkedListNode&lt;GameObject&gt; node))
-        &#123;
-            _usedList.Remove(node);
-            _gameObj2NodeDict.Remove(obj);
-        &#125;
-
-        // 压入未使用栈（LIFO）
-        _unuseStack.Push(obj);
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 创建新对象并添加到使用列表
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;创建的GameObject对象&lt;/returns&gt;
-    public GameObject CreateNewObject()
-    &#123;
-        GameObject prefab = LoadPrefab();
-        GameObject obj = Object.Instantiate(prefab);
-        obj.name = _poolName;
-        return obj;
-    &#125;
-
-    #endregion
+    // 规定继承单例模式基类的类必须显示实现私有无参构造函数
+    protected Singleton() &#123; &#125;
 &#125;
 </code></pre>
-<h3 id="ObjPool-cs（普通类对象池基类）"><a href="#ObjPool-cs（普通类对象池基类）" class="headerlink" title="ObjPool.cs（普通类对象池基类）"></a>ObjPool.cs（普通类对象池基类）</h3><pre><code class="csharp">using System.Collections.Generic;
+<h3 id="SingletonAutoMono-cs（自动挂载式单例基类）"><a href="#SingletonAutoMono-cs（自动挂载式单例基类）" class="headerlink" title="SingletonAutoMono.cs（自动挂载式单例基类）"></a>SingletonAutoMono.cs（自动挂载式单例基类）</h3><pre><code class="csharp">using UnityEngine;
 
 /// &lt;summary&gt;
-/// 普通类对象池抽象基类
-/// 提供可继承的对象池实现，支持自定义创建和重置逻辑
+/// 继承MonoBehaviour的单例模式基类（自动挂载式 - 解决重复挂载问题）
 /// &lt;/summary&gt;
-/// &lt;typeparam name=&quot;T&quot;&gt;要存储的对象类型&lt;/typeparam&gt;
-public abstract class ObjPool&lt;T&gt; where T : class, new()
+[DisallowMultipleComponent] // 防止同一个GameObject上挂载多个相同脚本
+public class SingletonAutoMono&lt;T&gt; : MonoBehaviour where T : SingletonAutoMono&lt;T&gt;
 &#123;
-    #region 字段
+    private static T instance;
 
-    /// &lt;summary&gt;
-    /// 对象池队列
-    /// &lt;/summary&gt;
-    protected Queue&lt;T&gt; _objQueue = new Queue&lt;T&gt;();
-
-    #endregion
-
-    #region 属性
-
-    /// &lt;summary&gt;
-    /// 获取池中可用对象的数量
-    /// &lt;/summary&gt;
-    public int Count =&gt; _objQueue.Count;
-
-    #endregion
-
-    #region 构造函数
-
-    /// &lt;summary&gt;
-    /// 初始化构造函数
-    /// &lt;/summary&gt;
-    protected ObjPool()
+    public static T Instance
     &#123;
-    &#125;
-
-    #endregion
-
-    #region 抽象方法
-
-    /// &lt;summary&gt;
-    /// 创建新对象
-    /// 子类可以重写此方法来自定义创建逻辑
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;创建的对象&lt;/returns&gt;
-    protected virtual T CreateObject()
-    &#123;
-        return new T();
-    &#125;
-
-    #endregion
-
-    #region 虚方法
-
-    /// &lt;summary&gt;
-    /// 从对象池中取出对象时的初始化
-    /// 子类可以重写此方法来执行自定义初始化
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;取出的对象&lt;/param&gt;
-    protected virtual void OnGetObject(T obj)
-    &#123;
-        // 默认实现为空，子类可以重写
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将对象放回对象池时的清理
-    /// 子类可以重写此方法来执行自定义清理
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;放回的对象&lt;/param&gt;
-    protected virtual void OnReturnObject(T obj)
-    &#123;
-        // 默认实现为空，子类可以重写
-        // 如果需要重置对象，请在子类中重写此方法
-    &#125;
-
-    #endregion
-
-    #region 对象管理方法
-
-    /// &lt;summary&gt;
-    /// 从对象池中获取对象
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;从对象池中取出的对象&lt;/returns&gt;
-    public T GetObj()
-    &#123;
-        // 池子当中是否有可以复用的内容
-        // 从队列中取出对象进行复用 否则创建新对象
-        T obj = _objQueue.Count &gt; 0 ? _objQueue.Dequeue() : CreateObject();
-
-        // 执行初始化
-        OnGetObject(obj);
-
-        return obj;
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将对象归还到池子中
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnObj(T obj)
-    &#123;
-        // 如果想要归还null对象，是不被允许的
-        if (obj == null)
+        get
         &#123;
-            return;
-        &#125;
-
-        // 执行清理
-        OnReturnObject(obj);
-
-        // 放入池子中
-        _objQueue.Enqueue(obj);
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 清除整个对象池中的数据
-    /// 主要用于场景切换时清理资源
-    /// &lt;/summary&gt;
-    public void ClearPool()
-    &#123;
-        _objQueue.Clear();
-    &#125;
-
-    #endregion
-&#125;
-</code></pre>
-<h3 id="GameObjPoolMgr-cs（GameObject对象池管理器）"><a href="#GameObjPoolMgr-cs（GameObject对象池管理器）" class="headerlink" title="GameObjPoolMgr.cs（GameObject对象池管理器）"></a>GameObjPoolMgr.cs（GameObject对象池管理器）</h3><pre><code class="csharp">using System.Collections.Generic;
-using UnityEngine;
-
-/// &lt;summary&gt;
-/// GameObject对象池管理器
-/// 使用字典管理多个GameObjPool实例
-/// 不再负责加载逻辑，由各个Pool自己决定
-/// &lt;/summary&gt;
-public class GameObjPoolMgr
-&#123;
-    #region 字段
-
-    /// &lt;summary&gt;
-    /// GameObject对象池字典
-    /// 键为对象名称，值为对应的GameObjPool
-    /// &lt;/summary&gt;
-    private Dictionary&lt;string, GameObjPool&gt; _gameObjPoolDict = new Dictionary&lt;string, GameObjPool&gt;();
-
-    /// &lt;summary&gt;
-    /// 对象池根对象
-    /// &lt;/summary&gt;
-    private GameObject _mgrRoot;
-
-    /// &lt;summary&gt;
-    /// 是否开启布局功能
-    /// &lt;/summary&gt;
-    public static bool isOpenLayout = true;
-
-    #endregion
-
-    #region 构造函数
-
-    /// &lt;summary&gt;
-    /// 初始化构造函数
-    /// &lt;/summary&gt;
-    public GameObjPoolMgr()
-    &#123;
-        if (!isOpenLayout)
-        &#123;
-            return;
-        &#125;
-
-        _mgrRoot = new GameObject(&quot;GameObjPoolRoot&quot;);
-        Object.DontDestroyOnLoad(_mgrRoot);
-    &#125;
-
-    #endregion
-
-    #region GameObject对象池管理
-
-    /// &lt;summary&gt;
-    /// 从对象池中获取GameObject对象
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;name&quot;&gt;对象名称&lt;/param&gt;
-    /// &lt;returns&gt;从缓存池中取出的对象&lt;/returns&gt;
-    public GameObject GetObj(string name)
-    &#123;
-        // 如果没有对应的对象池，创建默认对象池
-        if (!_gameObjPoolDict.ContainsKey(name))
-        &#123;
-            _gameObjPoolDict[name] = new DefaultGameObjPool(name, _mgrRoot);
-        &#125;
-
-        return _gameObjPoolDict[name].GetObj();
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 将GameObject对象归还到缓存池中
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnObj(GameObject obj)
-    &#123;
-        // 往对象池中归还对象
-        _gameObjPoolDict[obj.name].ReturnObj(obj);
-    &#125;
-
-    /// &lt;summary&gt;
-    /// 清除整个对象池中的数据
-    /// 主要用于场景切换时清理资源
-    /// &lt;/summary&gt;
-    public void ClearPool()
-    &#123;
-        _gameObjPoolDict.Clear();
-        if (_mgrRoot != null)
-        &#123;
-            Object.Destroy(_mgrRoot);
-            _mgrRoot = null;
-        &#125;
-    &#125;
-
-    #endregion
-&#125;
-</code></pre>
-<h3 id="ObjPoolMgr-cs（普通类对象池管理器）"><a href="#ObjPoolMgr-cs（普通类对象池管理器）" class="headerlink" title="ObjPoolMgr.cs（普通类对象池管理器）"></a>ObjPoolMgr.cs（普通类对象池管理器）</h3><pre><code class="csharp">using System;
-using System.Collections.Generic;
-using UnityEngine;
-
-/// &lt;summary&gt;
-/// 普通类对象池管理器（支持自定义对象池）
-/// 使用字典管理多个ObjPool实例
-/// &lt;/summary&gt;
-public class ObjPoolMgr
-&#123;
-    #region 字段
-
-    /// &lt;summary&gt;
-    /// 数据结构类对象池字典
-    /// 用于存储不继承MonoBehaviour的对象
-    /// &lt;/summary&gt;
-    private Dictionary&lt;Type, object&gt; _objPoolDict = new Dictionary&lt;Type, object&gt;();
-
-    #endregion
-
-    #region 构造函数
-
-    /// &lt;summary&gt;
-    /// 初始化构造函数
-    /// &lt;/summary&gt;
-    public ObjPoolMgr()
-    &#123;
-    &#125;
-
-    #endregion
-
-    #region 对象池注册
-
-    /// &lt;summary&gt;
-    /// 注册自定义对象池
-    /// &lt;/summary&gt;
-    /// &lt;typeparam name=&quot;T&quot;&gt;对象类型&lt;/typeparam&gt;
-    /// &lt;param name=&quot;pool&quot;&gt;自定义对象池实例&lt;/param&gt;
-    public void RegisterPool&lt;T&gt;(ObjPool&lt;T&gt; pool) where T : class, new()
-    &#123;
-        Type type = typeof(T);
-        _objPoolDict[type] = pool;
-    &#125;
-
-    #endregion
-
-    #region 普通类对象池管理
-
-    /// &lt;summary&gt;
-    /// 获取自定义的数据结构类和逻辑类对象
-    /// &lt;/summary&gt;
-    /// &lt;typeparam name=&quot;T&quot;&gt;数据类型&lt;/typeparam&gt;
-    /// &lt;returns&gt;从对象池中取出的对象&lt;/returns&gt;
-    public T GetObj&lt;T&gt;() where T : class, new()
-    &#123;
-        Type type = typeof(T);
-
-        // 有池子
-        if (_objPoolDict.TryGetValue(type, out var value))
-        &#123;
-            if (value is ObjPool&lt;T&gt; pool)
+            if (instance == null)
             &#123;
-                return pool.GetObj();
+                // 尝试从场景中查找现有实例
+                instance = FindObjectOfType&lt;T&gt;();
+                if (instance == null)
+                &#123;
+                    // 如果没有，则创建一个新的GameObject并挂载脚本
+                    GameObject obj = new GameObject(typeof(T).Name);
+                    instance = obj.AddComponent&lt;T&gt;();
+                &#125;
             &#125;
-
-            Debug.LogError($&quot;&#123;typeof(T)&#125; 存在对象池但是转换失败！&quot;);
-            return null;
-        &#125;
-        else
-        &#123;
-            // 没有池子，创建默认对象池
-            DefaultObjPool&lt;T&gt; pool = new DefaultObjPool&lt;T&gt;();
-            _objPoolDict.Add(type, pool);
-            return pool.GetObj();
+            return instance;
         &#125;
     &#125;
 
-    /// &lt;summary&gt;
-    /// 将自定义数据结构类和逻辑类对象归还到池子中
-    /// &lt;/summary&gt;
-    /// &lt;typeparam name=&quot;T&quot;&gt;对应类型&lt;/typeparam&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;要归还的对象&lt;/param&gt;
-    public void ReturnObj&lt;T&gt;(T obj) where T : class, new()
+    protected virtual void Awake()
     &#123;
-        if (obj == null)
+        if (instance == null)
         &#123;
-            return;
+            instance = this as T;
+            DontDestroyOnLoad(gameObject); // 确保在场景切换时不被销毁
         &#125;
-
-        Type type = typeof(T);
-
-        if (_objPoolDict.TryGetValue(type, out var value))
+        else if (instance != this)
         &#123;
-            if (value is ObjPool&lt;T&gt; pool)
+            // 如果已经存在一个实例，并且当前实例不是那个，则销毁当前实例
+            Destroy(gameObject);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h3 id="SingletonMono-cs（手动挂载式单例基类）"><a href="#SingletonMono-cs（手动挂载式单例基类）" class="headerlink" title="SingletonMono.cs（手动挂载式单例基类）"></a>SingletonMono.cs（手动挂载式单例基类）</h3><pre><code class="csharp">using UnityEngine;
+
+/// &lt;summary&gt;
+/// 继承MonoBehaviour的单例模式基类（挂载式 - 解决重复挂载问题）
+/// &lt;/summary&gt;
+[DisallowMultipleComponent] // 防止同一个GameObject上挂载多个相同脚本
+public class SingletonMono&lt;T&gt; : MonoBehaviour where T : SingletonMono&lt;T&gt;
+&#123;
+    private static T instance;
+
+    public static T Instance
+    &#123;
+        get
+        &#123;
+            if (instance == null)
             &#123;
-                pool.ReturnObj(obj);
+                // 尝试从场景中查找现有实例
+                instance = FindObjectOfType&lt;T&gt;();
+                if (instance == null)
+                &#123;
+                    // 如果没有，则创建一个新的GameObject并挂载脚本
+                    GameObject obj = new GameObject(typeof(T).Name);
+                    instance = obj.AddComponent&lt;T&gt;();
+                &#125;
             &#125;
-            else
-            &#123;
-                Debug.LogError($&quot;&#123;typeof(T)&#125; 存在对象池但是转换失败！&quot;);
-            &#125;
+            return instance;
         &#125;
-        else
+    &#125;
+
+    protected virtual void Awake()
+    &#123;
+        if (instance == null)
         &#123;
-            // 没有池子，创建默认对象池
-            DefaultObjPool&lt;T&gt; pool = new DefaultObjPool&lt;T&gt;();
-            _objPoolDict.Add(type, pool);
-            pool.ReturnObj(obj);
+            instance = this as T;
+            DontDestroyOnLoad(gameObject); // 确保在场景切换时不被销毁
+        &#125;
+        else if (instance != this)
+        &#123;
+            // 如果已经存在一个实例，并且当前实例不是那个，则销毁当前实例
+            Destroy(gameObject);
         &#125;
     &#125;
-
-    /// &lt;summary&gt;
-    /// 清除整个对象池中的数据
-    /// &lt;/summary&gt;
-    public void ClearPool()
-    &#123;
-        _objPoolDict.Clear();
-    &#125;
-
-    #endregion
 &#125;
 </code></pre>
-<h3 id="DefaultGameObjPool-cs（默认GameObject对象池实现）"><a href="#DefaultGameObjPool-cs（默认GameObject对象池实现）" class="headerlink" title="DefaultGameObjPool.cs（默认GameObject对象池实现）"></a>DefaultGameObjPool.cs（默认GameObject对象池实现）</h3><pre><code class="csharp">using UnityEngine;
+<h3 id="TestMgr-cs（不继承Mono的单例测试）"><a href="#TestMgr-cs（不继承Mono的单例测试）" class="headerlink" title="TestMgr.cs（不继承Mono的单例测试）"></a>TestMgr.cs（不继承Mono的单例测试）</h3><pre><code class="csharp">using UnityEngine;
 
-/// &lt;summary&gt;
-/// 默认GameObject对象池实现
-/// 使用Resources.Load加载资源，使用默认最大数量上限
-/// &lt;/summary&gt;
-public class DefaultGameObjPool : GameObjPool
+public class TestMgr : Singleton&lt;TestMgr&gt;
 &#123;
-    #region 构造函数
-
-    /// &lt;summary&gt;
-    /// 初始化构造函数
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;poolName&quot;&gt;对象池名称&lt;/param&gt;
-    /// &lt;param name=&quot;root&quot;&gt;缓存池父对象&lt;/param&gt;
-    /// &lt;param name=&quot;maxNum&quot;&gt;最大对象数量，默认100&lt;/param&gt;
-    /// &lt;param name=&quot;warmCount&quot;&gt;预热数量，默认0&lt;/param&gt;
-    public DefaultGameObjPool(string poolName, GameObject root, int maxNum = 100, int warmCount = 0) : base(poolName, root, maxNum, warmCount)
+    // 必须实现私有无参构造函数
+    private TestMgr()
     &#123;
+        Debug.Log(&quot;TestMgr 构造函数被调用&quot;);
     &#125;
 
-    #endregion
-
-    #region 重写方法
-
-    /// &lt;summary&gt;
-    /// 使用Resources.Load加载预制体
-    /// &lt;/summary&gt;
-    /// &lt;returns&gt;加载的GameObject预制体&lt;/returns&gt;
-    protected override GameObject LoadPrefab()
+    public void Speak()
     &#123;
-        return Resources.Load&lt;GameObject&gt;(_poolName);
+        Debug.Log(&quot;TestMgr Speak&quot;);
     &#125;
-
-    #endregion
 &#125;
 </code></pre>
-<h3 id="DefaultObjPool-cs（默认普通类对象池实现）"><a href="#DefaultObjPool-cs（默认普通类对象池实现）" class="headerlink" title="DefaultObjPool.cs（默认普通类对象池实现）"></a>DefaultObjPool.cs（默认普通类对象池实现）</h3><pre><code class="csharp">/// &lt;summary&gt;
-/// 默认普通类对象池实现
-/// 使用无参构造函数创建对象
-/// &lt;/summary&gt;
-/// &lt;typeparam name=&quot;T&quot;&gt;要存储的对象类型&lt;/typeparam&gt;
-public class DefaultObjPool&lt;T&gt; : ObjPool&lt;T&gt; where T : class, new()
+<h3 id="Test2Mgr-cs（手动挂载式单例测试）"><a href="#Test2Mgr-cs（手动挂载式单例测试）" class="headerlink" title="Test2Mgr.cs（手动挂载式单例测试）"></a>Test2Mgr.cs（手动挂载式单例测试）</h3><pre><code class="csharp">using UnityEngine;
+
+public class Test2Mgr : SingletonMono&lt;Test2Mgr&gt;
 &#123;
-    #region 构造函数
-
-    /// &lt;summary&gt;
-    /// 初始化构造函数
-    /// &lt;/summary&gt;
-    public DefaultObjPool() : base()
+    public void Speak()
     &#123;
+        Debug.Log(&quot;Test2Mgr Speak&quot;);
     &#125;
-
-    #endregion
 &#125;
 </code></pre>
-<h3 id="TestData-cs（测试数据结构类）"><a href="#TestData-cs（测试数据结构类）" class="headerlink" title="TestData.cs（测试数据结构类）"></a>TestData.cs（测试数据结构类）</h3><pre><code class="csharp">using UnityEngine;
+<h3 id="Test2Mgr2-cs（自动挂载式单例测试）"><a href="#Test2Mgr2-cs（自动挂载式单例测试）" class="headerlink" title="Test2Mgr2.cs（自动挂载式单例测试）"></a>Test2Mgr2.cs（自动挂载式单例测试）</h3><pre><code class="csharp">using UnityEngine;
 
-/// &lt;summary&gt;
-/// 测试数据结构类
-/// 用于演示普通类对象池的使用
-/// &lt;/summary&gt;
-public class TestData
+public class Test2Mgr2 : SingletonAutoMono&lt;Test2Mgr2&gt;
 &#123;
-    public int i = 0;
-    public string str = &quot;&quot;;
-    public object o = null;
-
-    public TestData()
+    public void Speak()
     &#123;
-        Debug.Log(&quot;TestData构造函数被调用&quot;);
+        Debug.Log(&quot;Test2Mgr2 Speak&quot;);
     &#125;
 &#125;
 </code></pre>
-<h3 id="TestDataPool-cs（自定义TestData对象池）"><a href="#TestDataPool-cs（自定义TestData对象池）" class="headerlink" title="TestDataPool.cs（自定义TestData对象池）"></a>TestDataPool.cs（自定义TestData对象池）</h3><pre><code class="csharp">using UnityEngine;
+<h3 id="SingletonUsageTest-cs（使用不继承Mono的单例）"><a href="#SingletonUsageTest-cs（使用不继承Mono的单例）" class="headerlink" title="SingletonUsageTest.cs（使用不继承Mono的单例）"></a>SingletonUsageTest.cs（使用不继承Mono的单例）</h3><pre><code class="csharp">using UnityEngine;
 
-/// &lt;summary&gt;
-/// TestData对象池
-/// 自定义TestData的重置逻辑
-/// &lt;/summary&gt;
-public class TestDataPool : ObjPool&lt;TestData&gt;
-&#123;
-    #region 构造函数
-
-    /// &lt;summary&gt;
-    /// 初始化构造函数
-    /// &lt;/summary&gt;
-    public TestDataPool() : base()
-    &#123;
-    &#125;
-
-    #endregion
-
-    #region 重写方法
-
-    /// &lt;summary&gt;
-    /// 将对象放回对象池时的清理
-    /// &lt;/summary&gt;
-    /// &lt;param name=&quot;obj&quot;&gt;放回的TestData对象&lt;/param&gt;
-    protected override void OnReturnObject(TestData obj)
-    &#123;
-        // 重置TestData的数据
-        obj.i = 0;
-        obj.str = &quot;&quot;;
-        obj.o = null;
-    &#125;
-
-    #endregion
-&#125;
-</code></pre>
-<h3 id="DelayRemove-cs（延迟销毁脚本）"><a href="#DelayRemove-cs（延迟销毁脚本）" class="headerlink" title="DelayRemove.cs（延迟销毁脚本）"></a>DelayRemove.cs（延迟销毁脚本）</h3><pre><code class="csharp">using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-/// &lt;summary&gt;
-/// 延迟销毁脚本
-/// 演示如何自动归还对象到对象池
-/// &lt;/summary&gt;
-public class DelayRemove : MonoBehaviour
-&#123;
-    // Start is called before the first frame update
-    private void OnEnable()
-    &#123;
-        Invoke(&quot;RemoveMe&quot;, 1f);
-    &#125;
-
-    private void RemoveMe()
-    &#123;
-        PoolMgr.Instance.ReturnGameObj(this.gameObject);
-    &#125;
-&#125;
-</code></pre>
-<h3 id="GameObjectPoolUsageTest-cs（GameObject对象池使用测试）"><a href="#GameObjectPoolUsageTest-cs（GameObject对象池使用测试）" class="headerlink" title="GameObjectPoolUsageTest.cs（GameObject对象池使用测试）"></a>GameObjectPoolUsageTest.cs（GameObject对象池使用测试）</h3><pre><code class="csharp">using UnityEngine;
-
-/// &lt;summary&gt;
-/// GameObject对象池使用测试
-/// 演示如何通过PoolMgr使用GameObject对象池
-/// &lt;/summary&gt;
-public class GameObjectPoolUsageTest : MonoBehaviour
+public class SingletonUsageTest : MonoBehaviour
 &#123;
     void Start()
     &#123;
-        Debug.Log(&quot;GameObject对象池使用测试：开始&quot;);
-
-        // 1. 获取GameObject对象
-        GameObject obj1 = PoolMgr.Instance.GetGameObj(&quot;Cube&quot;);
-        Debug.Log(&quot;获取对象：&quot; + obj1.name);
-        // 输出：获取对象：Cube
-
-        // 2. 延迟归还对象
-        Invoke(&quot;ReturnObject&quot;, 2f);
+        Debug.Log(&quot;SingletonUsageTest Start&quot;);
+        TestMgr.Instance.Speak();
+        // 输出：TestMgr 构造函数被调用
+        // 输出：TestMgr Speak
+        // 此时无法通过new创建TestMgr实例，保证了唯一性
+        // TestMgr newMgr = new TestMgr(); // 编译错误
     &#125;
+&#125;
+</code></pre>
+<h3 id="MonoSingletonUsageTest-cs（使用继承Mono的单例）"><a href="#MonoSingletonUsageTest-cs（使用继承Mono的单例）" class="headerlink" title="MonoSingletonUsageTest.cs（使用继承Mono的单例）"></a>MonoSingletonUsageTest.cs（使用继承Mono的单例）</h3><pre><code class="csharp">using UnityEngine;
 
-    private void ReturnObject()
+public class MonoSingletonUsageTest : MonoBehaviour
+&#123;
+    void Start()
     &#123;
-        // 找到场景中的Cube对象并归还
-        GameObject cube = GameObject.Find(&quot;Cube&quot;);
-        if (cube != null)
+        Debug.Log(&quot;MonoSingletonUsageTest Start&quot;);
+        // 确保场景中有一个挂载了Test2Mgr脚本的GameObject
+        Test2Mgr.Instance.Speak();
+        // 输出：Test2Mgr Speak
+        // Test2Mgr2会自动创建GameObject并挂载
+        Test2Mgr2.Instance.Speak();
+        // 输出：Test2Mgr2 Speak
+    &#125;
+&#125;
+</code></pre>
+<h3 id="ConstructorUniquenessTest-cs（验证构造函数唯一性）"><a href="#ConstructorUniquenessTest-cs（验证构造函数唯一性）" class="headerlink" title="ConstructorUniquenessTest.cs（验证构造函数唯一性）"></a>ConstructorUniquenessTest.cs（验证构造函数唯一性）</h3><pre><code class="csharp">using UnityEngine;
+
+public class ConstructorUniquenessTest : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        Debug.Log(&quot;ConstructorUniquenessTest Start - 验证构造函数唯一性&quot;);
+        // 正常获取单例，构造函数只会被调用一次
+        TestMgr.Instance.Speak();
+        // 输出：TestMgr 构造函数被调用
+        // 输出：TestMgr Speak
+
+        // 尝试通过new创建会报错，因为构造函数是私有的
+        // TestMgr newMgr = new TestMgr(); // 编译错误
+    &#125;
+&#125;
+</code></pre>
+<h3 id="RepeatMountUniquenessTest-cs（验证重复挂载问题）"><a href="#RepeatMountUniquenessTest-cs（验证重复挂载问题）" class="headerlink" title="RepeatMountUniquenessTest.cs（验证重复挂载问题）"></a>RepeatMountUniquenessTest.cs（验证重复挂载问题）</h3><pre><code class="csharp">using UnityEngine;
+
+public class RepeatMountUniquenessTest : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        Debug.Log(&quot;RepeatMountUniquenessTest Start - 验证重复挂载问题&quot;);
+        // 确保场景中只有一个Test2Mgr实例
+        Test2Mgr.Instance.Speak();
+        // 输出：Test2Mgr Speak
+
+        // 尝试在运行时创建另一个Test2Mgr的GameObject并挂载脚本
+        // 由于[DisallowMultipleComponent]和Awake中的检查，新的实例会被销毁
+        GameObject anotherObj = new GameObject(&quot;AnotherTest2Mgr&quot;);
+        anotherObj.AddComponent&lt;Test2Mgr&gt;();
+        // 结果：新创建的实例会被自动销毁，保证唯一性
+    &#125;
+&#125;
+</code></pre>
+<h3 id="ThreadSafetyVerificationTest-cs（验证线程安全）"><a href="#ThreadSafetyVerificationTest-cs（验证线程安全）" class="headerlink" title="ThreadSafetyVerificationTest.cs（验证线程安全）"></a>ThreadSafetyVerificationTest.cs（验证线程安全）</h3><pre><code class="csharp">using UnityEngine;
+using System.Threading;
+
+public class ThreadSafetyVerificationTest : MonoBehaviour
+&#123;
+    void Start()
+    &#123;
+        Debug.Log(&quot;ThreadSafetyVerificationTest Start - 验证线程安全&quot;);
+        // 模拟多线程访问TestMgr单例
+        for (int i = 0; i &lt; 5; i++)
         &#123;
-            PoolMgr.Instance.ReturnGameObj(cube);
-            Debug.Log(&quot;归还对象：&quot; + cube.name);
-            // 输出：归还对象：Cube
+            new Thread(() =&gt;
+            &#123;
+                TestMgr.Instance.Speak();
+                // 输出：TestMgr 构造函数被调用 (只调用一次)
+                // 输出：TestMgr Speak (可能输出多次，但构造函数只调用一次)
+            &#125;).Start();
         &#125;
-    &#125;
-&#125;
-</code></pre>
-<h3 id="ObjectPoolUsageTest-cs（普通类对象池使用测试）"><a href="#ObjectPoolUsageTest-cs（普通类对象池使用测试）" class="headerlink" title="ObjectPoolUsageTest.cs（普通类对象池使用测试）"></a>ObjectPoolUsageTest.cs（普通类对象池使用测试）</h3><pre><code class="csharp">using UnityEngine;
-
-/// &lt;summary&gt;
-/// 普通类对象池使用测试
-/// 演示如何通过PoolMgr使用普通类对象池
-/// &lt;/summary&gt;
-public class ObjectPoolUsageTest : MonoBehaviour
-&#123;
-    void Start()
-    &#123;
-        Debug.Log(&quot;普通类对象池使用测试：开始&quot;);
-
-        // 1. 获取普通类对象
-        TestData data1 = PoolMgr.Instance.GetObj&lt;TestData&gt;();
-        data1.i = 999;
-        data1.str = &quot;测试字符串&quot;;
-        Debug.Log($&quot;获取对象，i=&#123;data1.i&#125;，str=&#123;data1.str&#125;&quot;);
-        // 输出：获取对象，i=999，str=测试字符串
-
-        // 2. 归还对象
-        PoolMgr.Instance.ReturnObj(data1);
-        Debug.Log(&quot;归还对象&quot;);
-
-        // 3. 再次获取（验证复用）
-        TestData data2 = PoolMgr.Instance.GetObj&lt;TestData&gt;();
-        Debug.Log($&quot;再次获取对象，i=&#123;data2.i&#125;，str=&#123;data2.str&#125;&quot;);
-        // 输出：再次获取对象，i=0，str=（数据被重置）
-        Debug.Log($&quot;是否为同一对象：&#123;data1 == data2&#125;&quot;);
-        // 输出：是否为同一对象：True
-    &#125;
-&#125;
-</code></pre>
-<h3 id="ComprehensivePoolTest-cs（综合功能测试）"><a href="#ComprehensivePoolTest-cs（综合功能测试）" class="headerlink" title="ComprehensivePoolTest.cs（综合功能测试）"></a>ComprehensivePoolTest.cs（综合功能测试）</h3><pre><code class="csharp">using UnityEngine;
-
-/// &lt;summary&gt;
-/// 综合功能测试
-/// 演示对象池的所有功能
-/// &lt;/summary&gt;
-public class ComprehensivePoolTest : MonoBehaviour
-&#123;
-    void Start()
-    &#123;
-        Debug.Log(&quot;综合功能测试：开始&quot;);
-
-        // 1. 测试GameObject对象池
-        TestGameObjectPool();
-        
-        // 2. 测试普通类对象池
-        TestObjectPool();
-        
-        // 3. 延迟清理测试
-        Invoke(&quot;TestClearPool&quot;, 5f);
-    &#125;
-
-    private void TestGameObjectPool()
-    &#123;
-        Debug.Log(&quot;测试GameObject对象池&quot;);
-        
-        // 获取多个GameObject
-        GameObject obj1 = PoolMgr.Instance.GetGameObj(&quot;Cube&quot;);
-        GameObject obj2 = PoolMgr.Instance.GetGameObj(&quot;Sphere&quot;);
-        
-        Debug.Log($&quot;获取GameObject：&#123;obj1.name&#125;，&#123;obj2.name&#125;&quot;);
-        // 输出：获取GameObject：Cube，Sphere
-
-        // 延迟归还
-        Invoke(&quot;ReturnGameObjects&quot;, 2f);
-    &#125;
-
-    private void ReturnGameObjects()
-    &#123;
-        GameObject cube = GameObject.Find(&quot;Cube&quot;);
-        GameObject sphere = GameObject.Find(&quot;Sphere&quot;);
-        
-        if (cube != null) PoolMgr.Instance.ReturnGameObj(cube);
-        if (sphere != null) PoolMgr.Instance.ReturnGameObj(sphere);
-        
-        Debug.Log(&quot;归还GameObject对象&quot;);
-    &#125;
-
-    private void TestObjectPool()
-    &#123;
-        Debug.Log(&quot;测试普通类对象池&quot;);
-        
-        // 获取多个普通类对象
-        TestData data1 = PoolMgr.Instance.GetObj&lt;TestData&gt;();
-        TestData data2 = PoolMgr.Instance.GetObj&lt;TestData&gt;();
-        
-        data1.i = 100;
-        data2.i = 200;
-        
-        Debug.Log($&quot;获取普通类对象：data1.i=&#123;data1.i&#125;，data2.i=&#123;data2.i&#125;&quot;);
-        // 输出：获取普通类对象：data1.i=100，data2.i=200
-
-        // 归还对象
-        PoolMgr.Instance.ReturnObj(data1);
-        PoolMgr.Instance.ReturnObj(data2);
-        
-        Debug.Log(&quot;归还普通类对象&quot;);
-    &#125;
-
-    private void TestClearPool()
-    &#123;
-        Debug.Log(&quot;测试资源清理&quot;);
-        PoolMgr.Instance.ClearPool();
-        Debug.Log(&quot;清理完成&quot;);
+        // 结果：即使多线程并发访问，单例实例也只创建一次，保证了线程安全
     &#125;
 &#125;
 </code></pre>
