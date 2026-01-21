@@ -27,24 +27,25 @@ jobs:
       - name: Show disk usage (before)
         run: |
           df -h
+          echo "Workspace:"
+          pwd
           echo "Top-level:"
           ls -la
+          echo "Repo size:"
+          du -sh . || true
 
-      # 关键：避免把 .git 打进 Pages artifact（它巨大且没必要）
-      - name: Prepare site folder (exclude .git)
+      # 关键：不要复制一份站点；直接删掉不该发布的元数据目录，省空间
+      - name: Remove repo metadata to save space
         run: |
-          mkdir site
-          rsync -a --delete \
-            --exclude='.git' \
-            --exclude='.github' \
-            ./ site/
-          echo "Site folder size:"
-          du -sh site || true
+          rm -rf .git .github
+          echo "After cleanup:"
+          df -h
+          du -sh . || true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: site
+          path: .
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4
