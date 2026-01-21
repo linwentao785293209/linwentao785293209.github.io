@@ -1,0 +1,51 @@
+name: Deploy static site to GitHub Pages
+
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Show disk usage (before)
+        run: |
+          df -h
+          echo "Workspace:"
+          pwd
+          echo "Top-level:"
+          ls -la
+          echo "Repo size:"
+          du -sh . || true
+
+      # 关键：不要复制一份站点；直接删掉不该发布的元数据目录，省空间
+      - name: Remove repo metadata to save space
+        run: |
+          rm -rf .git .github
+          echo "After cleanup:"
+          df -h
+          du -sh . || true
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
