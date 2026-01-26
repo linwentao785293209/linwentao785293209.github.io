@@ -2,37 +2,29 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>8.Profiler窗口 Memory | 人间自有韬哥在的博客</title>
+  <title>4.Profiler窗口顶部页签 | 人间自有韬哥在的博客</title>
   <meta name="keywords" content=" 性能优化 , Unity性能优化 , Unity性能优化基础知识 , Unity性能分析工具 , Profiler窗口 ">
-  <meta name="description" content="8.Profiler窗口 Memory | 人间自有韬哥在的博客">
+  <meta name="description" content="4.Profiler窗口顶部页签 | 人间自有韬哥在的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="12.Unity性能分析工具-MemoryProfiler窗口AllOfMemory 12.1 知识点All Of Memory（所有内存）的主要作用All Of Memory 是这个工具中最强大、最底层、最全面的页签。它将内存分配按 内存类别 &#x2F; 分配方式 进行了分类，适合从全局视角看 Unity 的内存结构与健康状况。 着重要分析的内容：  哪些模块分配了最多内存 哪些内存是托管的、">
+<meta name="description" content="14.Unity性能分析工具-Profiler窗口Video 14.1 知识点Video是什么Video（视频）模块是专门用于分析游戏中视频播放性能和资源使用情况的监视工具，主要作用是帮助我们排查和视频相关的问题。 在游戏中如果出现以下问题时，可以着重观察这里的内容：  视频播放卡顿、丢帧 视频延迟播放、没声音或黑屏 视频导致 CPU 性能下降 视频占内存过高 等等  总之，几乎所有和视频相关的问">
 <meta property="og:type" content="article">
-<meta property="og:title" content="12.MemoryProfiler窗口 AllOfMemory">
-<meta property="og:url" content="https://linwentao785293209.github.io/2026/01/20/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-MemoryProfiler%E7%AA%97%E5%8F%A3AllOfMemory/index.html">
+<meta property="og:title" content="14.Profiler窗口Video">
+<meta property="og:url" content="https://linwentao785293209.github.io/2026/01/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3Video/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的博客">
-<meta property="og:description" content="12.Unity性能分析工具-MemoryProfiler窗口AllOfMemory 12.1 知识点All Of Memory（所有内存）的主要作用All Of Memory 是这个工具中最强大、最底层、最全面的页签。它将内存分配按 内存类别 &#x2F; 分配方式 进行了分类，适合从全局视角看 Unity 的内存结构与健康状况。 着重要分析的内容：  哪些模块分配了最多内存 哪些内存是托管的、">
+<meta property="og:description" content="14.Unity性能分析工具-Profiler窗口Video 14.1 知识点Video是什么Video（视频）模块是专门用于分析游戏中视频播放性能和资源使用情况的监视工具，主要作用是帮助我们排查和视频相关的问题。 在游戏中如果出现以下问题时，可以着重观察这里的内容：  视频播放卡顿、丢帧 视频延迟播放、没声音或黑屏 视频导致 CPU 性能下降 视频占内存过高 等等  总之，几乎所有和视频相关的问">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-MemoryProfiler%E7%AA%97%E5%8F%A3AllOfMemory/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-MemoryProfiler%E7%AA%97%E5%8F%A3AllOfMemory/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-MemoryProfiler%E7%AA%97%E5%8F%A3AllOfMemory/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-MemoryProfiler%E7%AA%97%E5%8F%A3AllOfMemory/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-MemoryProfiler%E7%AA%97%E5%8F%A3AllOfMemory/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-MemoryProfiler%E7%AA%97%E5%8F%A3AllOfMemory/6.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-MemoryProfiler%E7%AA%97%E5%8F%A3AllOfMemory/7.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-MemoryProfiler%E7%AA%97%E5%8F%A3AllOfMemory/8.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-MemoryProfiler%E7%AA%97%E5%8F%A3AllOfMemory/9.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-MemoryProfiler%E7%AA%97%E5%8F%A3AllOfMemory/10.png">
-<meta property="article:published_time" content="2026-01-20T04:59:04.000Z">
-<meta property="article:modified_time" content="2026-01-25T17:10:27.737Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3Video/1.png">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3Video/2.png">
+<meta property="article:published_time" content="2026-01-22T06:59:04.000Z">
+<meta property="article:modified_time" content="2026-01-26T14:55:16.194Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="性能优化">
 <meta property="article:tag" content="Unity性能优化">
 <meta property="article:tag" content="Unity性能优化基础知识">
 <meta property="article:tag" content="Unity性能分析工具">
-<meta property="article:tag" content="MemoryProfiler窗口">
+<meta property="article:tag" content="Profiler窗口">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-MemoryProfiler%E7%AA%97%E5%8F%A3AllOfMemory/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3Video/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -163,7 +155,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(2038)</small>
+                <small>(2040)</small>
             
         </div>
     </li>
@@ -1673,7 +1665,7 @@
         <div data-rel="性能优化">
             <i class="fold iconfont icon-right"></i>
             性能优化
-            <small>(12)</small>
+            <small>(14)</small>
         </div>
         
             <ul class="sub hide">
@@ -1683,7 +1675,7 @@
         <div data-rel="性能优化&lt;---&gt;Unity性能优化">
             <i class="fold iconfont icon-right"></i>
             Unity性能优化
-            <small>(12)</small>
+            <small>(14)</small>
         </div>
         
             <ul class="sub hide">
@@ -1693,7 +1685,7 @@
         <div data-rel="性能优化&lt;---&gt;Unity性能优化&lt;---&gt;Unity性能优化基础知识">
             
             Unity性能优化基础知识
-            <small>(12)</small>
+            <small>(14)</small>
         </div>
         
     </li>
@@ -3091,8 +3083,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="2038">
-<input type="hidden" id="yelog_site_word_count" value="3520.3k">
+<input type="hidden" id="yelog_site_posts_number" value="2040">
+<input type="hidden" id="yelog_site_word_count" value="3524.1k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -4780,10 +4772,28 @@
         
         
         <a  class="全部文章 性能优化 Unity性能优化 Unity性能优化基础知识 "
+           href="/2026/01/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3Video/"
+           data-tag="性能优化,Unity性能优化,Unity性能优化基础知识,Unity性能分析工具,Profiler窗口"
+           data-author="" >
+            <span class="post-title" title="14.Profiler窗口Video">14.Profiler窗口Video</span>
+            <span class="post-date" title="2026-01-22 14:59:04">2026/01/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 性能优化 Unity性能优化 Unity性能优化基础知识 "
+           href="/2026/01/21/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/13.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3Audio/"
+           data-tag="性能优化,Unity性能优化,Unity性能优化基础知识,Unity性能分析工具,Profiler窗口"
+           data-author="" >
+            <span class="post-title" title="13.Profiler窗口Audio">13.Profiler窗口Audio</span>
+            <span class="post-date" title="2026-01-21 13:59:04">2026/01/21</span>
+        </a>
+        
+        
+        <a  class="全部文章 性能优化 Unity性能优化 Unity性能优化基础知识 "
            href="/2026/01/20/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-MemoryProfiler%E7%AA%97%E5%8F%A3AllOfMemory/"
            data-tag="性能优化,Unity性能优化,Unity性能优化基础知识,Unity性能分析工具,MemoryProfiler窗口"
            data-author="" >
-            <span class="post-title" title="12.MemoryProfiler窗口 AllOfMemory">12.MemoryProfiler窗口 AllOfMemory</span>
+            <span class="post-title" title="12.MemoryProfiler窗口AllOfMemory">12.MemoryProfiler窗口AllOfMemory</span>
             <span class="post-date" title="2026-01-20 12:59:04">2026/01/20</span>
         </a>
         
@@ -4792,7 +4802,7 @@
            href="/2026/01/19/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-MemoryProfiler%E7%AA%97%E5%8F%A3UnityObjects/"
            data-tag="性能优化,Unity性能优化,Unity性能优化基础知识,Unity性能分析工具,MemoryProfiler窗口"
            data-author="" >
-            <span class="post-title" title="11.MemoryProfiler窗口 UnityObjects">11.MemoryProfiler窗口 UnityObjects</span>
+            <span class="post-title" title="11.MemoryProfiler窗口UnityObjects">11.MemoryProfiler窗口UnityObjects</span>
             <span class="post-date" title="2026-01-19 11:59:04">2026/01/19</span>
         </a>
         
@@ -4801,7 +4811,7 @@
            href="/2026/01/18/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-MemoryProfiler%E7%AA%97%E5%8F%A3Summary/"
            data-tag="性能优化,Unity性能优化,Unity性能优化基础知识,Unity性能分析工具,MemoryProfiler窗口"
            data-author="" >
-            <span class="post-title" title="10.MemoryProfiler窗口 Summary">10.MemoryProfiler窗口 Summary</span>
+            <span class="post-title" title="10.MemoryProfiler窗口Summary">10.MemoryProfiler窗口Summary</span>
             <span class="post-date" title="2026-01-18 10:59:04">2026/01/18</span>
         </a>
         
@@ -4816,43 +4826,43 @@
         
         
         <a  class="全部文章 性能优化 Unity性能优化 Unity性能优化基础知识 "
-           href="/2026/01/16/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Memory/"
+           href="/2026/01/16/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3Memory/"
            data-tag="性能优化,Unity性能优化,Unity性能优化基础知识,Unity性能分析工具,Profiler窗口"
            data-author="" >
-            <span class="post-title" title="8.Profiler窗口 Memory">8.Profiler窗口 Memory</span>
+            <span class="post-title" title="8.Profiler窗口Memory">8.Profiler窗口Memory</span>
             <span class="post-date" title="2026-01-16 11:26:33">2026/01/16</span>
         </a>
         
         
         <a  class="全部文章 性能优化 Unity性能优化 Unity性能优化基础知识 "
-           href="/2026/01/15/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Rendering/"
+           href="/2026/01/15/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3Rendering/"
            data-tag="性能优化,Unity性能优化,Unity性能优化基础知识,Unity性能分析工具,Profiler窗口"
            data-author="" >
-            <span class="post-title" title="7.Profiler窗口 Rendering">7.Profiler窗口 Rendering</span>
+            <span class="post-title" title="7.Profiler窗口Rendering">7.Profiler窗口Rendering</span>
             <span class="post-date" title="2026-01-15 10:26:33">2026/01/15</span>
         </a>
         
         
         <a  class="全部文章 性能优化 Unity性能优化 Unity性能优化基础知识 "
-           href="/2026/01/14/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-GPUUsage/"
+           href="/2026/01/14/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3GPUUsage/"
            data-tag="性能优化,Unity性能优化,Unity性能优化基础知识,Unity性能分析工具,Profiler窗口"
            data-author="" >
-            <span class="post-title" title="6.Profiler窗口 GPU Usage">6.Profiler窗口 GPU Usage</span>
+            <span class="post-title" title="6.Profiler窗口GPUUsage">6.Profiler窗口GPUUsage</span>
             <span class="post-date" title="2026-01-14 13:22:57">2026/01/14</span>
         </a>
         
         
         <a  class="全部文章 性能优化 Unity性能优化 Unity性能优化基础知识 "
-           href="/2026/01/13/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-CPUUsage/"
+           href="/2026/01/13/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3CPUUsage/"
            data-tag="性能优化,Unity性能优化,Unity性能优化基础知识,Unity性能分析工具,Profiler窗口"
            data-author="" >
-            <span class="post-title" title="5.Profiler窗口 CPU Usage">5.Profiler窗口 CPU Usage</span>
+            <span class="post-title" title="5.Profiler窗口CPUUsage">5.Profiler窗口CPUUsage</span>
             <span class="post-date" title="2026-01-13 12:58:06">2026/01/13</span>
         </a>
         
         
         <a  class="全部文章 性能优化 Unity性能优化 Unity性能优化基础知识 "
-           href="/2026/01/12/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/"
+           href="/2026/01/12/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/"
            data-tag="性能优化,Unity性能优化,Unity性能优化基础知识,Unity性能分析工具,Profiler窗口"
            data-author="" >
             <span class="post-title" title="4.Profiler窗口顶部页签">4.Profiler窗口顶部页签</span>
@@ -7013,7 +7023,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E5%87%BD%E6%95%B0-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP基础,CPP基础语法知识,函数"
+           data-tag="编程语言,CPP,CPP基础,函数,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="8.内联函数">8.内联函数</span>
             <span class="post-date" title="2025-01-20 13:07:31">2025/01/20</span>
@@ -7022,7 +7032,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%87%BD%E6%95%B0-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP基础,CPP基础语法知识,函数"
+           data-tag="编程语言,CPP,CPP基础,函数,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="7.递归函数">7.递归函数</span>
             <span class="post-date" title="2025-01-20 13:02:30">2025/01/20</span>
@@ -7031,7 +7041,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD/"
-           data-tag="编程语言,CPP,CPP基础,CPP基础语法知识,函数"
+           data-tag="编程语言,CPP,CPP基础,函数,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="6.函数重载">6.函数重载</span>
             <span class="post-date" title="2025-01-20 12:59:03">2025/01/20</span>
@@ -7040,7 +7050,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%87%BD%E6%95%B0-%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/"
-           data-tag="编程语言,CPP,CPP基础,CPP基础语法知识,函数"
+           data-tag="编程语言,CPP,CPP基础,函数,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="5.函数的变量的作用域">5.函数的变量的作用域</span>
             <span class="post-date" title="2025-01-20 12:55:41">2025/01/20</span>
@@ -7049,7 +7059,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E5%87%BD%E6%95%B0-%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC/"
-           data-tag="编程语言,CPP,CPP基础,CPP基础语法知识,函数"
+           data-tag="编程语言,CPP,CPP基础,函数,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="4.函数的参数默认值">4.函数的参数默认值</span>
             <span class="post-date" title="2025-01-20 12:52:02">2025/01/20</span>
@@ -7058,7 +7068,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%87%BD%E6%95%B0-%E5%BD%A2%E5%8F%82%E5%92%8C%E5%AE%9E%E5%8F%82/"
-           data-tag="编程语言,CPP,CPP基础,CPP基础语法知识,函数"
+           data-tag="编程语言,CPP,CPP基础,函数,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="3.函数的形参和实参">3.函数的形参和实参</span>
             <span class="post-date" title="2025-01-20 12:47:55">2025/01/20</span>
@@ -7067,7 +7077,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E5%9F%BA%E7%A1%80/"
-           data-tag="编程语言,CPP,CPP基础,CPP基础语法知识,函数"
+           data-tag="编程语言,CPP,CPP基础,函数,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="2.函数基础">2.函数基础</span>
             <span class="post-date" title="2025-01-19 22:01:59">2025/01/19</span>
@@ -8525,7 +8535,7 @@
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发入门 "
            href="/2024/10/10/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/20.%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E7%BB%BC%E5%90%88%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-BlinnPhong%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E9%80%90%E7%89%87%E5%85%83%E5%85%89%E7%85%A7/"
-           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,逐片元光照,综合光照模型,BlinnPhong光照模型"
+           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,综合光照模型,BlinnPhong光照模型,逐片元光照"
            data-author="" >
             <span class="post-title" title="20.BlinnPhong光照模型逐片元光照">20.BlinnPhong光照模型逐片元光照</span>
             <span class="post-date" title="2024-10-10 22:50:54">2024/10/10</span>
@@ -8552,7 +8562,7 @@
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发入门 "
            href="/2024/10/10/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/17.%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E7%BB%BC%E5%90%88%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-Phong%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E9%80%90%E7%89%87%E5%85%83%E5%85%89%E7%85%A7/"
-           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,逐片元光照,综合光照模型,Phong光照模型"
+           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,综合光照模型,Phong光照模型,逐片元光照"
            data-author="" >
             <span class="post-title" title="17.Phong光照模型逐片元光照">17.Phong光照模型逐片元光照</span>
             <span class="post-date" title="2024-10-10 21:30:47">2024/10/10</span>
@@ -12485,7 +12495,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/18.Lua%E8%B0%83%E7%94%A8CSharp-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="18.Lua调用Unity的协同程序">18.Lua调用Unity的协同程序</span>
             <span class="post-date" title="2024-04-05 12:10:00">2024/04/05</span>
@@ -12494,7 +12504,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/17.Lua%E8%B0%83%E7%94%A8CSharp-%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="17.Lua调用C#的委托和事件">17.Lua调用C#的委托和事件</span>
             <span class="post-date" title="2024-04-05 12:05:21">2024/04/05</span>
@@ -12503,7 +12513,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.Lua%E8%B0%83%E7%94%A8CSharp-%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="16.Lua调用C#的重载函数">16.Lua调用C#的重载函数</span>
             <span class="post-date" title="2024-04-05 12:01:54">2024/04/05</span>
@@ -12512,7 +12522,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.Lua%E8%B0%83%E7%94%A8CSharp-ref%E5%92%8Cout%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="15.Lua调用C#的ref和out函数">15.Lua调用C#的ref和out函数</span>
             <span class="post-date" title="2024-04-05 11:56:12">2024/04/05</span>
@@ -12521,7 +12531,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Lua%E8%B0%83%E7%94%A8CSharp-%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="14.Lua调用C#的拓展方法">14.Lua调用C#的拓展方法</span>
             <span class="post-date" title="2024-04-05 11:53:26">2024/04/05</span>
@@ -12530,7 +12540,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/13.Lua%E8%B0%83%E7%94%A8CSharp-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="13.Lua调用C#的数据集合">13.Lua调用C#的数据集合</span>
             <span class="post-date" title="2024-04-05 11:45:43">2024/04/05</span>
@@ -12539,7 +12549,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Lua%E8%B0%83%E7%94%A8CSharp-%E6%9E%9A%E4%B8%BE/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="12.Lua调用C#的枚举">12.Lua调用C#的枚举</span>
             <span class="post-date" title="2024-04-05 11:41:03">2024/04/05</span>
@@ -12548,7 +12558,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B1%BB/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="11.Lua调用C#的类">11.Lua调用C#的类</span>
             <span class="post-date" title="2024-04-05 11:33:29">2024/04/05</span>
@@ -12557,7 +12567,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.CSharp%E8%B0%83%E7%94%A8Lua-toLua%E6%8F%90%E4%BE%9B%E7%9A%84%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="10.C#调用toLua提供的协同程序">10.C#调用toLua提供的协同程序</span>
             <span class="post-date" title="2024-04-05 11:27:10">2024/04/05</span>
@@ -12566,7 +12576,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E6%95%B0%E7%BB%84%E5%92%8CDictionary/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="9.C#把Lua表映射到数组和Dictionary">9.C#把Lua表映射到数组和Dictionary</span>
             <span class="post-date" title="2024-04-05 11:21:10">2024/04/05</span>
@@ -12575,7 +12585,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0LuaTable/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="8.C#把Lua表映射到LuaTable">8.C#把Lua表映射到LuaTable</span>
             <span class="post-date" title="2024-04-05 11:16:16">2024/04/05</span>
@@ -12584,7 +12594,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.CSharp%E8%B0%83%E7%94%A8Lua-%E5%87%BD%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B0%83%E7%94%A8/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="7.C#调用Lua函数">7.C#调用Lua函数</span>
             <span class="post-date" title="2024-04-05 10:58:58">2024/04/05</span>
@@ -12593,7 +12603,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.CSharp%E8%B0%83%E7%94%A8Lua-%E5%8F%98%E9%87%8F%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B5%8B%E5%80%BC/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="6.C#调用Lua变量">6.C#调用Lua变量</span>
             <span class="post-date" title="2024-04-05 10:48:57">2024/04/05</span>
@@ -12602,7 +12612,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E7%AE%A1%E7%90%86%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="5.Lua管理器">5.Lua管理器</span>
             <span class="post-date" title="2024-04-05 10:42:38">2024/04/05</span>
@@ -12611,7 +12621,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%87%8D%E5%AE%9A%E5%90%91/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="4.加载自定义路径下的Lua脚本">4.加载自定义路径下的Lua脚本</span>
             <span class="post-date" title="2024-04-05 10:01:35">2024/04/05</span>
@@ -12620,7 +12630,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E8%A7%A3%E6%9E%90%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="3.Lua解析器执行Lua脚本">3.Lua解析器执行Lua脚本</span>
             <span class="post-date" title="2024-04-05 09:54:20">2024/04/05</span>
@@ -12629,7 +12639,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="2.环境准备">2.环境准备</span>
             <span class="post-date" title="2024-04-04 23:27:40">2024/04/04</span>
@@ -12638,7 +12648,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="1.toLua基础知识概述">1.toLua基础知识概述</span>
             <span class="post-date" title="2024-04-04 23:23:02">2024/04/04</span>
@@ -12647,7 +12657,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/10.%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2Lua%E8%84%9A%E6%9C%AC%E5%90%8E%E7%BC%80%E5%B7%A5%E5%85%B7/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="10.批量转换Lua脚本后缀工具">10.批量转换Lua脚本后缀工具</span>
             <span class="post-date" title="2024-04-04 21:11:38">2024/04/04</span>
@@ -12656,7 +12666,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/9.%E8%83%8C%E5%8C%85%E9%9D%A2%E6%9D%BF%E9%80%BB%E8%BE%91/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="9.背包面板逻辑">9.背包面板逻辑</span>
             <span class="post-date" title="2024-04-04 20:58:13">2024/04/04</span>
@@ -12665,7 +12675,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/8.%E9%81%93%E5%85%B7%E9%80%BB%E8%BE%91/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="8.道具逻辑">8.道具逻辑</span>
             <span class="post-date" title="2024-04-04 20:31:15">2024/04/04</span>
@@ -12674,7 +12684,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E4%B8%BB%E9%9D%A2%E6%9D%BF%E9%80%BB%E8%BE%91/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="7.主面板逻辑">7.主面板逻辑</span>
             <span class="post-date" title="2024-04-04 20:23:11">2024/04/04</span>
@@ -12683,7 +12693,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/6.%E9%9D%A2%E6%9D%BF%E5%9F%BA%E7%B1%BB/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="6.面板基类">6.面板基类</span>
             <span class="post-date" title="2024-04-04 19:53:23">2024/04/04</span>
@@ -12692,7 +12702,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/5.%E6%95%B0%E6%8D%AE%E7%9B%B8%E5%85%B3/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="5.数据相关">5.数据相关</span>
             <span class="post-date" title="2024-04-04 19:15:52">2024/04/04</span>
@@ -12701,7 +12711,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%88%AB%E5%90%8D/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="4.常用类别名">4.常用类别名</span>
             <span class="post-date" title="2024-04-04 18:53:53">2024/04/04</span>
@@ -12710,7 +12720,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/3.%E6%8B%BC%E9%9D%A2%E6%9D%BF/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="3.拼面板">3.拼面板</span>
             <span class="post-date" title="2024-04-04 18:52:53">2024/04/04</span>
@@ -12719,7 +12729,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/2.%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="2.环境准备">2.环境准备</span>
             <span class="post-date" title="2024-04-04 18:29:51">2024/04/04</span>
@@ -12728,7 +12738,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.%E6%A6%82%E8%BF%B0/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="1.xLua实践项目概述">1.xLua实践项目概述</span>
             <span class="post-date" title="2024-04-04 18:26:13">2024/04/04</span>
@@ -12737,7 +12747,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/29.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E6%B3%9B%E5%9E%8B%E7%B1%BB%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="29.热补丁替换泛型类">29.热补丁替换泛型类</span>
             <span class="post-date" title="2024-04-04 17:38:31">2024/04/04</span>
@@ -12746,7 +12756,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/28.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E4%BA%8B%E4%BB%B6%E5%8A%A0%E5%87%8F%E6%93%8D%E4%BD%9C%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="28.热补丁替换委托事件加减操作">28.热补丁替换委托事件加减操作</span>
             <span class="post-date" title="2024-04-04 15:07:42">2024/04/04</span>
@@ -12755,7 +12765,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/27.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%B1%9E%E6%80%A7%E5%92%8C%E7%B4%A2%E5%BC%95%E5%99%A8%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="27.热补丁替换属性和索引器">27.热补丁替换属性和索引器</span>
             <span class="post-date" title="2024-04-04 15:02:13">2024/04/04</span>
@@ -12764,7 +12774,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%8D%8F%E7%A8%8B%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="26.热补丁替换协程函数">26.热补丁替换协程函数</span>
             <span class="post-date" title="2024-04-04 14:53:40">2024/04/04</span>
@@ -12773,7 +12783,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/25.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%A4%9A%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="25.热补丁替换多函数">25.热补丁替换多函数</span>
             <span class="post-date" title="2024-04-04 14:45:31">2024/04/04</span>
@@ -12782,7 +12792,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/24.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%8D%95%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="24.热补丁替换单函数">24.热补丁替换单函数</span>
             <span class="post-date" title="2024-04-04 14:24:55">2024/04/04</span>
@@ -12791,7 +12801,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/23.Lua%E8%B0%83%E7%94%A8CSharp-%E6%B3%9B%E5%9E%8B/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="23.Lua调用C#的泛型">23.Lua调用C#的泛型</span>
             <span class="post-date" title="2024-04-04 13:27:51">2024/04/04</span>
@@ -12800,7 +12810,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.Lua%E8%B0%83%E7%94%A8CSharp-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="22.Lua调用Unity的协同程序">22.Lua调用Unity的协同程序</span>
             <span class="post-date" title="2024-04-04 13:15:59">2024/04/04</span>
@@ -12809,7 +12819,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E4%BA%A4%E4%BA%92/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="21.Lua和C#对系统代码交互处理">21.Lua和C#对系统代码交互处理</span>
             <span class="post-date" title="2024-04-04 13:06:38">2024/04/04</span>
@@ -12818,7 +12828,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Lua%E8%B0%83%E7%94%A8CSharp-%E5%88%A4%E7%A9%BA/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="20.Lua和C#的判空相关">20.Lua和C#的判空相关</span>
             <span class="post-date" title="2024-04-04 13:04:39">2024/04/04</span>
@@ -12827,7 +12837,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/19.Lua%E8%B0%83%E7%94%A8CSharp-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="19.Lua调用C#的二维数组">19.Lua调用C#的二维数组</span>
             <span class="post-date" title="2024-04-04 12:54:09">2024/04/04</span>
@@ -12836,7 +12846,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/18.Lua%E8%B0%83%E7%94%A8CSharp-%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="18.Lua调用C#的委托和事件">18.Lua调用C#的委托和事件</span>
             <span class="post-date" title="2024-04-04 11:57:07">2024/04/04</span>
@@ -12845,7 +12855,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/17.Lua%E8%B0%83%E7%94%A8CSharp-%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="17.Lua调用C#的重载函数">17.Lua调用C#的重载函数</span>
             <span class="post-date" title="2024-04-04 11:51:29">2024/04/04</span>
@@ -12854,7 +12864,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.Lua%E8%B0%83%E7%94%A8CSharp-ref%E5%92%8Cout%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="16.Lua调用C#的ref和out函数">16.Lua调用C#的ref和out函数</span>
             <span class="post-date" title="2024-04-04 11:50:39">2024/04/04</span>
@@ -12863,7 +12873,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.Lua%E8%B0%83%E7%94%A8CSharp-%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="15.Lua调用C#的拓展方法">15.Lua调用C#的拓展方法</span>
             <span class="post-date" title="2024-04-04 11:35:07">2024/04/04</span>
@@ -12872,7 +12882,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Lua%E8%B0%83%E7%94%A8CSharp-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="14.Lua调用C#的数据集合">14.Lua调用C#的数据集合</span>
             <span class="post-date" title="2024-04-04 11:11:12">2024/04/04</span>
@@ -12881,7 +12891,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/13.Lua%E8%B0%83%E7%94%A8CSharp-%E6%9E%9A%E4%B8%BE/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="13.Lua调用C#的枚举">13.Lua调用C#的枚举</span>
             <span class="post-date" title="2024-04-04 11:09:44">2024/04/04</span>
@@ -12890,7 +12900,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B1%BB/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="12.Lua调用C#的类">12.Lua调用C#的类</span>
             <span class="post-date" title="2024-04-04 11:04:10">2024/04/04</span>
@@ -12899,7 +12909,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0LuaTable/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="11.C#把Lua表映射到LuaTable">11.C#把Lua表映射到LuaTable</span>
             <span class="post-date" title="2024-04-04 10:51:03">2024/04/04</span>
@@ -12908,7 +12918,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E6%8E%A5%E5%8F%A3/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="10.C#把Lua表映射到接口">10.C#把Lua表映射到接口</span>
             <span class="post-date" title="2024-04-04 10:45:54">2024/04/04</span>
@@ -12917,7 +12927,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E7%B1%BB/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="9.C#把Lua表映射到类">9.C#把Lua表映射到类</span>
             <span class="post-date" title="2024-04-04 10:32:53">2024/04/04</span>
@@ -12926,7 +12936,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0List%E5%92%8CDictionary/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="8.C#把Lua表映射到List和Dictionary">8.C#把Lua表映射到List和Dictionary</span>
             <span class="post-date" title="2024-04-04 10:28:33">2024/04/04</span>
@@ -12935,7 +12945,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.CSharp%E8%B0%83%E7%94%A8Lua-%E5%87%BD%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B0%83%E7%94%A8/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="7.C#调用Lua函数">7.C#调用Lua函数</span>
             <span class="post-date" title="2024-04-04 09:58:44">2024/04/04</span>
@@ -12944,7 +12954,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.CSharp%E8%B0%83%E7%94%A8Lua-%E5%8F%98%E9%87%8F%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B5%8B%E5%80%BC/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="6.C#调用Lua变量">6.C#调用Lua变量</span>
             <span class="post-date" title="2024-04-04 09:57:16">2024/04/04</span>
@@ -12953,7 +12963,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E7%AE%A1%E7%90%86%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="5.Lua管理器和加载AB包中的Lua脚本">5.Lua管理器和加载AB包中的Lua脚本</span>
             <span class="post-date" title="2024-04-04 09:08:02">2024/04/04</span>
@@ -12962,7 +12972,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%87%8D%E5%AE%9A%E5%90%91/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="4.加载自定义路径下的Lua脚本">4.加载自定义路径下的Lua脚本</span>
             <span class="post-date" title="2024-04-03 21:30:58">2024/04/03</span>
@@ -12971,7 +12981,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E8%A7%A3%E6%9E%90%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="3.Lua解析器执行Lua脚本">3.Lua解析器执行Lua脚本</span>
             <span class="post-date" title="2024-04-03 21:16:35">2024/04/03</span>
@@ -12980,7 +12990,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="2.环境准备">2.环境准备</span>
             <span class="post-date" title="2024-04-03 21:10:07">2024/04/03</span>
@@ -12989,7 +12999,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="1.xLua基础知识概述">1.xLua基础知识概述</span>
             <span class="post-date" title="2024-04-03 21:08:56">2024/04/03</span>
@@ -15221,7 +15231,7 @@
         
         <a  class="全部文章 UI系统 UnityUI系统 UGUI UGUI基础知识 "
            href="/2024/03/11/UI%E7%B3%BB%E7%BB%9F/Unity/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-RectTransform%E7%9F%A9%E5%BD%A2%E5%8F%98%E6%8D%A2%E7%BB%84%E4%BB%B6/"
-           data-tag="UI系统,UnityUI系统,UGUI,UGUI基础知识,基础组件"
+           data-tag="UI系统,UnityUI系统,基础组件,UGUI,UGUI基础知识"
            data-author="" >
             <span class="post-title" title="7.RectTransform矩形变换组件">7.RectTransform矩形变换组件</span>
             <span class="post-date" title="2024-03-11 09:11:02">2024/03/11</span>
@@ -15230,7 +15240,7 @@
         
         <a  class="全部文章 UI系统 UnityUI系统 UGUI UGUI基础知识 "
            href="/2024/03/11/UI%E7%B3%BB%E7%BB%9F/Unity/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-EventSystem%E4%BA%8B%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%BB%84%E4%BB%B6%E5%92%8CStandaloneInputModule%E7%8B%AC%E7%AB%8B%E8%BE%93%E5%85%A5%E6%A8%A1%E5%9D%97%E7%BB%84%E4%BB%B6/"
-           data-tag="UI系统,UnityUI系统,UGUI,UGUI基础知识,基础组件"
+           data-tag="UI系统,UnityUI系统,基础组件,UGUI,UGUI基础知识"
            data-author="" >
             <span class="post-title" title="6.EventSystem和StandaloneInputModule">6.EventSystem和StandaloneInputModule</span>
             <span class="post-date" title="2024-03-11 09:02:36">2024/03/11</span>
@@ -15239,7 +15249,7 @@
         
         <a  class="全部文章 UI系统 UnityUI系统 UGUI UGUI基础知识 "
            href="/2024/03/11/UI%E7%B3%BB%E7%BB%9F/Unity/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-GraphicRaycaster%E5%9B%BE%E5%BD%A2%E5%B0%84%E7%BA%BF%E6%8A%95%E5%B0%84%E5%99%A8%E7%BB%84%E4%BB%B6/"
-           data-tag="UI系统,UnityUI系统,UGUI,UGUI基础知识,基础组件"
+           data-tag="UI系统,UnityUI系统,基础组件,UGUI,UGUI基础知识"
            data-author="" >
             <span class="post-title" title="5.GraphicRaycaster图形射线投射器组件">5.GraphicRaycaster图形射线投射器组件</span>
             <span class="post-date" title="2024-03-11 08:53:22">2024/03/11</span>
@@ -15248,7 +15258,7 @@
         
         <a  class="全部文章 UI系统 UnityUI系统 UGUI UGUI基础知识 "
            href="/2024/03/10/UI%E7%B3%BB%E7%BB%9F/Unity/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-CanvasScaler%E7%94%BB%E5%B8%83%E7%BC%A9%E6%94%BE%E5%99%A8%E7%BB%84%E4%BB%B6/"
-           data-tag="UI系统,UnityUI系统,UGUI,UGUI基础知识,基础组件"
+           data-tag="UI系统,UnityUI系统,基础组件,UGUI,UGUI基础知识"
            data-author="" >
             <span class="post-title" title="4.CanvasScaler画布缩放器组件">4.CanvasScaler画布缩放器组件</span>
             <span class="post-date" title="2024-03-10 22:36:20">2024/03/10</span>
@@ -15257,7 +15267,7 @@
         
         <a  class="全部文章 UI系统 UnityUI系统 UGUI UGUI基础知识 "
            href="/2024/03/10/UI%E7%B3%BB%E7%BB%9F/Unity/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Canvas%E7%94%BB%E5%B8%83%E7%BB%84%E4%BB%B6/"
-           data-tag="UI系统,UnityUI系统,UGUI,UGUI基础知识,基础组件"
+           data-tag="UI系统,UnityUI系统,基础组件,UGUI,UGUI基础知识"
            data-author="" >
             <span class="post-title" title="3.Canvas画布组件">3.Canvas画布组件</span>
             <span class="post-date" title="2024-03-10 22:29:59">2024/03/10</span>
@@ -15266,7 +15276,7 @@
         
         <a  class="全部文章 UI系统 UnityUI系统 UGUI UGUI基础知识 "
            href="/2024/03/10/UI%E7%B3%BB%E7%BB%9F/Unity/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.UGUI%E5%9F%BA%E7%A1%80-%E5%85%AD%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-%E6%A6%82%E8%BF%B0/"
-           data-tag="UI系统,UnityUI系统,UGUI,UGUI基础知识,基础组件"
+           data-tag="UI系统,UnityUI系统,基础组件,UGUI,UGUI基础知识"
            data-author="" >
             <span class="post-title" title="2.基础组件概述">2.基础组件概述</span>
             <span class="post-date" title="2024-03-10 21:38:52">2024/03/10</span>
@@ -16472,7 +16482,7 @@
         
         <a  class="全部文章 UI系统 UnityUI系统 NGUI NGUI基础知识 "
            href="/2024/03/06/UI%E7%B3%BB%E7%BB%9F/Unity/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-EventSystem%E7%BB%84%E4%BB%B6UICamera/"
-           data-tag="UI系统,UnityUI系统,NGUI,基础组件,NGUI基础知识"
+           data-tag="UI系统,UnityUI系统,NGUI,NGUI基础知识,基础组件"
            data-author="" >
             <span class="post-title" title="5.EventSystem事件系统组件">5.EventSystem事件系统组件</span>
             <span class="post-date" title="2024-03-06 10:18:12">2024/03/06</span>
@@ -16481,7 +16491,7 @@
         
         <a  class="全部文章 UI系统 UnityUI系统 NGUI NGUI基础知识 "
            href="/2024/03/05/UI%E7%B3%BB%E7%BB%9F/Unity/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Panel%E7%BB%84%E4%BB%B6UIPanel/"
-           data-tag="UI系统,UnityUI系统,NGUI,基础组件,NGUI基础知识"
+           data-tag="UI系统,UnityUI系统,NGUI,NGUI基础知识,基础组件"
            data-author="" >
             <span class="post-title" title="4.Panel面板组件">4.Panel面板组件</span>
             <span class="post-date" title="2024-03-05 12:43:00">2024/03/05</span>
@@ -16490,7 +16500,7 @@
         
         <a  class="全部文章 UI系统 UnityUI系统 NGUI NGUI基础知识 "
            href="/2024/03/05/UI%E7%B3%BB%E7%BB%9F/Unity/03.NGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.NGUI%E5%9F%BA%E7%A1%80-%E4%B8%89%E5%A4%A7%E5%9F%BA%E7%A1%80%E7%BB%84%E4%BB%B6-Root%E7%BB%84%E4%BB%B6UIRoot/"
-           data-tag="UI系统,UnityUI系统,NGUI,基础组件,NGUI基础知识"
+           data-tag="UI系统,UnityUI系统,NGUI,NGUI基础知识,基础组件"
            data-author="" >
             <span class="post-title" title="3.Root根组件">3.Root根组件</span>
             <span class="post-date" title="2024-03-05 12:42:00">2024/03/05</span>
@@ -18434,7 +18444,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/28.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB/"
-           data-tag="编程语言,CSharp,面向对象关联知识点,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="28.抽象类和接口的区别">28.抽象类和接口的区别</span>
             <span class="post-date" title="2024-01-31 23:28:02">2024/01/31</span>
@@ -18443,7 +18453,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/27.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB/"
-           data-tag="编程语言,CSharp,面向对象关联知识点,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="27.结构体和类的区别">27.结构体和类的区别</span>
             <span class="post-date" title="2024-01-31 23:26:39">2024/01/31</span>
@@ -18452,7 +18462,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/26.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-StringBuilder/"
-           data-tag="编程语言,CSharp,面向对象关联知识点,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="26.StringBuilder">26.StringBuilder</span>
             <span class="post-date" title="2024-01-31 22:08:27">2024/01/31</span>
@@ -18461,7 +18471,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/25.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-String/"
-           data-tag="编程语言,CSharp,面向对象关联知识点,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="25.String">25.String</span>
             <span class="post-date" title="2024-01-31 12:54:52">2024/01/31</span>
@@ -18470,7 +18480,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E4%B8%87%E7%89%A9%E4%B9%8B%E7%88%B6%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,CSharp,面向对象关联知识点,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="24.万物之父中的方法">24.万物之父中的方法</span>
             <span class="post-date" title="2024-01-31 12:36:43">2024/01/31</span>
@@ -18479,7 +18489,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/23.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/"
-           data-tag="编程语言,CSharp,面向对象关联知识点,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="23.命名空间">23.命名空间</span>
             <span class="post-date" title="2024-01-30 19:55:08">2024/01/30</span>
@@ -18488,7 +18498,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E5%AF%86%E5%B0%81%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,CSharp,面向对象,多态,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,多态,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="22.密封方法">22.密封方法</span>
             <span class="post-date" title="2024-01-30 19:51:30">2024/01/30</span>
@@ -18497,7 +18507,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E6%8E%A5%E5%8F%A3/"
-           data-tag="编程语言,CSharp,面向对象,多态,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,多态,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="21.接口">21.接口</span>
             <span class="post-date" title="2024-01-30 12:52:17">2024/01/30</span>
@@ -18506,7 +18516,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/20.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,CSharp,面向对象,多态,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,多态,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="20.抽象类和抽象方法">20.抽象类和抽象方法</span>
             <span class="post-date" title="2024-01-30 12:45:18">2024/01/30</span>
@@ -18515,7 +18525,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/29/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-vob/"
-           data-tag="编程语言,CSharp,面向对象,多态,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,多态,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="19.virtual，override，base">19.virtual，override，base</span>
             <span class="post-date" title="2024-01-29 22:41:36">2024/01/29</span>
@@ -18524,7 +18534,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/29/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/18.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E5%AF%86%E5%B0%81%E7%B1%BB/"
-           data-tag="编程语言,CSharp,面向对象,继承,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,继承,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="18.密封类">18.密封类</span>
             <span class="post-date" title="2024-01-29 22:41:29">2024/01/29</span>
@@ -18533,7 +18543,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/29/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E4%B8%87%E7%89%A9%E4%B9%8B%E7%88%B6%E5%92%8C%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/"
-           data-tag="编程语言,CSharp,面向对象,继承,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,继承,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="17.万物之父和装箱拆箱">17.万物之父和装箱拆箱</span>
             <span class="post-date" title="2024-01-29 21:39:13">2024/01/29</span>
@@ -18542,7 +18552,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/29/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/16.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E7%BB%A7%E6%89%BF%E4%B8%AD%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CSharp,面向对象,继承,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,继承,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="16.继承中的构造函数">16.继承中的构造函数</span>
             <span class="post-date" title="2024-01-29 21:29:53">2024/01/29</span>
@@ -18551,7 +18561,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/26/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99/"
-           data-tag="编程语言,CSharp,面向对象,继承,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,继承,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="15.里氏替换原则">15.里氏替换原则</span>
             <span class="post-date" title="2024-01-26 12:55:26">2024/01/26</span>
@@ -18560,7 +18570,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/25/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/14.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E7%BB%A7%E6%89%BF%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/"
-           data-tag="编程语言,CSharp,面向对象,继承,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,继承,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="14.继承的基本规则">14.继承的基本规则</span>
             <span class="post-date" title="2024-01-25 21:39:02">2024/01/25</span>
@@ -18569,7 +18579,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/25/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E5%86%85%E9%83%A8%E7%B1%BB%E5%92%8C%E5%88%86%E9%83%A8%E7%B1%BB/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="13.内部类和分部类">13.内部类和分部类</span>
             <span class="post-date" title="2024-01-25 12:44:08">2024/01/25</span>
@@ -18578,7 +18588,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="12.运算符重载">12.运算符重载</span>
             <span class="post-date" title="2024-01-15 23:38:52">2024/01/15</span>
@@ -18587,7 +18597,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="11.拓展方法">11.拓展方法</span>
             <span class="post-date" title="2024-01-15 22:04:07">2024/01/15</span>
@@ -18596,7 +18606,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/14/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E9%9D%99%E6%80%81%E7%B1%BB%E5%92%8C%E9%9D%99%E6%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="10.静态类和静态构造函数">10.静态类和静态构造函数</span>
             <span class="post-date" title="2024-01-14 22:04:07">2024/01/14</span>
@@ -18605,7 +18615,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/13/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E9%9D%99%E6%80%81%E6%88%90%E5%91%98/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="9.静态成员">9.静态成员</span>
             <span class="post-date" title="2024-01-13 12:09:18">2024/01/13</span>
@@ -18614,7 +18624,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/13/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E7%B4%A2%E5%BC%95%E5%99%A8/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="8.索引器">8.索引器</span>
             <span class="post-date" title="2024-01-13 11:49:14">2024/01/13</span>
@@ -18623,7 +18633,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/13/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="7.成员属性">7.成员属性</span>
             <span class="post-date" title="2024-01-13 11:39:00">2024/01/13</span>
@@ -18632,7 +18642,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/12/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识,垃圾回收"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识,垃圾回收"
            data-author="" >
             <span class="post-title" title="6.构造函数、析构函数和垃圾回收">6.构造函数、析构函数和垃圾回收</span>
             <span class="post-date" title="2024-01-12 20:01:14">2024/01/12</span>
@@ -18641,7 +18651,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/12/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="5.成员方法">5.成员方法</span>
             <span class="post-date" title="2024-01-12 00:15:16">2024/01/12</span>
@@ -18650,7 +18660,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="4.成员变量和访问修饰符">4.成员变量和访问修饰符</span>
             <span class="post-date" title="2024-01-11 23:08:30">2024/01/11</span>
@@ -18659,7 +18669,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="3.类和对象">3.类和对象</span>
             <span class="post-date" title="2024-01-11 22:36:24">2024/01/11</span>
@@ -18668,7 +18678,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.Csharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"
-           data-tag="编程语言,CSharp,面向对象,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="2.面向对象基本概念">2.面向对象基本概念</span>
             <span class="post-date" title="2024-01-11 22:25:11">2024/01/11</span>
@@ -18830,7 +18840,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E5%87%BD%E6%95%B0-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,函数,CSharp,CSharp基础,CSharp基础语法知识"
+           data-tag="编程语言,CSharp,CSharp基础,CSharp基础语法知识,函数"
            data-author="" >
             <span class="post-title" title="13.递归函数">13.递归函数</span>
             <span class="post-date" title="2024-01-10 20:01:00">2024/01/10</span>
@@ -18839,7 +18849,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD/"
-           data-tag="编程语言,函数,CSharp,CSharp基础,CSharp基础语法知识"
+           data-tag="编程语言,CSharp,CSharp基础,CSharp基础语法知识,函数"
            data-author="" >
             <span class="post-title" title="12.函数重载">12.函数重载</span>
             <span class="post-date" title="2024-01-10 19:53:12">2024/01/10</span>
@@ -18848,7 +18858,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E5%87%BD%E6%95%B0-%E5%8F%98%E9%95%BF%E5%8F%82%E6%95%B0%E5%92%8C%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC/"
-           data-tag="编程语言,函数,CSharp,CSharp基础,CSharp基础语法知识"
+           data-tag="编程语言,CSharp,CSharp基础,CSharp基础语法知识,函数"
            data-author="" >
             <span class="post-title" title="11.变长参数和参数默认值">11.变长参数和参数默认值</span>
             <span class="post-date" title="2024-01-10 13:15:01">2024/01/10</span>
@@ -18857,7 +18867,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E5%87%BD%E6%95%B0-ref%E5%92%8Cout/"
-           data-tag="编程语言,函数,CSharp,CSharp基础,CSharp基础语法知识"
+           data-tag="编程语言,CSharp,CSharp基础,CSharp基础语法知识,函数"
            data-author="" >
             <span class="post-title" title="10.ref和out">10.ref和out</span>
             <span class="post-date" title="2024-01-10 13:01:20">2024/01/10</span>
@@ -18866,7 +18876,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/03.Csharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E5%9F%BA%E7%A1%80/"
-           data-tag="编程语言,函数,CSharp,CSharp基础,CSharp基础语法知识"
+           data-tag="编程语言,CSharp,CSharp基础,CSharp基础语法知识,函数"
            data-author="" >
             <span class="post-title" title="9.函数基础">9.函数基础</span>
             <span class="post-date" title="2024-01-10 09:41:50">2024/01/10</span>
@@ -19523,7 +19533,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/463.%E5%B2%9B%E5%B1%BF%E7%9A%84%E5%91%A8%E9%95%BF/"
-           data-tag="LeetCode,数组,深度优先搜索,广度优先搜索,矩阵"
+           data-tag="LeetCode,深度优先搜索,广度优先搜索,数组,矩阵"
            data-author="" >
             <span class="post-title" title="463.岛屿的周长">463.岛屿的周长</span>
             <span class="post-date" title="2000-01-10 04:06:03">2000/01/10</span>
@@ -19577,7 +19587,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/392.%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/"
-           data-tag="LeetCode,双指针,动态规划,字符串"
+           data-tag="LeetCode,双指针,字符串,动态规划"
            data-author="" >
             <span class="post-title" title="392.判断子序列">392.判断子序列</span>
             <span class="post-date" title="2000-01-10 03:09:02">2000/01/10</span>
@@ -19928,7 +19938,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"
-           data-tag="LeetCode,数组,树,二叉树,二叉搜索树,分治"
+           data-tag="LeetCode,树,二叉树,数组,二叉搜索树,分治"
            data-author="" >
             <span class="post-title" title="108.将有序数组转换为二叉搜索树">108.将有序数组转换为二叉搜索树</span>
             <span class="post-date" title="2000-01-10 01:00:08">2000/01/10</span>
@@ -20243,7 +20253,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/5.%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/"
-           data-tag="LeetCode,双指针,动态规划,字符串"
+           data-tag="LeetCode,双指针,字符串,动态规划"
            data-author="" >
             <span class="post-title" title="5.最长回文子串">5.最长回文子串</span>
             <span class="post-date" title="2000-01-10 00:00:05">2000/01/10</span>
@@ -23138,9 +23148,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-性能优化/Unity/1.Unity性能优化基础知识/8.Unity性能分析工具-Memory" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-性能优化/Unity/1.Unity性能优化基础知识/4.Unity性能分析工具-Profiler窗口顶部页签" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">8.Profiler窗口 Memory</h1>
+        <h1 class="article-title">4.Profiler窗口顶部页签</h1>
     
     <div class="article-meta">
         
@@ -23177,12 +23187,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2026-01-26 01:10:27'>2026-01-16 11:26</time>
+            发布时间 : <time class="date" title='最后更新: 2026-01-26 18:19:38'>2026-01-12 22:19</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:2.2k</span>
+        <span>字数:2.1k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -23212,7 +23222,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#8-Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Memory"><span class="toc-text">8.Unity性能分析工具-Memory</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#8-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">8.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Memory%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-text">Memory是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Memory%E4%B8%AD%E5%90%84%E5%8F%82%E6%95%B0%E5%8A%9F%E8%83%BD%E7%9A%84%E5%90%AB%E4%B9%89%E5%92%8C%E4%BD%9C%E7%94%A8"><span class="toc-text">Memory中各参数功能的含义和作用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Memory%EF%BC%88%E5%86%85%E5%AD%98%EF%BC%89%E5%88%86%E6%9E%90%E7%AA%97%E5%8F%A3"><span class="toc-text">Memory（内存）分析窗口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Simple%E8%A7%86%E5%9B%BE"><span class="toc-text">Simple视图</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Memory%E5%AF%B9%E4%BA%8E%E6%88%91%E4%BB%AC%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-text">Memory对于我们的意义</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">8.2 知识点代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lesson08-Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Memory-cs"><span class="toc-text">Lesson08_Unity性能分析工具_Memory.cs</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4-Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE"><span class="toc-text">4.Unity性能分析工具-Profiler窗口顶部页签</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">4.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E7%9B%AE%E6%A0%87"><span class="toc-text">主要目标</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE%E6%80%BB%E8%A7%88"><span class="toc-text">顶部页签总览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E9%80%89%E6%8B%A9%EF%BC%88Profiler-Modules%EF%BC%89"><span class="toc-text">模块选择（Profiler Modules）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%A5%E5%8F%A3%EF%BC%88%E4%B8%8B%E6%8B%89%EF%BC%89"><span class="toc-text">入口（下拉）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E5%9D%97%E5%88%97%E8%A1%A8%EF%BC%88%E5%8B%BE%E9%80%89-%E5%8F%96%E6%B6%88%E5%8B%BE%E9%80%89%EF%BC%89"><span class="toc-text">模块列表（勾选&#x2F;取消勾选）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%EF%BC%88%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B8%83%E5%B1%80%EF%BC%89"><span class="toc-text">设置（自定义布局）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A8%A1%E5%BC%8F%E4%B8%8B%E6%8B%89%E6%A1%86"><span class="toc-text">模式下拉框</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E6%A0%87%E9%80%89%E6%8B%A9"><span class="toc-text">目标选择</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E5%88%86%E6%9E%90%E7%9A%84%E6%9E%84%E5%BB%BA%E5%BC%80%E5%85%B3%EF%BC%88%E5%8F%91%E5%B8%83%E6%97%B6%EF%BC%89"><span class="toc-text">远程分析的构建开关（发布时）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%95%E5%88%B6%E4%B8%8E%E8%B7%B3%E5%B8%A7"><span class="toc-text">录制与跳帧</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BD%95%E5%88%B6%E5%BC%80%E5%85%B3"><span class="toc-text">录制开关</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E5%90%8E%E7%A7%BB%E5%8A%A8%E4%B8%80%E5%B8%A7"><span class="toc-text">前后移动一帧</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%B7%B3%E5%88%B0%E6%9C%80%E6%96%B0%E4%B8%80%E5%B8%A7%EF%BC%88%E5%BD%93%E5%89%8D%E5%B8%A7%EF%BC%89"><span class="toc-text">跳到最新一帧（当前帧）</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%A7%E6%95%B0%E6%98%BE%E7%A4%BA"><span class="toc-text">帧数显示</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E7%90%86%EF%BC%88Clear%EF%BC%89"><span class="toc-text">清理（Clear）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%90%E8%A1%8C%E6%97%B6%E6%B8%85%E7%90%86%EF%BC%88Clear-on-Play%EF%BC%89"><span class="toc-text">运行时清理（Clear on Play）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90%EF%BC%88Deep-Profile%EF%BC%89"><span class="toc-text">深度分析（Deep Profile）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E7%94%A8%E6%A0%88%EF%BC%88Call-Stacks%EF%BC%89"><span class="toc-text">调用栈（Call Stacks）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96-%E4%BF%9D%E5%AD%98-%E5%B8%AE%E5%8A%A9-%E6%9B%B4%E5%A4%9A"><span class="toc-text">读取&#x2F;保存&#x2F;帮助&#x2F;更多</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AF%BB%E5%8F%96%EF%BC%88Load%EF%BC%89"><span class="toc-text">读取（Load）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%9D%E5%AD%98%EF%BC%88Save%EF%BC%89"><span class="toc-text">保存（Save）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%AE%E5%8A%A9%EF%BC%88Help%EF%BC%89"><span class="toc-text">帮助（Help）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9B%B4%E5%A4%9A%EF%BC%88More%EF%BC%89"><span class="toc-text">更多（More）</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%BD%93%E5%89%8D%E5%B8%A7%E7%BB%9F%E8%AE%A1"><span class="toc-text">当前帧统计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%81%8F%E5%A5%BD%E8%AE%BE%E7%BD%AE%EF%BC%88Preferences%EF%BC%89"><span class="toc-text">偏好设置（Preferences）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%89%B2%E7%9B%B2%E6%A8%A1%E5%BC%8F%EF%BC%88Color-Blind-Mode%EF%BC%89"><span class="toc-text">色盲模式（Color Blind Mode）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">4.2 知识点代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lesson04-Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE-cs"><span class="toc-text">Lesson04_Unity性能分析工具_Profiler窗口顶部页签.cs</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -23228,222 +23238,146 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="8-Unity性能分析工具-Memory"><a href="#8-Unity性能分析工具-Memory" class="headerlink" title="8.Unity性能分析工具-Memory"></a>8.Unity性能分析工具-Memory</h1><hr>
-<h2 id="8-1-知识点"><a href="#8-1-知识点" class="headerlink" title="8.1 知识点"></a>8.1 知识点</h2><h3 id="Memory是什么"><a href="#Memory是什么" class="headerlink" title="Memory是什么"></a>Memory是什么</h3><p>Memory（内存）模块是 Unity 用来监视<strong>内存使用情况</strong>的关键工具。它能帮助你识别：哪些资源在占用大量内存，是否存在内存泄漏，是否出现垃圾回收频繁等问题。</p>
-<p>游戏开发中常见的内存开销来源：</p>
+        <h1 id="4-Unity性能分析工具-Profiler窗口顶部页签"><a href="#4-Unity性能分析工具-Profiler窗口顶部页签" class="headerlink" title="4.Unity性能分析工具-Profiler窗口顶部页签"></a>4.Unity性能分析工具-Profiler窗口顶部页签</h1><hr>
+<h2 id="4-1-知识点"><a href="#4-1-知识点" class="headerlink" title="4.1 知识点"></a>4.1 知识点</h2><h3 id="主要目标"><a href="#主要目标" class="headerlink" title="主要目标"></a>主要目标</h3><ul>
+<li><strong>了解</strong>：Profiler 顶部页签中每一部分的作用</li>
+<li><strong>记录</strong>：常用参数的含义与使用场景</li>
+</ul>
+<p>主要目标就是把顶部这条工具栏“认全”。后面你分析卡顿、掉帧、内存波动，基本都会回到这几个入口来回切。</p>
+<h3 id="顶部页签总览"><a href="#顶部页签总览" class="headerlink" title="顶部页签总览"></a>顶部页签总览</h3><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/1.png"></p>
+<p>从左到右（图中 1~9）：</p>
 <ol>
-<li><strong>纹理贴图</strong></li>
-<li><strong>网格</strong></li>
-<li><strong>音频 &#x2F; 视频</strong></li>
-<li><strong>动画</strong></li>
-<li><strong>材质球和 Shader</strong></li>
-<li><strong>C# 托管堆内存</strong></li>
-<li><strong>场景中的各 GameObject 以及各组件</strong></li>
-<li>……等等</li>
+<li><strong>模块选择</strong>（Profiler Modules）</li>
+<li><strong>分析目标</strong>（Play Mode）</li>
+<li><strong>录制与跳帧</strong></li>
+<li><strong>帧数显示</strong></li>
+<li><strong>清理</strong>（Clear）</li>
+<li><strong>运行时清理</strong>（Clear on Play）</li>
+<li><strong>深度分析</strong>（Deep Profile）</li>
+<li><strong>调用栈</strong>（Call Stacks）</li>
+<li><strong>读取&#x2F;保存&#x2F;帮助&#x2F;更多</strong></li>
 </ol>
-<p>在游戏中如果出现以下问题时，可以着重观察这里的内容：</p>
+<h3 id="模块选择（Profiler-Modules）"><a href="#模块选择（Profiler-Modules）" class="headerlink" title="模块选择（Profiler Modules）"></a><strong>模块选择</strong>（Profiler Modules）</h3><h4 id="入口（下拉）"><a href="#入口（下拉）" class="headerlink" title="入口（下拉）"></a>入口（下拉）</h4><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/2.png"></p>
+<p>点击 <code>Profiler Modules</code> 下拉菜单，用于快速选择要显示&#x2F;采样的模块集合。</p>
+<h4 id="模块列表（勾选-取消勾选）"><a href="#模块列表（勾选-取消勾选）" class="headerlink" title="模块列表（勾选&#x2F;取消勾选）"></a>模块列表（勾选&#x2F;取消勾选）</h4><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/3.png"></p>
+<p>模块列表用于决定 Profiler 当前要采集与展示哪些数据。常见模块：</p>
+<ul>
+<li><strong>高亮</strong>（Highlights）：把疑似异常帧标出来，先抓“问题帧”再往下看</li>
+<li><strong>CPU 使用率</strong>（CPU Usage）：看 CPU 每帧主要花在什么系统&#x2F;脚本上</li>
+<li><strong>GPU 使用率</strong>（GPU Usage）：看 GPU 每帧耗时；CPU 不忙但帧率低时常用它确认瓶颈</li>
+<li><strong>渲染</strong>（Rendering）：看渲染相关统计（例如批次数、SetPass 等）</li>
+<li><strong>内存</strong>（Memory）：看内存占用与 GC 分配等</li>
+<li><strong>音频</strong>（Audio）</li>
+<li><strong>视频</strong>（Video）</li>
+<li><strong>物理</strong>（Physics）</li>
+<li><strong>物理 2D</strong>（Physics 2D）</li>
+<li><strong>用户界面相关</strong>（UI）</li>
+<li><strong>UI 细节</strong>（UI Details）</li>
+<li><strong>实时 GI</strong>（Realtime GI）</li>
+<li><strong>虚拟纹理</strong>（Virtual Texturing）</li>
+<li><strong>文件访问</strong>（File Access）</li>
+<li><strong>资源加载</strong>（Asset Loading）</li>
+</ul>
+<h4 id="设置（自定义布局）"><a href="#设置（自定义布局）" class="headerlink" title="设置（自定义布局）"></a>设置（自定义布局）</h4><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/4.png"></p>
+<p>点击齿轮进入模块设置，可自定义布局（例如添加自定义模块、调整显示等）。</p>
+<p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/5.png"></p>
+<p>在 <strong>模块编辑器</strong>（Profiler Module Editor）中可以创建&#x2F;编辑自定义模块，并保存布局配置。</p>
+<p>如果你把模块勾选&#x2F;布局改乱了，<code>Restore Defaults</code> 可以一键恢复默认。</p>
+<h3 id="模式下拉框"><a href="#模式下拉框" class="headerlink" title="模式下拉框"></a><strong>模式下拉框</strong></h3><h4 id="目标选择"><a href="#目标选择" class="headerlink" title="目标选择"></a>目标选择</h4><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/6.png"></p>
+<p><code>Play Mode</code> 用于选择 Profiler 当前要分析的目标。</p>
+<p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/7.png"></p>
+<ul>
+<li><strong>播放模式</strong>（Play Mode）：分析运行时（游戏播放模式）</li>
+<li><strong>编辑模式</strong>（Edit Mode）：分析编辑器侧（定位编辑器&#x2F;工具性能问题）</li>
+<li><strong>定向连接</strong>（Direct Connection）：输入设备&#x2F;进程信息进行远程连接（常用于内网真机分析）可以选择输入运行应用程序的设备IP进行远程调试，注意：需要在发布应用程序时选择</li>
+</ul>
+<h4 id="远程分析的构建开关（发布时）"><a href="#远程分析的构建开关（发布时）" class="headerlink" title="远程分析的构建开关（发布时）"></a>远程分析的构建开关（发布时）</h4><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/8.png"></p>
+<p>如果要分析打包后的应用，通常需要开启：</p>
+<ul>
+<li><strong>开发构建</strong>（Development Build）</li>
+<li><strong>自动连接</strong>（Autoconnect Profiler，可选）</li>
+<li><strong>深度分析支持</strong>（Deep Profiling Support，可选，信息更多但开销更大）</li>
+</ul>
+<p>一般真机分析至少要开 <strong>开发构建</strong>（Development Build）；深度分析相关选项尽量只在定位问题时临时打开。</p>
+<p>注意：</p>
 <ol>
-<li><strong>游戏卡顿、掉帧</strong>  <ul>
-<li>表现：游戏突然变慢、不定期小卡顿、操作延迟等  </li>
-<li>可能原因：内存不足导致系统频繁进行垃圾回收（GC），降低游戏帧率</li>
-</ul>
-</li>
-<li><strong>闪退、崩溃</strong>  <ul>
-<li>表现：玩着玩着突然黑屏退出、特定场景（如加载大地图）崩溃  </li>
-<li>可能原因：设备分配不出更多内存，系统强制杀掉进程</li>
-</ul>
-</li>
-<li><strong>加载时间变长</strong>  <ul>
-<li>表现：加载界面等待时间变长，场景切换明显卡顿  </li>
-<li>可能原因：加载资源时需要更多内存，系统调度与 GC 频繁运行</li>
-</ul>
-</li>
-<li><strong>发热严重、掉电快</strong>  <ul>
-<li>表现：手机发烫严重、电池消耗快  </li>
-<li>可能原因：设备内存使用达到极限，系统&#x2F;游戏频繁调度内存资源，CPU、GPU 都高负载运转</li>
-</ul>
-</li>
-<li><strong>低端设备无法运行</strong>  <ul>
-<li>表现：打开即闪退、进主界面就崩溃  </li>
-<li>可能原因：老旧设备的可用内存更少，超出后甚至无法加载首屏</li>
-</ul>
-</li>
-<li>等等等等</li>
+<li>如果电脑上运行着通过开发者模式构建的应用程序，在此窗口中可能会直接显示可以连接调试的本地应用程序，直接进行选择即可</li>
+<li>如果移动设备通过USB线连接着电脑，下方也会显示Unity能够调试的设备</li>
 </ol>
-<h3 id="Memory中各参数功能的含义和作用"><a href="#Memory中各参数功能的含义和作用" class="headerlink" title="Memory中各参数功能的含义和作用"></a>Memory中各参数功能的含义和作用</h3><h4 id="Memory（内存）分析窗口"><a href="#Memory（内存）分析窗口" class="headerlink" title="Memory（内存）分析窗口"></a>Memory（内存）分析窗口</h4><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Memory/1.png">		<br>这里显示的是内存相关的统计信息，常用指标可以这样理解：</p>
+<h3 id="录制与跳帧"><a href="#录制与跳帧" class="headerlink" title="录制与跳帧"></a><strong>录制与跳帧</strong></h3><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/9.png"></p>
+<h4 id="录制开关"><a href="#录制开关" class="headerlink" title="录制开关"></a>录制开关</h4><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/10.png"></p>
+<p>开启后，Profiler 会持续采样并记录当前勾选模块的数据；关闭则不采样，也不会新增帧数据。</p>
+<p>习惯上可以等到“关键操作”开始前再开录制，这样时间轴更干净。</p>
+<h4 id="前后移动一帧"><a href="#前后移动一帧" class="headerlink" title="前后移动一帧"></a>前后移动一帧</h4><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/11.png"></p>
+<p>用于逐帧查看采样结果，方便对比相邻帧差异。</p>
+<h4 id="跳到最新一帧（当前帧）"><a href="#跳到最新一帧（当前帧）" class="headerlink" title="跳到最新一帧（当前帧）"></a>跳到最新一帧（当前帧）</h4><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/12.png"></p>
+<p>启用后会自动跳到最后采样到的帧，运行时始终展示最新帧数据。</p>
+<p>如果你在回看历史帧，记得先把它关掉，不然会一直跳回最新帧。</p>
+<h3 id="帧数显示"><a href="#帧数显示" class="headerlink" title="帧数显示"></a><strong>帧数显示</strong></h3><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/13.png"></p>
+<p><code>Frame: 当前帧 / 总帧数</code>：总帧数表示本次采样期间累计记录的帧数量。</p>
+<h3 id="清理（Clear）"><a href="#清理（Clear）" class="headerlink" title="清理（Clear）"></a><strong>清理</strong>（Clear）</h3><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/14.png"></p>
+<p>清空 Profiler 当前已记录的数据。</p>
+<h3 id="运行时清理（Clear-on-Play）"><a href="#运行时清理（Clear-on-Play）" class="headerlink" title="运行时清理（Clear on Play）"></a><strong>运行时清理</strong>（Clear on Play）</h3><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/15.png"></p>
+<p>启用后，在下次进入运行并连接到目标时，会自动清空旧数据，便于从“干净起点”开始采样。</p>
+<h3 id="深度分析（Deep-Profile）"><a href="#深度分析（Deep-Profile）" class="headerlink" title="深度分析（Deep Profile）"></a><strong>深度分析</strong>（Deep Profile）</h3><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/16.png"></p>
+<p>启用后会对 C# 方法进行更细粒度的采样（记录更多调用与耗时细节），但会带来明显额外开销。一般只在定位问题时短时间开启。分析器会对脚本代码的每个部分进行性能分析，并记录所有函数调用，至少包括进入任何 Unity API 中的第一个调用栈深度。<br>注意：此信息可用于帮助您确定代码对应用程序性能的影响，但这会带来很大的开销。一句话：它很“狠”，信息多，但也更卡。</p>
+<h3 id="调用栈（Call-Stacks）"><a href="#调用栈（Call-Stacks）" class="headerlink" title="调用栈（Call Stacks）"></a><strong>调用栈</strong>（Call Stacks）</h3><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/17.png"><br><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/18.png"></p>
+<p>勾选后会记录与分配相关的调用栈信息。性能分析器记录的帧包含所选样本在完整调用栈的信息；即使在 Deep Profile 未激活的情况下，完整调用栈上的这些样本也会导致托管脚本分配，从而会对性能和GC有一定的影响。<br>常见项：</p>
 <ul>
-<li><strong>Total Used Memory</strong>：已使用的内存总量（包括纹理、网格、对象、脚本等所有内存）  <ul>
-<li>最直观的内存压力指标</li>
-</ul>
+<li><p><strong>托管堆分配</strong>（GC.Alloc）：Unity 的 托管内存分配（C# 层），会增加 GC 压力；重点关注减少堆内存分配，控制GC频率。</p>
 </li>
-<li><strong>Texture Memory</strong>：贴图纹理使用的内存总量（包括 Mipmap）  <ul>
-<li>通常是内存占用的最大部分</li>
-</ul>
+<li><p><strong>非托管分配</strong>（UnsafeUtility.Malloc(Persistent)）：原生（非托管）内存分配函数（原生C++层）。比如图形API、DOTS系统中分配的一些内存中等常见，原生容器、底层插件、DOTS中会出现。主要关注留意资源是否释放。</p>
 </li>
-<li><strong>Mesh Memory</strong>：网格使用的内存总量（顶点、索引缓冲等）  <ul>
-<li>和场景中物体数量&#x2F;模型复杂度密切相关</li>
-</ul>
+<li><p><strong>任务等待</strong>（JobHandle.Complete）：表示主线程阻塞等待某个 Job 完成；DOTS、ECS、Burst、Unity Physics、AnimationRigging 等系统中会出现。不常见，多线程任务系统中才会有。主要关注除非使用了多线程任务系统，否则无需关心。</p>
 </li>
-<li><strong>Material Count</strong>：材质数量  <ul>
-<li>材质越多越难合批、内存占用也高</li>
 </ul>
-</li>
-<li><strong>Object Count</strong>：内存中的 <code>UnityEngine.Object</code> 实例总数（贴图、网格、脚本、GameObject 等）  <ul>
-<li>过高可能意味着资源未卸载干净、临时对象未销毁</li>
-</ul>
-</li>
-<li><strong>GC Used Memory</strong>：GC（托管堆）使用的内存（堆已分配且仍被使用）  </li>
-<li><strong>GC Allocated In Frame</strong>：该帧分配的托管堆内存</li>
-</ul>
-<p>使用建议：  </p>
-<ol>
-<li>排查 GC 问题时，重点观察 <code>GC Allocated In Frame</code> 是否频繁跳动  </li>
-<li><code>Texture Memory</code> 过高时，检查贴图分辨率是否过大、是否未压缩、是否重复加载  </li>
-<li><code>Mesh Memory</code> 可反映模型复杂度，留意是否存在不合理的高面数网格  </li>
-<li><code>Object Count</code> 超高时，注意对象是否正确卸载、是否存在未销毁的临时 GameObject  </li>
-<li>等等等等</li>
-</ol>
-<h4 id="Simple视图"><a href="#Simple视图" class="headerlink" title="Simple视图"></a>Simple视图</h4><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Memory/2.png">		<br><code>Simple</code> 视图展示的是 Unity 运行时的内存占用概况，用于快速判断内存使用情况。它可以帮助我们：  </p>
-<ol>
-<li>看懂 Unity 总共用了多少内存  </li>
-<li>哪些资源类型是主要的内存消耗者  </li>
-<li>GC 是否活跃（有没有频繁分配）  </li>
-<li>是否存在异常占用（比如 Profiler 本身占用过大）  </li>
-<li>等等等等</li>
-</ol>
-<p>下面是 <code>Simple</code> 视图里常见字段的含义：  </p>
+<p>开启后同样会增加开销，建议需要时再开。</p>
+<h3 id="读取-保存-帮助-更多"><a href="#读取-保存-帮助-更多" class="headerlink" title="读取&#x2F;保存&#x2F;帮助&#x2F;更多"></a><strong>读取&#x2F;保存&#x2F;帮助&#x2F;更多</strong></h3><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/19.png"></p>
+<h4 id="读取（Load）"><a href="#读取（Load）" class="headerlink" title="读取（Load）"></a>读取（Load）</h4><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/20.png"></p>
+<p>把已保存的 Profiler 数据文件加载回来，便于复盘与对比。</p>
+<h4 id="保存（Save）"><a href="#保存（Save）" class="headerlink" title="保存（Save）"></a>保存（Save）</h4><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/21.png"></p>
+<p>把当前采样到的 Profiler 数据保存到本地文件。</p>
+<p>建议在抓到异常帧后就保存一份，方便之后对比或复盘。</p>
+<h4 id="帮助（Help）"><a href="#帮助（Help）" class="headerlink" title="帮助（Help）"></a>帮助（Help）</h4><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/22.png"></p>
+<p>跳转到 Unity 官方手册&#x2F;帮助页面。</p>
+<h4 id="更多（More）"><a href="#更多（More）" class="headerlink" title="更多（More）"></a>更多（More）</h4><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/23.png"></p>
+<p>更多菜单里常用两项：</p>
 <ul>
-<li><p><strong>Normalized（规范化）</strong>：将所有帧的内存占用按相同最大值统一缩放显示  </p>
+<li><strong>当前帧统计</strong>（Show Stats for ‘current frame’）：是否显示当前帧的统计信息</li>
+<li><strong>偏好设置</strong>（Preferences）：打开 Profiler 偏好设置</li>
+</ul>
+<h5 id="当前帧统计"><a href="#当前帧统计" class="headerlink" title="当前帧统计"></a>当前帧统计</h5><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/24.png"></p>
+<h5 id="偏好设置（Preferences）"><a href="#偏好设置（Preferences）" class="headerlink" title="偏好设置（Preferences）"></a>偏好设置（Preferences）</h5><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/25.png"></p>
+<p>常用参数建议：</p>
 <ul>
-<li>更直观比较多帧之间各类内存（贴图、堆内存、Profiler、Audio 等）的占用比例变化  </li>
-<li>不勾选时，各帧按自己的比例显示，视觉对比不太直观  </li>
-<li>勾选后更容易分析内存是否稳定，从而查找内存激增、泄漏等问题</li>
-</ul>
+<li><p><strong>最大帧数</strong>（Frame Count）：Profiler 保存的帧数（Frame）的最大数量；决定你可以在 Profiler 中向后查看多少帧的性能数据，超过这个数量的帧数据将被丢弃；建议改高一点，比如600，以便查看更长历史数据</p>
 </li>
-<li><p><strong>Total Committed Memory（总提交内存）</strong>：Unity 总共已分配的内存（虚拟内存），包括系统预留 + 实际使用  </p>
-<ul>
-<li>即 Unity 请求了多少内存资源，无论是否真正用完</li>
-</ul>
+<li><p><strong>是否显示当前帧</strong>（Show Stats for ‘current’ frame）：是否显示当前帧（也就是正在录制的那一帧）的统计信息。建议打开，方便试试观察</p>
 </li>
-<li><p><strong>Tracked Memory（跟踪的内存）</strong>：Unity 能追踪的内存（Memory Profiler 能看见的部分）  </p>
-<ul>
-<li>包括托管堆内存、图形资源、音视频等  </li>
-<li><code>In use</code>：实际使用量；<code>Reserved</code>：为未来分配预留的空间</li>
-</ul>
+<li><p><strong>默认录制</strong>（Default recording state）：Unity 启动后或进入 Play 模式时，Profiler 是否默认开始记录。建议Enabled，方便自动录制</p>
 </li>
-<li><p><strong>Untracked Memory（未跟踪的内存）</strong>：Unity 已使用但无法追踪的内存（例如本机插件、Mono&#x2F;IL2CPP 元数据、DLL 等）  </p>
-<ul>
-<li>如果使用 C++ 插件或 <code>NativeArray</code> 没正确释放，会在这里体现出问题</li>
-</ul>
+<li><p><strong>默认目标</strong>（Default editor target mode on start）：Unity 启动后或进入 Play 模式时，Profiler 是否默认开始记录。建议Enabled，方便自动录制。</p>
 </li>
-<li><p><strong>Total Memory Breakdown</strong>：总内存细分（总量与总提交内存一致）  </p>
-<ul>
-<li>细分显示为 Unity 哪些子系统分配了多少内存  </li>
-<li><strong>Managed Heap</strong>：托管堆内存（C# 分配对象内存，会被 GC 回收），同样有 <code>In use</code> &#x2F; <code>Reserved</code>  </li>
-<li><strong>Graphics &amp; Graphics Driver</strong>：图形&#x2F;驱动分配的内存（纹理、渲染目标、Shader、网格等）  </li>
-<li><strong>Audio &#x2F; Video</strong>：音效&#x2F;视频系统预估内存使用量  </li>
-<li><strong>Other</strong>：其它未归类但可追踪的内存（例如编辑器缓存结构）  </li>
-<li><strong>Profiler</strong>：Profiler 本身占用的内存（采样数据、快照等）  </li>
-<li><strong>Untracked Memory</strong>：Memory Profiler 无法追踪的内存使用量</li>
-</ul>
+<li><p><strong>连接标识</strong>（Custom connection ID）：用于标识设备连接的 ID，适用于远程 Profiler 连接；用于设置连接到特定设备或进程时使用的标识名。比如可以通过代码在设备端设置ID：Profiler.SetConnectionIdentifier(“MyDevice1”);然后在这里填写MyDevice1好，Unity就会优先连接这个ID的设备</p>
 </li>
-<li><p><strong>Object Stats（对象统计信息）</strong>：资源类对象的数量与内存分布概况  </p>
-<ul>
-<li><strong>Textures &#x2F; Meshes &#x2F; Materials &#x2F; Animation Clips</strong>：已加载的纹理&#x2F;网格&#x2F;材质&#x2F;动画剪辑数量与内存  </li>
-<li><strong>Assets</strong>：已加载的资源总数  </li>
-<li><strong>Game Objects</strong>：场景中的 GameObject 实例总数  </li>
-<li><strong>Scene Objects</strong>：Scene 中所有对象总数（GameObject、组件以及场景中不属于资源的内容）  </li>
-<li><strong>GC allocated in frame</strong>：该帧分配的托管堆内存数量和总大小</li>
-</ul>
+<li><p><strong>Highlights 模块的目标帧率</strong>（Target Frames Per Second (Highlights Module)）：Profiler 中的 Highlights 模块 会以这个帧率为基准进行性能表现分析（如掉帧）。设置为 60 表示以 60 FPS 为目标；</p>
+<p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/26.png"></p>
+<p><code>Target Frames Per Second (Highlights Module)</code> 用于设定高亮模块的“目标帧率”基准。建议按目标设备设置（手机常见 30&#x2F;60，PC 常见 60&#x2F;120）。</p>
 </li>
 </ul>
-<p>注意：即使是空场景也会看到 Textures、Meshes 等对象的分配和内存占用，因为 Unity 会默认加载一些内建资源（内置字体、编辑器图标、GUI 样式、Gizmos 相关资源、Profiler 自己的资源等）。这些内容通常不属于你的游戏资源。</p>
-<h3 id="Memory对于我们的意义"><a href="#Memory对于我们的意义" class="headerlink" title="Memory对于我们的意义"></a>Memory对于我们的意义</h3><p>Memory 可以帮助我们：  </p>
-<ol>
-<li><strong>精准定位内存占用来源</strong>  <ul>
-<li>查看哪些内容（脚本、贴图、网格、音频等）占用内存多  </li>
-<li>判断哪些部分可以进行优化压缩、重复利用</li>
-</ul>
-</li>
-<li><strong>分析是否存在内存泄漏</strong>  <ul>
-<li>对比不同帧内存使用情况，发现是否存在不使用但未被释放的内存</li>
-</ul>
-</li>
-<li><strong>验证资源卸载是否生效</strong>  <ul>
-<li>对比不同帧内存使用情况，验证是否如预期释放了资源</li>
-</ul>
-</li>
-<li><strong>检查 GC 压力来源</strong>  <ul>
-<li>排查哪些脚本对象存在大量分配</li>
-</ul>
-</li>
-<li><strong>决定内存优化策略</strong>  <ul>
-<li>根据发现的问题制定优化策略</li>
-</ul>
-</li>
-<li>等等等等</li>
-</ol>
+<h3 id="色盲模式（Color-Blind-Mode）"><a href="#色盲模式（Color-Blind-Mode）" class="headerlink" title="色盲模式（Color Blind Mode）"></a><strong>色盲模式</strong>（Color Blind Mode）</h3><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/1.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.Unity%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90%E5%B7%A5%E5%85%B7-Profiler%E7%AA%97%E5%8F%A3%E9%A1%B6%E9%83%A8%E9%A1%B5%E7%AD%BE/27.png"></p>
+<p>用于调整图表颜色显示，方便红绿色盲场景下阅读曲线与高亮信息。</p>
 <hr>
-<h2 id="8-2-知识点代码"><a href="#8-2-知识点代码" class="headerlink" title="8.2 知识点代码"></a>8.2 知识点代码</h2><h3 id="Lesson08-Unity性能分析工具-Memory-cs"><a href="#Lesson08-Unity性能分析工具-Memory-cs" class="headerlink" title="Lesson08_Unity性能分析工具_Memory.cs"></a>Lesson08_Unity性能分析工具_Memory.cs</h3><pre><code class="csharp">public class Lesson08_Unity性能分析工具_Memory
+<h2 id="4-2-知识点代码"><a href="#4-2-知识点代码" class="headerlink" title="4.2 知识点代码"></a>4.2 知识点代码</h2><h3 id="Lesson04-Unity性能分析工具-Profiler窗口顶部页签-cs"><a href="#Lesson04-Unity性能分析工具-Profiler窗口顶部页签-cs" class="headerlink" title="Lesson04_Unity性能分析工具_Profiler窗口顶部页签.cs"></a>Lesson04_Unity性能分析工具_Profiler窗口顶部页签.cs</h3><pre><code class="csharp">public class Lesson04_Unity性能分析工具_Profiler窗口顶部页签
 &#123;
-    #region 知识点一 Memory是什么
-    /*
-     * Memory（内存）模块
-     * - Unity 中用于监视内存使用情况的关键工具
-     * - 能帮助识别哪些资源占用大量内存，是否存在内存泄漏或垃圾回收频繁等问题
-     *
-     * 游戏开发中常见内存开销来源：
-     * 1. 纹理贴图
-     * 2. 网格
-     * 3. 音频/视频
-     * 4. 动画
-     * 5. 材质球和 Shader
-     * 6. C# 托管堆内存
-     * 7. 场景中的各 GameObject 以及各组件
-     * ……等等
-     *
-     * 在游戏中如果出现以下问题时，可以着重观察这里的内容：
-     * 1. 游戏卡顿、掉帧
-     *    - 表现：游戏突然变慢、不定期小卡顿、操作延迟等
-     *    - 可能原因：内存不足导致系统频繁进行垃圾回收（GC），降低游戏帧率
-     *
-     * 2. 闪退、崩溃
-     *    - 表现：玩着玩着突然黑屏退出、特定场景（如加载大地图）崩溃
-     *    - 可能原因：设备分配不出更多内存，系统强制杀掉进程
-     *
-     * 3. 加载时间变长
-     *    - 表现：加载界面等待时间变长，场景切换明显卡顿
-     *    - 可能原因：加载资源时需要更多内存，系统调度与 GC 频繁运行
-     *
-     * 4. 发热严重、掉电快
-     *    - 表现：手机发烫严重、电池消耗快
-     *    - 可能原因：设备内存使用达到极限，系统/游戏频繁调度内存资源，CPU、GPU 都高负载运转
-     *
-     * 5. 低端设备无法运行
-     *    - 表现：打开即闪退、进主界面就崩溃
-     *    - 可能原因：老旧设备的可用内存更少，超出后甚至无法加载首屏
-     *
-     * ……等等
-     */
-    #endregion
+    #region 知识点 Profiler窗口的顶部页签
 
-    #region 知识点二 Memory中各参数功能的含义和作用
     /*
-     * Memory 中各参数功能的含义和作用：
-     * - 详见笔记正文（Memory 分析窗口、Simple 视图、字段解释与注意事项）
+     * 主要目标：
+     * 1. 了解 Profiler 顶部页签中每一部分的作用
+     * 2. 着重记忆（记录）重要参数含义
      */
-    #endregion
 
-    #region 知识点三 Memory对于我们的意义
-    /*
-     * Memory 可以帮助我们：
-     * 1. 精准定位内存占用来源
-     * 2. 分析是否存在内存泄漏
-     * 3. 验证资源卸载是否生效
-     * 4. 检查 GC 压力来源
-     * 5. 决定内存优化策略
-     * ……等等
-     */
     #endregion
 &#125;
 </code></pre>
