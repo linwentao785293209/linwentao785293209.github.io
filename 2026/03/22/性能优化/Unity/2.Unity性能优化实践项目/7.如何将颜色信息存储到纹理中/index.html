@@ -2,33 +2,26 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>1.VAT和GPUIns优化基本原理 | 人间自有韬哥在的博客</title>
+  <title>7.将颜色信息存储到纹理中 | 人间自有韬哥在的博客</title>
   <meta name="keywords" content=" 性能优化 , Unity性能优化 , Unity性能优化实践项目 ">
-  <meta name="description" content="1.VAT和GPUIns优化基本原理 | 人间自有韬哥在的博客">
+  <meta name="description" content="7.将颜色信息存储到纹理中 | 人间自有韬哥在的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="1.VAT和GPUInstancing优化基本原理 1.1 知识点 主要讲解内容 VAT和GPUInstancing用来做什么的  VAT和GPUInstancing优化原理  总结">
+<meta name="description" content="7.如何将颜色信息存储到纹理中 7.1 知识点如何将颜色信息存储到纹理中主要目的 将获取到的顶点位置信息（已归一化到 0~1）依次写入一张纹理。 落盘并改好导入设置，完成 VAT 贴图资源的生成链路。  主要思路整体分两段：先在 CPU 上用 Texture2D 把像素写好并落盘，再用 TextureImporter 把这张 PNG 当成数据贴图导入，避免压缩和 sRGB 把数值弄坏。 一、Tex">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1.VAT和GPUIns优化基本原理">
-<meta property="og:url" content="https://linwentao785293209.github.io/2026/03/16/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/index.html">
+<meta property="og:title" content="7.将颜色信息存储到纹理中">
+<meta property="og:url" content="https://linwentao785293209.github.io/2026/03/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E5%A6%82%E4%BD%95%E5%B0%86%E9%A2%9C%E8%89%B2%E4%BF%A1%E6%81%AF%E5%AD%98%E5%82%A8%E5%88%B0%E7%BA%B9%E7%90%86%E4%B8%AD/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的博客">
-<meta property="og:description" content="1.VAT和GPUInstancing优化基本原理 1.1 知识点 主要讲解内容 VAT和GPUInstancing用来做什么的  VAT和GPUInstancing优化原理  总结">
+<meta property="og:description" content="7.如何将颜色信息存储到纹理中 7.1 知识点如何将颜色信息存储到纹理中主要目的 将获取到的顶点位置信息（已归一化到 0~1）依次写入一张纹理。 落盘并改好导入设置，完成 VAT 贴图资源的生成链路。  主要思路整体分两段：先在 CPU 上用 Texture2D 把像素写好并落盘，再用 TextureImporter 把这张 PNG 当成数据贴图导入，避免压缩和 sRGB 把数值弄坏。 一、Tex">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/1.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/2.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/3.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/4.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/5.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/6.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/7.png">
-<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/8.png">
-<meta property="article:published_time" content="2026-03-16T05:03:44.000Z">
-<meta property="article:modified_time" content="2026-03-16T15:20:42.667Z">
+<meta property="og:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E5%A6%82%E4%BD%95%E5%B0%86%E9%A2%9C%E8%89%B2%E4%BF%A1%E6%81%AF%E5%AD%98%E5%82%A8%E5%88%B0%E7%BA%B9%E7%90%86%E4%B8%AD/1.png">
+<meta property="article:published_time" content="2026-03-22T11:47:29.000Z">
+<meta property="article:modified_time" content="2026-03-22T13:48:40.312Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="性能优化">
 <meta property="article:tag" content="Unity性能优化">
 <meta property="article:tag" content="Unity性能优化实践项目">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/1.png">
+<meta name="twitter:image" content="https://linwentao785293209.github.io/images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E5%A6%82%E4%BD%95%E5%B0%86%E9%A2%9C%E8%89%B2%E4%BF%A1%E6%81%AF%E5%AD%98%E5%82%A8%E5%88%B0%E7%BA%B9%E7%90%86%E4%B8%AD/1.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -159,7 +152,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(2142)</small>
+                <small>(2158)</small>
             
         </div>
     </li>
@@ -1669,7 +1662,7 @@
         <div data-rel="性能优化">
             <i class="fold iconfont icon-right"></i>
             性能优化
-            <small>(116)</small>
+            <small>(122)</small>
         </div>
         
             <ul class="sub hide">
@@ -1679,7 +1672,7 @@
         <div data-rel="性能优化&lt;---&gt;Unity性能优化">
             <i class="fold iconfont icon-right"></i>
             Unity性能优化
-            <small>(116)</small>
+            <small>(122)</small>
         </div>
         
             <ul class="sub hide">
@@ -1700,7 +1693,7 @@
         <div data-rel="性能优化&lt;---&gt;Unity性能优化&lt;---&gt;Unity性能优化实践项目">
             
             Unity性能优化实践项目
-            <small>(1)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -2718,7 +2711,7 @@
         <div data-rel="LeetCode">
             
             LeetCode
-            <small>(110)</small>
+            <small>(120)</small>
         </div>
         
     </li>
@@ -3102,8 +3095,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="2142">
-<input type="hidden" id="yelog_site_word_count" value="3753.4k">
+<input type="hidden" id="yelog_site_posts_number" value="2158">
+<input type="hidden" id="yelog_site_word_count" value="3840.2k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -3335,6 +3328,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>岛屿</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>递归</a>
             </li>
         
@@ -3368,6 +3365,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>动态效果</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>堆</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -3487,6 +3488,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>回溯</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>基础控件</a>
             </li>
         
@@ -3599,6 +3604,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>快速选择</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>框架</a>
             </li>
         
@@ -3679,6 +3688,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>排列</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>排序</a>
             </li>
         
@@ -3720,6 +3733,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>热更新面试题</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>热题100</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -3784,6 +3801,10 @@
         
             <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>数组</a>
+            </li>
+        
+            <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>双向链表</a>
             </li>
         
             <li class="article-tag-list-item">
@@ -4863,11 +4884,65 @@
         
         
         <a  class="全部文章 性能优化 Unity性能优化 Unity性能优化实践项目 "
-           href="/2026/03/16/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
+           href="/2026/03/22/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E5%A6%82%E4%BD%95%E5%B0%86%E9%A2%9C%E8%89%B2%E4%BF%A1%E6%81%AF%E5%AD%98%E5%82%A8%E5%88%B0%E7%BA%B9%E7%90%86%E4%B8%AD/"
            data-tag="性能优化,Unity性能优化,Unity性能优化实践项目"
            data-author="" >
-            <span class="post-title" title="1.VAT和GPUIns优化基本原理">1.VAT和GPUIns优化基本原理</span>
-            <span class="post-date" title="2026-03-16 13:03:44">2026/03/16</span>
+            <span class="post-title" title="7.将颜色信息存储到纹理中">7.将颜色信息存储到纹理中</span>
+            <span class="post-date" title="2026-03-22 19:47:29">2026/03/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 性能优化 Unity性能优化 Unity性能优化实践项目 "
+           href="/2026/03/19/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/6.%E5%A6%82%E4%BD%95%E5%B0%86%E9%A1%B6%E7%82%B9%E5%9D%90%E6%A0%87%E8%BD%AC%E6%8D%A2%E5%88%B001%E5%8C%BA%E9%97%B4%E5%86%85/"
+           data-tag="性能优化,Unity性能优化,Unity性能优化实践项目"
+           data-author="" >
+            <span class="post-title" title="6.将顶点坐标转换到0~1区间内">6.将顶点坐标转换到0~1区间内</span>
+            <span class="post-date" title="2026-03-19 19:47:19">2026/03/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 性能优化 Unity性能优化 Unity性能优化实践项目 "
+           href="/2026/03/18/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/5.%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E6%9F%90%E4%B8%AA%E5%8A%A8%E7%94%BB%E4%B8%AD%E6%89%80%E6%9C%89%E5%B8%A7%E7%9A%84%E9%A1%B6%E7%82%B9%E4%BF%A1%E6%81%AF/"
+           data-tag="性能优化,Unity性能优化,Unity性能优化实践项目"
+           data-author="" >
+            <span class="post-title" title="5.获取某动画所有帧的顶点信息">5.获取某动画所有帧的顶点信息</span>
+            <span class="post-date" title="2026-03-18 17:45:50">2026/03/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 性能优化 Unity性能优化 Unity性能优化实践项目 "
+           href="/2026/03/17/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96%E6%9F%90%E4%B8%AA%E7%9B%AE%E6%A0%87%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%8A%A8%E7%94%BB%E4%BF%A1%E6%81%AF/"
+           data-tag="性能优化,Unity性能优化,Unity性能优化实践项目"
+           data-author="" >
+            <span class="post-title" title="4.获取某个目标对象的动画信息">4.获取某个目标对象的动画信息</span>
+            <span class="post-date" title="2026-03-17 12:00:00">2026/03/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 性能优化 Unity性能优化 Unity性能优化实践项目 "
+           href="/2026/03/16/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/3.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90/"
+           data-tag="性能优化,Unity性能优化,Unity性能优化实践项目"
+           data-author="" >
+            <span class="post-title" title="3.需求分析">3.需求分析</span>
+            <span class="post-date" title="2026-03-16 12:00:00">2026/03/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 性能优化 Unity性能优化 Unity性能优化实践项目 "
+           href="/2026/03/15/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/2.%E5%AF%BC%E5%85%A5%E8%B5%84%E6%BA%90%E5%92%8C%E6%A8%A1%E6%8B%9F%E9%9C%80%E6%B1%82/"
+           data-tag="性能优化,Unity性能优化,Unity性能优化实践项目"
+           data-author="" >
+            <span class="post-title" title="2.导入资源和模拟需求">2.导入资源和模拟需求</span>
+            <span class="post-date" title="2026-03-15 12:00:00">2026/03/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 性能优化 Unity性能优化 Unity性能优化实践项目 "
+           href="/2026/03/14/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
+           data-tag="性能优化,Unity性能优化,Unity性能优化实践项目"
+           data-author="" >
+            <span class="post-title" title="1.VAT和GPUInstancing优化原理">1.VAT和GPUInstancing优化原理</span>
+            <span class="post-date" title="2026-03-14 13:03:44">2026/03/14</span>
         </a>
         
         
@@ -6331,7 +6406,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/32.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E5%92%8Cstring/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象关联知识点"
+           data-tag="编程语言,面向对象关联知识点,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="32.字符数组和string">32.字符数组和string</span>
             <span class="post-date" title="2025-06-20 12:00:37">2025/06/20</span>
@@ -6340,7 +6415,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/31.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象关联知识点"
+           data-tag="编程语言,面向对象关联知识点,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="31.结构体和类的区别">31.结构体和类的区别</span>
             <span class="post-date" title="2025-06-20 11:56:03">2025/06/20</span>
@@ -6349,7 +6424,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/30.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%A9%BA%E7%B1%BB%E5%9E%8B%E6%89%80%E5%8D%A0%E5%AD%97%E8%8A%82%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象关联知识点"
+           data-tag="编程语言,面向对象关联知识点,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="30.空类型所占字节数">30.空类型所占字节数</span>
             <span class="post-date" title="2025-06-20 11:48:32">2025/06/20</span>
@@ -6358,7 +6433,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/29.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E5%A4%9A%E7%BB%A7%E6%89%BF%E6%97%B6%E7%9A%84%E5%90%8C%E5%90%8D%E8%99%9A%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象关联知识点"
+           data-tag="编程语言,面向对象关联知识点,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="29.多继承时的同名虚函数">29.多继承时的同名虚函数</span>
             <span class="post-date" title="2025-06-20 11:41:02">2025/06/20</span>
@@ -6367,7 +6442,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/28.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E6%8E%A5%E5%8F%A3/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象关联知识点"
+           data-tag="编程语言,面向对象关联知识点,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="28.接口">28.接口</span>
             <span class="post-date" title="2025-06-20 11:25:28">2025/06/20</span>
@@ -6376,7 +6451,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/27.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,多态"
+           data-tag="编程语言,面向对象,多态,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="27.虚函数表">27.虚函数表</span>
             <span class="post-date" title="2025-06-20 11:12:50">2025/06/20</span>
@@ -6385,7 +6460,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/26.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E7%A6%81%E6%AD%A2%E9%87%8D%E5%86%99/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,多态"
+           data-tag="编程语言,面向对象,多态,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="26.禁止重写">26.禁止重写</span>
             <span class="post-date" title="2025-06-19 23:29:38">2025/06/19</span>
@@ -6394,7 +6469,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/25.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E6%8A%BD%E8%B1%A1%E7%B1%BB/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,多态"
+           data-tag="编程语言,面向对象,多态,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="25.抽象类">25.抽象类</span>
             <span class="post-date" title="2025-06-19 23:17:17">2025/06/19</span>
@@ -6403,7 +6478,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E8%99%9A%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,多态"
+           data-tag="编程语言,面向对象,多态,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="24.虚析构函数">24.虚析构函数</span>
             <span class="post-date" title="2025-06-19 17:38:01">2025/06/19</span>
@@ -6412,7 +6487,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/23.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E8%99%9A%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,多态"
+           data-tag="编程语言,面向对象,多态,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="23.虚函数">23.虚函数</span>
             <span class="post-date" title="2025-06-19 17:18:27">2025/06/19</span>
@@ -6421,7 +6496,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,继承"
+           data-tag="编程语言,面向对象,继承,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="22.里氏替换原则">22.里氏替换原则</span>
             <span class="post-date" title="2025-06-19 16:27:46">2025/06/19</span>
@@ -6430,7 +6505,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E7%BB%A7%E6%89%BF%E4%B8%AD%E7%9A%84%E5%8F%8B%E5%85%83%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,继承"
+           data-tag="编程语言,面向对象,继承,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="21.继承中的友元和运算符重载">21.继承中的友元和运算符重载</span>
             <span class="post-date" title="2025-06-19 16:10:35">2025/06/19</span>
@@ -6439,7 +6514,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/20.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,继承"
+           data-tag="编程语言,面向对象,继承,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="20.菱形继承">20.菱形继承</span>
             <span class="post-date" title="2025-06-19 15:44:56">2025/06/19</span>
@@ -6448,7 +6523,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E9%87%8D%E7%BB%A7%E6%89%BF/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,继承"
+           data-tag="编程语言,面向对象,继承,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="19.多重继承">19.多重继承</span>
             <span class="post-date" title="2025-06-19 15:34:39">2025/06/19</span>
@@ -6457,7 +6532,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/18.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E7%BB%A7%E6%89%BF%E5%90%8E%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,继承"
+           data-tag="编程语言,面向对象,继承,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="18.继承后的构造函数和析构函数">18.继承后的构造函数和析构函数</span>
             <span class="post-date" title="2025-06-19 15:20:53">2025/06/19</span>
@@ -6466,7 +6541,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E7%BB%A7%E6%89%BF%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,继承"
+           data-tag="编程语言,面向对象,继承,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="17.继承的基本规则">17.继承的基本规则</span>
             <span class="post-date" title="2025-06-19 15:08:31">2025/06/19</span>
@@ -6475,7 +6550,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/16.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,封装"
+           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="16.运算符重载">16.运算符重载</span>
             <span class="post-date" title="2025-06-19 14:43:44">2025/06/19</span>
@@ -6484,7 +6559,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,封装"
+           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="15.命名空间">15.命名空间</span>
             <span class="post-date" title="2025-06-19 14:21:37">2025/06/19</span>
@@ -6493,7 +6568,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/14.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E5%B5%8C%E5%A5%97%E7%B1%BB/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,封装"
+           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="14.嵌套类">14.嵌套类</span>
             <span class="post-date" title="2025-06-19 14:09:17">2025/06/19</span>
@@ -6502,7 +6577,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E5%8F%8B%E5%85%83%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,封装"
+           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="13.友元成员函数">13.友元成员函数</span>
             <span class="post-date" title="2025-06-19 13:53:49">2025/06/19</span>
@@ -6511,7 +6586,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E5%8F%8B%E5%85%83%E7%B1%BB/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,封装"
+           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="12.友元类">12.友元类</span>
             <span class="post-date" title="2025-06-19 13:24:08">2025/06/19</span>
@@ -6520,7 +6595,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,封装"
+           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="11.友元函数">11.友元函数</span>
             <span class="post-date" title="2025-06-18 18:06:21">2025/06/18</span>
@@ -6529,7 +6604,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-const%E4%BF%AE%E9%A5%B0%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,封装"
+           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="10.const修饰函数参数">10.const修饰函数参数</span>
             <span class="post-date" title="2025-06-18 17:39:55">2025/06/18</span>
@@ -6538,7 +6613,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-const%E6%88%90%E5%91%98/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,封装"
+           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="9.const成员">9.const成员</span>
             <span class="post-date" title="2025-06-18 17:21:03">2025/06/18</span>
@@ -6547,7 +6622,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E9%9D%99%E6%80%81%E6%88%90%E5%91%98/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,封装"
+           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="8.静态成员">8.静态成员</span>
             <span class="post-date" title="2025-06-18 17:04:42">2025/06/18</span>
@@ -6556,7 +6631,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,封装"
+           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="7.析构函数">7.析构函数</span>
             <span class="post-date" title="2025-06-18 16:52:52">2025/06/18</span>
@@ -6565,7 +6640,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,封装"
+           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="6.构造函数">6.构造函数</span>
             <span class="post-date" title="2025-06-18 14:12:11">2025/06/18</span>
@@ -6574,7 +6649,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,封装"
+           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="5.成员方法">5.成员方法</span>
             <span class="post-date" title="2025-06-18 13:43:59">2025/06/18</span>
@@ -6583,7 +6658,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,封装"
+           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="4.成员变量和访问修饰符">4.成员变量和访问修饰符</span>
             <span class="post-date" title="2025-06-18 13:26:14">2025/06/18</span>
@@ -6592,7 +6667,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象,封装"
+           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="3.类和对象">3.类和对象</span>
             <span class="post-date" title="2025-06-18 13:11:40">2025/06/18</span>
@@ -6601,7 +6676,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"
-           data-tag="编程语言,CPP,CPP核心,CPP核心语法知识,面向对象"
+           data-tag="编程语言,面向对象,CPP,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="2.面向对象基本概念">2.面向对象基本概念</span>
             <span class="post-date" title="2025-06-18 13:02:08">2025/06/18</span>
@@ -6978,19 +7053,19 @@
         
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发进阶 "
-           href="/2025/03/20/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/07.Shader%E5%BC%80%E5%8F%91%E8%BF%9B%E9%98%B6/11.%E8%A1%A8%E9%9D%A2%E7%9D%80%E8%89%B2%E5%99%A8-%E7%BB%93%E6%9E%84%E4%BD%93-%E8%BE%93%E5%85%A5%E7%BB%93%E6%9E%84%E4%BD%93/"
+           href="/2025/03/20/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/07.Shader%E5%BC%80%E5%8F%91%E8%BF%9B%E9%98%B6/12.%E8%A1%A8%E9%9D%A2%E7%9D%80%E8%89%B2%E5%99%A8-%E7%BB%93%E6%9E%84%E4%BD%93-%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%84%E4%BD%93/"
            data-tag="图形学,Shader,UnityShader,Shader开发进阶,表面着色器"
            data-author="" >
-            <span class="post-title" title="11.表面着色器输入结构体">11.表面着色器输入结构体</span>
+            <span class="post-title" title="12.表面着色器输出结构体">12.表面着色器输出结构体</span>
             <span class="post-date" title="2025-03-20 12:39:38">2025/03/20</span>
         </a>
         
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发进阶 "
-           href="/2025/03/20/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/07.Shader%E5%BC%80%E5%8F%91%E8%BF%9B%E9%98%B6/12.%E8%A1%A8%E9%9D%A2%E7%9D%80%E8%89%B2%E5%99%A8-%E7%BB%93%E6%9E%84%E4%BD%93-%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%84%E4%BD%93/"
+           href="/2025/03/20/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/07.Shader%E5%BC%80%E5%8F%91%E8%BF%9B%E9%98%B6/11.%E8%A1%A8%E9%9D%A2%E7%9D%80%E8%89%B2%E5%99%A8-%E7%BB%93%E6%9E%84%E4%BD%93-%E8%BE%93%E5%85%A5%E7%BB%93%E6%9E%84%E4%BD%93/"
            data-tag="图形学,Shader,UnityShader,Shader开发进阶,表面着色器"
            data-author="" >
-            <span class="post-title" title="12.表面着色器输出结构体">12.表面着色器输出结构体</span>
+            <span class="post-title" title="11.表面着色器输入结构体">11.表面着色器输入结构体</span>
             <span class="post-date" title="2025-03-20 12:39:38">2025/03/20</span>
         </a>
         
@@ -8032,7 +8107,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E5%87%BD%E6%95%B0-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP基础,CPP基础语法知识,函数"
+           data-tag="编程语言,函数,CPP,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="8.内联函数">8.内联函数</span>
             <span class="post-date" title="2025-01-20 13:07:31">2025/01/20</span>
@@ -8041,7 +8116,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%87%BD%E6%95%B0-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CPP,CPP基础,CPP基础语法知识,函数"
+           data-tag="编程语言,函数,CPP,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="7.递归函数">7.递归函数</span>
             <span class="post-date" title="2025-01-20 13:02:30">2025/01/20</span>
@@ -8050,7 +8125,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD/"
-           data-tag="编程语言,CPP,CPP基础,CPP基础语法知识,函数"
+           data-tag="编程语言,函数,CPP,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="6.函数重载">6.函数重载</span>
             <span class="post-date" title="2025-01-20 12:59:03">2025/01/20</span>
@@ -8059,7 +8134,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%87%BD%E6%95%B0-%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/"
-           data-tag="编程语言,CPP,CPP基础,CPP基础语法知识,函数"
+           data-tag="编程语言,函数,CPP,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="5.函数的变量的作用域">5.函数的变量的作用域</span>
             <span class="post-date" title="2025-01-20 12:55:41">2025/01/20</span>
@@ -8068,7 +8143,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E5%87%BD%E6%95%B0-%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC/"
-           data-tag="编程语言,CPP,CPP基础,CPP基础语法知识,函数"
+           data-tag="编程语言,函数,CPP,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="4.函数的参数默认值">4.函数的参数默认值</span>
             <span class="post-date" title="2025-01-20 12:52:02">2025/01/20</span>
@@ -8077,7 +8152,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%87%BD%E6%95%B0-%E5%BD%A2%E5%8F%82%E5%92%8C%E5%AE%9E%E5%8F%82/"
-           data-tag="编程语言,CPP,CPP基础,CPP基础语法知识,函数"
+           data-tag="编程语言,函数,CPP,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="3.函数的形参和实参">3.函数的形参和实参</span>
             <span class="post-date" title="2025-01-20 12:47:55">2025/01/20</span>
@@ -8086,7 +8161,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E5%9F%BA%E7%A1%80/"
-           data-tag="编程语言,CPP,CPP基础,CPP基础语法知识,函数"
+           data-tag="编程语言,函数,CPP,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="2.函数基础">2.函数基础</span>
             <span class="post-date" title="2025-01-19 22:01:59">2025/01/19</span>
@@ -8158,7 +8233,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/10/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/26.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-goto/"
-           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,循环语句"
+           data-tag="编程语言,循环语句,CPP,CPP入门,CPP入门语法知识"
            data-author="" >
             <span class="post-title" title="26.goto">26.goto</span>
             <span class="post-date" title="2025-01-10 00:49:09">2025/01/10</span>
@@ -8167,7 +8242,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-dowhile/"
-           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,循环语句"
+           data-tag="编程语言,循环语句,CPP,CPP入门,CPP入门语法知识"
            data-author="" >
             <span class="post-title" title="24.dowhile">24.dowhile</span>
             <span class="post-date" title="2025-01-09 23:47:30">2025/01/09</span>
@@ -8176,7 +8251,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/25.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-for/"
-           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,循环语句"
+           data-tag="编程语言,循环语句,CPP,CPP入门,CPP入门语法知识"
            data-author="" >
             <span class="post-title" title="25.for">25.for</span>
             <span class="post-date" title="2025-01-09 23:47:30">2025/01/09</span>
@@ -8185,7 +8260,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/23.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-while/"
-           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,循环语句"
+           data-tag="编程语言,循环语句,CPP,CPP入门,CPP入门语法知识"
            data-author="" >
             <span class="post-title" title="23.while">23.while</span>
             <span class="post-date" title="2025-01-09 23:38:55">2025/01/09</span>
@@ -8194,7 +8269,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5-switch/"
-           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,条件分支语句"
+           data-tag="编程语言,条件分支语句,CPP,CPP入门,CPP入门语法知识"
            data-author="" >
             <span class="post-title" title="22.switch">22.switch</span>
             <span class="post-date" title="2025-01-09 23:32:04">2025/01/09</span>
@@ -8203,7 +8278,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5-if/"
-           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,条件分支语句"
+           data-tag="编程语言,条件分支语句,CPP,CPP入门,CPP入门语法知识"
            data-author="" >
             <span class="post-title" title="21.if">21.if</span>
             <span class="post-date" title="2025-01-09 23:26:43">2025/01/09</span>
@@ -8221,7 +8296,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E6%98%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
-           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,类型转换"
+           data-tag="编程语言,类型转换,CPP,CPP入门,CPP入门语法知识"
            data-author="" >
             <span class="post-title" title="19.显式转换">19.显式转换</span>
             <span class="post-date" title="2025-01-09 13:10:17">2025/01/09</span>
@@ -8230,7 +8305,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/18.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
-           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,类型转换"
+           data-tag="编程语言,类型转换,CPP,CPP入门,CPP入门语法知识"
            data-author="" >
             <span class="post-title" title="18.隐式转换">18.隐式转换</span>
             <span class="post-date" title="2025-01-09 13:02:06">2025/01/09</span>
@@ -8239,7 +8314,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E8%BF%90%E7%AE%97%E7%AC%A6-%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,运算符"
+           data-tag="编程语言,运算符,CPP,CPP入门,CPP入门语法知识"
            data-author="" >
             <span class="post-title" title="17.三目运算符">17.三目运算符</span>
             <span class="post-date" title="2025-01-09 12:56:53">2025/01/09</span>
@@ -8248,7 +8323,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/16.%E8%BF%90%E7%AE%97%E7%AC%A6-%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,运算符"
+           data-tag="编程语言,运算符,CPP,CPP入门,CPP入门语法知识"
            data-author="" >
             <span class="post-title" title="16.位运算符">16.位运算符</span>
             <span class="post-date" title="2025-01-09 12:52:05">2025/01/09</span>
@@ -8257,7 +8332,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E8%BF%90%E7%AE%97%E7%AC%A6-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,运算符"
+           data-tag="编程语言,运算符,CPP,CPP入门,CPP入门语法知识"
            data-author="" >
             <span class="post-title" title="15.逻辑运算符">15.逻辑运算符</span>
             <span class="post-date" title="2025-01-09 12:50:09">2025/01/09</span>
@@ -8266,7 +8341,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/14.%E8%BF%90%E7%AE%97%E7%AC%A6-%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,运算符"
+           data-tag="编程语言,运算符,CPP,CPP入门,CPP入门语法知识"
            data-author="" >
             <span class="post-title" title="14.关系运算符">14.关系运算符</span>
             <span class="post-date" title="2025-01-09 12:40:13">2025/01/09</span>
@@ -8275,7 +8350,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E8%BF%90%E7%AE%97%E7%AC%A6-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/"
-           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,运算符"
+           data-tag="编程语言,运算符,CPP,CPP入门,CPP入门语法知识"
            data-author="" >
             <span class="post-title" title="13.字符串拼接">13.字符串拼接</span>
             <span class="post-date" title="2025-01-08 13:08:47">2025/01/08</span>
@@ -8284,7 +8359,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
            href="/2025/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E8%BF%90%E7%AE%97%E7%AC%A6-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,运算符"
+           data-tag="编程语言,运算符,CPP,CPP入门,CPP入门语法知识"
            data-author="" >
             <span class="post-title" title="12.算术运算符">12.算术运算符</span>
             <span class="post-date" title="2025-01-08 12:57:15">2025/01/08</span>
@@ -9544,7 +9619,7 @@
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发入门 "
            href="/2024/10/10/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/20.%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E7%BB%BC%E5%90%88%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-BlinnPhong%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E9%80%90%E7%89%87%E5%85%83%E5%85%89%E7%85%A7/"
-           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,综合光照模型,逐片元光照,BlinnPhong光照模型"
+           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,逐片元光照,综合光照模型,BlinnPhong光照模型"
            data-author="" >
             <span class="post-title" title="20.BlinnPhong光照模型逐片元光照">20.BlinnPhong光照模型逐片元光照</span>
             <span class="post-date" title="2024-10-10 22:50:54">2024/10/10</span>
@@ -9571,7 +9646,7 @@
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发入门 "
            href="/2024/10/10/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/17.%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E7%BB%BC%E5%90%88%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-Phong%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E9%80%90%E7%89%87%E5%85%83%E5%85%89%E7%85%A7/"
-           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,综合光照模型,Phong光照模型,逐片元光照"
+           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,逐片元光照,综合光照模型,Phong光照模型"
            data-author="" >
             <span class="post-title" title="17.Phong光照模型逐片元光照">17.Phong光照模型逐片元光照</span>
             <span class="post-date" title="2024-10-10 21:30:47">2024/10/10</span>
@@ -14710,7 +14785,7 @@
         
         <a  class="全部文章 UI系统 UnityUI系统 FGUI FGUI基础知识 "
            href="/2024/03/24/UI%E7%B3%BB%E7%BB%9F/Unity/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/38.FGUI%E5%9F%BA%E7%A1%80-Unity%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8%E5%BF%85%E5%A4%87-%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/"
-           data-tag="UI系统,UnityUI系统,FGUI,FGUI基础知识,坐标"
+           data-tag="UI系统,UnityUI系统,坐标,FGUI,FGUI基础知识"
            data-author="" >
             <span class="post-title" title="38.坐标系统">38.坐标系统</span>
             <span class="post-date" title="2024-03-24 15:56:43">2024/03/24</span>
@@ -16114,7 +16189,7 @@
         
         <a  class="全部文章 UI系统 UnityUI系统 UGUI UGUI基础知识 "
            href="/2024/03/12/UI%E7%B3%BB%E7%BB%9F/Unity/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.UGUI%E8%BF%9B%E9%98%B6-%E5%B1%8F%E5%B9%95%E5%9D%90%E6%A0%87%E8%BD%ACUI%E7%9B%B8%E5%AF%B9%E5%9D%90%E6%A0%87/"
-           data-tag="UI系统,UnityUI系统,UGUI,坐标,UGUI基础知识"
+           data-tag="UI系统,UnityUI系统,UGUI,UGUI基础知识,坐标"
            data-author="" >
             <span class="post-title" title="21.屏幕坐标转UI局部坐标">21.屏幕坐标转UI局部坐标</span>
             <span class="post-date" title="2024-03-12 13:07:16">2024/03/12</span>
@@ -17671,7 +17746,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity基础 Unity基础基础知识 "
            href="/2024/03/03/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/24.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%B0%84%E7%BA%BF%E6%A3%80%E6%B5%8B/"
-           data-tag="游戏引擎,Unity,核心系统,物理系统,Unity基础,Unity基础基础知识"
+           data-tag="游戏引擎,Unity,Unity基础,Unity基础基础知识,核心系统,物理系统"
            data-author="" >
             <span class="post-title" title="24.射线检测">24.射线检测</span>
             <span class="post-date" title="2024-03-03 18:23:34">2024/03/03</span>
@@ -17680,7 +17755,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity基础 Unity基础基础知识 "
            href="/2024/03/03/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/23.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B/"
-           data-tag="游戏引擎,Unity,核心系统,物理系统,Unity基础,Unity基础基础知识"
+           data-tag="游戏引擎,Unity,Unity基础,Unity基础基础知识,核心系统,物理系统"
            data-author="" >
             <span class="post-title" title="23.范围检测">23.范围检测</span>
             <span class="post-date" title="2024-03-03 18:01:20">2024/03/03</span>
@@ -17743,7 +17818,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity基础 Unity基础基础知识 "
            href="/2024/02/29/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.MonoBehavior%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%90%86/"
-           data-tag="游戏引擎,Unity,MonoBehaviour中的重要内容,Unity基础,Unity基础基础知识,协同程序"
+           data-tag="游戏引擎,Unity,Unity基础,Unity基础基础知识,MonoBehaviour中的重要内容,协同程序"
            data-author="" >
             <span class="post-title" title="16.协同程序原理">16.协同程序原理</span>
             <span class="post-date" title="2024-02-29 23:58:28">2024/02/29</span>
@@ -17752,7 +17827,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity基础 Unity基础基础知识 "
            href="/2024/02/29/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.MonoBehavior%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="游戏引擎,Unity,MonoBehaviour中的重要内容,Unity基础,Unity基础基础知识,协同程序"
+           data-tag="游戏引擎,Unity,Unity基础,Unity基础基础知识,MonoBehaviour中的重要内容,协同程序"
            data-author="" >
             <span class="post-title" title="15.协同程序">15.协同程序</span>
             <span class="post-date" title="2024-02-29 20:02:13">2024/02/29</span>
@@ -17761,7 +17836,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity基础 Unity基础基础知识 "
            href="/2024/02/29/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.MonoBehavior%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9-%E5%BB%B6%E8%BF%9F%E5%87%BD%E6%95%B0/"
-           data-tag="游戏引擎,Unity,MonoBehaviour中的重要内容,Unity基础,Unity基础基础知识"
+           data-tag="游戏引擎,Unity,Unity基础,Unity基础基础知识,MonoBehaviour中的重要内容"
            data-author="" >
             <span class="post-title" title="14.延迟函数">14.延迟函数</span>
             <span class="post-date" title="2024-02-29 19:41:31">2024/02/29</span>
@@ -18562,7 +18637,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/35.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E6%95%88%E7%B3%BB%E7%BB%9F-%E9%BA%A6%E5%85%8B%E9%A3%8E/"
-           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,音效系统"
+           data-tag="游戏引擎,Unity,Unity入门,核心系统,Unity入门基础知识,音效系统"
            data-author="" >
             <span class="post-title" title="35.Microphone麦克风">35.Microphone麦克风</span>
             <span class="post-date" title="2024-02-25 14:17:13">2024/02/25</span>
@@ -18571,7 +18646,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/34.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E6%95%88%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E9%A2%91%E6%BA%90%E4%BB%A3%E7%A0%81%E6%8E%A7%E5%88%B6/"
-           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,音效系统"
+           data-tag="游戏引擎,Unity,Unity入门,核心系统,Unity入门基础知识,音效系统"
            data-author="" >
             <span class="post-title" title="34.AudioSource音频源代码控制">34.AudioSource音频源代码控制</span>
             <span class="post-date" title="2024-02-25 14:03:34">2024/02/25</span>
@@ -18580,7 +18655,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/33.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E6%95%88%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E9%A2%91%E6%BA%90%E5%92%8C%E9%9F%B3%E9%A2%91%E7%9B%91%E5%90%AC%E8%84%9A%E6%9C%AC/"
-           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,音效系统"
+           data-tag="游戏引擎,Unity,Unity入门,核心系统,Unity入门基础知识,音效系统"
            data-author="" >
             <span class="post-title" title="33.AudioSource音频源组件参数和AudioListener音频监听组件参数">33.AudioSource音频源组件参数和AudioListener音频监听组件参数</span>
             <span class="post-date" title="2024-02-25 13:54:41">2024/02/25</span>
@@ -18589,7 +18664,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/32.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E6%95%88%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E9%A2%91%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5/"
-           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,音效系统"
+           data-tag="游戏引擎,Unity,Unity入门,核心系统,Unity入门基础知识,音效系统"
            data-author="" >
             <span class="post-title" title="32.音频文件导入">32.音频文件导入</span>
             <span class="post-date" title="2024-02-25 13:46:39">2024/02/25</span>
@@ -18598,7 +18673,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/31.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%88%9A%E4%BD%93%E5%8A%A0%E5%8A%9B/"
-           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,物理系统"
+           data-tag="游戏引擎,Unity,Unity入门,核心系统,物理系统,Unity入门基础知识"
            data-author="" >
             <span class="post-title" title="31.Rigidbody刚体代码控制">31.Rigidbody刚体代码控制</span>
             <span class="post-date" title="2024-02-25 13:43:10">2024/02/25</span>
@@ -18607,7 +18682,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/30.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B%E5%87%BD%E6%95%B0/"
-           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,物理系统"
+           data-tag="游戏引擎,Unity,Unity入门,核心系统,物理系统,Unity入门基础知识"
            data-author="" >
             <span class="post-title" title="30.碰撞检测函数">30.碰撞检测函数</span>
             <span class="post-date" title="2024-02-25 13:14:03">2024/02/25</span>
@@ -18616,7 +18691,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/29.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E6%9D%90%E8%B4%A8/"
-           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,物理系统"
+           data-tag="游戏引擎,Unity,Unity入门,核心系统,物理系统,Unity入门基础知识"
            data-author="" >
             <span class="post-title" title="29.PhysicMaterial物理材质">29.PhysicMaterial物理材质</span>
             <span class="post-date" title="2024-02-25 13:09:09">2024/02/25</span>
@@ -18625,7 +18700,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/28.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%A2%B0%E6%92%9E%E4%BD%93/"
-           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,物理系统"
+           data-tag="游戏引擎,Unity,Unity入门,核心系统,物理系统,Unity入门基础知识"
            data-author="" >
             <span class="post-title" title="28.Collider碰撞体组件参数">28.Collider碰撞体组件参数</span>
             <span class="post-date" title="2024-02-25 13:02:21">2024/02/25</span>
@@ -18634,7 +18709,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/27.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%88%9A%E4%BD%93/"
-           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,物理系统"
+           data-tag="游戏引擎,Unity,Unity入门,核心系统,物理系统,Unity入门基础知识"
            data-author="" >
             <span class="post-title" title="27.Rigidbody刚体组件参数">27.Rigidbody刚体组件参数</span>
             <span class="post-date" title="2024-02-25 12:56:03">2024/02/25</span>
@@ -18643,7 +18718,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/"
-           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,光源系统"
+           data-tag="游戏引擎,Unity,Unity入门,核心系统,Unity入门基础知识,光源系统"
            data-author="" >
             <span class="post-title" title="26.Lighting光面板">26.Lighting光面板</span>
             <span class="post-date" title="2024-02-25 00:19:19">2024/02/25</span>
@@ -18652,7 +18727,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/25.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%BB%84%E4%BB%B6/"
-           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,光源系统"
+           data-tag="游戏引擎,Unity,Unity入门,核心系统,Unity入门基础知识,光源系统"
            data-author="" >
             <span class="post-title" title="25.Light光源组件参数和代码控制">25.Light光源组件参数和代码控制</span>
             <span class="post-date" title="2024-02-25 00:01:43">2024/02/25</span>
@@ -18769,7 +18844,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/24/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-MonoBehavior%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9-%E5%9F%BA%E7%A1%80%E5%B1%9E%E6%80%A7%E5%92%8C%E7%BB%84%E4%BB%B6%E7%9A%84%E8%8E%B7%E5%8F%96/"
-           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,Unity脚本基础,MonoBehaviour中的重要内容"
+           data-tag="游戏引擎,Unity,Unity入门,MonoBehaviour中的重要内容,Unity入门基础知识,Unity脚本基础"
            data-author="" >
             <span class="post-title" title="12.基础属性和组件的获取">12.基础属性和组件的获取</span>
             <span class="post-date" title="2024-02-24 13:20:17">2024/02/24</span>
@@ -19453,7 +19528,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/28.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB/"
-           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象关联知识点"
            data-author="" >
             <span class="post-title" title="28.抽象类和接口的区别">28.抽象类和接口的区别</span>
             <span class="post-date" title="2024-01-31 23:28:02">2024/01/31</span>
@@ -19462,7 +19537,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/27.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB/"
-           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象关联知识点"
            data-author="" >
             <span class="post-title" title="27.结构体和类的区别">27.结构体和类的区别</span>
             <span class="post-date" title="2024-01-31 23:26:39">2024/01/31</span>
@@ -19471,7 +19546,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/26.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-StringBuilder/"
-           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象关联知识点"
            data-author="" >
             <span class="post-title" title="26.StringBuilder">26.StringBuilder</span>
             <span class="post-date" title="2024-01-31 22:08:27">2024/01/31</span>
@@ -19480,7 +19555,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/25.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-String/"
-           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象关联知识点"
            data-author="" >
             <span class="post-title" title="25.String">25.String</span>
             <span class="post-date" title="2024-01-31 12:54:52">2024/01/31</span>
@@ -19489,7 +19564,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E4%B8%87%E7%89%A9%E4%B9%8B%E7%88%B6%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象关联知识点"
            data-author="" >
             <span class="post-title" title="24.万物之父中的方法">24.万物之父中的方法</span>
             <span class="post-date" title="2024-01-31 12:36:43">2024/01/31</span>
@@ -19498,7 +19573,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/23.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/"
-           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象关联知识点"
            data-author="" >
             <span class="post-title" title="23.命名空间">23.命名空间</span>
             <span class="post-date" title="2024-01-30 19:55:08">2024/01/30</span>
@@ -19507,7 +19582,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E5%AF%86%E5%B0%81%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,面向对象,多态,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,多态"
            data-author="" >
             <span class="post-title" title="22.密封方法">22.密封方法</span>
             <span class="post-date" title="2024-01-30 19:51:30">2024/01/30</span>
@@ -19516,7 +19591,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E6%8E%A5%E5%8F%A3/"
-           data-tag="编程语言,面向对象,多态,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,多态"
            data-author="" >
             <span class="post-title" title="21.接口">21.接口</span>
             <span class="post-date" title="2024-01-30 12:52:17">2024/01/30</span>
@@ -19525,7 +19600,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/20.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,面向对象,多态,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,多态"
            data-author="" >
             <span class="post-title" title="20.抽象类和抽象方法">20.抽象类和抽象方法</span>
             <span class="post-date" title="2024-01-30 12:45:18">2024/01/30</span>
@@ -19534,7 +19609,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/29/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-vob/"
-           data-tag="编程语言,面向对象,多态,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,多态"
            data-author="" >
             <span class="post-title" title="19.virtual，override，base">19.virtual，override，base</span>
             <span class="post-date" title="2024-01-29 22:41:36">2024/01/29</span>
@@ -19543,7 +19618,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/29/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/18.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E5%AF%86%E5%B0%81%E7%B1%BB/"
-           data-tag="编程语言,面向对象,继承,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,继承"
            data-author="" >
             <span class="post-title" title="18.密封类">18.密封类</span>
             <span class="post-date" title="2024-01-29 22:41:29">2024/01/29</span>
@@ -19552,7 +19627,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/29/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E4%B8%87%E7%89%A9%E4%B9%8B%E7%88%B6%E5%92%8C%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/"
-           data-tag="编程语言,面向对象,继承,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,继承"
            data-author="" >
             <span class="post-title" title="17.万物之父和装箱拆箱">17.万物之父和装箱拆箱</span>
             <span class="post-date" title="2024-01-29 21:39:13">2024/01/29</span>
@@ -19561,7 +19636,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/29/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/16.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E7%BB%A7%E6%89%BF%E4%B8%AD%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,面向对象,继承,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,继承"
            data-author="" >
             <span class="post-title" title="16.继承中的构造函数">16.继承中的构造函数</span>
             <span class="post-date" title="2024-01-29 21:29:53">2024/01/29</span>
@@ -19570,7 +19645,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/26/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99/"
-           data-tag="编程语言,面向对象,继承,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,继承"
            data-author="" >
             <span class="post-title" title="15.里氏替换原则">15.里氏替换原则</span>
             <span class="post-date" title="2024-01-26 12:55:26">2024/01/26</span>
@@ -19579,7 +19654,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/25/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/14.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E7%BB%A7%E6%89%BF%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/"
-           data-tag="编程语言,面向对象,继承,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,继承"
            data-author="" >
             <span class="post-title" title="14.继承的基本规则">14.继承的基本规则</span>
             <span class="post-date" title="2024-01-25 21:39:02">2024/01/25</span>
@@ -19588,7 +19663,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/25/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E5%86%85%E9%83%A8%E7%B1%BB%E5%92%8C%E5%88%86%E9%83%A8%E7%B1%BB/"
-           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,封装"
            data-author="" >
             <span class="post-title" title="13.内部类和分部类">13.内部类和分部类</span>
             <span class="post-date" title="2024-01-25 12:44:08">2024/01/25</span>
@@ -19597,7 +19672,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/"
-           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,封装"
            data-author="" >
             <span class="post-title" title="12.运算符重载">12.运算符重载</span>
             <span class="post-date" title="2024-01-15 23:38:52">2024/01/15</span>
@@ -19606,7 +19681,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,封装"
            data-author="" >
             <span class="post-title" title="11.扩展方法">11.扩展方法</span>
             <span class="post-date" title="2024-01-15 22:04:07">2024/01/15</span>
@@ -19615,7 +19690,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/14/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E9%9D%99%E6%80%81%E7%B1%BB%E5%92%8C%E9%9D%99%E6%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,封装"
            data-author="" >
             <span class="post-title" title="10.静态类和静态构造函数">10.静态类和静态构造函数</span>
             <span class="post-date" title="2024-01-14 22:04:07">2024/01/14</span>
@@ -19624,7 +19699,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/13/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E9%9D%99%E6%80%81%E6%88%90%E5%91%98/"
-           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,封装"
            data-author="" >
             <span class="post-title" title="9.静态成员">9.静态成员</span>
             <span class="post-date" title="2024-01-13 12:09:18">2024/01/13</span>
@@ -19633,7 +19708,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/13/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E7%B4%A2%E5%BC%95%E5%99%A8/"
-           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,封装"
            data-author="" >
             <span class="post-title" title="8.索引器">8.索引器</span>
             <span class="post-date" title="2024-01-13 11:49:14">2024/01/13</span>
@@ -19642,7 +19717,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/13/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7/"
-           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,封装"
            data-author="" >
             <span class="post-title" title="7.成员属性">7.成员属性</span>
             <span class="post-date" title="2024-01-13 11:39:00">2024/01/13</span>
@@ -19651,7 +19726,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/12/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识,垃圾回收"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,封装,垃圾回收"
            data-author="" >
             <span class="post-title" title="6.构造函数、析构函数和垃圾回收">6.构造函数、析构函数和垃圾回收</span>
             <span class="post-date" title="2024-01-12 20:01:14">2024/01/12</span>
@@ -19660,7 +19735,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/12/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,封装"
            data-author="" >
             <span class="post-title" title="5.成员方法">5.成员方法</span>
             <span class="post-date" title="2024-01-12 00:15:16">2024/01/12</span>
@@ -19669,7 +19744,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6/"
-           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,封装"
            data-author="" >
             <span class="post-title" title="4.成员变量和访问修饰符">4.成员变量和访问修饰符</span>
             <span class="post-date" title="2024-01-11 23:08:30">2024/01/11</span>
@@ -19678,7 +19753,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/"
-           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象,封装"
            data-author="" >
             <span class="post-title" title="3.类和对象">3.类和对象</span>
             <span class="post-date" title="2024-01-11 22:36:24">2024/01/11</span>
@@ -19687,7 +19762,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"
-           data-tag="编程语言,面向对象,CSharp,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,CSharp,CSharp核心,CSharp核心语法知识,面向对象"
            data-author="" >
             <span class="post-title" title="2.面向对象基本概念">2.面向对象基本概念</span>
             <span class="post-date" title="2024-01-11 22:25:11">2024/01/11</span>
@@ -19849,7 +19924,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/03.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E5%87%BD%E6%95%B0-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,函数,CSharp,CSharp基础,CSharp基础语法知识"
+           data-tag="编程语言,CSharp,CSharp基础,CSharp基础语法知识,函数"
            data-author="" >
             <span class="post-title" title="13.递归函数">13.递归函数</span>
             <span class="post-date" title="2024-01-10 20:01:00">2024/01/10</span>
@@ -19858,7 +19933,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/03.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD/"
-           data-tag="编程语言,函数,CSharp,CSharp基础,CSharp基础语法知识"
+           data-tag="编程语言,CSharp,CSharp基础,CSharp基础语法知识,函数"
            data-author="" >
             <span class="post-title" title="12.函数重载">12.函数重载</span>
             <span class="post-date" title="2024-01-10 19:53:12">2024/01/10</span>
@@ -19867,7 +19942,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/03.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E5%87%BD%E6%95%B0-%E5%8F%98%E9%95%BF%E5%8F%82%E6%95%B0%E5%92%8C%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC/"
-           data-tag="编程语言,函数,CSharp,CSharp基础,CSharp基础语法知识"
+           data-tag="编程语言,CSharp,CSharp基础,CSharp基础语法知识,函数"
            data-author="" >
             <span class="post-title" title="11.变长参数和参数默认值">11.变长参数和参数默认值</span>
             <span class="post-date" title="2024-01-10 13:15:01">2024/01/10</span>
@@ -19876,7 +19951,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/03.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E5%87%BD%E6%95%B0-ref%E5%92%8Cout/"
-           data-tag="编程语言,函数,CSharp,CSharp基础,CSharp基础语法知识"
+           data-tag="编程语言,CSharp,CSharp基础,CSharp基础语法知识,函数"
            data-author="" >
             <span class="post-title" title="10.ref和out">10.ref和out</span>
             <span class="post-date" title="2024-01-10 13:01:20">2024/01/10</span>
@@ -19885,7 +19960,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp基础 CSharp基础语法知识 "
            href="/2024/01/10/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/03.CSharp%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E5%9F%BA%E7%A1%80/"
-           data-tag="编程语言,函数,CSharp,CSharp基础,CSharp基础语法知识"
+           data-tag="编程语言,CSharp,CSharp基础,CSharp基础语法知识,函数"
            data-author="" >
             <span class="post-title" title="9.函数基础">9.函数基础</span>
             <span class="post-date" title="2024-01-10 09:41:50">2024/01/10</span>
@@ -19992,19 +20067,19 @@
         
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门实践项目 "
-           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
            data-tag="编程语言,CSharp,CSharp入门,CSharp入门实践项目"
            data-author="" >
-            <span class="post-title" title="12.公主相关">12.公主相关</span>
+            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门实践项目 "
-           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
            data-tag="编程语言,CSharp,CSharp入门,CSharp入门实践项目"
            data-author="" >
-            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
+            <span class="post-title" title="12.公主相关">12.公主相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
@@ -20110,7 +20185,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/23.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-for/"
-           data-tag="编程语言,循环语句,CSharp,CSharp入门,CSharp入门语法知识"
+           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,循环语句"
            data-author="" >
             <span class="post-title" title="23.for">23.for</span>
             <span class="post-date" title="2024-01-06 22:04:57">2024/01/06</span>
@@ -20119,7 +20194,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-dowhile/"
-           data-tag="编程语言,循环语句,CSharp,CSharp入门,CSharp入门语法知识"
+           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,循环语句"
            data-author="" >
             <span class="post-title" title="22.dowhile">22.dowhile</span>
             <span class="post-date" title="2024-01-06 22:03:57">2024/01/06</span>
@@ -20128,7 +20203,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-while/"
-           data-tag="编程语言,循环语句,CSharp,CSharp入门,CSharp入门语法知识"
+           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,循环语句"
            data-author="" >
             <span class="post-title" title="21.while">21.while</span>
             <span class="post-date" title="2024-01-06 20:26:05">2024/01/06</span>
@@ -20137,7 +20212,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/20.%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5-switch/"
-           data-tag="编程语言,条件分支语句,CSharp,CSharp入门,CSharp入门语法知识"
+           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,条件分支语句"
            data-author="" >
             <span class="post-title" title="20.switch">20.switch</span>
             <span class="post-date" title="2024-01-06 20:25:05">2024/01/06</span>
@@ -20146,7 +20221,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.%E6%9D%A1%E4%BB%B6%E5%88%86%E6%94%AF%E8%AF%AD%E5%8F%A5-if/"
-           data-tag="编程语言,条件分支语句,CSharp,CSharp入门,CSharp入门语法知识"
+           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,条件分支语句"
            data-author="" >
             <span class="post-title" title="19.if">19.if</span>
             <span class="post-date" title="2024-01-06 20:14:55">2024/01/06</span>
@@ -20155,7 +20230,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/18.%E8%BF%90%E7%AE%97%E7%AC%A6-%E4%B8%89%E7%9B%AE%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,运算符,CSharp,CSharp入门,CSharp入门语法知识"
+           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,运算符"
            data-author="" >
             <span class="post-title" title="18.三目运算符">18.三目运算符</span>
             <span class="post-date" title="2024-01-06 19:54:11">2024/01/06</span>
@@ -20164,7 +20239,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E8%BF%90%E7%AE%97%E7%AC%A6-%E4%BD%8D%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,运算符,CSharp,CSharp入门,CSharp入门语法知识"
+           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,运算符"
            data-author="" >
             <span class="post-title" title="17.位运算符">17.位运算符</span>
             <span class="post-date" title="2024-01-06 19:41:40">2024/01/06</span>
@@ -20173,7 +20248,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/16.%E8%BF%90%E7%AE%97%E7%AC%A6-%E9%80%BB%E8%BE%91%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,运算符,CSharp,CSharp入门,CSharp入门语法知识"
+           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,运算符"
            data-author="" >
             <span class="post-title" title="16.逻辑运算符">16.逻辑运算符</span>
             <span class="post-date" title="2024-01-06 19:35:01">2024/01/06</span>
@@ -20182,7 +20257,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E8%BF%90%E7%AE%97%E7%AC%A6-%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,运算符,CSharp,CSharp入门,CSharp入门语法知识"
+           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,运算符"
            data-author="" >
             <span class="post-title" title="15.关系运算符">15.关系运算符</span>
             <span class="post-date" title="2024-01-06 13:01:21">2024/01/06</span>
@@ -20191,7 +20266,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/14.%E8%BF%90%E7%AE%97%E7%AC%A6-%E5%AD%97%E7%AC%A6%E4%B8%B2%E6%8B%BC%E6%8E%A5/"
-           data-tag="编程语言,运算符,CSharp,CSharp入门,CSharp入门语法知识"
+           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,运算符"
            data-author="" >
             <span class="post-title" title="14.字符串拼接">14.字符串拼接</span>
             <span class="post-date" title="2024-01-06 12:01:14">2024/01/06</span>
@@ -20200,7 +20275,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E8%BF%90%E7%AE%97%E7%AC%A6-%E7%AE%97%E6%9C%AF%E8%BF%90%E7%AE%97%E7%AC%A6/"
-           data-tag="编程语言,运算符,CSharp,CSharp入门,CSharp入门语法知识"
+           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,运算符"
            data-author="" >
             <span class="post-title" title="13.算术运算符">13.算术运算符</span>
             <span class="post-date" title="2024-01-06 11:16:43">2024/01/06</span>
@@ -20218,7 +20293,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E6%98%BE%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
-           data-tag="编程语言,类型转换,CSharp,CSharp入门,CSharp入门语法知识"
+           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,类型转换"
            data-author="" >
             <span class="post-title" title="11.显式转换">11.显式转换</span>
             <span class="post-date" title="2024-01-06 10:36:38">2024/01/06</span>
@@ -20227,7 +20302,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门语法知识 "
            href="/2024/01/06/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/01.CSharp%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2-%E9%9A%90%E5%BC%8F%E8%BD%AC%E6%8D%A2/"
-           data-tag="编程语言,类型转换,CSharp,CSharp入门,CSharp入门语法知识"
+           data-tag="编程语言,CSharp,CSharp入门,CSharp入门语法知识,类型转换"
            data-author="" >
             <span class="post-title" title="10.隐式转换">10.隐式转换</span>
             <span class="post-date" title="2024-01-06 10:26:31">2024/01/06</span>
@@ -20389,7 +20464,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/905.%E6%8C%89%E5%A5%87%E5%81%B6%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84/"
-           data-tag="LeetCode,数组,双指针,排序"
+           data-tag="LeetCode,数组,排序,双指针"
            data-author="" >
             <span class="post-title" title="905.按奇偶排序数组">905.按奇偶排序数组</span>
             <span class="post-date" title="2000-01-10 09:00:05">2000/01/10</span>
@@ -20434,7 +20509,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/739.%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/"
-           data-tag="LeetCode,数组,栈,单调栈"
+           data-tag="LeetCode,热题100,数组,栈,单调栈"
            data-author="" >
             <span class="post-title" title="739.每日温度">739.每日温度</span>
             <span class="post-date" title="2000-01-10 07:03:09">2000/01/10</span>
@@ -20470,7 +20545,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/680.%E9%AA%8C%E8%AF%81%E5%9B%9E%E6%96%87%E4%B8%B2II/"
-           data-tag="LeetCode,贪心,双指针,字符串"
+           data-tag="LeetCode,贪心,字符串,双指针"
            data-author="" >
             <span class="post-title" title="680.验证回文串II">680.验证回文串II</span>
             <span class="post-date" title="2000-01-10 06:08:00">2000/01/10</span>
@@ -20505,8 +20580,17 @@
         
         
         <a  class="全部文章 LeetCode "
+           href="/2000/01/10/LeetCode/560.%E5%92%8C%E4%B8%BAK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/"
+           data-tag="LeetCode,热题100,数组,哈希表,前缀和"
+           data-author="" >
+            <span class="post-title" title="560.和为K的子数组">560.和为K的子数组</span>
+            <span class="post-date" title="2000-01-10 05:06:00">2000/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/557.%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%8D%95%E8%AF%8DIII/"
-           data-tag="LeetCode,双指针,字符串"
+           data-tag="LeetCode,字符串,双指针"
            data-author="" >
             <span class="post-title" title="557.反转字符串中的单词III">557.反转字符串中的单词III</span>
             <span class="post-date" title="2000-01-10 05:05:07">2000/01/10</span>
@@ -20542,7 +20626,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/463.%E5%B2%9B%E5%B1%BF%E7%9A%84%E5%91%A8%E9%95%BF/"
-           data-tag="LeetCode,数组,深度优先搜索,广度优先搜索,矩阵"
+           data-tag="LeetCode,深度优先搜索,广度优先搜索,数组,矩阵"
            data-author="" >
             <span class="post-title" title="463.岛屿的周长">463.岛屿的周长</span>
             <span class="post-date" title="2000-01-10 04:06:03">2000/01/10</span>
@@ -20560,7 +20644,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/455.%E5%88%86%E5%8F%91%E9%A5%BC%E5%B9%B2/"
-           data-tag="LeetCode,数组,贪心,双指针,排序"
+           data-tag="LeetCode,数组,贪心,排序,双指针"
            data-author="" >
             <span class="post-title" title="455.分发饼干">455.分发饼干</span>
             <span class="post-date" title="2000-01-10 04:05:05">2000/01/10</span>
@@ -20569,10 +20653,19 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/443.%E5%8E%8B%E7%BC%A9%E5%AD%97%E7%AC%A6%E4%B8%B2/"
-           data-tag="LeetCode,双指针,字符串"
+           data-tag="LeetCode,字符串,双指针"
            data-author="" >
             <span class="post-title" title="443.压缩字符串">443.压缩字符串</span>
             <span class="post-date" title="2000-01-10 04:04:03">2000/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 LeetCode "
+           href="/2000/01/10/LeetCode/438.%E6%89%BE%E5%88%B0%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%89%80%E6%9C%89%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/"
+           data-tag="LeetCode,热题100,哈希表,字符串,滑动窗口"
+           data-author="" >
+            <span class="post-title" title="438.找到字符串中所有字母异位词">438.找到字符串中所有字母异位词</span>
+            <span class="post-date" title="2000-01-10 04:03:08">2000/01/10</span>
         </a>
         
         
@@ -20596,7 +20689,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/392.%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/"
-           data-tag="LeetCode,双指针,动态规划,字符串"
+           data-tag="LeetCode,字符串,双指针,动态规划"
            data-author="" >
             <span class="post-title" title="392.判断子序列">392.判断子序列</span>
             <span class="post-date" title="2000-01-10 03:09:02">2000/01/10</span>
@@ -20623,7 +20716,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/350.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86II/"
-           data-tag="LeetCode,数组,哈希表,双指针,排序,二分查找"
+           data-tag="LeetCode,数组,哈希表,排序,双指针,二分查找"
            data-author="" >
             <span class="post-title" title="350.两个数组的交集II">350.两个数组的交集II</span>
             <span class="post-date" title="2000-01-10 03:05:00">2000/01/10</span>
@@ -20632,7 +20725,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/349.%E4%B8%A4%E4%B8%AA%E6%95%B0%E7%BB%84%E7%9A%84%E4%BA%A4%E9%9B%86/"
-           data-tag="LeetCode,数组,哈希表,双指针,排序,二分查找"
+           data-tag="LeetCode,数组,哈希表,排序,双指针,二分查找"
            data-author="" >
             <span class="post-title" title="349.两个数组的交集">349.两个数组的交集</span>
             <span class="post-date" title="2000-01-10 03:04:09">2000/01/10</span>
@@ -20641,7 +20734,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/345.%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E5%85%83%E9%9F%B3%E5%AD%97%E6%AF%8D/"
-           data-tag="LeetCode,双指针,字符串"
+           data-tag="LeetCode,字符串,双指针"
            data-author="" >
             <span class="post-title" title="345.反转字符串中的元音字母">345.反转字符串中的元音字母</span>
             <span class="post-date" title="2000-01-10 03:04:05">2000/01/10</span>
@@ -20650,7 +20743,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/344.%E5%8F%8D%E8%BD%AC%E5%AD%97%E7%AC%A6%E4%B8%B2/"
-           data-tag="LeetCode,双指针,字符串"
+           data-tag="LeetCode,字符串,双指针"
            data-author="" >
             <span class="post-title" title="344.反转字符串">344.反转字符串</span>
             <span class="post-date" title="2000-01-10 03:04:04">2000/01/10</span>
@@ -20668,7 +20761,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/287.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/"
-           data-tag="LeetCode,数组,双指针"
+           data-tag="LeetCode,热题100,数组,双指针"
            data-author="" >
             <span class="post-title" title="287.寻找重复数">287.寻找重复数</span>
             <span class="post-date" title="2000-01-10 02:08:07">2000/01/10</span>
@@ -20677,7 +20770,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/283.%E7%A7%BB%E5%8A%A8%E9%9B%B6/"
-           data-tag="LeetCode,数组,双指针"
+           data-tag="LeetCode,热题100,数组,双指针"
            data-author="" >
             <span class="post-title" title="283.移动零">283.移动零</span>
             <span class="post-date" title="2000-01-10 02:08:03">2000/01/10</span>
@@ -20713,7 +20806,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/236.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/"
-           data-tag="LeetCode,树,深度优先搜索,二叉树"
+           data-tag="LeetCode,树,深度优先搜索,二叉树,热题100"
            data-author="" >
             <span class="post-title" title="236.二叉树的最近公共祖先">236.二叉树的最近公共祖先</span>
             <span class="post-date" title="2000-01-10 02:03:06">2000/01/10</span>
@@ -20722,7 +20815,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/234.%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/"
-           data-tag="LeetCode,双指针,栈,链表,递归"
+           data-tag="LeetCode,热题100,双指针,栈,链表,递归"
            data-author="" >
             <span class="post-title" title="234.回文链表">234.回文链表</span>
             <span class="post-date" title="2000-01-10 02:03:04">2000/01/10</span>
@@ -20731,7 +20824,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/232.%E7%94%A8%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/"
-           data-tag="LeetCode,栈,设计,队列"
+           data-tag="LeetCode,队列,栈,设计"
            data-author="" >
             <span class="post-title" title="232.用栈实现队列">232.用栈实现队列</span>
             <span class="post-date" title="2000-01-10 02:03:02">2000/01/10</span>
@@ -20749,7 +20842,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,树,深度优先搜索,二叉树,二叉搜索树"
+           data-tag="LeetCode,树,深度优先搜索,二叉树,热题100,二叉搜索树"
            data-author="" >
             <span class="post-title" title="230.二叉搜索树中第K小的元素">230.二叉搜索树中第K小的元素</span>
             <span class="post-date" title="2000-01-10 02:03:00">2000/01/10</span>
@@ -20758,7 +20851,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/225.%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E6%A0%88/"
-           data-tag="LeetCode,栈,设计,队列"
+           data-tag="LeetCode,队列,栈,设计"
            data-author="" >
             <span class="post-title" title="225.用队列实现栈">225.用队列实现栈</span>
             <span class="post-date" title="2000-01-10 02:02:05">2000/01/10</span>
@@ -20775,6 +20868,15 @@
         
         
         <a  class="全部文章 LeetCode "
+           href="/2000/01/10/LeetCode/215.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/"
+           data-tag="LeetCode,热题100,数组,排序,分治,快速选择,堆"
+           data-author="" >
+            <span class="post-title" title="215.数组中的第K个最大元素">215.数组中的第K个最大元素</span>
+            <span class="post-date" title="2000-01-10 02:01:05">2000/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/209.%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/"
            data-tag="LeetCode,数组,前缀和,二分查找,滑动窗口"
            data-author="" >
@@ -20785,7 +20887,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/206.%E5%8F%8D%E8%BD%AC%E9%93%BE%E8%A1%A8/"
-           data-tag="LeetCode,链表,递归"
+           data-tag="LeetCode,热题100,链表,递归"
            data-author="" >
             <span class="post-title" title="206.反转链表">206.反转链表</span>
             <span class="post-date" title="2000-01-10 02:00:06">2000/01/10</span>
@@ -20802,8 +20904,17 @@
         
         
         <a  class="全部文章 LeetCode "
+           href="/2000/01/10/LeetCode/200.%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/"
+           data-tag="LeetCode,深度优先搜索,广度优先搜索,热题100,岛屿"
+           data-author="" >
+            <span class="post-title" title="200.岛屿数量">200.岛屿数量</span>
+            <span class="post-date" title="2000-01-10 02:00:00">2000/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/198.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/"
-           data-tag="LeetCode,数组,动态规划"
+           data-tag="LeetCode,热题100,数组,动态规划"
            data-author="" >
             <span class="post-title" title="198.打家劫舍">198.打家劫舍</span>
             <span class="post-date" title="2000-01-10 01:09:08">2000/01/10</span>
@@ -20812,7 +20923,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/189.%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/"
-           data-tag="LeetCode,数组,双指针,数学"
+           data-tag="LeetCode,热题100,数组,双指针,数学"
            data-author="" >
             <span class="post-title" title="189.轮转数组">189.轮转数组</span>
             <span class="post-date" title="2000-01-10 01:08:09">2000/01/10</span>
@@ -20821,10 +20932,10 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/169.%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,数组,哈希表,分治,排序,计数"
+           data-tag="LeetCode,热题100,数组,哈希表,排序,分治,计数"
            data-author="" >
             <span class="post-title" title="169.多数元素">169.多数元素</span>
-            <span class="post-date" title="2000-01-10 01:06:08">2000/01/10</span>
+            <span class="post-date" title="2000-01-10 01:06:09">2000/01/10</span>
         </a>
         
         
@@ -20839,7 +20950,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/165.%E6%AF%94%E8%BE%83%E7%89%88%E6%9C%AC%E5%8F%B7/"
-           data-tag="LeetCode,双指针,字符串"
+           data-tag="LeetCode,字符串,双指针"
            data-author="" >
             <span class="post-title" title="165.比较版本号">165.比较版本号</span>
             <span class="post-date" title="2000-01-10 01:06:05">2000/01/10</span>
@@ -20848,10 +20959,19 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/160.%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/"
-           data-tag="LeetCode,哈希表,双指针,链表"
+           data-tag="LeetCode,热题100,哈希表,双指针,链表"
            data-author="" >
             <span class="post-title" title="160.相交链表">160.相交链表</span>
             <span class="post-date" title="2000-01-10 01:06:00">2000/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 LeetCode "
+           href="/2000/01/10/LeetCode/146.LRU%E7%BC%93%E5%AD%98/"
+           data-tag="LeetCode,热题100,哈希表,链表,设计,双向链表"
+           data-author="" >
+            <span class="post-title" title="146.LRU缓存">146.LRU缓存</span>
+            <span class="post-date" title="2000-01-10 01:04:06">2000/01/10</span>
         </a>
         
         
@@ -20866,7 +20986,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/"
-           data-tag="LeetCode,哈希表,双指针,链表"
+           data-tag="LeetCode,热题100,哈希表,双指针,链表"
            data-author="" >
             <span class="post-title" title="141.环形链表">141.环形链表</span>
             <span class="post-date" title="2000-01-10 01:04:01">2000/01/10</span>
@@ -20875,7 +20995,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/136.%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/"
-           data-tag="LeetCode,数组,位运算"
+           data-tag="LeetCode,热题100,数组,位运算"
            data-author="" >
             <span class="post-title" title="136.只出现一次的数字">136.只出现一次的数字</span>
             <span class="post-date" title="2000-01-10 01:03:06">2000/01/10</span>
@@ -20910,6 +21030,15 @@
         
         
         <a  class="全部文章 LeetCode "
+           href="/2000/01/10/LeetCode/128.%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97/"
+           data-tag="LeetCode,热题100,数组,哈希表"
+           data-author="" >
+            <span class="post-title" title="128.最长连续序列">128.最长连续序列</span>
+            <span class="post-date" title="2000-01-10 01:02:08">2000/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/122.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BAII/"
            data-tag="LeetCode,数组,贪心,动态规划"
            data-author="" >
@@ -20920,7 +21049,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/121.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/"
-           data-tag="LeetCode,数组,动态规划"
+           data-tag="LeetCode,热题100,数组,动态规划"
            data-author="" >
             <span class="post-title" title="121.买卖股票的最佳时机">121.买卖股票的最佳时机</span>
             <span class="post-date" title="2000-01-10 01:02:01">2000/01/10</span>
@@ -20929,7 +21058,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/"
-           data-tag="LeetCode,数组,动态规划"
+           data-tag="LeetCode,热题100,数组,动态规划"
            data-author="" >
             <span class="post-title" title="118.杨辉三角">118.杨辉三角</span>
             <span class="post-date" title="2000-01-10 01:01:08">2000/01/10</span>
@@ -20947,7 +21076,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"
-           data-tag="LeetCode,数组,树,二叉树,二叉搜索树,分治"
+           data-tag="LeetCode,树,二叉树,热题100,数组,二叉搜索树,分治"
            data-author="" >
             <span class="post-title" title="108.将有序数组转换为二叉搜索树">108.将有序数组转换为二叉搜索树</span>
             <span class="post-date" title="2000-01-10 01:00:08">2000/01/10</span>
@@ -20956,7 +21085,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/104.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/"
-           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,二叉树"
+           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,二叉树,热题100"
            data-author="" >
             <span class="post-title" title="104.二叉树的最大深度">104.二叉树的最大深度</span>
             <span class="post-date" title="2000-01-10 01:00:04">2000/01/10</span>
@@ -20964,8 +21093,17 @@
         
         
         <a  class="全部文章 LeetCode "
+           href="/2000/01/10/LeetCode/102.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/"
+           data-tag="LeetCode,广度优先搜索,二叉树,热题100,队列"
+           data-author="" >
+            <span class="post-title" title="102.二叉树的层序遍历">102.二叉树的层序遍历</span>
+            <span class="post-date" title="2000-01-10 01:00:02">2000/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/101.%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/"
-           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,二叉树"
+           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,二叉树,热题100"
            data-author="" >
             <span class="post-title" title="101.对称二叉树">101.对称二叉树</span>
             <span class="post-date" title="2000-01-10 01:00:01">2000/01/10</span>
@@ -20983,7 +21121,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/94.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/"
-           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,栈"
+           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,热题100,栈"
            data-author="" >
             <span class="post-title" title="94.二叉树的中序遍历">94.二叉树的中序遍历</span>
             <span class="post-date" title="2000-01-10 00:09:04">2000/01/10</span>
@@ -20992,7 +21130,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/88.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84/"
-           data-tag="LeetCode,数组,双指针,排序"
+           data-tag="LeetCode,数组,排序,双指针"
            data-author="" >
             <span class="post-title" title="88.合并两个有序数组">88.合并两个有序数组</span>
             <span class="post-date" title="2000-01-10 00:08:08">2000/01/10</span>
@@ -21010,7 +21148,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/75.%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB/"
-           data-tag="LeetCode,数组,双指针,排序"
+           data-tag="LeetCode,热题100,数组,排序,双指针"
            data-author="" >
             <span class="post-title" title="75.颜色分类">75.颜色分类</span>
             <span class="post-date" title="2000-01-10 00:07:05">2000/01/10</span>
@@ -21019,7 +21157,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/74.%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5/"
-           data-tag="LeetCode,数组,二分查找,矩阵"
+           data-tag="LeetCode,热题100,数组,二分查找,矩阵"
            data-author="" >
             <span class="post-title" title="74.搜索二维矩阵">74.搜索二维矩阵</span>
             <span class="post-date" title="2000-01-10 00:07:04">2000/01/10</span>
@@ -21028,7 +21166,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/70.%E7%88%AC%E6%A5%BC%E6%A2%AF/"
-           data-tag="LeetCode,动态规划,数学,记忆化搜索"
+           data-tag="LeetCode,热题100,动态规划,数学,记忆化搜索"
            data-author="" >
             <span class="post-title" title="70.爬楼梯">70.爬楼梯</span>
             <span class="post-date" title="2000-01-10 00:07:00">2000/01/10</span>
@@ -21082,7 +21220,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/55.%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/"
-           data-tag="LeetCode,数组,贪心,动态规划"
+           data-tag="LeetCode,热题100,数组,贪心,动态规划"
            data-author="" >
             <span class="post-title" title="55.跳跃游戏">55.跳跃游戏</span>
             <span class="post-date" title="2000-01-10 00:05:05">2000/01/10</span>
@@ -21091,7 +21229,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/54.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/"
-           data-tag="LeetCode,数组,分治,动态规划"
+           data-tag="LeetCode,热题100,数组,分治,动态规划"
            data-author="" >
             <span class="post-title" title="54.螺旋矩阵">54.螺旋矩阵</span>
             <span class="post-date" title="2000-01-10 00:05:04">2000/01/10</span>
@@ -21100,7 +21238,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/53.%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/"
-           data-tag="LeetCode,数组,分治,动态规划"
+           data-tag="LeetCode,热题100,数组,分治,动态规划"
            data-author="" >
             <span class="post-title" title="53.最大子数组和">53.最大子数组和</span>
             <span class="post-date" title="2000-01-10 00:05:03">2000/01/10</span>
@@ -21108,8 +21246,17 @@
         
         
         <a  class="全部文章 LeetCode "
+           href="/2000/01/10/LeetCode/49.%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/"
+           data-tag="LeetCode,热题100,数组,哈希表,字符串"
+           data-author="" >
+            <span class="post-title" title="49.字母异位词分组">49.字母异位词分组</span>
+            <span class="post-date" title="2000-01-10 00:04:09">2000/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/48.%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F/"
-           data-tag="LeetCode,数组,数学,矩阵"
+           data-tag="LeetCode,热题100,数组,数学,矩阵"
            data-author="" >
             <span class="post-title" title="48.旋转图像">48.旋转图像</span>
             <span class="post-date" title="2000-01-10 00:04:08">2000/01/10</span>
@@ -21117,8 +21264,17 @@
         
         
         <a  class="全部文章 LeetCode "
+           href="/2000/01/10/LeetCode/46.%E5%85%A8%E6%8E%92%E5%88%97/"
+           data-tag="LeetCode,深度优先搜索,热题100,回溯,排列"
+           data-author="" >
+            <span class="post-title" title="46.全排列">46.全排列</span>
+            <span class="post-date" title="2000-01-10 00:04:06">2000/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/45.%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8FII/"
-           data-tag="LeetCode,数组,贪心,动态规划"
+           data-tag="LeetCode,热题100,数组,贪心,动态规划"
            data-author="" >
             <span class="post-title" title="45.跳跃游戏II">45.跳跃游戏II</span>
             <span class="post-date" title="2000-01-10 00:04:05">2000/01/10</span>
@@ -21126,8 +21282,17 @@
         
         
         <a  class="全部文章 LeetCode "
+           href="/2000/01/10/LeetCode/35.%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/"
+           data-tag="LeetCode,热题100,数组,二分查找"
+           data-author="" >
+            <span class="post-title" title="35.搜索插入位置">35.搜索插入位置</span>
+            <span class="post-date" title="2000-01-10 00:03:05">2000/01/10</span>
+        </a>
+        
+        
+        <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/34.%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE/"
-           data-tag="LeetCode,数组,二分查找"
+           data-tag="LeetCode,热题100,数组,二分查找"
            data-author="" >
             <span class="post-title" title="34.在排序数组中查找元素的第一个和最后一个位置">34.在排序数组中查找元素的第一个和最后一个位置</span>
             <span class="post-date" title="2000-01-10 00:03:04">2000/01/10</span>
@@ -21154,7 +21319,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/24.%E4%B8%A4%E4%B8%A4%E4%BA%A4%E6%8D%A2%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E8%8A%82%E7%82%B9/"
-           data-tag="LeetCode,链表,递归"
+           data-tag="LeetCode,热题100,链表,递归"
            data-author="" >
             <span class="post-title" title="24.两两交换链表中的节点">24.两两交换链表中的节点</span>
             <span class="post-date" title="2000-01-10 00:02:04">2000/01/10</span>
@@ -21163,7 +21328,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/21.%E5%90%88%E5%B9%B6%E4%B8%A4%E4%B8%AA%E6%9C%89%E5%BA%8F%E9%93%BE%E8%A1%A8/"
-           data-tag="LeetCode,链表,递归"
+           data-tag="LeetCode,热题100,链表,递归"
            data-author="" >
             <span class="post-title" title="21.合并两个有序链表">21.合并两个有序链表</span>
             <span class="post-date" title="2000-01-10 00:02:01">2000/01/10</span>
@@ -21172,7 +21337,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/20.%E6%9C%89%E6%95%88%E7%9A%84%E6%8B%AC%E5%8F%B7/"
-           data-tag="LeetCode,字符串,栈"
+           data-tag="LeetCode,热题100,字符串,栈"
            data-author="" >
             <span class="post-title" title="20.有效的括号">20.有效的括号</span>
             <span class="post-date" title="2000-01-10 00:02:00">2000/01/10</span>
@@ -21181,7 +21346,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/19.%E5%88%A0%E9%99%A4%E9%93%BE%E8%A1%A8%E7%9A%84%E5%80%92%E6%95%B0%E7%AC%ACN%E4%B8%AA%E7%BB%93%E7%82%B9/"
-           data-tag="LeetCode,双指针,链表"
+           data-tag="LeetCode,热题100,双指针,链表"
            data-author="" >
             <span class="post-title" title="19.删除链表的倒数第 N 个结点">19.删除链表的倒数第 N 个结点</span>
             <span class="post-date" title="2000-01-10 00:01:09">2000/01/10</span>
@@ -21190,7 +21355,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/16.%E6%9C%80%E6%8E%A5%E8%BF%91%E7%9A%84%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"
-           data-tag="LeetCode,数组,双指针,排序"
+           data-tag="LeetCode,数组,排序,双指针"
            data-author="" >
             <span class="post-title" title="16.最接近的三数之和">16.最接近的三数之和</span>
             <span class="post-date" title="2000-01-10 00:01:06">2000/01/10</span>
@@ -21199,7 +21364,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/15.%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"
-           data-tag="LeetCode,数组,双指针,排序"
+           data-tag="LeetCode,热题100,数组,排序,双指针"
            data-author="" >
             <span class="post-title" title="15.三数之和">15.三数之和</span>
             <span class="post-date" title="2000-01-10 00:01:05">2000/01/10</span>
@@ -21235,7 +21400,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/11.%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/"
-           data-tag="LeetCode,数组,贪心,双指针"
+           data-tag="LeetCode,热题100,数组,贪心,双指针"
            data-author="" >
             <span class="post-title" title="11.盛最多水的容器">11.盛最多水的容器</span>
             <span class="post-date" title="2000-01-10 00:01:01">2000/01/10</span>
@@ -21262,7 +21427,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/5.%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/"
-           data-tag="LeetCode,双指针,动态规划,字符串"
+           data-tag="LeetCode,热题100,字符串,双指针,动态规划"
            data-author="" >
             <span class="post-title" title="5.最长回文子串">5.最长回文子串</span>
             <span class="post-date" title="2000-01-10 00:00:05">2000/01/10</span>
@@ -21271,7 +21436,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/4.%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/"
-           data-tag="LeetCode,数组,分治,二分查找"
+           data-tag="LeetCode,热题100,数组,分治,二分查找"
            data-author="" >
             <span class="post-title" title="4.寻找两个正序数组的中位数">4.寻找两个正序数组的中位数</span>
             <span class="post-date" title="2000-01-10 00:00:04">2000/01/10</span>
@@ -21280,7 +21445,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/3.%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/"
-           data-tag="LeetCode,哈希表,字符串,滑动窗口"
+           data-tag="LeetCode,热题100,哈希表,字符串,滑动窗口"
            data-author="" >
             <span class="post-title" title="3.无重复字符的最长子串">3.无重复字符的最长子串</span>
             <span class="post-date" title="2000-01-10 00:00:03">2000/01/10</span>
@@ -21289,7 +21454,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/2.%E4%B8%A4%E6%95%B0%E7%9B%B8%E5%8A%A0/"
-           data-tag="LeetCode,数学,链表,递归"
+           data-tag="LeetCode,热题100,数学,链表,递归"
            data-author="" >
             <span class="post-title" title="2.两数相加">2.两数相加</span>
             <span class="post-date" title="2000-01-10 00:00:02">2000/01/10</span>
@@ -21298,7 +21463,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/1.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"
-           data-tag="LeetCode,数组,哈希表"
+           data-tag="LeetCode,热题100,数组,哈希表"
            data-author="" >
             <span class="post-title" title="1.两数之和">1.两数之和</span>
             <span class="post-date" title="2000-01-10 00:00:01">2000/01/10</span>
@@ -24157,9 +24322,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-性能优化/Unity/2.Unity性能优化实践项目/1.VAT和GPUInstancing优化基本原理" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-性能优化/Unity/2.Unity性能优化实践项目/7.如何将颜色信息存储到纹理中" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">1.VAT和GPUIns优化基本原理</h1>
+        <h1 class="article-title">7.将颜色信息存储到纹理中</h1>
     
     <div class="article-meta">
         
@@ -24192,12 +24357,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2026-03-16 23:20:42'>2026-03-16 13:03</time>
+            发布时间 : <time class="date" title='最后更新: 2026-03-22 21:48:40'>2026-03-22 19:47</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:36</span>
+        <span>字数:5.3k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -24227,7 +24392,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#1-VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86"><span class="toc-text">1.VAT和GPUInstancing优化基本原理</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">1.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E8%AE%B2%E8%A7%A3%E5%86%85%E5%AE%B9"><span class="toc-text">主要讲解内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VAT%E5%92%8CGPUInstancing%E7%94%A8%E6%9D%A5%E5%81%9A%E4%BB%80%E4%B9%88%E7%9A%84"><span class="toc-text">VAT和GPUInstancing用来做什么的</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%8E%9F%E7%90%86"><span class="toc-text">VAT和GPUInstancing优化原理</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#7-%E5%A6%82%E4%BD%95%E5%B0%86%E9%A2%9C%E8%89%B2%E4%BF%A1%E6%81%AF%E5%AD%98%E5%82%A8%E5%88%B0%E7%BA%B9%E7%90%86%E4%B8%AD"><span class="toc-text">7.如何将颜色信息存储到纹理中</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#7-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">7.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E5%B0%86%E9%A2%9C%E8%89%B2%E4%BF%A1%E6%81%AF%E5%AD%98%E5%82%A8%E5%88%B0%E7%BA%B9%E7%90%86%E4%B8%AD"><span class="toc-text">如何将颜色信息存储到纹理中</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E7%9B%AE%E7%9A%84"><span class="toc-text">主要目的</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%80%9D%E8%B7%AF"><span class="toc-text">主要思路</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BB%E8%A6%81%E6%AD%A5%E9%AA%A4"><span class="toc-text">主要步骤</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">7.2 知识点代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#WriteVatTextureExample-cs"><span class="toc-text">WriteVatTextureExample.cs</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -24243,14 +24408,561 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="1-VAT和GPUInstancing优化基本原理"><a href="#1-VAT和GPUInstancing优化基本原理" class="headerlink" title="1.VAT和GPUInstancing优化基本原理"></a>1.VAT和GPUInstancing优化基本原理</h1><hr>
-<h2 id="1-1-知识点"><a href="#1-1-知识点" class="headerlink" title="1.1 知识点"></a>1.1 知识点</h2><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/1.png"></p>
-<h3 id="主要讲解内容"><a href="#主要讲解内容" class="headerlink" title="主要讲解内容"></a>主要讲解内容</h3><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/2.png"></p>
-<h3 id="VAT和GPUInstancing用来做什么的"><a href="#VAT和GPUInstancing用来做什么的" class="headerlink" title="VAT和GPUInstancing用来做什么的"></a>VAT和GPUInstancing用来做什么的</h3><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/3.png"></p>
-<p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/4.png"></p>
-<h3 id="VAT和GPUInstancing优化原理"><a href="#VAT和GPUInstancing优化原理" class="headerlink" title="VAT和GPUInstancing优化原理"></a>VAT和GPUInstancing优化原理</h3><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/5.png"></p>
-<p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/6.png"><br><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/7.png"></p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/8.png"></p>
+        <h1 id="7-如何将颜色信息存储到纹理中"><a href="#7-如何将颜色信息存储到纹理中" class="headerlink" title="7.如何将颜色信息存储到纹理中"></a>7.如何将颜色信息存储到纹理中</h1><hr>
+<h2 id="7-1-知识点"><a href="#7-1-知识点" class="headerlink" title="7.1 知识点"></a>7.1 知识点</h2><h3 id="如何将颜色信息存储到纹理中"><a href="#如何将颜色信息存储到纹理中" class="headerlink" title="如何将颜色信息存储到纹理中"></a>如何将颜色信息存储到纹理中</h3><h4 id="主要目的"><a href="#主要目的" class="headerlink" title="主要目的"></a>主要目的</h4><ul>
+<li>将获取到的顶点位置信息（已归一化到 <code>0~1</code>）依次写入一张纹理。</li>
+<li>落盘并改好导入设置，完成 VAT 贴图资源的生成链路。</li>
+</ul>
+<h4 id="主要思路"><a href="#主要思路" class="headerlink" title="主要思路"></a>主要思路</h4><p>整体分两段：先在 CPU 上用 <code>Texture2D</code> 把像素写好并落盘，再用 <code>TextureImporter</code> 把这张 PNG 当成<strong>数据贴图</strong>导入，避免压缩和 sRGB 把数值弄坏。</p>
+<p><strong>一、<code>Texture2D</code>：写像素 → 编码 → 写文件</strong></p>
+<ol>
+<li><code>new Texture2D(宽, 高, 格式, 是否 mipmap, 是否线性)</code>  <ul>
+<li>格式常用 <code>RGBA32</code>，也可用 <code>RGBAHalf</code>、<code>RGBAFloat</code>、<code>R8</code>、<code>RG16</code> 等。  </li>
+<li>VAT 一般不开 mipmap。  </li>
+<li>最后一项为线性时，数据贴图常选 <code>true</code>，减少 sRGB 解码 &#x2F; 伽马校正带来的二次变换。</li>
+</ul>
+</li>
+<li><code>SetPixel(x, y, color)</code>：把 <code>Color</code> 写到指定像素；这里只是把 <code>float</code> 塞进 <code>RGB</code>，不是当美术颜色画。</li>
+<li><code>Apply(是否算 mipmap, 是否释放 CPU 像素缓冲)</code>：只改像素不 <code>Apply</code>，资源视图或后续读回往往对不上。</li>
+<li><code>EncodeToPNG()</code>：得到字节数组。</li>
+<li><code>File.WriteAllBytes(path, bytes)</code>：写入磁盘（<code>using System.IO;</code>）。</li>
+</ol>
+<p><strong>二、<code>TextureImporter</code>：导入设置</strong></p>
+<ol>
+<li><code>AssetImporter.GetAtPath(以 Assets/ 开头的工程内路径) as TextureImporter</code> 取到该图的导入器。</li>
+<li><code>textureCompression = Uncompressed</code>：数据贴图关压缩。</li>
+<li><code>filterMode = FilterMode.Point</code>：点采样，避免线性过滤混邻像素。</li>
+<li><code>mipmapEnabled = false</code>。</li>
+<li><code>sRGBTexture = false</code>：不按 sRGB 颜色纹理处理。</li>
+<li><code>SaveAndReimport()</code>：落盘配置并触发重新导入。</li>
+</ol>
+<h4 id="主要步骤"><a href="#主要步骤" class="headerlink" title="主要步骤"></a>主要步骤</h4><ol>
+<li>按行扫描顺序（示例用 <code>nowPixelIndex</code> 换算 <code>x、y</code>）把归一化后的分量 <code>SetPixel</code> 进纹理，再 <code>Apply</code>、<code>EncodeToPNG</code>、<code>WriteAllBytes</code>。</li>
+<li><code>AssetDatabase.Refresh()</code> 后 <code>GetAtPath</code> 取 <code>TextureImporter</code>，按上文「二」的第 2～6 步配齐并保存。</li>
+</ol>
+<p>下面示例与工程里 <code>Lesson_补充知识</code> 流程一致：前半段仍是第 4～6 篇的取 Clip、烘焙、扫 <code>min/max</code>；从 <code>new Texture2D</code> 起是本节重点。<code>SetPixel</code> 里 <code>RGB</code> 存的是归一化后的顶点 <code>x、y、z</code>，<code>A</code> 写 <code>1</code> 仅占位。</p>
+<pre><code class="csharp">using System.IO;
+using UnityEditor;
+using UnityEditor.Animations;
+using UnityEngine;
+
+// —— 以下与第 4～6 篇相同：取状态数组、蒙皮、扫 min/max ——
+
+//主要目的：
+//获取某个对象的所有使用的AnimationClip信息
+//这样就能得到所有动画的关键信息
+
+//主要思路：
+//通过获取Animator动画状态机中的状态
+//从而得到动画信息，因为状态的本质就是动画
+
+//主要步骤：
+
+//1.得到目标GameObject
+//（由外部 targetGameObject 传入）
+
+//2.得到GameObject上的Animator组件
+Animator animator = targetGameObject.GetComponent&lt;Animator&gt;();
+if (animator == null)
+&#123;
+    return;
+&#125;
+
+//3.通过Animator组件得到AnimatorController
+AnimatorController animatorController = animator.runtimeAnimatorController as AnimatorController;
+if (animatorController == null)
+&#123;
+    return;
+&#125;
+
+//4.得到AnimatorController中对应层的状态机AnimatorStateMachine
+AnimatorStateMachine animatorStateMachine = animatorController.layers[0].stateMachine;
+
+//5.得到状态机中的所有状态ChildAnimatorState[]数组
+ChildAnimatorState[] childAnimatorStateArray = animatorStateMachine.states;
+
+//6.遍历该数组
+//  其中每个状态的motion就是对应的动画切片AnimationClip
+//  这样我们就能得到帧率、时长等关键信息
+
+//之所以绕一圈去获取动画切片 是为了之后做铺垫
+//我们可以结合Animator，蒙皮网格渲染器，利用他们一起去得到某一个动画某一帧对应的顶点数据
+
+// 拿到SkinnedMeshRenderer和创建Mesh
+SkinnedMeshRenderer skinnedMeshRenderer = targetGameObject.GetComponentInChildren&lt;SkinnedMeshRenderer&gt;();
+if (skinnedMeshRenderer == null)
+&#123;
+    return;
+&#125;
+
+Mesh mesh = new Mesh();
+
+//用于存储顶点最大最小值的变量
+int min = int.MaxValue;
+int max = int.MinValue;
+
+for (int i = 0; i &lt; childAnimatorStateArray.Length; i++)
+&#123;
+    AnimatorState animatorState = childAnimatorStateArray[i].state;
+    AnimationClip animationClip = animatorState.motion as AnimationClip;
+
+    // animationClip.frameRate 帧率
+    // animationClip.length 时长
+    int frameCount = Mathf.CeilToInt(animationClip.frameRate * animationClip.length); //得到这个clip多少帧
+
+    //需要把每一帧对应的时间点传递进去 =&gt; 帧数转时间 帧数/帧率
+    for (int j = 0; j &lt; frameCount; j++)
+    &#123;
+        //一帧一帧的得到对应的顶点数据 存储到VAT中
+        //让对象定格到了某一帧
+        animationClip.SampleAnimation(targetGameObject, j / animationClip.frameRate);
+
+        //得到当前帧的顶点信息
+        //每次烘焙时把上一次的数据清理了
+        mesh.Clear(false);
+
+        //得到了此时此刻的网格相关的数据
+        skinnedMeshRenderer.BakeMesh(mesh);
+
+        //得到了此时此刻网格对应的所有顶点位置
+        // 获取网格的顶点数组：每个顶点存储了三维空间中的坐标（x,y,z）
+        Vector3[] vertices = mesh.vertices;
+        // 获取网格的法线数组：每个顶点的法线方向，用于计算光照效果
+        Vector3[] normals = mesh.normals;
+        // 获取网格的切线数组：用于法线贴图（凹凸贴图）的计算，是四维向量（x,y,z,w），w 用于控制切线方向
+        Vector4[] tangents = mesh.tangents;
+
+        //我们需要遍历所有动画切片的所有帧的网格顶点位置
+        //从而找到最大最小值 才能进行归一化计算
+        //帧数 * 顶点数
+        //（57+50+20）* 9500
+        // 遍历网格的所有顶点，计算顶点坐标的最小/最大整数值
+        for (int k = 0; k &lt; vertices.Length; k++)
+        &#123;
+            // 获取当前遍历到的顶点的三维坐标（x,y,z）
+            Vector3 vertice = vertices[k];
+
+            // 1. 更新最小值：
+            // - 对比当前min值、顶点x/y/z坐标，取其中最小的数值
+            // - Mathf.FloorToInt：向下取整（比如 2.9 → 2，-1.2 → -2），确保得到整数边界
+            min = Mathf.FloorToInt(Mathf.Min(min, vertice.x, vertice.y, vertice.z));
+
+            // 2. 更新最大值：
+            // - 对比当前max值、顶点x/y/z坐标，取其中最大的数值
+            // - Mathf.CeilToInt：向上取整（比如 2.1 → 3，-1.9 → -1），确保得到整数边界
+            max = Mathf.CeilToInt(Mathf.Max(max, vertice.x, vertice.y, vertice.z));
+        &#125;
+    &#125;
+&#125;
+
+Debug.Log(&quot;顶点坐标最小值&quot; + min);
+Debug.Log(&quot;顶点坐标最大值&quot; + max);
+
+// —— 本节：写入纹理并配置导入 ——
+
+// 创建一个2048x2048尺寸的纹理对象
+// 参数说明：
+// - 2048, 2048：纹理的宽度和高度（像素）
+// - TextureFormat.RGBA32：纹理格式为RGBA32（每个像素占4字节，红/绿/蓝/透明度各8位）
+// - false：不生成多级渐远纹理（mipmap），减少内存占用且提升创建速度
+// - true：线性空间；数据贴图用 true，避免当 sRGB 颜色纹理做伽马校正
+Texture2D texture2D = new Texture2D(2048, 2048, TextureFormat.RGBA32, false, true);
+
+// 像素遍历索引：用于逐像素填充纹理数据时的计数
+// 初始值0表示从纹理的第一个像素（左上角，索引0）开始填充
+int nowPixelIndex = 0;
+
+for (int i = 0; i &lt; childAnimatorStateArray.Length; i++)
+&#123;
+    AnimatorState animatorState = childAnimatorStateArray[i].state;
+    AnimationClip animationClip = animatorState.motion as AnimationClip;
+    int frameCount = Mathf.CeilToInt(animationClip.length * animationClip.frameRate);
+
+    //需要把每一帧对应的时间点传递进去 =&gt; 帧数转时间 帧数/帧率
+    for (int j = 0; j &lt; frameCount; j++)
+    &#123;
+        //一帧一帧的得到对应的顶点数据 存储到VAT中
+        //让对象定格到了某一帧
+        animationClip.SampleAnimation(targetGameObject, j / animationClip.frameRate);
+        //得到当前帧的顶点信息
+        //每次烘焙时把上一次的数据清理了
+        mesh.Clear(false);
+        //得到了此时此刻的网格相关的数据
+        skinnedMeshRenderer.BakeMesh(mesh);
+        //得到了此时此刻网格对应的所有顶点位置
+        Vector3[] vertices = mesh.vertices;
+        Vector3[] normals = mesh.normals;
+        Vector4[] tangents = mesh.tangents;
+
+        //我们需要遍历所有动画切片的所有帧的网格顶点位置
+        //从而找到最大最小值 才能进行归一化计算
+        //帧数 * 顶点数
+        //（57+50+20）* 9500
+        for (int k = 0; k &lt; vertices.Length; k++)
+        &#123;
+            // 获取当前索引k对应的顶点三维坐标（x/y/z）
+            Vector3 vertice = vertices[k];
+
+            // 将顶点的三维坐标从 [min, max] 范围归一化到 [0, 1] 区间（核心：逆线性插值）
+            // 归一化后的坐标存储到 normalVertice，用于后续颜色映射/纹理绘制等操作
+            Vector3 normalVertice = new Vector3(
+                Mathf.InverseLerp(min, max, vertice.x), // 对顶点x坐标做归一化
+                Mathf.InverseLerp(min, max, vertice.y), // 对顶点y坐标做归一化
+                Mathf.InverseLerp(min, max, vertice.z) // 对顶点z坐标做归一化
+            );
+
+            // 通过当前像素索引计算纹理上的二维坐标（纹理尺寸为2048x2048）
+            // 纹理坐标规则：
+            // - X轴：索引对宽度取余，范围 0~2047（从左到右）
+            // - Y轴：索引除以宽度取整，范围 0~2047（从上到下，Unity纹理默认Y轴向下）
+            int x = nowPixelIndex % 2048;
+            int y = nowPixelIndex / 2048;
+
+            // 给纹理的(x,y)坐标设置像素颜色
+            // 颜色值说明（此处为数据打包，非美术上色）：
+            // - R：归一化后的顶点 x（normalVertice.x）
+            // - G：归一化后的顶点 y（normalVertice.y）
+            // - B：归一化后的顶点 z（normalVertice.z）
+            // - A：固定为 1，占位
+            texture2D.SetPixel(x, y, new Color(normalVertice.x, normalVertice.y, normalVertice.z, 1));
+
+            // 像素索引自增，准备处理下一个像素
+            ++nowPixelIndex;
+        &#125;
+    &#125;
+&#125;
+
+// 循环结束后 像素存储完毕了
+// 应用纹理像素修改（将内存中的像素数据写入纹理资源）
+// 参数说明：
+// - false：不生成mipmap（法线纹理/数据纹理无需多级渐远）
+// - false：不保留像素数据在内存中（节省内存，导出后无需再修改像素）
+texture2D.Apply(false, false);
+
+// 将纹理编码为PNG格式并写入指定路径
+// Application.dataPath：Unity工程的Assets文件夹绝对路径
+// 路径说明：Assets/Art/VAT/test.png（工程内相对路径，方便后续导入配置）
+File.WriteAllBytes(Application.dataPath + &quot;/Art/VAT/test.png&quot;, texture2D.EncodeToPNG());
+
+// 刷新AssetDatabase，让Unity识别新创建的PNG文件（否则后续无法获取TextureImporter）
+AssetDatabase.Refresh();
+
+// 纹理生成完毕了 对它进行一劳永逸的基础设置
+// 获取PNG文件的TextureImporter（用于配置纹理导入参数）
+// 注意：路径必须是工程内相对路径（Assets/开头），不能用绝对路径
+TextureImporter textureImporter = AssetImporter.GetAtPath(&quot;Assets/Art/VAT/test.png&quot;) as TextureImporter;
+
+// ========== 针对数据纹理（法线/VAT）的核心配置 ==========
+// 1. 关闭纹理压缩（关键！数据纹理压缩会丢失精度，导致法线/VAT数据错误）
+textureImporter.textureCompression = TextureImporterCompression.Uncompressed;
+
+// 2. 设置过滤模式为点过滤（Point）：避免纹理采样时的线性插值，保证数据精准
+//    （线性过滤会混合相邻像素，破坏法线/坐标等精准数据）
+textureImporter.filterMode = FilterMode.Point;
+
+// 3. 关闭mipmap生成（数据纹理不需要缩放显示，节省内存+避免mipmap采样误差）
+textureImporter.mipmapEnabled = false;
+
+// 4. 关闭sRGB色彩空间（关键！法线/VAT是数据纹理，非颜色纹理，无需伽马校正）
+//    sRGB开启会导致颜色值非线性转换，破坏原始数据
+textureImporter.sRGBTexture = false;
+
+// 保存导入设置并重新导入纹理（使上述配置生效）
+textureImporter.SaveAndReimport();
+</code></pre>
+<p><code>SaveAndReimport()</code> 执行完后，在 Project 里选中导出的 VAT 贴图（下图为课程资源 <code>Assets/Art/VAT</code> 下的 <code>TestObj</code>，与你脚本里的 <code>test.png</code> 同类），Inspector 里应对得上前面的代码：<code>sRGB Texture</code> 关闭、<code>Filter Mode</code> 为 Point、<code>Compression</code> 为 None、mipmap 关闭。预览里下半截看起来像彩色噪点，实质是按行写入的归一化顶点分量（<code>RGB</code> 当数据用）。</p>
+<p><img src="/../../../../images/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E5%A6%82%E4%BD%95%E5%B0%86%E9%A2%9C%E8%89%B2%E4%BF%A1%E6%81%AF%E5%AD%98%E5%82%A8%E5%88%B0%E7%BA%B9%E7%90%86%E4%B8%AD/1.png"></p>
+<p>写入前请确保 <code>Assets/Art/VAT/</code> 目录存在；<code>nowPixelIndex</code> 超过 <code>宽×高</code> 会越界，实际工具里要按总顶点数×总帧数算好纹理尺寸或改分页策略。</p>
+<hr>
+<h2 id="7-2-知识点代码"><a href="#7-2-知识点代码" class="headerlink" title="7.2 知识点代码"></a>7.2 知识点代码</h2><h3 id="WriteVatTextureExample-cs"><a href="#WriteVatTextureExample-cs" class="headerlink" title="WriteVatTextureExample.cs"></a>WriteVatTextureExample.cs</h3><pre><code class="csharp">using System.IO;
+using UnityEditor;
+using UnityEditor.Animations;
+using UnityEngine;
+
+// 将本脚本放在 Editor 目录；示例为菜单或窗口调用，勿挂在会打进包体的运行时脚本里
+
+public static class WriteVatTextureExample
+&#123;
+    public static void BuildVatPng(GameObject targetGameObject)
+    &#123;
+        if (targetGameObject == null)
+        &#123;
+            return;
+        &#125;
+
+        //主要目的：
+        //将获取到的顶点位置信息依次存储到一张纹理图片中
+        //完成我们VAT的生成
+
+        //主要思路：
+        //1.利用Texture2D类对象，将颜色信息写入其中
+        //  再将其保存到本地
+        //  主要API：
+        //  1-1.Texture2D tex = new Texture2D(宽, 高, 格式, 是否生成mipmap, 是否为线性空间);
+        //      格式：常用的有 RGBA32、RGBAHalf、RGBAFloat、R8、RG16，一般我们使用RGBA32即可
+        //      是否生成mipmap：如果为true，会有1/2、1/4 等等缩小的多级版本，VAT不需要开启
+        //      是否为线性空间：这张纹理的颜色数值要不要进行 sRGB和Linear 的色彩空间转换
+        //                    如果为true，代表为linear空间，对于数据贴图我们一般传true，不需要做伽玛校正
+        //  1-2.利用Texture2D中的设置颜色的方法，将颜色信息写入对应位置
+        //      tex.SetPixel(x, y, color)
+        //  1-3.把你在 CPU 端对纹理像素做的修改（SetPixel/SetPixels/RawData 等）提交、上传到 GPU
+        //      tex.Apply(是否计算mipmap，是否释放CPU端像素数据)
+        //      如果你只 SetPixel 不 Apply，你改动通常只停留在内存里，屏幕上看不到变化
+        //  1-4.将纹理数据转换为字节数组
+        //      tex.EncodeToPNG()
+        //  1-5.将纹理的字节数组存储到本地磁盘
+        //      File.WriteAllBytes
+        //2.设置纹理相关设置
+        //  利用TextureImporter设置图片资源导入的配置相关信息
+        //  2-1.得到对应图片导入设置信息
+        //      TextureImporter textureImporter = AssetImporter.GetAtPath(图片路径) as TextureImporter;
+        //  2-2.将纹理设置为不压缩
+        //      textureImporter.textureCompression = TextureImporterCompression.Uncompressed;
+        //  2-3.设置过滤模式
+        //      textureImporter.filterMode = FilterMode.Point;
+        //  2-4.关闭mipmap
+        //      textureImporter.mipmapEnabled = false;
+        //  2-5.关闭伽马空间颜色，因为VAT是数据纹理，不需要伽马空间校正
+        //      textureImporter.sRGBTexture = false;
+        //  2-6.保存设置
+        //      textureImporter.SaveAndReimport();
+
+        //主要步骤：
+        //1.将获取到的顶点数据利用相关API存储到纹理中并保存到本地
+        //2.修改该纹理的相关设置
+
+        // —— 第 4～6 篇：取 Clip、烘焙、min/max；注释与课程 Lesson_补充知识 一致 ——
+
+        //主要目的：
+        //获取某个对象的所有使用的AnimationClip信息
+        //这样就能得到所有动画的关键信息
+
+        //主要思路：
+        //通过获取Animator动画状态机中的状态
+        //从而得到动画信息，因为状态的本质就是动画
+
+        //主要步骤：
+
+        //1.得到目标GameObject
+
+        //2.得到GameObject上的Animator组件
+        Animator animator = targetGameObject.GetComponent&lt;Animator&gt;();
+        if (animator == null)
+        &#123;
+            return;
+        &#125;
+
+        //3.通过Animator组件得到AnimatorController
+        AnimatorController animatorController = animator.runtimeAnimatorController as AnimatorController;
+        if (animatorController == null)
+        &#123;
+            return;
+        &#125;
+
+        //4.得到AnimatorController中对应层的状态机AnimatorStateMachine
+        AnimatorStateMachine animatorStateMachine = animatorController.layers[0].stateMachine;
+
+        //5.得到状态机中的所有状态ChildAnimatorState[]数组
+        ChildAnimatorState[] childAnimatorStateArray = animatorStateMachine.states;
+
+        //6.遍历该数组
+        //  其中每个状态的motion就是对应的动画切片AnimationClip
+        //  这样我们就能得到帧率、时长等关键信息
+
+        //之所以绕一圈去获取动画切片 是为了之后做铺垫
+        //我们可以结合Animator，蒙皮网格渲染器，利用他们一起去得到某一个动画某一帧对应的顶点数据
+
+        // 拿到SkinnedMeshRenderer和创建Mesh
+        SkinnedMeshRenderer skinnedMeshRenderer = targetGameObject.GetComponentInChildren&lt;SkinnedMeshRenderer&gt;();
+        if (skinnedMeshRenderer == null)
+        &#123;
+            return;
+        &#125;
+
+        Mesh mesh = new Mesh();
+
+        //用于存储顶点最大最小值的变量
+        int min = int.MaxValue;
+        int max = int.MinValue;
+
+        for (int i = 0; i &lt; childAnimatorStateArray.Length; i++)
+        &#123;
+            AnimatorState animatorState = childAnimatorStateArray[i].state;
+            AnimationClip animationClip = animatorState.motion as AnimationClip;
+            if (animationClip == null)
+            &#123;
+                continue;
+            &#125;
+
+            // animationClip.frameRate 帧率
+            // animationClip.length 时长
+            int frameCount = Mathf.CeilToInt(animationClip.frameRate * animationClip.length); //得到这个clip多少帧
+
+            //需要把每一帧对应的时间点传递进去 =&gt; 帧数转时间 帧数/帧率
+            for (int j = 0; j &lt; frameCount; j++)
+            &#123;
+                //一帧一帧的得到对应的顶点数据 存储到VAT中
+                //让对象定格到了某一帧
+                animationClip.SampleAnimation(targetGameObject, j / animationClip.frameRate);
+
+                //得到当前帧的顶点信息
+                //每次烘焙时把上一次的数据清理了
+                mesh.Clear(false);
+
+                //得到了此时此刻的网格相关的数据
+                skinnedMeshRenderer.BakeMesh(mesh);
+
+                //得到了此时此刻网格对应的所有顶点位置
+                // 获取网格的顶点数组：每个顶点存储了三维空间中的坐标（x,y,z）
+                Vector3[] vertices = mesh.vertices;
+                // 获取网格的法线数组：每个顶点的法线方向，用于计算光照效果
+                Vector3[] normals = mesh.normals;
+                // 获取网格的切线数组：用于法线贴图（凹凸贴图）的计算，是四维向量（x,y,z,w），w 用于控制切线方向
+                Vector4[] tangents = mesh.tangents;
+
+                //我们需要遍历所有动画切片的所有帧的网格顶点位置
+                //从而找到最大最小值 才能进行归一化计算
+                //帧数 * 顶点数
+                //（57+50+20）* 9500
+                // 遍历网格的所有顶点，计算顶点坐标的最小/最大整数值
+                for (int k = 0; k &lt; vertices.Length; k++)
+                &#123;
+                    // 获取当前遍历到的顶点的三维坐标（x,y,z）
+                    Vector3 vertice = vertices[k];
+
+                    // 1. 更新最小值：
+                    // - 对比当前min值、顶点x/y/z坐标，取其中最小的数值
+                    // - Mathf.FloorToInt：向下取整（比如 2.9 → 2，-1.2 → -2），确保得到整数边界
+                    min = Mathf.FloorToInt(Mathf.Min(min, vertice.x, vertice.y, vertice.z));
+
+                    // 2. 更新最大值：
+                    // - 对比当前max值、顶点x/y/z坐标，取其中最大的数值
+                    // - Mathf.CeilToInt：向上取整（比如 2.1 → 3，-1.9 → -1），确保得到整数边界
+                    max = Mathf.CeilToInt(Mathf.Max(max, vertice.x, vertice.y, vertice.z));
+                &#125;
+            &#125;
+        &#125;
+
+        Debug.Log(&quot;顶点坐标最小值&quot; + min);
+        Debug.Log(&quot;顶点坐标最大值&quot; + max);
+
+        // 创建一个2048x2048尺寸的纹理对象
+        // 参数说明：
+        // - 2048, 2048：纹理的宽度和高度（像素）
+        // - TextureFormat.RGBA32：纹理格式为RGBA32（每个像素占4字节，红/绿/蓝/透明度各8位）
+        // - false：不生成多级渐远纹理（mipmap），减少内存占用且提升创建速度
+        // - true：纹理采用线性颜色空间（用于PBR/高质量渲染，若为2D UI可设为false）
+        Texture2D texture2D = new Texture2D(2048, 2048, TextureFormat.RGBA32, false, true);
+
+        // 像素遍历索引：用于逐像素填充纹理数据时的计数
+        // 初始值0表示从纹理的第一个像素（左上角，索引0）开始填充
+        int nowPixelIndex = 0;
+
+        for (int i = 0; i &lt; childAnimatorStateArray.Length; i++)
+        &#123;
+            AnimatorState animatorState = childAnimatorStateArray[i].state;
+            AnimationClip animationClip = animatorState.motion as AnimationClip;
+            if (animationClip == null)
+            &#123;
+                continue;
+            &#125;
+
+            int frameCount = Mathf.CeilToInt(animationClip.length * animationClip.frameRate);
+
+            //需要把每一帧对应的时间点传递进去 =&gt; 帧数转时间 帧数/帧率
+            for (int j = 0; j &lt; frameCount; j++)
+            &#123;
+                //一帧一帧的得到对应的顶点数据 存储到VAT中
+                //让对象定格到了某一帧
+                animationClip.SampleAnimation(targetGameObject, j / animationClip.frameRate);
+                //得到当前帧的顶点信息
+                //每次烘焙时把上一次的数据清理了
+                mesh.Clear(false);
+                //得到了此时此刻的网格相关的数据
+                skinnedMeshRenderer.BakeMesh(mesh);
+                //得到了此时此刻网格对应的所有顶点位置
+                Vector3[] vertices = mesh.vertices;
+                Vector3[] normals = mesh.normals;
+                Vector4[] tangents = mesh.tangents;
+
+                //我们需要遍历所有动画切片的所有帧的网格顶点位置
+                //从而找到最大最小值 才能进行归一化计算
+                //帧数 * 顶点数
+                //（57+50+20）* 9500
+                for (int k = 0; k &lt; vertices.Length; k++)
+                &#123;
+                    // 获取当前索引k对应的顶点三维坐标（x/y/z）
+                    Vector3 vertice = vertices[k];
+
+                    // 将顶点的三维坐标从 [min, max] 范围归一化到 [0, 1] 区间（核心：逆线性插值）
+                    // 归一化后的坐标存储到 normalVertice，用于后续颜色映射/纹理绘制等操作
+                    Vector3 normalVertice = new Vector3(
+                        Mathf.InverseLerp(min, max, vertice.x), // 对顶点x坐标做归一化
+                        Mathf.InverseLerp(min, max, vertice.y), // 对顶点y坐标做归一化
+                        Mathf.InverseLerp(min, max, vertice.z) // 对顶点z坐标做归一化
+                    );
+
+                    // 通过当前像素索引计算纹理上的二维坐标（纹理尺寸为2048x2048）
+                    // 纹理坐标规则：
+                    // - X轴：索引对宽度取余，范围 0~2047（从左到右）
+                    // - Y轴：索引除以宽度取整，范围 0~2047（从上到下，Unity纹理默认Y轴向下）
+                    int x = nowPixelIndex % 2048;
+                    int y = nowPixelIndex / 2048;
+
+                    // 给纹理的(x,y)坐标设置像素颜色
+                    // 颜色值说明（此处为数据打包，非美术上色）：
+                    // - R：归一化后的顶点 x（normalVertice.x）
+                    // - G：归一化后的顶点 y（normalVertice.y）
+                    // - B：归一化后的顶点 z（normalVertice.z）
+                    // - A：固定为 1，占位
+                    texture2D.SetPixel(x, y, new Color(normalVertice.x, normalVertice.y, normalVertice.z, 1));
+
+                    // 像素索引自增，准备处理下一个像素
+                    ++nowPixelIndex;
+                &#125;
+            &#125;
+        &#125;
+
+        // 循环结束后 像素存储完毕了
+        // 应用纹理像素修改（将内存中的像素数据写入纹理资源）
+        // 参数说明：
+        // - false：不生成mipmap（法线纹理/数据纹理无需多级渐远）
+        // - false：不保留像素数据在内存中（节省内存，导出后无需再修改像素）
+        texture2D.Apply(false, false);
+
+        // 将纹理编码为PNG格式并写入指定路径
+        // Application.dataPath：Unity工程的Assets文件夹绝对路径
+        // 路径说明：Assets/Art/VAT/test.png（工程内相对路径，方便后续导入配置）
+        File.WriteAllBytes(Application.dataPath + &quot;/Art/VAT/test.png&quot;, texture2D.EncodeToPNG());
+
+        // 刷新AssetDatabase，让Unity识别新创建的PNG文件（否则后续无法获取TextureImporter）
+        AssetDatabase.Refresh();
+
+        // 纹理生成完毕了 对它进行一劳永逸的基础设置
+        // 获取PNG文件的TextureImporter（用于配置纹理导入参数）
+        // 注意：路径必须是工程内相对路径（Assets/开头），不能用绝对路径
+        TextureImporter textureImporter = AssetImporter.GetAtPath(&quot;Assets/Art/VAT/test.png&quot;) as TextureImporter;
+
+        // ========== 针对数据纹理（法线/VAT）的核心配置 ==========
+        // 1. 关闭纹理压缩（关键！数据纹理压缩会丢失精度，导致法线/VAT数据错误）
+        textureImporter.textureCompression = TextureImporterCompression.Uncompressed;
+
+        // 2. 设置过滤模式为点过滤（Point）：避免纹理采样时的线性插值，保证数据精准
+        //    （线性过滤会混合相邻像素，破坏法线/坐标等精准数据）
+        textureImporter.filterMode = FilterMode.Point;
+
+        // 3. 关闭mipmap生成（数据纹理不需要缩放显示，节省内存+避免mipmap采样误差）
+        textureImporter.mipmapEnabled = false;
+
+        // 4. 关闭sRGB色彩空间（关键！法线/VAT是数据纹理，非颜色纹理，无需伽马校正）
+        //    sRGB开启会导致颜色值非线性转换，破坏原始数据
+        textureImporter.sRGBTexture = false;
+
+        // 保存导入设置并重新导入纹理（使上述配置生效）
+        textureImporter.SaveAndReimport();
+    &#125;
+&#125;
+</code></pre>
 <hr>
 
       
