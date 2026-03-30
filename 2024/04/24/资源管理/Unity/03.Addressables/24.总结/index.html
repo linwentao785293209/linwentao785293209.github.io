@@ -6,15 +6,15 @@
   <meta name="keywords" content=" 资源管理 , Unity资源管理 , Addressables ">
   <meta name="description" content="24.Addressables总结 | 人间自有韬哥在的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="7.Timeline系列总结7.1 总结系列回顾这个系列 6 篇，前四篇讲 Timeline 本身，后两篇讲怎么拿它做东西、以及什么时候该绕过它自己做。 基础和轨道Timeline 的基础用法不算复杂。TimelineAsset 是剧本，PlayableDirector 是导演，运行时 Director 把剧本编译成一张 PlayableGraph 交给 Playable 系统去跑——所以之前花那">
+<meta name="description" content="7.Timeline系列总结 7.1 知识点系列回顾这个系列 6 篇，前四篇讲 Timeline 本身，后两篇讲怎么拿它做东西、以及什么时候该绕过它自己做。 基础和轨道Timeline 的基础用法不算复杂。TimelineAsset 是剧本，PlayableDirector 是导演，运行时 Director 把剧本编译成一张 PlayableGraph 交给 Playable 系统去跑——所以之前">
 <meta property="og:type" content="article">
 <meta property="og:title" content="7.Unity进阶Timeline总结">
 <meta property="og:url" content="https://linwentao785293209.github.io/2026/03/28/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/15.Unity%E8%BF%9B%E9%98%B6Timeline/7.%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的博客">
-<meta property="og:description" content="7.Timeline系列总结7.1 总结系列回顾这个系列 6 篇，前四篇讲 Timeline 本身，后两篇讲怎么拿它做东西、以及什么时候该绕过它自己做。 基础和轨道Timeline 的基础用法不算复杂。TimelineAsset 是剧本，PlayableDirector 是导演，运行时 Director 把剧本编译成一张 PlayableGraph 交给 Playable 系统去跑——所以之前花那">
+<meta property="og:description" content="7.Timeline系列总结 7.1 知识点系列回顾这个系列 6 篇，前四篇讲 Timeline 本身，后两篇讲怎么拿它做东西、以及什么时候该绕过它自己做。 基础和轨道Timeline 的基础用法不算复杂。TimelineAsset 是剧本，PlayableDirector 是导演，运行时 Director 把剧本编译成一张 PlayableGraph 交给 Playable 系统去跑——所以之前">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2026-03-28T10:15:11.000Z">
-<meta property="article:modified_time" content="2026-03-28T10:15:12.066Z">
+<meta property="article:modified_time" content="2026-03-29T06:14:43.457Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="游戏引擎">
 <meta property="article:tag" content="Unity">
@@ -151,7 +151,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(2192)</small>
+                <small>(2266)</small>
             
         </div>
     </li>
@@ -635,7 +635,7 @@
         <div data-rel="游戏引擎">
             <i class="fold iconfont icon-right"></i>
             游戏引擎
-            <small>(346)</small>
+            <small>(347)</small>
         </div>
         
             <ul class="sub hide">
@@ -645,7 +645,7 @@
         <div data-rel="游戏引擎&lt;---&gt;引擎体系">
             <i class="fold iconfont icon-right"></i>
             引擎体系
-            <small>(22)</small>
+            <small>(23)</small>
         </div>
         
             <ul class="sub hide">
@@ -655,7 +655,7 @@
         <div data-rel="游戏引擎&lt;---&gt;引擎体系&lt;---&gt;现代游戏引擎入门">
             
             现代游戏引擎入门
-            <small>(22)</small>
+            <small>(23)</small>
         </div>
         
     </li>
@@ -1008,7 +1008,7 @@
         <div data-rel="数据工程">
             <i class="fold iconfont icon-right"></i>
             数据工程
-            <small>(100)</small>
+            <small>(103)</small>
         </div>
         
             <ul class="sub hide">
@@ -1018,7 +1018,7 @@
         <div data-rel="数据工程&lt;---&gt;数据持久化">
             <i class="fold iconfont icon-right"></i>
             数据持久化
-            <small>(64)</small>
+            <small>(67)</small>
         </div>
         
             <ul class="sub hide">
@@ -1028,7 +1028,7 @@
         <div data-rel="数据工程&lt;---&gt;数据持久化&lt;---&gt;Unity数据持久化">
             <i class="fold iconfont icon-right"></i>
             Unity数据持久化
-            <small>(64)</small>
+            <small>(67)</small>
         </div>
         
             <ul class="sub hide">
@@ -1038,7 +1038,7 @@
         <div data-rel="数据工程&lt;---&gt;数据持久化&lt;---&gt;Unity数据持久化&lt;---&gt;PlayerPrefs">
             <i class="fold iconfont icon-right"></i>
             PlayerPrefs
-            <small>(17)</small>
+            <small>(18)</small>
         </div>
         
             <ul class="sub hide">
@@ -1059,7 +1059,7 @@
         <div data-rel="数据工程&lt;---&gt;数据持久化&lt;---&gt;Unity数据持久化&lt;---&gt;PlayerPrefs&lt;---&gt;PlayerPrefs实践项目">
             
             PlayerPrefs实践项目
-            <small>(13)</small>
+            <small>(14)</small>
         </div>
         
     </li>
@@ -1075,7 +1075,7 @@
         <div data-rel="数据工程&lt;---&gt;数据持久化&lt;---&gt;Unity数据持久化&lt;---&gt;Xml">
             <i class="fold iconfont icon-right"></i>
             Xml
-            <small>(14)</small>
+            <small>(15)</small>
         </div>
         
             <ul class="sub hide">
@@ -1096,7 +1096,7 @@
         <div data-rel="数据工程&lt;---&gt;数据持久化&lt;---&gt;Unity数据持久化&lt;---&gt;Xml&lt;---&gt;Xml实践项目">
             
             Xml实践项目
-            <small>(7)</small>
+            <small>(8)</small>
         </div>
         
     </li>
@@ -1149,7 +1149,7 @@
         <div data-rel="数据工程&lt;---&gt;数据持久化&lt;---&gt;Unity数据持久化&lt;---&gt;Binary">
             <i class="fold iconfont icon-right"></i>
             Binary
-            <small>(22)</small>
+            <small>(23)</small>
         </div>
         
             <ul class="sub hide">
@@ -1170,7 +1170,7 @@
         <div data-rel="数据工程&lt;---&gt;数据持久化&lt;---&gt;Unity数据持久化&lt;---&gt;Binary&lt;---&gt;Binary实践项目">
             
             Binary实践项目
-            <small>(11)</small>
+            <small>(12)</small>
         </div>
         
     </li>
@@ -1759,7 +1759,7 @@
         <div data-rel="框架">
             <i class="fold iconfont icon-right"></i>
             框架
-            <small>(43)</small>
+            <small>(44)</small>
         </div>
         
             <ul class="sub hide">
@@ -1769,7 +1769,7 @@
         <div data-rel="框架&lt;---&gt;Unity框架">
             <i class="fold iconfont icon-right"></i>
             Unity框架
-            <small>(43)</small>
+            <small>(44)</small>
         </div>
         
             <ul class="sub hide">
@@ -1790,7 +1790,7 @@
         <div data-rel="框架&lt;---&gt;Unity框架&lt;---&gt;MVC框架">
             
             MVC框架
-            <small>(28)</small>
+            <small>(29)</small>
         </div>
         
     </li>
@@ -1914,7 +1914,7 @@
         <div data-rel="资源管理">
             <i class="fold iconfont icon-right"></i>
             资源管理
-            <small>(55)</small>
+            <small>(57)</small>
         </div>
         
             <ul class="sub hide">
@@ -1924,7 +1924,7 @@
         <div data-rel="资源管理&lt;---&gt;Unity资源管理">
             <i class="fold iconfont icon-right"></i>
             Unity资源管理
-            <small>(55)</small>
+            <small>(57)</small>
         </div>
         
             <ul class="sub hide">
@@ -1934,7 +1934,7 @@
         <div data-rel="资源管理&lt;---&gt;Unity资源管理&lt;---&gt;AssetBundle">
             <i class="fold iconfont icon-right"></i>
             AssetBundle
-            <small>(22)</small>
+            <small>(23)</small>
         </div>
         
             <ul class="sub hide">
@@ -1944,7 +1944,7 @@
         <div data-rel="资源管理&lt;---&gt;Unity资源管理&lt;---&gt;AssetBundle&lt;---&gt;AssetBundle基础">
             
             AssetBundle基础
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -1982,7 +1982,7 @@
         <div data-rel="资源管理&lt;---&gt;Unity资源管理&lt;---&gt;YooAsset">
             
             YooAsset
-            <small>(9)</small>
+            <small>(10)</small>
         </div>
         
     </li>
@@ -2031,7 +2031,7 @@
         <div data-rel="热更新">
             <i class="fold iconfont icon-right"></i>
             热更新
-            <small>(92)</small>
+            <small>(95)</small>
         </div>
         
             <ul class="sub hide">
@@ -2052,7 +2052,7 @@
         <div data-rel="热更新&lt;---&gt;Unity热更新">
             <i class="fold iconfont icon-right"></i>
             Unity热更新
-            <small>(91)</small>
+            <small>(94)</small>
         </div>
         
             <ul class="sub hide">
@@ -2062,7 +2062,7 @@
         <div data-rel="热更新&lt;---&gt;Unity热更新&lt;---&gt;Lua">
             <i class="fold iconfont icon-right"></i>
             Lua
-            <small>(57)</small>
+            <small>(60)</small>
         </div>
         
             <ul class="sub hide">
@@ -2072,7 +2072,7 @@
         <div data-rel="热更新&lt;---&gt;Unity热更新&lt;---&gt;Lua&lt;---&gt;xLua">
             <i class="fold iconfont icon-right"></i>
             xLua
-            <small>(39)</small>
+            <small>(41)</small>
         </div>
         
             <ul class="sub hide">
@@ -2082,7 +2082,7 @@
         <div data-rel="热更新&lt;---&gt;Unity热更新&lt;---&gt;Lua&lt;---&gt;xLua&lt;---&gt;xLua基础知识">
             
             xLua基础知识
-            <small>(29)</small>
+            <small>(30)</small>
         </div>
         
     </li>
@@ -2093,7 +2093,7 @@
         <div data-rel="热更新&lt;---&gt;Unity热更新&lt;---&gt;Lua&lt;---&gt;xLua&lt;---&gt;xLua实践项目">
             
             xLua实践项目
-            <small>(10)</small>
+            <small>(11)</small>
         </div>
         
     </li>
@@ -2109,7 +2109,7 @@
         <div data-rel="热更新&lt;---&gt;Unity热更新&lt;---&gt;Lua&lt;---&gt;toLua">
             <i class="fold iconfont icon-right"></i>
             toLua
-            <small>(18)</small>
+            <small>(19)</small>
         </div>
         
             <ul class="sub hide">
@@ -2119,7 +2119,7 @@
         <div data-rel="热更新&lt;---&gt;Unity热更新&lt;---&gt;Lua&lt;---&gt;toLua&lt;---&gt;toLua基础知识">
             
             toLua基础知识
-            <small>(18)</small>
+            <small>(19)</small>
         </div>
         
     </li>
@@ -2661,7 +2661,7 @@
         <div data-rel="服务端">
             <i class="fold iconfont icon-right"></i>
             服务端
-            <small>(17)</small>
+            <small>(21)</small>
         </div>
         
             <ul class="sub hide">
@@ -2671,7 +2671,7 @@
         <div data-rel="服务端&lt;---&gt;注册登录">
             
             注册登录
-            <small>(4)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -2682,7 +2682,7 @@
         <div data-rel="服务端&lt;---&gt;聊天">
             
             聊天
-            <small>(7)</small>
+            <small>(8)</small>
         </div>
         
     </li>
@@ -2693,7 +2693,7 @@
         <div data-rel="服务端&lt;---&gt;邮件">
             
             邮件
-            <small>(4)</small>
+            <small>(5)</small>
         </div>
         
     </li>
@@ -2704,7 +2704,7 @@
         <div data-rel="服务端&lt;---&gt;背包物品">
             
             背包物品
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -2755,7 +2755,7 @@
         <div data-rel="面试题">
             <i class="fold iconfont icon-right"></i>
             面试题
-            <small>(315)</small>
+            <small>(375)</small>
         </div>
         
             <ul class="sub hide">
@@ -2765,7 +2765,7 @@
         <div data-rel="面试题&lt;---&gt;综合面试题">
             <i class="fold iconfont icon-right"></i>
             综合面试题
-            <small>(35)</small>
+            <small>(47)</small>
         </div>
         
             <ul class="sub hide">
@@ -2775,7 +2775,7 @@
         <div data-rel="面试题&lt;---&gt;综合面试题&lt;---&gt;计算机基础面试题">
             
             计算机基础面试题
-            <small>(17)</small>
+            <small>(28)</small>
         </div>
         
     </li>
@@ -2786,7 +2786,7 @@
         <div data-rel="面试题&lt;---&gt;综合面试题&lt;---&gt;游戏开发基础面试题">
             
             游戏开发基础面试题
-            <small>(8)</small>
+            <small>(9)</small>
         </div>
         
     </li>
@@ -2813,7 +2813,7 @@
         <div data-rel="面试题&lt;---&gt;编程语言面试题">
             <i class="fold iconfont icon-right"></i>
             编程语言面试题
-            <small>(103)</small>
+            <small>(105)</small>
         </div>
         
             <ul class="sub hide">
@@ -2834,7 +2834,7 @@
         <div data-rel="面试题&lt;---&gt;编程语言面试题&lt;---&gt;CPP面试题">
             
             CPP面试题
-            <small>(4)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -2861,7 +2861,7 @@
         <div data-rel="面试题&lt;---&gt;游戏引擎面试题">
             <i class="fold iconfont icon-right"></i>
             游戏引擎面试题
-            <small>(55)</small>
+            <small>(68)</small>
         </div>
         
             <ul class="sub hide">
@@ -2871,7 +2871,7 @@
         <div data-rel="面试题&lt;---&gt;游戏引擎面试题&lt;---&gt;Unity面试题">
             
             Unity面试题
-            <small>(55)</small>
+            <small>(68)</small>
         </div>
         
     </li>
@@ -2909,7 +2909,7 @@
         <div data-rel="面试题&lt;---&gt;设计模式面试题">
             
             设计模式面试题
-            <small>(7)</small>
+            <small>(8)</small>
         </div>
         
     </li>
@@ -2920,7 +2920,7 @@
         <div data-rel="面试题&lt;---&gt;算法面试题">
             
             算法面试题
-            <small>(6)</small>
+            <small>(8)</small>
         </div>
         
     </li>
@@ -2931,7 +2931,7 @@
         <div data-rel="面试题&lt;---&gt;性能优化面试题">
             
             性能优化面试题
-            <small>(31)</small>
+            <small>(46)</small>
         </div>
         
     </li>
@@ -2942,7 +2942,7 @@
         <div data-rel="面试题&lt;---&gt;网络面试题">
             
             网络面试题
-            <small>(9)</small>
+            <small>(10)</small>
         </div>
         
     </li>
@@ -2953,7 +2953,7 @@
         <div data-rel="面试题&lt;---&gt;服务端面试题">
             
             服务端面试题
-            <small>(2)</small>
+            <small>(3)</small>
         </div>
         
     </li>
@@ -2964,7 +2964,7 @@
         <div data-rel="面试题&lt;---&gt;资源管理面试题">
             
             资源管理面试题
-            <small>(5)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -2986,7 +2986,7 @@
         <div data-rel="面试题&lt;---&gt;图形学面试题">
             
             图形学面试题
-            <small>(36)</small>
+            <small>(47)</small>
         </div>
         
     </li>
@@ -2997,7 +2997,7 @@
         <div data-rel="面试题&lt;---&gt;跨平台构建面试题">
             
             跨平台构建面试题
-            <small>(6)</small>
+            <small>(7)</small>
         </div>
         
     </li>
@@ -3124,8 +3124,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="2192">
-<input type="hidden" id="yelog_site_word_count" value="4049.2k">
+<input type="hidden" id="yelog_site_posts_number" value="2266">
+<input type="hidden" id="yelog_site_word_count" value="4341.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -5233,7 +5233,7 @@
            href="/2026/03/14/%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96/Unity/2.Unity%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.VAT%E5%92%8CGPUInstancing%E4%BC%98%E5%8C%96%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
            data-tag="性能优化,Unity性能优化,Unity性能优化实践项目"
            data-author="" >
-            <span class="post-title" title="1.VAT和GPUInstancing优化原理">1.VAT和GPUInstancing优化原理</span>
+            <span class="post-title" title="1.VAT和GPUInstancing优化基本原理">1.VAT和GPUInstancing优化基本原理</span>
             <span class="post-date" title="2026-03-14 13:03:44">2026/03/14</span>
         </a>
         
@@ -6274,6 +6274,15 @@
         
         
         <a  class="全部文章 游戏引擎 引擎体系 现代游戏引擎入门 "
+           href="/2025/12/30/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/%E5%BC%95%E6%93%8E%E4%BD%93%E7%B3%BB/01.%E7%8E%B0%E4%BB%A3%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E5%85%A5%E9%97%A8/23.%E6%80%BB%E7%BB%93/"
+           data-tag="游戏引擎,引擎体系,现代游戏引擎入门"
+           data-author="" >
+            <span class="post-title" title="23.现代游戏引擎入门总结">23.现代游戏引擎入门总结</span>
+            <span class="post-date" title="2025-12-30 23:08:03">2025/12/30</span>
+        </a>
+        
+        
+        <a  class="全部文章 游戏引擎 引擎体系 现代游戏引擎入门 "
            href="/2025/12/29/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/%E5%BC%95%E6%93%8E%E4%BD%93%E7%B3%BB/01.%E7%8E%B0%E4%BB%A3%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E5%85%A5%E9%97%A8/22.GPU%E9%A9%B1%E5%8A%A8%E7%9A%84%E5%87%A0%E4%BD%95%E7%AE%A1%E7%BA%BFNanite/"
            data-tag="游戏引擎,引擎体系,现代游戏引擎入门"
            data-author="" >
@@ -6603,6 +6612,15 @@
            data-author="" >
             <span class="post-title" title="1.Unity基础框架概述">1.Unity基础框架概述</span>
             <span class="post-date" title="2025-10-22 07:51:17">2025/10/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 服务端 背包物品 "
+           href="/2025/06/23/%E6%9C%8D%E5%8A%A1%E7%AB%AF/04.%E8%83%8C%E5%8C%85%E7%89%A9%E5%93%81/3.%E6%80%BB%E7%BB%93/"
+           data-tag="服务端,背包物品"
+           data-author="" >
+            <span class="post-title" title="3.背包物品系列总结">3.背包物品系列总结</span>
+            <span class="post-date" title="2025-06-23 09:25:07">2025/06/23</span>
         </a>
         
         
@@ -6985,6 +7003,15 @@
         
         
         <a  class="全部文章 服务端 邮件 "
+           href="/2025/05/29/%E6%9C%8D%E5%8A%A1%E7%AB%AF/03.%E9%82%AE%E4%BB%B6/5.%E6%80%BB%E7%BB%93/"
+           data-tag="服务端,邮件"
+           data-author="" >
+            <span class="post-title" title="5.邮件系统系列总结">5.邮件系统系列总结</span>
+            <span class="post-date" title="2025-05-29 01:04:41">2025/05/29</span>
+        </a>
+        
+        
+        <a  class="全部文章 服务端 邮件 "
            href="/2025/05/29/%E6%9C%8D%E5%8A%A1%E7%AB%AF/03.%E9%82%AE%E4%BB%B6/4.%E9%82%AE%E4%BB%B6%E7%B3%BB%E7%BB%9FMail%E6%9C%8D%E8%AE%BE%E8%AE%A1/"
            data-tag="服务端,邮件"
            data-author="" >
@@ -7017,6 +7044,15 @@
            data-author="" >
             <span class="post-title" title="1.邮件系统架构设计总览">1.邮件系统架构设计总览</span>
             <span class="post-date" title="2025-05-27 13:13:22">2025/05/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 服务端 聊天 "
+           href="/2025/05/17/%E6%9C%8D%E5%8A%A1%E7%AB%AF/02.%E8%81%8A%E5%A4%A9/8.%E6%80%BB%E7%BB%93/"
+           data-tag="服务端,聊天"
+           data-author="" >
+            <span class="post-title" title="8.聊天系列总结">8.聊天系列总结</span>
+            <span class="post-date" title="2025-05-17 15:06:40">2025/05/17</span>
         </a>
         
         
@@ -7228,6 +7264,15 @@
         
         
         <a  class="全部文章 资源管理 Unity资源管理 YooAsset "
+           href="/2025/03/27/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/Unity/04.YooAsset/10.%E6%80%BB%E7%BB%93/"
+           data-tag="资源管理,Unity资源管理,YooAsset"
+           data-author="" >
+            <span class="post-title" title="10.YooAsset总结">10.YooAsset总结</span>
+            <span class="post-date" title="2025-03-27 14:05:05">2025/03/27</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 Unity资源管理 YooAsset "
            href="/2025/03/27/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/Unity/04.YooAsset/9.YooAsset%E7%BB%93%E5%90%88UniTask%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E5%AE%9E%E8%B7%B5/"
            data-tag="资源管理,Unity资源管理,YooAsset"
            data-author="" >
@@ -7267,7 +7312,7 @@
            href="/2025/03/25/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/Unity/04.YooAsset/5.YooAsset%E5%A4%AA%E7%A9%BA%E6%88%98%E6%9C%BA%E7%A4%BA%E4%BE%8B%E5%B7%A5%E7%A8%8B%E6%BA%90%E7%A0%81%E8%A7%A3%E6%9E%90/"
            data-tag="资源管理,Unity资源管理,YooAsset"
            data-author="" >
-            <span class="post-title" title="5.YooAsset战机示例工程源码解析">5.YooAsset战机示例工程源码解析</span>
+            <span class="post-title" title="5.YooAsset太空战机示例工程源码解析">5.YooAsset太空战机示例工程源码解析</span>
             <span class="post-date" title="2025-03-25 21:16:56">2025/03/25</span>
         </a>
         
@@ -7458,6 +7503,15 @@
            data-author="" >
             <span class="post-title" title="1.ShaderGUI">1.ShaderGUI</span>
             <span class="post-date" title="2025-03-18 12:26:49">2025/03/18</span>
+        </a>
+        
+        
+        <a  class="全部文章 服务端 注册登录 "
+           href="/2025/03/07/%E6%9C%8D%E5%8A%A1%E7%AB%AF/01.%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95/5.%E6%80%BB%E7%BB%93/"
+           data-tag="服务端,注册登录"
+           data-author="" >
+            <span class="post-title" title="5.注册登录系列总结">5.注册登录系列总结</span>
+            <span class="post-date" title="2025-03-07 23:12:22">2025/03/07</span>
         </a>
         
         
@@ -8551,19 +8605,19 @@
         
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
-           href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/25.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-for/"
+           href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-dowhile/"
            data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,循环语句"
            data-author="" >
-            <span class="post-title" title="25.for">25.for</span>
+            <span class="post-title" title="24.dowhile">24.dowhile</span>
             <span class="post-date" title="2025-01-09 23:47:30">2025/01/09</span>
         </a>
         
         
         <a  class="全部文章 编程语言 CPP CPP入门 CPP入门语法知识 "
-           href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-dowhile/"
+           href="/2025/01/09/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/01.CPP%E5%85%A5%E9%97%A8%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/25.%E5%BE%AA%E7%8E%AF%E8%AF%AD%E5%8F%A5-for/"
            data-tag="编程语言,CPP,CPP入门,CPP入门语法知识,循环语句"
            data-author="" >
-            <span class="post-title" title="24.dowhile">24.dowhile</span>
+            <span class="post-title" title="25.for">25.for</span>
             <span class="post-date" title="2025-01-09 23:47:30">2025/01/09</span>
         </a>
         
@@ -9047,7 +9101,7 @@
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发基础 "
            href="/2024/12/02/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/75.%E6%B7%B1%E5%BA%A6%E5%92%8C%E6%B3%95%E7%BA%BF%E7%BA%B9%E7%90%86-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-%E6%B7%B1%E5%BA%A6%E7%BA%B9%E7%90%86%E5%AE%9E%E7%8E%B0%E8%BF%90%E5%8A%A8%E6%A8%A1%E7%B3%8A-%E5%85%B7%E4%BD%93%E5%AE%9E%E7%8E%B0/"
-           data-tag="图形学,Shader,UnityShader,Shader开发基础,深度和法线纹理,运动模糊,深度纹理实现运动模糊"
+           data-tag="图形学,Shader,UnityShader,Shader开发基础,运动模糊,深度和法线纹理,深度纹理实现运动模糊"
            data-author="" >
             <span class="post-title" title="75.深度纹理实现运动模糊具体实现">75.深度纹理实现运动模糊具体实现</span>
             <span class="post-date" title="2024-12-02 12:58:41">2024/12/02</span>
@@ -9056,7 +9110,7 @@
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发基础 "
            href="/2024/12/02/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/74.%E6%B7%B1%E5%BA%A6%E5%92%8C%E6%B3%95%E7%BA%BF%E7%BA%B9%E7%90%86-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0-%E6%B7%B1%E5%BA%A6%E7%BA%B9%E7%90%86%E5%AE%9E%E7%8E%B0%E8%BF%90%E5%8A%A8%E6%A8%A1%E7%B3%8A-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
-           data-tag="图形学,Shader,UnityShader,Shader开发基础,深度和法线纹理,运动模糊,深度纹理实现运动模糊"
+           data-tag="图形学,Shader,UnityShader,Shader开发基础,运动模糊,深度和法线纹理,深度纹理实现运动模糊"
            data-author="" >
             <span class="post-title" title="74.深度纹理实现运动模糊基本原理">74.深度纹理实现运动模糊基本原理</span>
             <span class="post-date" title="2024-12-02 12:58:35">2024/12/02</span>
@@ -9938,7 +9992,7 @@
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发入门 "
            href="/2024/10/10/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/20.%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E7%BB%BC%E5%90%88%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-BlinnPhong%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E9%80%90%E7%89%87%E5%85%83%E5%85%89%E7%85%A7/"
-           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,综合光照模型,逐片元光照,BlinnPhong光照模型"
+           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,逐片元光照,综合光照模型,BlinnPhong光照模型"
            data-author="" >
             <span class="post-title" title="20.BlinnPhong光照模型逐片元光照">20.BlinnPhong光照模型逐片元光照</span>
             <span class="post-date" title="2024-10-10 22:50:54">2024/10/10</span>
@@ -9965,7 +10019,7 @@
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发入门 "
            href="/2024/10/10/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/17.%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E7%BB%BC%E5%90%88%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-Phong%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E9%80%90%E7%89%87%E5%85%83%E5%85%89%E7%85%A7/"
-           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,综合光照模型,Phong光照模型,逐片元光照"
+           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,逐片元光照,综合光照模型,Phong光照模型"
            data-author="" >
             <span class="post-title" title="17.Phong光照模型逐片元光照">17.Phong光照模型逐片元光照</span>
             <span class="post-date" title="2024-10-10 21:30:47">2024/10/10</span>
@@ -13933,6 +13987,15 @@
         
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
+           href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/19.%E6%80%BB%E7%BB%93/"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识"
+           data-author="" >
+            <span class="post-title" title="19.toLua基础知识总结">19.toLua基础知识总结</span>
+            <span class="post-date" title="2024-04-05 12:11:00">2024/04/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/18.Lua%E8%B0%83%E7%94%A8CSharp-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
            data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
@@ -14095,6 +14158,15 @@
         
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%80%BB%E7%BB%93/"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-author="" >
+            <span class="post-title" title="11.xLua实践项目总结">11.xLua实践项目总结</span>
+            <span class="post-date" title="2024-04-04 21:12:38">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/10.%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2Lua%E8%84%9A%E6%9C%AC%E5%90%8E%E7%BC%80%E5%B7%A5%E5%85%B7/"
            data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
            data-author="" >
@@ -14181,6 +14253,15 @@
            data-author="" >
             <span class="post-title" title="1.xLua实践项目概述">1.xLua实践项目概述</span>
             <span class="post-date" title="2024-04-04 18:26:13">2024/04/04</span>
+        </a>
+        
+        
+        <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
+           href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/30.%E6%80%BB%E7%BB%93/"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识"
+           data-author="" >
+            <span class="post-title" title="30.xLua基础知识总结">30.xLua基础知识总结</span>
+            <span class="post-date" title="2024-04-04 17:39:31">2024/04/04</span>
         </a>
         
         
@@ -14626,6 +14707,15 @@
         
         
         <a  class="全部文章 资源管理 Unity资源管理 AssetBundle AssetBundle基础 "
+           href="/2024/04/01/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/Unity/01.AssetBundle%E5%9F%BA%E7%A1%80/6.%E6%80%BB%E7%BB%93/"
+           data-tag="资源管理,Unity资源管理,AssetBundle,AssetBundle基础"
+           data-author="" >
+            <span class="post-title" title="6.AssetBundle基础总结">6.AssetBundle基础总结</span>
+            <span class="post-date" title="2024-04-01 20:43:43">2024/04/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 资源管理 Unity资源管理 AssetBundle AssetBundle基础 "
            href="/2024/04/01/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/Unity/01.AssetBundle%E5%9F%BA%E7%A1%80/5.AB%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8/"
            data-tag="资源管理,Unity资源管理,AssetBundle,AssetBundle基础"
            data-author="" >
@@ -14647,7 +14737,7 @@
            href="/2024/04/01/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/Unity/01.AssetBundle%E5%9F%BA%E7%A1%80/3.%E4%BD%BF%E7%94%A8AB%E5%8C%85%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6/"
            data-tag="资源管理,Unity资源管理,AssetBundle,AssetBundle基础"
            data-author="" >
-            <span class="post-title" title="3.代码加载AB包和AB包中的资源">3.代码加载AB包和AB包中的资源</span>
+            <span class="post-title" title="3.使用AB包资源文件">3.使用AB包资源文件</span>
             <span class="post-date" title="2024-04-01 13:10:06">2024/04/01</span>
         </a>
         
@@ -14656,7 +14746,7 @@
            href="/2024/04/01/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/Unity/01.AssetBundle%E5%9F%BA%E7%A1%80/2.%E7%94%9F%E6%88%90AB%E5%8C%85%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6/"
            data-tag="资源管理,Unity资源管理,AssetBundle,AssetBundle基础"
            data-author="" >
-            <span class="post-title" title="2.AB包的参数和生成">2.AB包的参数和生成</span>
+            <span class="post-title" title="2.生成AB包资源文件">2.生成AB包资源文件</span>
             <span class="post-date" title="2024-04-01 12:53:36">2024/04/01</span>
         </a>
         
@@ -14667,6 +14757,15 @@
            data-author="" >
             <span class="post-title" title="1.AB包的基本概念和作用">1.AB包的基本概念和作用</span>
             <span class="post-date" title="2024-04-01 12:40:14">2024/04/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 框架 Unity框架 MVC框架 "
+           href="/2024/04/01/%E6%A1%86%E6%9E%B6/Unity/02.MVC%E6%A1%86%E6%9E%B6/29.%E6%80%BB%E7%BB%93/"
+           data-tag="框架,Unity框架,MVC框架"
+           data-author="" >
+            <span class="post-title" title="29.UnityMVC总结">29.UnityMVC总结</span>
+            <span class="post-date" title="2024-04-01 09:07:51">2024/04/01</span>
         </a>
         
         
@@ -15140,7 +15239,7 @@
         
         <a  class="全部文章 UI系统 UnityUI系统 FGUI FGUI基础知识 "
            href="/2024/03/24/UI%E7%B3%BB%E7%BB%9F/Unity/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/38.FGUI%E5%9F%BA%E7%A1%80-Unity%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8%E5%BF%85%E5%A4%87-%E5%9D%90%E6%A0%87%E7%B3%BB%E7%BB%9F/"
-           data-tag="UI系统,UnityUI系统,FGUI,FGUI基础知识,坐标"
+           data-tag="UI系统,UnityUI系统,坐标,FGUI,FGUI基础知识"
            data-author="" >
             <span class="post-title" title="38.坐标系统">38.坐标系统</span>
             <span class="post-date" title="2024-03-24 15:56:43">2024/03/24</span>
@@ -15313,7 +15412,7 @@
            href="/2024/03/23/UI%E7%B3%BB%E7%BB%9F/Unity/07.FGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/19.FGUI%E5%9F%BA%E7%A1%80-%E5%9F%BA%E7%A1%80%E5%85%83%E4%BB%B6-%E8%A3%85%E8%BD%BD%E5%99%A8-3D%E5%86%85%E5%AE%B9%E8%A3%85%E8%BD%BD%E5%99%A8/"
            data-tag="UI系统,UnityUI系统,FGUI,FGUI基础知识,基础元件,装载器"
            data-author="" >
-            <span class="post-title" title="19.GLoader3D3D内容装载器">19.GLoader3D3D内容装载器</span>
+            <span class="post-title" title="19.GLoader3D与3D内容装载器">19.GLoader3D与3D内容装载器</span>
             <span class="post-date" title="2024-03-23 11:50:56">2024/03/23</span>
         </a>
         
@@ -15477,6 +15576,15 @@
            data-author="" >
             <span class="post-title" title="1.FGUI基础知识概述">1.FGUI基础知识概述</span>
             <span class="post-date" title="2024-03-22 12:35:19">2024/03/22</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据工程 数据持久化 Unity数据持久化 Binary Binary实践项目 "
+           href="/2024/03/22/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/Unity/08.Binary%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%80%BB%E7%BB%93/"
+           data-tag="数据工程,数据持久化,Unity数据持久化,Binary,Binary实践项目"
+           data-author="" >
+            <span class="post-title" title="12.Binary实践项目总结">12.Binary实践项目总结</span>
+            <span class="post-date" title="2024-03-22 08:05:23">2024/03/22</span>
         </a>
         
         
@@ -16544,7 +16652,7 @@
         
         <a  class="全部文章 UI系统 UnityUI系统 UGUI UGUI基础知识 "
            href="/2024/03/12/UI%E7%B3%BB%E7%BB%9F/Unity/05.UGUI%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.UGUI%E8%BF%9B%E9%98%B6-%E5%B1%8F%E5%B9%95%E5%9D%90%E6%A0%87%E8%BD%ACUI%E7%9B%B8%E5%AF%B9%E5%9D%90%E6%A0%87/"
-           data-tag="UI系统,UnityUI系统,坐标,UGUI,UGUI基础知识"
+           data-tag="UI系统,UnityUI系统,UGUI,UGUI基础知识,坐标"
            data-author="" >
             <span class="post-title" title="21.屏幕坐标转UI局部坐标">21.屏幕坐标转UI局部坐标</span>
             <span class="post-date" title="2024-03-12 13:07:16">2024/03/12</span>
@@ -16762,7 +16870,7 @@
            href="/2024/03/10/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/Unity/06.Json%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%92%8CJson%E6%95%B0%E6%8D%AE%E7%AE%A1%E7%90%86%E7%B1%BB%E5%88%9B%E5%BB%BA/"
            data-tag="数据工程,数据持久化,Unity数据持久化,Json,Json实践项目"
            data-author="" >
-            <span class="post-title" title="1.需求分析和Json数据管理器">1.需求分析和Json数据管理器</span>
+            <span class="post-title" title="1.需求分析和Json数据管理类创建">1.需求分析和Json数据管理类创建</span>
             <span class="post-date" title="2024-03-10 21:00:15">2024/03/10</span>
         </a>
         
@@ -17965,6 +18073,15 @@
         
         
         <a  class="全部文章 数据工程 数据持久化 Unity数据持久化 Xml Xml实践项目 "
+           href="/2024/03/05/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/Unity/04.Xml%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/8.%E6%80%BB%E7%BB%93/"
+           data-tag="数据工程,数据持久化,Unity数据持久化,Xml,Xml实践项目"
+           data-author="" >
+            <span class="post-title" title="8.Xml实践项目总结">8.Xml实践项目总结</span>
+            <span class="post-date" title="2024-03-05 09:20:25">2024/03/05</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据工程 数据持久化 Unity数据持久化 Xml Xml实践项目 "
            href="/2024/03/05/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/Unity/04.Xml%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E7%94%9F%E6%88%90%E8%B5%84%E6%BA%90%E5%8C%85/"
            data-tag="数据工程,数据持久化,Unity数据持久化,Xml,Xml实践项目"
            data-author="" >
@@ -18101,7 +18218,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity基础 Unity基础基础知识 "
            href="/2024/03/03/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/24.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%B0%84%E7%BA%BF%E6%A3%80%E6%B5%8B/"
-           data-tag="游戏引擎,Unity,Unity基础,Unity基础基础知识,核心系统,物理系统"
+           data-tag="游戏引擎,Unity,核心系统,物理系统,Unity基础,Unity基础基础知识"
            data-author="" >
             <span class="post-title" title="24.射线检测">24.射线检测</span>
             <span class="post-date" title="2024-03-03 18:23:34">2024/03/03</span>
@@ -18110,7 +18227,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity基础 Unity基础基础知识 "
            href="/2024/03/03/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/23.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E8%8C%83%E5%9B%B4%E6%A3%80%E6%B5%8B/"
-           data-tag="游戏引擎,Unity,Unity基础,Unity基础基础知识,核心系统,物理系统"
+           data-tag="游戏引擎,Unity,核心系统,物理系统,Unity基础,Unity基础基础知识"
            data-author="" >
             <span class="post-title" title="23.范围检测">23.范围检测</span>
             <span class="post-date" title="2024-03-03 18:01:20">2024/03/03</span>
@@ -18173,7 +18290,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity基础 Unity基础基础知识 "
            href="/2024/02/29/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.MonoBehavior%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F%E5%8E%9F%E7%90%86/"
-           data-tag="游戏引擎,Unity,Unity基础,Unity基础基础知识,MonoBehaviour中的重要内容,协同程序"
+           data-tag="游戏引擎,Unity,MonoBehaviour中的重要内容,Unity基础,Unity基础基础知识,协同程序"
            data-author="" >
             <span class="post-title" title="16.协同程序原理">16.协同程序原理</span>
             <span class="post-date" title="2024-02-29 23:58:28">2024/02/29</span>
@@ -18182,7 +18299,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity基础 Unity基础基础知识 "
            href="/2024/02/29/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.MonoBehavior%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="游戏引擎,Unity,Unity基础,Unity基础基础知识,MonoBehaviour中的重要内容,协同程序"
+           data-tag="游戏引擎,Unity,MonoBehaviour中的重要内容,Unity基础,Unity基础基础知识,协同程序"
            data-author="" >
             <span class="post-title" title="15.协同程序">15.协同程序</span>
             <span class="post-date" title="2024-02-29 20:02:13">2024/02/29</span>
@@ -18191,7 +18308,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity基础 Unity基础基础知识 "
            href="/2024/02/29/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/03.Unity%E5%9F%BA%E7%A1%80%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.MonoBehavior%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9-%E5%BB%B6%E8%BF%9F%E5%87%BD%E6%95%B0/"
-           data-tag="游戏引擎,Unity,Unity基础,Unity基础基础知识,MonoBehaviour中的重要内容"
+           data-tag="游戏引擎,Unity,MonoBehaviour中的重要内容,Unity基础,Unity基础基础知识"
            data-author="" >
             <span class="post-title" title="14.延迟函数">14.延迟函数</span>
             <span class="post-date" title="2024-02-29 19:41:31">2024/02/29</span>
@@ -18829,6 +18946,15 @@
         
         
         <a  class="全部文章 数据工程 数据持久化 Unity数据持久化 PlayerPrefs PlayerPrefs实践项目 "
+           href="/2024/02/26/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/Unity/02.PlayerPrefs%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/14.%E6%80%BB%E7%BB%93/"
+           data-tag="数据工程,数据持久化,Unity数据持久化,PlayerPrefs,PlayerPrefs实践项目"
+           data-author="" >
+            <span class="post-title" title="14.PlayerPrefs实践项目总结">14.PlayerPrefs实践项目总结</span>
+            <span class="post-date" title="2024-02-26 16:56:41">2024/02/26</span>
+        </a>
+        
+        
+        <a  class="全部文章 数据工程 数据持久化 Unity数据持久化 PlayerPrefs PlayerPrefs实践项目 "
            href="/2024/02/26/%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B/%E6%95%B0%E6%8D%AE%E6%8C%81%E4%B9%85%E5%8C%96/Unity/02.PlayerPrefs%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/13.%E7%94%9F%E6%88%90%E8%B5%84%E6%BA%90%E5%8C%85/"
            data-tag="数据工程,数据持久化,Unity数据持久化,PlayerPrefs,PlayerPrefs实践项目"
            data-author="" >
@@ -18992,7 +19118,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/35.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E6%95%88%E7%B3%BB%E7%BB%9F-%E9%BA%A6%E5%85%8B%E9%A3%8E/"
-           data-tag="游戏引擎,Unity,核心系统,Unity入门,Unity入门基础知识,音效系统"
+           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,音效系统"
            data-author="" >
             <span class="post-title" title="35.Microphone麦克风">35.Microphone麦克风</span>
             <span class="post-date" title="2024-02-25 14:17:13">2024/02/25</span>
@@ -19001,7 +19127,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/34.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E6%95%88%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E9%A2%91%E6%BA%90%E4%BB%A3%E7%A0%81%E6%8E%A7%E5%88%B6/"
-           data-tag="游戏引擎,Unity,核心系统,Unity入门,Unity入门基础知识,音效系统"
+           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,音效系统"
            data-author="" >
             <span class="post-title" title="34.AudioSource音频源代码控制">34.AudioSource音频源代码控制</span>
             <span class="post-date" title="2024-02-25 14:03:34">2024/02/25</span>
@@ -19010,7 +19136,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/33.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E6%95%88%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E9%A2%91%E6%BA%90%E5%92%8C%E9%9F%B3%E9%A2%91%E7%9B%91%E5%90%AC%E8%84%9A%E6%9C%AC/"
-           data-tag="游戏引擎,Unity,核心系统,Unity入门,Unity入门基础知识,音效系统"
+           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,音效系统"
            data-author="" >
             <span class="post-title" title="33.AudioSource音频源组件参数和AudioListener音频监听组件参数">33.AudioSource音频源组件参数和AudioListener音频监听组件参数</span>
             <span class="post-date" title="2024-02-25 13:54:41">2024/02/25</span>
@@ -19019,7 +19145,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/32.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E6%95%88%E7%B3%BB%E7%BB%9F-%E9%9F%B3%E9%A2%91%E6%96%87%E4%BB%B6%E5%AF%BC%E5%85%A5/"
-           data-tag="游戏引擎,Unity,核心系统,Unity入门,Unity入门基础知识,音效系统"
+           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,音效系统"
            data-author="" >
             <span class="post-title" title="32.音频文件导入">32.音频文件导入</span>
             <span class="post-date" title="2024-02-25 13:46:39">2024/02/25</span>
@@ -19028,7 +19154,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/31.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%88%9A%E4%BD%93%E5%8A%A0%E5%8A%9B/"
-           data-tag="游戏引擎,Unity,核心系统,物理系统,Unity入门,Unity入门基础知识"
+           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,物理系统"
            data-author="" >
             <span class="post-title" title="31.Rigidbody刚体代码控制">31.Rigidbody刚体代码控制</span>
             <span class="post-date" title="2024-02-25 13:43:10">2024/02/25</span>
@@ -19037,7 +19163,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/30.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B%E5%87%BD%E6%95%B0/"
-           data-tag="游戏引擎,Unity,核心系统,物理系统,Unity入门,Unity入门基础知识"
+           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,物理系统"
            data-author="" >
             <span class="post-title" title="30.碰撞检测函数">30.碰撞检测函数</span>
             <span class="post-date" title="2024-02-25 13:14:03">2024/02/25</span>
@@ -19046,7 +19172,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/29.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E6%9D%90%E8%B4%A8/"
-           data-tag="游戏引擎,Unity,核心系统,物理系统,Unity入门,Unity入门基础知识"
+           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,物理系统"
            data-author="" >
             <span class="post-title" title="29.PhysicMaterial物理材质">29.PhysicMaterial物理材质</span>
             <span class="post-date" title="2024-02-25 13:09:09">2024/02/25</span>
@@ -19055,7 +19181,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/28.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E7%A2%B0%E6%92%9E%E4%BD%93/"
-           data-tag="游戏引擎,Unity,核心系统,物理系统,Unity入门,Unity入门基础知识"
+           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,物理系统"
            data-author="" >
             <span class="post-title" title="28.Collider碰撞体组件参数">28.Collider碰撞体组件参数</span>
             <span class="post-date" title="2024-02-25 13:02:21">2024/02/25</span>
@@ -19064,7 +19190,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/27.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E7%89%A9%E7%90%86%E7%B3%BB%E7%BB%9F-%E5%88%9A%E4%BD%93/"
-           data-tag="游戏引擎,Unity,核心系统,物理系统,Unity入门,Unity入门基础知识"
+           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,物理系统"
            data-author="" >
             <span class="post-title" title="27.Rigidbody刚体组件参数">27.Rigidbody刚体组件参数</span>
             <span class="post-date" title="2024-02-25 12:56:03">2024/02/25</span>
@@ -19073,7 +19199,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E9%9D%A2%E6%9D%BF/"
-           data-tag="游戏引擎,Unity,核心系统,Unity入门,Unity入门基础知识,光源系统"
+           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,光源系统"
            data-author="" >
             <span class="post-title" title="26.Lighting光面板">26.Lighting光面板</span>
             <span class="post-date" title="2024-02-25 00:19:19">2024/02/25</span>
@@ -19082,7 +19208,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/25/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/25.%E6%A0%B8%E5%BF%83%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%B3%BB%E7%BB%9F-%E5%85%89%E6%BA%90%E7%BB%84%E4%BB%B6/"
-           data-tag="游戏引擎,Unity,核心系统,Unity入门,Unity入门基础知识,光源系统"
+           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,核心系统,光源系统"
            data-author="" >
             <span class="post-title" title="25.Light光源组件参数和代码控制">25.Light光源组件参数和代码控制</span>
             <span class="post-date" title="2024-02-25 00:01:43">2024/02/25</span>
@@ -19199,7 +19325,7 @@
         
         <a  class="全部文章 游戏引擎 Unity Unity入门 Unity入门基础知识 "
            href="/2024/02/24/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/01.Unity%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Unity%E8%84%9A%E6%9C%AC%E5%9F%BA%E7%A1%80-MonoBehavior%E4%B8%AD%E7%9A%84%E9%87%8D%E8%A6%81%E5%86%85%E5%AE%B9-%E5%9F%BA%E7%A1%80%E5%B1%9E%E6%80%A7%E5%92%8C%E7%BB%84%E4%BB%B6%E7%9A%84%E8%8E%B7%E5%8F%96/"
-           data-tag="游戏引擎,Unity,MonoBehaviour中的重要内容,Unity入门,Unity入门基础知识,Unity脚本基础"
+           data-tag="游戏引擎,Unity,Unity入门,Unity入门基础知识,Unity脚本基础,MonoBehaviour中的重要内容"
            data-author="" >
             <span class="post-title" title="12.基础属性和组件的获取">12.基础属性和组件的获取</span>
             <span class="post-date" title="2024-02-24 13:20:17">2024/02/24</span>
@@ -19883,7 +20009,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/28.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8E%A5%E5%8F%A3%E7%9A%84%E5%8C%BA%E5%88%AB/"
-           data-tag="编程语言,CSharp,面向对象关联知识点,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="28.抽象类和接口的区别">28.抽象类和接口的区别</span>
             <span class="post-date" title="2024-01-31 23:28:02">2024/01/31</span>
@@ -19892,7 +20018,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/27.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB/"
-           data-tag="编程语言,CSharp,面向对象关联知识点,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="27.结构体和类的区别">27.结构体和类的区别</span>
             <span class="post-date" title="2024-01-31 23:26:39">2024/01/31</span>
@@ -19901,7 +20027,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/26.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-StringBuilder/"
-           data-tag="编程语言,CSharp,面向对象关联知识点,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="26.StringBuilder">26.StringBuilder</span>
             <span class="post-date" title="2024-01-31 22:08:27">2024/01/31</span>
@@ -19910,7 +20036,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/25.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-String/"
-           data-tag="编程语言,CSharp,面向对象关联知识点,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="25.String">25.String</span>
             <span class="post-date" title="2024-01-31 12:54:52">2024/01/31</span>
@@ -19919,7 +20045,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/31/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E4%B8%87%E7%89%A9%E4%B9%8B%E7%88%B6%E4%B8%AD%E7%9A%84%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,CSharp,面向对象关联知识点,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="24.万物之父中的方法">24.万物之父中的方法</span>
             <span class="post-date" title="2024-01-31 12:36:43">2024/01/31</span>
@@ -19928,7 +20054,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/23.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/"
-           data-tag="编程语言,CSharp,面向对象关联知识点,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象关联知识点,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="23.命名空间">23.命名空间</span>
             <span class="post-date" title="2024-01-30 19:55:08">2024/01/30</span>
@@ -19937,7 +20063,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E5%AF%86%E5%B0%81%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,CSharp,面向对象,多态,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,多态,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="22.密封方法">22.密封方法</span>
             <span class="post-date" title="2024-01-30 19:51:30">2024/01/30</span>
@@ -19946,7 +20072,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E6%8E%A5%E5%8F%A3/"
-           data-tag="编程语言,CSharp,面向对象,多态,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,多态,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="21.接口">21.接口</span>
             <span class="post-date" title="2024-01-30 12:52:17">2024/01/30</span>
@@ -19955,7 +20081,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/30/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/20.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E6%8A%BD%E8%B1%A1%E7%B1%BB%E5%92%8C%E6%8A%BD%E8%B1%A1%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,CSharp,面向对象,多态,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,多态,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="20.抽象类和抽象方法">20.抽象类和抽象方法</span>
             <span class="post-date" title="2024-01-30 12:45:18">2024/01/30</span>
@@ -19964,7 +20090,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/29/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-vob/"
-           data-tag="编程语言,CSharp,面向对象,多态,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,多态,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="19.virtual，override，base">19.virtual，override，base</span>
             <span class="post-date" title="2024-01-29 22:41:36">2024/01/29</span>
@@ -19973,7 +20099,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/29/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/18.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E5%AF%86%E5%B0%81%E7%B1%BB/"
-           data-tag="编程语言,CSharp,面向对象,继承,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,继承,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="18.密封类">18.密封类</span>
             <span class="post-date" title="2024-01-29 22:41:29">2024/01/29</span>
@@ -19982,7 +20108,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/29/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E4%B8%87%E7%89%A9%E4%B9%8B%E7%88%B6%E5%92%8C%E8%A3%85%E7%AE%B1%E6%8B%86%E7%AE%B1/"
-           data-tag="编程语言,CSharp,面向对象,继承,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,继承,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="17.万物之父和装箱拆箱">17.万物之父和装箱拆箱</span>
             <span class="post-date" title="2024-01-29 21:39:13">2024/01/29</span>
@@ -19991,7 +20117,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/29/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/16.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E7%BB%A7%E6%89%BF%E4%B8%AD%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CSharp,面向对象,继承,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,继承,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="16.继承中的构造函数">16.继承中的构造函数</span>
             <span class="post-date" title="2024-01-29 21:29:53">2024/01/29</span>
@@ -20000,7 +20126,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/26/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99/"
-           data-tag="编程语言,CSharp,面向对象,继承,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,继承,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="15.里氏替换原则">15.里氏替换原则</span>
             <span class="post-date" title="2024-01-26 12:55:26">2024/01/26</span>
@@ -20009,7 +20135,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/25/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/14.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E7%BB%A7%E6%89%BF%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/"
-           data-tag="编程语言,CSharp,面向对象,继承,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,继承,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="14.继承的基本规则">14.继承的基本规则</span>
             <span class="post-date" title="2024-01-25 21:39:02">2024/01/25</span>
@@ -20018,7 +20144,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/25/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E5%86%85%E9%83%A8%E7%B1%BB%E5%92%8C%E5%88%86%E9%83%A8%E7%B1%BB/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="13.内部类和分部类">13.内部类和分部类</span>
             <span class="post-date" title="2024-01-25 12:44:08">2024/01/25</span>
@@ -20027,7 +20153,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="12.运算符重载">12.运算符重载</span>
             <span class="post-date" title="2024-01-15 23:38:52">2024/01/15</span>
@@ -20036,7 +20162,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%89%A9%E5%B1%95%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="11.扩展方法">11.扩展方法</span>
             <span class="post-date" title="2024-01-15 22:04:07">2024/01/15</span>
@@ -20045,7 +20171,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/14/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E9%9D%99%E6%80%81%E7%B1%BB%E5%92%8C%E9%9D%99%E6%80%81%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="10.静态类和静态构造函数">10.静态类和静态构造函数</span>
             <span class="post-date" title="2024-01-14 22:04:07">2024/01/14</span>
@@ -20054,7 +20180,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/13/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E9%9D%99%E6%80%81%E6%88%90%E5%91%98/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="9.静态成员">9.静态成员</span>
             <span class="post-date" title="2024-01-13 12:09:18">2024/01/13</span>
@@ -20063,7 +20189,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/13/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E7%B4%A2%E5%BC%95%E5%99%A8/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="8.索引器">8.索引器</span>
             <span class="post-date" title="2024-01-13 11:49:14">2024/01/13</span>
@@ -20072,7 +20198,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/13/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="7.成员属性">7.成员属性</span>
             <span class="post-date" title="2024-01-13 11:39:00">2024/01/13</span>
@@ -20081,7 +20207,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/12/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识,垃圾回收"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识,垃圾回收"
            data-author="" >
             <span class="post-title" title="6.构造函数、析构函数和垃圾回收">6.构造函数、析构函数和垃圾回收</span>
             <span class="post-date" title="2024-01-12 20:01:14">2024/01/12</span>
@@ -20090,7 +20216,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/12/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="5.成员方法">5.成员方法</span>
             <span class="post-date" title="2024-01-12 00:15:16">2024/01/12</span>
@@ -20099,7 +20225,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="4.成员变量和访问修饰符">4.成员变量和访问修饰符</span>
             <span class="post-date" title="2024-01-11 23:08:30">2024/01/11</span>
@@ -20108,7 +20234,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/"
-           data-tag="编程语言,CSharp,面向对象,封装,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,封装,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="3.类和对象">3.类和对象</span>
             <span class="post-date" title="2024-01-11 22:36:24">2024/01/11</span>
@@ -20117,7 +20243,7 @@
         
         <a  class="全部文章 编程语言 CSharp CSharp核心 CSharp核心语法知识 "
            href="/2024/01/11/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/05.CSharp%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"
-           data-tag="编程语言,CSharp,面向对象,CSharp核心,CSharp核心语法知识"
+           data-tag="编程语言,面向对象,CSharp,CSharp核心,CSharp核心语法知识"
            data-author="" >
             <span class="post-title" title="2.面向对象基本概念">2.面向对象基本概念</span>
             <span class="post-date" title="2024-01-11 22:25:11">2024/01/11</span>
@@ -20801,7 +20927,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/11/LeetCode/1047.%E5%88%A0%E9%99%A4%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E7%9A%84%E6%89%80%E6%9C%89%E7%9B%B8%E9%82%BB%E9%87%8D%E5%A4%8D%E9%A1%B9/"
-           data-tag="LeetCode,数组,贪心,排序"
+           data-tag="LeetCode,字符串,栈"
            data-author="" >
             <span class="post-title" title="1047.删除字符串中的所有相邻重复项">1047.删除字符串中的所有相邻重复项</span>
             <span class="post-date" title="2000-01-11 00:04:07">2000/01/11</span>
@@ -20828,7 +20954,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/892.%E4%B8%89%E7%BB%B4%E5%BD%A2%E4%BD%93%E7%9A%84%E8%A1%A8%E9%9D%A2%E7%A7%AF/"
-           data-tag="LeetCode,数组,贪心"
+           data-tag="LeetCode,数组,数学,几何"
            data-author="" >
             <span class="post-title" title="892.三维形体的表面积">892.三维形体的表面积</span>
             <span class="post-date" title="2000-01-10 08:09:02">2000/01/10</span>
@@ -20981,7 +21107,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/463.%E5%B2%9B%E5%B1%BF%E7%9A%84%E5%91%A8%E9%95%BF/"
-           data-tag="LeetCode,数组,深度优先搜索,广度优先搜索,矩阵"
+           data-tag="LeetCode,数组,广度优先搜索,深度优先搜索,矩阵"
            data-author="" >
             <span class="post-title" title="463.岛屿的周长">463.岛屿的周长</span>
             <span class="post-date" title="2000-01-10 04:06:03">2000/01/10</span>
@@ -21044,7 +21170,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/392.%E5%88%A4%E6%96%AD%E5%AD%90%E5%BA%8F%E5%88%97/"
-           data-tag="LeetCode,双指针,动态规划,字符串"
+           data-tag="LeetCode,双指针,字符串,动态规划"
            data-author="" >
             <span class="post-title" title="392.判断子序列">392.判断子序列</span>
             <span class="post-date" title="2000-01-10 03:09:02">2000/01/10</span>
@@ -21053,7 +21179,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/389.%E6%89%BE%E4%B8%8D%E5%90%8C/"
-           data-tag="LeetCode,哈希表,排序,字符串,位运算"
+           data-tag="LeetCode,哈希表,字符串,位运算,排序"
            data-author="" >
             <span class="post-title" title="389.找不同">389.找不同</span>
             <span class="post-date" title="2000-01-10 03:08:09">2000/01/10</span>
@@ -21143,7 +21269,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/268.%E4%B8%A2%E5%A4%B1%E7%9A%84%E6%95%B0%E5%AD%97/"
-           data-tag="LeetCode,数组,哈希表,排序,数学,位运算,二分查找"
+           data-tag="LeetCode,数组,哈希表,数学,位运算,排序,二分查找"
            data-author="" >
             <span class="post-title" title="268.丢失的数字">268.丢失的数字</span>
             <span class="post-date" title="2000-01-10 02:06:08">2000/01/10</span>
@@ -21161,7 +21287,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/236.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/"
-           data-tag="LeetCode,热题100,树,深度优先搜索,二叉树"
+           data-tag="LeetCode,热题100,树,二叉树,深度优先搜索"
            data-author="" >
             <span class="post-title" title="236.二叉树的最近公共祖先">236.二叉树的最近公共祖先</span>
             <span class="post-date" title="2000-01-10 02:03:06">2000/01/10</span>
@@ -21170,7 +21296,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/234.%E5%9B%9E%E6%96%87%E9%93%BE%E8%A1%A8/"
-           data-tag="LeetCode,热题100,双指针,链表,栈,递归"
+           data-tag="LeetCode,热题100,双指针,栈,链表,递归"
            data-author="" >
             <span class="post-title" title="234.回文链表">234.回文链表</span>
             <span class="post-date" title="2000-01-10 02:03:04">2000/01/10</span>
@@ -21197,7 +21323,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,热题100,树,深度优先搜索,二叉树,二叉搜索树"
+           data-tag="LeetCode,热题100,树,二叉搜索树,二叉树,深度优先搜索"
            data-author="" >
             <span class="post-title" title="230.二叉搜索树中第K小的元素">230.二叉搜索树中第K小的元素</span>
             <span class="post-date" title="2000-01-10 02:03:00">2000/01/10</span>
@@ -21224,7 +21350,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/215.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,数组,热题100,排序,分治,快速选择,堆"
+           data-tag="LeetCode,数组,热题100,分治,排序,快速选择,堆"
            data-author="" >
             <span class="post-title" title="215.数组中的第K个最大元素">215.数组中的第K个最大元素</span>
             <span class="post-date" title="2000-01-10 02:01:05">2000/01/10</span>
@@ -21260,7 +21386,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/200.%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/"
-           data-tag="LeetCode,热题100,深度优先搜索,广度优先搜索,岛屿"
+           data-tag="LeetCode,热题100,广度优先搜索,深度优先搜索,岛屿"
            data-author="" >
             <span class="post-title" title="200.岛屿数量">200.岛屿数量</span>
             <span class="post-date" title="2000-01-10 02:00:00">2000/01/10</span>
@@ -21287,7 +21413,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/169.%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,数组,哈希表,热题100,排序,分治,计数"
+           data-tag="LeetCode,数组,哈希表,热题100,分治,计数,排序"
            data-author="" >
             <span class="post-title" title="169.多数元素">169.多数元素</span>
             <span class="post-date" title="2000-01-10 01:06:09">2000/01/10</span>
@@ -21332,7 +21458,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/"
-           data-tag="LeetCode,树,深度优先搜索,二叉树,栈"
+           data-tag="LeetCode,树,二叉树,深度优先搜索,栈"
            data-author="" >
             <span class="post-title" title="144.二叉树的前序遍历">144.二叉树的前序遍历</span>
             <span class="post-date" title="2000-01-10 01:04:04">2000/01/10</span>
@@ -21368,7 +21494,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/134.%E5%8A%A0%E6%B2%B9%E7%AB%99/"
-           data-tag="LeetCode,数组,动态规划"
+           data-tag="LeetCode,数组,贪心"
            data-author="" >
             <span class="post-title" title="134.加油站">134.加油站</span>
             <span class="post-date" title="2000-01-10 01:03:04">2000/01/10</span>
@@ -21377,7 +21503,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/129.%E6%B1%82%E6%A0%B9%E8%8A%82%E7%82%B9%E5%88%B0%E5%8F%B6%E8%8A%82%E7%82%B9%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C/"
-           data-tag="LeetCode,树,深度优先搜索,二叉树"
+           data-tag="LeetCode,树,二叉树,深度优先搜索"
            data-author="" >
             <span class="post-title" title="129.求根节点到叶节点数字之和">129.求根节点到叶节点数字之和</span>
             <span class="post-date" title="2000-01-10 01:02:09">2000/01/10</span>
@@ -21422,7 +21548,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/112.%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/"
-           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,二叉树"
+           data-tag="LeetCode,树,二叉树,广度优先搜索,深度优先搜索"
            data-author="" >
             <span class="post-title" title="112.路径总和">112.路径总和</span>
             <span class="post-date" title="2000-01-10 01:01:02">2000/01/10</span>
@@ -21431,7 +21557,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"
-           data-tag="LeetCode,数组,热题100,树,二叉树,二叉搜索树,分治"
+           data-tag="LeetCode,数组,热题100,树,二叉搜索树,分治,二叉树"
            data-author="" >
             <span class="post-title" title="108.将有序数组转换为二叉搜索树">108.将有序数组转换为二叉搜索树</span>
             <span class="post-date" title="2000-01-10 01:00:08">2000/01/10</span>
@@ -21440,7 +21566,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/104.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/"
-           data-tag="LeetCode,热题100,树,深度优先搜索,广度优先搜索,二叉树"
+           data-tag="LeetCode,热题100,树,二叉树,广度优先搜索,深度优先搜索"
            data-author="" >
             <span class="post-title" title="104.二叉树的最大深度">104.二叉树的最大深度</span>
             <span class="post-date" title="2000-01-10 01:00:04">2000/01/10</span>
@@ -21449,7 +21575,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/102.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/"
-           data-tag="LeetCode,热题100,广度优先搜索,二叉树,队列"
+           data-tag="LeetCode,热题100,二叉树,广度优先搜索,队列"
            data-author="" >
             <span class="post-title" title="102.二叉树的层序遍历">102.二叉树的层序遍历</span>
             <span class="post-date" title="2000-01-10 01:00:02">2000/01/10</span>
@@ -21458,7 +21584,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/101.%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/"
-           data-tag="LeetCode,热题100,树,深度优先搜索,广度优先搜索,二叉树"
+           data-tag="LeetCode,热题100,树,二叉树,广度优先搜索,深度优先搜索"
            data-author="" >
             <span class="post-title" title="101.对称二叉树">101.对称二叉树</span>
             <span class="post-date" title="2000-01-10 01:00:01">2000/01/10</span>
@@ -21467,7 +21593,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/100.%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/"
-           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,二叉树"
+           data-tag="LeetCode,树,二叉树,广度优先搜索,深度优先搜索"
            data-author="" >
             <span class="post-title" title="100.相同的树">100.相同的树</span>
             <span class="post-date" title="2000-01-10 01:00:00">2000/01/10</span>
@@ -21476,7 +21602,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/94.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/"
-           data-tag="LeetCode,热题100,树,深度优先搜索,广度优先搜索,栈"
+           data-tag="LeetCode,热题100,树,广度优先搜索,深度优先搜索,栈"
            data-author="" >
             <span class="post-title" title="94.二叉树的中序遍历">94.二叉树的中序遍历</span>
             <span class="post-date" title="2000-01-10 00:09:04">2000/01/10</span>
@@ -21494,7 +21620,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/83.%E5%88%A0%E9%99%A4%E6%8E%92%E5%BA%8F%E9%93%BE%E8%A1%A8%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,数组,链表,二分查找,矩阵"
+           data-tag="LeetCode,链表"
            data-author="" >
             <span class="post-title" title="83.删除排序链表中的重复元素">83.删除排序链表中的重复元素</span>
             <span class="post-date" title="2000-01-10 00:08:03">2000/01/10</span>
@@ -21782,7 +21908,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/5.%E6%9C%80%E9%95%BF%E5%9B%9E%E6%96%87%E5%AD%90%E4%B8%B2/"
-           data-tag="LeetCode,热题100,双指针,动态规划,字符串"
+           data-tag="LeetCode,热题100,双指针,字符串,动态规划"
            data-author="" >
             <span class="post-title" title="5.最长回文子串">5.最长回文子串</span>
             <span class="post-date" title="2000-01-10 00:00:05">2000/01/10</span>
@@ -21835,6 +21961,15 @@
         
         
         <a  class="全部文章 面试题 跨平台构建面试题 "
+           href="/1813/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/13.%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%9E%84%E5%BB%BA%E9%9D%A2%E8%AF%95%E9%A2%98/7.Compressed%E4%B8%8ECrunched%E7%BA%B9%E7%90%86%E6%A0%BC%E5%BC%8F%E5%8C%BA%E5%88%AB/"
+           data-tag="面试题,跨平台构建面试题"
+           data-author="" >
+            <span class="post-title" title="7.Compressed与Crunched纹理格式区别">7.Compressed与Crunched纹理格式区别</span>
+            <span class="post-date" title="1813-01-01 00:00:50">1813/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 跨平台构建面试题 "
            href="/1813/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/13.%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%9E%84%E5%BB%BA%E9%9D%A2%E8%AF%95%E9%A2%98/6.%E5%AE%89%E5%8D%93%E5%B9%B3%E5%8F%B0%E8%B0%83%E8%AF%95%E9%97%AE%E9%A2%98%E7%9A%84%E6%96%B9%E6%B3%95/"
            data-tag="面试题,跨平台构建面试题"
            data-author="" >
@@ -21844,7 +21979,7 @@
         
         
         <a  class="全部文章 面试题 跨平台构建面试题 "
-           href="/1813/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/13.%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%9E%84%E5%BB%BA%E9%9D%A2%E8%AF%95%E9%A2%98/5.Unity%E4%B8%ADiOS%E5%B9%B3%E5%8F%B0%E7%BA%B9%E7%90%86%E5%8E%8B%E7%BC%A9%E6%A0%BC%E5%BC%8F/"
+           href="/1813/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/13.%E8%B7%A8%E5%B9%B3%E5%8F%B0%E6%9E%84%E5%BB%BA%E9%9D%A2%E8%AF%95%E9%A2%98/5.Unity%E4%B8%ADIOS%E5%B9%B3%E5%8F%B0%E7%BA%B9%E7%90%86%E5%8E%8B%E7%BC%A9%E6%A0%BC%E5%BC%8F/"
            data-tag="面试题,跨平台构建面试题"
            data-author="" >
             <span class="post-title" title="5.Unity中iOS平台纹理压缩格式">5.Unity中iOS平台纹理压缩格式</span>
@@ -21885,6 +22020,105 @@
            data-author="" >
             <span class="post-title" title="1.Unity中调试Android项目问题">1.Unity中调试Android项目问题</span>
             <span class="post-date" title="1813-01-01 00:00:44">1813/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 图形学面试题 "
+           href="/1812/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/12.%E5%9B%BE%E5%BD%A2%E5%AD%A6%E9%9D%A2%E8%AF%95%E9%A2%98/47.%E5%BB%B6%E8%BF%9F%E6%B8%B2%E6%9F%93%E4%B8%8EG-Buffer/"
+           data-tag="面试题,图形学面试题"
+           data-author="" >
+            <span class="post-title" title="47.延迟渲染与G-Buffer">47.延迟渲染与G-Buffer</span>
+            <span class="post-date" title="1812-01-01 00:04:50">1812/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 图形学面试题 "
+           href="/1812/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/12.%E5%9B%BE%E5%BD%A2%E5%AD%A6%E9%9D%A2%E8%AF%95%E9%A2%98/46.%E4%B8%96%E7%95%8C%E7%9F%A9%E9%98%B5%E4%B8%8E%E8%A7%82%E5%AF%9F%E7%9F%A9%E9%98%B5%E5%92%8C%E6%8A%95%E5%BD%B1%E7%9F%A9%E9%98%B5/"
+           data-tag="面试题,图形学面试题"
+           data-author="" >
+            <span class="post-title" title="46.世界矩阵与观察矩阵和投影矩阵">46.世界矩阵与观察矩阵和投影矩阵</span>
+            <span class="post-date" title="1812-01-01 00:04:49">1812/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 图形学面试题 "
+           href="/1812/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/12.%E5%9B%BE%E5%BD%A2%E5%AD%A6%E9%9D%A2%E8%AF%95%E9%A2%98/45.%E6%B7%B1%E5%BA%A6%E6%B5%8B%E8%AF%95%E4%B8%8E%E6%B7%B1%E5%BA%A6%E5%86%99%E5%85%A5%E5%92%8C%E9%80%8F%E6%98%8E%E6%8E%92%E5%BA%8F%E7%9A%84%E6%B8%B2%E6%9F%93%E9%97%AE%E9%A2%98/"
+           data-tag="面试题,图形学面试题"
+           data-author="" >
+            <span class="post-title" title="45.深度测试与深度写入和透明排序的渲染问题">45.深度测试与深度写入和透明排序的渲染问题</span>
+            <span class="post-date" title="1812-01-01 00:04:48">1812/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 图形学面试题 "
+           href="/1812/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/12.%E5%9B%BE%E5%BD%A2%E5%AD%A6%E9%9D%A2%E8%AF%95%E9%A2%98/44.DrawCall%E4%B8%8ESetPass%E5%92%8COverdraw%E5%8F%8AFillrate/"
+           data-tag="面试题,图形学面试题"
+           data-author="" >
+            <span class="post-title" title="44.DrawCall与SetPass和Overdraw及Fillrate">44.DrawCall与SetPass和Overdraw及Fillrate</span>
+            <span class="post-date" title="1812-01-01 00:04:47">1812/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 图形学面试题 "
+           href="/1812/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/12.%E5%9B%BE%E5%BD%A2%E5%AD%A6%E9%9D%A2%E8%AF%95%E9%A2%98/43.%E7%BA%B9%E7%90%86%E9%80%9A%E9%81%93%E5%90%88%E5%B9%B6%E7%9A%84%E5%90%AB%E4%B9%89/"
+           data-tag="面试题,图形学面试题"
+           data-author="" >
+            <span class="post-title" title="43.纹理通道合并的含义">43.纹理通道合并的含义</span>
+            <span class="post-date" title="1812-01-01 00:04:46">1812/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 图形学面试题 "
+           href="/1812/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/12.%E5%9B%BE%E5%BD%A2%E5%AD%A6%E9%9D%A2%E8%AF%95%E9%A2%98/42.Shader%E4%B8%8EComputeShader%E7%9A%84%E5%8C%BA%E5%88%AB/"
+           data-tag="面试题,图形学面试题"
+           data-author="" >
+            <span class="post-title" title="42.Shader与ComputeShader的区别">42.Shader与ComputeShader的区别</span>
+            <span class="post-date" title="1812-01-01 00:04:45">1812/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 图形学面试题 "
+           href="/1812/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/12.%E5%9B%BE%E5%BD%A2%E5%AD%A6%E9%9D%A2%E8%AF%95%E9%A2%98/41.%E7%BA%B9%E7%90%86%E5%83%8F%E7%B4%A0%E6%A0%BC%E5%BC%8FRGBA32%E4%B8%8ERGB24%E5%8F%8AAlpha8R8R16%E5%90%AB%E4%B9%89/"
+           data-tag="面试题,图形学面试题"
+           data-author="" >
+            <span class="post-title" title="41.纹理像素格式RGBA32与RGB24及Alpha8R8R16含义">41.纹理像素格式RGBA32与RGB24及Alpha8R8R16含义</span>
+            <span class="post-date" title="1812-01-01 00:04:44">1812/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 图形学面试题 "
+           href="/1812/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/12.%E5%9B%BE%E5%BD%A2%E5%AD%A6%E9%9D%A2%E8%AF%95%E9%A2%98/40.Shader%E7%BC%96%E5%86%99%E8%8A%82%E7%9C%81GPU%E7%9A%84%E8%A6%81%E7%82%B9/"
+           data-tag="面试题,图形学面试题"
+           data-author="" >
+            <span class="post-title" title="40.Shader编写节省GPU的要点">40.Shader编写节省GPU的要点</span>
+            <span class="post-date" title="1812-01-01 00:04:43">1812/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 图形学面试题 "
+           href="/1812/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/12.%E5%9B%BE%E5%BD%A2%E5%AD%A6%E9%9D%A2%E8%AF%95%E9%A2%98/39.DrawCall%E5%92%8COverDraw%E7%9A%84%E5%8C%BA%E5%88%AB%E5%8F%8A%E5%90%84%E8%87%AA%E5%BD%B1%E5%93%8D%E7%9A%84%E6%80%A7%E8%83%BD/"
+           data-tag="面试题,图形学面试题"
+           data-author="" >
+            <span class="post-title" title="39.DrawCall和OverDraw的区别及各自影响的性能">39.DrawCall和OverDraw的区别及各自影响的性能</span>
+            <span class="post-date" title="1812-01-01 00:03:52">1812/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 图形学面试题 "
+           href="/1812/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/12.%E5%9B%BE%E5%BD%A2%E5%AD%A6%E9%9D%A2%E8%AF%95%E9%A2%98/38.URP%E5%9C%A8%E7%A7%BB%E5%8A%A8%E5%B9%B3%E5%8F%B0%E4%BC%98%E4%BA%8E%E5%86%85%E7%BD%AE%E7%AE%A1%E7%BA%BF%E7%9A%84%E5%8E%9F%E5%9B%A0/"
+           data-tag="面试题,图形学面试题"
+           data-author="" >
+            <span class="post-title" title="38.URP在移动平台优于内置管线的原因">38.URP在移动平台优于内置管线的原因</span>
+            <span class="post-date" title="1812-01-01 00:03:51">1812/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 图形学面试题 "
+           href="/1812/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/12.%E5%9B%BE%E5%BD%A2%E5%AD%A6%E9%9D%A2%E8%AF%95%E9%A2%98/37.%E5%BB%B6%E8%BF%9F%E6%B8%B2%E6%9F%93%E4%B8%8E%E5%89%8D%E5%90%91%E6%B8%B2%E6%9F%93%E7%9A%84%E5%8C%BA%E5%88%AB%E5%8F%8A%E4%BC%98%E7%BC%BA%E7%82%B9/"
+           data-tag="面试题,图形学面试题"
+           data-author="" >
+            <span class="post-title" title="37.延迟渲染与前向渲染的区别及优缺点">37.延迟渲染与前向渲染的区别及优缺点</span>
+            <span class="post-date" title="1812-01-01 00:03:50">1812/01/01</span>
         </a>
         
         
@@ -22240,6 +22474,15 @@
         
         
         <a  class="全部文章 面试题 资源管理面试题 "
+           href="/1810/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/10.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E9%9D%A2%E8%AF%95%E9%A2%98/6.Resources%E4%B8%8EAssetBundle%E5%8A%A0%E8%BD%BD%E5%8C%BA%E5%88%AB/"
+           data-tag="面试题,资源管理面试题"
+           data-author="" >
+            <span class="post-title" title="6.Resources与AssetBundle加载区别">6.Resources与AssetBundle加载区别</span>
+            <span class="post-date" title="1810-01-01 00:00:49">1810/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 资源管理面试题 "
            href="/1810/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/10.%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E9%9D%A2%E8%AF%95%E9%A2%98/5.AB%E5%8C%85%E4%BE%9D%E8%B5%96%E5%8D%B8%E8%BD%BD%E5%8F%8A%E4%BA%92%E7%9B%B8%E5%BC%95%E7%94%A8/"
            data-tag="面试题,资源管理面试题"
            data-author="" >
@@ -22285,6 +22528,15 @@
         
         
         <a  class="全部文章 面试题 服务端面试题 "
+           href="/1809/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/09.%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/3.%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9D%83%E5%A8%81%E5%92%8C%E5%AE%A2%E6%88%B7%E7%AB%AF%E6%9D%83%E5%A8%81%E7%9A%84%E5%8C%BA%E5%88%AB/"
+           data-tag="面试题,服务端面试题"
+           data-author="" >
+            <span class="post-title" title="3.服务器权威和客户端权威的区别">3.服务器权威和客户端权威的区别</span>
+            <span class="post-date" title="1809-01-01 00:00:46">1809/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 服务端面试题 "
            href="/1809/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/09.%E6%9C%8D%E5%8A%A1%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/2.%E7%BD%91%E7%BB%9C%E6%B8%B8%E6%88%8F%E4%B8%AD%E9%81%BF%E5%85%8D%E5%A4%96%E6%8C%82%E7%9A%84%E4%BA%A7%E7%94%9F/"
            data-tag="面试题,服务端面试题"
            data-author="" >
@@ -22299,6 +22551,15 @@
            data-author="" >
             <span class="post-title" title="1.网络游戏数据统计计算策略">1.网络游戏数据统计计算策略</span>
             <span class="post-date" title="1809-01-01 00:00:44">1809/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 网络面试题 "
+           href="/1808/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/08.%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E9%A2%98/10.%E5%A6%82%E4%BD%95%E5%B0%86UDP%E5%B0%81%E8%A3%85%E5%BE%97%E4%B8%8ETCP%E4%B8%80%E6%A0%B7%E5%8F%AF%E9%9D%A0/"
+           data-tag="面试题,网络面试题"
+           data-author="" >
+            <span class="post-title" title="10.如何将UDP封装得与TCP一样可靠">10.如何将UDP封装得与TCP一样可靠</span>
+            <span class="post-date" title="1808-01-01 00:01:43">1808/01/01</span>
         </a>
         
         
@@ -22330,10 +22591,10 @@
         
         
         <a  class="全部文章 面试题 网络面试题 "
-           href="/1808/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/08.%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E9%A2%98/6.%E7%BD%91%E7%BB%9C%E9%80%9A%E8%AE%AF%E4%B8%AD%E7%9A%84%E5%88%86%E5%8C%85%E5%92%8C%E9%BB%8F%E5%8C%85%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"
+           href="/1808/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/08.%E7%BD%91%E7%BB%9C%E9%9D%A2%E8%AF%95%E9%A2%98/6.%E7%BD%91%E7%BB%9C%E9%80%9A%E8%AE%AF%E4%B8%AD%E7%9A%84%E5%88%86%E5%8C%85%E5%92%8C%E7%B2%98%E5%8C%85%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"
            data-tag="面试题,网络面试题"
            data-author="" >
-            <span class="post-title" title="6.网络通讯中的分包和黏包解决方案">6.网络通讯中的分包和黏包解决方案</span>
+            <span class="post-title" title="6.网络通讯中的分包和粘包解决方案">6.网络通讯中的分包和粘包解决方案</span>
             <span class="post-date" title="1808-01-01 00:00:49">1808/01/01</span>
         </a>
         
@@ -22380,6 +22641,141 @@
            data-author="" >
             <span class="post-title" title="1.网络传输数据的基本流程">1.网络传输数据的基本流程</span>
             <span class="post-date" title="1808-01-01 00:00:44">1808/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 性能优化面试题 "
+           href="/1807/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/07.%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/46.Canvas.BuildBatch%E4%B8%8ELayout.Rebuild%E6%80%A7%E8%83%BD%E5%88%86%E6%9E%90/"
+           data-tag="面试题,性能优化面试题"
+           data-author="" >
+            <span class="post-title" title="46.Canvas.BuildBatch与Layout.Rebuild性能分析">46.Canvas.BuildBatch与Layout.Rebuild性能分析</span>
+            <span class="post-date" title="1807-01-01 00:04:49">1807/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 性能优化面试题 "
+           href="/1807/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/07.%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/45.%E4%B8%8A%E7%BA%BF%E5%89%8D%E5%86%85%E5%AD%98%E9%A2%84%E7%AE%97%E4%B8%8E%E5%8E%8B%E6%B5%8B/"
+           data-tag="面试题,性能优化面试题"
+           data-author="" >
+            <span class="post-title" title="45.上线前内存预算与压测">45.上线前内存预算与压测</span>
+            <span class="post-date" title="1807-01-01 00:04:48">1807/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 性能优化面试题 "
+           href="/1807/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/07.%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/44.%E5%9B%BE%E9%9B%86%E4%B8%8E%E5%86%85%E5%AD%98%E7%9A%84%E5%85%B3%E7%B3%BB/"
+           data-tag="面试题,性能优化面试题"
+           data-author="" >
+            <span class="post-title" title="44.图集与内存的关系">44.图集与内存的关系</span>
+            <span class="post-date" title="1807-01-01 00:04:47">1807/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 性能优化面试题 "
+           href="/1807/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/07.%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/43.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E4%B8%8E%E5%86%85%E5%AD%98%E7%9A%84%E5%85%B3%E7%B3%BB/"
+           data-tag="面试题,性能优化面试题"
+           data-author="" >
+            <span class="post-title" title="43.对象池与内存的关系">43.对象池与内存的关系</span>
+            <span class="post-date" title="1807-01-01 00:04:46">1807/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 性能优化面试题 "
+           href="/1807/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/07.%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/42.%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8%E5%92%8C%E6%98%BE%E5%AD%98%E5%8D%A0%E7%94%A8%E7%9A%84%E5%8C%BA%E5%88%AB/"
+           data-tag="面试题,性能优化面试题"
+           data-author="" >
+            <span class="post-title" title="42.内存占用和显存占用的区别">42.内存占用和显存占用的区别</span>
+            <span class="post-date" title="1807-01-01 00:04:45">1807/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 性能优化面试题 "
+           href="/1807/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/07.%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/41.Texture%E7%BA%B9%E7%90%86%E5%86%85%E5%AD%98%E4%BC%B0%E7%AE%97/"
+           data-tag="面试题,性能优化面试题"
+           data-author="" >
+            <span class="post-title" title="41.Texture纹理内存估算">41.Texture纹理内存估算</span>
+            <span class="post-date" title="1807-01-01 00:04:44">1807/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 性能优化面试题 "
+           href="/1807/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/07.%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/40.%E5%9B%9B%E7%A7%8D%E5%90%88%E6%89%B9%E6%96%B9%E5%BC%8F%E7%9A%84%E9%99%90%E5%88%B6%E6%9D%A1%E4%BB%B6/"
+           data-tag="面试题,性能优化面试题"
+           data-author="" >
+            <span class="post-title" title="40.四种合批方式的限制条件">40.四种合批方式的限制条件</span>
+            <span class="post-date" title="1807-01-01 00:04:43">1807/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 性能优化面试题 "
+           href="/1807/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/07.%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/39.GPUInstancing%E7%9A%84%E5%8E%9F%E7%90%86/"
+           data-tag="面试题,性能优化面试题"
+           data-author="" >
+            <span class="post-title" title="39.GPU Instancing的原理">39.GPU Instancing的原理</span>
+            <span class="post-date" title="1807-01-01 00:03:52">1807/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 性能优化面试题 "
+           href="/1807/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/07.%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/38.URP%E4%B8%ADSRPBatcher%E4%B8%8EGPUInstancing%E7%9A%84%E9%80%89%E6%8B%A9/"
+           data-tag="面试题,性能优化面试题"
+           data-author="" >
+            <span class="post-title" title="38.URP中SRP Batcher与GPU Instancing的选择">38.URP中SRP Batcher与GPU Instancing的选择</span>
+            <span class="post-date" title="1807-01-01 00:03:51">1807/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 性能优化面试题 "
+           href="/1807/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/07.%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/37.%E9%99%8D%E4%BD%8EGPU%E9%A1%B6%E7%82%B9%E5%A4%84%E7%90%86%E9%87%8F%E7%9A%84%E5%B8%B8%E8%A7%81%E6%96%B9%E5%BC%8F/"
+           data-tag="面试题,性能优化面试题"
+           data-author="" >
+            <span class="post-title" title="37.降低GPU顶点处理量的常见方式">37.降低GPU顶点处理量的常见方式</span>
+            <span class="post-date" title="1807-01-01 00:03:50">1807/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 性能优化面试题 "
+           href="/1807/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/07.%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/36.%E9%A1%B9%E7%9B%AE%E5%88%9D%E6%9C%9F%E5%A6%82%E4%BD%95%E5%88%B6%E5%AE%9A%E5%86%85%E5%AD%98%E8%A7%84%E5%88%99%E9%81%BF%E5%85%8D%E5%86%85%E5%AD%98%E7%93%B6%E9%A2%88/"
+           data-tag="面试题,性能优化面试题"
+           data-author="" >
+            <span class="post-title" title="36.项目初期如何制定内存规则避免内存瓶颈">36.项目初期如何制定内存规则避免内存瓶颈</span>
+            <span class="post-date" title="1807-01-01 00:03:49">1807/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 性能优化面试题 "
+           href="/1807/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/07.%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/35.%E4%B8%8D%E5%90%8C%E5%B8%A7%E7%8E%87%E6%84%8F%E5%91%B3%E7%9D%80%E4%BB%80%E4%B9%88/"
+           data-tag="面试题,性能优化面试题"
+           data-author="" >
+            <span class="post-title" title="35.不同帧率意味着什么">35.不同帧率意味着什么</span>
+            <span class="post-date" title="1807-01-01 00:03:48">1807/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 性能优化面试题 "
+           href="/1807/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/07.%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/34.%E5%8A%A8%E6%80%81%E6%89%B9%E5%A4%84%E7%90%86%E7%9A%84%E9%99%90%E5%88%B6%E6%9D%A1%E4%BB%B6/"
+           data-tag="面试题,性能优化面试题"
+           data-author="" >
+            <span class="post-title" title="34.动态批处理的限制条件">34.动态批处理的限制条件</span>
+            <span class="post-date" title="1807-01-01 00:03:47">1807/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 性能优化面试题 "
+           href="/1807/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/07.%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/33.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E4%B8%BA%E4%BD%95%E8%83%BD%E4%BC%98%E5%8C%96%E6%80%A7%E8%83%BD/"
+           data-tag="面试题,性能优化面试题"
+           data-author="" >
+            <span class="post-title" title="33.对象池为何能优化性能">33.对象池为何能优化性能</span>
+            <span class="post-date" title="1807-01-01 00:03:46">1807/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 性能优化面试题 "
+           href="/1807/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/07.%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E9%9D%A2%E8%AF%95%E9%A2%98/32.%E7%BC%93%E5%AD%98%E7%9A%84%E6%A6%82%E5%BF%B5%E5%8F%8A%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/"
+           data-tag="面试题,性能优化面试题"
+           data-author="" >
+            <span class="post-title" title="32.缓存的概念及游戏开发中的应用">32.缓存的概念及游戏开发中的应用</span>
+            <span class="post-date" title="1807-01-01 00:03:45">1807/01/01</span>
         </a>
         
         
@@ -22663,6 +23059,24 @@
         
         
         <a  class="全部文章 面试题 算法面试题 "
+           href="/1806/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/06.%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98/8.%E5%BF%AB%E9%80%9F%E6%8E%92%E5%BA%8F%E5%8E%9F%E7%90%86/"
+           data-tag="面试题,算法面试题"
+           data-author="" >
+            <span class="post-title" title="8.快速排序原理">8.快速排序原理</span>
+            <span class="post-date" title="1806-01-01 00:00:51">1806/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 算法面试题 "
+           href="/1806/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/06.%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98/7.%E7%BA%A2%E9%BB%91%E6%A0%91%E7%9A%84%E4%BA%94%E4%B8%AA%E6%80%A7%E8%B4%A8/"
+           data-tag="面试题,算法面试题"
+           data-author="" >
+            <span class="post-title" title="7.红黑树的五个性质">7.红黑树的五个性质</span>
+            <span class="post-date" title="1806-01-01 00:00:50">1806/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 算法面试题 "
            href="/1806/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/06.%E7%AE%97%E6%B3%95%E9%9D%A2%E8%AF%95%E9%A2%98/6.%E5%B8%B8%E8%A7%81%E7%A2%B0%E6%92%9E%E6%A3%80%E6%B5%8B%E7%AE%97%E6%B3%95/"
            data-tag="面试题,算法面试题"
            data-author="" >
@@ -22713,6 +23127,15 @@
            data-author="" >
             <span class="post-title" title="1.七大排序算法及常用排序算法">1.七大排序算法及常用排序算法</span>
             <span class="post-date" title="1806-01-01 00:00:44">1806/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 设计模式面试题 "
+           href="/1805/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/05.%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E9%9D%A2%E8%AF%95%E9%A2%98/8.%E7%8A%B6%E6%80%81%E6%A8%A1%E5%BC%8F%E4%B8%8E%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8C%BA%E5%88%AB/"
+           data-tag="面试题,设计模式面试题"
+           data-author="" >
+            <span class="post-title" title="8.状态模式与策略模式的区别">8.状态模式与策略模式的区别</span>
+            <span class="post-date" title="1805-01-01 00:00:51">1805/01/01</span>
         </a>
         
         
@@ -22861,10 +23284,10 @@
         
         
         <a  class="全部文章 面试题 数据工程面试题 "
-           href="/1803/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/03.%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B%E9%9D%A2%E8%AF%95%E9%A2%98/7.%E5%8D%95%E6%9C%BA%E6%B8%B8%E6%88%8F%E9%81%BF%E5%85%8D%E7%8E%A9%E4%BF%AE%E6%94%B9%E5%99%A8%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE%E6%96%B9%E6%B3%95/"
+           href="/1803/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/03.%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B%E9%9D%A2%E8%AF%95%E9%A2%98/7.%E5%8D%95%E6%9C%BA%E6%B8%B8%E6%88%8F%E5%A6%82%E4%BD%95%E9%81%BF%E5%85%8D%E7%8E%A9%E5%AE%B6%E7%94%A8%E4%BF%AE%E6%94%B9%E5%99%A8%E7%AF%A1%E6%94%B9%E6%95%B0%E6%8D%AE/"
            data-tag="面试题,数据工程面试题"
            data-author="" >
-            <span class="post-title" title="7.单机游戏避免玩修改器修改数据方法">7.单机游戏避免玩修改器修改数据方法</span>
+            <span class="post-title" title="7.单机游戏如何避免玩家用修改器篡改数据">7.单机游戏如何避免玩家用修改器篡改数据</span>
             <span class="post-date" title="1803-01-01 00:00:50">1803/01/01</span>
         </a>
         
@@ -22879,10 +23302,10 @@
         
         
         <a  class="全部文章 面试题 数据工程面试题 "
-           href="/1803/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/03.%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B%E9%9D%A2%E8%AF%95%E9%A2%98/5.%E5%9C%A8%E5%88%B6%E4%BD%9C%E6%B8%B8%E6%88%8F%E5%AD%98%E6%A1%A3%E5%8A%9F%E8%83%BD%E6%97%B6%E4%B8%AD%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%9C%E7%94%A8/"
+           href="/1803/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/03.%E6%95%B0%E6%8D%AE%E5%B7%A5%E7%A8%8B%E9%9D%A2%E8%AF%95%E9%A2%98/5.%E5%9C%A8%E5%88%B6%E4%BD%9C%E6%B8%B8%E6%88%8F%E5%AD%98%E6%A1%A3%E5%8A%9F%E8%83%BD%E6%97%B6%E5%8F%8D%E5%B0%84%E7%9A%84%E4%BD%9C%E7%94%A8/"
            data-tag="面试题,数据工程面试题"
            data-author="" >
-            <span class="post-title" title="5.在制作游戏存档功能时中反射的作用">5.在制作游戏存档功能时中反射的作用</span>
+            <span class="post-title" title="5.在制作游戏存档功能时反射的作用">5.在制作游戏存档功能时反射的作用</span>
             <span class="post-date" title="1803-01-01 00:00:48">1803/01/01</span>
         </a>
         
@@ -22920,6 +23343,114 @@
            data-author="" >
             <span class="post-title" title="1.序列化的定义方式及应用场景">1.序列化的定义方式及应用场景</span>
             <span class="post-date" title="1803-01-01 00:00:44">1803/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 游戏引擎面试题 Unity面试题 "
+           href="/1802/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E9%9D%A2%E8%AF%95%E9%A2%98/01.Unity%E9%9D%A2%E8%AF%95%E9%A2%98/67.GetComponent%E7%9A%84%E6%80%A7%E8%83%BD%E9%97%AE%E9%A2%98/"
+           data-tag="面试题,游戏引擎面试题,Unity面试题"
+           data-author="" >
+            <span class="post-title" title="67.GetComponent的性能问题">67.GetComponent的性能问题</span>
+            <span class="post-date" title="1802-01-01 00:06:50">1802/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 游戏引擎面试题 Unity面试题 "
+           href="/1802/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E9%9D%A2%E8%AF%95%E9%A2%98/01.Unity%E9%9D%A2%E8%AF%95%E9%A2%98/66.%E5%AF%B9%E8%B1%A1%E6%B1%A0%E4%B8%8E%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E5%87%BD%E6%95%B0/"
+           data-tag="面试题,游戏引擎面试题,Unity面试题"
+           data-author="" >
+            <span class="post-title" title="66.对象池与生命周期函数">66.对象池与生命周期函数</span>
+            <span class="post-date" title="1802-01-01 00:06:49">1802/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 游戏引擎面试题 Unity面试题 "
+           href="/1802/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E9%9D%A2%E8%AF%95%E9%A2%98/01.Unity%E9%9D%A2%E8%AF%95%E9%A2%98/65.Unity%E5%81%87null%E7%8E%B0%E8%B1%A1/"
+           data-tag="面试题,游戏引擎面试题,Unity面试题"
+           data-author="" >
+            <span class="post-title" title="65.Unity假null现象">65.Unity假null现象</span>
+            <span class="post-date" title="1802-01-01 00:06:48">1802/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 游戏引擎面试题 Unity面试题 "
+           href="/1802/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E9%9D%A2%E8%AF%95%E9%A2%98/01.Unity%E9%9D%A2%E8%AF%95%E9%A2%98/64.new%E5%AF%B9%E8%B1%A1%E4%B8%8E%E5%AE%9E%E4%BE%8B%E5%8C%96%E9%A2%84%E8%AE%BE%E4%BD%93%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%8C%BA%E5%88%AB/"
+           data-tag="面试题,游戏引擎面试题,Unity面试题"
+           data-author="" >
+            <span class="post-title" title="64.new对象与实例化预设体的本质区别">64.new对象与实例化预设体的本质区别</span>
+            <span class="post-date" title="1802-01-01 00:06:47">1802/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 游戏引擎面试题 Unity面试题 "
+           href="/1802/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E9%9D%A2%E8%AF%95%E9%A2%98/01.Unity%E9%9D%A2%E8%AF%95%E9%A2%98/63.Unity%E9%9F%B3%E9%A2%91%E4%B8%89%E7%A7%8D%E5%8A%A0%E8%BD%BD%E7%B1%BB%E5%9E%8B%E7%9A%84%E5%8C%BA%E5%88%AB/"
+           data-tag="面试题,游戏引擎面试题,Unity面试题"
+           data-author="" >
+            <span class="post-title" title="63.Unity音频三种加载类型的区别">63.Unity音频三种加载类型的区别</span>
+            <span class="post-date" title="1802-01-01 00:06:46">1802/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 游戏引擎面试题 Unity面试题 "
+           href="/1802/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E9%9D%A2%E8%AF%95%E9%A2%98/01.Unity%E9%9D%A2%E8%AF%95%E9%A2%98/62.Unity%E6%B7%B7%E5%90%88%E5%85%89%E6%BA%90%E5%9C%A8%E7%83%98%E7%84%99%E4%B8%AD%E7%9A%84%E4%BD%9C%E7%94%A8/"
+           data-tag="面试题,游戏引擎面试题,Unity面试题"
+           data-author="" >
+            <span class="post-title" title="62.Unity混合光源在烘焙中的作用">62.Unity混合光源在烘焙中的作用</span>
+            <span class="post-date" title="1802-01-01 00:06:45">1802/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 游戏引擎面试题 Unity面试题 "
+           href="/1802/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E9%9D%A2%E8%AF%95%E9%A2%98/01.Unity%E9%9D%A2%E8%AF%95%E9%A2%98/61.Unity%E4%B8%AD%E5%8F%8D%E5%B0%84%E6%8E%A2%E9%92%88%E7%9A%84%E4%BD%9C%E7%94%A8/"
+           data-tag="面试题,游戏引擎面试题,Unity面试题"
+           data-author="" >
+            <span class="post-title" title="61.Unity中反射探针的作用">61.Unity中反射探针的作用</span>
+            <span class="post-date" title="1802-01-01 00:06:44">1802/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 游戏引擎面试题 Unity面试题 "
+           href="/1802/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E9%9D%A2%E8%AF%95%E9%A2%98/01.Unity%E9%9D%A2%E8%AF%95%E9%A2%98/60.Unity%E4%B8%AD%E5%85%89%E7%85%A7%E6%8E%A2%E9%92%88%E7%9A%84%E4%BD%9C%E7%94%A8/"
+           data-tag="面试题,游戏引擎面试题,Unity面试题"
+           data-author="" >
+            <span class="post-title" title="60.Unity中光照探针的作用">60.Unity中光照探针的作用</span>
+            <span class="post-date" title="1802-01-01 00:06:43">1802/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 游戏引擎面试题 Unity面试题 "
+           href="/1802/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E9%9D%A2%E8%AF%95%E9%A2%98/01.Unity%E9%9D%A2%E8%AF%95%E9%A2%98/59.Unity%E4%B8%AD%E5%BF%BD%E7%95%A5%E4%B8%A4%E4%B8%AA%E7%89%A9%E4%BD%93%E4%B9%8B%E9%97%B4%E7%9A%84%E7%A2%B0%E6%92%9E/"
+           data-tag="面试题,游戏引擎面试题,Unity面试题"
+           data-author="" >
+            <span class="post-title" title="59.Unity中忽略两个物体之间的碰撞">59.Unity中忽略两个物体之间的碰撞</span>
+            <span class="post-date" title="1802-01-01 00:05:52">1802/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 游戏引擎面试题 Unity面试题 "
+           href="/1802/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E9%9D%A2%E8%AF%95%E9%A2%98/01.Unity%E9%9D%A2%E8%AF%95%E9%A2%98/58.%E5%A6%82%E4%BD%95%E4%BC%98%E5%8C%96%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E5%90%8E%E5%AE%9E%E4%BE%8B%E5%8C%96%E5%B8%A6%E6%9D%A5%E7%9A%84%E5%8D%A1%E9%A1%BF/"
+           data-tag="面试题,游戏引擎面试题,Unity面试题"
+           data-author="" >
+            <span class="post-title" title="58.如何优化异步加载后实例化带来的卡顿">58.如何优化异步加载后实例化带来的卡顿</span>
+            <span class="post-date" title="1802-01-01 00:05:51">1802/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 游戏引擎面试题 Unity面试题 "
+           href="/1802/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E9%9D%A2%E8%AF%95%E9%A2%98/01.Unity%E9%9D%A2%E8%AF%95%E9%A2%98/57.Unity%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E5%90%8E%E5%AE%9E%E4%BE%8B%E5%8C%96%E4%BB%8D%E5%8D%A1%E9%A1%BF%E7%9A%84%E5%8E%9F%E5%9B%A0/"
+           data-tag="面试题,游戏引擎面试题,Unity面试题"
+           data-author="" >
+            <span class="post-title" title="57.Unity异步加载后实例化仍卡顿的原因">57.Unity异步加载后实例化仍卡顿的原因</span>
+            <span class="post-date" title="1802-01-01 00:05:50">1802/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 游戏引擎面试题 Unity面试题 "
+           href="/1802/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E9%9D%A2%E8%AF%95%E9%A2%98/01.Unity%E9%9D%A2%E8%AF%95%E9%A2%98/56.Unity%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E4%BB%8D%E5%8F%AF%E8%83%BD%E5%8D%A1%E9%A1%BF%E7%9A%84%E5%8E%9F%E5%9B%A0%E4%B8%8E%E8%A7%A3%E5%86%B3/"
+           data-tag="面试题,游戏引擎面试题,Unity面试题"
+           data-author="" >
+            <span class="post-title" title="56.Unity异步加载仍可能卡顿的原因与解决">56.Unity异步加载仍可能卡顿的原因与解决</span>
+            <span class="post-date" title="1802-01-01 00:05:49">1802/01/01</span>
         </a>
         
         
@@ -23266,6 +23797,15 @@
         
         
         <a  class="全部文章 面试题 游戏引擎面试题 Unity面试题 "
+           href="/1802/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E9%9D%A2%E8%AF%95%E9%A2%98/01.Unity%E9%9D%A2%E8%AF%95%E9%A2%98/68.Unity%E4%B8%AD%E5%AE%B9%E6%98%93%E4%BA%A7%E7%94%9FGCAlloc%E7%9A%84%E5%86%99%E6%B3%95/"
+           data-tag="面试题,游戏引擎面试题,Unity面试题"
+           data-author="" >
+            <span class="post-title" title="68.Unity中容易产生GCAlloc的写法">68.Unity中容易产生GCAlloc的写法</span>
+            <span class="post-date" title="1802-01-01 00:01:51">1802/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 游戏引擎面试题 Unity面试题 "
            href="/1802/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E%E9%9D%A2%E8%AF%95%E9%A2%98/01.Unity%E9%9D%A2%E8%AF%95%E9%A2%98/17.Unity%E4%BD%BF%E7%94%A8CSharp%E5%8F%8D%E5%B0%84%E5%8A%9F%E8%83%BD%E7%9A%84%E4%BE%8B%E5%AD%90/"
            data-tag="面试题,游戏引擎面试题,Unity面试题"
            data-author="" >
@@ -23514,6 +24054,24 @@
            data-author="" >
             <span class="post-title" title="1.Lua如何实现面向对象的三大特性">1.Lua如何实现面向对象的三大特性</span>
             <span class="post-date" title="1801-03-01 00:00:44">1801/03/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 编程语言面试题 CPP面试题 "
+           href="/1801/02/01/%E9%9D%A2%E8%AF%95%E9%A2%98/01.%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E9%9D%A2%E8%AF%95%E9%A2%98/02.CPP%E9%9D%A2%E8%AF%95%E9%A2%98/6.CPP%E7%A9%BA%E7%B1%BB%E4%B8%BA%E4%BB%80%E4%B9%88%E8%87%B3%E5%B0%91%E5%8D%A01%E5%AD%97%E8%8A%82/"
+           data-tag="面试题,编程语言面试题,CPP面试题"
+           data-author="" >
+            <span class="post-title" title="6.CPP空类为什么至少占1字节">6.CPP空类为什么至少占1字节</span>
+            <span class="post-date" title="1801-02-01 00:00:49">1801/02/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 编程语言面试题 CPP面试题 "
+           href="/1801/02/01/%E9%9D%A2%E8%AF%95%E9%A2%98/01.%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%E9%9D%A2%E8%AF%95%E9%A2%98/02.CPP%E9%9D%A2%E8%AF%95%E9%A2%98/5.%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E7%9A%84%E8%99%9A%E5%87%BD%E6%95%B0%E9%97%AE%E9%A2%98/"
+           data-tag="面试题,编程语言面试题,CPP面试题"
+           data-author="" >
+            <span class="post-title" title="5.构造函数和析构函数的虚函数问题">5.构造函数和析构函数的虚函数问题</span>
+            <span class="post-date" title="1801-02-01 00:00:48">1801/02/01</span>
         </a>
         
         
@@ -24436,6 +24994,15 @@
         
         
         <a  class="全部文章 面试题 综合面试题 游戏开发基础面试题 "
+           href="/1800/02/01/%E9%9D%A2%E8%AF%95%E9%A2%98/00.%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/9.ECS%E4%B8%BA%E4%BB%80%E4%B9%88%E8%83%BD%E6%8F%90%E5%8D%87%E6%80%A7%E8%83%BD/"
+           data-tag="面试题,综合面试题,游戏开发基础面试题"
+           data-author="" >
+            <span class="post-title" title="9.ECS为什么能提升性能">9.ECS为什么能提升性能</span>
+            <span class="post-date" title="1800-02-01 00:00:52">1800/02/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 综合面试题 游戏开发基础面试题 "
            href="/1800/02/01/%E9%9D%A2%E8%AF%95%E9%A2%98/00.%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/02.%E6%B8%B8%E6%88%8F%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/8.IK%E7%9A%84%E4%BD%9C%E7%94%A8/"
            data-tag="面试题,综合面试题,游戏开发基础面试题"
            data-author="" >
@@ -24508,6 +25075,51 @@
         
         
         <a  class="全部文章 面试题 综合面试题 计算机基础面试题 "
+           href="/1800/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/00.%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/01.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/22.%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%A0%88%E6%BA%A2%E5%87%BA/"
+           data-tag="面试题,综合面试题,计算机基础面试题"
+           data-author="" >
+            <span class="post-title" title="22.函数调用栈溢出">22.函数调用栈溢出</span>
+            <span class="post-date" title="1800-01-01 00:02:45">1800/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 综合面试题 计算机基础面试题 "
+           href="/1800/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/00.%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/01.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/21.LRU%E7%BC%93%E5%AD%98%E6%B7%98%E6%B1%B0%E7%AD%96%E7%95%A5%E4%B8%8E%E5%AE%9E%E7%8E%B0/"
+           data-tag="面试题,综合面试题,计算机基础面试题"
+           data-author="" >
+            <span class="post-title" title="21.LRU缓存淘汰策略与实现">21.LRU缓存淘汰策略与实现</span>
+            <span class="post-date" title="1800-01-01 00:02:44">1800/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 综合面试题 计算机基础面试题 "
+           href="/1800/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/00.%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/01.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/20.CPU%E4%B8%BA%E4%BB%80%E4%B9%88%E9%87%87%E7%94%A8%E4%B8%89%E7%BA%A7%E7%BC%93%E5%AD%98/"
+           data-tag="面试题,综合面试题,计算机基础面试题"
+           data-author="" >
+            <span class="post-title" title="20.CPU为什么采用三级缓存">20.CPU为什么采用三级缓存</span>
+            <span class="post-date" title="1800-01-01 00:02:43">1800/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 综合面试题 计算机基础面试题 "
+           href="/1800/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/00.%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/01.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/19.CPU%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E7%BC%93%E5%AD%98/"
+           data-tag="面试题,综合面试题,计算机基础面试题"
+           data-author="" >
+            <span class="post-title" title="19.CPU为什么需要缓存">19.CPU为什么需要缓存</span>
+            <span class="post-date" title="1800-01-01 00:01:52">1800/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 综合面试题 计算机基础面试题 "
+           href="/1800/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/00.%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/01.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/18.%E5%86%85%E5%AD%98%E5%92%8C%E7%BC%93%E5%AD%98%E7%9A%84%E5%85%B3%E7%B3%BB/"
+           data-tag="面试题,综合面试题,计算机基础面试题"
+           data-author="" >
+            <span class="post-title" title="18.内存和缓存的关系">18.内存和缓存的关系</span>
+            <span class="post-date" title="1800-01-01 00:01:51">1800/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 综合面试题 计算机基础面试题 "
            href="/1800/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/00.%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/01.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/17.%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%94%A8%E6%88%B7%E6%80%81%E5%86%85%E6%A0%B8%E6%80%81/"
            data-tag="面试题,综合面试题,计算机基础面试题"
            data-author="" >
@@ -24576,6 +25188,60 @@
            data-author="" >
             <span class="post-title" title="10.代码混淆的含义及作用">10.代码混淆的含义及作用</span>
             <span class="post-date" title="1800-01-01 00:01:43">1800/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 综合面试题 计算机基础面试题 "
+           href="/1800/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/00.%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/01.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/28.%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%89%B9%E7%82%B9%E5%92%8C%E9%80%82%E7%94%A8%E5%9C%BA%E6%99%AF/"
+           data-tag="面试题,综合面试题,计算机基础面试题"
+           data-author="" >
+            <span class="post-title" title="28.数据结构特点和适用场景">28.数据结构特点和适用场景</span>
+            <span class="post-date" title="1800-01-01 00:01:11">1800/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 综合面试题 计算机基础面试题 "
+           href="/1800/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/00.%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/01.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/27.%E8%87%AA%E6%97%8B%E9%94%81%E5%92%8C%E4%BA%92%E6%96%A5%E9%94%81%E7%9A%84%E6%9C%AC%E8%B4%A8%E5%8C%BA%E5%88%AB/"
+           data-tag="面试题,综合面试题,计算机基础面试题"
+           data-author="" >
+            <span class="post-title" title="27.自旋锁和互斥锁的本质区别">27.自旋锁和互斥锁的本质区别</span>
+            <span class="post-date" title="1800-01-01 00:01:10">1800/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 综合面试题 计算机基础面试题 "
+           href="/1800/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/00.%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/01.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/26.%E6%95%B0%E7%BB%84%E9%81%8D%E5%8E%86%E6%AF%94%E9%93%BE%E8%A1%A8%E5%BF%AB%E7%9A%84%E5%8E%9F%E5%9B%A0/"
+           data-tag="面试题,综合面试题,计算机基础面试题"
+           data-author="" >
+            <span class="post-title" title="26.数组遍历比链表快的原因">26.数组遍历比链表快的原因</span>
+            <span class="post-date" title="1800-01-01 00:01:09">1800/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 综合面试题 计算机基础面试题 "
+           href="/1800/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/00.%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/01.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/25.%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E5%A6%82%E4%BD%95%E6%8F%90%E9%AB%98%E7%BC%93%E5%AD%98%E5%91%BD%E4%B8%AD%E7%8E%87/"
+           data-tag="面试题,综合面试题,计算机基础面试题"
+           data-author="" >
+            <span class="post-title" title="25.程序设计如何提高缓存命中率">25.程序设计如何提高缓存命中率</span>
+            <span class="post-date" title="1800-01-01 00:01:08">1800/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 综合面试题 计算机基础面试题 "
+           href="/1800/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/00.%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/01.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/24.%E7%BC%93%E5%AD%98%E5%91%BD%E4%B8%AD%E5%BD%B1%E5%93%8DCPU%E6%95%88%E7%8E%87/"
+           data-tag="面试题,综合面试题,计算机基础面试题"
+           data-author="" >
+            <span class="post-title" title="24.缓存命中影响CPU效率">24.缓存命中影响CPU效率</span>
+            <span class="post-date" title="1800-01-01 00:01:07">1800/01/01</span>
+        </a>
+        
+        
+        <a  class="全部文章 面试题 综合面试题 计算机基础面试题 "
+           href="/1800/01/01/%E9%9D%A2%E8%AF%95%E9%A2%98/00.%E7%BB%BC%E5%90%88%E9%9D%A2%E8%AF%95%E9%A2%98/01.%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80%E9%9D%A2%E8%AF%95%E9%A2%98/23.%E6%A0%88%E5%B8%A7%E6%98%AF%E4%BB%80%E4%B9%88/"
+           data-tag="面试题,综合面试题,计算机基础面试题"
+           data-author="" >
+            <span class="post-title" title="23.栈帧是什么">23.栈帧是什么</span>
+            <span class="post-date" title="1800-01-01 00:01:06">1800/01/01</span>
         </a>
         
         
@@ -24712,12 +25378,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2025-01-07 18:54:57'>2024-04-24 00:32</time>
+            发布时间 : <time class="date" title='最后更新: 2026-03-30 22:51:36'>2024-04-24 00:32</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:28</span>
+        <span>字数:7.9k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -24747,7 +25413,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#24-%E6%80%BB%E7%BB%93"><span class="toc-text">24.总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#24-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">24.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="toc-text">学习的主要内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%AE%B2%E4%BB%80%E4%B9%88"><span class="toc-text">总结讲什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94"><span class="toc-text">对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%BB%BA%E8%AE%AE"><span class="toc-text">选择建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#24-%E6%80%BB%E7%BB%93"><span class="toc-text">24.总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#24-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">24.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%A6%E4%B9%A0%E7%9A%84%E4%B8%BB%E8%A6%81%E5%86%85%E5%AE%B9"><span class="toc-text">学习的主要内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E8%AE%B2%E4%BB%80%E4%B9%88"><span class="toc-text">总结讲什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%B9%E6%AF%94"><span class="toc-text">对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E5%BB%BA%E8%AE%AE"><span class="toc-text">选择建议</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-2-%E6%A0%B8%E5%BF%83%E8%A6%81%E7%82%B9%E9%80%9F%E8%A7%88"><span class="toc-text">24.2 核心要点速览</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Addressables-%E6%A6%82%E8%BF%B0"><span class="toc-text">Addressables 概述</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E4%B8%8E%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-text">导入与初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8F%AF%E5%AF%BB%E5%9D%80%E8%B5%84%E6%BA%90%E8%AE%BE%E7%BD%AE"><span class="toc-text">可寻址资源设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AssetReference-%E8%B5%84%E6%BA%90%E6%A0%87%E8%AF%86%E7%B1%BB"><span class="toc-text">AssetReference 资源标识类</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Label-%E6%A0%87%E7%AD%BE"><span class="toc-text">Label 标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%8D%95%E4%B8%AA%E8%B5%84%E6%BA%90"><span class="toc-text">动态加载单个资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E5%8A%A0%E8%BD%BD%E5%A4%9A%E4%B8%AA%E8%B5%84%E6%BA%90"><span class="toc-text">动态加载多个资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Profile-%E6%A6%82%E8%BF%B0%E7%AA%97%E5%8F%A3"><span class="toc-text">Profile 概述窗口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AddressableAssetSettings-%E9%85%8D%E7%BD%AE"><span class="toc-text">AddressableAssetSettings 配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#PackedAssets-%E7%BB%84%E9%85%8D%E7%BD%AE"><span class="toc-text">PackedAssets 组配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Hosting-%E6%89%98%E7%AE%A1%E6%9C%8D%E5%8A%A1"><span class="toc-text">Hosting 托管服务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E6%89%93%E5%8C%85%E7%90%86%E8%AE%BA"><span class="toc-text">资源打包理论</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E8%B5%84%E6%BA%90%E5%8F%91%E5%B8%83"><span class="toc-text">本地资源发布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E8%B5%84%E6%BA%90%E5%8F%91%E5%B8%83"><span class="toc-text">远程资源发布</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E6%9B%B4%E6%96%B0"><span class="toc-text">资源更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B5%84%E6%BA%90%E5%AE%9A%E4%BD%8D%E4%BF%A1%E6%81%AF%E5%8A%A0%E8%BD%BD"><span class="toc-text">资源定位信息加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E6%96%B9%E5%BC%8F"><span class="toc-text">异步加载方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#AsyncOperationHandle-%E8%BF%9B%E9%98%B6"><span class="toc-text">AsyncOperationHandle 进阶</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%9B%B4%E6%96%B0%E4%B8%8E%E9%A2%84%E5%8A%A0%E8%BD%BD"><span class="toc-text">目录更新与预加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E8%A7%84%E5%88%99"><span class="toc-text">引用计数规则</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7"><span class="toc-text">调试工具</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%89%93%E5%8C%85%E7%AD%96%E7%95%A5%E9%80%89%E6%8B%A9"><span class="toc-text">打包策略选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8E%8B%E7%BC%A9%E6%96%B9%E5%BC%8F%E9%80%89%E6%8B%A9"><span class="toc-text">压缩方式选择</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-text">优化建议</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#24-3-%E9%9D%A2%E8%AF%95%E9%A2%98%E7%B2%BE%E9%80%89"><span class="toc-text">24.3 面试题精选</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E7%A1%80%E9%A2%98"><span class="toc-text">基础题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Addressables-%E7%9A%84%E4%B8%89%E7%A7%8D-Play-Mode-Script-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">1. Addressables 的三种 Play Mode Script 有什么区别？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90"><span class="toc-text">深入解析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AD%94%E9%A2%98%E7%A4%BA%E4%BE%8B"><span class="toc-text">答题示例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0"><span class="toc-text">参考文章</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-AssetReference-%E5%92%8C-Addressables-LoadAssetAsync-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">2. AssetReference 和 Addressables.LoadAssetAsync 有什么区别？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-1"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-1"><span class="toc-text">深入解析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AD%94%E9%A2%98%E7%A4%BA%E4%BE%8B-1"><span class="toc-text">答题示例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0-1"><span class="toc-text">参考文章</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9B%E9%98%B6%E9%A2%98"><span class="toc-text">进阶题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Addressables-%E9%87%8A%E6%94%BE%E8%B5%84%E6%BA%90%E5%90%8E%EF%BC%8C%E5%B7%B2%E5%AE%9E%E4%BE%8B%E5%8C%96%E7%9A%84%E5%AF%B9%E8%B1%A1%E4%BC%9A%E6%80%8E%E6%A0%B7%EF%BC%9F"><span class="toc-text">1. Addressables 释放资源后，已实例化的对象会怎样？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-2"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-2"><span class="toc-text">深入解析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AD%94%E9%A2%98%E7%A4%BA%E4%BE%8B-2"><span class="toc-text">答题示例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0-2"><span class="toc-text">参考文章</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-%E5%A6%82%E4%BD%95%E8%AE%BE%E8%AE%A1%E4%B8%80%E4%B8%AA-Addressables-%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86%E5%99%A8%EF%BC%9F"><span class="toc-text">2. 如何设计一个 Addressables 资源管理器？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-3"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-3"><span class="toc-text">深入解析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AD%94%E9%A2%98%E7%A4%BA%E4%BE%8B-3"><span class="toc-text">答题示例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0-3"><span class="toc-text">参考文章</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-Addressables-%E7%9A%84-Bundle-Mode-%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%EF%BC%9F%E5%A6%82%E4%BD%95%E9%80%89%E6%8B%A9%EF%BC%9F"><span class="toc-text">3. Addressables 的 Bundle Mode 有哪几种？如何选择？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-4"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-4"><span class="toc-text">深入解析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AD%94%E9%A2%98%E7%A4%BA%E4%BE%8B-4"><span class="toc-text">答题示例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0-4"><span class="toc-text">参考文章</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-Addressables-%E6%95%B4%E5%8C%85%E6%9B%B4%E6%96%B0%E5%92%8C%E5%B1%80%E9%83%A8%E6%9B%B4%E6%96%B0%E6%9C%89%E4%BB%80%E4%B9%88%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-text">4. Addressables 整包更新和局部更新有什么区别？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-5"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-5"><span class="toc-text">深入解析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AD%94%E9%A2%98%E7%A4%BA%E4%BE%8B-5"><span class="toc-text">答题示例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0-5"><span class="toc-text">参考文章</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%B1%E5%BA%A6%E9%A2%98"><span class="toc-text">深度题</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-Addressables-%E7%9A%84%E5%BC%82%E6%AD%A5%E5%8A%A0%E8%BD%BD%E6%9C%89%E5%93%AA%E5%87%A0%E7%A7%8D%E6%96%B9%E5%BC%8F%EF%BC%9F"><span class="toc-text">1. Addressables 的异步加载有哪几种方式？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-6"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-6"><span class="toc-text">深入解析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AD%94%E9%A2%98%E7%A4%BA%E4%BE%8B-6"><span class="toc-text">答题示例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0-6"><span class="toc-text">参考文章</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-Addressables-%E7%9A%84%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E6%9C%BA%E5%88%B6%E6%98%AF%E6%80%8E%E6%A0%B7%E7%9A%84%EF%BC%9F"><span class="toc-text">2. Addressables 的引用计数机制是怎样的？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-7"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-7"><span class="toc-text">深入解析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AD%94%E9%A2%98%E7%A4%BA%E4%BE%8B-7"><span class="toc-text">答题示例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0-7"><span class="toc-text">参考文章</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-%E5%A6%82%E4%BD%95%E6%8E%92%E6%9F%A5-Addressables-%E7%9A%84%E5%86%85%E5%AD%98%E6%B3%84%E6%BC%8F%E9%97%AE%E9%A2%98%EF%BC%9F"><span class="toc-text">3. 如何排查 Addressables 的内存泄漏问题？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%A2%98%E7%9B%AE-8"><span class="toc-text">题目</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B7%B1%E5%85%A5%E8%A7%A3%E6%9E%90-8"><span class="toc-text">深入解析</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%AD%94%E9%A2%98%E7%A4%BA%E4%BE%8B-8"><span class="toc-text">答题示例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E6%96%87%E7%AB%A0-8"><span class="toc-text">参考文章</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -24770,6 +25436,1191 @@
 <h3 id="对比"><a href="#对比" class="headerlink" title="对比"></a>对比</h3><p><img src="/../../../../images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/Unity/03.Addressables/24.%E6%80%BB%E7%BB%93/4.png"></p>
 <h3 id="选择建议"><a href="#选择建议" class="headerlink" title="选择建议"></a>选择建议</h3><p><img src="/../../../../images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/Unity/03.Addressables/24.%E6%80%BB%E7%BB%93/5.png"></p>
 <h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p><img src="/../../../../images/%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86/Unity/03.Addressables/24.%E6%80%BB%E7%BB%93/6.png"></p>
+<hr>
+<h2 id="24-2-核心要点速览"><a href="#24-2-核心要点速览" class="headerlink" title="24.2 核心要点速览"></a>24.2 核心要点速览</h2><h3 id="Addressables-概述"><a href="#Addressables-概述" class="headerlink" title="Addressables 概述"></a>Addressables 概述</h3><p><strong>Addressables 是什么</strong>：Unity 官方的资源管理系统，本质是 AssetBundle 的上层封装。它把资源加载、打包、更新、内存管理等复杂操作封装成一套统一 API，开发者只需通过”地址”或”标签”就能加载资源，无需手动管理 AssetBundle 的创建、加载、卸载。</p>
+<p><strong>核心优势</strong>：</p>
+<ul>
+<li>统一 API：无论资源在本地还是远程，加载方式一致</li>
+<li>自动管理：引用计数、内存释放、依赖追踪都由系统处理</li>
+<li>热更新友好：支持远程资源更新，无需重新打包整包</li>
+</ul>
+<p><strong>学习前提建议</strong>：</p>
+<ul>
+<li>AssetBundle 基础概念（什么是 AB、依赖关系）</li>
+<li>Resources 加载方式及其缺陷</li>
+<li>异步加载机制（协程、async&#x2F;await）</li>
+</ul>
+<p><strong>系列内容结构</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>模块</th>
+<th>内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>资源加载基础</td>
+<td>寻址设置、指定资源加载、Label 标签、动态加载单个&#x2F;多个资源</td>
+</tr>
+<tr>
+<td>配置相关</td>
+<td>Profile 窗口、AddressableAssetSettings、PackedAssets、Hosting 服务</td>
+</tr>
+<tr>
+<td>资源打包加载</td>
+<td>打包理论、打包加载流程、资源更新机制</td>
+</tr>
+<tr>
+<td>资源加载进阶</td>
+<td>资源定位加载、异步加载方式、AsyncOperationHandle、自定义更新、引用计数</td>
+</tr>
+<tr>
+<td>窗口与问题</td>
+<td>事件查看、分析窗口、构建布局报告、常见问题</td>
+</tr>
+</tbody></table>
+<h3 id="导入与初始化"><a href="#导入与初始化" class="headerlink" title="导入与初始化"></a>导入与初始化</h3><p><strong>安装 Addressables 包</strong>：</p>
+<ol>
+<li>打开 <code>Window -&gt; Package Manager</code></li>
+<li>切换包源为 <code>Unity Registry</code></li>
+<li>搜索 <code>Addressables</code> 并安装</li>
+<li>验证：Project 窗口右键菜单出现 <code>Addressables</code> 选项</li>
+</ol>
+<p><strong>创建配置文件</strong>（两种方式）：</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>操作</th>
+<th>生成内容</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Groups 窗口</td>
+<td><code>Window -&gt; Asset Management -&gt; Addressables -&gt; Groups</code> → 点击 Create Addressables Settings</td>
+<td><code>Assets/AddressableAssetsData/</code> 文件夹及配置文件</td>
+</tr>
+<tr>
+<td>Inspector 勾选</td>
+<td>选中资源 → Inspector 勾选 Addressable</td>
+<td>自动创建配置文件（若不存在）</td>
+</tr>
+</tbody></table>
+<p><strong>注意</strong>：首次使用建议通过 Groups 窗口创建，便于后续管理。</p>
+<h3 id="可寻址资源设置"><a href="#可寻址资源设置" class="headerlink" title="可寻址资源设置"></a>可寻址资源设置</h3><p><strong>让资源变为可寻址</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>操作</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Inspector 勾选</td>
+<td>选中资源 → Inspector 勾选 Addressable</td>
+</tr>
+<tr>
+<td>拖入 Groups 窗口</td>
+<td>选中资源 → 拖入 Addressables Groups 窗口</td>
+</tr>
+</tbody></table>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>C# 代码无法作为可寻址资源</li>
+<li>Resources 文件夹下资源变为可寻址后，会自动移入 <code>Resources_moved</code> 文件夹（避免重复打包）</li>
+<li>普通文件夹下资源变为可寻址后不会移动</li>
+</ul>
+<p><strong>Groups 窗口核心信息</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>字段</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Group Name</td>
+<td>分组名，一个组可作为一个或多个 AB 包</td>
+</tr>
+<tr>
+<td>Addressable Name</td>
+<td>可寻址名（可重名），用于加载资源</td>
+</tr>
+<tr>
+<td>Path</td>
+<td>资源路径（不可重复，用于定位）</td>
+</tr>
+<tr>
+<td>Labels</td>
+<td>标签（可重复），用于分类和筛选</td>
+</tr>
+</tbody></table>
+<p><strong>Play Mode Script（编辑器运行模式）</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>说明</th>
+<th>适用阶段</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Use Asset Database</td>
+<td>直接从资源数据库加载，无需打包</td>
+<td>开发阶段</td>
+</tr>
+<tr>
+<td>Simulate Groups</td>
+<td>模拟 AB 包加载，可设置延迟模拟下载速度</td>
+<td>测试阶段</td>
+</tr>
+<tr>
+<td>Use Existing Build</td>
+<td>从已构建的 AB 包加载</td>
+<td>发布测试阶段</td>
+</tr>
+</tbody></table>
+<p><strong>资源名规则</strong>：</p>
+<ul>
+<li>资源路径不允许相同（后缀不同、名字相同可以）</li>
+<li>资源名可随意修改</li>
+<li>加载时用「名字 + 标签」双标识定位资源</li>
+</ul>
+<h3 id="AssetReference-资源标识类"><a href="#AssetReference-资源标识类" class="headerlink" title="AssetReference 资源标识类"></a>AssetReference 资源标识类</h3><p><strong>常用标识类</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>类名</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>AssetReference</code></td>
+<td>通用标识，可加载任意类型</td>
+</tr>
+<tr>
+<td><code>AssetReferenceGameObject</code></td>
+<td>GameObject 预设体</td>
+</tr>
+<tr>
+<td><code>AssetReferenceSprite</code></td>
+<td>精灵图片</td>
+</tr>
+<tr>
+<td><code>AssetReferenceTexture</code></td>
+<td>贴图</td>
+</tr>
+<tr>
+<td><code>AssetReferenceAtlasedSprite</code></td>
+<td>图集</td>
+</tr>
+<tr>
+<td><code>AssetReferenceT&lt;T&gt;</code></td>
+<td>指定类型标识</td>
+</tr>
+</tbody></table>
+<p><strong>加载与释放</strong>：</p>
+<pre><code class="csharp">// 加载资源
+assetReference.LoadAssetAsync&lt;GameObject&gt;().Completed += (handle) =&gt; &#123;
+    if (handle.Status == AsyncOperationStatus.Succeeded)
+        Instantiate(handle.Result);
+&#125;;
+
+// 释放资源（加载成功且使用完毕后调用）
+assetReference.ReleaseAsset();
+
+// 直接实例化（仅适用于 GameObject）
+assetReferenceGameObject.InstantiateAsync();
+</code></pre>
+<p><strong>释放注意</strong>：</p>
+<ul>
+<li>释放后 <code>AssetReference.Asset</code> 置空，但 <code>AsyncOperationHandle.Result</code> 不为空</li>
+<li>实例化的 GameObject 不受释放影响（用的是预制体配置）</li>
+<li>直接引用的资源（如材质赋值）在 AB 包模式下释放后会丢失</li>
+</ul>
+<h3 id="Label-标签"><a href="#Label-标签" class="headerlink" title="Label 标签"></a>Label 标签</h3><p><strong>作用</strong>：让相同功能的不同资源使用相同名字，通过标签区分。</p>
+<p><strong>典型场景</strong>：</p>
+<ul>
+<li>装备品质：同名资源 + Red&#x2F;Green&#x2F;Blue 标签</li>
+<li>画质档位：同名资源 + HD&#x2F;SD&#x2F;FHD 标签</li>
+<li>节日换肤：同名资源 + MidAutumn&#x2F;Spring&#x2F;Christmas 标签</li>
+</ul>
+<p><strong>约束标识类关联标签</strong>：</p>
+<pre><code class="csharp">[AssetReferenceUILabelRestriction(&quot;SD&quot;, &quot;HD&quot;, &quot;FHD&quot;)]
+public AssetReference assetReference;
+</code></pre>
+<h3 id="动态加载单个资源"><a href="#动态加载单个资源" class="headerlink" title="动态加载单个资源"></a>动态加载单个资源</h3><p><strong>通过名字或标签加载</strong>：</p>
+<pre><code class="csharp">AsyncOperationHandle&lt;GameObject&gt; handle = Addressables.LoadAssetAsync&lt;GameObject&gt;(&quot;Cube&quot;);
+handle.Completed += (h) =&gt; &#123;
+    if (h.Status == AsyncOperationStatus.Succeeded)
+        Instantiate(h.Result);
+    Addressables.Release(h);  // 使用完毕后释放
+&#125;;
+</code></pre>
+<p><strong>加载场景</strong>：</p>
+<pre><code class="csharp">Addressables.LoadSceneAsync(&quot;SceneName&quot;, LoadSceneMode.Single, false).Completed += (handle) =&gt; &#123;
+    handle.Result.ActivateAsync().completed += (a) =&gt; &#123;
+        Debug.Log(&quot;场景激活完成&quot;);
+        Addressables.Release(handle);
+    &#125;;
+&#125;;
+</code></pre>
+<p><strong>注意</strong>：</p>
+<ul>
+<li>同名同类型资源会加载第一个匹配项</li>
+<li>同名不同类型资源可通过泛型区分</li>
+<li>释放需传入对应的 <code>AsyncOperationHandle</code></li>
+</ul>
+<h3 id="动态加载多个资源"><a href="#动态加载多个资源" class="headerlink" title="动态加载多个资源"></a>动态加载多个资源</h3><p><strong>加载所有匹配资源</strong>：</p>
+<pre><code class="csharp">AsyncOperationHandle&lt;IList&lt;Object&gt;&gt; handle = Addressables.LoadAssetsAsync&lt;Object&gt;(&quot;Cube&quot;, (obj) =&gt; &#123;
+    // 每个资源回调一次
+    print(obj.name);
+&#125;);
+handle.Completed += (h) =&gt; &#123;
+    foreach (var item in h.Result)
+        print(item.name);
+    Addressables.Release(h);
+&#125;;
+</code></pre>
+<p><strong>多条件合并加载</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>MergeMode</th>
+<th>说明</th>
+<th>示例结果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>None &#x2F; UseFirst</td>
+<td>使用第一组结果</td>
+<td>[1,2,3]</td>
+</tr>
+<tr>
+<td>Union</td>
+<td>合并所有结果</td>
+<td>[1,2,3,4]</td>
+</tr>
+<tr>
+<td>Intersection</td>
+<td>取交集</td>
+<td>[1,3]</td>
+</tr>
+</tbody></table>
+<pre><code class="csharp">List&lt;string&gt; keys = new List&lt;string&gt; &#123; &quot;Cube&quot;, &quot;Red&quot; &#125;;
+Addressables.LoadAssetsAsync&lt;Object&gt;(keys, (obj) =&gt; &#123;
+    print(obj.name);
+&#125;, Addressables.MergeMode.Intersection);
+</code></pre>
+<h3 id="Profile-概述窗口"><a href="#Profile-概述窗口" class="headerlink" title="Profile 概述窗口"></a>Profile 概述窗口</h3><p><strong>作用</strong>：配置 Addressables 打包和加载时的路径变量。</p>
+<p><strong>核心变量</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>变量</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>BuildTarget</td>
+<td>构建目标平台</td>
+</tr>
+<tr>
+<td>LocalBuildPath</td>
+<td>本地构建路径（默认在 Library 中）</td>
+</tr>
+<tr>
+<td>LocalLoadPath</td>
+<td>本地加载路径</td>
+</tr>
+<tr>
+<td>RemoteBuildPath</td>
+<td>远程构建路径</td>
+</tr>
+<tr>
+<td>RemoteLoadPath</td>
+<td>远程加载路径（下载 URL）</td>
+</tr>
+</tbody></table>
+<p><strong>变量语法</strong>：</p>
+<ul>
+<li><code>[变量名]</code>：打包时计算，如 <code>[BuildTarget]</code></li>
+<li><code>&#123;变量名&#125;</code>：运行时计算，如 <code>&#123;Addressables.RuntimePath&#125;</code></li>
+<li>方括号和大括号内必须是静态变量或属性</li>
+</ul>
+<p><strong>多平台配置</strong>：针对不同平台远程分发内容时，建议创建多个 Profile 配置文件。</p>
+<h3 id="AddressableAssetSettings-配置"><a href="#AddressableAssetSettings-配置" class="headerlink" title="AddressableAssetSettings 配置"></a>AddressableAssetSettings 配置</h3><p><strong>主要设置项</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>分类</th>
+<th>关键配置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Profile</td>
+<td>选择使用哪套配置文件</td>
+</tr>
+<tr>
+<td>Diagnostics</td>
+<td>Send Profiler Events（启用分析器）、Log Runtime Exceptions</td>
+</tr>
+<tr>
+<td>Catalog</td>
+<td>Player Version Override（版本号）、Compress Local Catalog（压缩目录）</td>
+</tr>
+<tr>
+<td>Content Update</td>
+<td>Build Remote Catalog（构建远程目录）、Disable Catalog Update on Startup</td>
+</tr>
+<tr>
+<td>Downloads</td>
+<td>Max Concurrent Web Requests、Catalog Download Timeout</td>
+</tr>
+<tr>
+<td>Build</td>
+<td>Ignore Invalid Files、Unique Bundle IDs、Contiguous Bundles</td>
+</tr>
+</tbody></table>
+<p><strong>Catalog 目录</strong>：将资源地址映射到物理位置。压缩目录可减小体积但增加加载时间。</p>
+<p><strong>Content Update</strong>：</p>
+<ul>
+<li><code>Can Change Post Release</code>：资源改变后重建整个包</li>
+<li><code>Cannot Change Post Release</code>：改变的资源移到新组，用于增量更新</li>
+</ul>
+<h3 id="PackedAssets-组配置"><a href="#PackedAssets-组配置" class="headerlink" title="PackedAssets 组配置"></a>PackedAssets 组配置</h3><p><strong>Content Packing &amp; Loading</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>配置</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Build Path</td>
+<td>打包路径（Local&#x2F;Remote）</td>
+</tr>
+<tr>
+<td>Load Path</td>
+<td>加载路径（Local&#x2F;Remote）</td>
+</tr>
+</tbody></table>
+<p><strong>AB 包压缩方式</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>特点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>LZ4</td>
+<td>推荐，按需解压，内存占用低</td>
+</tr>
+<tr>
+<td>LZMA</td>
+<td>压缩率最高，但解压慢，加载需解压整个包</td>
+</tr>
+<tr>
+<td>Uncompressed</td>
+<td>不压缩，包体大</td>
+</tr>
+</tbody></table>
+<p><strong>Bundle Mode 打包模式</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pack Together</td>
+<td>组内所有资源打成一个包</td>
+</tr>
+<tr>
+<td>Pack Separately</td>
+<td>每个资源单独打一个包</td>
+</tr>
+<tr>
+<td>Pack Together by Label</td>
+<td>相同标签的资源打成一个包</td>
+</tr>
+</tbody></table>
+<p><strong>Content Update Restriction</strong>：</p>
+<ul>
+<li><code>Can Change Post Release</code>：发行后可修改，改动后重建整个包</li>
+<li><code>Cannot Change Post Release</code>：发行后不可修改，改动资源移到更新组</li>
+</ul>
+<h3 id="Hosting-托管服务"><a href="#Hosting-托管服务" class="headerlink" title="Hosting 托管服务"></a>Hosting 托管服务</h3><p><strong>作用</strong>：在本地模拟 HTTP 服务器，用于测试远程加载。</p>
+<p><strong>使用方式</strong>：</p>
+<ol>
+<li>打开 <code>Window -&gt; Asset Management -&gt; Addressables -&gt; Hosting</code></li>
+<li>点击 <code>Create -&gt; Local Hosting</code></li>
+<li>启用后自动分配端口</li>
+</ol>
+<p><strong>Profile 变量配置</strong>：</p>
+<pre><code>http://[PrivateIpAddress]:[HostingServicePort]/[BuildTarget]
+</code></pre>
+<p><strong>注意</strong>：Unity 自带托管有时会失效，可用第三方工具如 HFS 搭建 HTTP 服务器。</p>
+<h3 id="资源打包理论"><a href="#资源打包理论" class="headerlink" title="资源打包理论"></a>资源打包理论</h3><p><strong>打包本质</strong>：将可寻址资源打包到 AssetBundle 中，以组为单位进行打包。</p>
+<p><strong>打包用途</strong>：</p>
+<ul>
+<li>单机游戏：减小包体，所有 AB 包随游戏发布</li>
+<li>网络游戏：热更新，只打包必备资源，其余放远端服务器</li>
+</ul>
+<p><strong>打包注意事项</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>说明</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>场景资源</td>
+<td>场景始终单独打包</td>
+<td>无需处理，系统自动分离</td>
+</tr>
+<tr>
+<td>资源依赖</td>
+<td>非可寻址资源被多个组引用会重复打包</td>
+<td>将共享资源也设为可寻址</td>
+</tr>
+<tr>
+<td>图集问题</td>
+<td>不同包使用同一图集会导致重复</td>
+<td>图集单独作为可寻址资源</td>
+</tr>
+</tbody></table>
+<p><strong>分组建议</strong>：同类型、同作用的资源放一起，如角色组、怪物组、UI 组、图集组等。</p>
+<h3 id="本地资源发布"><a href="#本地资源发布" class="headerlink" title="本地资源发布"></a>本地资源发布</h3><p><strong>流程</strong>：</p>
+<ol>
+<li>设置组的 Build Path 为 LocalBuildPath</li>
+<li>设置组的 Load Path 为 LocalLoadPath</li>
+<li>点击 <code>Build -&gt; New Build -&gt; Default Build Script</code></li>
+</ol>
+<p><strong>输出位置</strong>：</p>
+<ul>
+<li>默认打包到 <code>Library/com.unity.addressables/aa/Windows/</code></li>
+<li>发布应用时自动复制到 <code>StreamingAssets</code></li>
+</ul>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>不建议修改默认的本地构建和加载路径</li>
+<li>修改后需要手动将 AB 包复制到 StreamingAssets</li>
+</ul>
+<h3 id="远程资源发布"><a href="#远程资源发布" class="headerlink" title="远程资源发布"></a>远程资源发布</h3><p><strong>模拟远端流程</strong>：</p>
+<ol>
+<li>打开 Hosting 窗口，创建 Local Hosting 并启用</li>
+<li>修改 Profile 的 RemoteLoadPath 为 <code>http://[PrivateIpAddress]:[HostingServicePort]/[BuildTarget]</code></li>
+<li>设置组为 RemoteBuildPath 和 RemoteLoadPath</li>
+<li>勾选 AddressableAssetSettings 的 Build Remote Catalog</li>
+<li>打包后 AB 包生成在 ServerData 文件夹</li>
+</ol>
+<p><strong>实际远端流程</strong>：</p>
+<ol>
+<li>使用 HFS 等工具搭建 HTTP 服务器</li>
+<li>修改 RemoteLoadPath 为实际服务器 URL</li>
+<li>打包后将 ServerData 内容上传到服务器</li>
+</ol>
+<h3 id="资源更新"><a href="#资源更新" class="headerlink" title="资源更新"></a>资源更新</h3><p><strong>Content Update Restriction 更新限制</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>说明</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Can Change Post Release</td>
+<td>整包更新，资源变化后重建整个包</td>
+<td>大范围资源更新</td>
+</tr>
+<tr>
+<td>Cannot Change Post Release</td>
+<td>局部更新，变化资源移到更新组</td>
+<td>小范围增量更新</td>
+</tr>
+</tbody></table>
+<p><strong>整包更新流程</strong>：</p>
+<ol>
+<li>组设置为 Can Change Post Release</li>
+<li>修改资源后点击 <code>Update a Previous Build</code></li>
+<li>选择 <code>addressables_content_state.bin</code> 文件</li>
+<li>上传新生成的 AB 包到服务器</li>
+</ol>
+<p><strong>局部更新流程</strong>：</p>
+<ol>
+<li>组设置为 Cannot Change Post Release</li>
+<li>修改资源后点击 <code>Tools -&gt; Check for Content Update Restrictions</code></li>
+<li>选择变化的资源，应用到更新组</li>
+<li>点击 <code>Update a Previous Build</code></li>
+<li>上传 AB 包到服务器</li>
+</ol>
+<p><strong>关键点</strong>：更新是通过 <code>Update a Previous Build</code> 而非重新打包，否则需要重新发布应用程序。</p>
+<h3 id="资源定位信息加载"><a href="#资源定位信息加载" class="headerlink" title="资源定位信息加载"></a>资源定位信息加载</h3><p><strong>作用</strong>：先获取资源定位信息，再根据定位信息加载资源。可用于处理多类型资源加载。</p>
+<p><strong>获取定位信息</strong>：</p>
+<pre><code class="csharp">AsyncOperationHandle&lt;IList&lt;IResourceLocation&gt;&gt; handle = 
+    Addressables.LoadResourceLocationsAsync(&quot;Cube&quot;, typeof(GameObject));
+handle.Completed += (h) =&gt; &#123;
+    foreach (var loc in h.Result)
+    &#123;
+        print(loc.PrimaryKey);      // 资源名
+        print(loc.InternalId);      // 资源路径
+        print(loc.ResourceType);    // 资源类型
+        Addressables.LoadAssetAsync&lt;GameObject&gt;(loc).Completed += (obj) =&gt; &#123;
+            Instantiate(obj.Result);
+        &#125;;
+    &#125;
+&#125;;
+</code></pre>
+<p><strong>定位信息属性</strong>：</p>
+<ul>
+<li><code>PrimaryKey</code>：资源主键（资源名）</li>
+<li><code>InternalId</code>：资源内部 ID（资源路径）</li>
+<li><code>ResourceType</code>：资源类型</li>
+</ul>
+<h3 id="异步加载方式"><a href="#异步加载方式" class="headerlink" title="异步加载方式"></a>异步加载方式</h3><p><strong>三种方式对比</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>事件监听</td>
+<td>Completed 回调</td>
+<td>简单加载</td>
+</tr>
+<tr>
+<td>协程</td>
+<td>yield return handle</td>
+<td>需要顺序执行</td>
+</tr>
+<tr>
+<td>async&#x2F;await</td>
+<td>await handle.Task</td>
+<td>多任务并行</td>
+</tr>
+</tbody></table>
+<p><strong>协程方式</strong>：</p>
+<pre><code class="csharp">IEnumerator LoadCoroutine()
+&#123;
+    var handle = Addressables.LoadAssetAsync&lt;GameObject&gt;(&quot;Cube&quot;);
+    if (!handle.IsDone)
+        yield return handle;
+    if (handle.Status == AsyncOperationStatus.Succeeded)
+        Instantiate(handle.Result);
+&#125;
+</code></pre>
+<p><strong>async&#x2F;await 方式</strong>：</p>
+<pre><code class="csharp">async void LoadAsync()
+&#123;
+    var handle = Addressables.LoadAssetAsync&lt;GameObject&gt;(&quot;Cube&quot;);
+    await handle.Task;
+    Instantiate(handle.Result);
+&#125;
+
+// 多任务并行
+async void LoadMultiAsync()
+&#123;
+    var h1 = Addressables.LoadAssetAsync&lt;GameObject&gt;(&quot;Cube&quot;);
+    var h2 = Addressables.LoadAssetAsync&lt;GameObject&gt;(&quot;Sphere&quot;);
+    await Task.WhenAll(h1.Task, h2.Task);
+    Instantiate(h1.Result);
+    Instantiate(h2.Result);
+&#125;
+</code></pre>
+<p><strong>注意</strong>：WebGL 平台不支持 async&#x2F;await 语法。</p>
+<h3 id="AsyncOperationHandle-进阶"><a href="#AsyncOperationHandle-进阶" class="headerlink" title="AsyncOperationHandle 进阶"></a>AsyncOperationHandle 进阶</h3><p><strong>获取加载进度</strong>：</p>
+<pre><code class="csharp">while (!handle.IsDone)
+&#123;
+    DownloadStatus status = handle.GetDownloadStatus();
+    print(status.Percent);                    // 进度 0~1
+    print(status.DownloadedBytes + &quot;/&quot; + status.TotalBytes);  // 字节数
+    yield return null;
+&#125;
+</code></pre>
+<p><strong>句柄类型转换</strong>：</p>
+<pre><code class="csharp">// 有类型 → 无类型
+AsyncOperationHandle temp = typedHandle;
+
+// 无类型 → 有类型
+AsyncOperationHandle&lt;GameObject&gt; typed = temp.Convert&lt;GameObject&gt;();
+</code></pre>
+<p><strong>强制同步加载</strong>：</p>
+<pre><code class="csharp">handle.WaitForCompletion();  // 阻塞主线程等待加载完成
+</code></pre>
+<p><strong>注意</strong>：<code>WaitForCompletion</code> 会阻塞主线程，Unity 2020.1 及之前版本会等待所有未完成的异步操作，不建议常规使用。</p>
+<h3 id="目录更新与预加载"><a href="#目录更新与预加载" class="headerlink" title="目录更新与预加载"></a>目录更新与预加载</h3><p><strong>目录文件</strong>：</p>
+<ul>
+<li>JSON 文件：记录 AB 包路径、资源类型、加载脚本等</li>
+<li>Hash 文件：用于判断目录是否变化</li>
+</ul>
+<p><strong>手动更新目录</strong>：</p>
+<pre><code class="csharp">// 方式一：自动检查并更新
+Addressables.UpdateCatalogs().Completed += (h) =&gt; &#123; Addressables.Release(h); &#125;;
+
+// 方式二：先检查再更新
+Addressables.CheckForCatalogUpdates().Completed += (h) =&gt; &#123;
+    if (h.Result.Count &gt; 0)
+        Addressables.UpdateCatalogs(h.Result);
+&#125;;
+</code></pre>
+<p><strong>预加载 AB 包</strong>：</p>
+<pre><code class="csharp">IEnumerator Preload()
+&#123;
+    // 获取下载大小
+    var sizeHandle = Addressables.GetDownloadSizeAsync(&quot;Cube&quot;);
+    yield return sizeHandle;
+    
+    if (sizeHandle.Result &gt; 0)
+    &#123;
+        // 下载依赖
+        var downloadHandle = Addressables.DownloadDependenciesAsync(&quot;Cube&quot;);
+        while (!downloadHandle.IsDone)
+        &#123;
+            print(downloadHandle.GetDownloadStatus().Percent);
+            yield return null;
+        &#125;
+        Addressables.Release(downloadHandle);
+    &#125;
+&#125;
+</code></pre>
+<p><strong>使用时机</strong>：进入游戏或切换场景时预加载，避免运行时卡顿。</p>
+<h3 id="引用计数规则"><a href="#引用计数规则" class="headerlink" title="引用计数规则"></a>引用计数规则</h3><p><strong>机制</strong>：</p>
+<ul>
+<li>加载资源：引用计数 +1</li>
+<li>释放资源：引用计数 -1</li>
+<li>引用计数为 0：自动卸载资源</li>
+</ul>
+<p><strong>AB 包引用计数</strong>：</p>
+<ul>
+<li>从 AB 包加载资源：AB 包引用 +1</li>
+<li>从 AB 包卸载资源：AB 包引用 -1</li>
+<li>AB 包引用为 0：卸载整个 AB 包</li>
+</ul>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>释放资源不一定立即从内存卸载（AB 包可能还有其他引用）</li>
+<li>建议在场景切换时调用 <code>Resources.UnloadUnusedAssets</code></li>
+<li>加载和释放必须配对使用，避免内存泄漏</li>
+</ul>
+<p><strong>资源管理器优化</strong>：需要自己维护引用计数，避免复用 handle 导致计数失效。</p>
+<pre><code class="csharp">public class AddressablesInfo
+&#123;
+    public AsyncOperationHandle handle;
+    public uint count;  // 引用计数
+&#125;
+</code></pre>
+<h3 id="调试工具"><a href="#调试工具" class="headerlink" title="调试工具"></a>调试工具</h3><p><strong>Event Viewer 事件查看窗口</strong>：</p>
+<ul>
+<li>用途：监视资源内存管理，排查内存泄漏</li>
+<li>前提：勾选 AddressableAssetSettings 的 SendProfilerEvents</li>
+<li>打开：Window &gt; Asset Management &gt; Addressables &gt; Event Viewer</li>
+<li>功能：显示加载&#x2F;卸载事件、引用计数、帧率、内存使用</li>
+</ul>
+<p><strong>Analyze 分析窗口</strong>：</p>
+<ul>
+<li>用途：分析 AB 包布局，检查潜在问题</li>
+<li>打开：Window &gt; Asset Management &gt; Addressables &gt; Analyze</li>
+</ul>
+<p><strong>常用规则</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>规则</th>
+<th>功能</th>
+<th>是否可修复</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Check Duplicate Bundle Dependencies</td>
+<td>检查重复依赖</td>
+<td>✓ 可修复</td>
+</tr>
+<tr>
+<td>Check Resources to Addressable Duplicate Dependencies</td>
+<td>检查 Resources 与 AB 重复</td>
+<td>✗ 仅分析</td>
+</tr>
+<tr>
+<td>Check Scene to Addressable Duplicate Dependencies</td>
+<td>检查场景与 AB 重复</td>
+<td>✗ 仅分析</td>
+</tr>
+<tr>
+<td>Bundle Layout Preview</td>
+<td>预览 AB 包布局</td>
+<td>✗ 仅分析</td>
+</tr>
+</tbody></table>
+<p><strong>Build Layout 构建布局报告</strong>：</p>
+<ul>
+<li>用途：查看 AB 包详细信息（大小、依赖、资源列表）</li>
+<li>启用：Edit &gt; Preferences &gt; Addressables &gt; Debug Build Layout</li>
+<li>位置：<code>Library/com.unity.addressables/buildlayout.txt</code></li>
+</ul>
+<h3 id="打包策略选择"><a href="#打包策略选择" class="headerlink" title="打包策略选择"></a>打包策略选择</h3><p><strong>多包策略（包小而多）</strong>：</p>
+<ul>
+<li>优点：灵活加载卸载，内存占用可控</li>
+<li>缺点：目录文件大，并发下载慢，共享资源可能重复</li>
+</ul>
+<p><strong>大包策略（包大而少）</strong>：</p>
+<ul>
+<li>优点：目录文件小，下载效率高</li>
+<li>缺点：下载失败需重下，无法单独卸载</li>
+</ul>
+<p><strong>建议</strong>：根据资源使用情况合理分组，同类型资源放一起。</p>
+<h3 id="压缩方式选择"><a href="#压缩方式选择" class="headerlink" title="压缩方式选择"></a>压缩方式选择</h3><table>
+<thead>
+<tr>
+<th>压缩方式</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>无压缩</td>
+<td>加载最快，包体最大</td>
+<td>小型单机游戏</td>
+</tr>
+<tr>
+<td>LZ4</td>
+<td>基于块压缩，可部分加载</td>
+<td>本地资源（推荐）</td>
+</tr>
+<tr>
+<td>LZMA</td>
+<td>压缩率最高，加载最慢</td>
+<td>远端资源</td>
+</tr>
+</tbody></table>
+<p><strong>注意</strong>：压缩只影响包体大小和下载时间，不影响运行时内存。</p>
+<h3 id="优化建议"><a href="#优化建议" class="headerlink" title="优化建议"></a>优化建议</h3><p><strong>减小目录文件</strong>：</p>
+<ul>
+<li>启用 Compress Local Catalog 压缩本地目录</li>
+<li>禁用 BuiltInData 组的 IncludeResources 和 IncludeBuildSettings</li>
+</ul>
+<p><strong>注意事项</strong>：</p>
+<ul>
+<li>AB 包大小建议控制在 4GB 以下（兼容性）</li>
+<li>Groups View 中可禁用 Show Sprite and Subobject Addresses 提升性能</li>
+<li>使用带破折号的组名可自动折叠分组</li>
+</ul>
+<hr>
+<h2 id="24-3-面试题精选"><a href="#24-3-面试题精选" class="headerlink" title="24.3 面试题精选"></a>24.3 面试题精选</h2><h3 id="基础题"><a href="#基础题" class="headerlink" title="基础题"></a>基础题</h3><h4 id="1-Addressables-的三种-Play-Mode-Script-有什么区别？"><a href="#1-Addressables-的三种-Play-Mode-Script-有什么区别？" class="headerlink" title="1. Addressables 的三种 Play Mode Script 有什么区别？"></a>1. Addressables 的三种 Play Mode Script 有什么区别？</h4><h5 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h5><p>Addressables 的 Groups 窗口中 Play Mode Script 有三种模式，请说明它们的区别及适用场景。</p>
+<h5 id="深入解析"><a href="#深入解析" class="headerlink" title="深入解析"></a>深入解析</h5><p>Play Mode Script 决定了在 Unity 编辑器中运行游戏时，Addressables 如何加载资源。</p>
+<table>
+<thead>
+<tr>
+<th>模式</th>
+<th>加载方式</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Use Asset Database</td>
+<td>直接从 Assets 文件夹加载</td>
+<td>最快，无需打包</td>
+<td>开发阶段快速迭代</td>
+</tr>
+<tr>
+<td>Simulate Groups</td>
+<td>模拟 AB 包加载流程</td>
+<td>可模拟下载延迟、分析依赖</td>
+<td>测试阶段验证加载逻辑</td>
+</tr>
+<tr>
+<td>Use Existing Build</td>
+<td>从已构建的 AB 包加载</td>
+<td>真实环境，需先 Build</td>
+<td>发布前最终验证</td>
+</tr>
+</tbody></table>
+<p>Use Asset Database 模式下，资源直接从项目文件夹读取，跳过了 AssetBundle 的打包和加载流程，适合开发时快速调试。Simulate Groups 会模拟真实的 AB 包加载流程，包括依赖解析和下载延迟，但不实际生成 AB 包文件。Use Existing Build 则是完全真实的环境，必须先执行 Build 操作生成 AB 包。</p>
+<h5 id="答题示例"><a href="#答题示例" class="headerlink" title="答题示例"></a>答题示例</h5><blockquote>
+<p>三种模式分别是 Use Asset Database、Simulate Groups 和 Use Existing Build。</p>
+<p>Use Asset Database 直接从资源数据库加载，速度最快，适合开发阶段快速迭代，但无法测试真实的打包加载流程。</p>
+<p>Simulate Groups 模拟 AB 包加载，可以设置延迟模拟下载速度，适合测试阶段验证资源加载逻辑和依赖关系。</p>
+<p>Use Existing Build 从已构建的 AB 包加载，是真实环境，适合发布前的最终验证，但需要先执行 Build 操作。</p>
+</blockquote>
+<h5 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li>3.资源加载基础-寻址资源设置</li>
+</ul>
+<h4 id="2-AssetReference-和-Addressables-LoadAssetAsync-有什么区别？"><a href="#2-AssetReference-和-Addressables-LoadAssetAsync-有什么区别？" class="headerlink" title="2. AssetReference 和 Addressables.LoadAssetAsync 有什么区别？"></a>2. AssetReference 和 Addressables.LoadAssetAsync 有什么区别？</h4><h5 id="题目-1"><a href="#题目-1" class="headerlink" title="题目"></a>题目</h5><p>Addressables 提供了两种资源加载方式：通过 AssetReference 标识类加载，以及通过 Addressables.LoadAssetAsync 动态加载。请说明它们的区别和适用场景。</p>
+<h5 id="深入解析-1"><a href="#深入解析-1" class="headerlink" title="深入解析"></a>深入解析</h5><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>AssetReference</th>
+<th>Addressables.LoadAssetAsync</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>绑定方式</td>
+<td>Inspector 面板拖拽关联</td>
+<td>代码中传入资源名或标签</td>
+</tr>
+<tr>
+<td>灵活性</td>
+<td>固定关联，编译时确定</td>
+<td>动态传入，运行时确定</td>
+</tr>
+<tr>
+<td>类型安全</td>
+<td>有类型特化版本</td>
+<td>通过泛型指定</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>小项目、固定资源</td>
+<td>商业项目、配置驱动加载</td>
+</tr>
+</tbody></table>
+<p>AssetReference 适合资源在开发时就已确定的情况，通过 Inspector 关联后不会出错。但在商业项目中，资源加载往往由配置表驱动，需要根据配置动态决定加载哪个资源，这时 Addressables.LoadAssetAsync 更合适。</p>
+<p>释放资源时，AssetReference 调用 <code>ReleaseAsset()</code>，而动态加载需要保存 <code>AsyncOperationHandle</code> 并调用 <code>Addressables.Release(handle)</code>。</p>
+<h5 id="答题示例-1"><a href="#答题示例-1" class="headerlink" title="答题示例"></a>答题示例</h5><blockquote>
+<p>AssetReference 通过 Inspector 面板关联资源，适合资源在开发时就已确定的场景，比如小项目或固定 UI 元素。</p>
+<p>Addressables.LoadAssetAsync 通过资源名或标签动态加载，适合商业项目中配置驱动的资源加载，灵活性更高。</p>
+<p>释放方式也不同：AssetReference 调用 ReleaseAsset 方法，动态加载需要保存 AsyncOperationHandle 并调用 Addressables.Release。</p>
+</blockquote>
+<h5 id="参考文章-1"><a href="#参考文章-1" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li>4.资源加载基础-指定资源加载</li>
+<li>6.资源加载基础-动态加载单个资源</li>
+</ul>
+<h3 id="进阶题"><a href="#进阶题" class="headerlink" title="进阶题"></a>进阶题</h3><h4 id="1-Addressables-释放资源后，已实例化的对象会怎样？"><a href="#1-Addressables-释放资源后，已实例化的对象会怎样？" class="headerlink" title="1. Addressables 释放资源后，已实例化的对象会怎样？"></a>1. Addressables 释放资源后，已实例化的对象会怎样？</h4><h5 id="题目-2"><a href="#题目-2" class="headerlink" title="题目"></a>题目</h5><p>调用 Addressables.Release 或 AssetReference.ReleaseAsset 释放资源后，已经通过该资源实例化的 GameObject 会怎样？直接引用的资源（如材质）会怎样？</p>
+<h5 id="深入解析-2"><a href="#深入解析-2" class="headerlink" title="深入解析"></a>深入解析</h5><p>释放资源后的影响取决于资源的使用方式：</p>
+<p><strong>实例化的 GameObject</strong>：不受影响。因为实例化时使用的是预制体的配置数据，生成的是独立对象，与原资源已无直接引用关系。</p>
+<p><strong>直接引用的资源</strong>：在 AB 包模式下会丢失。比如将加载的材质直接赋值给 MeshRenderer，释放材质资源后，该材质引用会变成 null 或丢失。这是因为在 AB 包模式下，资源是从 AssetBundle 加载的，释放后 AssetBundle 卸载，资源引用失效。</p>
+<p><strong>开发模式下的陷阱</strong>：Use Asset Database 和 Simulate Groups 模式下可能看不出问题，因为资源实际还在内存中。只有 Use Existing Build 模式才会暴露这个 bug。</p>
+<pre><code class="csharp">// 错误示例：释放后材质丢失
+assetReferenceTMaterial.LoadAssetAsync().Completed += (handle) =&gt; &#123;
+    cube.GetComponent&lt;MeshRenderer&gt;().material = handle.Result;
+    assetReferenceTMaterial.ReleaseAsset();  // AB包模式下材质丢失
+&#125;;
+
+// 正确做法：使用完毕后再释放
+</code></pre>
+<h5 id="答题示例-2"><a href="#答题示例-2" class="headerlink" title="答题示例"></a>答题示例</h5><blockquote>
+<p>实例化的 GameObject 不受影响，因为实例化生成的是独立对象，使用的是预制体的配置数据。</p>
+<p>但直接引用的资源在 AB 包模式下会丢失。比如把加载的材质赋值给 MeshRenderer，释放材质后引用会失效。</p>
+<p>开发时要注意：Use Asset Database 模式下可能看不出问题，只有 Use Existing Build 才会暴露。所以释放资源的时机很重要，必须确保不再使用该资源。</p>
+</blockquote>
+<h5 id="参考文章-2"><a href="#参考文章-2" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li>4.资源加载基础-指定资源加载</li>
+<li>6.资源加载基础-动态加载单个资源</li>
+</ul>
+<h4 id="2-如何设计一个-Addressables-资源管理器？"><a href="#2-如何设计一个-Addressables-资源管理器？" class="headerlink" title="2. 如何设计一个 Addressables 资源管理器？"></a>2. 如何设计一个 Addressables 资源管理器？</h4><h5 id="题目-3"><a href="#题目-3" class="headerlink" title="题目"></a>题目</h5><p>在商业项目中，直接在各脚本中管理 AsyncOperationHandle 会很混乱。请设计一个 Addressables 资源管理器，支持单个资源加载、多资源加载、资源释放等功能。</p>
+<h5 id="深入解析-3"><a href="#深入解析-3" class="headerlink" title="深入解析"></a>深入解析</h5><p>设计思路：</p>
+<p><strong>核心问题</strong>：AsyncOperationHandle 需要保存以便后续释放，分散管理容易遗漏。</p>
+<p><strong>解决方案</strong>：用字典统一管理所有加载操作，key 由「资源名 + 类型名」组成，value 为 AsyncOperationHandle。</p>
+<p><strong>关键设计点</strong>：</p>
+<ol>
+<li><p><strong>重复加载处理</strong>：同一资源重复加载时，检查字典中是否已存在。如果已完成直接回调，未完成则添加到 Completed 事件。</p>
+</li>
+<li><p><strong>类型区分</strong>：同名不同类型资源需要区分，key 中加入类型名。</p>
+</li>
+<li><p><strong>多资源加载</strong>：支持 MergeMode，key 需要包含所有条件。</p>
+</li>
+</ol>
+<pre><code class="csharp">public class AddressablesManager : MonoBehaviour
+&#123;
+    private Dictionary&lt;string, IEnumerator&gt; handleDict = new Dictionary&lt;string, IEnumerator&gt;();
+
+    public void LoadAssetAsync&lt;T&gt;(string name, Action&lt;AsyncOperationHandle&lt;T&gt;&gt; callback)
+    &#123;
+        string key = name + &quot;_&quot; + typeof(T).Name;
+        
+        if (handleDict.TryGetValue(key, out var value))
+        &#123;
+            var handle = (AsyncOperationHandle&lt;T&gt;)value;
+            if (handle.IsDone)
+                callback(handle);
+            else
+                handle.Completed += callback;
+            return;
+        &#125;
+        
+        var newHandle = Addressables.LoadAssetAsync&lt;T&gt;(name);
+        newHandle.Completed += (h) =&gt; &#123;
+            if (h.Status == AsyncOperationStatus.Succeeded)
+                callback(h);
+            else
+                handleDict.Remove(key);
+        &#125;;
+        handleDict.Add(key, newHandle);
+    &#125;
+
+    public void Release&lt;T&gt;(string name)
+    &#123;
+        string key = name + &quot;_&quot; + typeof(T).Name;
+        if (handleDict.TryGetValue(key, out var value))
+        &#123;
+            Addressables.Release((AsyncOperationHandle&lt;T&gt;)value);
+            handleDict.Remove(key);
+        &#125;
+    &#125;
+&#125;
+</code></pre>
+<h5 id="答题示例-3"><a href="#答题示例-3" class="headerlink" title="答题示例"></a>答题示例</h5><blockquote>
+<p>核心是用字典统一管理 AsyncOperationHandle，key 由资源名加类型名组成，避免同名不同类型资源冲突。</p>
+<p>重复加载时检查字典：已完成则直接回调，未完成则添加到 Completed 事件，避免重复发起加载请求。</p>
+<p>多资源加载需要支持 MergeMode 参数，key 要包含所有条件和合并模式。</p>
+<p>释放时从字典取出 handle 调用 Addressables.Release，并从字典移除。建议提供 Clear 方法在场景切换时统一清理。</p>
+</blockquote>
+<h5 id="参考文章-3"><a href="#参考文章-3" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li>6.资源加载基础-动态加载单个资源</li>
+<li>7.资源加载基础-动态加载多个资源</li>
+</ul>
+<h4 id="3-Addressables-的-Bundle-Mode-有哪几种？如何选择？"><a href="#3-Addressables-的-Bundle-Mode-有哪几种？如何选择？" class="headerlink" title="3. Addressables 的 Bundle Mode 有哪几种？如何选择？"></a>3. Addressables 的 Bundle Mode 有哪几种？如何选择？</h4><h5 id="题目-4"><a href="#题目-4" class="headerlink" title="题目"></a>题目</h5><p>PackedAssets 配置中的 Bundle Mode 有三种模式，请说明它们的区别及适用场景。</p>
+<h5 id="深入解析-4"><a href="#深入解析-4" class="headerlink" title="深入解析"></a>深入解析</h5><table>
+<thead>
+<tr>
+<th>模式</th>
+<th>打包方式</th>
+<th>优点</th>
+<th>缺点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Pack Together</td>
+<td>组内所有资源打成一个包</td>
+<td>减少包数量，依赖共享</td>
+<td>单个包可能过大，改动需重建整个包</td>
+<td>功能模块、UI 包</td>
+</tr>
+<tr>
+<td>Pack Separately</td>
+<td>每个资源单独打包</td>
+<td>精确控制，改动影响小</td>
+<td>包数量多，依赖重复</td>
+<td>大型独立资源</td>
+</tr>
+<tr>
+<td>Pack Together by Label</td>
+<td>相同标签资源打成一个包</td>
+<td>按功能分类，灵活</td>
+<td>需要合理规划标签</td>
+<td>按品质&#x2F;平台分包</td>
+</tr>
+</tbody></table>
+<p>选择依据：</p>
+<ul>
+<li><strong>资源大小</strong>：小资源适合 Pack Together，大资源适合 Pack Separately</li>
+<li><strong>更新频率</strong>：频繁更新的资源适合 Pack Separately</li>
+<li><strong>依赖关系</strong>：有共同依赖的资源适合打在一起</li>
+<li><strong>加载时机</strong>：同时加载的资源适合打在一起</li>
+</ul>
+<h5 id="答题示例-4"><a href="#答题示例-4" class="headerlink" title="答题示例"></a>答题示例</h5><blockquote>
+<p>三种模式分别是 Pack Together、Pack Separately 和 Pack Together by Label。</p>
+<p>Pack Together 把组内所有资源打成一个包，适合功能模块或 UI 包，减少包数量但改动需重建整个包。</p>
+<p>Pack Separately 每个资源单独打包，适合大型独立资源或频繁更新的资源，精确控制但包数量多。</p>
+<p>Pack Together by Label 按标签分组打包，适合按品质或平台分包的场景。</p>
+<p>选择时要考虑资源大小、更新频率、依赖关系和加载时机。</p>
+</blockquote>
+<h5 id="参考文章-4"><a href="#参考文章-4" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li>10.配置相关-PackedAssets打包资源数据配置</li>
+</ul>
+<h4 id="4-Addressables-整包更新和局部更新有什么区别？"><a href="#4-Addressables-整包更新和局部更新有什么区别？" class="headerlink" title="4. Addressables 整包更新和局部更新有什么区别？"></a>4. Addressables 整包更新和局部更新有什么区别？</h4><h5 id="题目-5"><a href="#题目-5" class="headerlink" title="题目"></a>题目</h5><p>Addressables 的 Content Update Restriction 有两种模式，请说明整包更新和局部更新的区别及适用场景。</p>
+<h5 id="深入解析-5"><a href="#深入解析-5" class="headerlink" title="深入解析"></a>深入解析</h5><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>整包更新</th>
+<th>局部更新</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>设置</td>
+<td>Can Change Post Release</td>
+<td>Cannot Change Post Release</td>
+</tr>
+<tr>
+<td>更新方式</td>
+<td>资源变化后重建整个包</td>
+<td>变化资源移到新组单独打包</td>
+</tr>
+<tr>
+<td>下载量</td>
+<td>较大，需下载整个包</td>
+<td>较小，只下载变化部分</td>
+</tr>
+<tr>
+<td>适用场景</td>
+<td>大范围资源更新</td>
+<td>小范围增量更新</td>
+</tr>
+<tr>
+<td>操作步骤</td>
+<td>直接 Update a Previous Build</td>
+<td>先 Check for Content Update，再 Update</td>
+</tr>
+</tbody></table>
+<p><strong>整包更新</strong>：当组内任意资源变化，整个组的 AB 包都会重新构建。玩家需要重新下载整个包，适合大版本更新或资源大规模改动。</p>
+<p><strong>局部更新</strong>：变化的资源会被移到自动创建的更新组，单独打成一个新包。Addressables 会自动加载最新版本，玩家只需下载变化的部分。</p>
+<p><strong>关键操作</strong>：两种更新都使用 <code>Update a Previous Build</code>，需要选择 <code>addressables_content_state.bin</code> 文件进行对比。不是重新打包，否则需要重新发布应用程序。</p>
+<h5 id="答题示例-5"><a href="#答题示例-5" class="headerlink" title="答题示例"></a>答题示例</h5><blockquote>
+<p>整包更新对应 Can Change Post Release，资源变化后重建整个包，适合大范围更新，但玩家下载量大。</p>
+<p>局部更新对应 Cannot Change Post Release，变化资源移到更新组单独打包，适合小范围增量更新，玩家只下载变化部分。</p>
+<p>两种更新都通过 Update a Previous Build 操作，选择 addressables_content_state.bin 文件对比。关键是不重新打包，否则需要重新发布应用程序。</p>
+</blockquote>
+<h5 id="参考文章-5"><a href="#参考文章-5" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li>14.资源打包加载-资源更新</li>
+</ul>
+<h3 id="深度题"><a href="#深度题" class="headerlink" title="深度题"></a>深度题</h3><h4 id="1-Addressables-的异步加载有哪几种方式？"><a href="#1-Addressables-的异步加载有哪几种方式？" class="headerlink" title="1. Addressables 的异步加载有哪几种方式？"></a>1. Addressables 的异步加载有哪几种方式？</h4><h5 id="题目-6"><a href="#题目-6" class="headerlink" title="题目"></a>题目</h5><p>Addressables 支持多种异步加载方式，请说明它们的区别及适用场景。</p>
+<h5 id="深入解析-6"><a href="#深入解析-6" class="headerlink" title="深入解析"></a>深入解析</h5><p>Addressables 提供三种异步加载方式：</p>
+<table>
+<thead>
+<tr>
+<th>方式</th>
+<th>特点</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>事件监听</td>
+<td>Completed 回调</td>
+<td>简单加载</td>
+</tr>
+<tr>
+<td>协程</td>
+<td>yield return handle</td>
+<td>需要顺序执行</td>
+</tr>
+<tr>
+<td>async&#x2F;await</td>
+<td>await handle.Task</td>
+<td>多任务并行</td>
+</tr>
+</tbody></table>
+<p><strong>事件监听方式</strong>：通过 Completed 事件回调获取加载结果，适合简单的单次加载场景。缺点是回调嵌套时代码可读性差。</p>
+<p><strong>协程方式</strong>：使用 yield return 等待加载完成，适合需要顺序执行多个加载任务的场景。可以在协程中获取加载进度，实现 Loading 界面。</p>
+<p><strong>async&#x2F;await 方式</strong>：使用 Task 并行处理多个加载任务，代码更简洁。<code>Task.WhenAll</code> 可以同时等待多个加载完成，效率最高。</p>
+<p><strong>平台限制</strong>：</p>
+<ul>
+<li>WebGL 平台不支持 async&#x2F;await 语法，必须使用协程或事件监听</li>
+<li>移动平台三种方式都支持，推荐 async&#x2F;await 或协程</li>
+</ul>
+<p><strong>性能考量</strong>：</p>
+<ul>
+<li>单资源加载：三种方式性能差异不大</li>
+<li>多资源并行：async&#x2F;await + Task.WhenAll 效率最高</li>
+<li>需要进度显示：协程最方便，可在循环中获取 DownloadStatus</li>
+</ul>
+<h5 id="答题示例-6"><a href="#答题示例-6" class="headerlink" title="答题示例"></a>答题示例</h5><blockquote>
+<p>Addressables 提供三种异步加载方式：事件监听、协程和 async&#x2F;await。</p>
+<p>事件监听通过 Completed 回调获取结果，适合简单加载场景，但回调嵌套时代码可读性差。</p>
+<p>协程使用 yield return 等待加载完成，适合需要顺序执行或显示加载进度的场景。</p>
+<p>async&#x2F;await 可以通过 Task.WhenAll 并行处理多个任务，代码简洁效率高，但 WebGL 平台不支持。</p>
+<p>实际项目中，移动端推荐 async&#x2F;await 处理并行加载，WebGL 端必须用协程或事件监听。</p>
+</blockquote>
+<h5 id="参考文章-6"><a href="#参考文章-6" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li>16.其他_资源加载相关_异步加载的几种使用方式</li>
+</ul>
+<h4 id="2-Addressables-的引用计数机制是怎样的？"><a href="#2-Addressables-的引用计数机制是怎样的？" class="headerlink" title="2. Addressables 的引用计数机制是怎样的？"></a>2. Addressables 的引用计数机制是怎样的？</h4><h5 id="题目-7"><a href="#题目-7" class="headerlink" title="题目"></a>题目</h5><p>请说明 Addressables 的引用计数机制，以及在实际开发中需要注意什么。</p>
+<h5 id="深入解析-7"><a href="#深入解析-7" class="headerlink" title="深入解析"></a>深入解析</h5><p>Addressables 内部维护引用计数来管理资源内存：</p>
+<p><strong>资源引用计数</strong>：</p>
+<ul>
+<li>加载资源时：引用计数 +1</li>
+<li>释放资源时：引用计数 -1</li>
+<li>引用计数为 0 时：自动卸载资源</li>
+</ul>
+<p><strong>AB 包引用计数</strong>：</p>
+<ul>
+<li>从 AB 包加载资源：AB 包引用 +1</li>
+<li>从 AB 包卸载资源：AB 包引用 -1</li>
+<li>AB 包引用为 0 时：卸载整个 AB 包</li>
+</ul>
+<p><strong>注意事项</strong>：</p>
+<ol>
+<li>释放资源不一定立即从内存卸载，因为 AB 包可能还有其他资源在使用</li>
+<li>加载和释放必须配对使用，否则会导致内存泄漏或资源丢失</li>
+<li>建议在场景切换时调用 <code>Resources.UnloadUnusedAssets</code> 清理残留资源</li>
+<li>自定义资源管理器时需要自己维护引用计数，避免复用 handle 导致计数失效</li>
+</ol>
+<p><strong>示例</strong>：一个 AB 包有资源 a 和 b，加载 a 两次、b 一次。释放 a 两次后，由于 b 还在使用，AB 包不会卸载，a 的内存也不会释放。需要调用 <code>Resources.UnloadUnusedAssets</code> 或等 b 也释放后才会卸载。</p>
+<h5 id="答题示例-7"><a href="#答题示例-7" class="headerlink" title="答题示例"></a>答题示例</h5><blockquote>
+<p>Addressables 通过引用计数管理资源内存。加载资源时计数加一，释放时减一，计数为零时自动卸载。</p>
+<p>AB 包也有自己的引用计数，只有当包内所有资源都释放后，AB 包才会卸载。</p>
+<p>实际开发中要注意：释放资源不一定立即释放内存，因为 AB 包可能还有其他引用；加载和释放必须配对使用；场景切换时建议调用 Resources.UnloadUnusedAssets 清理残留资源。</p>
+</blockquote>
+<h5 id="参考文章-7"><a href="#参考文章-7" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li>19.其他_资源加载相关_引用计数规则</li>
+</ul>
+<h4 id="3-如何排查-Addressables-的内存泄漏问题？"><a href="#3-如何排查-Addressables-的内存泄漏问题？" class="headerlink" title="3. 如何排查 Addressables 的内存泄漏问题？"></a>3. 如何排查 Addressables 的内存泄漏问题？</h4><h5 id="题目-8"><a href="#题目-8" class="headerlink" title="题目"></a>题目</h5><p>项目中使用 Addressables 后出现内存持续增长，可能是什么原因？如何排查和解决？</p>
+<h5 id="深入解析-8"><a href="#深入解析-8" class="headerlink" title="深入解析"></a>深入解析</h5><p><strong>常见内存泄漏原因</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>原因</th>
+<th>说明</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>加载未释放</td>
+<td>LoadAssetAsync 后未调用 Release</td>
+<td>确保加载和释放配对</td>
+</tr>
+<tr>
+<td>Handle 未保存</td>
+<td>保存了资源引用但丢失了 handle</td>
+<td>用字典统一管理 handle</td>
+</tr>
+<tr>
+<td>引用计数错误</td>
+<td>自定义管理器复用 handle 导致计数失效</td>
+<td>自己维护引用计数</td>
+</tr>
+<tr>
+<td>场景切换未清理</td>
+<td>切换场景时未释放旧资源</td>
+<td>提供 Clear 方法统一清理</td>
+</tr>
+</tbody></table>
+<p><strong>排查工具：Event Viewer</strong></p>
+<ol>
+<li>启用分析：AddressableAssetSettings → Send Profiler Events</li>
+<li>打开窗口：Window → Asset Management → Addressables → Event Viewer</li>
+<li>观察内容：<ul>
+<li>加载事件（绿色）和释放事件（红色）是否配对</li>
+<li>引用计数是否归零</li>
+<li>AB 包是否正确卸载</li>
+</ul>
+</li>
+</ol>
+<p><strong>排查步骤</strong>：</p>
+<ol>
+<li>运行游戏到内存增长的场景</li>
+<li>打开 Event Viewer，观察当前帧的资源引用</li>
+<li>执行本应释放资源的操作（如关闭 UI、切换场景）</li>
+<li>检查 Event Viewer 中是否还有未释放的引用</li>
+<li>定位到具体资源，检查代码中是否遗漏 Release 调用</li>
+</ol>
+<p><strong>预防措施</strong>：</p>
+<ul>
+<li>封装资源管理器，统一管理 handle 的生命周期</li>
+<li>场景切换时调用 Clear 方法强制清理</li>
+<li>使用 using 语句或 try-finally 确保释放</li>
+</ul>
+<h5 id="答题示例-8"><a href="#答题示例-8" class="headerlink" title="答题示例"></a>答题示例</h5><blockquote>
+<p>内存泄漏常见原因是加载后未释放、handle 丢失或引用计数错误。</p>
+<p>排查时使用 Event Viewer 窗口，启用 Send Profiler Events 后观察加载和释放事件是否配对。</p>
+<p>具体步骤：运行到问题场景 → 打开 Event Viewer → 执行释放操作 → 检查是否还有未释放引用 → 定位代码遗漏点。</p>
+<p>预防措施包括：封装资源管理器统一管理 handle、场景切换时强制清理、确保加载和释放配对调用。</p>
+</blockquote>
+<h5 id="参考文章-8"><a href="#参考文章-8" class="headerlink" title="参考文章"></a>参考文章</h5><ul>
+<li>19.其他_资源加载相关_引用计数规则</li>
+<li>20.其他_窗口相关_事件查看窗口</li>
+</ul>
 <hr>
 
       
