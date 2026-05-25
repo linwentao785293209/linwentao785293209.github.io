@@ -6,20 +6,19 @@
   <meta name="keywords" content=" 服务端 , 注册登录 ">
   <meta name="description" content="4.登录流程 | 人间自有韬哥在的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="7.Timeline系列总结 7.1 知识点系列回顾这个系列 6 篇，前四篇讲 Timeline 本身，后两篇讲怎么拿它做东西、以及什么时候该绕过它自己做。 基础和轨道Timeline 的基础用法不算复杂。TimelineAsset 是剧本，PlayableDirector 是导演，运行时 Director 把剧本编译成一张 PlayableGraph 交给 Playable 系统去跑——所以之前">
+<meta name="description" content="4.表与数据结构取舍 4.1 知识点表充当多种数据结构前几篇一直在聊表的引用、拷贝。这篇回到 table 本身。 Lua 里常用容器基本都绕不开 table。它可以当数组、字典、集合、队列来写。虽然可以充当成各种数据结构，但如果用错场景，成本会差很多。 比如战斗里一帧插删几百次，和配置表里按 id 查一行数据，肯定不是一套写法。所以真正要先想清楚的是：这张表到底打算当什么用。 连续列表当数组，id">
 <meta property="og:type" content="article">
-<meta property="og:title" content="7.Unity进阶Timeline总结">
-<meta property="og:url" content="https://linwentao785293209.github.io/2026/03/28/%E6%B8%B8%E6%88%8F%E5%BC%95%E6%93%8E/Unity/15.Unity%E8%BF%9B%E9%98%B6Timeline/7.%E6%80%BB%E7%BB%93/index.html">
+<meta property="og:title" content="4.表与数据结构取舍">
+<meta property="og:url" content="https://linwentao785293209.github.io/2026/05/17/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/02.Lua%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/4.%E8%A1%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%96%E8%88%8D/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的博客">
-<meta property="og:description" content="7.Timeline系列总结 7.1 知识点系列回顾这个系列 6 篇，前四篇讲 Timeline 本身，后两篇讲怎么拿它做东西、以及什么时候该绕过它自己做。 基础和轨道Timeline 的基础用法不算复杂。TimelineAsset 是剧本，PlayableDirector 是导演，运行时 Director 把剧本编译成一张 PlayableGraph 交给 Playable 系统去跑——所以之前">
+<meta property="og:description" content="4.表与数据结构取舍 4.1 知识点表充当多种数据结构前几篇一直在聊表的引用、拷贝。这篇回到 table 本身。 Lua 里常用容器基本都绕不开 table。它可以当数组、字典、集合、队列来写。虽然可以充当成各种数据结构，但如果用错场景，成本会差很多。 比如战斗里一帧插删几百次，和配置表里按 id 查一行数据，肯定不是一套写法。所以真正要先想清楚的是：这张表到底打算当什么用。 连续列表当数组，id">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-03-28T10:15:11.000Z">
-<meta property="article:modified_time" content="2026-03-29T06:14:43.457Z">
+<meta property="article:published_time" content="2026-05-17T02:31:22.000Z">
+<meta property="article:modified_time" content="2026-05-25T14:21:21.729Z">
 <meta property="article:author" content="人间自有韬哥在">
-<meta property="article:tag" content="游戏引擎">
-<meta property="article:tag" content="Unity">
-<meta property="article:tag" content="Unity进阶">
-<meta property="article:tag" content="Unity进阶Timeline">
+<meta property="article:tag" content="编程语言">
+<meta property="article:tag" content="Lua">
+<meta property="article:tag" content="Lua进阶知识">
 <meta name="twitter:card" content="summary">
 
 
@@ -151,7 +150,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(2266)</small>
+                <small>(2271)</small>
             
         </div>
     </li>
@@ -163,7 +162,7 @@
         <div data-rel="编程语言">
             <i class="fold iconfont icon-right"></i>
             编程语言
-            <small>(326)</small>
+            <small>(331)</small>
         </div>
         
             <ul class="sub hide">
@@ -462,7 +461,7 @@
         <div data-rel="编程语言&lt;---&gt;Lua">
             <i class="fold iconfont icon-right"></i>
             Lua
-            <small>(19)</small>
+            <small>(24)</small>
         </div>
         
             <ul class="sub hide">
@@ -472,7 +471,18 @@
         <div data-rel="编程语言&lt;---&gt;Lua&lt;---&gt;Lua语法知识">
             
             Lua语法知识
-            <small>(19)</small>
+            <small>(20)</small>
+        </div>
+        
+    </li>
+
+                
+                    
+    <li>
+        <div data-rel="编程语言&lt;---&gt;Lua&lt;---&gt;Lua进阶知识">
+            
+            Lua进阶知识
+            <small>(4)</small>
         </div>
         
     </li>
@@ -513,6 +523,10 @@
         
     </li>
 
+            
+        
+    
+        
             
         
     
@@ -3124,8 +3138,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="2266">
-<input type="hidden" id="yelog_site_word_count" value="4366.9k">
+<input type="hidden" id="yelog_site_posts_number" value="2271">
+<input type="hidden" id="yelog_site_word_count" value="4398.3k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -4525,6 +4539,10 @@
             </li>
         
             <li class="article-tag-list-item">
+                <i class="iconfont icon-tag"></i><a>Lua进阶知识</a>
+            </li>
+        
+            <li class="article-tag-list-item">
                 <i class="iconfont icon-tag"></i><a>Lua面试题</a>
             </li>
         
@@ -4930,6 +4948,42 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 编程语言 Lua Lua进阶知识 "
+           href="/2026/05/17/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/02.Lua%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/4.%E8%A1%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%96%E8%88%8D/"
+           data-tag="编程语言,Lua,Lua进阶知识"
+           data-author="" >
+            <span class="post-title" title="4.表与数据结构取舍">4.表与数据结构取舍</span>
+            <span class="post-date" title="2026-05-17 10:31:22">2026/05/17</span>
+        </a>
+        
+        
+        <a  class="全部文章 编程语言 Lua Lua进阶知识 "
+           href="/2026/05/16/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/02.Lua%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/3.%E8%A1%A8%E6%8B%B7%E8%B4%9D%E4%B8%8E%E5%BF%AB%E7%85%A7/"
+           data-tag="编程语言,Lua,Lua进阶知识"
+           data-author="" >
+            <span class="post-title" title="3.表拷贝与快照">3.表拷贝与快照</span>
+            <span class="post-date" title="2026-05-16 19:48:57">2026/05/16</span>
+        </a>
+        
+        
+        <a  class="全部文章 编程语言 Lua Lua进阶知识 "
+           href="/2026/05/15/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/02.Lua%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/2.%E8%A1%A8%E5%BC%95%E7%94%A8%E4%B8%8E%E5%85%B1%E4%BA%AB/"
+           data-tag="编程语言,Lua,Lua进阶知识"
+           data-author="" >
+            <span class="post-title" title="2.表引用与共享">2.表引用与共享</span>
+            <span class="post-date" title="2026-05-15 15:37:12">2026/05/15</span>
+        </a>
+        
+        
+        <a  class="全部文章 编程语言 Lua Lua进阶知识 "
+           href="/2026/05/14/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/02.Lua%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
+           data-tag="编程语言,Lua,Lua进阶知识"
+           data-author="" >
+            <span class="post-title" title="1.Lua进阶知识概述">1.Lua进阶知识概述</span>
+            <span class="post-date" title="2026-05-14 12:26:44">2026/05/14</span>
+        </a>
         
         
         <a  class="全部文章 游戏引擎 Unity Unity进阶 Unity进阶Timeline "
@@ -9442,19 +9496,19 @@
         
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发基础 "
-           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/37.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
-           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,玻璃效果"
+           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/36.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E9%95%9C%E9%9D%A2%E6%95%88%E6%9E%9C-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"
+           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,镜面效果"
            data-author="" >
-            <span class="post-title" title="37.玻璃效果基本原理">37.玻璃效果基本原理</span>
+            <span class="post-title" title="36.镜面效果实现">36.镜面效果实现</span>
             <span class="post-date" title="2024-11-26 12:45:12">2024/11/26</span>
         </a>
         
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发基础 "
-           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/36.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E9%95%9C%E9%9D%A2%E6%95%88%E6%9E%9C-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"
-           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,镜面效果"
+           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/37.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
+           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,玻璃效果"
            data-author="" >
-            <span class="post-title" title="36.镜面效果实现">36.镜面效果实现</span>
+            <span class="post-title" title="37.玻璃效果基本原理">37.玻璃效果基本原理</span>
             <span class="post-date" title="2024-11-26 12:45:12">2024/11/26</span>
         </a>
         
@@ -9992,7 +10046,7 @@
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发入门 "
            href="/2024/10/10/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/20.%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E7%BB%BC%E5%90%88%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-BlinnPhong%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E9%80%90%E7%89%87%E5%85%83%E5%85%89%E7%85%A7/"
-           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,逐片元光照,综合光照模型,BlinnPhong光照模型"
+           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,综合光照模型,逐片元光照,BlinnPhong光照模型"
            data-author="" >
             <span class="post-title" title="20.BlinnPhong光照模型逐片元光照">20.BlinnPhong光照模型逐片元光照</span>
             <span class="post-date" title="2024-10-10 22:50:54">2024/10/10</span>
@@ -10019,7 +10073,7 @@
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发入门 "
            href="/2024/10/10/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/17.%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E7%BB%BC%E5%90%88%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-Phong%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E9%80%90%E7%89%87%E5%85%83%E5%85%89%E7%85%A7/"
-           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,逐片元光照,综合光照模型,Phong光照模型"
+           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,综合光照模型,Phong光照模型,逐片元光照"
            data-author="" >
             <span class="post-title" title="17.Phong光照模型逐片元光照">17.Phong光照模型逐片元光照</span>
             <span class="post-date" title="2024-10-10 21:30:47">2024/10/10</span>
@@ -13988,7 +14042,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/19.%E6%80%BB%E7%BB%93/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="19.toLua基础知识总结">19.toLua基础知识总结</span>
             <span class="post-date" title="2024-04-05 12:11:00">2024/04/05</span>
@@ -13997,7 +14051,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/18.Lua%E8%B0%83%E7%94%A8CSharp-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="18.Lua调用Unity的协同程序">18.Lua调用Unity的协同程序</span>
             <span class="post-date" title="2024-04-05 12:10:00">2024/04/05</span>
@@ -14006,7 +14060,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/17.Lua%E8%B0%83%E7%94%A8CSharp-%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="17.Lua调用C#的委托和事件">17.Lua调用C#的委托和事件</span>
             <span class="post-date" title="2024-04-05 12:05:21">2024/04/05</span>
@@ -14015,7 +14069,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.Lua%E8%B0%83%E7%94%A8CSharp-%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="16.Lua调用C#的重载函数">16.Lua调用C#的重载函数</span>
             <span class="post-date" title="2024-04-05 12:01:54">2024/04/05</span>
@@ -14024,7 +14078,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.Lua%E8%B0%83%E7%94%A8CSharp-ref%E5%92%8Cout%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="15.Lua调用C#的ref和out函数">15.Lua调用C#的ref和out函数</span>
             <span class="post-date" title="2024-04-05 11:56:12">2024/04/05</span>
@@ -14033,7 +14087,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Lua%E8%B0%83%E7%94%A8CSharp-%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="14.Lua调用C#的扩展方法">14.Lua调用C#的扩展方法</span>
             <span class="post-date" title="2024-04-05 11:53:26">2024/04/05</span>
@@ -14042,7 +14096,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/13.Lua%E8%B0%83%E7%94%A8CSharp-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="13.Lua调用C#的数据集合">13.Lua调用C#的数据集合</span>
             <span class="post-date" title="2024-04-05 11:45:43">2024/04/05</span>
@@ -14051,7 +14105,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Lua%E8%B0%83%E7%94%A8CSharp-%E6%9E%9A%E4%B8%BE/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="12.Lua调用C#的枚举">12.Lua调用C#的枚举</span>
             <span class="post-date" title="2024-04-05 11:41:03">2024/04/05</span>
@@ -14060,7 +14114,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B1%BB/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="11.Lua调用C#的类">11.Lua调用C#的类</span>
             <span class="post-date" title="2024-04-05 11:33:29">2024/04/05</span>
@@ -14069,7 +14123,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.CSharp%E8%B0%83%E7%94%A8Lua-toLua%E6%8F%90%E4%BE%9B%E7%9A%84%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="10.C#调用toLua提供的协同程序">10.C#调用toLua提供的协同程序</span>
             <span class="post-date" title="2024-04-05 11:27:10">2024/04/05</span>
@@ -14078,7 +14132,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E6%95%B0%E7%BB%84%E5%92%8CDictionary/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="9.C#把Lua表映射到数组和Dictionary">9.C#把Lua表映射到数组和Dictionary</span>
             <span class="post-date" title="2024-04-05 11:21:10">2024/04/05</span>
@@ -14087,7 +14141,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0LuaTable/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="8.C#把Lua表映射到LuaTable">8.C#把Lua表映射到LuaTable</span>
             <span class="post-date" title="2024-04-05 11:16:16">2024/04/05</span>
@@ -14096,7 +14150,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.CSharp%E8%B0%83%E7%94%A8Lua-%E5%87%BD%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B0%83%E7%94%A8/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="7.C#调用Lua函数">7.C#调用Lua函数</span>
             <span class="post-date" title="2024-04-05 10:58:58">2024/04/05</span>
@@ -14105,7 +14159,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.CSharp%E8%B0%83%E7%94%A8Lua-%E5%8F%98%E9%87%8F%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B5%8B%E5%80%BC/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="6.C#调用Lua变量">6.C#调用Lua变量</span>
             <span class="post-date" title="2024-04-05 10:48:57">2024/04/05</span>
@@ -14114,7 +14168,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E7%AE%A1%E7%90%86%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="5.Lua管理器">5.Lua管理器</span>
             <span class="post-date" title="2024-04-05 10:42:38">2024/04/05</span>
@@ -14123,7 +14177,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%87%8D%E5%AE%9A%E5%90%91/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="4.加载自定义路径下的Lua脚本">4.加载自定义路径下的Lua脚本</span>
             <span class="post-date" title="2024-04-05 10:01:35">2024/04/05</span>
@@ -14132,7 +14186,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E8%A7%A3%E6%9E%90%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="3.Lua解析器执行Lua脚本">3.Lua解析器执行Lua脚本</span>
             <span class="post-date" title="2024-04-05 09:54:20">2024/04/05</span>
@@ -14141,7 +14195,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="2.环境准备">2.环境准备</span>
             <span class="post-date" title="2024-04-04 23:27:40">2024/04/04</span>
@@ -14150,7 +14204,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
-           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="1.toLua基础知识概述">1.toLua基础知识概述</span>
             <span class="post-date" title="2024-04-04 23:23:02">2024/04/04</span>
@@ -14159,7 +14213,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%80%BB%E7%BB%93/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="11.xLua实践项目总结">11.xLua实践项目总结</span>
             <span class="post-date" title="2024-04-04 21:12:38">2024/04/04</span>
@@ -14168,7 +14222,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/10.%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2Lua%E8%84%9A%E6%9C%AC%E5%90%8E%E7%BC%80%E5%B7%A5%E5%85%B7/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="10.批量转换Lua脚本后缀工具">10.批量转换Lua脚本后缀工具</span>
             <span class="post-date" title="2024-04-04 21:11:38">2024/04/04</span>
@@ -14177,7 +14231,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/9.%E8%83%8C%E5%8C%85%E9%9D%A2%E6%9D%BF%E9%80%BB%E8%BE%91/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="9.背包面板逻辑">9.背包面板逻辑</span>
             <span class="post-date" title="2024-04-04 20:58:13">2024/04/04</span>
@@ -14186,7 +14240,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/8.%E9%81%93%E5%85%B7%E9%80%BB%E8%BE%91/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="8.道具逻辑">8.道具逻辑</span>
             <span class="post-date" title="2024-04-04 20:31:15">2024/04/04</span>
@@ -14195,7 +14249,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E4%B8%BB%E9%9D%A2%E6%9D%BF%E9%80%BB%E8%BE%91/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="7.主面板逻辑">7.主面板逻辑</span>
             <span class="post-date" title="2024-04-04 20:23:11">2024/04/04</span>
@@ -14204,7 +14258,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/6.%E9%9D%A2%E6%9D%BF%E5%9F%BA%E7%B1%BB/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="6.面板基类">6.面板基类</span>
             <span class="post-date" title="2024-04-04 19:53:23">2024/04/04</span>
@@ -14213,7 +14267,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/5.%E6%95%B0%E6%8D%AE%E7%9B%B8%E5%85%B3/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="5.数据相关">5.数据相关</span>
             <span class="post-date" title="2024-04-04 19:15:52">2024/04/04</span>
@@ -14222,7 +14276,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%88%AB%E5%90%8D/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="4.常用类别名">4.常用类别名</span>
             <span class="post-date" title="2024-04-04 18:53:53">2024/04/04</span>
@@ -14231,7 +14285,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/3.%E6%8B%BC%E9%9D%A2%E6%9D%BF/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="3.拼面板">3.拼面板</span>
             <span class="post-date" title="2024-04-04 18:52:53">2024/04/04</span>
@@ -14240,7 +14294,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/2.%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="2.环境准备">2.环境准备</span>
             <span class="post-date" title="2024-04-04 18:29:51">2024/04/04</span>
@@ -14249,7 +14303,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.%E6%A6%82%E8%BF%B0/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="1.xLua实践项目概述">1.xLua实践项目概述</span>
             <span class="post-date" title="2024-04-04 18:26:13">2024/04/04</span>
@@ -14258,7 +14312,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/30.%E6%80%BB%E7%BB%93/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="30.xLua基础知识总结">30.xLua基础知识总结</span>
             <span class="post-date" title="2024-04-04 17:39:31">2024/04/04</span>
@@ -14267,7 +14321,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/29.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E6%B3%9B%E5%9E%8B%E7%B1%BB%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="29.热补丁替换泛型类">29.热补丁替换泛型类</span>
             <span class="post-date" title="2024-04-04 17:38:31">2024/04/04</span>
@@ -14276,7 +14330,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/28.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E4%BA%8B%E4%BB%B6%E5%8A%A0%E5%87%8F%E6%93%8D%E4%BD%9C%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="28.热补丁替换委托事件加减操作">28.热补丁替换委托事件加减操作</span>
             <span class="post-date" title="2024-04-04 15:07:42">2024/04/04</span>
@@ -14285,7 +14339,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/27.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%B1%9E%E6%80%A7%E5%92%8C%E7%B4%A2%E5%BC%95%E5%99%A8%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="27.热补丁替换属性和索引器">27.热补丁替换属性和索引器</span>
             <span class="post-date" title="2024-04-04 15:02:13">2024/04/04</span>
@@ -14294,7 +14348,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%8D%8F%E7%A8%8B%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="26.热补丁替换协程函数">26.热补丁替换协程函数</span>
             <span class="post-date" title="2024-04-04 14:53:40">2024/04/04</span>
@@ -14303,7 +14357,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/25.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%A4%9A%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="25.热补丁替换多函数">25.热补丁替换多函数</span>
             <span class="post-date" title="2024-04-04 14:45:31">2024/04/04</span>
@@ -14312,7 +14366,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/24.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%8D%95%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="24.热补丁替换单函数">24.热补丁替换单函数</span>
             <span class="post-date" title="2024-04-04 14:24:55">2024/04/04</span>
@@ -14321,7 +14375,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/23.Lua%E8%B0%83%E7%94%A8CSharp-%E6%B3%9B%E5%9E%8B/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="23.Lua调用C#的泛型">23.Lua调用C#的泛型</span>
             <span class="post-date" title="2024-04-04 13:27:51">2024/04/04</span>
@@ -14330,7 +14384,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.Lua%E8%B0%83%E7%94%A8CSharp-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="22.Lua调用Unity的协同程序">22.Lua调用Unity的协同程序</span>
             <span class="post-date" title="2024-04-04 13:15:59">2024/04/04</span>
@@ -14339,7 +14393,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E4%BA%A4%E4%BA%92/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="21.Lua和C#对系统代码交互处理">21.Lua和C#对系统代码交互处理</span>
             <span class="post-date" title="2024-04-04 13:06:38">2024/04/04</span>
@@ -14348,7 +14402,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Lua%E8%B0%83%E7%94%A8CSharp-%E5%88%A4%E7%A9%BA/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="20.Lua和C#的判空相关">20.Lua和C#的判空相关</span>
             <span class="post-date" title="2024-04-04 13:04:39">2024/04/04</span>
@@ -14357,7 +14411,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/19.Lua%E8%B0%83%E7%94%A8CSharp-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="19.Lua调用C#的二维数组">19.Lua调用C#的二维数组</span>
             <span class="post-date" title="2024-04-04 12:54:09">2024/04/04</span>
@@ -14366,7 +14420,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/18.Lua%E8%B0%83%E7%94%A8CSharp-%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="18.Lua调用C#的委托和事件">18.Lua调用C#的委托和事件</span>
             <span class="post-date" title="2024-04-04 11:57:07">2024/04/04</span>
@@ -14375,7 +14429,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/17.Lua%E8%B0%83%E7%94%A8CSharp-%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="17.Lua调用C#的重载函数">17.Lua调用C#的重载函数</span>
             <span class="post-date" title="2024-04-04 11:51:29">2024/04/04</span>
@@ -14384,7 +14438,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.Lua%E8%B0%83%E7%94%A8CSharp-ref%E5%92%8Cout%E5%87%BD%E6%95%B0/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="16.Lua调用C#的ref和out函数">16.Lua调用C#的ref和out函数</span>
             <span class="post-date" title="2024-04-04 11:50:39">2024/04/04</span>
@@ -14393,7 +14447,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.Lua%E8%B0%83%E7%94%A8CSharp-%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="15.Lua调用C#的扩展方法">15.Lua调用C#的扩展方法</span>
             <span class="post-date" title="2024-04-04 11:35:07">2024/04/04</span>
@@ -14402,7 +14456,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Lua%E8%B0%83%E7%94%A8CSharp-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="14.Lua调用C#的数据集合">14.Lua调用C#的数据集合</span>
             <span class="post-date" title="2024-04-04 11:11:12">2024/04/04</span>
@@ -14411,7 +14465,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/13.Lua%E8%B0%83%E7%94%A8CSharp-%E6%9E%9A%E4%B8%BE/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="13.Lua调用C#的枚举">13.Lua调用C#的枚举</span>
             <span class="post-date" title="2024-04-04 11:09:44">2024/04/04</span>
@@ -14420,7 +14474,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B1%BB/"
-           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="12.Lua调用C#的类">12.Lua调用C#的类</span>
             <span class="post-date" title="2024-04-04 11:04:10">2024/04/04</span>
@@ -14429,7 +14483,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0LuaTable/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="11.C#把Lua表映射到LuaTable">11.C#把Lua表映射到LuaTable</span>
             <span class="post-date" title="2024-04-04 10:51:03">2024/04/04</span>
@@ -14438,7 +14492,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E6%8E%A5%E5%8F%A3/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="10.C#把Lua表映射到接口">10.C#把Lua表映射到接口</span>
             <span class="post-date" title="2024-04-04 10:45:54">2024/04/04</span>
@@ -14447,7 +14501,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E7%B1%BB/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="9.C#把Lua表映射到类">9.C#把Lua表映射到类</span>
             <span class="post-date" title="2024-04-04 10:32:53">2024/04/04</span>
@@ -14456,7 +14510,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0List%E5%92%8CDictionary/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="8.C#把Lua表映射到List和Dictionary">8.C#把Lua表映射到List和Dictionary</span>
             <span class="post-date" title="2024-04-04 10:28:33">2024/04/04</span>
@@ -14465,7 +14519,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.CSharp%E8%B0%83%E7%94%A8Lua-%E5%87%BD%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B0%83%E7%94%A8/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="7.C#调用Lua函数">7.C#调用Lua函数</span>
             <span class="post-date" title="2024-04-04 09:58:44">2024/04/04</span>
@@ -14474,7 +14528,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.CSharp%E8%B0%83%E7%94%A8Lua-%E5%8F%98%E9%87%8F%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B5%8B%E5%80%BC/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="6.C#调用Lua变量">6.C#调用Lua变量</span>
             <span class="post-date" title="2024-04-04 09:57:16">2024/04/04</span>
@@ -14483,7 +14537,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E7%AE%A1%E7%90%86%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="5.Lua管理器和加载AB包中的Lua脚本">5.Lua管理器和加载AB包中的Lua脚本</span>
             <span class="post-date" title="2024-04-04 09:08:02">2024/04/04</span>
@@ -14492,7 +14546,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%87%8D%E5%AE%9A%E5%90%91/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="4.加载自定义路径下的Lua脚本">4.加载自定义路径下的Lua脚本</span>
             <span class="post-date" title="2024-04-03 21:30:58">2024/04/03</span>
@@ -14501,7 +14555,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E8%A7%A3%E6%9E%90%E5%99%A8/"
-           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="3.Lua解析器执行Lua脚本">3.Lua解析器执行Lua脚本</span>
             <span class="post-date" title="2024-04-03 21:16:35">2024/04/03</span>
@@ -14510,7 +14564,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="2.环境准备">2.环境准备</span>
             <span class="post-date" title="2024-04-03 21:10:07">2024/04/03</span>
@@ -14519,7 +14573,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
-           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识"
+           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="1.xLua基础知识概述">1.xLua基础知识概述</span>
             <span class="post-date" title="2024-04-03 21:08:56">2024/04/03</span>
@@ -14527,20 +14581,29 @@
         
         
         <a  class="全部文章 编程语言 Lua Lua语法知识 "
-           href="/2024/04/03/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/01.Lua%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.%E6%80%BB%E7%BB%93/"
+           href="/2024/04/03/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/01.Lua%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/20.%E6%80%BB%E7%BB%93/"
            data-tag="编程语言,Lua,Lua语法知识"
            data-author="" >
-            <span class="post-title" title="19.Lua语法知识总结">19.Lua语法知识总结</span>
-            <span class="post-date" title="2024-04-03 13:19:03">2024/04/03</span>
+            <span class="post-title" title="20.Lua语法知识总结">20.Lua语法知识总结</span>
+            <span class="post-date" title="2024-04-03 14:19:03">2024/04/03</span>
         </a>
         
         
         <a  class="全部文章 编程语言 Lua Lua语法知识 "
-           href="/2024/04/03/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/01.Lua%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/18.%E6%B7%B1%E6%8B%B7%E8%B4%9D/"
+           href="/2024/04/03/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/01.Lua%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.Lua%E7%89%88%E6%9C%AC%E5%B7%AE%E5%BC%82/"
            data-tag="编程语言,Lua,Lua语法知识"
            data-author="" >
-            <span class="post-title" title="18.深拷贝">18.深拷贝</span>
-            <span class="post-date" title="2024-04-03 13:18:03">2024/04/03</span>
+            <span class="post-title" title="19.Lua版本差异">19.Lua版本差异</span>
+            <span class="post-date" title="2024-04-03 13:45:01">2024/04/03</span>
+        </a>
+        
+        
+        <a  class="全部文章 编程语言 Lua Lua语法知识 "
+           href="/2024/04/03/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/01.Lua%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/18.%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86/"
+           data-tag="编程语言,Lua,Lua语法知识"
+           data-author="" >
+            <span class="post-title" title="18.错误处理">18.错误处理</span>
+            <span class="post-date" title="2024-04-03 13:31:16">2024/04/03</span>
         </a>
         
         
@@ -14599,10 +14662,10 @@
         
         
         <a  class="全部文章 编程语言 Lua Lua语法知识 "
-           href="/2024/04/02/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/01.Lua%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E5%A4%9A%E8%84%9A%E6%9C%AC/"
+           href="/2024/04/02/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/01.Lua%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E6%A8%A1%E5%9D%97%E4%B8%8E%E5%A4%9A%E8%84%9A%E6%9C%AC/"
            data-tag="编程语言,Lua,Lua语法知识"
            data-author="" >
-            <span class="post-title" title="11.多脚本">11.多脚本</span>
+            <span class="post-title" title="11.模块与多脚本">11.模块与多脚本</span>
             <span class="post-date" title="2024-04-02 19:57:28">2024/04/02</span>
         </a>
         
@@ -20548,19 +20611,19 @@
         
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门实践项目 "
-           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
            data-tag="编程语言,CSharp,CSharp入门,CSharp入门实践项目"
            data-author="" >
-            <span class="post-title" title="12.公主相关">12.公主相关</span>
+            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门实践项目 "
-           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
            data-tag="编程语言,CSharp,CSharp入门,CSharp入门实践项目"
            data-author="" >
-            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
+            <span class="post-title" title="12.公主相关">12.公主相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
@@ -20990,7 +21053,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/739.%E6%AF%8F%E6%97%A5%E6%B8%A9%E5%BA%A6/"
-           data-tag="LeetCode,数组,热题100,栈,单调栈"
+           data-tag="LeetCode,热题100,数组,栈,单调栈"
            data-author="" >
             <span class="post-title" title="739.每日温度">739.每日温度</span>
             <span class="post-date" title="2000-01-10 07:03:09">2000/01/10</span>
@@ -21062,7 +21125,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/560.%E5%92%8C%E4%B8%BAK%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84/"
-           data-tag="LeetCode,数组,哈希表,热题100,前缀和"
+           data-tag="LeetCode,热题100,数组,哈希表,前缀和"
            data-author="" >
             <span class="post-title" title="560.和为K的子数组">560.和为K的子数组</span>
             <span class="post-date" title="2000-01-10 05:06:00">2000/01/10</span>
@@ -21107,7 +21170,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/463.%E5%B2%9B%E5%B1%BF%E7%9A%84%E5%91%A8%E9%95%BF/"
-           data-tag="LeetCode,数组,深度优先搜索,广度优先搜索,矩阵"
+           data-tag="LeetCode,深度优先搜索,广度优先搜索,数组,矩阵"
            data-author="" >
             <span class="post-title" title="463.岛屿的周长">463.岛屿的周长</span>
             <span class="post-date" title="2000-01-10 04:06:03">2000/01/10</span>
@@ -21143,7 +21206,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/438.%E6%89%BE%E5%88%B0%E5%AD%97%E7%AC%A6%E4%B8%B2%E4%B8%AD%E6%89%80%E6%9C%89%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D/"
-           data-tag="LeetCode,哈希表,热题100,字符串,滑动窗口"
+           data-tag="LeetCode,热题100,哈希表,字符串,滑动窗口"
            data-author="" >
             <span class="post-title" title="438.找到字符串中所有字母异位词">438.找到字符串中所有字母异位词</span>
             <span class="post-date" title="2000-01-10 04:03:08">2000/01/10</span>
@@ -21242,7 +21305,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/287.%E5%AF%BB%E6%89%BE%E9%87%8D%E5%A4%8D%E6%95%B0/"
-           data-tag="LeetCode,数组,热题100,双指针"
+           data-tag="LeetCode,热题100,数组,双指针"
            data-author="" >
             <span class="post-title" title="287.寻找重复数">287.寻找重复数</span>
             <span class="post-date" title="2000-01-10 02:08:07">2000/01/10</span>
@@ -21251,7 +21314,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/283.%E7%A7%BB%E5%8A%A8%E9%9B%B6/"
-           data-tag="LeetCode,数组,热题100,双指针"
+           data-tag="LeetCode,热题100,数组,双指针"
            data-author="" >
             <span class="post-title" title="283.移动零">283.移动零</span>
             <span class="post-date" title="2000-01-10 02:08:03">2000/01/10</span>
@@ -21287,7 +21350,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/236.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/"
-           data-tag="LeetCode,热题100,树,深度优先搜索,二叉树"
+           data-tag="LeetCode,树,深度优先搜索,二叉树,热题100"
            data-author="" >
             <span class="post-title" title="236.二叉树的最近公共祖先">236.二叉树的最近公共祖先</span>
             <span class="post-date" title="2000-01-10 02:03:06">2000/01/10</span>
@@ -21305,7 +21368,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/232.%E7%94%A8%E6%A0%88%E5%AE%9E%E7%8E%B0%E9%98%9F%E5%88%97/"
-           data-tag="LeetCode,栈,队列,设计"
+           data-tag="LeetCode,队列,栈,设计"
            data-author="" >
             <span class="post-title" title="232.用栈实现队列">232.用栈实现队列</span>
             <span class="post-date" title="2000-01-10 02:03:02">2000/01/10</span>
@@ -21323,7 +21386,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,热题100,树,深度优先搜索,二叉树,二叉搜索树"
+           data-tag="LeetCode,树,深度优先搜索,二叉树,热题100,二叉搜索树"
            data-author="" >
             <span class="post-title" title="230.二叉搜索树中第K小的元素">230.二叉搜索树中第K小的元素</span>
             <span class="post-date" title="2000-01-10 02:03:00">2000/01/10</span>
@@ -21332,7 +21395,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/225.%E7%94%A8%E9%98%9F%E5%88%97%E5%AE%9E%E7%8E%B0%E6%A0%88/"
-           data-tag="LeetCode,栈,队列,设计"
+           data-tag="LeetCode,队列,栈,设计"
            data-author="" >
             <span class="post-title" title="225.用队列实现栈">225.用队列实现栈</span>
             <span class="post-date" title="2000-01-10 02:02:05">2000/01/10</span>
@@ -21350,7 +21413,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/215.%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E7%AC%ACK%E4%B8%AA%E6%9C%80%E5%A4%A7%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,数组,热题100,分治,排序,快速选择,堆"
+           data-tag="LeetCode,热题100,数组,分治,排序,快速选择,堆"
            data-author="" >
             <span class="post-title" title="215.数组中的第K个最大元素">215.数组中的第K个最大元素</span>
             <span class="post-date" title="2000-01-10 02:01:05">2000/01/10</span>
@@ -21386,7 +21449,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/200.%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/"
-           data-tag="LeetCode,热题100,深度优先搜索,广度优先搜索,岛屿"
+           data-tag="LeetCode,深度优先搜索,广度优先搜索,热题100,岛屿"
            data-author="" >
             <span class="post-title" title="200.岛屿数量">200.岛屿数量</span>
             <span class="post-date" title="2000-01-10 02:00:00">2000/01/10</span>
@@ -21395,7 +21458,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/198.%E6%89%93%E5%AE%B6%E5%8A%AB%E8%88%8D/"
-           data-tag="LeetCode,数组,热题100,动态规划"
+           data-tag="LeetCode,热题100,数组,动态规划"
            data-author="" >
             <span class="post-title" title="198.打家劫舍">198.打家劫舍</span>
             <span class="post-date" title="2000-01-10 01:09:08">2000/01/10</span>
@@ -21404,7 +21467,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/189.%E8%BD%AE%E8%BD%AC%E6%95%B0%E7%BB%84/"
-           data-tag="LeetCode,数组,热题100,双指针,数学"
+           data-tag="LeetCode,热题100,数组,双指针,数学"
            data-author="" >
             <span class="post-title" title="189.轮转数组">189.轮转数组</span>
             <span class="post-date" title="2000-01-10 01:08:09">2000/01/10</span>
@@ -21413,7 +21476,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/169.%E5%A4%9A%E6%95%B0%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,数组,哈希表,热题100,分治,计数,排序"
+           data-tag="LeetCode,热题100,数组,哈希表,分治,计数,排序"
            data-author="" >
             <span class="post-title" title="169.多数元素">169.多数元素</span>
             <span class="post-date" title="2000-01-10 01:06:09">2000/01/10</span>
@@ -21440,7 +21503,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/160.%E7%9B%B8%E4%BA%A4%E9%93%BE%E8%A1%A8/"
-           data-tag="LeetCode,哈希表,热题100,双指针,链表"
+           data-tag="LeetCode,热题100,哈希表,双指针,链表"
            data-author="" >
             <span class="post-title" title="160.相交链表">160.相交链表</span>
             <span class="post-date" title="2000-01-10 01:06:00">2000/01/10</span>
@@ -21449,7 +21512,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/146.LRU%E7%BC%93%E5%AD%98/"
-           data-tag="LeetCode,哈希表,热题100,链表,设计,双向链表"
+           data-tag="LeetCode,热题100,哈希表,链表,设计,双向链表"
            data-author="" >
             <span class="post-title" title="146.LRU缓存">146.LRU缓存</span>
             <span class="post-date" title="2000-01-10 01:04:06">2000/01/10</span>
@@ -21458,7 +21521,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/"
-           data-tag="LeetCode,栈,树,深度优先搜索,二叉树"
+           data-tag="LeetCode,树,深度优先搜索,二叉树,栈"
            data-author="" >
             <span class="post-title" title="144.二叉树的前序遍历">144.二叉树的前序遍历</span>
             <span class="post-date" title="2000-01-10 01:04:04">2000/01/10</span>
@@ -21467,7 +21530,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/141.%E7%8E%AF%E5%BD%A2%E9%93%BE%E8%A1%A8/"
-           data-tag="LeetCode,哈希表,热题100,双指针,链表"
+           data-tag="LeetCode,热题100,哈希表,双指针,链表"
            data-author="" >
             <span class="post-title" title="141.环形链表">141.环形链表</span>
             <span class="post-date" title="2000-01-10 01:04:01">2000/01/10</span>
@@ -21476,7 +21539,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/136.%E5%8F%AA%E5%87%BA%E7%8E%B0%E4%B8%80%E6%AC%A1%E7%9A%84%E6%95%B0%E5%AD%97/"
-           data-tag="LeetCode,数组,热题100,位运算"
+           data-tag="LeetCode,热题100,数组,位运算"
            data-author="" >
             <span class="post-title" title="136.只出现一次的数字">136.只出现一次的数字</span>
             <span class="post-date" title="2000-01-10 01:03:06">2000/01/10</span>
@@ -21512,7 +21575,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/128.%E6%9C%80%E9%95%BF%E8%BF%9E%E7%BB%AD%E5%BA%8F%E5%88%97/"
-           data-tag="LeetCode,数组,哈希表,热题100"
+           data-tag="LeetCode,热题100,数组,哈希表"
            data-author="" >
             <span class="post-title" title="128.最长连续序列">128.最长连续序列</span>
             <span class="post-date" title="2000-01-10 01:02:08">2000/01/10</span>
@@ -21530,7 +21593,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/121.%E4%B9%B0%E5%8D%96%E8%82%A1%E7%A5%A8%E7%9A%84%E6%9C%80%E4%BD%B3%E6%97%B6%E6%9C%BA/"
-           data-tag="LeetCode,数组,热题100,动态规划"
+           data-tag="LeetCode,热题100,数组,动态规划"
            data-author="" >
             <span class="post-title" title="121.买卖股票的最佳时机">121.买卖股票的最佳时机</span>
             <span class="post-date" title="2000-01-10 01:02:01">2000/01/10</span>
@@ -21539,7 +21602,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/118.%E6%9D%A8%E8%BE%89%E4%B8%89%E8%A7%92/"
-           data-tag="LeetCode,数组,热题100,动态规划"
+           data-tag="LeetCode,热题100,数组,动态规划"
            data-author="" >
             <span class="post-title" title="118.杨辉三角">118.杨辉三角</span>
             <span class="post-date" title="2000-01-10 01:01:08">2000/01/10</span>
@@ -21557,7 +21620,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"
-           data-tag="LeetCode,数组,热题100,树,二叉树,二叉搜索树,分治"
+           data-tag="LeetCode,树,二叉树,热题100,数组,二叉搜索树,分治"
            data-author="" >
             <span class="post-title" title="108.将有序数组转换为二叉搜索树">108.将有序数组转换为二叉搜索树</span>
             <span class="post-date" title="2000-01-10 01:00:08">2000/01/10</span>
@@ -21566,7 +21629,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/104.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/"
-           data-tag="LeetCode,热题100,树,深度优先搜索,广度优先搜索,二叉树"
+           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,二叉树,热题100"
            data-author="" >
             <span class="post-title" title="104.二叉树的最大深度">104.二叉树的最大深度</span>
             <span class="post-date" title="2000-01-10 01:00:04">2000/01/10</span>
@@ -21575,7 +21638,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/102.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/"
-           data-tag="LeetCode,热题100,广度优先搜索,二叉树,队列"
+           data-tag="LeetCode,广度优先搜索,二叉树,热题100,队列"
            data-author="" >
             <span class="post-title" title="102.二叉树的层序遍历">102.二叉树的层序遍历</span>
             <span class="post-date" title="2000-01-10 01:00:02">2000/01/10</span>
@@ -21584,7 +21647,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/101.%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/"
-           data-tag="LeetCode,热题100,树,深度优先搜索,广度优先搜索,二叉树"
+           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,二叉树,热题100"
            data-author="" >
             <span class="post-title" title="101.对称二叉树">101.对称二叉树</span>
             <span class="post-date" title="2000-01-10 01:00:01">2000/01/10</span>
@@ -21602,7 +21665,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/94.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/"
-           data-tag="LeetCode,热题100,栈,树,深度优先搜索,广度优先搜索"
+           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,热题100,栈"
            data-author="" >
             <span class="post-title" title="94.二叉树的中序遍历">94.二叉树的中序遍历</span>
             <span class="post-date" title="2000-01-10 00:09:04">2000/01/10</span>
@@ -21629,7 +21692,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/75.%E9%A2%9C%E8%89%B2%E5%88%86%E7%B1%BB/"
-           data-tag="LeetCode,数组,热题100,双指针,排序"
+           data-tag="LeetCode,热题100,数组,双指针,排序"
            data-author="" >
             <span class="post-title" title="75.颜色分类">75.颜色分类</span>
             <span class="post-date" title="2000-01-10 00:07:05">2000/01/10</span>
@@ -21638,7 +21701,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/74.%E6%90%9C%E7%B4%A2%E4%BA%8C%E7%BB%B4%E7%9F%A9%E9%98%B5/"
-           data-tag="LeetCode,数组,热题100,二分查找,矩阵"
+           data-tag="LeetCode,热题100,数组,二分查找,矩阵"
            data-author="" >
             <span class="post-title" title="74.搜索二维矩阵">74.搜索二维矩阵</span>
             <span class="post-date" title="2000-01-10 00:07:04">2000/01/10</span>
@@ -21701,7 +21764,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/55.%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8F/"
-           data-tag="LeetCode,数组,热题100,贪心,动态规划"
+           data-tag="LeetCode,热题100,数组,贪心,动态规划"
            data-author="" >
             <span class="post-title" title="55.跳跃游戏">55.跳跃游戏</span>
             <span class="post-date" title="2000-01-10 00:05:05">2000/01/10</span>
@@ -21710,7 +21773,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/54.%E8%9E%BA%E6%97%8B%E7%9F%A9%E9%98%B5/"
-           data-tag="LeetCode,数组,热题100,分治,动态规划"
+           data-tag="LeetCode,热题100,数组,分治,动态规划"
            data-author="" >
             <span class="post-title" title="54.螺旋矩阵">54.螺旋矩阵</span>
             <span class="post-date" title="2000-01-10 00:05:04">2000/01/10</span>
@@ -21719,7 +21782,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/53.%E6%9C%80%E5%A4%A7%E5%AD%90%E6%95%B0%E7%BB%84%E5%92%8C/"
-           data-tag="LeetCode,数组,热题100,分治,动态规划"
+           data-tag="LeetCode,热题100,数组,分治,动态规划"
            data-author="" >
             <span class="post-title" title="53.最大子数组和">53.最大子数组和</span>
             <span class="post-date" title="2000-01-10 00:05:03">2000/01/10</span>
@@ -21728,7 +21791,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/49.%E5%AD%97%E6%AF%8D%E5%BC%82%E4%BD%8D%E8%AF%8D%E5%88%86%E7%BB%84/"
-           data-tag="LeetCode,数组,哈希表,热题100,字符串"
+           data-tag="LeetCode,热题100,数组,哈希表,字符串"
            data-author="" >
             <span class="post-title" title="49.字母异位词分组">49.字母异位词分组</span>
             <span class="post-date" title="2000-01-10 00:04:09">2000/01/10</span>
@@ -21737,7 +21800,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/48.%E6%97%8B%E8%BD%AC%E5%9B%BE%E5%83%8F/"
-           data-tag="LeetCode,数组,热题100,数学,矩阵"
+           data-tag="LeetCode,热题100,数组,数学,矩阵"
            data-author="" >
             <span class="post-title" title="48.旋转图像">48.旋转图像</span>
             <span class="post-date" title="2000-01-10 00:04:08">2000/01/10</span>
@@ -21746,7 +21809,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/46.%E5%85%A8%E6%8E%92%E5%88%97/"
-           data-tag="LeetCode,热题100,深度优先搜索,回溯,排列"
+           data-tag="LeetCode,深度优先搜索,热题100,回溯,排列"
            data-author="" >
             <span class="post-title" title="46.全排列">46.全排列</span>
             <span class="post-date" title="2000-01-10 00:04:06">2000/01/10</span>
@@ -21755,7 +21818,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/45.%E8%B7%B3%E8%B7%83%E6%B8%B8%E6%88%8FII/"
-           data-tag="LeetCode,数组,热题100,贪心,动态规划"
+           data-tag="LeetCode,热题100,数组,贪心,动态规划"
            data-author="" >
             <span class="post-title" title="45.跳跃游戏II">45.跳跃游戏II</span>
             <span class="post-date" title="2000-01-10 00:04:05">2000/01/10</span>
@@ -21764,7 +21827,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/35.%E6%90%9C%E7%B4%A2%E6%8F%92%E5%85%A5%E4%BD%8D%E7%BD%AE/"
-           data-tag="LeetCode,数组,热题100,二分查找"
+           data-tag="LeetCode,热题100,数组,二分查找"
            data-author="" >
             <span class="post-title" title="35.搜索插入位置">35.搜索插入位置</span>
             <span class="post-date" title="2000-01-10 00:03:05">2000/01/10</span>
@@ -21773,7 +21836,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/34.%E5%9C%A8%E6%8E%92%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%92%8C%E6%9C%80%E5%90%8E%E4%B8%80%E4%B8%AA%E4%BD%8D%E7%BD%AE/"
-           data-tag="LeetCode,数组,热题100,二分查找"
+           data-tag="LeetCode,热题100,数组,二分查找"
            data-author="" >
             <span class="post-title" title="34.在排序数组中查找元素的第一个和最后一个位置">34.在排序数组中查找元素的第一个和最后一个位置</span>
             <span class="post-date" title="2000-01-10 00:03:04">2000/01/10</span>
@@ -21845,7 +21908,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/15.%E4%B8%89%E6%95%B0%E4%B9%8B%E5%92%8C/"
-           data-tag="LeetCode,数组,热题100,双指针,排序"
+           data-tag="LeetCode,热题100,数组,双指针,排序"
            data-author="" >
             <span class="post-title" title="15.三数之和">15.三数之和</span>
             <span class="post-date" title="2000-01-10 00:01:05">2000/01/10</span>
@@ -21881,7 +21944,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/11.%E7%9B%9B%E6%9C%80%E5%A4%9A%E6%B0%B4%E7%9A%84%E5%AE%B9%E5%99%A8/"
-           data-tag="LeetCode,数组,热题100,贪心,双指针"
+           data-tag="LeetCode,热题100,数组,贪心,双指针"
            data-author="" >
             <span class="post-title" title="11.盛最多水的容器">11.盛最多水的容器</span>
             <span class="post-date" title="2000-01-10 00:01:01">2000/01/10</span>
@@ -21917,7 +21980,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/4.%E5%AF%BB%E6%89%BE%E4%B8%A4%E4%B8%AA%E6%AD%A3%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E4%B8%AD%E4%BD%8D%E6%95%B0/"
-           data-tag="LeetCode,数组,热题100,分治,二分查找"
+           data-tag="LeetCode,热题100,数组,分治,二分查找"
            data-author="" >
             <span class="post-title" title="4.寻找两个正序数组的中位数">4.寻找两个正序数组的中位数</span>
             <span class="post-date" title="2000-01-10 00:00:04">2000/01/10</span>
@@ -21926,7 +21989,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/3.%E6%97%A0%E9%87%8D%E5%A4%8D%E5%AD%97%E7%AC%A6%E7%9A%84%E6%9C%80%E9%95%BF%E5%AD%90%E4%B8%B2/"
-           data-tag="LeetCode,哈希表,热题100,字符串,滑动窗口"
+           data-tag="LeetCode,热题100,哈希表,字符串,滑动窗口"
            data-author="" >
             <span class="post-title" title="3.无重复字符的最长子串">3.无重复字符的最长子串</span>
             <span class="post-date" title="2000-01-10 00:00:03">2000/01/10</span>
@@ -21944,7 +22007,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/1.%E4%B8%A4%E6%95%B0%E4%B9%8B%E5%92%8C/"
-           data-tag="LeetCode,数组,哈希表,热题100"
+           data-tag="LeetCode,热题100,数组,哈希表"
            data-author="" >
             <span class="post-title" title="1.两数之和">1.两数之和</span>
             <span class="post-date" title="2000-01-10 00:00:01">2000/01/10</span>
@@ -25374,7 +25437,7 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2026-05-12 21:08:03'>2025-03-07 23:11</time>
+            发布时间 : <time class="date" title='最后更新: 2026-05-13 08:57:33'>2025-03-07 23:11</time>
         
     </div>
     <div class="article-meta">
@@ -25427,7 +25490,7 @@
       
         <h1 id="4-登录流程"><a href="#4-登录流程" class="headerlink" title="4.登录流程"></a>4.登录流程</h1><hr>
 <h2 id="4-1-登录整体流程"><a href="#4-1-登录整体流程" class="headerlink" title="4.1 登录整体流程"></a>4.1 登录整体流程</h2><p>登录流程比注册流程多了一层：<strong>客户端不是登录鉴权服以后就直接进游戏，而是先从鉴权服拿到一张临时凭证，再拿这张凭证去连接 Gate。</strong></p>
-<p>可以把这套流程理解成进游戏前的两道检查：</p>
+<p>这套流程有点像进场前过两道口：</p>
 <ul>
 <li><strong>鉴权服</strong> 像售票处，负责确认账号密码是否正确，并签发一张短期门票。</li>
 <li><strong>Gate</strong> 像真正的入口检票口，负责验票、绑定连接、处理顶号和断线重连。</li>
@@ -25435,7 +25498,7 @@
 </ul>
 <p>这里最容易混淆的是：<br><strong>鉴权服登录成功，只代表账号凭证通过了校验，不代表客户端已经进入游戏世界。</strong></p>
 <p>真正进入游戏入口，还需要客户端拿 Token 连接 Gate，并且 Gate 验签通过后，把当前 Session 和游戏账号绑定起来。</p>
-<p>整体链路大概分成几段：</p>
+<p>我自己看这段登录链路时，会先按这几段拆：</p>
 <ul>
 <li>客户端根据用户名选择鉴权服，发送登录请求。</li>
 <li>鉴权服校验参数、校验账号归属、加锁处理同账号并发登录。</li>
@@ -25445,17 +25508,17 @@
 <li>Gate 验证 JWT 签名、发行者、接收方、场景 ID 等信息。</li>
 <li>Gate 根据账号 ID 加载或创建 <code>GameAccount</code>。</li>
 <li>Gate 处理重复登录、顶号、断线重连、延迟下线。</li>
-<li>登录完成后，客户端正式进入后续游戏流程。</li>
+<li>Gate 这关过了之后，客户端才算真正接上游戏入口，后面才轮到角色、场景之类的流程。</li>
 </ul>
 <p><img src="/../../../images/%E6%9C%8D%E5%8A%A1%E7%AB%AF/01.%E6%B3%A8%E5%86%8C%E7%99%BB%E5%BD%95/4.%E7%99%BB%E5%BD%95%E6%B5%81%E7%A8%8B/1.png"></p>
-<p>上面这张图适合看完整链路，但如果直接把所有节点塞进一张 Mermaid，后面阅读和修改都会比较难受。<br>这里按职责拆成几张小图：</p>
+<p>上面这张图适合先看全貌。真要顺代码，把所有节点都塞进一张 Mermaid 反而不好读，所以我后面按职责拆成几张小图：</p>
 <ul>
 <li>第一张看客户端到鉴权服的账号校验。</li>
 <li>第二张看客户端拿 Token 后怎么连接 Gate。</li>
 <li>第三张看 Gate 如何验签并加载 <code>GameAccount</code>。</li>
 <li>第四张看 Session 绑定、顶号和断线下线处理。</li>
 </ul>
-<p>这样拆开以后，每张图只表达一个阶段，后面改某一段逻辑时，也不用在一张超长流程图里找节点。</p>
+<p>这样每张图只盯一个阶段，后面回来看某段逻辑，也不用在一张超长流程图里翻节点。</p>
 <h3 id="鉴权服登录流程"><a href="#鉴权服登录流程" class="headerlink" title="鉴权服登录流程"></a>鉴权服登录流程</h3><p>这一段只关心一件事：<strong>用户名和密码能不能换到一个有效的登录 Token。</strong></p>
 <p>客户端会先根据用户名选择鉴权服。<br>鉴权服收到请求后，不会直接相信客户端选的节点，而是自己重新计算账号归属。<br>如果当前节点不负责这个账号，就直接返回错误。</p>
 <p>账号归属没问题后，再进入同账号协程锁、登录缓存、数据库查询、更新登录时间、分配 Gate、生成 JWT 这些逻辑。</p>
@@ -25664,13 +25727,13 @@
     session_decide_timeout -- 立即下线 --> session_immediate_disconnect
     session_decide_timeout -- 延迟下线 --> session_delay_disconnect</pre>
 
-<p>拆开来看，登录流程真正要抓住的是三条线：</p>
+<p>拆开以后，这篇主要盯三条线：</p>
 <ul>
 <li><strong>账号校验线</strong>：用户名密码是否正确，账号应该由哪个鉴权服处理。</li>
 <li><strong>Token 跳转线</strong>：鉴权服签发 Token，客户端拿 Token 去连接指定 Gate。</li>
 <li><strong>Session 状态线</strong>：Gate 把账号和 Session 绑定，处理重复登录、顶号、断线和延迟下线。</li>
 </ul>
-<p>这三条线分清楚以后，后面继续看代码就不会乱。<br>鉴权服只负责“这个账号能不能登录，以及该去哪个 Gate”；Gate 负责“这张票能不能进来，以及进来后这个连接怎么绑定和管理”。</p>
+<p>这三条线分清楚，后面读代码就不容易把职责看串。<br>鉴权服管的是“这个账号能不能登录、应该去哪个 Gate”；Gate 管的是“这张票能不能进来、进来后这个连接怎么挂到账号上”。</p>
 <hr>
 <h2 id="4-2-客户端登录前准备"><a href="#4-2-客户端登录前准备" class="headerlink" title="4.2 客户端登录前准备"></a>4.2 客户端登录前准备</h2><p>客户端登录前需要准备两个能力：</p>
 <ul>
@@ -25735,13 +25798,13 @@ string userName, string password)
     //...
 &#125;
 </code></pre>
-<p>这个方法的返回值很克制：</p>
+<p>这个方法返回得比较干净：</p>
 <ul>
 <li><code>ErrorCode</code> 告诉外层是否登录成功。</li>
 <li><code>AccountId</code> 只在登录成功时有效。</li>
 <li>Token 不在这个方法里直接生成，而是在登录成功后由外层根据账号 ID 继续分配 Gate 并签发。</li>
 </ul>
-<p>这样拆的好处是比较清楚：<br><code>Login</code> 方法只负责“账号是否能登录”，不掺杂“玩家应该连哪个 Gate”这种后续入口分配逻辑。</p>
+<p>这里拆开是有意义的：<br><code>Login</code> 方法只回答“账号是否能登录”，不要顺手把“玩家应该连哪个 Gate”也塞进去。入口分配放到外层，后面要换 Gate 分配策略也更好动。</p>
 <h3 id="参数校验和账号归属校验"><a href="#参数校验和账号归属校验" class="headerlink" title="参数校验和账号归属校验"></a>参数校验和账号归属校验</h3><p>登录首先要做基础参数校验。用户名或密码为空，没有必要继续走缓存和数据库。</p>
 <pre><code class="csharp">// 检查用户名和密码是否为空，若任一为空则无法进行登录操作
 if (string.IsNullOrEmpty(userName) || string.IsNullOrEmpty(password))
@@ -25767,7 +25830,7 @@ if (self.Position != position)
 <li>当前节点不匹配，就直接拒绝。</li>
 </ul>
 <p>这个校验不能省。<br>因为客户端分流只能减轻服务端入口压力，不能作为服务端信任来源。</p>
-<p>实际项目里这里还会加一些前置控制：</p>
+<p>真放到线上，这里通常还会在入口前面补几层控制：</p>
 <ul>
 <li>登录请求频率限制。</li>
 <li>Session 超时时间。</li>
@@ -25775,7 +25838,7 @@ if (self.Position != position)
 <li>同账号短时间失败次数统计。</li>
 <li>验证码或二次验证。</li>
 </ul>
-<p>学习阶段先把主流程跑通就行，正式环境不能只靠用户名密码校验硬扛所有入口流量。</p>
+<p>学习代码先把主流程跑通没问题，但正式入口不能只靠用户名密码校验硬扛所有流量。</p>
 <h3 id="同账号登录并发控制"><a href="#同账号登录并发控制" class="headerlink" title="同账号登录并发控制"></a>同账号登录并发控制</h3><p>登录和注册一样，也要考虑同一个账号短时间内并发请求的问题。</p>
 <p>常见场景有：</p>
 <ul>
@@ -25801,7 +25864,7 @@ using (var @lock =
 &#125;
 </code></pre>
 <p>这把锁的目标不是把所有登录请求串行化。<br>如果所有账号共用一把锁，那登录入口就废了。</p>
-<p>这里要锁的是“同一个用户名”。不同账号之间仍然可以并行登录。<br>可以理解成银行柜台办业务：同一个账号的几张申请单要按顺序处理，但不同人的业务不应该互相卡住。</p>
+<p>这里要锁的是“同一个用户名”。不同账号之间仍然可以并行登录。<br>有点像银行柜台办业务：同一个账号的几张申请单要排队处理，但不同人的业务不应该互相卡住。</p>
 <p>这里还有一个小边界：</p>
 <ul>
 <li><code>userName.GetHashCode()</code> 在一些运行环境里可能不是稳定跨进程哈希。</li>
@@ -25809,14 +25872,14 @@ using (var @lock =
 <li>如果锁 Key 要跨进程、跨机器共享，就应该用稳定哈希，比如 MurmurHash3，或者直接使用规范化后的用户名作为分布式锁 Key。</li>
 </ul>
 <h3 id="查询登录缓存和数据库"><a href="#查询登录缓存和数据库" class="headerlink" title="查询登录缓存和数据库"></a>查询登录缓存和数据库</h3><p>进入锁之后，才开始处理缓存和数据库。</p>
-<p>当前代码里使用 <code>userName + password</code> 作为登录缓存 Key。<br>这个写法适合学习流程，但正式项目里不建议这么做：</p>
+<p>当前代码里使用 <code>userName + password</code> 作为登录缓存 Key。<br>这个写法看流程很直观，但真项目里不建议这么做：</p>
 <ul>
 <li>字符串直接拼接可能出现边界歧义，比如 <code>ab + c</code> 和 <code>a + bc</code>。</li>
 <li>密码不应该以明文形式参与缓存 Key。</li>
 <li>正式项目里应该存密码哈希，不应该用明文密码查数据库。</li>
 <li>登录缓存也要考虑账号封禁、改密码、Token 版本变化等状态。</li>
 </ul>
-<p>不过这段代码表达的主线是对的：<br>先查短期缓存，缓存没有命中再查数据库，查到后更新登录时间并写入缓存。</p>
+<p>抛开这些工程细节，这段代码要表达的主线没问题：<br>先查短期缓存，没命中再查数据库，查到后更新登录时间并写入缓存。</p>
 <pre><code class="csharp">// 使用协程锁机制，确保同一账号的登录请求不会同时操作数据库或缓存
 using (var @lock =
         await scene.CoroutineLockComponent.Wait((int)LockType.AuthenticationLoginLock, usernameHashCode))
@@ -25886,7 +25949,7 @@ using (var @lock =
     return (0, account.Id);
 &#125;
 </code></pre>
-<p>这块的工程意图可以整理成几句话：</p>
+<p>这块我会记成下面几条：</p>
 <ul>
 <li>登录缓存是为了挡住短时间重复请求，不是为了长期保存账号状态。</li>
 <li>缓存时间设置得很短，比如这里的 5000 毫秒。</li>
@@ -25926,7 +25989,7 @@ response.ErrorCode = result.ErrorCode;
 // 输出调试日志，显示当前处理登录请求的服务器 SceneConfigId
 Log.Debug($&quot;Login 当前的服务器是:&#123;scene.SceneConfigId&#125;&quot;);
 </code></pre>
-<p>这段逻辑本质上是在做一张“入场票”：</p>
+<p>这段逻辑其实就是签一张“入场票”：</p>
 <ul>
 <li><code>aId</code>：账号 ID，Gate 后面用它加载 <code>GameAccount</code>。</li>
 <li><code>Address</code>：客户端接下来要连接的 Gate 外网地址。</li>
@@ -25934,7 +25997,7 @@ Log.Debug($&quot;Login 当前的服务器是:&#123;scene.SceneConfigId&#125;&quo
 <li><code>exp</code>：过期时间，避免登录票据长期有效。</li>
 <li>签名：证明这张票确实是鉴权服发的，客户端不能自己改。</li>
 </ul>
-<p>当前示例里把 Gate 地址也放进了 JWT Payload。<br>这在学习阶段很直观，客户端解析 Token 就能拿到连接地址。</p>
+<p>当前示例里把 Gate 地址也放进了 JWT Payload。<br>这样写对学习来说很直观：客户端解析 Token 就能拿到连接地址。</p>
 <p>但边界也要清楚：</p>
 <ul>
 <li>Payload 默认不是加密的，客户端能看到里面的地址。</li>
@@ -25966,7 +26029,7 @@ public static string GetToken(this AuthenticationJwtComponent self, long aId, st
     return new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
 &#125;
 </code></pre>
-<p>这里有几个点要特别注意。</p>
+<p>这里有几个坑最好顺手记一下。</p>
 <ul>
 <li><p><code>expires: DateTime.UtcNow.AddMilliseconds(3000)</code> 表示这个 Token 只有 3 秒有效期。<br>这更像登录跳转票据，不是长期登录态。</p>
 </li>
@@ -25974,10 +26037,10 @@ public static string GetToken(this AuthenticationJwtComponent self, long aId, st
 </li>
 <li><p><code>issuer</code> 和 <code>audience</code> 现在都写成了 <code>&quot;Tao&quot;</code>。<br>学习阶段没问题，正式项目里建议拆清楚，比如 <code>issuer = AuthServer</code>，<code>audience = GateServer</code>。</p>
 </li>
-<li><p>Token 字段名写成 <code>Token</code> 是代码里的历史命名问题。<br>正式协议字段建议统一成 <code>Token</code>，否则后面前后端对接、日志检索、工具生成都会比较别扭。</p>
+<li><p>客户端解析方法里的形参写成了 <code>toKen</code>，这类大小写不统一虽然不影响运行，但后面查日志、搜代码、生成协议文档时都会有点别扭。<br>真项目里最好统一成 <code>token</code> 或 <code>Token</code>，不要在同一条链路里混着来。</p>
 </li>
 </ul>
-<p>如果把 Token 比作临时门票：</p>
+<p>按“临时门票”这个比喻看：</p>
 <ul>
 <li><code>aId</code> 是玩家身份。</li>
 <li><code>Address</code> 是入口地址。</li>
@@ -26010,7 +26073,7 @@ if (!_scene.GetComponent&lt;JWTParseComponent&gt;().Parse(response.Token, out va
     return;
 &#125;
 </code></pre>
-<p>这里的顺序是合理的：</p>
+<p>这个顺序不能反过来：</p>
 <ul>
 <li>错误码不为 0，说明鉴权服没有签发有效 Token。</li>
 <li>没有 Token，就不应该继续连接 Gate。</li>
@@ -26162,9 +26225,9 @@ public static class JWTParseComponentSystem
 <p>这段代码有一个很重要的注释：</p>
 <pre><code class="csharp">// 注意：当前实现仅验证令牌结构，未验证签名和过期时间！
 </code></pre>
-<p>这个点必须分清楚。</p>
+<p>这点一定要分清。</p>
 <p>客户端解析 JWT，只是在读取 Payload。<br>它没有验证签名，也没有验证过期时间，所以不能认为“客户端解析成功 &#x3D; Token 合法”。</p>
-<p>但这在当前流程里是可以接受的，因为客户端只是拿 <code>Address</code> 去连 Gate。<br>真正的安全校验放在 Gate：</p>
+<p>但放在当前流程里问题不大，因为客户端只是拿 <code>Address</code> 去连 Gate。<br>安全账要算在 Gate 这边：</p>
 <ul>
 <li>Token 被改过，Gate 验签失败。</li>
 <li>Token 过期，正式环境里 Gate 应该拒绝。</li>
@@ -26191,7 +26254,7 @@ if (loginResponse.ErrorCode != 0)
 
 Log.Debug($&quot;登录Gate服务器成功！登录时间: &#123;loginResponse.GameAccountInfo.LoginTime&#125; 创建时间: &#123;loginResponse.GameAccountInfo.CreateTime&#125;&quot;);
 </code></pre>
-<p>这一步之后，客户端才算真正进入 Gate 登录阶段。</p>
+<p>走到这里，客户端才算从鉴权服跳到了 Gate 登录阶段。</p>
 <hr>
 <h2 id="4-6-Gate-验证-Token"><a href="#4-6-Gate-验证-Token" class="headerlink" title="4.6 Gate 验证 Token"></a>4.6 Gate 验证 Token</h2><p>Gate 需要两个能力：</p>
 <ul>
@@ -26227,7 +26290,7 @@ scene.AddComponent&lt;GameAccountManageComponent&gt;();
     [BsonIgnore] public long SessionRunTimeId;
 &#125;
 </code></pre>
-<p><code>SessionRunTimeId</code> 不保存到数据库是合理的。<br>它是运行时连接状态，不是账号持久数据。服务器重启后，这个 Session 本来也不存在了，没必要持久化。</p>
+<p><code>SessionRunTimeId</code> 不应该落库。<br>它只表示当前进程里的连接状态，不是账号档案。服务器一重启，这个 Session 本来也没了，存下来反而容易误导后续逻辑。</p>
 <p>Gate 收到客户端登录请求后，先检查 Token 是否为空：</p>
 <pre><code class="csharp">/// &lt;summary&gt;
 /// 处理客户端登录请求的消息处理器
@@ -26267,8 +26330,8 @@ public sealed class C2G_LoginRequestHandler : MessageRPC&lt;C2G_LoginRequest, G2
     &#125;
 &#125;
 </code></pre>
-<p>这里可以讨论一下错误处理策略。</p>
-<p>学习阶段直接 <code>session.Dispose()</code> 很直观。<br>正式项目里一般会分情况：</p>
+<p>这里顺便说下错误处理策略。</p>
+<p>学习代码里直接 <code>session.Dispose()</code> 很省事。<br>线上一般会分得细一点：</p>
 <ul>
 <li>Token 为空：可以返回错误码，也可以直接断开。</li>
 <li>Token 格式错误：更偏非法请求，可以断开。</li>
@@ -26276,7 +26339,7 @@ public sealed class C2G_LoginRequestHandler : MessageRPC&lt;C2G_LoginRequest, G2
 <li>Token 场景不匹配：可以断开，也可以返回错误码方便排查。</li>
 <li>签名无效：通常直接断开，并记录安全日志。</li>
 </ul>
-<p>不是所有失败都必须弹错误提示给客户端。<br>但服务端日志要能区分，否则线上只看到“登录失败”会很难排查。</p>
+<p>不是所有失败都要弹给客户端看，尤其是明显非法请求。<br>但服务端日志一定要分清原因，否则线上只看到“登录失败”，基本没法定位。</p>
 <h3 id="验签和场景匹配"><a href="#验签和场景匹配" class="headerlink" title="验签和场景匹配"></a>验签和场景匹配</h3><p>Gate 验证 Token 时，不只是验证签名，还要检查 Token 里写的 <code>SceneId</code> 是否等于当前 Gate 的 <code>SceneConfigId</code>。</p>
 <pre><code class="csharp">/// &lt;summary&gt;
 /// Gate 服务器的 JWT 帮助类，提供验证 JWT 令牌的功能。
@@ -26323,7 +26386,7 @@ public static class GateJWTHelper
 &#125;
 </code></pre>
 <p><code>SceneId</code> 检查很关键。<br>否则客户端拿到一张发给 Gate A 的票，理论上可能尝试去连 Gate B。即使签名没被改，票面上写的入口也不对，Gate B 就应该拒绝。</p>
-<p>这个逻辑像检票：</p>
+<p>这个逻辑还是检票那套思路：</p>
 <ul>
 <li>票是真的。</li>
 <li>票也没过期。</li>
@@ -26397,11 +26460,11 @@ public static class GateJWTComponentSystem
     &#125;
 &#125;
 </code></pre>
-<p>这里有一个比较明显的工程问题：</p>
+<p>这里有个问题挺扎眼：</p>
 <pre><code class="csharp">ValidateLifetime = false
 </code></pre>
-<p>这表示当前没有验证 Token 过期时间。<br>如果只是学习 JWT 验签流程，可以先这么写，方便调试；但放到正式登录流程里，这个值应该打开。</p>
-<p>更合理的正式配置应该至少包括：</p>
+<p>这表示 Gate 当前不检查 Token 过期时间。<br>学 JWT 验签时先这么写方便调试，但放到登录链路里，这个值应该打开。</p>
+<p>正式一点的配置至少要补这些：</p>
 <ul>
 <li><code>ValidateLifetime = true</code></li>
 <li><code>ValidateIssuer = true</code></li>
@@ -26412,7 +26475,7 @@ public static class GateJWTComponentSystem
 <li>根据项目需要检查 <code>tokenVersion</code>、封号状态、顶号状态等业务状态</li>
 </ul>
 <p>否则鉴权服生成了 3 秒过期的 Token，但 Gate 不校验过期时间，这个 <code>exp</code> 字段就只是写在票面上的数字，没有实际约束。</p>
-<p>还有一点：<code>ValidateToken</code> 的最后一个 <code>catch (Exception e)</code> 里重新 <code>throw</code>，会导致异常继续往外抛。<br>学习阶段能暴露问题，正式环境更常见做法是记录日志后返回 <code>false</code>，避免一个异常 Token 把消息处理流程打崩。</p>
+<p>还有一点：<code>ValidateToken</code> 最后的 <code>catch (Exception e)</code> 重新 <code>throw</code>，异常会继续往外抛。<br>学习阶段这样能把问题暴露出来；线上更常见的是记录日志后返回 <code>false</code>，别让一个异常 Token 把消息处理流程打崩。</p>
 <hr>
 <h2 id="4-7-Gate-加载和缓存-GameAccount"><a href="#4-7-Gate-加载和缓存-GameAccount" class="headerlink" title="4.7 Gate 加载和缓存 GameAccount"></a>4.7 Gate 加载和缓存 GameAccount</h2><p>Token 验证通过后，Gate 拿到了 <code>accountId</code>。<br>接下来要做的不是重新校验用户名密码，而是加载或创建游戏侧账号数据。</p>
 <p>先拿账号管理组件：</p>
@@ -26420,7 +26483,7 @@ public static class GateJWTComponentSystem
 var gameAccountManageComponent = scene.GetComponent&lt;GameAccountManageComponent&gt;();
 Log.Debug(&quot;检查账号是否在缓存中&quot;);
 </code></pre>
-<p><code>GameAccountManageComponent</code> 本质上就是 Gate 上的一份账号运行时缓存。</p>
+<p><code>GameAccountManageComponent</code> 可以先理解成 Gate 上的一份账号运行时缓存。</p>
 <pre><code class="csharp">// GameAccountManageComponent 继承自 Entity 类，表示游戏账户管理组件
 public sealed class GameAccountManageComponent : Entity
 &#123;
@@ -26487,7 +26550,7 @@ public static class GameAccountManageComponentSystem
     &#125;
 &#125;
 </code></pre>
-<p>这里为什么要在 Gate 缓存 <code>GameAccount</code>？</p>
+<p>为什么 Gate 要缓存 <code>GameAccount</code>？</p>
 <p>主要是为了处理这些状态：</p>
 <ul>
 <li>玩家当前绑定哪个 Session。</li>
@@ -26496,7 +26559,7 @@ public static class GameAccountManageComponentSystem
 <li>新登录设备顶号时，能不能找到旧 Session。</li>
 <li>Gate 下线时能统一保存和清理账号数据。</li>
 </ul>
-<p>如果每次 Gate 登录都查数据库，然后不保留运行时账号状态，顶号和断线重连会很难做。</p>
+<p>如果每次 Gate 登录都查数据库，查完又不保留运行时状态，顶号和断线重连基本没法写顺。</p>
 <h3 id="缓存未命中时加载或创建账号"><a href="#缓存未命中时加载或创建账号" class="headerlink" title="缓存未命中时加载或创建账号"></a>缓存未命中时加载或创建账号</h3><p>如果 Gate 缓存里没有这个账号，就先从数据库加载。<br>如果数据库里也没有，说明这是这个认证账号第一次进入游戏入口，需要创建 <code>GameAccount</code>。</p>
 <pre><code class="csharp">// 尝试从缓存中获取账号信息
 if (!gameAccountManageComponent.TryGet(accountId, out var account))
@@ -26584,24 +26647,24 @@ public static async FTask SaveDataBase(this GameAccount self)
     await self.Scene.World.DateBase.Save(self);
 &#125;
 </code></pre>
-<p>这块有一个设计边界：</p>
+<p>这里要先把边界划清楚：</p>
 <ul>
 <li><code>Account</code> 是鉴权账号。</li>
 <li><code>GameAccount</code> 是游戏入口账号。</li>
 <li>当前用 <code>Token</code> 里的 <code>aId</code> 作为 <code>GameAccount</code> 的 ID。</li>
 <li>第一次登录 Gate 时，如果没有 <code>GameAccount</code>，就创建一条游戏账号记录。</li>
 </ul>
-<p>如果后面要支持一个账号多个角色，这里就不能把 <code>GameAccount</code> 和“角色数据”混在一起。<br>比较常见的拆法是：</p>
+<p>如果后面要支持一个账号多个角色，就不要把 <code>GameAccount</code> 和角色数据搅在一起。<br>比较常见的拆法是：</p>
 <ul>
 <li><code>Account</code>：平台账号 &#x2F; 登录账号。</li>
 <li><code>GameAccount</code>：游戏账号入口状态。</li>
 <li><code>Role</code> &#x2F; <code>Character</code>：具体角色数据。</li>
 <li><code>Zone</code>：区服维度。</li>
 </ul>
-<p>当前这篇只讨论登录入口，所以先不展开角色系统。</p>
+<p>这篇只看登录入口，角色系统先不展开。</p>
 <hr>
 <h2 id="4-8-Session-绑定、顶号和延迟下线"><a href="#4-8-Session-绑定、顶号和延迟下线" class="headerlink" title="4.8 Session 绑定、顶号和延迟下线"></a>4.8 Session 绑定、顶号和延迟下线</h2><p>Gate 拿到 <code>GameAccount</code> 后，要把当前 Session 和账号绑定起来。</p>
-<p>这个绑定不是随便记一个字段，而是为了后面 Session 销毁时能反向找到账号，从而做下线处理。</p>
+<p>这个绑定不是随便记个字段，它是给后面的下线流程用的：Session 销毁时，要能反向找到账号。</p>
 <pre><code class="csharp">// 给当前Session添加一个账号标识组件，当Session销毁的时候会销毁这个组件。
 var accountFlagComponent = session.AddComponent&lt;GameAccountFlagComponent&gt;();
 accountFlagComponent.AccountID = accountId;
@@ -26634,7 +26697,7 @@ public sealed class GameAccountFlagComponent : Entity
     public EntityReference&lt;GameAccount&gt; Account;
 &#125;
 </code></pre>
-<p>这里用 <code>EntityReference&lt;GameAccount&gt;</code> 是为了避免实体对象被回收后还拿着旧引用。<br>对象池场景下这个问题很隐蔽：引用不一定是 <code>null</code>，但它可能已经指向另一个复用后的实体。</p>
+<p>这里用 <code>EntityReference&lt;GameAccount&gt;</code>，主要是防实体回收后的旧引用问题。<br>对象池场景下这个坑很隐蔽：引用不一定是 <code>null</code>，但它可能已经指向另一个复用后的实体。</p>
 <h3 id="Session-销毁时触发延迟下线"><a href="#Session-销毁时触发延迟下线" class="headerlink" title="Session 销毁时触发延迟下线"></a>Session 销毁时触发延迟下线</h3><p>当客户端连接断开时，Session 会销毁。<br>Session 上的 <code>GameAccountFlagComponent</code> 也会销毁，于是可以在它的 DestroySystem 里触发账号下线逻辑。</p>
 <pre><code class="csharp">/// &lt;summary&gt;
 /// 处理 GameAccountFlagComponent 实体销毁时的逻辑。
@@ -26662,7 +26725,7 @@ public sealed class GameAccountFlagComponentDestroySystem : DestroySystem&lt;Gam
     &#125;
 &#125;
 </code></pre>
-<p>这里没有马上把账号从缓存里移除，而是走延迟下线。<br>这个设计是为了断线重连。</p>
+<p>这里没有马上把账号从缓存里移除，而是走延迟下线。<br>目的就是给断线重连留窗口。</p>
 <p>网络游戏里，客户端断开不一定代表玩家主动退出：</p>
 <ul>
 <li>手机切后台。</li>
@@ -26671,7 +26734,7 @@ public sealed class GameAccountFlagComponentDestroySystem : DestroySystem&lt;Gam
 <li>客户端短暂卡死。</li>
 <li>心跳超时但玩家马上重连。</li>
 </ul>
-<p>如果一断开就立刻保存、移除缓存，再重连时就要重新加载数据，体验和性能都不好。<br>延迟下线相当于给玩家留一个短暂的“缓冲区”。</p>
+<p>如果一断开就立刻保存、移除缓存，再重连时就要重新加载数据，体验和性能都不好。<br>延迟下线相当于给玩家留一个短暂缓冲，不要因为一次网络抖动就完整走下线、再登录、再加载。</p>
 <p><code>Disconnect</code> 的完整逻辑如下：</p>
 <pre><code class="csharp">/// &lt;summary&gt;
 /// 账号完整的断开逻辑，执行了这个接口后，该账号会完全下线。
@@ -26756,7 +26819,7 @@ public static GameAccountInfo GetGameAccountInfo(this GameAccount self)
     &#125;;
 &#125;
 </code></pre>
-<p>这段逻辑的思路是：</p>
+<p>这段逻辑按执行顺序看就是：</p>
 <ul>
 <li>先确认账号还在 Gate 缓存里。</li>
 <li>再确认账号当前记录的 <code>SessionRunTimeId</code> 还能找到 Session。</li>
@@ -26764,9 +26827,9 @@ public static GameAccountInfo GetGameAccountInfo(this GameAccount self)
 <li>如果 <code>timeOut &lt;= 0</code>，立即保存并移除缓存。</li>
 <li>否则设置一个延迟下线定时器，到时间再真正保存和移除。</li>
 </ul>
-<p>不过这里有一个点要留意：</p>
+<p>不过这里有个边界要留意：</p>
 <p><code>Disconnect</code> 里尝试通过 <code>account.SessionRunTimeId</code> 找 Session。<br>如果当前就是因为 Session 已经销毁才触发下线，这里可能找不到 Session。当前代码找不到就直接返回，会导致延迟下线没有设置成功。</p>
-<p>这要看框架里 Destroy 触发时机和 Session 实体是否还存在。<br>如果实际测试发现断线时经常打印 <code>SessionRunTimeId not found</code>，这块就需要调整：断线流程不应该强依赖还能拿到旧 Session，至少要能根据账号缓存设置延迟下线。</p>
+<p>这要看框架里 Destroy 的触发时机，以及 Session 实体当时还在不在。<br>如果测试时经常看到 <code>SessionRunTimeId not found</code>，这块就得改：断线流程不应该强依赖旧 Session 还能被查到，至少要能只根据账号缓存设置延迟下线。</p>
 <h3 id="缓存中已经存在账号的情况"><a href="#缓存中已经存在账号的情况" class="headerlink" title="缓存中已经存在账号的情况"></a>缓存中已经存在账号的情况</h3><p>Gate 缓存中已经存在账号，一般有三种情况：</p>
 <ul>
 <li>同一客户端重复发送登录请求。</li>
@@ -26780,7 +26843,7 @@ public static GameAccountInfo GetGameAccountInfo(this GameAccount self)
 <li>如果旧 Session 还存在，要通知旧客户端被顶号，并延迟断开旧 Session。</li>
 <li>绑定新 Session 前，要取消账号上的延迟下线定时器。</li>
 </ul>
-<p>代码如下：</p>
+<p>代码是这样走的：</p>
 <pre><code class="csharp">// 尝试从缓存中获取账号信息
 if (!gameAccountManageComponent.TryGet(accountId, out var account))
 &#123;
@@ -26853,15 +26916,15 @@ Log.Debug($&quot;当前的Gate服务器:&#123;session.Scene.SceneConfigId&#125; 
 <pre><code class="csharp">gameAccountFlagComponent.AccountID = 0;
 gameAccountFlagComponent.Account = null;
 </code></pre>
-<p>这个操作不是多余的。</p>
-<p>如果不清空，旧 Session 被销毁时，它的 <code>GameAccountFlagComponentDestroySystem</code> 会继续触发 <code>GameAccountHelper.Disconnect</code>。<br>这样会出现一个很坑的情况：</p>
+<p>这个操作不是摆设。</p>
+<p>如果不清空，旧 Session 被销毁时，它的 <code>GameAccountFlagComponentDestroySystem</code> 会继续触发 <code>GameAccountHelper.Disconnect</code>。<br>不清的话，后面很容易踩这个坑：</p>
 <ul>
 <li>新 Session 已经登录成功。</li>
 <li>旧 Session 延迟销毁。</li>
 <li>旧 Session 销毁时又给同一个账号设置了延迟下线。</li>
 <li>几分钟后，新 Session 还在线，但账号缓存被延迟下线逻辑清掉了。</li>
 </ul>
-<p>这类问题线上很难排查，因为玩家表现出来可能只是“登录几分钟后突然掉线”。</p>
+<p>这类问题线上很难排查，玩家看到的现象可能只是“登录几分钟后突然掉线”。</p>
 <p>所以顶号时处理旧 Session 的顺序应该是：</p>
 <ul>
 <li>找到旧 Session。</li>
@@ -26871,17 +26934,17 @@ gameAccountFlagComponent.Account = null;
 <li>绑定新 Session。</li>
 <li>更新账号的 <code>SessionRunTimeId</code>。</li>
 </ul>
-<p>断线重连和顶号在服务端逻辑里其实很像。<br>区别主要在客户端侧：</p>
+<p>断线重连和顶号在服务端逻辑里很像。<br>主要区别在客户端侧：</p>
 <ul>
 <li>断线重连时，旧客户端可能已经收不到消息。</li>
 <li>顶号时，旧客户端还在线，能收到“账号在其他设备登录”的提示。</li>
 </ul>
-<p>服务端可以走同一套换绑流程，只要确保旧 Session 不会误触发新 Session 的下线逻辑。</p>
+<p>服务端可以走同一套换绑流程，关键是别让旧 Session 误触发新 Session 的下线逻辑。</p>
 <hr>
-<h2 id="4-9-总结"><a href="#4-9-总结" class="headerlink" title="4.9 总结"></a>4.9 总结</h2><p>登录流程真正复杂的地方，不是“查一下账号密码”，而是登录成功之后的状态交接。</p>
-<p>这篇里的流程可以压成一句话：</p>
+<h2 id="4-9-总结"><a href="#4-9-总结" class="headerlink" title="4.9 总结"></a>4.9 总结</h2><p>登录这块真正麻烦的地方，不是查一下账号密码，而是登录成功之后的状态交接。</p>
+<p>这篇流程可以压成一句话：</p>
 <p><strong>鉴权服负责确认账号是谁，并签一张短期票；Gate 负责验票、接入连接、绑定账号运行时状态。</strong></p>
-<p>几个关键点需要记住：</p>
+<p>最后把容易忘的点收一下：</p>
 <ul>
 <li>客户端根据用户名选择鉴权服，只是第一层分流。</li>
 <li>鉴权服收到登录请求后，仍然要重新计算账号归属。</li>
@@ -26897,14 +26960,14 @@ gameAccountFlagComponent.Account = null;
 <li>顶号时要清空旧 Session 的账号标识，避免旧 Session 销毁后误触发新账号下线。</li>
 <li>延迟下线是为了断线重连，不是为了让账号永远挂在缓存里。</li>
 </ul>
-<p>这套结构在游戏服务器里比较常见：</p>
+<p>游戏服务器里常见的分工大概就是这样：</p>
 <ul>
 <li><strong>Auth &#x2F; Account</strong> 负责登录校验和 Token 签发。</li>
 <li><strong>Client</strong> 负责拿 Token 去连目标入口。</li>
 <li><strong>Gate</strong> 负责验签、接入、转发、连接状态管理。</li>
 <li><strong>GameAccount 缓存</strong> 负责承接断线重连和顶号这种运行时状态。</li>
 </ul>
-<p>如果后面继续往正式项目推进，还需要补几块：</p>
+<p>如果后面继续往正式项目推进，还得补这些东西：</p>
 <ul>
 <li>密码存储改成哈希加盐，不要明文保存和明文查询。</li>
 <li>Token 验证开启过期时间校验，并设置合理的 <code>ClockSkew</code>。</li>
@@ -26914,7 +26977,7 @@ gameAccountFlagComponent.Account = null;
 <li>多 Gate 动态扩缩容时，账号到 Gate 的分配不能只靠简单 <code>% Count</code>。</li>
 <li>断线重连和顶号最好有完整的自动化测试，否则这块很容易出现“旧 Session 清了新 Session”的问题。</li>
 </ul>
-<p>登录系统做到这里，已经不只是“能登录”了，而是开始具备真正网络游戏入口的样子：<br>账号校验、Token 跳转、Gate 接入、会话换绑、断线缓冲、顶号通知，这几条线都得接住。</p>
+<p>做到这里，就不只是“能登录”了。<br>账号校验、Token 跳转、Gate 接入、会话换绑、断线缓冲、顶号通知，这几条线都接住，登录入口才算有点网络游戏服务端的样子。</p>
 <hr>
 
       
