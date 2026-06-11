@@ -6,15 +6,15 @@
   <meta name="keywords" content=" 编程语言 , Lua , Lua进阶知识 ">
   <meta name="description" content="4.表与数据结构取舍 | 人间自有韬哥在的博客">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-<meta name="description" content="4.表与数据结构取舍 4.1 知识点表充当多种数据结构前几篇一直在聊表的引用、拷贝。这篇回到 table 本身。 Lua 里常用容器基本都绕不开 table。它可以当数组、字典、集合、队列来写。虽然可以充当成各种数据结构，但如果用错场景，成本会差很多。 比如战斗里一帧插删几百次，和配置表里按 id 查一行数据，肯定不是一套写法。所以真正要先想清楚的是：这张表到底打算当什么用。 连续列表当数组，id">
+<meta name="description" content="6.全局环境与沙盒 6.1 知识点全局变量、环境表和沙盒这篇主要聊聊Lua中 变量去哪找，以及怎么限制它去哪找。 全局变量是写进环境表； _ENV 决定变量去哪找； 沙盒就是给 chunk 换一张受限制的环境表。  我们学习过，没写 local 的名字，会写进环境表，默认就是 _G。 roleName &#x3D; &quot;RoleA&quot;  print(roleName)    -- 输出：Ro">
 <meta property="og:type" content="article">
-<meta property="og:title" content="4.表与数据结构取舍">
-<meta property="og:url" content="https://linwentao785293209.github.io/2026/05/17/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/02.Lua%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/4.%E8%A1%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%96%E8%88%8D/index.html">
+<meta property="og:title" content="6.全局环境与沙盒">
+<meta property="og:url" content="https://linwentao785293209.github.io/2026/05/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/02.Lua%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/6.%E5%85%A8%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%8E%E6%B2%99%E7%9B%92/index.html">
 <meta property="og:site_name" content="人间自有韬哥在的博客">
-<meta property="og:description" content="4.表与数据结构取舍 4.1 知识点表充当多种数据结构前几篇一直在聊表的引用、拷贝。这篇回到 table 本身。 Lua 里常用容器基本都绕不开 table。它可以当数组、字典、集合、队列来写。虽然可以充当成各种数据结构，但如果用错场景，成本会差很多。 比如战斗里一帧插删几百次，和配置表里按 id 查一行数据，肯定不是一套写法。所以真正要先想清楚的是：这张表到底打算当什么用。 连续列表当数组，id">
+<meta property="og:description" content="6.全局环境与沙盒 6.1 知识点全局变量、环境表和沙盒这篇主要聊聊Lua中 变量去哪找，以及怎么限制它去哪找。 全局变量是写进环境表； _ENV 决定变量去哪找； 沙盒就是给 chunk 换一张受限制的环境表。  我们学习过，没写 local 的名字，会写进环境表，默认就是 _G。 roleName &#x3D; &quot;RoleA&quot;  print(roleName)    -- 输出：Ro">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2026-05-17T02:31:22.000Z">
-<meta property="article:modified_time" content="2026-05-25T14:21:21.729Z">
+<meta property="article:published_time" content="2026-05-19T13:47:01.000Z">
+<meta property="article:modified_time" content="2026-06-10T18:34:05.589Z">
 <meta property="article:author" content="人间自有韬哥在">
 <meta property="article:tag" content="编程语言">
 <meta property="article:tag" content="Lua">
@@ -150,7 +150,7 @@
     <li>
         <div class="all active" data-rel="全部文章">全部文章
             
-                <small>(2271)</small>
+                <small>(2273)</small>
             
         </div>
     </li>
@@ -162,7 +162,7 @@
         <div data-rel="编程语言">
             <i class="fold iconfont icon-right"></i>
             编程语言
-            <small>(331)</small>
+            <small>(333)</small>
         </div>
         
             <ul class="sub hide">
@@ -461,7 +461,7 @@
         <div data-rel="编程语言&lt;---&gt;Lua">
             <i class="fold iconfont icon-right"></i>
             Lua
-            <small>(24)</small>
+            <small>(26)</small>
         </div>
         
             <ul class="sub hide">
@@ -482,7 +482,7 @@
         <div data-rel="编程语言&lt;---&gt;Lua&lt;---&gt;Lua进阶知识">
             
             Lua进阶知识
-            <small>(4)</small>
+            <small>(6)</small>
         </div>
         
     </li>
@@ -3138,8 +3138,8 @@
         
     </div>
 </div>
-<input type="hidden" id="yelog_site_posts_number" value="2271">
-<input type="hidden" id="yelog_site_word_count" value="4398.3k">
+<input type="hidden" id="yelog_site_posts_number" value="2273">
+<input type="hidden" id="yelog_site_word_count" value="4383.4k">
 <div style="display: none">
     <span id="busuanzi_value_site_uv"></span>
     <span id="busuanzi_value_site_pv"></span>
@@ -4948,6 +4948,24 @@
     </div>
     
     <nav id="title-list-nav">
+        
+        
+        <a  class="全部文章 编程语言 Lua Lua进阶知识 "
+           href="/2026/05/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/02.Lua%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/6.%E5%85%A8%E5%B1%80%E7%8E%AF%E5%A2%83%E4%B8%8E%E6%B2%99%E7%9B%92/"
+           data-tag="编程语言,Lua,Lua进阶知识"
+           data-author="" >
+            <span class="post-title" title="6.全局环境与沙盒">6.全局环境与沙盒</span>
+            <span class="post-date" title="2026-05-19 21:47:01">2026/05/19</span>
+        </a>
+        
+        
+        <a  class="全部文章 编程语言 Lua Lua进阶知识 "
+           href="/2026/05/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/Lua/02.Lua%E8%BF%9B%E9%98%B6%E7%9F%A5%E8%AF%86/5.%E8%A1%A8%E5%BA%95%E5%B1%82%E3%80%81%E9%95%BF%E5%BA%A6%E4%B8%8E%E9%81%8D%E5%8E%86%E9%A1%BA%E5%BA%8F/"
+           data-tag="编程语言,Lua,Lua进阶知识"
+           data-author="" >
+            <span class="post-title" title="5.表底层、长度与遍历顺序">5.表底层、长度与遍历顺序</span>
+            <span class="post-date" title="2026-05-18 22:57:01">2026/05/18</span>
+        </a>
         
         
         <a  class="全部文章 编程语言 Lua Lua进阶知识 "
@@ -6770,7 +6788,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/32.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E5%AD%97%E7%AC%A6%E6%95%B0%E7%BB%84%E5%92%8Cstring/"
-           data-tag="编程语言,面向对象关联知识点,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象关联知识点,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="32.字符数组和string">32.字符数组和string</span>
             <span class="post-date" title="2025-06-20 12:00:37">2025/06/20</span>
@@ -6779,7 +6797,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/31.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%BB%93%E6%9E%84%E4%BD%93%E5%92%8C%E7%B1%BB%E7%9A%84%E5%8C%BA%E5%88%AB/"
-           data-tag="编程语言,面向对象关联知识点,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象关联知识点,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="31.结构体和类的区别">31.结构体和类的区别</span>
             <span class="post-date" title="2025-06-20 11:56:03">2025/06/20</span>
@@ -6788,7 +6806,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/30.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E7%A9%BA%E7%B1%BB%E5%9E%8B%E6%89%80%E5%8D%A0%E5%AD%97%E8%8A%82%E6%95%B0/"
-           data-tag="编程语言,面向对象关联知识点,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象关联知识点,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="30.空类型所占字节数">30.空类型所占字节数</span>
             <span class="post-date" title="2025-06-20 11:48:32">2025/06/20</span>
@@ -6797,7 +6815,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/29.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E5%A4%9A%E7%BB%A7%E6%89%BF%E6%97%B6%E7%9A%84%E5%90%8C%E5%90%8D%E8%99%9A%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,面向对象关联知识点,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象关联知识点,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="29.多继承时的同名虚函数">29.多继承时的同名虚函数</span>
             <span class="post-date" title="2025-06-20 11:41:02">2025/06/20</span>
@@ -6806,7 +6824,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/28.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%85%B3%E8%81%94%E7%9F%A5%E8%AF%86%E7%82%B9-%E6%8E%A5%E5%8F%A3/"
-           data-tag="编程语言,面向对象关联知识点,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象关联知识点,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="28.接口">28.接口</span>
             <span class="post-date" title="2025-06-20 11:25:28">2025/06/20</span>
@@ -6815,7 +6833,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/27.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/"
-           data-tag="编程语言,面向对象,多态,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,多态,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="27.虚函数表">27.虚函数表</span>
             <span class="post-date" title="2025-06-20 11:12:50">2025/06/20</span>
@@ -6824,7 +6842,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/26.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E7%A6%81%E6%AD%A2%E9%87%8D%E5%86%99/"
-           data-tag="编程语言,面向对象,多态,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,多态,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="26.禁止重写">26.禁止重写</span>
             <span class="post-date" title="2025-06-19 23:29:38">2025/06/19</span>
@@ -6833,7 +6851,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/25.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E6%8A%BD%E8%B1%A1%E7%B1%BB/"
-           data-tag="编程语言,面向对象,多态,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,多态,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="25.抽象类">25.抽象类</span>
             <span class="post-date" title="2025-06-19 23:17:17">2025/06/19</span>
@@ -6842,7 +6860,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/24.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E8%99%9A%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,面向对象,多态,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,多态,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="24.虚析构函数">24.虚析构函数</span>
             <span class="post-date" title="2025-06-19 17:38:01">2025/06/19</span>
@@ -6851,7 +6869,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/23.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%A4%9A%E6%80%81-%E8%99%9A%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,面向对象,多态,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,多态,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="23.虚函数">23.虚函数</span>
             <span class="post-date" title="2025-06-19 17:18:27">2025/06/19</span>
@@ -6860,7 +6878,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/22.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99/"
-           data-tag="编程语言,面向对象,继承,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,继承,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="22.里氏替换原则">22.里氏替换原则</span>
             <span class="post-date" title="2025-06-19 16:27:46">2025/06/19</span>
@@ -6869,7 +6887,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/21.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E7%BB%A7%E6%89%BF%E4%B8%AD%E7%9A%84%E5%8F%8B%E5%85%83%E5%92%8C%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/"
-           data-tag="编程语言,面向对象,继承,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,继承,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="21.继承中的友元和运算符重载">21.继承中的友元和运算符重载</span>
             <span class="post-date" title="2025-06-19 16:10:35">2025/06/19</span>
@@ -6878,7 +6896,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/20.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF/"
-           data-tag="编程语言,面向对象,继承,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,继承,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="20.菱形继承">20.菱形继承</span>
             <span class="post-date" title="2025-06-19 15:44:56">2025/06/19</span>
@@ -6887,7 +6905,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/19.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E5%A4%9A%E9%87%8D%E7%BB%A7%E6%89%BF/"
-           data-tag="编程语言,面向对象,继承,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,继承,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="19.多重继承">19.多重继承</span>
             <span class="post-date" title="2025-06-19 15:34:39">2025/06/19</span>
@@ -6896,7 +6914,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/18.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E7%BB%A7%E6%89%BF%E5%90%8E%E7%9A%84%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,面向对象,继承,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,继承,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="18.继承后的构造函数和析构函数">18.继承后的构造函数和析构函数</span>
             <span class="post-date" title="2025-06-19 15:20:53">2025/06/19</span>
@@ -6905,7 +6923,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/17.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E7%BB%A7%E6%89%BF-%E7%BB%A7%E6%89%BF%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%A7%84%E5%88%99/"
-           data-tag="编程语言,面向对象,继承,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,继承,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="17.继承的基本规则">17.继承的基本规则</span>
             <span class="post-date" title="2025-06-19 15:08:31">2025/06/19</span>
@@ -6914,7 +6932,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/16.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD/"
-           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,封装,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="16.运算符重载">16.运算符重载</span>
             <span class="post-date" title="2025-06-19 14:43:44">2025/06/19</span>
@@ -6923,7 +6941,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/15.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E5%91%BD%E5%90%8D%E7%A9%BA%E9%97%B4/"
-           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,封装,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="15.命名空间">15.命名空间</span>
             <span class="post-date" title="2025-06-19 14:21:37">2025/06/19</span>
@@ -6932,7 +6950,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/14.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E5%B5%8C%E5%A5%97%E7%B1%BB/"
-           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,封装,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="14.嵌套类">14.嵌套类</span>
             <span class="post-date" title="2025-06-19 14:09:17">2025/06/19</span>
@@ -6941,7 +6959,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/13.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E5%8F%8B%E5%85%83%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,封装,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="13.友元成员函数">13.友元成员函数</span>
             <span class="post-date" title="2025-06-19 13:53:49">2025/06/19</span>
@@ -6950,7 +6968,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/12.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E5%8F%8B%E5%85%83%E7%B1%BB/"
-           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,封装,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="12.友元类">12.友元类</span>
             <span class="post-date" title="2025-06-19 13:24:08">2025/06/19</span>
@@ -6959,7 +6977,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/11.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E5%8F%8B%E5%85%83%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,封装,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="11.友元函数">11.友元函数</span>
             <span class="post-date" title="2025-06-18 18:06:21">2025/06/18</span>
@@ -6968,7 +6986,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/10.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-const%E4%BF%AE%E9%A5%B0%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0/"
-           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,封装,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="10.const修饰函数参数">10.const修饰函数参数</span>
             <span class="post-date" title="2025-06-18 17:39:55">2025/06/18</span>
@@ -6977,7 +6995,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/9.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-const%E6%88%90%E5%91%98/"
-           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,封装,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="9.const成员">9.const成员</span>
             <span class="post-date" title="2025-06-18 17:21:03">2025/06/18</span>
@@ -6986,7 +7004,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E9%9D%99%E6%80%81%E6%88%90%E5%91%98/"
-           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,封装,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="8.静态成员">8.静态成员</span>
             <span class="post-date" title="2025-06-18 17:04:42">2025/06/18</span>
@@ -6995,7 +7013,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,封装,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="7.析构函数">7.析构函数</span>
             <span class="post-date" title="2025-06-18 16:52:52">2025/06/18</span>
@@ -7004,7 +7022,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,封装,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="6.构造函数">6.构造函数</span>
             <span class="post-date" title="2025-06-18 14:12:11">2025/06/18</span>
@@ -7013,7 +7031,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E6%96%B9%E6%B3%95/"
-           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,封装,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="5.成员方法">5.成员方法</span>
             <span class="post-date" title="2025-06-18 13:43:59">2025/06/18</span>
@@ -7022,7 +7040,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E8%AE%BF%E9%97%AE%E4%BF%AE%E9%A5%B0%E7%AC%A6/"
-           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,封装,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="4.成员变量和访问修饰符">4.成员变量和访问修饰符</span>
             <span class="post-date" title="2025-06-18 13:26:14">2025/06/18</span>
@@ -7031,7 +7049,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%B0%81%E8%A3%85-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/"
-           data-tag="编程语言,面向对象,封装,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,封装,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="3.类和对象">3.类和对象</span>
             <span class="post-date" title="2025-06-18 13:11:40">2025/06/18</span>
@@ -7040,7 +7058,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP核心 CPP核心语法知识 "
            href="/2025/06/18/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/05.CPP%E6%A0%B8%E5%BF%83%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/"
-           data-tag="编程语言,面向对象,CPP,CPP核心,CPP核心语法知识"
+           data-tag="编程语言,CPP,面向对象,CPP核心,CPP核心语法知识"
            data-author="" >
             <span class="post-title" title="2.面向对象基本概念">2.面向对象基本概念</span>
             <span class="post-date" title="2025-06-18 13:02:08">2025/06/18</span>
@@ -7453,19 +7471,19 @@
         
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发进阶 "
-           href="/2025/03/20/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/07.Shader%E5%BC%80%E5%8F%91%E8%BF%9B%E9%98%B6/11.%E8%A1%A8%E9%9D%A2%E7%9D%80%E8%89%B2%E5%99%A8-%E7%BB%93%E6%9E%84%E4%BD%93-%E8%BE%93%E5%85%A5%E7%BB%93%E6%9E%84%E4%BD%93/"
+           href="/2025/03/20/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/07.Shader%E5%BC%80%E5%8F%91%E8%BF%9B%E9%98%B6/12.%E8%A1%A8%E9%9D%A2%E7%9D%80%E8%89%B2%E5%99%A8-%E7%BB%93%E6%9E%84%E4%BD%93-%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%84%E4%BD%93/"
            data-tag="图形学,Shader,UnityShader,Shader开发进阶,表面着色器"
            data-author="" >
-            <span class="post-title" title="11.表面着色器输入结构体">11.表面着色器输入结构体</span>
+            <span class="post-title" title="12.表面着色器输出结构体">12.表面着色器输出结构体</span>
             <span class="post-date" title="2025-03-20 12:39:38">2025/03/20</span>
         </a>
         
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发进阶 "
-           href="/2025/03/20/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/07.Shader%E5%BC%80%E5%8F%91%E8%BF%9B%E9%98%B6/12.%E8%A1%A8%E9%9D%A2%E7%9D%80%E8%89%B2%E5%99%A8-%E7%BB%93%E6%9E%84%E4%BD%93-%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%84%E4%BD%93/"
+           href="/2025/03/20/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/07.Shader%E5%BC%80%E5%8F%91%E8%BF%9B%E9%98%B6/11.%E8%A1%A8%E9%9D%A2%E7%9D%80%E8%89%B2%E5%99%A8-%E7%BB%93%E6%9E%84%E4%BD%93-%E8%BE%93%E5%85%A5%E7%BB%93%E6%9E%84%E4%BD%93/"
            data-tag="图形学,Shader,UnityShader,Shader开发进阶,表面着色器"
            data-author="" >
-            <span class="post-title" title="12.表面着色器输出结构体">12.表面着色器输出结构体</span>
+            <span class="post-title" title="11.表面着色器输入结构体">11.表面着色器输入结构体</span>
             <span class="post-date" title="2025-03-20 12:39:38">2025/03/20</span>
         </a>
         
@@ -8525,7 +8543,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/8.%E5%87%BD%E6%95%B0-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,函数,CPP,CPP基础,CPP基础语法知识"
+           data-tag="编程语言,CPP,函数,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="8.内联函数">8.内联函数</span>
             <span class="post-date" title="2025-01-20 13:07:31">2025/01/20</span>
@@ -8534,7 +8552,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/7.%E5%87%BD%E6%95%B0-%E9%80%92%E5%BD%92%E5%87%BD%E6%95%B0/"
-           data-tag="编程语言,函数,CPP,CPP基础,CPP基础语法知识"
+           data-tag="编程语言,CPP,函数,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="7.递归函数">7.递归函数</span>
             <span class="post-date" title="2025-01-20 13:02:30">2025/01/20</span>
@@ -8543,7 +8561,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/6.%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD/"
-           data-tag="编程语言,函数,CPP,CPP基础,CPP基础语法知识"
+           data-tag="编程语言,CPP,函数,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="6.函数重载">6.函数重载</span>
             <span class="post-date" title="2025-01-20 12:59:03">2025/01/20</span>
@@ -8552,7 +8570,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/5.%E5%87%BD%E6%95%B0-%E5%8F%98%E9%87%8F%E7%9A%84%E4%BD%9C%E7%94%A8%E5%9F%9F/"
-           data-tag="编程语言,函数,CPP,CPP基础,CPP基础语法知识"
+           data-tag="编程语言,CPP,函数,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="5.函数的变量的作用域">5.函数的变量的作用域</span>
             <span class="post-date" title="2025-01-20 12:55:41">2025/01/20</span>
@@ -8561,7 +8579,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/4.%E5%87%BD%E6%95%B0-%E5%8F%82%E6%95%B0%E9%BB%98%E8%AE%A4%E5%80%BC/"
-           data-tag="编程语言,函数,CPP,CPP基础,CPP基础语法知识"
+           data-tag="编程语言,CPP,函数,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="4.函数的参数默认值">4.函数的参数默认值</span>
             <span class="post-date" title="2025-01-20 12:52:02">2025/01/20</span>
@@ -8570,7 +8588,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/20/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/3.%E5%87%BD%E6%95%B0-%E5%BD%A2%E5%8F%82%E5%92%8C%E5%AE%9E%E5%8F%82/"
-           data-tag="编程语言,函数,CPP,CPP基础,CPP基础语法知识"
+           data-tag="编程语言,CPP,函数,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="3.函数的形参和实参">3.函数的形参和实参</span>
             <span class="post-date" title="2025-01-20 12:47:55">2025/01/20</span>
@@ -8579,7 +8597,7 @@
         
         <a  class="全部文章 编程语言 CPP CPP基础 CPP基础语法知识 "
            href="/2025/01/19/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CPP/03.CPP%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95%E7%9F%A5%E8%AF%86/2.%E5%87%BD%E6%95%B0-%E5%87%BD%E6%95%B0%E5%9F%BA%E7%A1%80/"
-           data-tag="编程语言,函数,CPP,CPP基础,CPP基础语法知识"
+           data-tag="编程语言,CPP,函数,CPP基础,CPP基础语法知识"
            data-author="" >
             <span class="post-title" title="2.函数基础">2.函数基础</span>
             <span class="post-date" title="2025-01-19 22:01:59">2025/01/19</span>
@@ -9496,19 +9514,19 @@
         
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发基础 "
-           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/36.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E9%95%9C%E9%9D%A2%E6%95%88%E6%9E%9C-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"
-           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,镜面效果"
+           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/37.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
+           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,玻璃效果"
            data-author="" >
-            <span class="post-title" title="36.镜面效果实现">36.镜面效果实现</span>
+            <span class="post-title" title="37.玻璃效果基本原理">37.玻璃效果基本原理</span>
             <span class="post-date" title="2024-11-26 12:45:12">2024/11/26</span>
         </a>
         
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发基础 "
-           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/37.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E7%8E%BB%E7%92%83%E6%95%88%E6%9E%9C-%E5%9F%BA%E6%9C%AC%E5%8E%9F%E7%90%86/"
-           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,玻璃效果"
+           href="/2024/11/26/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/05.Shader%E5%BC%80%E5%8F%91%E5%9F%BA%E7%A1%80/36.%E9%AB%98%E7%BA%A7%E7%BA%B9%E7%90%86-%E6%B8%B2%E6%9F%93%E7%BA%B9%E7%90%86-%E9%95%9C%E9%9D%A2%E6%95%88%E6%9E%9C-%E6%95%88%E6%9E%9C%E5%AE%9E%E7%8E%B0/"
+           data-tag="图形学,Shader,UnityShader,Shader开发基础,高级纹理,渲染纹理,镜面效果"
            data-author="" >
-            <span class="post-title" title="37.玻璃效果基本原理">37.玻璃效果基本原理</span>
+            <span class="post-title" title="36.镜面效果实现">36.镜面效果实现</span>
             <span class="post-date" title="2024-11-26 12:45:12">2024/11/26</span>
         </a>
         
@@ -10109,7 +10127,7 @@
         
         <a  class="全部文章 图形学 Shader UnityShader Shader开发入门 "
            href="/2024/10/10/%E5%9B%BE%E5%BD%A2%E5%AD%A6/Shader/Unity/04.Shader%E5%BC%80%E5%8F%91%E5%85%A5%E9%97%A8/13.%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-%E9%AB%98%E5%85%89%E5%8F%8D%E5%B0%84%E5%85%89%E7%85%A7%E6%A8%A1%E5%9E%8B-BlinnPhong%E5%BC%8F%E9%AB%98%E5%85%89%E5%8F%8D%E5%B0%84%E6%A8%A1%E5%9E%8B-%E9%80%90%E9%A1%B6%E7%82%B9%E5%85%89%E7%85%A7/"
-           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,高光反射光照模型,逐顶点光照,BlinnPhong式高光反射模型"
+           data-tag="图形学,Shader,UnityShader,Shader开发入门,光照模型,高光反射光照模型,BlinnPhong式高光反射模型,逐顶点光照"
            data-author="" >
             <span class="post-title" title="13.BlinnPhong式高光反射逐顶点光照">13.BlinnPhong式高光反射逐顶点光照</span>
             <span class="post-date" title="2024-10-10 13:04:33">2024/10/10</span>
@@ -14042,7 +14060,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/19.%E6%80%BB%E7%BB%93/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="19.toLua基础知识总结">19.toLua基础知识总结</span>
             <span class="post-date" title="2024-04-05 12:11:00">2024/04/05</span>
@@ -14051,7 +14069,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/18.Lua%E8%B0%83%E7%94%A8CSharp-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="18.Lua调用Unity的协同程序">18.Lua调用Unity的协同程序</span>
             <span class="post-date" title="2024-04-05 12:10:00">2024/04/05</span>
@@ -14060,7 +14078,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/17.Lua%E8%B0%83%E7%94%A8CSharp-%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="17.Lua调用C#的委托和事件">17.Lua调用C#的委托和事件</span>
             <span class="post-date" title="2024-04-05 12:05:21">2024/04/05</span>
@@ -14069,7 +14087,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.Lua%E8%B0%83%E7%94%A8CSharp-%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="16.Lua调用C#的重载函数">16.Lua调用C#的重载函数</span>
             <span class="post-date" title="2024-04-05 12:01:54">2024/04/05</span>
@@ -14078,7 +14096,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.Lua%E8%B0%83%E7%94%A8CSharp-ref%E5%92%8Cout%E5%87%BD%E6%95%B0/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="15.Lua调用C#的ref和out函数">15.Lua调用C#的ref和out函数</span>
             <span class="post-date" title="2024-04-05 11:56:12">2024/04/05</span>
@@ -14087,7 +14105,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Lua%E8%B0%83%E7%94%A8CSharp-%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="14.Lua调用C#的扩展方法">14.Lua调用C#的扩展方法</span>
             <span class="post-date" title="2024-04-05 11:53:26">2024/04/05</span>
@@ -14096,7 +14114,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/13.Lua%E8%B0%83%E7%94%A8CSharp-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="13.Lua调用C#的数据集合">13.Lua调用C#的数据集合</span>
             <span class="post-date" title="2024-04-05 11:45:43">2024/04/05</span>
@@ -14105,7 +14123,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Lua%E8%B0%83%E7%94%A8CSharp-%E6%9E%9A%E4%B8%BE/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="12.Lua调用C#的枚举">12.Lua调用C#的枚举</span>
             <span class="post-date" title="2024-04-05 11:41:03">2024/04/05</span>
@@ -14114,7 +14132,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B1%BB/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,Lua调用CSharp"
            data-author="" >
             <span class="post-title" title="11.Lua调用C#的类">11.Lua调用C#的类</span>
             <span class="post-date" title="2024-04-05 11:33:29">2024/04/05</span>
@@ -14123,7 +14141,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.CSharp%E8%B0%83%E7%94%A8Lua-toLua%E6%8F%90%E4%BE%9B%E7%9A%84%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="10.C#调用toLua提供的协同程序">10.C#调用toLua提供的协同程序</span>
             <span class="post-date" title="2024-04-05 11:27:10">2024/04/05</span>
@@ -14132,7 +14150,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E6%95%B0%E7%BB%84%E5%92%8CDictionary/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="9.C#把Lua表映射到数组和Dictionary">9.C#把Lua表映射到数组和Dictionary</span>
             <span class="post-date" title="2024-04-05 11:21:10">2024/04/05</span>
@@ -14141,7 +14159,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0LuaTable/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="8.C#把Lua表映射到LuaTable">8.C#把Lua表映射到LuaTable</span>
             <span class="post-date" title="2024-04-05 11:16:16">2024/04/05</span>
@@ -14150,7 +14168,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.CSharp%E8%B0%83%E7%94%A8Lua-%E5%87%BD%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B0%83%E7%94%A8/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="7.C#调用Lua函数">7.C#调用Lua函数</span>
             <span class="post-date" title="2024-04-05 10:58:58">2024/04/05</span>
@@ -14159,7 +14177,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.CSharp%E8%B0%83%E7%94%A8Lua-%E5%8F%98%E9%87%8F%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B5%8B%E5%80%BC/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="6.C#调用Lua变量">6.C#调用Lua变量</span>
             <span class="post-date" title="2024-04-05 10:48:57">2024/04/05</span>
@@ -14168,7 +14186,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E7%AE%A1%E7%90%86%E5%99%A8/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="5.Lua管理器">5.Lua管理器</span>
             <span class="post-date" title="2024-04-05 10:42:38">2024/04/05</span>
@@ -14177,7 +14195,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%87%8D%E5%AE%9A%E5%90%91/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="4.加载自定义路径下的Lua脚本">4.加载自定义路径下的Lua脚本</span>
             <span class="post-date" title="2024-04-05 10:01:35">2024/04/05</span>
@@ -14186,7 +14204,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/05/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E8%A7%A3%E6%9E%90%E5%99%A8/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识,CSharp调用Lua"
            data-author="" >
             <span class="post-title" title="3.Lua解析器执行Lua脚本">3.Lua解析器执行Lua脚本</span>
             <span class="post-date" title="2024-04-05 09:54:20">2024/04/05</span>
@@ -14195,7 +14213,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="2.环境准备">2.环境准备</span>
             <span class="post-date" title="2024-04-04 23:27:40">2024/04/04</span>
@@ -14204,7 +14222,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua toLua toLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/toLua/01.toLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
-           data-tag="Lua,热更新,Unity热更新,toLua,toLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,toLua,toLua基础知识"
            data-author="" >
             <span class="post-title" title="1.toLua基础知识概述">1.toLua基础知识概述</span>
             <span class="post-date" title="2024-04-04 23:23:02">2024/04/04</span>
@@ -14213,7 +14231,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%80%BB%E7%BB%93/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="11.xLua实践项目总结">11.xLua实践项目总结</span>
             <span class="post-date" title="2024-04-04 21:12:38">2024/04/04</span>
@@ -14222,7 +14240,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/10.%E6%89%B9%E9%87%8F%E8%BD%AC%E6%8D%A2Lua%E8%84%9A%E6%9C%AC%E5%90%8E%E7%BC%80%E5%B7%A5%E5%85%B7/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="10.批量转换Lua脚本后缀工具">10.批量转换Lua脚本后缀工具</span>
             <span class="post-date" title="2024-04-04 21:11:38">2024/04/04</span>
@@ -14231,7 +14249,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/9.%E8%83%8C%E5%8C%85%E9%9D%A2%E6%9D%BF%E9%80%BB%E8%BE%91/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="9.背包面板逻辑">9.背包面板逻辑</span>
             <span class="post-date" title="2024-04-04 20:58:13">2024/04/04</span>
@@ -14240,7 +14258,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/8.%E9%81%93%E5%85%B7%E9%80%BB%E8%BE%91/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="8.道具逻辑">8.道具逻辑</span>
             <span class="post-date" title="2024-04-04 20:31:15">2024/04/04</span>
@@ -14249,7 +14267,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/7.%E4%B8%BB%E9%9D%A2%E6%9D%BF%E9%80%BB%E8%BE%91/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="7.主面板逻辑">7.主面板逻辑</span>
             <span class="post-date" title="2024-04-04 20:23:11">2024/04/04</span>
@@ -14258,7 +14276,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/6.%E9%9D%A2%E6%9D%BF%E5%9F%BA%E7%B1%BB/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="6.面板基类">6.面板基类</span>
             <span class="post-date" title="2024-04-04 19:53:23">2024/04/04</span>
@@ -14267,7 +14285,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/5.%E6%95%B0%E6%8D%AE%E7%9B%B8%E5%85%B3/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="5.数据相关">5.数据相关</span>
             <span class="post-date" title="2024-04-04 19:15:52">2024/04/04</span>
@@ -14276,7 +14294,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/4.%E5%B8%B8%E7%94%A8%E7%B1%BB%E5%88%AB%E5%90%8D/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="4.常用类别名">4.常用类别名</span>
             <span class="post-date" title="2024-04-04 18:53:53">2024/04/04</span>
@@ -14285,7 +14303,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/3.%E6%8B%BC%E9%9D%A2%E6%9D%BF/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="3.拼面板">3.拼面板</span>
             <span class="post-date" title="2024-04-04 18:52:53">2024/04/04</span>
@@ -14294,7 +14312,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/2.%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="2.环境准备">2.环境准备</span>
             <span class="post-date" title="2024-04-04 18:29:51">2024/04/04</span>
@@ -14303,7 +14321,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua实践项目 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/02.xLua%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/1.%E6%A6%82%E8%BF%B0/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua实践项目"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua实践项目"
            data-author="" >
             <span class="post-title" title="1.xLua实践项目概述">1.xLua实践项目概述</span>
             <span class="post-date" title="2024-04-04 18:26:13">2024/04/04</span>
@@ -14312,7 +14330,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/30.%E6%80%BB%E7%BB%93/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="30.xLua基础知识总结">30.xLua基础知识总结</span>
             <span class="post-date" title="2024-04-04 17:39:31">2024/04/04</span>
@@ -14321,7 +14339,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/29.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E6%B3%9B%E5%9E%8B%E7%B1%BB%E6%9B%BF%E6%8D%A2/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="29.热补丁替换泛型类">29.热补丁替换泛型类</span>
             <span class="post-date" title="2024-04-04 17:38:31">2024/04/04</span>
@@ -14330,7 +14348,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/28.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E4%BA%8B%E4%BB%B6%E5%8A%A0%E5%87%8F%E6%93%8D%E4%BD%9C%E6%9B%BF%E6%8D%A2/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="28.热补丁替换委托事件加减操作">28.热补丁替换委托事件加减操作</span>
             <span class="post-date" title="2024-04-04 15:07:42">2024/04/04</span>
@@ -14339,7 +14357,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/27.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%B1%9E%E6%80%A7%E5%92%8C%E7%B4%A2%E5%BC%95%E5%99%A8%E6%9B%BF%E6%8D%A2/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="27.热补丁替换属性和索引器">27.热补丁替换属性和索引器</span>
             <span class="post-date" title="2024-04-04 15:02:13">2024/04/04</span>
@@ -14348,7 +14366,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/26.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%8D%8F%E7%A8%8B%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="26.热补丁替换协程函数">26.热补丁替换协程函数</span>
             <span class="post-date" title="2024-04-04 14:53:40">2024/04/04</span>
@@ -14357,7 +14375,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/25.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%A4%9A%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="25.热补丁替换多函数">25.热补丁替换多函数</span>
             <span class="post-date" title="2024-04-04 14:45:31">2024/04/04</span>
@@ -14366,7 +14384,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/24.xLua%E7%83%AD%E8%A1%A5%E4%B8%81-%E5%8D%95%E5%87%BD%E6%95%B0%E6%9B%BF%E6%8D%A2/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识,热补丁"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识,热补丁"
            data-author="" >
             <span class="post-title" title="24.热补丁替换单函数">24.热补丁替换单函数</span>
             <span class="post-date" title="2024-04-04 14:24:55">2024/04/04</span>
@@ -14375,7 +14393,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/23.Lua%E8%B0%83%E7%94%A8CSharp-%E6%B3%9B%E5%9E%8B/"
-           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="23.Lua调用C#的泛型">23.Lua调用C#的泛型</span>
             <span class="post-date" title="2024-04-04 13:27:51">2024/04/04</span>
@@ -14384,7 +14402,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/22.Lua%E8%B0%83%E7%94%A8CSharp-%E5%8D%8F%E5%90%8C%E7%A8%8B%E5%BA%8F/"
-           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="22.Lua调用Unity的协同程序">22.Lua调用Unity的协同程序</span>
             <span class="post-date" title="2024-04-04 13:15:59">2024/04/04</span>
@@ -14393,7 +14411,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/21.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B3%BB%E7%BB%9F%E4%BB%A3%E7%A0%81%E4%BA%A4%E4%BA%92/"
-           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="21.Lua和C#对系统代码交互处理">21.Lua和C#对系统代码交互处理</span>
             <span class="post-date" title="2024-04-04 13:06:38">2024/04/04</span>
@@ -14402,7 +14420,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/20.Lua%E8%B0%83%E7%94%A8CSharp-%E5%88%A4%E7%A9%BA/"
-           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="20.Lua和C#的判空相关">20.Lua和C#的判空相关</span>
             <span class="post-date" title="2024-04-04 13:04:39">2024/04/04</span>
@@ -14411,7 +14429,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/19.Lua%E8%B0%83%E7%94%A8CSharp-%E4%BA%8C%E7%BB%B4%E6%95%B0%E7%BB%84/"
-           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="19.Lua调用C#的二维数组">19.Lua调用C#的二维数组</span>
             <span class="post-date" title="2024-04-04 12:54:09">2024/04/04</span>
@@ -14420,7 +14438,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/18.Lua%E8%B0%83%E7%94%A8CSharp-%E5%A7%94%E6%89%98%E5%92%8C%E4%BA%8B%E4%BB%B6/"
-           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="18.Lua调用C#的委托和事件">18.Lua调用C#的委托和事件</span>
             <span class="post-date" title="2024-04-04 11:57:07">2024/04/04</span>
@@ -14429,7 +14447,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/17.Lua%E8%B0%83%E7%94%A8CSharp-%E9%87%8D%E8%BD%BD%E5%87%BD%E6%95%B0/"
-           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="17.Lua调用C#的重载函数">17.Lua调用C#的重载函数</span>
             <span class="post-date" title="2024-04-04 11:51:29">2024/04/04</span>
@@ -14438,7 +14456,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/16.Lua%E8%B0%83%E7%94%A8CSharp-ref%E5%92%8Cout%E5%87%BD%E6%95%B0/"
-           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="16.Lua调用C#的ref和out函数">16.Lua调用C#的ref和out函数</span>
             <span class="post-date" title="2024-04-04 11:50:39">2024/04/04</span>
@@ -14447,7 +14465,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/15.Lua%E8%B0%83%E7%94%A8CSharp-%E6%8B%93%E5%B1%95%E6%96%B9%E6%B3%95/"
-           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="15.Lua调用C#的扩展方法">15.Lua调用C#的扩展方法</span>
             <span class="post-date" title="2024-04-04 11:35:07">2024/04/04</span>
@@ -14456,7 +14474,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/14.Lua%E8%B0%83%E7%94%A8CSharp-%E6%95%B0%E6%8D%AE%E9%9B%86%E5%90%88/"
-           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="14.Lua调用C#的数据集合">14.Lua调用C#的数据集合</span>
             <span class="post-date" title="2024-04-04 11:11:12">2024/04/04</span>
@@ -14465,7 +14483,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/13.Lua%E8%B0%83%E7%94%A8CSharp-%E6%9E%9A%E4%B8%BE/"
-           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="13.Lua调用C#的枚举">13.Lua调用C#的枚举</span>
             <span class="post-date" title="2024-04-04 11:09:44">2024/04/04</span>
@@ -14474,7 +14492,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/12.Lua%E8%B0%83%E7%94%A8CSharp-%E7%B1%BB/"
-           data-tag="Lua,热更新,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,Lua调用CSharp,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="12.Lua调用C#的类">12.Lua调用C#的类</span>
             <span class="post-date" title="2024-04-04 11:04:10">2024/04/04</span>
@@ -14483,7 +14501,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/11.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0LuaTable/"
-           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="11.C#把Lua表映射到LuaTable">11.C#把Lua表映射到LuaTable</span>
             <span class="post-date" title="2024-04-04 10:51:03">2024/04/04</span>
@@ -14492,7 +14510,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/10.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E6%8E%A5%E5%8F%A3/"
-           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="10.C#把Lua表映射到接口">10.C#把Lua表映射到接口</span>
             <span class="post-date" title="2024-04-04 10:45:54">2024/04/04</span>
@@ -14501,7 +14519,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/9.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0%E7%B1%BB/"
-           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="9.C#把Lua表映射到类">9.C#把Lua表映射到类</span>
             <span class="post-date" title="2024-04-04 10:32:53">2024/04/04</span>
@@ -14510,7 +14528,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/8.CSharp%E8%B0%83%E7%94%A8Lua-%E8%A1%A8%E6%98%A0%E5%B0%84%E5%88%B0List%E5%92%8CDictionary/"
-           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="8.C#把Lua表映射到List和Dictionary">8.C#把Lua表映射到List和Dictionary</span>
             <span class="post-date" title="2024-04-04 10:28:33">2024/04/04</span>
@@ -14519,7 +14537,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/7.CSharp%E8%B0%83%E7%94%A8Lua-%E5%87%BD%E6%95%B0%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B0%83%E7%94%A8/"
-           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="7.C#调用Lua函数">7.C#调用Lua函数</span>
             <span class="post-date" title="2024-04-04 09:58:44">2024/04/04</span>
@@ -14528,7 +14546,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/6.CSharp%E8%B0%83%E7%94%A8Lua-%E5%8F%98%E9%87%8F%E7%9A%84%E8%8E%B7%E5%8F%96%E5%92%8C%E8%B5%8B%E5%80%BC/"
-           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="6.C#调用Lua变量">6.C#调用Lua变量</span>
             <span class="post-date" title="2024-04-04 09:57:16">2024/04/04</span>
@@ -14537,7 +14555,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/04/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/5.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E7%AE%A1%E7%90%86%E5%99%A8/"
-           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="5.Lua管理器和加载AB包中的Lua脚本">5.Lua管理器和加载AB包中的Lua脚本</span>
             <span class="post-date" title="2024-04-04 09:08:02">2024/04/04</span>
@@ -14546,7 +14564,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/4.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E9%87%8D%E5%AE%9A%E5%90%91/"
-           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="4.加载自定义路径下的Lua脚本">4.加载自定义路径下的Lua脚本</span>
             <span class="post-date" title="2024-04-03 21:30:58">2024/04/03</span>
@@ -14555,7 +14573,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/3.CSharp%E8%B0%83%E7%94%A8Lua-Lua%E8%A7%A3%E6%9E%90%E5%99%A8/"
-           data-tag="Lua,热更新,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,CSharp调用Lua,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="3.Lua解析器执行Lua脚本">3.Lua解析器执行Lua脚本</span>
             <span class="post-date" title="2024-04-03 21:16:35">2024/04/03</span>
@@ -14564,7 +14582,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/2.%E7%8E%AF%E5%A2%83%E5%87%86%E5%A4%87/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="2.环境准备">2.环境准备</span>
             <span class="post-date" title="2024-04-03 21:10:07">2024/04/03</span>
@@ -14573,7 +14591,7 @@
         
         <a  class="全部文章 热更新 Unity热更新 Lua xLua xLua基础知识 "
            href="/2024/04/03/%E7%83%AD%E6%9B%B4%E6%96%B0/Unity/Lua/xLua/01.xLua%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/1.%E6%A6%82%E8%BF%B0/"
-           data-tag="Lua,热更新,Unity热更新,xLua,xLua基础知识"
+           data-tag="热更新,Lua,Unity热更新,xLua,xLua基础知识"
            data-author="" >
             <span class="post-title" title="1.xLua基础知识概述">1.xLua基础知识概述</span>
             <span class="post-date" title="2024-04-03 21:08:56">2024/04/03</span>
@@ -20611,19 +20629,19 @@
         
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门实践项目 "
-           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
            data-tag="编程语言,CSharp,CSharp入门,CSharp入门实践项目"
            data-author="" >
-            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
+            <span class="post-title" title="12.公主相关">12.公主相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
         
         <a  class="全部文章 编程语言 CSharp CSharp入门 CSharp入门实践项目 "
-           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/12.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E5%85%AC%E4%B8%BB%E7%9B%B8%E5%85%B3/"
+           href="/2024/01/08/%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80/CSharp/02.CSharp%E5%85%A5%E9%97%A8%E5%AE%9E%E8%B7%B5%E9%A1%B9%E7%9B%AE/11.%E6%B8%B8%E6%88%8F%E5%9C%BA%E6%99%AF-%E7%8E%A9%E5%AE%B6%E6%88%98%E6%96%97%E7%9B%B8%E5%85%B3/"
            data-tag="编程语言,CSharp,CSharp入门,CSharp入门实践项目"
            data-author="" >
-            <span class="post-title" title="12.公主相关">12.公主相关</span>
+            <span class="post-title" title="11.玩家战斗相关">11.玩家战斗相关</span>
             <span class="post-date" title="2024-01-08 21:53:48">2024/01/08</span>
         </a>
         
@@ -21170,7 +21188,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/463.%E5%B2%9B%E5%B1%BF%E7%9A%84%E5%91%A8%E9%95%BF/"
-           data-tag="LeetCode,深度优先搜索,广度优先搜索,数组,矩阵"
+           data-tag="LeetCode,广度优先搜索,深度优先搜索,数组,矩阵"
            data-author="" >
             <span class="post-title" title="463.岛屿的周长">463.岛屿的周长</span>
             <span class="post-date" title="2000-01-10 04:06:03">2000/01/10</span>
@@ -21350,7 +21368,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/236.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E8%BF%91%E5%85%AC%E5%85%B1%E7%A5%96%E5%85%88/"
-           data-tag="LeetCode,树,深度优先搜索,二叉树,热题100"
+           data-tag="LeetCode,二叉树,热题100,树,深度优先搜索"
            data-author="" >
             <span class="post-title" title="236.二叉树的最近公共祖先">236.二叉树的最近公共祖先</span>
             <span class="post-date" title="2000-01-10 02:03:06">2000/01/10</span>
@@ -21386,7 +21404,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/230.%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E4%B8%AD%E7%AC%ACK%E5%B0%8F%E7%9A%84%E5%85%83%E7%B4%A0/"
-           data-tag="LeetCode,树,深度优先搜索,二叉树,热题100,二叉搜索树"
+           data-tag="LeetCode,二叉树,热题100,树,深度优先搜索,二叉搜索树"
            data-author="" >
             <span class="post-title" title="230.二叉搜索树中第K小的元素">230.二叉搜索树中第K小的元素</span>
             <span class="post-date" title="2000-01-10 02:03:00">2000/01/10</span>
@@ -21449,7 +21467,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/200.%E5%B2%9B%E5%B1%BF%E6%95%B0%E9%87%8F/"
-           data-tag="LeetCode,深度优先搜索,广度优先搜索,热题100,岛屿"
+           data-tag="LeetCode,广度优先搜索,热题100,深度优先搜索,岛屿"
            data-author="" >
             <span class="post-title" title="200.岛屿数量">200.岛屿数量</span>
             <span class="post-date" title="2000-01-10 02:00:00">2000/01/10</span>
@@ -21512,7 +21530,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/146.LRU%E7%BC%93%E5%AD%98/"
-           data-tag="LeetCode,热题100,哈希表,链表,设计,双向链表"
+           data-tag="LeetCode,热题100,哈希表,设计,链表,双向链表"
            data-author="" >
             <span class="post-title" title="146.LRU缓存">146.LRU缓存</span>
             <span class="post-date" title="2000-01-10 01:04:06">2000/01/10</span>
@@ -21521,7 +21539,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/144.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%89%8D%E5%BA%8F%E9%81%8D%E5%8E%86/"
-           data-tag="LeetCode,树,深度优先搜索,二叉树,栈"
+           data-tag="LeetCode,二叉树,树,深度优先搜索,栈"
            data-author="" >
             <span class="post-title" title="144.二叉树的前序遍历">144.二叉树的前序遍历</span>
             <span class="post-date" title="2000-01-10 01:04:04">2000/01/10</span>
@@ -21566,7 +21584,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/129.%E6%B1%82%E6%A0%B9%E8%8A%82%E7%82%B9%E5%88%B0%E5%8F%B6%E8%8A%82%E7%82%B9%E6%95%B0%E5%AD%97%E4%B9%8B%E5%92%8C/"
-           data-tag="LeetCode,树,深度优先搜索,二叉树"
+           data-tag="LeetCode,二叉树,树,深度优先搜索"
            data-author="" >
             <span class="post-title" title="129.求根节点到叶节点数字之和">129.求根节点到叶节点数字之和</span>
             <span class="post-date" title="2000-01-10 01:02:09">2000/01/10</span>
@@ -21611,7 +21629,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/112.%E8%B7%AF%E5%BE%84%E6%80%BB%E5%92%8C/"
-           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,二叉树"
+           data-tag="LeetCode,二叉树,广度优先搜索,树,深度优先搜索"
            data-author="" >
             <span class="post-title" title="112.路径总和">112.路径总和</span>
             <span class="post-date" title="2000-01-10 01:01:02">2000/01/10</span>
@@ -21620,7 +21638,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/108.%E5%B0%86%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E8%BD%AC%E6%8D%A2%E4%B8%BA%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"
-           data-tag="LeetCode,树,二叉树,热题100,数组,二叉搜索树,分治"
+           data-tag="LeetCode,二叉树,热题100,树,数组,二叉搜索树,分治"
            data-author="" >
             <span class="post-title" title="108.将有序数组转换为二叉搜索树">108.将有序数组转换为二叉搜索树</span>
             <span class="post-date" title="2000-01-10 01:00:08">2000/01/10</span>
@@ -21629,7 +21647,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/104.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E6%9C%80%E5%A4%A7%E6%B7%B1%E5%BA%A6/"
-           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,二叉树,热题100"
+           data-tag="LeetCode,二叉树,广度优先搜索,热题100,树,深度优先搜索"
            data-author="" >
             <span class="post-title" title="104.二叉树的最大深度">104.二叉树的最大深度</span>
             <span class="post-date" title="2000-01-10 01:00:04">2000/01/10</span>
@@ -21638,7 +21656,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/102.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E5%B1%82%E5%BA%8F%E9%81%8D%E5%8E%86/"
-           data-tag="LeetCode,广度优先搜索,二叉树,热题100,队列"
+           data-tag="LeetCode,二叉树,广度优先搜索,队列,热题100"
            data-author="" >
             <span class="post-title" title="102.二叉树的层序遍历">102.二叉树的层序遍历</span>
             <span class="post-date" title="2000-01-10 01:00:02">2000/01/10</span>
@@ -21647,7 +21665,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/101.%E5%AF%B9%E7%A7%B0%E4%BA%8C%E5%8F%89%E6%A0%91/"
-           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,二叉树,热题100"
+           data-tag="LeetCode,二叉树,广度优先搜索,热题100,树,深度优先搜索"
            data-author="" >
             <span class="post-title" title="101.对称二叉树">101.对称二叉树</span>
             <span class="post-date" title="2000-01-10 01:00:01">2000/01/10</span>
@@ -21656,7 +21674,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/100.%E7%9B%B8%E5%90%8C%E7%9A%84%E6%A0%91/"
-           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,二叉树"
+           data-tag="LeetCode,二叉树,广度优先搜索,树,深度优先搜索"
            data-author="" >
             <span class="post-title" title="100.相同的树">100.相同的树</span>
             <span class="post-date" title="2000-01-10 01:00:00">2000/01/10</span>
@@ -21665,7 +21683,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/94.%E4%BA%8C%E5%8F%89%E6%A0%91%E7%9A%84%E4%B8%AD%E5%BA%8F%E9%81%8D%E5%8E%86/"
-           data-tag="LeetCode,树,深度优先搜索,广度优先搜索,热题100,栈"
+           data-tag="LeetCode,广度优先搜索,热题100,树,深度优先搜索,栈"
            data-author="" >
             <span class="post-title" title="94.二叉树的中序遍历">94.二叉树的中序遍历</span>
             <span class="post-date" title="2000-01-10 00:09:04">2000/01/10</span>
@@ -21809,7 +21827,7 @@
         
         <a  class="全部文章 LeetCode "
            href="/2000/01/10/LeetCode/46.%E5%85%A8%E6%8E%92%E5%88%97/"
-           data-tag="LeetCode,深度优先搜索,热题100,回溯,排列"
+           data-tag="LeetCode,热题100,深度优先搜索,回溯,排列"
            data-author="" >
             <span class="post-title" title="46.全排列">46.全排列</span>
             <span class="post-date" title="2000-01-10 00:04:06">2000/01/10</span>
@@ -25441,12 +25459,12 @@
     </div>
     <div class="article-meta">
         
-            发布时间 : <time class="date" title='最后更新: 2026-05-25 22:21:21'>2026-05-17 10:31</time>
+            发布时间 : <time class="date" title='最后更新: 2026-06-11 02:06:25'>2026-05-17 10:31</time>
         
     </div>
     <div class="article-meta">
         
-        <span>字数:3.6k</span>
+        <span>字数:4.5k</span>
         
         
         <span id="busuanzi_container_page_pv">
@@ -25476,7 +25494,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E8%A1%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%96%E8%88%8D"><span class="toc-text">4.表与数据结构取舍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">4.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E5%85%85%E5%BD%93%E5%A4%9A%E7%A7%8D%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">表充当多种数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%AF%AD%E4%B9%89"><span class="toc-text">数组语义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E5%85%B8%E8%AF%AD%E4%B9%89"><span class="toc-text">字典语义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="toc-text">顺序表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%9B%B4%E6%8E%A5%E8%B5%8B%E5%80%BC%E5%92%8C%E6%8F%92%E5%85%A5%E5%AF%B9%E6%AF%94"><span class="toc-text">直接赋值和插入对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#table-insert-%E5%B0%BE%E6%8F%92"><span class="toc-text">table.insert 尾插</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#table-insert-%E4%B8%AD%E9%97%B4%E6%8F%92%E5%85%A5"><span class="toc-text">table.insert 中间插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#table-remove-%E5%A4%B4%E5%88%A0%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-text">table.remove 头删的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#table-%E4%BD%9C%E4%B8%BA%E9%9B%86%E5%90%88"><span class="toc-text">table 作为集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#table-%E4%BD%9C%E4%B8%BA%E9%98%9F%E5%88%97"><span class="toc-text">table 作为队列</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E6%AE%B5%E5%92%8C%E5%93%88%E5%B8%8C%E6%AE%B5"><span class="toc-text">数组段和哈希段</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">4.2 知识点代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lesson4-%E8%A1%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%96%E8%88%8D-lua"><span class="toc-text">Lesson4_表与数据结构取舍.lua</span></a></li></ol></li></ol></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#4-%E8%A1%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%96%E8%88%8D"><span class="toc-text">4.表与数据结构取舍</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-1-%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="toc-text">4.1 知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E5%92%8C%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84"><span class="toc-text">表和数据结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%B0%E7%BB%84%E8%AF%AD%E4%B9%89"><span class="toc-text">数组语义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AD%97%E5%85%B8%E8%AF%AD%E4%B9%89"><span class="toc-text">字典语义</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%BA%E5%BA%8F%E8%A1%A8"><span class="toc-text">顺序表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%99%E6%A7%BD%E5%92%8C%E6%8F%92%E5%85%A5"><span class="toc-text">写槽和插入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E6%8F%92%E5%85%A5%E5%92%8C%E5%A4%B4%E5%88%A0"><span class="toc-text">中间插入和头删</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%8E%E4%B9%88%E9%81%BF%E5%85%8D%E6%90%AC%E5%AE%B6"><span class="toc-text">怎么避免搬家</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%98%9F%E5%88%97%EF%BC%9A%E7%BB%B4%E6%8A%A4%E5%A4%B4%E5%B0%BE%E5%8F%8C%E6%8C%87%E9%92%88"><span class="toc-text">队列：维护头尾双指针</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E5%88%A0%E9%99%A4%EF%BC%9A%E4%B8%8D%E8%A6%81%E6%B1%82%E9%A1%BA%E5%BA%8F%EF%BC%8C%E5%B0%B1%E7%94%A8%E6%9C%AB%E5%B0%BE%E5%85%83%E7%B4%A0%E8%A1%A5%E4%BD%8D"><span class="toc-text">中间删除：不要求顺序，就用末尾元素补位</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8C%89-id-%E5%88%A0%E9%99%A4%EF%BC%9A%E5%AD%97%E5%85%B8-%E6%95%B0%E7%BB%84-indexMap"><span class="toc-text">按 id 删除：字典 + 数组 + indexMap</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BF%85%E9%A1%BB%E4%BF%9D%E9%A1%BA%E5%BA%8F%EF%BC%9A%E5%85%88%E6%A0%87%E8%AE%B0%EF%BC%8C%E5%B8%A7%E6%9C%AB%E7%BB%9F%E4%B8%80%E6%95%B4%E7%90%86"><span class="toc-text">必须保顺序：先标记，帧末统一整理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E9%97%B4%E6%8F%92%E5%85%A5%EF%BC%9A%E8%83%BD%E5%BB%B6%E5%90%8E%E5%B0%B1%E5%BB%B6%E5%90%8E"><span class="toc-text">中间插入：能延后就延后</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9B%86%E5%90%88"><span class="toc-text">集合</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E7%BB%93"><span class="toc-text">总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-2-%E7%9F%A5%E8%AF%86%E7%82%B9%E4%BB%A3%E7%A0%81"><span class="toc-text">4.2 知识点代码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Lesson4-%E8%A1%A8%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%8F%96%E8%88%8D-lua"><span class="toc-text">Lesson4_表与数据结构取舍.lua</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -25493,28 +25511,30 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="4-表与数据结构取舍"><a href="#4-表与数据结构取舍" class="headerlink" title="4.表与数据结构取舍"></a>4.表与数据结构取舍</h1><hr>
-<h2 id="4-1-知识点"><a href="#4-1-知识点" class="headerlink" title="4.1 知识点"></a>4.1 知识点</h2><h3 id="表充当多种数据结构"><a href="#表充当多种数据结构" class="headerlink" title="表充当多种数据结构"></a>表充当多种数据结构</h3><p>前几篇一直在聊表的引用、拷贝。<br>这篇回到 <code>table</code> 本身。</p>
-<p>Lua 里常用容器基本都绕不开 <code>table</code>。<br>它可以当数组、字典、集合、队列来写。虽然可以充当成各种数据结构，但如果用错场景，成本会差很多。</p>
-<p>比如战斗里一帧插删几百次，和配置表里按 id 查一行数据，肯定不是一套写法。<br>所以真正要先想清楚的是：<strong>这张表到底打算当什么用。</strong></p>
-<p>连续列表当数组，id 映射当字典，判重当集合，队列的话维护 head&#x2F;tail 出队，别 <code>table.remove(t, 1)</code> 删头，这样移动太多元素。</p>
-<h3 id="数组语义"><a href="#数组语义" class="headerlink" title="数组语义"></a>数组语义</h3><p>key 从 1 开始连续往上长，中间没洞，就按数组来用。</p>
+<h2 id="4-1-知识点"><a href="#4-1-知识点" class="headerlink" title="4.1 知识点"></a>4.1 知识点</h2><h3 id="表和数据结构"><a href="#表和数据结构" class="headerlink" title="表和数据结构"></a>表和数据结构</h3><p>Lua 里表可以当数组、字典、集合、队列，但<strong>用法不同，成本差很多</strong>。</p>
+<p>使用表当数据结构前，先想清楚几个问题：</p>
+<ul>
+<li>按下标顺序访问还是按 id 查？</li>
+<li>顺序会不会影响结果？</li>
+<li>只判存在还是要完整数据？</li>
+<li>FIFO 会不会在热路径里频繁出入队？</li>
+</ul>
+<h3 id="数组语义"><a href="#数组语义" class="headerlink" title="数组语义"></a>数组语义</h3><p>从 1 开始连续增长，中间不留洞，就按数组来写。</p>
 <pre><code class="lua">local skills = &#123; 1001, 1002, 1003 &#125;
 
 print(skills[1]) -- 输出：1001
 print(#skills)   -- 输出：3
 </code></pre>
-<p>待释放技能 id、Buff 列表、本帧要 tick 的表现 id，项目里最常见的就是这种。</p>
-<p>这种表适合用：</p>
+<p>数组语义的前提是“连续”。只要中间可能有 <code>nil</code>，或者混了其他的业务 key，就不能把 <code>#</code> 当稳定获取长度的API。</p>
+<p>数组常见操作：</p>
 <ul>
-<li><code>list[i]</code></li>
-<li><code>#list</code></li>
-<li><code>ipairs</code></li>
-<li>两参数 <code>table.insert(list, value)</code> 尾插</li>
+<li><code>list[i]</code> 按下标读写。</li>
+<li><code>#list</code> 只用于连续列表。</li>
+<li><code>ipairs(list)</code> 只用于连续列表。</li>
+<li><code>table.insert(list, value)</code> 用于尾插。</li>
 </ul>
-<p>但前提是它真的是连续数组。</p>
-<p>一旦中间有洞，或者业务上已经混了字符串 key，就别再把它当“纯数组”看。</p>
-<h3 id="字典语义"><a href="#字典语义" class="headerlink" title="字典语义"></a>字典语义</h3><p>按 id 查配置行、按名字查对象、运行时做映射表，走的是字典语义。</p>
-<p>key 不要求连续，甚至可以根本不是数字。</p>
+<p>热路径里，尾插通常没问题。<br>但是如果频繁中间插入、头部删除，就得用别的方式处理了。</p>
+<h3 id="字典语义"><a href="#字典语义" class="headerlink" title="字典语义"></a>字典语义</h3><p>按 id 查配置行、按名字查对象、按实例 id 找运行时对象，走字典语义。</p>
 <pre><code class="lua">local skillMap = &#123;
     [1001] = &#123; name = &quot;FireBall&quot; &#125;,
     [1005] = &#123; name = &quot;IceBolt&quot; &#125;,
@@ -25524,28 +25544,26 @@ print(#skills)   -- 输出：3
 print(skillMap[1001].name) -- 输出：FireBall
 print(skillMap[1002])      -- 输出：nil
 </code></pre>
-<p><code>skillMap[1001]</code> 查一次就能拿到配置行。<br>配置表、对象缓存、id 到实例的映射，一般都是查一次就行。</p>
-<p>字典别拿 <code>#</code> 当长度，也别指望 <code>ipairs</code> 扫全表——空洞、<code>pairs</code> 顺序那套，语法篇 <code>10.表</code> 已经讲过，这里不赘述。<br><code>pairs</code> 能遍历，但顺序不能当 UI 排序、帧同步 Tick 顺序。这种时候单独挂一张顺序表。</p>
-<h3 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h3><p>字典负责查，顺序表负责「按什么先后走」。<br>两张表分工：map 存数据，order 存 id 列表；遍历 order，再去 map 里取。</p>
-<p>帧同步 Tick Entity 就是典型场景。实体按 id 查，<code>entityMap</code> 存运行时数据；每帧谁先谁后，各端必须一致，不能直接使用 <code>pairs(entityMap)</code> 不可靠顺序进行遍历：</p>
+<p>字典的重点是通过key得到value。遍历顺序是不可靠的。<br>不能拿 <code>#</code> 当数量。<br>业务需要数量，需要自己维护 <code>count</code>；如果业务需要顺序，单独维护顺序表。</p>
+<h3 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h3><p>字典负责查，顺序表负责“按什么顺序处理”。</p>
+<p>有时候一些场景下，必须得按一定顺序遍历处理。比如，在帧同步 Tick 里这个边界很重要，因为要保证一致性。<br>实体按 id 查用 <code>entityMap</code>，Tick 顺序用 <code>entityOrder</code>。不要把 <code>pairs(entityMap)</code> 的遍历结果当业务顺序。</p>
 <pre><code class="lua">local entityMap = &#123;
     [101] = &#123; hp = 100 &#125;,
     [102] = &#123; hp = 80 &#125;,
     [103] = &#123; hp = 120 &#125;
 &#125;
 
--- 每帧 Tick 顺序，各端共用同一份
 local entityOrder = &#123; 101, 102, 103 &#125;
 
 for _, entityId in ipairs(entityOrder) do
     local entity = entityMap[entityId]
     entity.hp = entity.hp - 1
     print(entityId, entity.hp)
-    -- 输出：101 99 / 102 79 / 103 119，各端按同一顺序扣血
+    -- 输出：101 99 / 102 79 / 103 119，各端按同一份顺序 Tick
 end
 </code></pre>
-<p><code>entityMap</code> 只管 lookup，Tick 先后交给 <code>entityOrder</code>。<br>新 Entity 入战，map 里塞数据，order 尾插 id 就行。</p>
-<h3 id="直接赋值和插入对比"><a href="#直接赋值和插入对比" class="headerlink" title="直接赋值和插入对比"></a>直接赋值和插入对比</h3><p><code>t[k] = v</code> 是往某个 key 写值，<strong>不会</strong>把后面的元素往后挪。</p>
+<p>新实体入战时，<code>entityMap[id] = entity</code>，再把 <code>id</code> 尾插进 <code>entityOrder</code>。<br>删除时看项目需求：可以从顺序表移除，也可以标记失效后帧末批量整理。</p>
+<h3 id="写槽和插入"><a href="#写槽和插入" class="headerlink" title="写槽和插入"></a>写槽和插入</h3><p><code>t[k] = v</code> 是写某个槽。<br>如果这个 key 原来有值，就是覆盖；不会把后面的元素往后挪。</p>
 <pre><code class="lua">local t = &#123; 10, 20, 30 &#125;
 
 t[2] = 99
@@ -25553,20 +25571,19 @@ t[2] = 99
 print(t[1], t[2], t[3]) -- 输出：10  99  30
 print(#t)               -- 输出：3
 </code></pre>
-<p><code>table.insert(t, pos, value)</code> 是在数组段里挤位置。<br>从 <code>pos</code> 开始，后面的元素会整体后移一位。</p>
+<p><code>table.insert(t, pos, value)</code> 是插入。<br>从 <code>pos</code> 开始，后面的数组元素会整体后移。</p>
 <pre><code class="lua">local t = &#123; 10, 20, 30, 40 &#125;
 
 table.insert(t, 2, 15)
 
 print(t[1], t[2], t[3], t[4], t[5]) -- 输出：10  15  20  30  40
-print(#t)                             -- 输出：5，2 号位插入 15，原 20 被挤到后面
+print(#t)                           -- 输出：5
 </code></pre>
-<p>所以这两句实际效果不一样——承接上面 <code>&#123; 10, 20, 30, 40 &#125;</code> 那张表：</p>
-<pre><code class="lua">t[2] = 15              -- 只覆盖 2 号槽，表长还是 4
-table.insert(t, 2, 15) -- 2 号位挤进新元素，后面整体后移，表长变 5
+<p>这两个操作不能混为一谈：</p>
+<pre><code class="lua">t[2] = 15              -- 覆盖 2 号位
+table.insert(t, 2, 15) -- 在 2 号位插入，后面元素整体后移
 </code></pre>
-<p>前者只改一个槽。<br>后者是在 2 号位插入，原来的 2 号位和后面元素一起往后搬。</p>
-<h3 id="table-insert-尾插"><a href="#table-insert-尾插" class="headerlink" title="table.insert 尾插"></a>table.insert 尾插</h3><p>两个参数的 <code>table.insert</code> 是尾插。</p>
+<h3 id="中间插入和头删"><a href="#中间插入和头删" class="headerlink" title="中间插入和头删"></a>中间插入和头删</h3><p>尾插通常干净，基本不会有什么影响：</p>
 <pre><code class="lua">local pending = &#123; &quot;A&quot;, &quot;B&quot; &#125;
 
 table.insert(pending, &quot;C&quot;)
@@ -25574,8 +25591,7 @@ table.insert(pending, &quot;C&quot;)
 print(#pending)   -- 输出：3
 print(pending[3]) -- 输出：C
 </code></pre>
-<p>待处理事件、日志行、临时列表，一般是字节往后加的话，那使用尾插就够了。<br>没有明确需求，最好不要往中间插。因为会涉及一些搬家开销。</p>
-<h3 id="table-insert-中间插入"><a href="#table-insert-中间插入" class="headerlink" title="table.insert 中间插入"></a>table.insert 中间插入</h3><p>三个参数的 <code>table.insert</code> 会在 <code>pos</code> 处插入，并把 <code>pos</code> 及之后的元素往后搬。</p>
+<p>中间插入会让后面的元素“搬家”：</p>
 <pre><code class="lua">local nums = &#123; 10, 20, 30, 40 &#125;
 
 table.insert(nums, 2, 15)
@@ -25583,40 +25599,214 @@ table.insert(nums, 2, 15)
 print(nums[1], nums[2], nums[3], nums[4], nums[5])
 -- 输出：10  15  20  30  40
 </code></pre>
-<p>插得越靠前，要搬的元素越多。<br>插到 1 号位，基本就是整段平移。</p>
-<p>中间插入不能说完全禁止，但是最好别在热路径里频繁调用。<br>例如在战斗 Tick、红点刷新、表现队列这类地方，如果大表频繁中间插入，Profiler 里很容易看到这块开销，影响性能。</p>
-<h3 id="table-remove-头删的问题"><a href="#table-remove-头删的问题" class="headerlink" title="table.remove 头删的问题"></a>table.remove 头删的问题</h3><p><code>table.remove(t, 1)</code> 会删掉第一个元素，然后把后面的元素整体前移。</p>
+<p>头删也会“搬家”，往前搬：</p>
 <pre><code class="lua">local tasks = &#123; &quot;move&quot;, &quot;attack&quot;, &quot;idle&quot; &#125;
 
-table.remove(tasks, 1)
+local removedTask = table.remove(tasks, 1)
 
+print(removedTask)      -- 输出：move
 print(tasks[1], tasks[2]) -- 输出：attack  idle
-print(#tasks)             -- 输出：2
 </code></pre>
-<p>demo 里三行代码看不出问题。<br>但战斗帧里如果每帧对几百上千条指令 <code>remove(1)</code>，这块开销会叠起来。</p>
-<p>热路径 FIFO 队列别这么写。而是最好用 head &#x2F; tail 更，见后文。</p>
-<h3 id="table-作为集合"><a href="#table-作为集合" class="headerlink" title="table 作为集合"></a>table 作为集合</h3><p>判重、判存活、判已访问，用 key 占位就够了。</p>
+<p>demo 里数据不多的话，看起来没什么问题。<br>但是如果一个很多元素的表频繁这么干，很吃性能。尤其是每一帧频繁调用时。</p>
+<p>但是中间插入和头删也不是完全禁用。<br>冷路径、短列表、编辑器工具里一般无所谓。  </p>
+<h3 id="怎么避免搬家"><a href="#怎么避免搬家" class="headerlink" title="怎么避免搬家"></a>怎么避免搬家</h3><h4 id="队列：维护头尾双指针"><a href="#队列：维护头尾双指针" class="headerlink" title="队列：维护头尾双指针"></a>队列：维护头尾双指针</h4><p>FIFO 队列别用 <code>table.remove(q, 1)</code> 做出队。前面也提过，这样会搬家。<br>通用的写法是维护 <code>head</code> &#x2F; <code>tail</code>。可以理解为 Leetcode 学的双指针（手动狗头）。</p>
+<pre><code class="lua">local q = &#123;&#125;
+local head, tail = 1, 0 -- head 队头，tail 队尾；head &gt; tail 表示空队列
+
+local function Enqueue(v)
+    tail = tail + 1
+    q[tail] = v -- 入队只写 tail
+end
+
+local function Dequeue()
+    if head &gt; tail then
+        return nil
+    end
+
+    local v = q[head]
+    q[head] = nil -- 断掉旧引用，方便 GC
+    head = head + 1
+
+    return v
+end
+
+Enqueue(&quot;cmd_move&quot;)
+Enqueue(&quot;cmd_attack&quot;)
+
+print(Dequeue()) -- 输出：cmd_move
+print(Dequeue()) -- 输出：cmd_attack
+print(Dequeue()) -- 输出：nil
+</code></pre>
+<p><code>q[head] = nil</code> 一般不能省略。<br>尤其 value 里可能挂着对象、回调、资源句柄时，旧引用断掉才不影响 GC。</p>
+<p>长期来看，这样实现的队列还有一个小问题是 <code>head</code> 会越走越远。<br>可以加个实现，如果队列变空，可以直接重置：</p>
+<pre><code class="lua">if head &gt; tail then
+    q, head, tail = &#123;&#125;, 1, 0
+end
+</code></pre>
+<p>也可以在适当时机考虑压缩。<br>大多数项目代码里，把热路径的 <code>remove(1)</code> 改掉是合理优化。</p>
+<h4 id="中间删除：不要求顺序，就用末尾元素补位"><a href="#中间删除：不要求顺序，就用末尾元素补位" class="headerlink" title="中间删除：不要求顺序，就用末尾元素补位"></a>中间删除：不要求顺序，就用末尾元素补位</h4><p>有些列表只是为了快速遍历，不要求顺序稳定。<br>比如子弹列表、临时命中列表、对象池里的空闲对象，这种就没必要每次删除都让后面的元素往前搬。</p>
+<p>可以用最后一个元素补到被删除的位置：</p>
+<pre><code class="lua">local function RemoveFast(list, index)
+    local lastIndex = #list
+
+    if index &lt; 1 or index &gt; lastIndex then
+        return
+    end
+
+    list[index] = list[lastIndex] -- 用最后一个元素补当前位置
+    list[lastIndex] = nil         -- 清掉最后一个槽位，断掉旧引用
+end
+
+local list = &#123; &quot;A&quot;, &quot;B&quot;, &quot;C&quot;, &quot;D&quot; &#125;
+
+RemoveFast(list, 2)
+
+print(list[1], list[2], list[3], list[4])
+-- 输出：A  D  C  nil
+</code></pre>
+<p>这样删除很快，但是顺序会变。<br>所以它适合不关心顺序的运行时列表，不适合 UI 列表、排行榜、任务展示顺序这种业务。</p>
+<h4 id="按-id-删除：字典-数组-indexMap"><a href="#按-id-删除：字典-数组-indexMap" class="headerlink" title="按 id 删除：字典 + 数组 + indexMap"></a>按 id 删除：字典 + 数组 + indexMap</h4><p>如果既想用数组遍历，又想按 id 快速删除，可以多维护一张 <code>indexMap</code>。<br>数组负责遍历，字典负责按 id 找位置。<br>用空间换时间。数组段方便遍历，哈希段方便 <code>O(1)</code> 查位置。</p>
+<pre><code class="lua">local entityList = &#123;&#125;
+local entityIndexMap = &#123;&#125; -- key 是实体 id，value 是实体在 entityList 里的下标
+
+local function AddEntity(entity)
+    table.insert(entityList, entity)
+
+    -- 新实体一定插在末尾，所以它的下标就是当前长度
+    entityIndexMap[entity.id] = #entityList
+end
+
+local function RemoveEntity(id)
+    -- 先通过 id 找到实体在数组里的位置，避免遍历 entityList
+    local index = entityIndexMap[id]
+    if index == nil then
+        return
+    end
+
+    local lastIndex = #entityList
+    local removedEntity = entityList[index]
+    local lastEntity = entityList[lastIndex]
+
+    -- 用最后一个实体补到被删除的位置，避免 table.remove 造成整体前移
+    entityList[index] = lastEntity
+    entityList[lastIndex] = nil -- 清掉最后一个槽位，断掉旧引用
+
+    -- 被删除的实体已经不在列表里了，下标表也要同步清掉
+    entityIndexMap[removedEntity.id] = nil
+
+    -- 如果删除的不是最后一个实体，补位实体的下标也要更新
+    if lastEntity ~= removedEntity then
+        entityIndexMap[lastEntity.id] = index
+    end
+end
+
+AddEntity(&#123; id = 101, name = &quot;RoleA&quot; &#125;)
+AddEntity(&#123; id = 102, name = &quot;RoleB&quot; &#125;)
+AddEntity(&#123; id = 103, name = &quot;RoleC&quot; &#125;)
+
+RemoveEntity(102)
+
+print(entityList[1].id, entityList[2].id, entityList[3])
+-- 输出：101  103  nil
+
+print(entityIndexMap[101], entityIndexMap[102], entityIndexMap[103])
+-- 输出：1  nil  2
+</code></pre>
+<p>这种写法项目里挺常见。有些项目组会封装常用 Lua 数据结构，底层都是多个表模拟对应数据结构。<br>注意点是只要移动了数组里的元素，就要同步维护 <code>indexMap</code>。<br>否则下次按 id 删除，拿到的下标就是旧的。</p>
+<h4 id="必须保顺序：先标记，帧末统一整理"><a href="#必须保顺序：先标记，帧末统一整理" class="headerlink" title="必须保顺序：先标记，帧末统一整理"></a>必须保顺序：先标记，帧末统一整理</h4><p>如果顺序必须保留，那就不能用末尾补位。<br>UI 列表、任务顺序、帧同步 Tick 里，顺序乱了会直接变成业务 bug。</p>
+<p>这种场景可以先标记删除，等这一轮逻辑结束后统一整理。</p>
+<p>本质思想也是我们刷Leetcode题的时候，一个字段标记有效位置，一个字段遍历。<br>然后不停的把遍历到的覆盖进有效位置，然后有效位置+1。<br>这样遍历完后，数组前面都是有效的，有效位置后的有效的元素都丢到前面来了，有效位置后的就可以干掉了。<br>相当于压缩。</p>
+<pre><code class="lua">local entities = &#123;
+    &#123; id = 101, dead = false &#125;,
+    &#123; id = 102, dead = true &#125;,
+    &#123; id = 103, dead = false &#125;,
+    &#123; id = 104, dead = true &#125;,
+&#125;
+
+local function Compact(list)
+    -- writeIndex 表示下一个“存活对象”应该写入的位置
+    -- readIndex 负责从前往后扫描原数组
+    local writeIndex = 1
+
+    for readIndex = 1, #list do
+        local entity = list[readIndex]
+
+        -- 只保留没有死亡的对象
+        -- 在原数组上往前覆盖，不另建新表
+        if not entity.dead then
+            list[writeIndex] = entity
+            writeIndex = writeIndex + 1
+        end
+    end
+
+    -- writeIndex 后面的元素，已经不属于压缩后的有效数组
+    -- 这些位置可能还引用着旧对象，如果不清掉，会让旧对象继续被 table 持有
+    for i = writeIndex, #list do
+        list[i] = nil
+    end
+end
+
+Compact(entities)
+
+for i = 1, #entities do
+    print(entities[i].id) -- 依次输出：101 / 103
+end
+</code></pre>
+<p>这种做法是把很多次零散删除，变成一次统一整理。<br>这一帧先标记，安全时机再清理。比如帧末。</p>
+<h4 id="中间插入：能延后就延后"><a href="#中间插入：能延后就延后" class="headerlink" title="中间插入：能延后就延后"></a>中间插入：能延后就延后</h4><p>中间插入也一样：热路径里频繁插才麻烦，偶尔插一次无所谓。<br>能延后就先丢临时表，安全时机再合并。</p>
+<pre><code class="lua">local entityOrder = &#123; 101, 102, 103 &#125;
+local pendingAddList = &#123;&#125;
+
+local function AddEntityLater(id)
+    -- 不直接修改 entityOrder
+    -- 避免在遍历主顺序表时，边遍历边插入导致顺序和循环范围变复杂
+    table.insert(pendingAddList, id)
+end
+
+local function FlushPendingAdd()
+    -- 当前一轮逻辑结束后，再把待添加的实体统一追加到主顺序表末尾
+    for i = 1, #pendingAddList do
+        table.insert(entityOrder, pendingAddList[i])
+    end
+
+    -- 这一批待添加数据已经处理完，清空临时列表
+    -- 这里直接换一张新表，适合没有其他地方持有 pendingAddList 引用的情况
+    pendingAddList = &#123;&#125;
+end
+
+AddEntityLater(104)
+AddEntityLater(105)
+
+FlushPendingAdd()
+
+print(entityOrder[1], entityOrder[2], entityOrder[3], entityOrder[4], entityOrder[5])
+-- 输出：101  102  103  104  105
+</code></pre>
+<p>如果业务必须插到指定位置，就要看频率。<br>低频逻辑直接 <code>table.insert</code> 没问题；高频逻辑最好重新设计结构。</p>
+<h3 id="集合"><a href="#集合" class="headerlink" title="集合"></a>集合</h3><p>只做判重、判存在，一般用 key 做占位。</p>
+<pre><code class="lua">local aliveSet = &#123;&#125;
+
+aliveSet[1001] = true
+aliveSet[1002] = true
+
+print(aliveSet[1001] ~= nil) -- 输出：true
+print(aliveSet[2001] ~= nil) -- 输出：false
+
+aliveSet[1001] = nil
+
+print(aliveSet[1001] ~= nil) -- 输出：false
+</code></pre>
+<p>值一般写 <code>true</code> 就可以，写1也无所谓。<br>如果还要记录访问时间、来源节点、权重，再把 value 换成小表。没有特殊需求一般没啥必要。</p>
 <pre><code class="lua">local visited = &#123;&#125;
 
-visited[1001] = true
-visited[1002] = true
-
-print(visited[1001] ~= nil) -- 输出：true
-print(visited[2001] ~= nil) -- 输出：false
-
-visited[1001] = nil
-
-print(visited[1001] ~= nil) -- 输出：false
-</code></pre>
-<p>值写 <code>true</code> 就行。当然用 1 也行，一般只是个占位。  </p>
-<p>真要附带访问时间、来源节点、权重，再把 value 写成一张小表：</p>
-<pre><code class="lua">visited[1001] = &#123;
+visited[1001] = &#123;
     visitTime = 12345,
     fromNode = &quot;A&quot;
 &#125;
+
+print(visited[1001].visitTime) -- 输出：12345
 </code></pre>
-<p>普通判重集合别一上来就套这种结构。</p>
-<p>同时得注意，别为了一个集合，又维护一份数组来回扫，比如下面这种写法就别用，判 alive 得把整个数组从 1 扫到尾，性能很差：</p>
+<p>不要为了判一个元素存在，每次都遍历数组，以下是bad case：</p>
 <pre><code class="lua">local aliveList = &#123; 1001, 1002, 1003 &#125;
 
 local function IsAlive(id)
@@ -25625,131 +25815,72 @@ local function IsAlive(id)
             return true
         end
     end
+
     return false
 end
 
 print(IsAlive(1001)) -- 输出：true
-print(IsAlive(2001)) -- 输出：false，2001 不在列表里，但得先扫完整张表才知道
+print(IsAlive(2001)) -- 输出：false
 </code></pre>
-<p>逻辑上看起来能跑，但 Entity 一多、每帧判很多次，就是 O(n)。上面 <code>visited[1001] ~= nil</code> 查一次 key 就搞定了，是 O(1)。</p>
-<h3 id="table-作为队列"><a href="#table-作为队列" class="headerlink" title="table 作为队列"></a>table 作为队列</h3><p>入队往 tail 写，出队只动 head，避开 <code>table.remove(t, 1)</code>。</p>
-<pre><code class="lua">local q = &#123;&#125;
-local head, tail = 1, 0 -- head 队头，tail 队尾；head &gt; tail 表示空队列
-
-local function Enqueue(v)
-    tail = tail + 1
-    q[tail] = v -- 入队：往 tail 写，不碰 head
-end
-
-local function Dequeue()
-    if head &gt; tail then
-        return nil -- 队列为空
-    end
-
-    local v = q[head]
-    q[head] = nil -- 出队后断掉旧引用，方便 GC
-    head = head + 1 -- 只挪队头，不像 remove(1) 那样搬后面一截
-
-    return v
-end
-
-Enqueue(&quot;A&quot;)
-Enqueue(&quot;B&quot;)
-
-print(Dequeue()) -- 输出：A，先进先出
-print(Dequeue()) -- 输出：B
-print(Dequeue()) -- 输出：nil，队列已空
-</code></pre>
-<p>项目很多地方使用队列，比如待执行指令、网络消息、异步回调排队。<br>注意<code>q[head] = nil</code> 也不能省略，出队后要旧引用断掉，方便 GC 回收，避免内存泄漏。</p>
-<p>head 走太远以后，表会变得稀疏——前面大量 key 已经是 <code>nil</code>，但 slot 还占着：</p>
-<pre><code class="lua">for i = 1, 5 do
-    Enqueue(&quot;cmd&quot;)
-end
-
-for i = 1, 4 do
-    Dequeue()
-end
-
-print(head)    -- 输出：5，队头已经挪到 5
-print(q[1])    -- 输出：nil，1~4 号位是空槽，但表还在占坑
-print(q[tail]) -- 输出：cmd，有效数据只剩 tail 这一格
-</code></pre>
-<p>队列是长期对象的话，空闲时可以压缩成新表，把有效段挪回 1 号位；或者队列已空，直接 <code>q, head, tail = &#123;&#125;, 1, 0</code> 换一张干净的：</p>
-<pre><code class="lua">-- 把 [head, tail] 里的有效元素，紧凑拷到新表
-local function CompactQueue(q, head, tail)
-    local newQ = &#123;&#125;
-    local newTail = 0
-
-    for i = head, tail do
-        newTail = newTail + 1
-        newQ[newTail] = q[i] -- 从 1 号位重新排，丢掉前面的空槽
-    end
-
-    return newQ, 1, newTail -- head 回到 1，tail 变成有效长度
-end
-
-q, head, tail = CompactQueue(q, head, tail)
-
-print(head) -- 输出：1，队头重新贴到数组段开头
-print(q[1]) -- 输出：cmd，前面 1~4 的空槽不再占坑
-</code></pre>
-<p>但我觉得最重要的还是先把热路径里的 <code>remove(1)</code> 干掉。</p>
-<h3 id="数组段和哈希段"><a href="#数组段和哈希段" class="headerlink" title="数组段和哈希段"></a>数组段和哈希段</h3><p>前面聊的尾插顺手、中间 insert&#x2F;remove 要搬元素、混 key 时 <code>#</code>&#x2F;<code>ipairs</code> ，粗略讲都可以归结成：<code>table</code> 里有一块<strong>数组段</strong>放连续 1..n，另有一块<strong>哈希段</strong>放其余 key。</p>
-<p>混用两种 key 的表要格外注意：</p>
-<pre><code class="lua">local mixed = &#123;
-    &quot;A&quot;,
-    &quot;B&quot;,
-    role = &quot;cache&quot;
-&#125;
-
-print(mixed[1])   -- 输出：A，1、2 在数组段
-print(mixed.role) -- 输出：cache，role 在哈希段
-
-for i, v in ipairs(mixed) do
-    print(i, v) -- 输出：1 A / 2 B，ipairs 只走数组段，扫不到 role
-end
-</code></pre>
-<p>数组段怎么切、什么时候 rehash，跟 Lua 5.x、LuaJIT、项目魔改运行时都有关。真想抠实现，再去翻 <code>ltable.c</code> 也不迟。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>同一张 <code>table</code>，当数组、字典、集合、队列写，写法不一样，成本也不一样。</p>
-<p>连续 1..n 当数组。<br>id 映射当字典，顺序走 order 表。<br>判重用集合。<br>FIFO 用 head &#x2F; tail。  </p>
-<p><code>t[k] = v</code> 是写槽，而不是插入。<br><code>table.insert(t, pos, v)</code> 和 <code>table.remove(t, 1)</code> 都会涉及搬家，热路径里要谨慎。</p>
+<p>逻辑虽然没有问题跑，但元素一多，每帧查很多次，就会变成无意义的扫描，很吃性能的。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>连续下标访问，用数组。<br>按 id 查数据，用字典。<br>只判断存在，用集合。<br>既要查得快，又要顺序稳定，就字典配顺序表。</p>
+<p><code>t[k] = v</code> 是写槽。<br><code>table.insert(t, pos, v)</code> 会搬后面的元素。<br><code>table.remove(t, pos)</code> 会把后面的元素往前补。</p>
+<p>热路径里别频繁让大数组搬家。<br>FIFO 用 <code>head / tail</code>；不要求顺序就末尾补位；要求顺序就先标记，帧末统一整理。</p>
 <hr>
 <h2 id="4-2-知识点代码"><a href="#4-2-知识点代码" class="headerlink" title="4.2 知识点代码"></a>4.2 知识点代码</h2><h3 id="Lesson4-表与数据结构取舍-lua"><a href="#Lesson4-表与数据结构取舍-lua" class="headerlink" title="Lesson4_表与数据结构取舍.lua"></a>Lesson4_表与数据结构取舍.lua</h3><pre><code class="lua">print(&quot;**********表与数据结构取舍************&quot;)
 
-print(&quot;**********知识点一 表充当多种数据结构************&quot;)
+print(&quot;**********知识点一 表先定用途************&quot;)
 
 local arrayList = &#123; 1001, 1002, 1003 &#125;
-local mapList = &#123;
+local skillMap = &#123;
     [1001] = &quot;FireBall&quot;,
     [1002] = &quot;IceBolt&quot;
 &#125;
 
-print(&quot;arrayList[1]：&quot;, arrayList[1]) -- 输出：1001，按数组下标取
-print(&quot;mapList[1001]：&quot;, mapList[1001]) -- 输出：FireBall，按 key 查
+print(arrayList[1])  -- 输出：1001，数组按下标取
+print(skillMap[1001]) -- 输出：FireBall，字典按 key 查
 
 
 print(&quot;**********知识点二 数组语义************&quot;)
 
 local skills = &#123; 1001, 1002, 1003 &#125;
 
-print(&quot;skills[2]：&quot;, skills[2]) -- 输出：1002，数组按下标取值
-print(&quot;#skills：&quot;, #skills) -- 输出：3，连续 1..n 时 # 才靠谱
+print(skills[2]) -- 输出：1002
+print(#skills)   -- 输出：3
 
-for i, skillId in ipairs(skills) do
-    print(&quot;技能下标和技能 id：&quot;, i, skillId) -- 输出：1 1001 / 2 1002 / 3 1003
-end
+table.insert(skills, 1004)
+
+print(skills[4]) -- 输出：1004，连续列表尾插
+print(#skills)   -- 输出：4
 
 
 print(&quot;**********知识点三 字典语义************&quot;)
 
-local skillMap = &#123;
+local configMap = &#123;
     [1001] = &#123; name = &quot;FireBall&quot; &#125;,
     [1005] = &#123; name = &quot;IceBolt&quot; &#125;,
     [&quot;passive_1&quot;] = &#123; name = &quot;Shield&quot; &#125;
 &#125;
 
-print(&quot;skillMap[1001].name：&quot;, skillMap[1001].name) -- 输出：FireBall
-print(&quot;skillMap[1002]：&quot;, skillMap[1002]) -- 输出：nil，查不到就是 nil
+print(configMap[1001].name) -- 输出：FireBall
+print(configMap[1002])      -- 输出：nil
+
+local playerMap = &#123;&#125;
+local playerCount = 0
+
+local function AddPlayer(id, data)
+    if playerMap[id] == nil then
+        playerCount = playerCount + 1
+    end
+
+    playerMap[id] = data
+end
+
+AddPlayer(1001, &#123; name = &quot;PlayerA&quot; &#125;)
+AddPlayer(2008, &#123; name = &quot;PlayerB&quot; &#125;)
+
+print(playerCount)          -- 输出：2，字典数量自己维护
+print(playerMap[2008].name) -- 输出：PlayerB
 
 
 print(&quot;**********知识点四 顺序表************&quot;)
@@ -25765,75 +25896,237 @@ local entityOrder = &#123; 101, 102, 103 &#125;
 for _, entityId in ipairs(entityOrder) do
     local entity = entityMap[entityId]
     entity.hp = entity.hp - 1
-    print(&quot;Tick：&quot;, entityId, entity.hp) -- 输出：101 99 / 102 79 / 103 119，各端顺序一致
+    print(entityId .. &quot;:&quot; .. entity.hp)
+    -- 依次输出：101:99 / 102:79 / 103:119
 end
 
-print(&quot;**********知识点五 直接赋值和插入对比************&quot;)
+
+print(&quot;**********知识点五 写槽和插入************&quot;)
 
 local direct = &#123; 10, 20, 30 &#125;
 
 direct[2] = 99
 
-print(&quot;direct[2]：&quot;, direct[2]) -- 输出：99，只覆盖 2 号位
-print(&quot;direct[3]：&quot;, direct[3]) -- 输出：30，后面的元素不会被搬动
-print(&quot;#direct：&quot;, #direct) -- 输出：3
+print(direct[1], direct[2], direct[3]) -- 输出：10  99  30
+print(#direct)                         -- 输出：3
 
 local insertDemo = &#123; 10, 20, 30, 40 &#125;
 
 table.insert(insertDemo, 2, 15)
 
-print(&quot;insertDemo[2]：&quot;, insertDemo[2]) -- 输出：15，2 号位插入新元素
-print(&quot;insertDemo[3]：&quot;, insertDemo[3]) -- 输出：20，原 20 被挤到后面
-print(&quot;#insertDemo：&quot;, #insertDemo) -- 输出：5，和 t[2]=15 完全不是一回事
+print(insertDemo[1], insertDemo[2], insertDemo[3], insertDemo[4], insertDemo[5])
+-- 输出：10  15  20  30  40
+print(#insertDemo) -- 输出：5
 
 
-print(&quot;**********知识点六 table.insert 尾插************&quot;)
+print(&quot;**********知识点六 中间插入和头删************&quot;)
 
-local tailList = &#123; &quot;A&quot;, &quot;B&quot; &#125;
+local pending = &#123; &quot;A&quot;, &quot;B&quot; &#125;
 
-table.insert(tailList, &quot;C&quot;)
+table.insert(pending, &quot;C&quot;)
 
-print(&quot;#tailList：&quot;, #tailList) -- 输出：3
-print(&quot;tailList[3]：&quot;, tailList[3]) -- 输出：C，两参数 insert 是尾插
+print(#pending)   -- 输出：3
+print(pending[3]) -- 输出：C
 
+local nums = &#123; 10, 20, 30, 40 &#125;
 
-print(&quot;**********知识点七 table.insert 中间插入************&quot;)
+table.insert(nums, 2, 15)
 
-local midList = &#123; 10, 20, 30, 40 &#125;
+print(nums[2], nums[3]) -- 输出：15  20
+print(#nums)            -- 输出：5
 
-table.insert(midList, 2, 15)
+local tasks = &#123; &quot;move&quot;, &quot;attack&quot;, &quot;idle&quot; &#125;
+local removedTask = table.remove(tasks, 1)
 
-print(&quot;midList[1]：&quot;, midList[1]) -- 输出：10
-print(&quot;midList[2]：&quot;, midList[2]) -- 输出：15，新元素插进 2 号位
-print(&quot;midList[3]：&quot;, midList[3]) -- 输出：20，原 20 被往后挤
-print(&quot;#midList：&quot;, #midList) -- 输出：5
-
-
-print(&quot;**********知识点八 table.remove 头删的问题************&quot;)
-
-local headRemove = &#123; &quot;move&quot;, &quot;attack&quot;, &quot;idle&quot; &#125;
-
-local removedTask = table.remove(headRemove, 1)
-
-print(&quot;removedTask：&quot;, removedTask) -- 输出：move，被删掉的元素会返回
-print(&quot;headRemove[1]：&quot;, headRemove[1]) -- 输出：attack，头删后后面整体前移
-print(&quot;headRemove[2]：&quot;, headRemove[2]) -- 输出：idle
-print(&quot;#headRemove：&quot;, #headRemove) -- 输出：2
+print(removedTask)      -- 输出：move
+print(tasks[1], tasks[2]) -- 输出：attack  idle
 
 
-print(&quot;**********知识点九 table 作为集合************&quot;)
+print(&quot;**********知识点七 怎么避免搬家************&quot;)
+
+print(&quot;----------队列：维护 head / tail----------&quot;)
+
+local q = &#123;&#125;
+local head, tail = 1, 0 -- head 队头，tail 队尾；head &gt; tail 表示空队列
+
+local function Enqueue(v)
+    tail = tail + 1
+    q[tail] = v -- 入队只写 tail，不挪动已有元素
+end
+
+local function Dequeue()
+    if head &gt; tail then
+        return nil
+    end
+
+    local v = q[head]
+    q[head] = nil -- 出队后断掉旧引用，避免旧对象继续被 table 持有
+    head = head + 1
+
+    return v
+end
+
+Enqueue(&quot;cmd_move&quot;)
+Enqueue(&quot;cmd_attack&quot;)
+
+print(Dequeue()) -- 输出：cmd_move
+print(Dequeue()) -- 输出：cmd_attack
+print(Dequeue()) -- 输出：nil
+
+if head &gt; tail then
+    q, head, tail = &#123;&#125;, 1, 0 -- 队列空了以后重置，避免 head 一直变大
+end
+
+print(head, tail) -- 输出：1  0
+
+
+print(&quot;----------中间删除：末尾元素补位----------&quot;)
+
+local function RemoveFast(list, index)
+    local lastIndex = #list
+
+    if index &lt; 1 or index &gt; lastIndex then
+        return
+    end
+
+    list[index] = list[lastIndex] -- 用最后一个元素补当前位置，避免后面元素整体前移
+    list[lastIndex] = nil         -- 清掉最后一个槽位，断掉旧引用
+end
+
+local bulletList = &#123; &quot;BulletA&quot;, &quot;BulletB&quot;, &quot;BulletC&quot;, &quot;BulletD&quot; &#125;
+
+RemoveFast(bulletList, 2)
+
+print(bulletList[1], bulletList[2], bulletList[3], bulletList[4])
+-- 输出：BulletA  BulletD  BulletC  nil，删除很快，但顺序会变
+
+
+print(&quot;----------按 id 删除：数组 + indexMap----------&quot;)
+
+local entityList = &#123;&#125;
+local entityIndexMap = &#123;&#125; -- key 是实体 id，value 是实体在 entityList 里的下标
+
+local function AddEntity(entity)
+    table.insert(entityList, entity)
+
+    -- 新实体插在末尾，所以它的下标就是当前长度
+    entityIndexMap[entity.id] = #entityList
+end
+
+local function RemoveEntity(id)
+    -- 先通过 id 找到数组下标，避免每次遍历 entityList
+    local index = entityIndexMap[id]
+    if index == nil then
+        return
+    end
+
+    local lastIndex = #entityList
+    local removedEntity = entityList[index]
+    local lastEntity = entityList[lastIndex]
+
+    -- 用最后一个实体补到被删除的位置，避免 table.remove 造成整体前移
+    entityList[index] = lastEntity
+    entityList[lastIndex] = nil -- 清掉最后一个槽位，断掉旧引用
+
+    -- 被删除的实体已经不在列表里了，下标表也要同步清掉
+    entityIndexMap[removedEntity.id] = nil
+
+    -- 如果删除的不是最后一个实体，补位实体的下标也要更新
+    if lastEntity ~= removedEntity then
+        entityIndexMap[lastEntity.id] = index
+    end
+end
+
+AddEntity(&#123; id = 101, name = &quot;RoleA&quot; &#125;)
+AddEntity(&#123; id = 102, name = &quot;RoleB&quot; &#125;)
+AddEntity(&#123; id = 103, name = &quot;RoleC&quot; &#125;)
+
+RemoveEntity(102)
+
+print(entityList[1].id, entityList[2].id, entityList[3])
+-- 输出：101  103  nil
+
+print(entityIndexMap[101], entityIndexMap[102], entityIndexMap[103])
+-- 输出：1  nil  2
+
+
+print(&quot;----------必须保顺序：标记后统一整理----------&quot;)
+
+local roleList = &#123;
+    &#123; id = 101, dead = false &#125;,
+    &#123; id = 102, dead = true &#125;,
+    &#123; id = 103, dead = false &#125;,
+    &#123; id = 104, dead = true &#125;,
+&#125;
+
+local function Compact(list)
+    local writeIndex = 1 -- 下一个有效对象应该写入的位置
+
+    for readIndex = 1, #list do
+        local role = list[readIndex]
+
+        -- 不新建数组，直接把有效对象往前覆盖
+        if not role.dead then
+            list[writeIndex] = role
+            writeIndex = writeIndex + 1
+        end
+    end
+
+    -- writeIndex 后面的槽位已经不是有效数据了，需要清掉旧引用
+    for i = writeIndex, #list do
+        list[i] = nil
+    end
+end
+
+Compact(roleList)
+
+for i = 1, #roleList do
+    print(roleList[i].id)
+    -- 依次输出：101 / 103
+end
+
+
+print(&quot;----------中间插入：能延后就延后----------&quot;)
+
+local entityOrder = &#123; 101, 102, 103 &#125;
+local pendingAddList = &#123;&#125;
+
+local function AddEntityLater(id)
+    -- 不在遍历主顺序表时直接插入，先丢进待添加列表
+    table.insert(pendingAddList, id)
+end
+
+local function FlushPendingAdd()
+    -- 当前一轮逻辑结束后，再统一合并到主顺序表
+    for i = 1, #pendingAddList do
+        table.insert(entityOrder, pendingAddList[i])
+    end
+
+    pendingAddList = &#123;&#125; -- 这一批已经处理完，直接换一张空表
+end
+
+AddEntityLater(104)
+AddEntityLater(105)
+
+FlushPendingAdd()
+
+print(entityOrder[1], entityOrder[2], entityOrder[3], entityOrder[4], entityOrder[5])
+-- 输出：101  102  103  104  105
+
+
+print(&quot;**********知识点八 集合************&quot;)
 
 local aliveSet = &#123;&#125;
 
 aliveSet[1001] = true
 aliveSet[1002] = true
 
-print(&quot;1001 在集合里：&quot;, aliveSet[1001] ~= nil) -- 输出：true
-print(&quot;2001 在集合里：&quot;, aliveSet[2001] ~= nil) -- 输出：false
+print(aliveSet[1001] ~= nil) -- 输出：true，1001 存在
+print(aliveSet[2001] ~= nil) -- 输出：false，2001 不存在
 
 aliveSet[1001] = nil
 
-print(&quot;移除后 1001：&quot;, aliveSet[1001] ~= nil) -- 输出：false，赋 nil 等于从集合里删掉
+print(aliveSet[1001] ~= nil) -- 输出：false，1001 已经移除
 
 local visited = &#123;&#125;
 
@@ -25842,7 +26135,7 @@ visited[1001] = &#123;
     fromNode = &quot;A&quot;
 &#125;
 
-print(&quot;visited 附带信息：&quot;, visited[1001].visitTime) -- 输出：12345，判重之外还要附带字段时，value 再用小表
+print(visited[1001].visitTime) -- 输出：12345，集合的 value 也可以换成业务数据
 
 local aliveList = &#123; 1001, 1002, 1003 &#125;
 
@@ -25852,93 +26145,25 @@ local function IsAlive(id)
             return true
         end
     end
+
     return false
 end
 
-print(&quot;IsAlive 2001：&quot;, IsAlive(2001)) -- 输出：false，能跑但每次 O(n) 扫整张表，别这么写
+print(IsAlive(1001)) -- 输出：true，但这是遍历数组查存在
+print(IsAlive(2001)) -- 输出：false，数据多了以后这种写法不适合热路径
 
 
-print(&quot;**********知识点十 table 作为队列************&quot;)
+print(&quot;**********知识点九 总结************&quot;)
 
-local q = &#123;&#125;
-local head, tail = 1, 0 -- head 队头，tail 队尾；head &gt; tail 表示空队列
-
-local function Enqueue(v)
-    tail = tail + 1
-    q[tail] = v -- 入队：往 tail 写
-end
-
-local function Dequeue()
-    if head &gt; tail then
-        return nil
-    end
-
-    local v = q[head]
-    q[head] = nil -- 出队后断掉旧引用
-    head = head + 1 -- 只挪队头，不像 remove(1) 那样搬元素
-
-    return v
-end
-
-Enqueue(&quot;cmd_move&quot;)
-Enqueue(&quot;cmd_attack&quot;)
-
-print(&quot;Dequeue：&quot;, Dequeue()) -- 输出：cmd_move，先进先出
-print(&quot;Dequeue：&quot;, Dequeue()) -- 输出：cmd_attack
-print(&quot;Dequeue：&quot;, Dequeue()) -- 输出：nil，队列已空
-
-for i = 1, 5 do
-    Enqueue(&quot;cmd&quot;)
-end
-
-for i = 1, 4 do
-    Dequeue()
-end
-
-print(&quot;head：&quot;, head) -- 输出：5，队头走远，前面 1~4 号是空槽
-print(&quot;q[1]：&quot;, q[1]) -- 输出：nil
-
-local function CompactQueue(q, head, tail)
-    local newQ = &#123;&#125;
-    local newTail = 0
-
-    for i = head, tail do
-        newTail = newTail + 1
-        newQ[newTail] = q[i]
-    end
-
-    return newQ, 1, newTail
-end
-
-q, head, tail = CompactQueue(q, head, tail)
-
-print(&quot;压缩后 head：&quot;, head) -- 输出：1
-print(&quot;压缩后 q[1]：&quot;, q[1]) -- 输出：cmd，有效数据贴回数组段开头
-
-
-print(&quot;**********知识点十一 数组段和哈希段************&quot;)
-
-local mixed = &#123;
-    &quot;A&quot;,
-    &quot;B&quot;,
-    role = &quot;cache&quot;
-&#125;
-
-print(&quot;mixed[1]：&quot;, mixed[1]) -- 输出：A，1、2 在数组段
-print(&quot;mixed.role：&quot;, mixed.role) -- 输出：cache，role 在哈希段
-
-for i, v in ipairs(mixed) do
-    print(&quot;ipairs mixed：&quot;, i, v) -- 输出：1 A / 2 B，ipairs 只走数组段
-end
-
-
-print(&quot;**********知识点十二 总结************&quot;)
-
-print(&quot;连续 1..n 当数组，id 映射当字典&quot;) -- 输出：连续 1..n 当数组，id 映射当字典
-print(&quot;业务顺序用 order 表，别赌 pairs 顺序&quot;) -- 输出：业务顺序用 order 表，别赌 pairs 顺序
-print(&quot;集合查 key，别数组 for 扫&quot;) -- 输出：集合查 key，别数组 for 扫
-print(&quot;队列用 head/tail，别 remove(1) 删头&quot;) -- 输出：队列用 head/tail，别 remove(1) 删头
-print(&quot;t[k]=v 是写槽，insert/remove 会搬元素&quot;) -- 输出：t[k]=v 是写槽，insert/remove 会搬元素
+print(&quot;table 先看用途，再选写法&quot;)
+print(&quot;连续下标访问，用数组&quot;)
+print(&quot;按 id 查数据，用字典&quot;)
+print(&quot;只判断存在，用集合&quot;)
+print(&quot;既要查得快，又要顺序稳定，就字典配顺序表&quot;)
+print(&quot;FIFO 队列用 head/tail，不要在热路径 remove(1)&quot;)
+print(&quot;不要求顺序的删除，可以用末尾元素补位&quot;)
+print(&quot;要求顺序的删除，可以先标记，帧末统一整理&quot;)
+print(&quot;中间插入能延后就延后，能批量就批量&quot;)
 </code></pre>
 <hr>
 
